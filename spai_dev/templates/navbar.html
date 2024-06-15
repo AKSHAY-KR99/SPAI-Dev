@@ -1,0 +1,66 @@
+{% load static %}
+<nav id="navbar" class="navbar">
+    <ul>
+      <li><a class="nav-link scrollto {% if page == 'main' %}active{% endif %}" href="{% url 'index' %}">Home</a></li>
+      <li><a class="nav-link scrollto {% if page == 'about' %}active{% endif %}" href="{% url 'about' %}">About</a></li>
+      <li><a class="nav-link scrollto {% if page == 'members' %}active{% endif %}" href="{% url 'members' %}">Members</a></li>
+      <li><a class="nav-link scrollto {% if page == 'publications' %}active{% endif %}" href="{% url 'publications' %}">Publications</a></li>
+      <li><a class="nav-link scrollto {% if page == 'news' %}active{% endif %}" href="{% url 'news' %}">News and Events</a></li>
+      <li><a class="nav-link scrollto {% if page == 'accademics' %}active{% endif %}" href="{% url 'accademics' %}">Accademics</a></li>
+      <li><a class="nav-link scrollto {% if page == 'gallery' %}active{% endif %}" href="{% url 'gallery' %}">Gallery</a></li>
+      <li><a class="nav-link scrollto {% if page == 'search' %}active{% endif %}" href="{% url 'search' %}">Search</a></li>
+      <!--<li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+        <ul>
+          <li><a href="#">Drop Down 1</a></li>
+          <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+            <ul>
+              <li><a href="#">Deep Drop Down 1</a></li>
+              <li><a href="#">Deep Drop Down 2</a></li>
+              <li><a href="#">Deep Drop Down 3</a></li>
+              <li><a href="#">Deep Drop Down 4</a></li>
+              <li><a href="#">Deep Drop Down 5</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Drop Down 2</a></li>
+          <li><a href="#">Drop Down 3</a></li>
+          <li><a href="#">Drop Down 4</a></li>
+        </ul>
+      </li>
+      <li class="dropdown megamenu"><a href="#"><span>Mega Menu</span> <i class="bi bi-chevron-down"></i></a>
+        <ul>
+          <li>
+            <strong>Column 1</strong>
+            <a href="#">Column 1 link 1</a>
+            <a href="#">Column 1 link 2</a>
+            <a href="#">Column 1 link 3</a>
+          </li>
+          <li>
+            <strong>Column 2</strong>
+            <a href="#">Column 2 link 1</a>
+            <a href="#">Column 2 link 2</a>
+            <a href="#">Column 3 link 3</a>
+          </li>
+          <li>
+            <strong>Column 3</strong>
+            <a href="#">Column 3 link 1</a>
+            <a href="#">Column 3 link 2</a>
+            <a href="#">Column 3 link 3</a>
+          </li>
+          <li>
+            <strong>Column 4</strong>
+            <a href="#">Column 4 link 1</a>
+            <a href="#">Column 4 link 2</a>
+            <a href="#">Column 4 link 3</a>
+          </li>
+          <li>
+            <strong>Column 5</strong>
+            <a href="#">Column 5 link 1</a>
+            <a href="#">Column 5 link 2</a>
+            <a href="#">Column 5 link 3</a>
+          </li>
+        </ul>
+      </li>
+      <li><a class="nav-link scrollto" href="#contact">Contact</a></li>-->
+    </ul>
+    <i class="bi bi-list mobile-nav-toggle"></i>
+  </nav><!-- .navbar -->
