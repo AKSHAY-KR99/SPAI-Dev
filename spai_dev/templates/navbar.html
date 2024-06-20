@@ -1,14 +1,17 @@
 {% load static %}
 <nav id="navbar" class="navbar">
-    <ul>
-      <li><a class="nav-link scrollto {% if page == 'main' %}active{% endif %}" href="{% url 'index' %}">Home</a></li>
-      <li><a class="nav-link scrollto {% if page == 'about' %}active{% endif %}" href="{% url 'about' %}">About</a></li>
-      <li><a class="nav-link scrollto {% if page == 'members' %}active{% endif %}" href="{% url 'members' %}">Members</a></li>
-      <li><a class="nav-link scrollto {% if page == 'publications' %}active{% endif %}" href="{% url 'publications' %}">Publications</a></li>
-      <li><a class="nav-link scrollto {% if page == 'news' %}active{% endif %}" href="{% url 'news' %}">News and Events</a></li>
-      <li><a class="nav-link scrollto {% if page == 'accademics' %}active{% endif %}" href="{% url 'accademics' %}">Accademics</a></li>
-      <li><a class="nav-link scrollto {% if page == 'gallery' %}active{% endif %}" href="{% url 'gallery' %}">Gallery</a></li>
-      <li><a class="nav-link scrollto {% if page == 'search' %}active{% endif %}" href="{% url 'search' %}">Search</a></li>
+  <ul>
+    <li><a class="nav-link {% if page == 'main' %}active{% endif %}" href="{% url 'index' %}">Home</a></li>
+    <li><a class="nav-link {% if page == 'about' %}active{% endif %}" href="{% url 'about' %}">About</a></li>
+    <li><a class="nav-link {% if page == 'members' %}active{% endif %}" href="{% url 'members' %}">Members</a></li>
+    <li><a class="nav-link {% if page == 'publications' %}active{% endif %}" href="{% url 'publications' %}">Publications</a></li>
+    <li><a class="nav-link {% if page == 'news' %}active{% endif %}" href="{% url 'news' %}">News and Events</a></li>
+    <li><a class="nav-link {% if page == 'accademics' %}active{% endif %}" href="{% url 'accademics' %}">Accademics</a></li>
+    <li><a class="nav-link {% if page == 'gallery' %}active{% endif %}" href="{% url 'gallery' %}">Gallery</a></li>
+    <li><a class="nav-link {% if page == 'search' %}active{% endif %}" href="{% url 'search' %}">Search</a></li>
+  </ul>
+  <i class="bi bi-list mobile-nav-toggle"></i>
+</nav>
       <!--<li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
         <ul>
           <li><a href="#">Drop Down 1</a></li>
@@ -61,6 +64,3 @@
         </ul>
       </li>
       <li><a class="nav-link scrollto" href="#contact">Contact</a></li>-->
-    </ul>
-    <i class="bi bi-list mobile-nav-toggle"></i>
-  </nav><!-- .navbar -->
