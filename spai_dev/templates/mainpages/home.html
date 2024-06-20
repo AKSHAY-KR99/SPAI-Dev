@@ -1,0 +1,16 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block header %}
+    {% include 'header.html' %}
+{% endblock %}
+{% block content %}
+<dev class="hero">
+    <dev class="hero-pic">
+        <img class="full-width-img" src="{% static 'images/football.jpg' %}">
+    </dev>
+</dev>
+{% endblock %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}
