@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.views.generic import TemplateView
+
 
 # Create your views here.
 def index(request):
@@ -33,3 +35,8 @@ def search(request):
     context={'page':'search'}
     return render(request,'mainpages/search.html',context)
 
+class Login(TemplateView):
+    template_name = 'mainpages/login.html'
+    context = {}
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name, self.context)

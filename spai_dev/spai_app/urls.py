@@ -12,4 +12,5 @@ urlpatterns = [
     path('news/',views.news,name="news"),
     path('publications/',views.publications,name="publications"),
     path('search/',views.search,name="search"),
+    path('login/', views.Login.as_view(), name='login')
 ]
