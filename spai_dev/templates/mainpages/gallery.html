@@ -4,7 +4,24 @@
     {% include 'header.html' %}
 {% endblock %}
 {% block content %}
-<h1>Gallery page/h1>
+<div class="gallery">
+    <div class="gallery-item">
+        <img src="{% static 'images/image1.jfif' %}" alt="Image 1">
+    </div>
+    <div class="gallery-item">
+        <img src="{% static 'images/image2.jfif' %}" alt="Image 2">
+    </div>
+    <div class="gallery-item">
+        <img src="{% static 'images/image3.jfif' %}" alt="Image 3">
+    </div>
+    <div class="gallery-item">
+        <img src="{% static 'images/image4.jfif' %}" alt="Image 4">
+    </div>
+    <div class="gallery-item">
+        <img src="{% static 'images/image5.jfif' %}" alt="Image 4">
+    </div>
+    <!-- Add more gallery items as needed -->
+</div>
 {% endblock %}
 
 {% block footer %}
