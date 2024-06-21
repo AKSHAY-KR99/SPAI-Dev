@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 def index(request):
     context={'page':'main'}
-    return render(request,'main.html',context)
+    return render(request,'mainpages/home.html',context)
 
 def about(request):
     context={'page':'about'}
