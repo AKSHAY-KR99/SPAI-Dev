@@ -235,16 +235,18 @@ footer {
   padding: 20px;
   max-width: 1200px;
   margin: 20px auto;
+  position: relative;
+  bottom: 45px;
 }
+
 
 .gallery-item {
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 4px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .gallery-item img {
-  display: block;
   width: 100%;
   height: auto;
   transition: transform 0.3s ease;
@@ -256,14 +258,71 @@ footer {
 
 
 .add-image-btn {
-  background-color: #4CAF50;
+  margin-left: auto;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  background-color: #0a9c0f;
   color: #fff;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  float: right;
+  margin-right: 20px;
+  text-align: right;
 }
 
 .add-image-btn:hover {
-  background-color: #3e8e41;
+  background-color: #0fbd15;
+  transition: .4s;
+    transform: scale(1.05);
 }
+
+.gallery-item {
+  position: relative; /* add this to position the delete button absolutely */
+}
+
+.delete-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgb(231, 0, 0);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.delete-button:hover {
+  background-color: rgb(156, 1, 1);
+}
+
+.delete-button button {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: #f0f0f0;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.gallery-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gallery-title {
+  font-size: 35px;
+  flex: 1;
+  display: grid;
+  place-items: center;
+  
+}
+
