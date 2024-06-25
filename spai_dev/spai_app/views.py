@@ -22,8 +22,9 @@ def members(request):
 
 
 def gallery(request):
+    admin_key = True
     gallery_objects = GalleryManagement.objects.all()
-    context = {'page': 'gallery','gallery_objects': gallery_objects}
+    context = {'page': 'gallery','gallery_objects': gallery_objects, 'admin_key': admin_key}
     return render(request, 'mainpages/gallery.html', context)
 
 
@@ -67,14 +68,13 @@ class Login(TemplateView):
         return render(request, self.template_name, self.context)
 
 
-class GalleryManagementView(TemplateView):
+class GalleryUploadDelete(TemplateView):
     template_name = 'mainpages/gallery.html'
     model = models.GalleryManagement
     form_class = forms.GalleryManagementForm
     context = {}
 
     def get(self, request, *args, **kwargs):
-        return render(request, self.template_name, self.context)
-
-    def post(self, request, *args, **kwargs):
-        pass
+        instance = self.model.objects.get(id=kwargs["id"])
+        instance.delete()
+        return redirect("gallery")

@@ -14,8 +14,7 @@ urlpatterns = [
     path('search/',views.search,name="search"),
     path('add_image_template/',views.add_image_template,name="add_image_template"),
     path('login/', views.Login.as_view(), name='login'),
-
-    #path('gallery/', views.GalleryManagementView.as_view(), name='gallery')
+    path('gallery/delete/<int:id>', views.GalleryUploadDelete.as_view(), name='galleryimagedelete')
 ]
 
 
