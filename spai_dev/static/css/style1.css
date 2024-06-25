@@ -54,6 +54,7 @@ body {
 .navbar ul li {
   display: inline-block;
   margin-left: 20px;
+  position: relative;
 }
 
 .navbar ul li a {
@@ -72,6 +73,51 @@ body {
 .navbar ul li a.active {
   background-color: rgba(255, 255, 255, 0.2); /* Darker background color for active link */
 }
+
+
+.dropdown ul {
+  display: none; /* Hide dropdown menus by default */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: rgba(44, 114, 145); /* Background color for dropdown menu */
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown:hover ul, .dropdown.active ul {
+  display: block; /* Show dropdown menu on hover or if the parent is active */
+}
+
+.dropdown ul li {
+  display: block;
+  margin: 0;
+}
+
+.dropdown ul li a {
+  padding: 10px 20px; /* Padding for dropdown items */
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.dropdown ul li a:hover, .dropdown ul li a.active {
+  background-color: rgba(255, 255, 255, 0.2); /* Darker background color on hover and for active items */
+}
+
+.dropdown ul .dropdown {
+  position: relative;
+}
+
+.dropdown ul .dropdown ul {
+  left: 100%;
+  top: 0;
+  display: none;
+}
+
+.dropdown ul .dropdown:hover ul, .dropdown ul .dropdown.active ul {
+  display: block;
+}
+
 
 /* Main content styles */
 main {

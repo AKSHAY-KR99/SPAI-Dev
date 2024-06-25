@@ -10,17 +10,56 @@ def index(request):
     context = {'page': 'main'}
     return render(request, 'mainpages/home.html', context)
 
-
+#About******************************************************************
 def about(request):
     context = {'page': 'about'}
     return render(request, 'mainpages/about.html', context)
 
+def exe_members(request):
+    context = {'page': 'about','page2':'exe_members'}
+    return render(request, 'about/exe_members.html', context)
 
+def history(request):
+    context = {'page': 'about','page2':'history'}
+    return render(request, 'about/history.html', context)
+
+def about_members(request):
+    context = {'page': 'about','page2':'members'}
+    return render(request, 'about/members.html', context)
+
+def v_and_m(request):
+    context = {'page': 'about','page2':'v_and_m'}
+    return render(request, 'about/vision_and_mission.html', context)
+#*****************************************************
+
+#Members*************************************
 def members(request):
     context = {'page': 'members'}
     return render(request, 'mainpages/members.html', context)
 
+def membership(request):
+    context = {'page': 'members','page2':'membership'}
+    return render(request, 'members/membership.html', context)
+#************************************************************
 
+#publications************************************************
+def publications(request):
+    context = {'page': 'publications'}
+    return render(request, 'mainpages/publications.html', context)
+
+def editorial(request):
+    context = {'page': 'publications','page2':'editorial'}
+    return render(request, 'publications/editorial.html', context) 
+
+def journal(request):
+    context = {'page': 'publications','page2':'journal'}
+    return render(request, 'publications/journal.html', context) 
+
+def submit_paper(request):
+    context = {'page': 'publications','page2':'submit_paper'}
+    return render(request, 'publications/submit_paper.html', context) 
+
+#****************************************************
 def gallery(request):
     admin_key = True
     gallery_objects = GalleryManagement.objects.all()
@@ -49,11 +88,6 @@ def add_image_template(request):
         frm=forms.GalleryManagementForm()
     context = {'page': 'gallery','frm':frm}
     return render(request, 'admin/add_image_template.html', context)
-
-def publications(request):
-    context = {'page': 'publications'}
-    return render(request, 'mainpages/publications.html', context)
-
 
 def search(request):
     context = {'page': 'search'}
