@@ -12,5 +12,10 @@ urlpatterns = [
     path('news/',views.news,name="news"),
     path('publications/',views.publications,name="publications"),
     path('search/',views.search,name="search"),
-    path('login/', views.Login.as_view(), name='login')
+    path('add_image_template/',views.add_image_template,name="add_image_template"),
+    path('login/', views.Login.as_view(), name='login'),
+
+    #path('gallery/', views.GalleryManagementView.as_view(), name='gallery')
 ]
+
+
