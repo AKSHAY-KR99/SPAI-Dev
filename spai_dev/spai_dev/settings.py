@@ -85,23 +85,17 @@ WSGI_APPLICATION = 'spai_dev.wsgi.application'
 #         'PASSWORD':'windows'
 #     }
 # }
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'spai_db',
-#         'USER': 'spai_user',
-#         'PASSWORD': 'spai@123',
-#         'HOST': '127.0.0.1',
-#         'PORT': '5432',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'spai_db',
+        'USER': 'spai_user',
+        'PASSWORD': 'spai@123',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
+
 
 import mimetypes
 mimetypes.add_type("text/css", ".css", True)
