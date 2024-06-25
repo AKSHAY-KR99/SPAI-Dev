@@ -20,8 +20,17 @@
     <div class="gallery-item">
         <img src="{% static 'images/image5.jfif' %}" alt="Image 4">
     </div>
+    {% for obj in gallery_objects %}
+        <div class="gallery-item">
+            <img src="{{ obj.image.url }}" alt="{{ obj.image_alt }}">
+        </div>
+    {% endfor %}
+
     <!-- Add more gallery items as needed -->
 </div>
+<a href="{% url 'add_image_template' %}">
+<button class="add-image-btn">Add New Image</button>
+</a>
 {% endblock %}
 
 {% block footer %}
