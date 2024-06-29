@@ -326,3 +326,121 @@ footer {
   
 }
 
+
+/* User registration form */
+.input_area{
+  padding: 7px;
+}
+
+input::placeholder, #state{
+  font-family: 'Poppins', sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.image-container {
+  width: 40%;
+  margin-right: 20px;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.form-container {
+  width: 60%;
+  padding: 25px;
+  background-color: #f7f7f7;
+  border: none;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.input_area {
+  width: 48%;
+  margin-right: 20px;
+}
+
+.input_area input[type="email"],
+.input_area input[type="text"],
+.input_area input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  
+}
+
+.input_area input[type="email"]:focus,
+.input_area input[type="text"]:focus,
+.input_area input[type="password"]:focus {
+  border-color: #aaa;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input_area input[type="email"]:hover,
+.input_area input[type="text"]:hover,
+.input_area input[type="password"]:hover {
+  border-color: #aaa;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input_area select {
+  width: 204%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.input_area select:focus {
+  border-color: #aaa;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.user-create-button {
+  width: 204%;
+  padding: 15px;
+  background-color: rgba(44, 114, 145);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.user-create-button:hover {
+  background-color: rgb(24, 88, 116);
+  transition: 0.5s;
+  transform: scale(1.03);
+}
+.user-create-button:not(:hover) {
+  transform: scale(1); 
+  transition: 0.3s; 
+}
+
+h1{
+  display: flex;
+  justify-content: center;
+}
