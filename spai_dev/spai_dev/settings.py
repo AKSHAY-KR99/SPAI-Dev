@@ -16,7 +16,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
@@ -27,7 +26,6 @@ SECRET_KEY = 'django-insecure-5qhlplha*3#*!4lv$)$de2_($ky+lo^^q-!l8%qb1wqk61d=!i
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -71,20 +69,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'spai_dev.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'spai_db',
-#         'HOST':'localhost',
-#         'PORT':'5432',
-#         'USER':'postgres',
-#         'PASSWORD':'windows'
-#     }
-# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -96,12 +83,12 @@ DATABASES = {
     }
 }
 
-
 import mimetypes
+
 mimetypes.add_type("text/css", ".css", True)
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [ os.path.join(BASE_DIR,'static') ]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 
@@ -123,7 +110,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -135,16 +121,59 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
 
-MEDIA_URL='media/'
-MEDIA_ROOT=os.path.join(BASE_DIR,'media/')
+MEDIA_URL = 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = "spai_app.User"
+
+USER_CREATED = "user_created"
+USER_DETAILS_ADDED = "user_details_added"
+ADMIN_APPROVAL_PENDING = "admin_approval_pending"
+ADMIN_APPROVED = "admin_approved"
+
+ADMIN_ROLE_VALUE = 1
+MEMBER_ROLE_VALUE = 2
+ROLE_CHOICES = ((ADMIN_ROLE_VALUE, "ADMIN"), (MEMBER_ROLE_VALUE, "MEMBER"))
+
+STATE_CHOICES = [
+    ("", "Select state"),
+    ("Andhra Pradesh", "Andhra Pradesh"),
+    ("Arunachal Pradesh", "Arunachal Pradesh"),
+    ("Assam", "Assam"),
+    ("Bihar", "Bihar"),
+    ("Chhattisgarh", "Chhattisgarh"),
+    ("Goa", "Goa"),
+    ("Gujarat", "Gujarat"),
+    ("Haryana", "Haryana"),
+    ("Himachal Pradesh", "Himachal Pradesh"),
+    ("Jharkhand", "Jharkhand"),
+    ("Karnataka", "Karnataka"),
+    ("Kerala", "Kerala"),
+    ("Madhya Pradesh", "Madhya Pradesh"),
+    ("Maharashtra", "Maharashtra"),
+    ("Manipur", "Manipur"),
+    ("Meghalaya", "Meghalaya"),
+    ("Mizoram", "Mizoram"),
+    ("Nagaland", "Nagaland"),
+    ("Odisha", "Odisha"),
+    ("Punjab", "Punjab"),
+    ("Rajasthan", "Rajasthan"),
+    ("Sikkim", "Sikkim"),
+    ("Tamil Nadu", "Tamil Nadu"),
+    ("Telangana", "Telangana"),
+    ("Tripura", "Tripura"),
+    ("Uttar Pradesh", "Uttar Pradesh"),
+    ("Uttarakhand", "Uttarakhand"),
+    ("West Bengal", "West Bengal")
+]
+

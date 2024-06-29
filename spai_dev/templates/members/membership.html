@@ -1,12 +1,95 @@
 {% extends 'main.html' %}
 {% load static %}
 {% block header %}
-    {% include 'header.html' %}
+{% include 'header.html' %}
 {% endblock %}
 {% block content %}
-<h1>Membership</h1>
+<h1>Member Registration</h1>
+<form method="post" id="myForm">
+    {% csrf_token %}
+    {% if form.errors %}
+    <div class="error-messages">
+        {% for field in form %}
+        {% if field.errors %}
+        <ul>
+            {% for error in field.errors %}
+            <li>{{ error|escape }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="container">
+        <div class="image-container">
+            <!-- Add your image here -->
+            <img src="{% static 'images/SPAI_LOGO_1.jpg' %}" alt="Registration Image">
+        </div>
+        <div class="form-container">
+            <div class="row">
+                <div class="input_area">
+                    <input class="user-email" type="email" id="email" name="email" placeholder="Email Address" required>
+                </div>
+                <div class="input_area">
+                    <input class="user-textfield" type="text" placeholder="Username" id="username" name="username"
+                           required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input_area">
+                    <input class="user-firstname" type="text" id="first_name" placeholder="First name" name="first_name"
+                           required>
+                </div>
+                <div class="input_area">
+                    <input class="user-lastname" placeholder="Last name" type="text" id="last_name" name="last_name">
+                </div>
+            </div>
+            <div class="row">
+                <div class="input_area">
+                    <select name="state" id="state">
+                      
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input_area">
+                    <input class="user-password" placeholder="Password" type="password" id="password" name="password"
+                           required>
+                </div>
+                <div class="input_area">
+                    <input class="user-confirm-password" placeholder="Confirm Password" type="password"
+                           id="confirm_password" name="confirm_password" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input_area">
+                    <input class="user-create-button" type="submit" value="Register">
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
 {% endblock %}
 
 {% block footer %}
 {% include 'footer.html' %}
+<script>
+    const stateSelected = document.querySelector("#state")
+
+    const states = ["Select state","Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
+        "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh",
+        "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan",
+        "Sikkim", "Tamil Nadu","Telangana","Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal"]
+
+    function populateStates(){
+        let html_data = ""
+        for(let i=0;i<states.length;++i){
+            html_data += `<option>${states[i]}</option>`
+        }
+        stateSelected.innerHTML = html_data
+    }
+
+    populateStates()
+</script>
 {% endblock %}
