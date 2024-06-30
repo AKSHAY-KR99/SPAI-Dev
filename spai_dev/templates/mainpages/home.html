@@ -4,12 +4,34 @@
     {% include 'header.html' %}
 {% endblock %}
 {% block content %}
-<dev class="hero">
-    <dev class="hero-pic">
-        <img class="full-width-img" src="{% static 'images/football.jpg' %}">
-    </dev>
-</dev>
+<div class="hero">
+    <div class="hero-pic">
+        <img class="full-width-img" src="{% static 'images/football.jpg' %}" alt="Image 1">
+        <img class="full-width-img" src="{% static 'images/run.jpg' %}" alt="Image 2">
+        <img class="full-width-img" src="{% static 'images/run2.jpg' %}" alt="Image 3">
+    </div>
+    <div class="hero-texts">
+        <div class="hero-text active">
+            <p>Welcome to SPAI</p>
+            <!-- <p>SPORTS PSYCHOLOGY ASSOCIATION OF INDIA</p> -->
+        </div>
+        <div class="hero-text">
+            <p>Explore Our History</p>
+        </div>
+        <div class="hero-text">
+            <p>Join Our Community</p>
+        </div>
+    </div>
+    <div class="hero-controls">
+        <button class="prev" onclick="prevImage()">‹</button>
+        <button class="next" onclick="nextImage()">›</button>
+    </div>
+</div>
+
+<script type="text/javascript" src="{% static 'js/home.js' %}"></script>
 {% endblock %}
+
+
 
 {% block footer %}
 {% include 'footer.html' %}

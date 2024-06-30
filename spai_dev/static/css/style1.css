@@ -1,50 +1,90 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 /* Reset default browser styles */
+/* Reset default margin and padding */
 body, html {
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 /* Global styles */
 body {
-  /* font-family: Arial, sans-serif; */
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
   background-color: #f0f0f0; /* Light gray background */
+  margin: 0;
 }
 
 .container {
   width: 80%;
   margin: 0 auto; /* Center the content */
+  padding: 20px; /* Add padding to the container */
+  box-sizing: border-box; /* Ensure padding is included in width */
 }
 
 /* Header styles */
 .head {
+  position: fixed; /* Fixed position at the top of the viewport */
+  top: 0;
+  left: 0;
+  width: 100%;
   background-color: rgba(44, 114, 145, 0.9); /* Dark background color for header */
   color: #fff; /* White text color */
   padding: 10px 0;
-  height: 50px;
+  z-index: 1000; /* Ensure the header is on top of other content */
 }
 
 .head .logo {
   float: left;
-  padding: 0 20px;
+  padding-left: 20px; /* Adjust padding */
 }
-.head .logo img{
-  max-width: 50px;
+
+.head .logo img {
+  max-width: 100%; /* Ensure the logo scales appropriately */
+  height: auto; /* Maintain aspect ratio */
 }
 
 .head .logo p {
   font-size: 1.5em;
   font-weight: bold;
   margin: 0;
+  line-height: 50px; /* Vertically center the text within the header */
 }
 
 .head .nav {
   float: right;
+  padding-right: 20px; /* Adjust padding */
 }
 
+.head .nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.head .nav li {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.head .nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s ease; /* Smooth transition for link color */
+}
+
+.head .nav a:hover {
+  color: #c0c0c0; /* Lighter color on hover */
+}
+
+
+
 /* Navigation styles */
+.navbar {
+  position: relative;
+  z-index: 2; /* Ensure navbar is above the hero section */
+}
 .navbar ul {
   list-style-type: none;
   margin: 0;
@@ -84,6 +124,7 @@ body {
   list-style-type: none;
   padding: 0;
   margin: 0;
+  z-index: 3; /* Ensure dropdown menu is above other elements */
 }
 
 .dropdown:hover ul, .dropdown.active ul {
@@ -93,11 +134,14 @@ body {
 .dropdown ul li {
   display: block;
   margin: 0;
+  margin-left: 0;
+  width: 220px;
 }
 
 .dropdown ul li a {
+  width: 160px; /* Set a fixed width */
   padding: 10px 20px; /* Padding for dropdown items */
-  white-space: nowrap; /* Prevent text wrapping */
+  white-space: nowrap;/* Prevent text wrapping */
 }
 
 .dropdown ul li a:hover, .dropdown ul li a.active {
@@ -112,6 +156,7 @@ body {
   left: 100%;
   top: 0;
   display: none;
+  z-index: 4; /* Ensure nested dropdown menu is above other elements */
 }
 
 .dropdown ul .dropdown:hover ul, .dropdown ul .dropdown.active ul {
@@ -171,12 +216,109 @@ footer {
   font-size: 0.8em;
 }
 
-.full-width-img {
-  width: 100vw; /* Full width of the viewport */
-  height: auto; /* Maintain aspect ratio */
-  display: block;
-  margin: 0;
+/*Hero*************************************/
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
 }
+
+.hero-pic {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+
+.full-width-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.5s;
+}
+
+.full-width-img:not(:first-child) {
+  opacity: 0;
+}
+
+.full-width-img.active {
+  opacity: 1;
+}
+
+.hero-controls {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  text-align: center;
+}
+
+.prev {
+  position: absolute;
+  left: 10px;
+  font-size: 24px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px 15px;
+  border-radius: 10%;
+  cursor: pointer;
+}
+
+.next {
+  position: absolute;
+  right: 10px;
+  font-size: 24px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px 15px;
+  border-radius: 10%;
+  cursor: pointer;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+@keyframes floatUp {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-texts {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  z-index: 1;
+}
+
+.hero-text {
+  display: none;
+  font-size: 50px;
+  margin-bottom: 20px;
+  font-weight: 500; /* Increased font weight */
+}
+
+.hero-text.active {
+  display: block;
+  animation: floatUp 1.5s ease-out forwards;
+}
+
+
+/*********************************
+
 
 
 /* Mobile navigation toggle */
@@ -325,7 +467,6 @@ footer {
   place-items: center;
   
 }
-
 
 /* User registration form */
 .input_area{
