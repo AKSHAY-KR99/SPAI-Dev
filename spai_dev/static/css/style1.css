@@ -444,3 +444,40 @@ h1{
   display: flex;
   justify-content: center;
 }
+
+
+/* Animation for the registration form */
+.form-container {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.form-container.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animation for the image */
+.image-container img {
+  opacity: 0;
+  transform: scale(0.5);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.image-container img.animate {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Animation for the h1 element */
+h1 {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+h1.animate {
+  opacity: 1;
+  transform: translateY(0);
+}

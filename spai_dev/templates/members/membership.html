@@ -26,7 +26,7 @@
             <!-- Add your image here -->
             <img src="{% static 'images/SPAI_LOGO_1.jpg' %}" alt="Registration Image">
         </div>
-        <div class="form-container">
+        <div class="form-container animate">
             <div class="row">
                 <div class="input_area">
                     <input class="user-email" type="email" id="email" name="email" placeholder="Email Address" required>
@@ -48,7 +48,7 @@
             <div class="row">
                 <div class="input_area">
                     <select name="state" id="state">
-                      
+
                     </select>
                 </div>
             </div>
@@ -75,6 +75,15 @@
 {% block footer %}
 {% include 'footer.html' %}
 <script>
+    window.addEventListener('load', () => {
+  const formContainer = document.querySelector('.form-container');
+  const image = document.querySelector('.image-container img');
+  const h1 = document.querySelector('h1');
+
+  formContainer.classList.add('animate');
+  image.classList.add('animate');
+  h1.classList.add('animate');
+});
     const stateSelected = document.querySelector("#state")
 
     const states = ["Select state","Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
