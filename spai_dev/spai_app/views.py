@@ -132,3 +132,30 @@ class GalleryUploadDelete(TemplateView):
         instance.delete()
         return redirect("gallery")
 
+
+def user_detail_upload(request):
+    if request.method == 'POST':
+        form = forms.UserDetailForm(request.user, request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('gallery')  # redirect to a success page
+    else:
+        form = forms.UserDetailForm(request.user)
+    return render(request, 'user_detail_add.html', {'form': form})
+    # if request.method == 'GET':
+    #     print(request.user)
+    #     frm = forms.UserDetailForm()
+    # elif request.method == 'POST':
+    #     import pdb; pdb.set_trace()
+    #     frm = forms.UserDetailForm(request.POST, request.FILES)
+    #     if frm.is_valid():
+    #         user_detail = frm.save(commit=False)
+    #         user_detail.user = request.user
+    #         user_detail.save()
+    #         frm.save()
+    #         print("success")
+    #         return redirect('gallery')
+    # else:
+    #     frm = forms.UserDetailForm()
+    # context = {'form': frm}
+    # return render(request, 'user_detail_add.html', context)

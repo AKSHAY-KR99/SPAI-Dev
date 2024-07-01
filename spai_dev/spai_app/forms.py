@@ -1,9 +1,8 @@
 import re
 from django.conf import settings
 from django.forms import ModelForm
-from .models import GalleryManagement
+from .models import GalleryManagement, UserDetailModel, User
 from django import forms
-from .models import User
 
 
 class GalleryManagementForm(ModelForm):
@@ -66,3 +65,36 @@ class UserRegistrationForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+
+
+class UserDetailForm(forms.ModelForm):
+    class Meta:
+        model = UserDetailModel
+        fields = ('degree', 'profession', 'institution', 'department', 'phone_number', 'alternate_number',
+                  'alternate_mail', 'photo', 'specialized_in', 'research_interest')
+
+    house_name = forms.CharField(max_length=255, label='House Name')
+    street_name = forms.CharField(max_length=255, label='Street Name')
+    city_name = forms.CharField(max_length=255, label='City Name')
+    pin = forms.CharField(max_length=6, label='PIN')
+
+    def __init__(self, user, *args, **kwargs):
+        super(UserDetailForm, self).__init__(*args, **kwargs)
+        self.user = user
+
+    def save(self, commit=True):
+        instance = super(UserDetailForm, self).save(commit=False)
+        instance.user = self.user
+
+        # Merge address fields into a single string
+        address = (f"{self.cleaned_data['house_name']}, {self.cleaned_data['street_name']}, "
+                   f"{self.cleaned_data['city_name']}, PIN - {self.cleaned_data['pin']}")
+        instance.address = address
+
+        if commit:
+            instance.save()
+        return instance
+# house name
+# street name / city
+# district
+# PIN
