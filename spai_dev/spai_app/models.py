@@ -9,6 +9,9 @@ from django.utils.translation import gettext_lazy as _
 from django.db import models
 
 
+def user_detail_image_path(instance, filename):
+    return f'user_detail/image/{instance.user.slug_value}/{filename}'
+
 
 class GalleryManagement(models.Model):
     image = models.ImageField(upload_to='SPAI/images/gallery')
@@ -84,3 +87,24 @@ def generate_unique_slug():
         unique_slug = '{}-{}'.format(slug, num)
         num += 1
     return unique_slug
+
+
+class UserDetailModel(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_details')
+    degree = models.CharField(max_length=50, null=True, blank=True)
+    profession = models.CharField(max_length=50, null=True, blank=True)
+    institution = models.CharField(max_length=50, null=True, blank=True)
+    department = models.CharField(max_length=50, null=True, blank=True)
+    address = models.TextField(null=True, blank=True)
+    phone_number = models.CharField(max_length=15, null=False, blank=False)
+    alternate_number = models.CharField(max_length=15, null=True, blank=True)
+    alternate_mail = models.EmailField(max_length=50, null=True, blank=True)
+    photo = models.ImageField(upload_to=user_detail_image_path, null=True, blank=True)
+    specialized_in = models.CharField(max_length=50, null=True, blank=True)
+    research_interest = models.CharField(max_length=50, null=True, blank=True)
+
+    def delete(self, *args, **kwargs):
+        os.remove(self.image.path)
+        super(UserDetailModel, self).delete(*args, **kwargs)
+    def __str__(self):
+        return str(self.user.email)
