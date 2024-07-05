@@ -27,6 +27,21 @@ class GalleryManagement(models.Model):
     def __str__(self):
         return str(self.image_name)
 
+class EventManagement(models.Model):
+    title = models.CharField(max_length=50, null=True, blank=True)
+    image = models.ImageField(upload_to='SPAI/images/Events')
+    datetime = models.DateTimeField()  # Updated field to store both date and time
+    location = models.CharField(max_length=50, null=True, blank=True)
+    description = models.TextField(blank=True, null=True)
+    registration_link = models.CharField(max_length=200, null=True, blank=True)
+
+    def delete(self, *args, **kwargs):
+        # Delete the image file from the local directory
+        os.remove(self.image.path)
+        super(EventManagement, self).delete(*args, **kwargs)
+
+    def __str__(self):
+        return str(self.title)
 
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, password, **extra_fields):
