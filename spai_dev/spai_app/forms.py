@@ -1,7 +1,7 @@
 import re
 from django.conf import settings
 from django.forms import ModelForm
-from .models import GalleryManagement, UserDetailModel, User
+from .models import GalleryManagement, UserDetailModel, User,EventManagement
 from django import forms
 
 
@@ -9,6 +9,14 @@ class GalleryManagementForm(ModelForm):
     class Meta:
         model = GalleryManagement
         fields = ['image', 'image_name', 'description']
+
+class EventManagementForm(ModelForm):
+    class Meta:
+        model = EventManagement
+        fields = ['title', 'image', 'datetime', 'location', 'description', 'registration_link']
+        widgets = {
+            'datetime': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
+        }
 
 
 class UserRegistrationForm(forms.ModelForm):

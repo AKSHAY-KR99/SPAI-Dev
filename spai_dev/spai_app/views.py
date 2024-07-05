@@ -1,8 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,get_object_or_404
 from django.views.generic import TemplateView
+from django.urls import reverse
 
 from . import models, forms
-from .models import GalleryManagement, User
+from .models import GalleryManagement, User,EventManagement
 
 
 # Create your views here.
@@ -91,9 +92,27 @@ def accademics(request):
 
 
 def news(request):
-    context = {'page': 'news'}
+    event_object=EventManagement.objects.all()
+    context = {'page': 'news','event_object':event_object}
     return render(request, 'mainpages/news.html', context)
 
+
+def eventadd(request):
+    if request.POST:
+        frm = forms.EventManagementForm(request.POST, request.FILES)
+        if frm.is_valid:
+            frm.save()
+            print("success")
+            return redirect('news')
+    else:
+        frm = forms.EventManagementForm()
+    context = {'page': 'news' ,'frm': frm}
+    return render(request, 'admin/eventadd.html', context)
+
+def delete_event(request, event_id):
+    event = get_object_or_404(EventManagement, id=event_id)
+    event.delete()
+    return redirect(reverse('news'))
 
 def add_image_template(request):
     if request.POST:
@@ -131,6 +150,7 @@ class GalleryUploadDelete(TemplateView):
         instance = self.model.objects.get(id=kwargs["id"])
         instance.delete()
         return redirect("gallery")
+    
 
 
 def user_detail_upload(request):
