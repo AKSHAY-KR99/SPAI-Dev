@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import TemplateView
 from django.urls import reverse
@@ -49,8 +50,8 @@ def membership(request):
         form = forms.UserRegistrationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            print(user.email, user.date_created)
-            return redirect("user_detail")
+            logout(request)
+            return redirect("login")
         else:
             context = {'page': 'members', 'page2': 'membership', "form": form}
             return render(request, "members/membership.html", context)
@@ -164,6 +165,7 @@ class GalleryUploadDelete(TemplateView):
         return redirect("gallery")
 
 
+@login_required
 def user_detail_upload(request):
     if request.method == 'POST':
         form = forms.UserDetailForm(request.user, request.POST, request.FILES)
