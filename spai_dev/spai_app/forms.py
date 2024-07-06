@@ -1,5 +1,6 @@
 import re
 from django.conf import settings
+from django.contrib.auth.hashers import check_password
 from django.forms import ModelForm
 from .models import GalleryManagement, UserDetailModel, User,EventManagement
 from django import forms
@@ -9,6 +10,7 @@ class GalleryManagementForm(ModelForm):
     class Meta:
         model = GalleryManagement
         fields = ['image', 'image_name', 'description']
+
 
 class EventManagementForm(ModelForm):
     class Meta:
@@ -102,7 +104,27 @@ class UserDetailForm(forms.ModelForm):
         if commit:
             instance.save()
         return instance
-# house name
-# street name / city
-# district
-# PIN
+
+
+class UserLoginForm(forms.Form):
+    email = forms.EmailField(max_length=50)
+    password = forms.CharField(max_length=50, widget=forms.PasswordInput)
+
+    def clean(self):
+        cleaned_data = super().clean()
+        email = cleaned_data.get('email')
+        password = cleaned_data.get('password')
+
+        if email and password:
+            try:
+                user = User.objects.get(email=email)
+            except User.DoesNotExist:
+                self.add_error('email', 'Email does not exist')
+                return cleaned_data
+
+            if not check_password(password, user.password):
+                self.add_error('password', 'Invalid password')
+                return cleaned_data
+
+        return cleaned_data
+

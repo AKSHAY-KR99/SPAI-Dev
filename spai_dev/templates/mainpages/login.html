@@ -1,91 +1,32 @@
-<!DOCTYPE html>
+{% extends 'main.html' %}
 {% load static %}
-<!-- Coding By CodingNepal - codingnepalweb.com -->
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Responsive Login and Signup Form </title>
+{% block header %}
+{% include 'header.html' %}
+{% endblock %}
+{% block content %}
+<h1 style="margin-top: 50px;">User login</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Login">
+</form>
+{% if form.errors %}
+    <ul>
+        {% for error in form.non_field_errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+        {% for field in form %}
+            {% if field.errors %}
+                {% for error in field.errors %}
+                    <li>{{ field.label }}: {{ error }}</li>
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% endif %}
 
-    <!-- CSS -->
-    <!--        <link rel="stylesheet" href="css/style.css">-->
+{% endblock %}
 
-    <link type="text/css" href="{% static 'css/signin_t.css' %}" rel="stylesheet">
-
-    <!-- Boxicons CSS -->
-    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-
-</head>
-<body>
-<section class="container forms">
-    <div class="form login">
-        <div class="form-content">
-            <header>Login</header>
-            <form action="#">
-                <div class="field input-field">
-                    <input type="email" placeholder="Email" class="input">
-                </div>
-
-                <div class="field input-field">
-                    <input type="password" placeholder="Password" class="password">
-                    <i class='bx bx-hide eye-icon'></i>
-                </div>
-
-                <div class="form-link">
-                    <a href="#" class="forgot-pass">Forgot password?</a>
-                </div>
-
-                <div class="field button-field">
-                    <button>Login</button>
-                </div>
-            </form>
-
-            <div class="form-link">
-                <span>Don't have an account? <a href="#" class="link signup-link">Signup</a></span>
-            </div>
-        </div>
-
-
-    </div>
-
-    <!-- Signup Form -->
-
-    <div class="form signup">
-        <div class="form-content">
-            <header>Signup</header>
-            <form action="#">
-                <div class="field input-field">
-                    <input type="email" placeholder="Email" class="input">
-                </div>
-
-                <div class="field input-field">
-                    <input type="text" placeholder="Username" class="input">
-                </div>
-
-
-                <div class="field input-field">
-                    <input type="password" placeholder="Create password" class="password">
-                </div>
-
-                <div class="field input-field">
-                    <input type="password" placeholder="Confirm password" class="password">
-                    <i class='bx bx-hide eye-icon'></i>
-                </div>
-
-                <div class="field button-field">
-                    <button>Signup</button>
-                </div>
-            </form>
-
-            <div class="form-link">
-                <span>Already have an account? <a href="#" class="link login-link">Login</a></span>
-            </div>
-        </div>
-
-</section>
-
-<!-- JavaScript -->
-<script src="{% static 'js/signinJs.js' %}"></script>
-</body>
-</html>
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}
