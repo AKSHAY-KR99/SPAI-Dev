@@ -7,6 +7,7 @@
 <h1 style="color: transparent;">.</h1>
 <div class="gallery-header">
     <h2 class="gallery-title">Gallery</h2>
+    {{request.user.email}}
     {% if admin_key %}
     <a href="{% url 'add_image_template' %}">
         <button class="add-image-btn">Add New Image</button>
