@@ -1,0 +1,106 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block header %}
+{% include 'header.html' %}
+{% endblock %}
+{% block content %}
+<div class="user-details-ind">
+    <div class="card-header">
+        <h1>User Details</h1>
+    </div>
+    {% if user %}
+    <div class="image-container">
+        <img src="{{user.photo.url}}" alt="User image">
+    </div>
+    <table>
+        <tr>
+            <td><b>First name</b></td>
+            <td>{{user.first_name}}</td>
+        </tr>
+        <tr>
+            <td><b>Last name</b></td>
+            <td>{{user.last_name}}</td>
+        </tr>
+        <tr>
+            <td><b>Email</b></td>
+            <td>{{user.email}}</td>
+        </tr>
+        <tr>
+            <td><b>Username</b></td>
+            <td>{{user.username}}</td>
+        </tr>
+        <tr>
+            <td><b>State of Residence</b></td>
+            <td>{{user.state}}</td>
+        </tr>
+        <!--    <tr>-->
+        <!--        <td><b>User Current Status</b></td>-->
+        <!--        <td>{{user.status}}</td>-->
+        <!--    </tr>-->
+        <tr>
+            <td><b>Degree</b></td>
+            <td>{{user.degree}}</td>
+        </tr>
+        <tr>
+            <td><b>Profession</b></td>
+            <td>{{user.profession}}</td>
+        </tr>
+        <tr>
+            <td><b>Institution</b></td>
+            <td>{{user.institution}}</td>
+        </tr>
+        <tr>
+            <td><b>Department</b></td>
+            <td>{{user.department}}</td>
+        </tr>
+        <tr>
+            <td><b>Address</b></td>
+            <td>{{user.address}}</td>
+        </tr>
+        <tr>
+            <td><b>Phone No.</b></td>
+            <td>{{user.phone_number}}</td>
+        </tr>
+        <tr>
+            <td><b>Alternate No. </b></td>
+            <td>{{user.alternate_number}}</td>
+        </tr>
+        <tr>
+            <td><b>Alternate mail</b></td>
+            <td>{{user.alternate_mail}}</td>
+        </tr>
+        <tr>
+            <td><b>Specialized in</b></td>
+            <td>{{user.specialized_in}}</td>
+        </tr>
+        <tr>
+            <td><b>Research Interest</b></td>
+            <td>{{user.research_interest}}</td>
+        </tr>
+        <tr>
+            <td><b>Next Step</b></td>
+            <td>{{user.next_step}}</td>
+        </tr>
+        <tr>
+            <td><b>Admin action</b></td>
+            <td>
+                {% if admin_approved %}
+                Admin approved
+                {% elif not admin_approved and user.status == 'user_details_added' %}
+                <a href="">
+                    <button>Approve</button>
+                </a>
+                {% else %}
+                User not completed registration
+                {% endif %}
+            </td>
+        </tr>
+
+    </table>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}
