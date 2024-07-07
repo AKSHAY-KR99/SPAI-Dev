@@ -24,5 +24,6 @@ urlpatterns = [
     path('user_details/login/', views.user_login, name='login'),
     path('gallery/delete/<int:id>', views.GalleryUploadDelete.as_view(), name='galleryimagedelete'),
     path('user_details/', views.user_detail_upload, name='user_detail'),
-    path('logout/', views.user_logout, name='logout')
+    path('logout/', views.user_logout, name='logout'),
+    path('user/details/<str:slug>', views.user_details_vew, name='individual_user_details')
 ]

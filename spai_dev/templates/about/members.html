@@ -1,10 +1,55 @@
 {% extends 'main.html' %}
 {% load static %}
 {% block header %}
-    {% include 'header.html' %}
+{% include 'header.html' %}
 {% endblock %}
 {% block content %}
-<h1>MembersAbout</h1>
+<div class="card-header">
+    <h1>Members About</h1>
+</div>
+{% if request.user.is_superuser %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Email</th>
+                            <th>Date Created</th>
+                            <th>Current Status</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for user in users %}
+                        <tr>
+                            <td>{{ user.first_name }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.date_created }}</td>
+                            <td>{{ user.next_step }}</td>
+                            <td>
+                                <a href="{% url 'individual_user_details' user.slug_value %}"><button>View</button></a>
+
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="4">No users found.</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+<h1>Page for admins. no access</h1>
+{% endif %}
 {% endblock %}
 
 {% block footer %}
