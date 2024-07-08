@@ -25,7 +25,7 @@
                         </thead>
                         <tbody>
                         {% for user in users %}
-                        <tr>
+                        <tr style="{% if user.admin_approved %}background-color: #c6efce;{% endif %}">
                             <td>{{ user.first_name }}</td>
                             <td>{{ user.email }}</td>
                             <td>{{ user.date_created }}</td>
