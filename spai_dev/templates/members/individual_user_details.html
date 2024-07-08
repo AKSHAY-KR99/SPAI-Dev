@@ -84,10 +84,10 @@
         <tr>
             <td><b>Admin action</b></td>
             <td>
-                {% if admin_approved %}
+                {% if user.admin_approved %}
                 Admin approved
                 {% elif not admin_approved and user.status == 'user_details_added' %}
-                <a href="">
+                <a href="{% url 'user_approval' user.slug_value%}">
                     <button>Approve</button>
                 </a>
                 {% else %}

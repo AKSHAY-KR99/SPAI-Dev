@@ -818,3 +818,7 @@ p {
 .user-details-ind{
   margin-top: 50px;
 }
+
+.approved-row {
+  background-color: #c6efce; /* or any other green color you prefer */
+}

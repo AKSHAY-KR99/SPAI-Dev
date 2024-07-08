@@ -234,6 +234,20 @@ def user_details_vew(request, *args, **kwargs):
         return redirect('login')
 
 
+def admin_approval(request, *args, **kwargs):
+    if request.user.user_role == settings.ADMIN_ROLE_VALUE:
+        slug = kwargs.get("slug", None)
+        user = User.objects.filter(slug_value=slug).first()
+        if user is None:
+            return redirect("about_members")
+        user.admin_approved = True
+        user.save()
+        user_status_change(slug, user.status)
+        return redirect('about_members')
+    else:
+        return redirect('login')
+
+
 def user_status_change(slug, current_status):
     user = User.objects.get(slug_value=slug)
     if user is not None:
@@ -254,4 +268,4 @@ def get_next_step(status):
     if status == settings.USER_DETAILS_ADDED:
         return 'Admin approval pending'
     if status == settings.ADMIN_APPROVAL_PENDING:
-        return 'Admin approved'
+        return 'Admin Approved, No action needed'
