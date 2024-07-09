@@ -2,7 +2,9 @@ from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.forms import model_to_dict
+from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
+from django.template import Template, Context
 from django.views.generic import TemplateView
 from django.urls import reverse
 
@@ -246,6 +248,24 @@ def admin_approval(request, *args, **kwargs):
         return redirect('about_members')
     else:
         return redirect('login')
+
+
+def generate_certificate(request, slug):
+    user = User.objects.get(slug_value=slug)  # Replace with your User model
+    user_name = user.first_name + ' ' + user.last_name
+
+    template = Template('certificate/certificate.html')
+    context = Context({'user_name': user_name})
+    html_content = template.render(context)
+
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = f'attachment; filename="{user.first_name}_certificate.pdf"'
+
+    from weasyprint import HTML
+    pdf_file = HTML(string=html_content).write_pdf()
+
+    response.write(pdf_file)
+    return response
 
 
 def user_status_change(slug, current_status):

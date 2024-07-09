@@ -26,5 +26,6 @@ urlpatterns = [
     path('user_details/', views.user_detail_upload, name='user_detail'),
     path('logout/', views.user_logout, name='logout'),
     path('user/details/<str:slug>', views.user_details_vew, name='individual_user_details'),
-    path('user/admin/approve/<str:slug>', views.admin_approval, name='user_approval')
+    path('user/admin/approve/<str:slug>', views.admin_approval, name='user_approval'),
+    path('user/<str:slug>/certificate/', views.generate_certificate, name='generate_certificate')
 ]

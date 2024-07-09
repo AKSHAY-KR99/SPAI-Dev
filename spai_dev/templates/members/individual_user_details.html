@@ -86,6 +86,7 @@
             <td>
                 {% if user.admin_approved %}
                 Admin approved
+                <button id="download-certificate">Download Certificate</button>
                 {% elif not admin_approved and user.status == 'user_details_added' %}
                 <a href="{% url 'user_approval' user.slug_value%}">
                     <button>Approve</button>
@@ -103,4 +104,11 @@
 
 {% block footer %}
 {% include 'footer.html' %}
+<script>
+    $(document).ready(function() {
+        $('#download-certificate').on('click', function() {
+            window.location.href = '{% url "generate_certificate" user.slug_value %}';
+        });
+    });
+</script>
 {% endblock %}
