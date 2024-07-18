@@ -48,7 +48,8 @@
     </div>
 </div>
 {% else %}
-<h1>Page for admins. no access</h1>
+<h1>Download Certificate</h1>
+<a href="{% url 'certificate' %}"><button class="download--button">Download certificate</button></a>
 {% endif %}
 {% endblock %}
 

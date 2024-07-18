@@ -1,8 +1,13 @@
+import datetime
+
+import pdfkit
 from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.forms import model_to_dict
+from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
+from django.template.loader import get_template
 from django.views.generic import TemplateView
 from django.urls import reverse
 
@@ -269,3 +274,24 @@ def get_next_step(status):
         return 'Admin approval pending'
     if status == settings.ADMIN_APPROVAL_PENDING:
         return 'Admin Approved, No action needed'
+
+
+import os
+
+
+def certificate(request):
+    if request.user.is_authenticated and request.user.admin_approved:
+        user = User.objects.get(slug_value=request.user.slug_value)
+        context = {"name": user.first_name, "email": user.email, "date":user.date_created,
+                   "current_date": datetime.date.today(), "current_time": datetime.datetime.now().time()}
+        wkhtml_to_pdf = os.path.join(settings.BASE_DIR, "wkhtmltopdf.exe")
+        template_path = 'pdf_template.html'
+        template = get_template(template_path)
+        html = template.render(context)
+        config = pdfkit.configuration(wkhtmltopdf=wkhtml_to_pdf)
+        pdf = pdfkit.from_string(html, False, configuration=config)
+        response = HttpResponse(pdf, content_type='application/pdf')
+        response['Content-Disposition'] = f'attachment; filename="{user.first_name}_certificate.pdf"'
+        return response
+    else:
+        return redirect('login')

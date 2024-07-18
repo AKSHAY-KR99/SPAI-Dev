@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPAI Certificate</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            font-size: 18px;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 50px;
+        }
+        .spai{
+            position: relative;
+            bottom: 50px;
+            font-weight: 500;
+            font-size: 50px;
+        }
+        .certificate{
+            position: relative;
+            bottom: 100px;
+        }
+        .header {
+            height: 120px;
+            background-color: #001f58;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+        .quote {
+            font-size: 20px;
+            font-style: italic;
+            margin: 20px 0;
+        }
+        .recipient {
+            margin: 20px 0;
+        }
+        .recipient span {
+            font-weight: bold;
+        }
+        .welcome-quote {
+            font-size: 18px;
+            margin: 20px 0;
+        }
+        .footer {
+            color: #000000;
+            padding: 10px;
+            text-align: left;
+            clear: both;
+        }
+        .footer span {
+            font-weight: bold;
+            text-align: left;
+        }
+        .footer img{
+            position: relative;
+            top: 10px;
+        }
+        .welcome{
+            line-height: 3;
+            font-weight: bold;
+        }
+        .seal{
+            position: relative;
+            bottom: 160px;
+            left: 150px;
+            opacity: 50%;
+        }
+        .main-content{
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+        table{
+            position: relative;
+            left: 70%;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <p class="spai">SPAI</p>
+            <p class="certificate">Sports and psychology Association of India</p>
+        </div>
+        <div class="main-content">
+        <div class="recipient">
+            <p class="welcome">
+            Hi {{name}}, Welcome to Sports and psychology Association of India. <br>
+            you are successfully registered in SPAI on {{date}} and now you are a primary member in SPAI. congratulation.
+            <br>SPAI/2024/KL3453 is your SPAI registration number and {{email}} is your registered email in SPAI. <br>
+            this is a official certificate of membership in SPAI certificatfied by Secretary of SPAI.
+        </p>
+        </div>
+        <div class="footer">
+            <div class="datetime">
+                <table>
+                    <tr>
+                        <th>Certified Date : </th>
+                        <td>{{current_date}}</td>
+                    </tr>
+                    <tr>
+                        <th>Certified Time : </th>
+                        <td>{{current_time}}</td>
+                    </tr>
+                </table>
+            </div>
+            <span>Secretary, SPAI</span>
+            <br>
+            <span>Rajesh Kumar</span>
+            <br>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

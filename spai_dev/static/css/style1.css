@@ -822,3 +822,25 @@ p {
 .approved-row {
   background-color: #c6efce; /* or any other green color you prefer */
 }
+
+.download--button{
+  border: none;
+  color: #ccc;
+  width: 180px;
+  height: 40px;
+  background-color: #00054b;
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+  left: 43%;
+  bottom: 15px;
+  border-radius: 5px;
+  font-weight: 600;
+  transform: scale(1);
+  transition: .4s;
+}
+
+.download--button:hover{
+cursor: pointer;
+  transform: scale(1.1);
+  transition: .4s;
+}
