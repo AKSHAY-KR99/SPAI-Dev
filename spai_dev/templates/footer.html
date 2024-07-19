@@ -1,28 +1,33 @@
 {% load static %}
 <footer>
-  <div class="footer">
-      <div class="inner-footer">
-          <div class="footer-logo">
-              <img src="{% static 'images/logo.jpg' %}" alt="Footer Logo">
-          </div>
-          <div class="footer-links">
-              <ul>
-                  <li><a href="#" style="text-decoration: none;color: #fff;">Home</a></li>
-                  <li><a href="#" style="text-decoration: none;color: #fff;">About</a></li>
-                  <li><a href="#" style="text-decoration: none;color: #fff;">Services</a></li>
-                  <li><a href="#" style="text-decoration: none;color: #fff;">Contact</a></li>
-              </ul>
-          </div>
-          <div class="footer-social">
-              <ul>
-                  <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                  <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                  <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
-              </ul>
-          </div>
-      </div>
-      <div class="footer-bottom">
-          <p>&copy; 2024 Your Company. All rights reserved.</p>
-      </div>
-  </div>
+    <div class="footer-row">
+        <div style="display: flex;width: 400px;">
+            <img src="{% static 'image/SPAI_LOGO.jpg' %}" alt="Company Logo" class="logo-foot">
+            <span class="companyfoot-name">SPORTS PSYCHOLOGY ASSOSIATION OF INDIA</span>
+        </div>
+        <div style="display: flex;">
+            <div class="quicklinks">
+                <ul style="list-style-type: none;">
+                    <li style="font-size: 14px;font-weight: 900;">Quick Links</li>
+                    <li><hr style="width: auto;" class="hrline"></li>
+                    <li><a href="">About Us</a></li>
+                    <li><a href="">News</a></li>
+                    <li><a href="">Gallery</a></li>
+                    <li><a href="">Contact Us</a></li>
+                </ul>
+            </div>
+            <div style="left: 75%;" class="quicklinks">
+                <ul style="list-style-type: none;">
+                    <li style="font-size: 14px;font-weight: 900;">Contact Us</li>
+                    <li><hr style="width: auto;" class="hrline"></li>
+                    <li><span class="email"><img src="{% static 'image/email.svg' %}" alt="Email Icon"> spaionlineindia@gmail.com</span></li>
+                    <li><span class="phone"><img src="{% static 'image/Vector.svg' %}" alt="Phone Icon"> +91 9958 998 684</span></li>
+                    <li style="color: transparent;">.</li>
+                    <li style="color: transparent;">.</li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
 </footer>
