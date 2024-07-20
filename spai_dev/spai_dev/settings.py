@@ -82,7 +82,16 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'spai_db',
+#         'HOST':'localhost',
+#         'PORT':'5432',
+#         'USER':'postgres',
+#         'PASSWORD':'windows'
+#     }
+# }
 import mimetypes
 
 mimetypes.add_type("text/css", ".css", True)
