@@ -1,0 +1,40 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block header %}
+    {% include 'header.html' %}
+{% endblock %}
+{% block content %}
+<h1 style="color: transparent;">.</h1>
+<h1>News page</h1>
+
+<div class="container">
+    <div class="column">
+        <h2>Upcoming Events
+            <a href="{% url 'eventadd' %}">
+                <button class="add-image-btn">Add New Event</button>
+            </a>
+        </h2>
+        <div class="event-grid">
+            {% for event in event_object %}
+            <div class="event-card">
+                <div class="event-date">
+                    <span class="event-day">{{ event.datetime|date:"d" }}</span>
+                    <span class="event-month">{{ event.datetime|date:"F" }}</span>
+                    <span class="event-year">{{ event.datetime|date:"Y" }}</span>
+                </div>
+                <div class="event-details">
+                    <h2 class="event-title">{{ event.title }}</h2>
+                    <p class="event-time">Time: {{ event.datetime|date:"H:i" }}</p>
+                    <p class="event-location">Location: {{ event.location }}</p>
+                    <a href="{% url 'event_delete' event.id %}" class="delete-button1">Delete</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock %}

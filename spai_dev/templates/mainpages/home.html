@@ -6,129 +6,248 @@
 {% block content %}
 <div class="hero">
     <div class="hero-pic">
-        <img class="full-width-img" src="{% static 'images/football.jpg' %}" alt="Image 1">
-        <img class="full-width-img" src="{% static 'images/run.jpg' %}" alt="Image 2">
-        <img class="full-width-img" src="{% static 'images/run2.jpg' %}" alt="Image 3">
+        <img class="full-width-img" src="{% static 'image/swim.png' %}" alt="Image 1">
+        <img class="full-width-img" src="{% static 'image/track.png' %}" alt="Image 2">
+
+        <div class="vertical-line">
+            <span class="dot above" style="top: -2px;"></span>
+            <span class="dot above"></span>
+            <span class="dot above" style="top: -30px;"></span>
+            <span class="dot above" style="top: -45px;"></span>
+            <span class="dot below" style="bottom: -2px "></span>
+            <span class="dot below"></span>
+
+        </div>
+        
+
     </div>
     <div class="hero-texts">
         <div class="hero-text active">
-            <p>Welcome to SPAI</p>
-            <!-- <p>SPORTS PSYCHOLOGY ASSOCIATION OF INDIA</p> -->
+            <div class="welcome">
+                WELCOME<br>
+                TO<br>
+                <div class="spai">SPAI</div>
+            </div>
+            <a style="text-decoration: none; color: inherit;" href="">
+                <div class="jointoday">
+                    <div class="jointodaytext">
+                        Learn More
+                    </div>
+                </div>
+            </a>
+            <div class="downarrow">
+                <img src="{% static 'image/doubledownarroow.svg' %}" alt="">
+            </div>
         </div>
         <div class="hero-text">
-            <p>Explore Our History</p>
-        </div>
-        <div class="hero-text">
-            <p>Join Our Community</p>
+                <div class="welcome">
+                    <div class="spai">JOIN 
+                        SPAI</div>
+                </div>
+                <a style="text-decoration: none; color: inherit;" href="">
+                    <div class="jointoday">
+                        <div class="jointodaytext">
+                            Join Today
+                        </div>
+                    </div>
+                </a>
+                <div class="downarrow">
+                    <img src="{% static 'image/doubledownarroow.svg' %}" alt="">
+                </div>
         </div>
     </div>
-    <div class="hero-controls">
-        <button class="prev" onclick="prevImage()">‹</button>
-        <button class="next" onclick="nextImage()">›</button>
+    <div class="grady"></div>
+</div>
+<div class="math">
+    <div class="math-text">
+        <div style="display: flex;gap: 40px;">
+            <div style="justify-content: center;">
+                <div class="math-title">Athletes</div>
+                <div class="math-num">1900+</div>
+            </div>
+            <div>
+                <div class="math-title">Experts</div>
+                <div class="math-num">45+</div>
+            </div>
+            <div>
+                <div class="math-title">proffesionals</div>
+                <div class="math-num">35+</div>
+            </div>
+            <div>
+                <div class="math-title">LIFETIME MEMBERS</div>
+                <div class="math-num">700+</div>
+            </div>
+        </div>
+        
+    </div>
+    <span class="verti"></span>
+    <span class="verti" style="right: 50%;"></span>
+    <span class="verti" style="right: 75%;"></span>
+
+</div>
+<div class="news">
+    <div class="news-title">
+        News & Events
+    </div>
+    <div class="news-containers">
+        <div class="news-container">
+            <div class="news-img">
+                <img src="{% static 'image/news1.png' %}" alt="">
+            </div>
+            <div class="news-dis">
+                2 Days Ago
+            </div>
+            <div class="news-head">
+                GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
+            </div>
+            <div class="news-read">
+                <p>Read</p>
+                <img src="{% static 'image/arrowread.svg' %}" alt="">
+            </div>
+            
+        </div>
+        <div class="news-container">
+            <div class="news-img">
+                <img src="{% static 'image/news2.png' %}" alt="">
+            </div>
+            <div class="news-dis">
+                2 Days Ago
+            </div>
+            <div class="news-head">
+                GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
+            </div>
+            <div class="news-read">
+                <p>Read</p>
+                <img src="{% static 'image/arrowread.svg' %}" alt="">
+            </div>
+            
+        </div>
+        <div class="news-container">
+            <div class="news-img">
+                <img src="{% static 'image/news3.png' %}" alt="">
+            </div>
+            <div class="news-dis">
+                2 Days Ago
+            </div>
+            <div class="news-head">
+                GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
+            </div>
+            <div class="news-read">
+                <p>Read</p>
+                <img src="{% static 'image/arrowread.svg' %}" alt="">
+            </div>
+            
+        </div>
+    </div>
+    <div style="display: flex; justify-content: center;width: 100%;">
+        <a style="text-decoration: none; color: inherit;" href="">
+            <div class="news-seemore">
+                <div class="seemoretext">
+                    See More
+                </div>
+            </div>
+        </a>
     </div>
 </div>
-<h1>News And Events</h1>
-<div class="container">
-    <div class="column">
-        <h2>News</h2>
-        <div class="event-card">
-            <div class="event-date past-event">
-                <span class="event-day">30</span>
-                <span class="event-month">June</span>
-            </div>
-            <div class="event-details">
-                <h2 class="event-title">Past Event Title</h2>
-                <p class="event-time">Time: 2:00 PM - 4:00 PM</p>
-                <p class="event-location">Location: Downtown, NYC</p>
-            </div>
-        </div>
-        <div class="event-card">
-            <div class="event-date past-event">
-                <span class="event-day">30</span>
-                <span class="event-month">June</span>
-            </div>
-            <div class="event-details">
-                <h2 class="event-title">Past Event Title</h2>
-                <p class="event-time">Time: 2:00 PM - 4:00 PM</p>
-                <p class="event-location">Location: Downtown, NYC</p>
-            </div>
-        </div>
-        <div class="event-card">
-            <div class="event-date past-event">
-                <span class="event-day">30</span>
-                <span class="event-month">June</span>
-            </div>
-            <div class="event-details">
-                <h2 class="event-title">Past Event Title</h2>
-                <p class="event-time">Time: 2:00 PM - 4:00 PM</p>
-                <p class="event-location">Location: Downtown, NYC</p>
-            </div>
-        </div>
-        <div class="event-card">
-            <div class="event-date past-event">
-                <span class="event-day">30</span>
-                <span class="event-month">June</span>
-            </div>
-            <div class="event-details">
-                <h2 class="event-title">Past Event Title</h2>
-                <p class="event-time">Time: 2:00 PM - 4:00 PM</p>
-                <p class="event-location">Location: Downtown, NYC</p>
-            </div>
-        </div>
-        <!-- Add more past event cards here -->
-        <a href="upcoming-events.html" class="read-more">Read more</a>         
+<div class="associate">
+    <div class="associate-title">
+        Associated partners
     </div>
-    <div class="column">
-        <h2>Upcoming Events</h2>
-        <div class="event-card">
-            <div class="event-date">
-                <span class="event-day">01</span>
-                <span class="event-month">July</span>
-            </div>
-            <div class="event-details">
-                <h2 class="event-title">Upcoming Event Title</h2>
-                <p class="event-time">Time: 10:00 AM - 12:00 PM</p>
-                <p class="event-location">Location: Central Park, NYC</p>
-            </div>
+    <div class="associate-containers">
+        <div class="associate-container">
+            <img src="{% static 'image/asso3.svg' %}" alt="">
         </div>
-        <div class="event-card">
-            <div class="event-date">
-                <span class="event-day">01</span>
-                <span class="event-month">July</span>
-            </div>
-            <div class="event-details">
-                <h2 class="event-title">Upcoming Event Title</h2>
-                <p class="event-time">Time: 10:00 AM - 12:00 PM</p>
-                <p class="event-location">Location: Central Park, NYC</p>
-            </div>
+        <div class="associate-container">
+            <img src="{% static 'image/asso2.svg' %}" alt="">
         </div>
-        <div class="event-card">
-            <div class="event-date">
-                <span class="event-day">01</span>
-                <span class="event-month">July</span>
-            </div>
-            <div class="event-details">
-                <h2 class="event-title">Upcoming Event Title</h2>
-                <p class="event-time">Time: 10:00 AM - 12:00 PM</p>
-                <p class="event-location">Location: Central Park, NYC</p>
-            </div>
+        <div class="associate-container">
+            <img src="{% static 'image/asso1.svg' %}" alt="">
         </div>
-        <div class="event-card">
-            <div class="event-date">
-                <span class="event-day">01</span>
-                <span class="event-month">July</span>
-            </div>
-            <div class="event-details">
-                <h2 class="event-title">Upcoming Event Title</h2>
-                <p class="event-time">Time: 10:00 AM - 12:00 PM</p>
-                <p class="event-location">Location: Central Park, NYC</p>
-            </div>
-        </div>
-        <!-- Add more upcoming event cards here -->
-        <a href="upcoming-events.html" class="read-more">Read more</a>
     </div>
 </div>
-<script type="text/javascript" src="{% static 'js/home.js' %}"></script>
+<div class="about">
+    <div style="margin-top: 100px;" class="associate-title">
+        ABOUT US
+    </div>
+        <div class="about-content">
+            <div>
+                <div class="about-text">
+                    <p>The first governing council was headed by Prof. Jitendra Mohan with M.L. Kamlesh as secretary general and H.A. Khan as finance secretary. Today, the organization is headed by Prof. N.S. Mann with Dilip K. Dureha in the driving seat. The SPAI has linkages with the International Society of Sport Psychology, and Asian South- Pacific Association of Sport Psychology, and proceeds on the way to progress in close co- operation with national sports associations, universities, Sports Authority of India, National Institute of Sports, and such as other institutions and organizations as would love to benefit from expert advice and service this body can render. Beginning with an ominous strength of 13, SPAI has grown in stature both vertically and horizontally. Today, it is proud to have a cadre strength of approximately 500 members from various shades of research, application and literary interests across the country. Several members of the Association have earned international recognition for their valuable contribution to the phenomenal growth of sport psychology as an athlete-and-coach friendly area of interaction</p>
+                </div>
+                <a style="text-decoration: none; color: inherit;" href="">
+                    <div style="margin-left: 68px;margin-top: 150px; " class="news-seemore">
+                        <div class="seemoretext">
+                            See More
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="aboutimg">
+                <img src="{% static 'image/aboutrun.png' %}" alt="">
+            </div>
+        </div>
+        
+</div>
+<div class="executive">
+    <div style="margin-top: 80px;" class="associate-title">
+        EXECUTIE BODY 
+    </div>
+    <div class="executie-containers">
+        <div class="executie-container">
+            <div class="exe-img">
+                <img src="{% static 'image/Kamalesh.png' %}" alt="">
+            </div>
+            <div class="exe-text">
+                PROF M.L KAMLESH
+                <img class="exe-email" src="{% static 'image/email.svg' %}" alt="">
+                <img class="exe-phone" src="{% static 'image/Vector.svg' %}" alt="">
+            </div>
+            <div class="exe-posi">
+                Patron
+            </div>
+        </div>
+        <div class="executie-container">
+            <div class="exe-img">
+                <img src="{% static 'image/sureshkutty.png' %}" alt="">
+            </div>
+            <div class="exe-text">
+                SURESH KUTTY K
+                <img class="exe-email" src="{% static 'image/email.svg' %}" alt="">
+                <img class="exe-phone" src="{% static 'image/Vector.svg' %}" alt="">
+            </div>
+            <div class="exe-posi">
+                Joint Secretary
+            </div>
+        </div>
+        <div class="executie-container">
+            <div class="exe-img">
+                <img src="{% static 'image/neetu.png' %}" alt="">
+            </div>
+            <div class="exe-text">
+                DR. NEETU JOSHI
+                <img class="exe-email" src="{% static 'image/email.svg' %}" alt="">
+                <img class="exe-phone" src="{% static 'image/Vector.svg' %}" alt="">
+            </div>
+            <div class="exe-posi">
+                Regional Secretary
+            </div>
+        </div>
+        <div class="executie-container">
+            <div class="exe-img">
+                <img src="{% static 'image/dureha.png' %}" alt="">
+            </div>
+            <div class="exe-text">
+                PROF DILIP DUREHA
+                <img class="exe-email" src="{% static 'image/email.svg' %}" alt="">
+                <img class="exe-phone" src="{% static 'image/Vector.svg' %}" alt="">
+            </div>
+            <div class="exe-posi">
+                President
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="{% static 'js/spai.js' %}"></script>
 {% endblock %}
 
 

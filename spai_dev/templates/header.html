@@ -1,12 +1,26 @@
 {% load static %}
-<div class="head">
-  <div class="logo">
-    <!-- <img src="{% static 'images/logo.jpg' %}" alt="Footer Logo"> -->
-      <p>SPAI</p>
+<header>
+  <div class="top-row">
+      <div style="display: flex;">
+          <img src="{% static 'image/SPAI_LOGO.jpg' %}" alt="Company Logo" class="logo">
+          <span class="company-name">SPORTS PSYCHOLOGY ASSOCIATION OF INDIA</span>
+      </div>
+      
+      <div class="contact-info">
+          <span class="phone"><img src="{% static 'image/Vector.svg' %}" alt="Phone Icon"> +91 9958 998 684</span>
+          <span class="email"><img src="{% static 'image/email.svg' %}" alt="Email Icon"> spaionlineindia@gmail.com</span>
+      </div>
+      <div class="sep">
+          <div class="login-button">Member Login</div>
+      <div class="menu-icon">
+          <img src="{% static 'image/menu.svg' %}" alt="Menu Icon">
+      </div>
+      </div>
+      
   </div>
-  <div class="nav">
-    {% block menu %}
+  <hr class="hrline">
+  {% block menu %}
       {% include 'navbar.html' %}
-    {% endblock %}
-  </div>
-</div>
+  {% endblock %}
+</header>
+
