@@ -1,40 +1,232 @@
 {% extends 'main.html' %}
 {% load static %}
+{% block cssfiles %}
+    <link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sub/news.css' %}">
+{% endblock %}
+
 {% block header %}
     {% include 'header.html' %}
 {% endblock %}
-{% block content %}
-<h1 style="color: transparent;">.</h1>
-<h1>News page</h1>
 
-<div class="container">
-    <div class="column">
-        <h2>Upcoming Events
-            <a href="{% url 'eventadd' %}">
-                <button class="add-image-btn">Add New Event</button>
-            </a>
-        </h2>
-        <div class="event-grid">
-            {% for event in event_object %}
-            <div class="event-card">
-                <div class="event-date">
-                    <span class="event-day">{{ event.datetime|date:"d" }}</span>
-                    <span class="event-month">{{ event.datetime|date:"F" }}</span>
-                    <span class="event-year">{{ event.datetime|date:"Y" }}</span>
-                </div>
-                <div class="event-details">
-                    <h2 class="event-title">{{ event.title }}</h2>
-                    <p class="event-time">Time: {{ event.datetime|date:"H:i" }}</p>
-                    <p class="event-location">Location: {{ event.location }}</p>
-                    <a href="{% url 'event_delete' event.id %}" class="delete-button1">Delete</a>
+{% block content %}
+<div class="news">
+    <div class="news-add">
+        ADD NEWS
+    </div>
+    <div class="news-title">
+        <img class="bg-running" src="{% static 'image/running-2-bg.png' %}" alt="">
+        <p>News & Events</p>
+    </div>
+    <div class="news-containers">
+        <div class="news-container">
+            <div class="news-img">
+                <div class="news-new">NEW</div>
+                <img src="{% static 'image/news1.png' %}" alt="">
+                <div class="news-delete">
+                    <img src="{% static 'image/delete-icon.svg' %}" alt="">
                 </div>
             </div>
-            {% endfor %}
+            <div class="news-dis">
+                2 Days Ago
+            </div>
+            <div class="news-head">
+                GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
+            </div>
+            <div class="news-read">
+                <p>Read</p>
+                <img src="{% static 'image/arrowread.svg' %}" alt="">
+            </div>
+            
         </div>
+        <div class="news-container">
+            <div class="news-img">
+                <div class="news-new">NEW</div>
+                <img src="{% static 'image/news-4.png' %}" alt="">
+                <div class="news-delete">
+                    <img src="{% static 'image/delete-icon.svg' %}" alt="">
+                </div>
+            </div>
+            <div class="news-dis">
+                2 Days Ago
+            </div>
+            <div class="news-head">
+                GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
+            </div>
+            <div class="news-read">
+                <p>Read</p>
+                <img src="{% static 'image/arrowread.svg' %}" alt="">
+            </div>
+            
+        </div>
+        <div class="news-container">
+            <div class="news-img">
+                <div class="news-new">NEW</div>
+                <img src="{% static 'image/news-5.png' %}" alt="">
+                <div class="news-delete">
+                    <img src="{% static 'image/delete-icon.svg' %}" alt="">
+                </div>
+            </div>
+            <div class="news-dis">
+                2 Days Ago
+            </div>
+            <div class="news-head">
+                GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
+            </div>
+            <div class="news-read">
+                <p>Read</p>
+                <img src="{% static 'image/arrowread.svg' %}" alt="">
+            </div>
+            
+        </div>
+        <div class="news-container">
+            <div class="news-img">
+                <div class="news-new">NEW</div>
+                <img src="{% static 'image/news-6.png' %}" alt="">
+                <div class="news-delete">
+                    <img src="{% static 'image/delete-icon.svg' %}" alt="">
+                </div>
+            </div>
+            <div class="news-dis">
+                2 Days Ago
+            </div>
+            <div class="news-head">
+                GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
+            </div>
+            <div class="news-read">
+                <p>Read</p>
+                <img src="{% static 'image/arrowread.svg' %}" alt="">
+            </div>
+            
+        </div>
+        <div class="news-container">
+            <div class="news-img">
+                <div class="news-new">NEW</div>
+                <img src="{% static 'image/news-7.png' %}" alt="">
+                <div class="news-delete">
+                    <img src="{% static 'image/delete-icon.svg' %}" alt="">
+                </div>
+            </div>
+            <div class="news-dis">
+                2 Days Ago
+            </div>
+            <div class="news-head">
+                GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
+            </div>
+            <div class="news-read">
+                <p>Read</p>
+                <img src="{% static 'image/arrowread.svg' %}" alt="">
+            </div>
+            
+        </div>
+        <div class="news-container">
+            <div class="news-img">
+                <div class="news-new">NEW</div>
+                <img src="{% static 'image/news-8.png' %}" alt="">
+                <div class="news-delete">
+                    <img src="{% static 'image/delete-icon.svg' %}" alt="">
+                </div>
+            </div>
+            <div class="news-dis">
+                2 Days Ago
+            </div>
+            <div class="news-head">
+                GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
+            </div>
+            <div class="news-read">
+                <p>Read</p>
+                <img src="{% static 'image/arrowread.svg' %}" alt="">
+            </div>
+            
+        </div>
+        <div class="news-container">
+            <div class="news-img">
+                <div class="news-new">NEW</div>
+                <img src="{% static 'image/news-9.png' %}" alt="">
+                <div class="news-delete">
+                    <img src="{% static 'image/delete-icon.svg' %}" alt="">
+                </div>
+            </div>
+            <div class="news-dis">
+                2 Days Ago
+            </div>
+            <div class="news-head">
+                GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
+            </div>
+            <div class="news-read">
+                <p>Read</p>
+                <img src="{% static 'image/arrowread.svg' %}" alt="">
+            </div>
+            
+        </div>
+        <div class="news-container">
+            <div class="news-img">
+                <div class="news-new">NEW</div>
+                <img src="{% static 'image/news-10.png' %}" alt="">
+                <div class="news-delete">
+                    <img src="{% static 'image/delete-icon.svg' %}" alt="">
+                </div>
+            </div>
+            <div class="news-dis">
+                2 Days Ago
+            </div>
+            <div class="news-head">
+                GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
+            </div>
+            <div class="news-read">
+                <p>Read</p>
+                <img src="{% static 'image/arrowread.svg' %}" alt="">
+            </div>
+            
+        </div>
+        <div class="news-container">
+            <div class="news-img">
+                <div class="news-new">NEW</div>
+                <img src="{% static 'image/news-11.png' %}" alt="">
+                <div class="news-delete">
+                    <img src="{% static 'image/delete-icon.svg' %}" alt="">
+                </div>
+            </div>
+            <div class="news-dis">
+                2 Days Ago
+            </div>
+            <div class="news-head">
+                GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
+            </div>
+            <div class="news-read">
+                <p>Read</p>
+                <img src="{% static 'image/arrowread.svg' %}" alt="">
+            </div>
+            
+        </div>
+    </div>
+    <div style="display: flex; justify-content: center;width: 100%;">
+        <a style="text-decoration: none; color: inherit;" href="">
+            <div class="news-seemore">
+                <div class="seemoretext">
+                    1
+                </div>
+            </div>
+        </a>
+        <a style="text-decoration: none; color: inherit;" href="">
+            <div class="news-seemore">
+                <div class="seemoretext">
+                    2
+                </div>
+            </div>
+        </a>
+        <a style="text-decoration: none; color: inherit;" href="">
+            <div class="news-seemore">
+                <div class="seemoretext">
+                    >>
+                </div>
+            </div>
+        </a>
     </div>
 </div>
 {% endblock %}
 
 {% block footer %}
-    {% include 'footer.html' %}
+{% include 'footer.html' %}
 {% endblock %}

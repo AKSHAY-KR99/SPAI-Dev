@@ -3,3 +3,5 @@ footer.html
 home.html
 header.html
 navbar.html
+history.html
+news.html
