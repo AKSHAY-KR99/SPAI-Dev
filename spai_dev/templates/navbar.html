@@ -1,18 +1,18 @@
 {% load static %}
 <nav>
   <ul class="navbar">
-      <li><a href="history.html">About</a></li>
-      <li><a href="#">Members & Membership</a></li>
-      <li><a href="#">Publications</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="{% url 'members' %}">Members & Membership</a></li>
+      <li><a href="{% url 'news' %}">News & Events</a></li>
       <li class="dropdown">
-          <a href="#">News & Events</a>
+          <a href="#">Publications</a>
           <ul class="dropdown-menu">
               <li><a href="#">Event 1</a></li>
               <li><a href="#">Events 2</a></li>
               <li><a href="#">Event 3</a></li>
           </ul>
       </li>
-      <li><a href="#">Academics</a></li>
+      <li><a href="{% url 'history' %}">History</a></li>
       <li><a href="#">Gallery</a></li>
       <li>
           <div class="search-wrapper">
