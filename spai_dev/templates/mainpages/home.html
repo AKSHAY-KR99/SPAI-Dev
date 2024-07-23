@@ -1,5 +1,9 @@
 {% extends 'main.html' %}
 {% load static %}
+{% block cssfiles %}
+<link rel="stylesheet" href="{% static 'css/spai.css' %}">
+    
+{% endblock %}
 {% block header %}
     {% include 'header.html' %}
 {% endblock %}
@@ -250,7 +254,7 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="{% static 'js/spai.js' %}"></script>
+
 {% endblock %}
 
 

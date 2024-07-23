@@ -1,10 +1,59 @@
 {% extends 'main.html' %}
 {% load static %}
+{% block cssfiles %}
+<link rel="stylesheet" href="{% static 'css/spai.css' %}">
+{% endblock %}
 {% block header %}
     {% include 'header.html' %}
 {% endblock %}
 {% block content %}
-<h1>History</h1>
+<div class="about">
+    <div class="about-content1">
+        <img class="bg-running" src="{% static 'image/running-2-bg.png' %}" alt="">
+        <div>
+            <div style="margin-top: -10px;margin-left: 0px;" class="associate-title">
+                HISTORY
+            </div>
+            <div class="about-text">
+                <p>The first governing council was headed by Prof. Jitendra Mohan with M.L. Kamlesh as secretary general and H.A. Khan as finance secretary. Today, the organization is headed by Prof. N.S. Mann with Dilip K. Dureha in the driving seat. The SPAI has linkages with the International Society of Sport Psychology, and Asian South- Pacific Association of Sport Psychology, and proceeds on the way to progress in close co- operation with national sports associations, universities, Sports Authority of India, National Institute of Sports, and such as other institutions and organizations as would love to benefit from expert advice and service this body can render. Beginning with an ominous strength of 13, SPAI has grown in stature both vertically and horizontally. Today, it is proud to have a cadre strength of approximately 500 members from various shades of research, application and literary interests across the country. Several members of the Association have earned international recognition for their valuable contribution to the phenomenal growth of sport psychology as an athlete-and-coach friendly area of interaction</p>
+            </div>
+        </div>
+        <div class="aboutimg">
+            <img src="{% static 'image/aboutrun.png' %}" alt="">
+        </div>
+    </div>
+    
+</div>
+<h1 style="color: transparent;">.</h1>
+<h1 style="color: transparent;">.</h1>
+<h1 style="color: transparent;">.</h1>
+<div style="top: 870px;" class="math">
+<div class="math-text">
+    <div style="display: flex;gap: 40px;">
+        <div style="justify-content: center;">
+            <div class="math-title">Athletes</div>
+            <div class="math-num">1900+</div>
+        </div>
+        <div>
+            <div class="math-title">Experts</div>
+            <div class="math-num">45+</div>
+        </div>
+        <div>
+            <div class="math-title">proffesionals</div>
+            <div class="math-num">35+</div>
+        </div>
+        <div>
+            <div class="math-title">LIFETIME MEMBERS</div>
+            <div class="math-num">700+</div>
+        </div>
+    </div>
+    
+</div>
+<span class="verti"></span>
+<span class="verti" style="right: 50%;"></span>
+<span class="verti" style="right: 75%;"></span>
+
+</div>
 {% endblock %}
 
 {% block footer %}
