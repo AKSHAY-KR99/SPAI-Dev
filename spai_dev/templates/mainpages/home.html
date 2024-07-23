@@ -8,6 +8,9 @@
     {% include 'header.html' %}
 {% endblock %}
 {% block content %}
+{% if request.user.is_authenticated %}
+{{request.user}}
+{% endif %}
 <div class="hero">
     <div class="hero-pic">
         <img class="full-width-img" src="{% static 'image/swim.png' %}" alt="Image 1">
