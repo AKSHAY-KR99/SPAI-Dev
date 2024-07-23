@@ -1,0 +1,269 @@
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  header {
+    background-color: white;
+    padding: 10px 20px;
+    height: auto;
+  }
+  
+  .hrline {
+    width: 100%;
+    height: 0;
+    border: 1px solid rgba(218, 218, 218, 1);
+  }
+  
+  .top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .logo {
+    width: 63.41px;
+    height: 77px;
+  }
+  
+  .company-name {
+    margin: 10px;
+    width: 250px;
+    height: 60px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #000000;
+    
+  }
+  
+  .contact-info {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    flex-wrap: wrap;
+  }
+  
+  .contact-info span {
+    display: flex;
+    align-items: center;
+  }
+  
+  .login-button {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-family: "Poppins", sans-serif;
+    border-radius: 8px;
+    margin-right: 50px;
+  }
+  .login-button1{
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-family: "Poppins", sans-serif;
+    border-radius: 8px; 
+    display: none;
+  }
+  .menu-icon {
+    display: none;
+    cursor: pointer;
+  }
+  
+  .menu-icon img {
+    width: 30px;
+    height: 30px;
+  }
+  
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .navbar {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .navbar li {
+    position: relative;
+  }
+  
+  .navbar a {
+    text-decoration: none;
+    color: black;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+  }
+  
+  .navbar li::after {
+    content: '';
+    position: absolute;
+    left: 10%;
+    bottom: 0;
+    width: 0;
+    height: 4px;
+    background-color: black;
+    transition: width 0.3s;
+  }
+  
+  .navbar li:hover::after {
+    width: 80%;
+  }
+  
+  .search-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-input {
+    width: 200px;
+    padding: 5px 10px;
+    border-radius: 8px;
+    background: rgba(244, 244, 244, 1);
+    border: 1px solid #ccc;
+    padding-right: 40px;
+  }
+  
+  .search-button {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .search-button img {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    z-index: 1000;
+    border-radius: 11px;
+  }
+  
+  .dropdown-menu li {
+    width: 100%;
+  }
+  
+  .dropdown-menu a {
+    display: block;
+    padding: 10px;
+    color: black;
+    text-decoration: none;
+  }
+  
+  .dropdown-menu a:hover {
+    background: rgba(236, 236, 236, 1);
+  }
+  @media (max-width: 498px){
+    .sep{
+      margin-left: 80%;
+    }
+  }
+  @media (max-width: 700px){
+    .menu-icon{
+      margin-left: 85%;
+    }
+    .login-button{
+      display: none;
+    }
+    .login-button1{
+      display: block;
+    }
+  }
+  
+  @media (max-width: 768px) {
+
+    .top-row {
+      justify-content: center;
+      gap: 13px;
+  }
+  .footer-row{
+    justify-content: center;
+      gap: 13px;
+  }
+  .contact-info{
+    gap: 10px;
+    justify-content: center;
+  }
+  .sep{
+    display: flex;
+    
+  }
+  .menu-icon {
+      display: block;
+  }
+  .navbar {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+  }
+  .navbar.active {
+      display: flex;
+  }
+  .nav-toggle {
+      display: block;
+  }
+
+
+  }
+  
+  @media (min-width: 1240px) {
+   /* Desktop devices 1024*/
+  
+  .nav {
+    justify-content: space-between;
+  }
+  .navbar {
+    gap: 70px;
+  }
+  .navbar li {
+    display: flex;
+    font-weight: 400;
+    height: 30px;
+  }
+  .navbar a {
+    text-align: left;
+    font-weight: 400;
+  }
+  .dropdown-menu {
+    width: 100%;
+    height: 150.45px;
+  }
+
+  
+  }
