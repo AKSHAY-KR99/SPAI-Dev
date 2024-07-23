@@ -191,7 +191,7 @@ def user_detail_upload(request):
 
 def user_logout(request):
     logout(request)
-    return redirect('gallery')
+    return redirect('index')
 
 
 def user_details_vew(request, *args, **kwargs):
@@ -246,6 +246,24 @@ def admin_approval(request, *args, **kwargs):
         return redirect('about_members')
     else:
         return redirect('login')
+
+
+def user_login_page(request):
+    if request.method == 'POST':
+        form = forms.UserLoginForm(request.POST or None)
+        if form.is_valid():
+            email = form.cleaned_data.get('email')
+            password = form.cleaned_data.get('password')
+            user = authenticate(request, email=email, password=password)
+            if user:
+                login(request, user)
+                if request.user.status == settings.USER_CREATED:
+                    return redirect('user_detail')
+                else:
+                    return redirect('index')
+    else:
+        form = forms.UserLoginForm()
+    return render(request, 'members/user_login.html', {'form': form})
 
 
 def user_status_change(slug, current_status):
