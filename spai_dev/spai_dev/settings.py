@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-5qhlplha*3#*!4lv$)$de2_($ky+lo^^q-!l8%qb1wqk61d=!i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -85,7 +85,7 @@ DATABASES = {
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'spai_db',
+#         'NAME': 'spai',
 #         'HOST':'localhost',
 #         'PORT':'5432',
 #         'USER':'postgres',

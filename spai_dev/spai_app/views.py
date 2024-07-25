@@ -12,23 +12,12 @@ from .models import GalleryManagement, User, EventManagement, UserDetailModel
 
 # Create your views here.
 def index(request):
-    context = {'page': 'main'}
+    context = {}
     return render(request, 'mainpages/home.html', context)
-
-
-def about(request):
-    context = {'page': 'about'}
-    return render(request, 'mainpages/about.html', context)
-
-
-def exe_members(request):
-    context = {'page': 'about', 'page2': 'exe_members'}
-    return render(request, 'about/exe_members.html', context)
-
 
 def history(request):
     context = {'page': 'about', 'page2': 'history'}
-    return render(request, 'about/history.html', context)
+    return render(request, 'mainpages/history.html', context)
 
 
 @login_required
@@ -44,11 +33,6 @@ def about_members(request):
     context['page2'] = 'members'
     context['request'] = request
     return render(request, 'about/members.html', context)
-
-
-def v_and_m(request):
-    context = {'page': 'about', 'page2': 'v_and_m'}
-    return render(request, 'about/vision_and_mission.html', context)
 
 
 def members(request):
@@ -72,25 +56,6 @@ def membership(request):
         return render(request, "members/membership.html", context)
 
 
-def publications(request):
-    context = {'page': 'publications'}
-    return render(request, 'mainpages/publications.html', context)
-
-
-def editorial(request):
-    context = {'page': 'publications', 'page2': 'editorial'}
-    return render(request, 'publications/editorial.html', context)
-
-
-def journal(request):
-    context = {'page': 'publications', 'page2': 'journal'}
-    return render(request, 'publications/journal.html', context)
-
-
-def submit_paper(request):
-    context = {'page': 'publications', 'page2': 'submit_paper'}
-    return render(request, 'publications/submit_paper.html', context)
-
 
 def gallery(request):
     admin_key = False
@@ -101,13 +66,8 @@ def gallery(request):
     return render(request, 'mainpages/gallery.html', context)
 
 
-def accademics(request):
-    context = {'page': 'accademics'}
-    return render(request, 'mainpages/accademics.html', context)
-
-
 def news(request):
-    event_object = EventManagement.objects.all()
+    event_object = EventManagement.objects.all().order_by('-id')
     context = {'page': 'news', 'event_object': event_object}
     return render(request, 'mainpages/news.html', context)
 
@@ -142,11 +102,6 @@ def add_image_template(request):
         frm = forms.GalleryManagementForm()
     context = {'page': 'gallery', 'frm': frm}
     return render(request, 'admin/add_image_template.html', context)
-
-
-def search(request):
-    context = {'page': 'search'}
-    return render(request, 'mainpages/search.html', context)
 
 
 def user_login(request):

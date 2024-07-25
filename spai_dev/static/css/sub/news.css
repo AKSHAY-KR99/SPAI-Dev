@@ -171,11 +171,13 @@ font-weight:400;
   margin-top: 10px;
   justify-content: space-between;
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  transition: .3s;
   
 }
 .news-read:hover{
   background-color: #000000;
   color: white;
+  transition: .3s;
 }
 .news-read p{
   width: 42px;

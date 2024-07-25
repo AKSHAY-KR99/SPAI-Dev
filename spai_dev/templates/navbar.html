@@ -1,7 +1,7 @@
 {% load static %}
 <nav>
   <ul class="navbar">
-      <li><a href="#">About</a></li>
+      <li><a href="{% url 'index' %}">Home</a></li>
       <li><a href="{% url 'members' %}">Members & Membership</a></li>
       <li><a href="{% url 'news' %}">News & Events</a></li>
       <li class="dropdown">
@@ -14,7 +14,7 @@
       </li>
       <li><a href="{% url 'history' %}">History</a></li>
       <li><a href="#">Gallery</a></li>
-      <li>
+      <li class="search-li">
           <div class="search-wrapper">
               <input type="text" class="search-input" placeholder="search here...">
               <button class="search-button">
