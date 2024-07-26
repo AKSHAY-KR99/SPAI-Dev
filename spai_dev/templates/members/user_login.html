@@ -49,6 +49,13 @@
         {% endfor %}
     </ul>
 {% endif %}
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('.menu-icon').addEventListener('click', function() {
+            document.querySelector('.navbar').classList.toggle('active');
+        });
+    });
+</script>
 {% endblock %}
 {% block footer %}
 {% include 'footer.html' %}

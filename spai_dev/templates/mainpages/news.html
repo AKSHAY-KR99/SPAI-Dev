@@ -15,11 +15,13 @@
     <div class="news-title">
         <img class="bg-running" src="{% static 'image/running-2-bg.png' %}" alt="">
         <p>News & Events</p>
+        {% if request.user.user_role == 1 %}
         <a href="{% url 'eventadd' %}">
             <div class="news-add">
                 ADD NEWS
             </div>
         </a>
+        {% endif %}
     </div>
     <div class="news-containers">
         {% for event in event_object %}
@@ -27,12 +29,13 @@
             <div class="news-img">
                 <div class="news-new">{{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }}</div>
                 <img src="{{ event.image.url }}" alt="">
+                {% if request.user.user_role == 1 %}
                 <a class="delete-link" href="{% url 'event_delete' event.id %}">
                     <div class="news-delete">
                         <img src="{% static 'image/delete-icon.svg' %}" alt="">
                     </div>
                 </a>
-                
+                {% endif %}
             </div>
             <div class="news-dis">
                 {{ event.datetime }}
