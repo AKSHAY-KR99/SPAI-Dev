@@ -1,5 +1,10 @@
 {% extends 'main.html' %}
 {% load static %}
+{% block cssfiles %}
+<link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/style1.css' %}">
+{% endblock %}
 {% block header %}
     {% include 'header.html' %}
 {% endblock %}
@@ -35,3 +40,12 @@
 {% block footer %}
 {% include 'footer.html' %}
 {% endblock %}
+{% block jsfile %}
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('.menu-icon').addEventListener('click', function() {
+            document.querySelector('.navbar').classList.toggle('active');
+        });
+    });
+</script> 
+    {% endblock %}

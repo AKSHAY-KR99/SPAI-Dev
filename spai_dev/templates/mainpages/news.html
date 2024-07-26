@@ -15,13 +15,40 @@
     <div class="news-title">
         <img class="bg-running" src="{% static 'image/running-2-bg.png' %}" alt="">
         <p>News & Events</p>
-        <a href="">
+        <a href="{% url 'eventadd' %}">
             <div class="news-add">
                 ADD NEWS
             </div>
         </a>
     </div>
     <div class="news-containers">
+        {% for event in event_object %}
+        <div class="news-container">
+            <div class="news-img">
+                <div class="news-new">{{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }}</div>
+                <img src="{{ event.image.url }}" alt="">
+                <a class="delete-link" href="{% url 'event_delete' event.id %}">
+                    <div class="news-delete">
+                        <img src="{% static 'image/delete-icon.svg' %}" alt="">
+                    </div>
+                </a>
+                
+            </div>
+            <div class="news-dis">
+                {{ event.datetime }}
+            </div>
+            <div class="news-head" style="text-transform: uppercase;">
+                {{ event.title }}
+            </div>
+            <a style="text-decoration: none; color: inherit;" href="">
+                <div class="news-read">
+                    <p>Read</p>
+                    <img class="default-image" src="{% static 'image/arrowread.svg' %}" alt="">
+                    <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
+                </div>
+            </a>
+        </div>
+        {% endfor %}
         <div class="news-container">
             <div class="news-img">
                 <div class="news-new">NEW</div>
@@ -272,6 +299,22 @@
         </a>
     </div>
 </div>
+<!-- <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const deleteLinks = document.querySelectorAll('.delete-link');
+        
+        deleteLinks.forEach(link => {
+            link.addEventListener('click', function (event) {
+                event.preventDefault();
+                const url = this.getAttribute('data-url');
+                if (confirm('Do you want to delete this item?')) {
+                    window.location.href = url;
+                }
+            });
+        });
+    });
+    
+</script> -->
 {% endblock %}
 
 

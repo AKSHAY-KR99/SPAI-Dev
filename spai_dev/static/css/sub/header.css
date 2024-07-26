@@ -52,7 +52,12 @@ header {
   display: flex;
   align-items: center;
 }
-
+.phone img{
+  margin-right:7px ;
+}
+.email img{
+  margin-right:7px ;
+}
 .login-button {
   background-color: black;
   color: white;
@@ -119,10 +124,14 @@ nav {
   height: 4px;
   background-color: black;
   transition: width 0.3s;
+  border-radius: 8px;
 }
 
 .navbar li:hover::after {
   width: 80%;
+}
+.search-li::after{
+  display: none;
 }
 
 .search-wrapper {
@@ -132,12 +141,14 @@ nav {
 }
 
 .search-input {
-  width: 200px;
-  padding: 5px 10px;
+  width: 255.51px;
+  height: 36.76px;
+  padding-left: 15px;
   border-radius: 8px;
   background: rgba(244, 244, 244, 1);
   border: 1px solid #ccc;
   padding-right: 40px;
+  font-family: "Poppins", sans-serif;
 }
 
 .search-button {

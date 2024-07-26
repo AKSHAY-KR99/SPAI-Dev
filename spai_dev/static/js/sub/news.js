@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const container = document.querySelector('.news-container');
   
@@ -15,4 +17,18 @@ document.addEventListener('DOMContentLoaded', () => {
       container.style.transform = 'scale(1)'; // Zoom out
     });
   });
+
+//   document.addEventListener('DOMContentLoaded', function () {
+//     const deleteLinks = document.querySelectorAll('.delete-link');
+    
+//     deleteLinks.forEach(link => {
+//         link.addEventListener('click', function (event) {
+//             event.preventDefault();
+//             const url = this.getAttribute('data-url');
+//             if (confirm('Do you want to delete this item?')) {
+//                 window.location.href = url;
+//             }
+//         });
+//     });
+// });
   
