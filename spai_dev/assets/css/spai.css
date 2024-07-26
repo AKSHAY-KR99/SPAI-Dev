@@ -1024,6 +1024,7 @@ footer{
 }
 
 .image-section {
+  background-color: #000000;
   grid-column: 2;
   padding: 20px;
   /* background-color: #f7f7f7; */

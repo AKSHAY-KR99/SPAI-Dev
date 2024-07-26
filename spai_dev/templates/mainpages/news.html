@@ -24,7 +24,7 @@
         {% endif %}
     </div>
     <div class="news-containers">
-        {% for event in event_object %}
+        {% for event in page_obj %}
         <div class="news-container">
             <div class="news-img">
                 <div class="news-new">{{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }}</div>
@@ -52,255 +52,51 @@
             </a>
         </div>
         {% endfor %}
-        <div class="news-container">
-            <div class="news-img">
-                <div class="news-new">NEW</div>
-                <img src="{% static 'image/news1.png' %}" alt="">
-                <a href="">
-                    <div class="news-delete">
-                        <img src="{% static 'image/delete-icon.svg' %}" alt="">
-                    </div>
-                </a>
-                
-            </div>
-            <div class="news-dis">
-                2 Days Ago
-            </div>
-            <div class="news-head">
-                GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
-            </div>
-            <a style="text-decoration: none; color: inherit;" href="">
-                <div class="news-read">
-                    <p>Read</p>
-                    <img class="default-image" src="{% static 'image/arrowread.svg' %}" alt="">
-                    <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
-                </div>
-            </a>
-        </div>
-        <div class="news-container">
-            <div class="news-img">
-                <div class="news-new">NEW</div>
-                <img src="{% static 'image/news-4.png' %}" alt="">
-                <a href="">
-                    <div class="news-delete">
-                        <img src="{% static 'image/delete-icon.svg' %}" alt="">
-                    </div>
-                </a>
-                
-            </div>
-            <div class="news-dis">
-                2 Days Ago
-            </div>
-            <div class="news-head">
-                GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
-            </div>
-            <a style="text-decoration: none; color: inherit;" href="">
-                <div class="news-read">
-                    <p>Read</p>
-                    <img class="default-image" src="{% static 'image/arrowread.svg' %}" alt="">
-                    <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
-                </div>
-            </a>
-        </div>
-        <div class="news-container">
-            <div class="news-img">
-                <div class="news-new">NEW</div>
-                <img src="{% static 'image/news-5.png' %}" alt="">
-                <a href="">
-                    <div class="news-delete">
-                        <img src="{% static 'image/delete-icon.svg' %}" alt="">
-                    </div>
-                </a>
-                
-            </div>
-            <div class="news-dis">
-                2 Days Ago
-            </div>
-            <div class="news-head">
-                GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
-            </div>
-            <a style="text-decoration: none; color: inherit;" href="">
-                <div class="news-read">
-                    <p>Read</p>
-                    <img class="default-image" src="{% static 'image/arrowread.svg' %}" alt="">
-                    <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
-                </div>
-            </a>
-        </div>
-        <div class="news-container">
-            <div class="news-img">
-                <div class="news-new">NEW</div>
-                <img src="{% static 'image/news-6.png' %}" alt="">
-                <a href="">
-                    <div class="news-delete">
-                        <img src="{% static 'image/delete-icon.svg' %}" alt="">
-                    </div>
-                </a>
-                
-            </div>
-            <div class="news-dis">
-                2 Days Ago
-            </div>
-            <div class="news-head">
-                GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
-            </div>
-            <a style="text-decoration: none; color: inherit;" href="">
-                <div class="news-read">
-                    <p>Read</p>
-                    <img class="default-image" src="{% static 'image/arrowread.svg' %}" alt="">
-                    <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
-                </div>
-            </a>
-        </div>
-        <div class="news-container">
-            <div class="news-img">
-                <div class="news-new">NEW</div>
-                <img src="{% static 'image/news-7.png' %}" alt="">
-                <a href="">
-                    <div class="news-delete">
-                        <img src="{% static 'image/delete-icon.svg' %}" alt="">
-                    </div>
-                </a>
-                
-            </div>
-            <div class="news-dis">
-                2 Days Ago
-            </div>
-            <div class="news-head">
-                GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
-            </div>
-            <a style="text-decoration: none; color: inherit;" href="">
-                <div class="news-read">
-                    <p>Read</p>
-                    <img class="default-image" src="{% static 'image/arrowread.svg' %}" alt="">
-                    <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
-                </div>
-            </a>
-        </div>
-        <div class="news-container">
-            <div class="news-img">
-                <div class="news-new">NEW</div>
-                <img src="{% static 'image/news-8.png' %}" alt="">
-                <a href="">
-                    <div class="news-delete">
-                        <img src="{% static 'image/delete-icon.svg' %}" alt="">
-                    </div>
-                </a>
-                
-            </div>
-            <div class="news-dis">
-                2 Days Ago
-            </div>
-            <div class="news-head">
-                GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
-            </div>
-            <a style="text-decoration: none; color: inherit;" href="">
-                <div class="news-read">
-                    <p>Read</p>
-                    <img class="default-image" src="{% static 'image/arrowread.svg' %}" alt="">
-                    <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
-                </div>
-            </a>
-        </div>
-        <div class="news-container">
-            <div class="news-img">
-                <div class="news-new">NEW</div>
-                <img src="{% static 'image/news-9.png' %}" alt="">
-                <a href="">
-                    <div class="news-delete">
-                        <img src="{% static 'image/delete-icon.svg' %}" alt="">
-                    </div>
-                </a>
-                
-            </div>
-            <div class="news-dis">
-                2 Days Ago
-            </div>
-            <div class="news-head">
-                GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
-            </div>
-            <a style="text-decoration: none; color: inherit;" href="">
-                <div class="news-read">
-                    <p>Read</p>
-                    <img class="default-image" src="{% static 'image/arrowread.svg' %}" alt="">
-                    <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
-                </div>
-            </a>
-        </div>
-        <div class="news-container">
-            <div class="news-img">
-                <div class="news-new">NEW</div>
-                <img src="{% static 'image/news-10.png' %}" alt="">
-                <a href="">
-                    <div class="news-delete">
-                        <img src="{% static 'image/delete-icon.svg' %}" alt="">
-                    </div>
-                </a>
-                
-            </div>
-            <div class="news-dis">
-                2 Days Ago
-            </div>
-            <div class="news-head">
-                GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
-            </div>
-            <a style="text-decoration: none; color: inherit;" href="">
-                <div class="news-read">
-                    <p>Read</p>
-                    <img class="default-image" src="{% static 'image/arrowread.svg' %}" alt="">
-                    <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
-                </div>
-            </a>
-        </div>
-        <div class="news-container">
-            <div class="news-img">
-                <div class="news-new">NEW</div>
-                <img src="{% static 'image/news-11.png' %}" alt="">
-                <a href="">
-                    <div class="news-delete">
-                        <img src="{% static 'image/delete-icon.svg' %}" alt="">
-                    </div>
-                </a>
-                
-            </div>
-            <div class="news-dis">
-                2 Days Ago
-            </div>
-            <div class="news-head">
-                GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
-            </div>
-            <a style="text-decoration: none; color: inherit;" href="">
-                <div class="news-read">
-                    <p>Read</p>
-                    <img class="default-image" src="{% static 'image/arrowread.svg' %}" alt="">
-                    <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
-                </div>
-            </a>
-        </div>
     </div>
     <div style="display: flex; justify-content: center;width: 100%;">
-        <a style="text-decoration: none; color: inherit;" href="">
+        {% if page_obj.has_previous %}
+        <!-- <a style="text-decoration: none; color: inherit;" href="?page=1">
             <div class="news-seemore">
-                <div class="seemoretext">
-                    1
-                </div>
+                <div class="seemoretext">&laquo;</div>
+            </div>
+        </a> -->
+        <a style="text-decoration: none; color: inherit;" href="?page={{ page_obj.previous_page_number }}">
+            <div class="news-seemore">
+                <div class="seemoretext">&lt;</div>
             </div>
         </a>
-        <a style="text-decoration: none; color: inherit;" href="">
-            <div class="news-seemore">
-                <div class="seemoretext">
-                    2
+        {% endif %}
+    
+        {% for page_num in page_obj.paginator.page_range %}
+            {% if page_obj.number == page_num %}
+            <a style="text-decoration: none; color: inherit;" href="?page={{ page_num }}">
+                <div class="news-seemore">
+                    <div class="seemoretext" style="font-weight: bold;">{{ page_num }}</div>
                 </div>
+            </a>
+            {% else %}
+            <a style="text-decoration: none; color: inherit;" href="?page={{ page_num }}">
+                <div class="news-seemore">
+                    <div class="seemoretext">{{ page_num }}</div>
+                </div>
+            </a>
+            {% endif %}
+        {% endfor %}
+    
+        {% if page_obj.has_next %}
+        <a style="text-decoration: none; color: inherit;" href="?page={{ page_obj.next_page_number }}">
+            <div class="news-seemore">
+                <div class="seemoretext">&gt;</div>
             </div>
         </a>
-        <a style="text-decoration: none; color: inherit;" href="">
+        <!-- <a style="text-decoration: none; color: inherit;" href="?page={{ page_obj.paginator.num_pages }}">
             <div class="news-seemore">
-                <div class="seemoretext">
-                    >>
-                </div>
+                <div class="seemoretext">&raquo;</div>
             </div>
-        </a>
+        </a> -->
+        {% endif %}
     </div>
+    
 </div>
 <!-- <script>
     document.addEventListener('DOMContentLoaded', function () {

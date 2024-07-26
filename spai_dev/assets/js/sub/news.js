@@ -18,17 +18,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-//   document.addEventListener('DOMContentLoaded', function () {
-//     const deleteLinks = document.querySelectorAll('.delete-link');
+  document.addEventListener('DOMContentLoaded', function () {
+    const deleteLinks = document.querySelectorAll('.delete-link');
     
-//     deleteLinks.forEach(link => {
-//         link.addEventListener('click', function (event) {
-//             event.preventDefault();
-//             const url = this.getAttribute('data-url');
-//             if (confirm('Do you want to delete this item?')) {
-//                 window.location.href = url;
-//             }
-//         });
-//     });
-// });
+    deleteLinks.forEach(link => {
+        link.addEventListener('click', function (event) {
+            event.preventDefault();
+            const url = this.getAttribute('href');
+            if (confirm('Do you want to delete this item?')) {
+                window.location.href = url;
+            }
+        });
+    });
+});
   

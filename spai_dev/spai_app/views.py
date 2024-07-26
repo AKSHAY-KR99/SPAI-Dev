@@ -5,6 +5,7 @@ from django.forms import model_to_dict
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import TemplateView
 from django.urls import reverse
+from django.core.paginator import Paginator
 
 from . import models, forms
 from .models import GalleryManagement, User, EventManagement, UserDetailModel
@@ -68,7 +69,11 @@ def gallery(request):
 
 def news(request):
     event_object = EventManagement.objects.all().order_by('-id')
-    context = {'page': 'news', 'event_object': event_object}
+    paginator = Paginator(event_object, 9)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    admin_key=True
+    context = {'page_obj': page_obj, 'event_object': event_object,'admin_key':admin_key}
     return render(request, 'mainpages/news.html', context)
 
 
