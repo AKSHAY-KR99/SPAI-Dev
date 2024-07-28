@@ -57,11 +57,22 @@ def membership(request):
         return render(request, "members/membership.html", context)
 
 
+def user_registration(request):
+    if request.method == "POST":
+        form = forms.UserRegistrationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            logout(request)
+            return redirect("login_page")
+        else:
+            context = {"form": form}
+            return render(request, "members/user_registration.html", context)
+    else:
+        form = forms.UserRegistrationForm()
+        context = {"form": form}
+        return render(request, "members/user_registration.html", context)
 
 def gallery(request):
-    admin_key = False
-    if request.user.is_superuser:
-        admin_key = True
     gallery_objects = GalleryManagement.objects.all()
     context = {'page': 'gallery', 'gallery_objects': gallery_objects, 'admin_key': admin_key}
     return render(request, 'mainpages/gallery.html', context)
@@ -137,7 +148,7 @@ class GalleryUploadDelete(TemplateView):
 
 
 @login_required
-def user_detail_upload(request):
+def user_profile_details(request):
     if request.method == 'POST':
         form = forms.UserDetailForm(request.user, request.POST, request.FILES)
         if form.is_valid():
@@ -146,8 +157,7 @@ def user_detail_upload(request):
             return redirect('index')  # redirect to a success page
     else:
         form = forms.UserDetailForm(request.user)
-    return render(request, 'user_detail_add.html', {'form': form})
-
+    return render(request, 'members/user_profile_details.html', {'form': form})
 
 def user_logout(request):
     logout(request)
@@ -218,7 +228,7 @@ def user_login_page(request):
             if user:
                 login(request, user)
                 if request.user.status == settings.USER_CREATED:
-                    return redirect('user_detail')
+                    return redirect('user_profile_details')
                 else:
                     return redirect('index')
     else:
