@@ -20,12 +20,11 @@
                         <input type="password" id="password" name="password" required>
                     </div>
                     <div class="login-button-section">
-                        <a href="{% url 'login' %}">
-                            <input type="submit" value="Login">
-                        </a>
+                        <input type="submit" value="Login">
+
                     </div>
                     <div class="register-link">
-                        <p>Don't have an account? Register</p>
+                        <p>Don't have an account? <a href="{% url 'user_registration'%}">Register</a></p>
                     </div>
                 </div>
             </form>
@@ -36,19 +35,26 @@
     </div>
 </div>
 {% if form.errors %}
-    <ul>
-        {% for error in form.non_field_errors %}
-            <li>{{ error }}</li>
-        {% endfor %}
-        {% for field in form %}
-            {% if field.errors %}
-                {% for error in field.errors %}
-                    <li>{{ field.label }}: {{ error }}</li>
-                {% endfor %}
-            {% endif %}
-        {% endfor %}
-    </ul>
+<ul>
+    {% for error in form.non_field_errors %}
+    <li>{{ error }}</li>
+    {% endfor %}
+    {% for field in form %}
+    {% if field.errors %}
+    {% for error in field.errors %}
+    <li>{{ field.label }}: {{ error }}</li>
+    {% endfor %}
+    {% endif %}
+    {% endfor %}
+</ul>
 {% endif %}
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('.menu-icon').addEventListener('click', function() {
+            document.querySelector('.navbar').classList.toggle('active');
+        });
+    });
+</script>
 {% endblock %}
 {% block footer %}
 {% include 'footer.html' %}

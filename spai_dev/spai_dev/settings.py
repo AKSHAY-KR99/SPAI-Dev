@@ -72,26 +72,26 @@ WSGI_APPLICATION = 'spai_dev.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'spai_db',
-#         'USER': 'spai_user',
-#         'PASSWORD': 'spai@123',
-#         'HOST': '127.0.0.1',
-#         'PORT': '5432',
-#     }
-# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'spai',
-        'HOST':'localhost',
-        'PORT':'5432',
-        'USER':'postgres',
-        'PASSWORD':'windows'
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'spai_db',
+        'USER': 'spai_user',
+        'PASSWORD': 'spai@123',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'spai',
+#         'HOST':'localhost',
+#         'PORT':'5432',
+#         'USER':'postgres',
+#         'PASSWORD':'windows'
+#     }
+# }
 import mimetypes
 
 mimetypes.add_type("text/css", ".css", True)

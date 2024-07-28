@@ -1,0 +1,100 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block header %}
+{% include 'header.html' %}
+{% endblock %}
+{% block content %}
+<div class="grid-container">
+    <div class="reg-form-section">
+        <div class="reg-content-section">
+            <p class="member-registration-header">Registration</p>
+            <form method="post">
+                {% csrf_token %}
+                <div class="reg-input-manager">
+                    <div class="name-section">
+                        <div class="user-form-group">
+                            <label for="first_name">
+                                First name
+                            </label>
+                            <input class="user-firstname" type="text" id="first_name" placeholder="First name"
+                                   name="first_name"
+                                   required>
+                        </div>
+
+                        <div class="user-form-group last-name">
+                            <label for="last_name">
+                                Last name
+                            </label>
+                            <input class="user-lastname" type="text" id="last_name" placeholder="Last name"
+                                   name="last_name">
+                        </div>
+
+                    </div>
+                    <div class="username-section">
+                        <label for="username">Username</label>
+                        <input class="user-username" type="text" placeholder="Username" id="username" name="username"
+                               required>
+                    </div>
+                    <div class="email-section">
+                        <label for="email">E mail</label>
+                        <input class="user-email" type="email" id="email" name="email" placeholder="Email Address"
+                               required>
+                    </div>
+                    <div class="state-section">
+                        <label for="state">State</label>
+                        <select name="state" id="state"></select>
+                    </div>
+                    <div class="password1-section">
+                        <label for="password">Password</label>
+                        <input class="user-password" placeholder="Password" type="password" id="password"
+                               name="password"
+                               required>
+                    </div>
+                    <div class="password2-section">
+                        <label for="confirm_password">Confirm Password</label>
+                        <input class="user-confirm-password" placeholder="Confirm Password" type="password"
+                               id="confirm_password" name="confirm_password" required>
+                    </div>
+                    <div class="reg-button-section">
+                        <input type="submit" value="Register">
+                    </div>
+                    <div class="register-link">
+                        <p>Already have an account? <a href="{% url 'login_page'%}">Sign in </a></p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="image-section">
+        <img src="{% static 'image/running_logo.png' %}" alt="Login Image">
+    </div>
+</div>
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('.menu-icon').addEventListener('click', function() {
+            document.querySelector('.navbar').classList.toggle('active');
+        });
+    });
+</script>
+{% endblock %}
+{% block footer %}
+{% include 'footer.html' %}
+<script>
+    const stateSelected = document.querySelector("#state")
+
+    const states = ["Select state","Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
+        "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh",
+        "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan",
+        "Sikkim", "Tamil Nadu","Telangana","Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal"]
+
+    function populateStates(){
+        let html_data = ""
+        for(let i=0;i<states.length;++i){
+            html_data += `<option>${states[i]}</option>`
+        }
+        stateSelected.innerHTML = html_data
+    }
+
+    populateStates()
+</script>
+{% endblock %}
