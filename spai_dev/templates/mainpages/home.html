@@ -2,14 +2,20 @@
 {% load static %}
 {% block cssfiles %}
 <link rel="stylesheet" href="{% static 'css/spai.css' %}">
-    
+
 {% endblock %}
 {% block header %}
-    {% include 'header.html' %}
+{% include 'header.html' %}
 {% endblock %}
 {% block content %}
-{% if request.user.is_authenticated %}
-{{request.user}}
+{% if request.user.is_authenticated and request.user.status == 'user_created' %}
+<div class="complete-profile">
+    <div class="information-text">
+        <p> <span>Hi {{request.user.first_name}} {{request.user.last_name}}, </span><br>
+        <a href="{% url 'user_profile_details' %}" style="text-decoration: none;">click here</a> to complete your profile.
+        </p>
+    </div>
+</div>
 {% endif %}
 <div class="hero">
     <div class="hero-pic">
@@ -25,8 +31,6 @@
             <span class="dot below"></span>
 
         </div>
-        
-
     </div>
     <div class="hero-texts">
         <div class="hero-text active">
@@ -47,20 +51,21 @@
             </div>
         </div>
         <div class="hero-text">
-                <div class="welcome">
-                    <div class="spai">JOIN 
-                        SPAI</div>
+            <div class="welcome">
+                <div class="spai">JOIN
+                    SPAI
                 </div>
-                <a style="text-decoration: none; color: inherit;" href="">
-                    <div class="jointoday">
-                        <div class="jointodaytext">
-                            Join Today
-                        </div>
-                    </div>
-                </a>
-                <div class="downarrow">
-                    <img src="{% static 'image/doubledownarroow.svg' %}" alt="">
+            </div>
+            <a style="text-decoration: none; color: inherit;" href="">
+                <div class="jointoday">
+                    <a href="{% url 'user_registration' %}" style="text-decoration: none;"> <div class="jointodaytext">
+                        Join Today
+                    </div> </a>
                 </div>
+            </a>
+            <div class="downarrow">
+                <img src="{% static 'image/doubledownarroow.svg' %}" alt="">
+            </div>
         </div>
     </div>
     <div class="grady"></div>
@@ -85,7 +90,7 @@
                 <div class="math-num">700+</div>
             </div>
         </div>
-        
+
     </div>
     <span class="verti"></span>
     <span class="verti" style="right: 50%;"></span>
@@ -106,7 +111,7 @@
                         <img src="{% static 'image/delete-icon.svg' %}" alt="">
                     </div>
                 </a>
-                
+
             </div>
             <div class="news-dis">
                 2 Days Ago
@@ -131,7 +136,7 @@
                         <img src="{% static 'image/delete-icon.svg' %}" alt="">
                     </div>
                 </a>
-                
+
             </div>
             <div class="news-dis">
                 2 Days Ago
@@ -156,7 +161,7 @@
                         <img src="{% static 'image/delete-icon.svg' %}" alt="">
                     </div>
                 </a>
-                
+
             </div>
             <div class="news-dis">
                 2 Days Ago
@@ -172,7 +177,7 @@
                 </div>
             </a>
         </div>
-        
+
     </div>
     <div style="display: flex; justify-content: center;width: 100%;">
         <a style="text-decoration: none; color: inherit;" href="">
@@ -204,28 +209,39 @@
     <div style="margin-top: 100px;" class="associate-title">
         ABOUT US
     </div>
-        <div class="about-content">
-            <div>
-                <div class="about-text">
-                    <p>The first governing council was headed by Prof. Jitendra Mohan with M.L. Kamlesh as secretary general and H.A. Khan as finance secretary. Today, the organization is headed by Prof. N.S. Mann with Dilip K. Dureha in the driving seat. The SPAI has linkages with the International Society of Sport Psychology, and Asian South- Pacific Association of Sport Psychology, and proceeds on the way to progress in close co- operation with national sports associations, universities, Sports Authority of India, National Institute of Sports, and such as other institutions and organizations as would love to benefit from expert advice and service this body can render. Beginning with an ominous strength of 13, SPAI has grown in stature both vertically and horizontally. Today, it is proud to have a cadre strength of approximately 500 members from various shades of research, application and literary interests across the country. Several members of the Association have earned international recognition for their valuable contribution to the phenomenal growth of sport psychology as an athlete-and-coach friendly area of interaction</p>
-                </div>
-                <a style="text-decoration: none; color: inherit;" href="">
-                    <div style="margin-left: 68px;margin-top: 150px; " class="news-seemore">
-                        <div class="seemoretext">
-                            See More
-                        </div>
+    <div class="about-content">
+        <div>
+            <div class="about-text">
+                <p>The first governing council was headed by Prof. Jitendra Mohan with M.L. Kamlesh as secretary general
+                    and H.A. Khan as finance secretary. Today, the organization is headed by Prof. N.S. Mann with Dilip
+                    K. Dureha in the driving seat. The SPAI has linkages with the International Society of Sport
+                    Psychology, and Asian South- Pacific Association of Sport Psychology, and proceeds on the way to
+                    progress in close co- operation with national sports associations, universities, Sports Authority of
+                    India, National Institute of Sports, and such as other institutions and organizations as would love
+                    to benefit from expert advice and service this body can render. Beginning with an ominous strength
+                    of 13, SPAI has grown in stature both vertically and horizontally. Today, it is proud to have a
+                    cadre strength of approximately 500 members from various shades of research, application and
+                    literary interests across the country. Several members of the Association have earned international
+                    recognition for their valuable contribution to the phenomenal growth of sport psychology as an
+                    athlete-and-coach friendly area of interaction</p>
+            </div>
+            <a style="text-decoration: none; color: inherit;" href="">
+                <div style="margin-left: 68px;margin-top: 150px; " class="news-seemore">
+                    <div class="seemoretext">
+                        See More
                     </div>
-                </a>
-            </div>
-            <div class="aboutimg">
-                <img src="{% static 'image/aboutrun.png' %}" alt="">
-            </div>
+                </div>
+            </a>
         </div>
-        
+        <div class="aboutimg">
+            <img src="{% static 'image/aboutrun.png' %}" alt="">
+        </div>
+    </div>
+
 </div>
 <div class="executive">
     <div style="margin-top: 80px;" class="associate-title">
-        EXECUTIE BODY 
+        EXECUTIE BODY
     </div>
     <div class="executie-containers">
         <div class="executie-container">
@@ -282,9 +298,7 @@
         </div>
     </div>
 </div>
-
 {% endblock %}
-
 
 
 {% block footer %}
