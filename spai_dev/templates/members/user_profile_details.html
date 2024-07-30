@@ -24,7 +24,8 @@
                 </div>
                 <div class="institution-section">
                     <label for="institution">Institution</label>
-                    <input class="user-profile" type="text" placeholder="Institution" id="institution" name="institution"
+                    <input class="user-profile" type="text" placeholder="Institution" id="institution"
+                           name="institution"
                            required>
                 </div>
                 <div class="department-section">
@@ -34,11 +35,14 @@
                 </div>
                 <div class="address-section">
                     <label>Address</label>
-                    <input class="user-profile address-input" type="text" placeholder="House name" id="house_name" name="house_name"
+                    <input class="user-profile address-input" type="text" placeholder="House name" id="house_name"
+                           name="house_name"
                            required>
-                    <input class="user-profile address-input" type="text" placeholder="Street name" id="street_name" name="street_name"
+                    <input class="user-profile address-input" type="text" placeholder="Street name" id="street_name"
+                           name="street_name"
                            required>
-                    <input class="user-profile address-input" type="text" placeholder="City name" id="city_name" name="city_name"
+                    <input class="user-profile address-input" type="text" placeholder="City name" id="city_name"
+                           name="city_name"
                            required>
                     <input class="user-profile address-input" type="number" placeholder="Pin code" id="pin" name="pin"
                            required>
@@ -51,34 +55,43 @@
                 <p>Step 2</p>
                 <div class="photo-section">
                     <label for="photo">Photo</label>
-                    <input class="user-profile" type="file" accept="image/*" placeholder="Select your photo" id="photo" name="photo"
+                    <input class="user-profile" type="file" accept="image/*" placeholder="Select your photo" id="photo"
+                           name="photo"
                            required>
+                    <img src="{% static 'image/profile.png' %}" alt="profile" class="profile-icon">
                 </div>
-                <div class="phone-section">
-                    <label for="phone">Phone number</label>
-                    <input class="user-profile" type="number" placeholder="Phone number" id="phone" name="phone_number"
-                           required>
+                <div class="non-photo-upload">
+                    <div class="phone-section">
+                        <label for="phone">Phone number</label>
+                        <input class="user-profile" type="number" placeholder="Phone number" id="phone"
+                               name="phone_number"
+                               required>
+                    </div>
+                    <div class="phone-section">
+                        <label for="alt-phone">Alternate phone number</label>
+                        <input class="user-profile" type="number" placeholder="Alternate phone number" id="alt-phone"
+                               name="alternate_number">
+                    </div>
+                    <div class="email-section">
+                        <label for="alternate_mail">Alternate email</label>
+                        <input class="user-profile" type="email" placeholder="Alternate email" id="alternate_mail"
+                               name="alternate_mail">
+                    </div>
+                    <div class="specialized-section">
+                        <label for="specialized_in">Specialized in</label>
+                        <input class="user-profile" type="text" placeholder="Specialized in" id="specialized_in"
+                               name="specialized_in"
+                               required>
+                    </div>
+                    <div class="research-section">
+                        <label for="research_interest">Research interest</label>
+                        <input class="user-profile" type="text" placeholder="Research interest" id="research_interest"
+                               name="research_interest"
+                               required>
+                    </div>
+                    <button class="step2-btn" id="prev-btn" type="button" onclick="showPrevStep()">Previous</button>
+                    <button id="submit-btn" class="step2-btn" type="submit">Submit</button>
                 </div>
-                <div class="phone-section">
-                    <label for="alt-phone">Alternate phone number</label>
-                    <input class="user-profile" type="number" placeholder="Alternate phone number" id="alt-phone" name="alternate_number">
-                </div>
-                <div class="email-section">
-                    <label for="alternate_mail">Alternate email</label>
-                    <input class="user-profile" type="email" placeholder="Alternate email" id="alternate_mail" name="alternate_mail">
-                </div>
-                <div class="specialized-section">
-                    <label for="specialized_in">Specialized in</label>
-                    <input class="user-profile" type="text" placeholder="Specialized in" id="specialized_in" name="specialized_in"
-                           required>
-                </div>
-                <div class="research-section">
-                    <label for="research_interest">Research interest</label>
-                    <input class="user-profile" type="text" placeholder="Research interest" id="research_interest" name="research_interest"
-                           required>
-                </div>
-                <button class="step2-btn" id="prev-btn" type="button" onclick="showPrevStep()">Previous</button>
-                <button id="submit-btn" class="step2-btn" type="submit">Submit</button>
             </div>
         </form>
 
@@ -98,15 +111,15 @@
 {% block footer %}
 {% include 'footer.html' %}
 <script>
-   function showNextStep() {
-  document.getElementById('step-1').style.display = 'none';
-  document.getElementById('step-2').style.display = 'block';
-}
+    function showNextStep() {
+   document.getElementById('step-1').style.display = 'none';
+   document.getElementById('step-2').style.display = 'block';
+ }
 
-function showPrevStep() {
-  document.getElementById('step-2').style.display = 'none';
-  document.getElementById('step-1').style.display = 'block';
-}
+ function showPrevStep() {
+   document.getElementById('step-2').style.display = 'none';
+   document.getElementById('step-1').style.display = 'block';
+ }
 
 </script>
 {% endblock %}

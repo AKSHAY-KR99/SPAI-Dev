@@ -11,24 +11,20 @@
             <form method="post">
                 {% csrf_token %}
                 <div class="reg-input-manager">
-                    <div class="name-section">
-                        <div class="user-form-group">
-                            <label for="first_name">
-                                First name
-                            </label>
-                            <input class="user-firstname" type="text" id="first_name" placeholder="First name"
-                                   name="first_name"
-                                   required>
-                        </div>
-
-                        <div class="user-form-group last-name">
-                            <label for="last_name">
-                                Last name
-                            </label>
-                            <input class="user-lastname" type="text" id="last_name" placeholder="Last name"
-                                   name="last_name">
-                        </div>
-
+                    <div class="f-name-section">
+                        <label for="first_name">
+                            First name
+                        </label>
+                        <input class="user-firstname" type="text" id="first_name" placeholder="First name"
+                               name="first_name"
+                               required>
+                    </div>
+                    <div class="l-name-section">
+                        <label for="last_name">
+                            Last name
+                        </label>
+                        <input class="user-lastname" type="text" id="last_name" placeholder="Last name"
+                               name="last_name">
                     </div>
                     <div class="username-section">
                         <label for="username">Username</label>
