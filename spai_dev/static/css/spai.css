@@ -1492,7 +1492,9 @@ footer{
   border-radius: 10px;
   border: 2px solid #ccc;
   width: 90%;
-  height: 50px;
+  height: 30px;
+  /* position: relative;
+  left: 60px; */
 }
 
 .phone-section {
@@ -1564,16 +1566,17 @@ footer{
 }
 
 .profile-icon{
-  width: 64px;
-  height: 64px;
+  width: 50px;
+  height: 50px;
   position: relative;
-  left: 5px;
-  top: -69px;
+  bottom: 54px;
+  border-radius: 10px;
+  border: 2px solid #ccc;
 }
 
 .non-photo-upload{
   position: relative;
-  bottom  : 60px;
+  bottom  : 50px;
 }
 
 
