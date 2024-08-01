@@ -9,6 +9,7 @@ urlpatterns = [
     path('membership/', views.membership, name="membership"),
     path('gallery/', views.gallery, name="gallery"),
     path('news/', views.news, name="news"),
+    path('news/<int:pk>/', views.news_detail, name="news_detail"),
     path('events/delete/<int:event_id>/', views.delete_event, name='event_delete'),
     path('eventadd/', views.eventadd, name="eventadd"),
     path('add_image_template/', views.add_image_template, name="add_image_template"),

@@ -43,7 +43,7 @@
             <div class="news-head" style="text-transform: uppercase;">
                 {{ event.title }}
             </div>
-            <a style="text-decoration: none; color: inherit;" href="">
+            <a style="text-decoration: none; color: inherit;" href="{% url 'news_detail' event.id %}">
                 <div class="news-read">
                     <p>Read</p>
                     <img class="default-image" src="{% static 'image/arrowread.svg' %}" alt="">

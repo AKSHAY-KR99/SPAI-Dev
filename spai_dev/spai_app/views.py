@@ -87,6 +87,10 @@ def news(request):
     context = {'page_obj': page_obj, 'event_object': event_object,'admin_key':admin_key}
     return render(request, 'mainpages/news.html', context)
 
+def news_detail(request,pk):
+    event_object=EventManagement.objects.get(pk=pk)
+    context={"event":event_object}
+    return render(request, 'mainpages/news_details.html', context)    
 
 def eventadd(request):
     if request.POST:
