@@ -1,0 +1,304 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block cssfiles %}
+    <link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sub/news_details.css' %}">
+{% endblock %}
+
+{% block header %}
+    {% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="news">
+    <div class="news-title">
+        <img class="bg-running" src="{% static 'image/running-2-bg.png' %}" alt="">
+        <p>News & Events</p>
+    </div>
+    <div class="news-content">
+        <div class="news-details">
+            <div class="news-detail-img">
+                <img src="{{ event.image.url }}" alt="">
+            </div>
+            <div class="news-detail-content">
+                <div class="news-dis" style="margin-left: 0%;">
+                    {{ event.datetime }}
+                </div>
+                <div class="news-head" style="margin-left: 0%;">
+                    {{ event.title }}
+                </div>
+                <div class="news-detail-content-text">
+                    <p>
+                        {{event.description}}<br>
+                        Physical exercise is the performance of some activity in order to develop or maintain physical fitness and overall health.It is often directed toward also honing athletic ability or skill.Frequent and regular physical exercise is an important component in the prevention of some diseases such as heart disease, cardiovascular disease, Type 2 diabetes and obesity.Exercises are generally grouped into three types depending on the overall effect they have on the human body: Flexibility exercises such as stretching improve the range of motion of muscles and joints; aerobic exercises such as walking and running focus on increasing cardiovascular endurance; and anaerobic exercises such as weight training, functional training or sprinting increase short-term muscle strength.Physical exercise is considered important for maintaining physical fitness including healthy weight; building and maintaining healthy bones, muscles, and joints; promoting physiological well-being; reducing surgical risks; and strengthening the immune system.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="news-containers">
+            <div class="news-container">
+                <div class="news-img">
+                    <div class="news-new">NEW</div>
+                    <img src="{% static 'image/news-6.png' %}" alt="">
+                    
+                </div>
+                <div class="news-dis">
+                    2 Days Ago
+                </div>
+                <div class="news-head">
+                    GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
+                </div>
+                <a style="text-decoration: none; color: inherit;" href="">
+                    <div class="news-read">
+                        <p>Read</p>
+                        <img class="default-image" src="{% static 'image/arrowread.svg' %}" alt="">
+                        <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
+                    </div>
+                </a>
+            </div>
+            <div class="news-container">
+                <div class="news-img">
+                    <div class="news-new">NEW</div>
+                    <img src="{% static 'image/news-7.png' %}" alt="">
+                    
+                </div>
+                <div class="news-dis">
+                    2 Days Ago
+                </div>
+                <div class="news-head">
+                    GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
+                </div>
+                <a style="text-decoration: none; color: inherit;" href="">
+                    <div class="news-read">
+                        <p>Read</p>
+                        <img class="default-image" src="{% static 'image/arrowread.svg' %}" alt="">
+                        <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
+                    </div>
+                </a>
+            </div>
+            <div class="news-container">
+                <div class="news-img">
+                    <div class="news-new">NEW</div>
+                    <img src="{% static 'image/news-8.png' %}" alt="">
+                    
+                </div>
+                <div class="news-dis">
+                    2 Days Ago
+                </div>
+                <div class="news-head">
+                    GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
+                </div>
+                <a style="text-decoration: none; color: inherit;" href="">
+                    <div class="news-read">
+                        <p>Read</p>
+                        <img class="default-image" src="{% static 'image/arrowread.svg' %}" alt="">
+                        <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}
+{% block jsfile %}
+<script type="text/javascript" src="{% static 'js/sub/news.js' %}"></script>  
+    {% endblock %}
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spai</title>
+    <link rel="stylesheet" href="web/header.css">
+    <link rel="stylesheet" href="web/footer.css">
+    <link rel="stylesheet" href="web/news_details.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="top-row">
+            <div style="display: flex;">
+                <img src="{% static 'image/SPAI_LOGO.jpg" alt="Company Logo" class="logo">
+                <span class="company-name">SPORTS PSYCHOLOGY ASSOCIATION OF INDIA</span>
+            </div>
+            
+            <div class="contact-info">
+                <span class="phone"><img src="{% static 'image/Vector.svg' %}" alt="Phone Icon"> +91 9958 998 684</span>
+                <span class="email"><img src="{% static 'image/email.svg' %}" alt="Email Icon"> spaionlineindia@gmail.com</span>
+            </div>
+            <div class="sep">
+                <div class="login-button">Member Login</div>
+            <div class="menu-icon">
+                <img src="{% static 'image/menu.svg' %}" alt="Menu Icon">
+            </div>
+            </div>
+            
+        </div>
+        <hr class="hrline">
+        <nav>
+            <ul class="navbar">
+                <li><a href="history.html">About</a></li>
+                <li><a href="#">Members & Membership</a></li>
+                <li><a href="#">Publications</a></li>
+                <li class="dropdown">
+                    <a href="news.html">News & Events</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Event 1</a></li>
+                        <li><a href="#">Events 2</a></li>
+                        <li><a href="#">Event 3</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Academics</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li>
+                    <div class="search-wrapper">
+                        <input type="text" class="search-input" placeholder="search here...">
+                        <button class="search-button">
+                            <img src="{% static 'image/search.svg' %}" alt="Search">
+                        </button>
+                    </div>
+                </li>
+                <li>
+                    <div class="login-button1">Member Login</div>
+                </li>                
+            </ul>
+        </nav>
+    </header>
+    <div class="news">
+        <div class="news-title">
+            <img class="bg-running" src="{% static 'image/running-2-bg.png' %}" alt="">
+            <p>News & Events</p>
+        </div>
+        <div class="news-content">
+            <div class="news-details">
+                <div class="news-detail-img">
+                    <img src="{% static 'image/newsdetail.png' %}" alt="">
+                </div>
+                <div class="news-detail-content">
+                    <div class="news-dis" style="margin-left: 0%;">
+                        2 Days Ago
+                    </div>
+                    <div class="news-head" style="margin-left: 0%;">
+                        GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
+                    </div>
+                    <div class="news-detail-content-text">
+                        <p>
+                            Physical exercise is the performance of some activity in order to develop or maintain physical fitness and overall health.It is often directed toward also honing athletic ability or skill.Frequent and regular physical exercise is an important component in the prevention of some diseases such as heart disease, cardiovascular disease, Type 2 diabetes and obesity.Exercises are generally grouped into three types depending on the overall effect they have on the human body: Flexibility exercises such as stretching improve the range of motion of muscles and joints; aerobic exercises such as walking and running focus on increasing cardiovascular endurance; and anaerobic exercises such as weight training, functional training or sprinting increase short-term muscle strength.Physical exercise is considered important for maintaining physical fitness including healthy weight; building and maintaining healthy bones, muscles, and joints; promoting physiological well-being; reducing surgical risks; and strengthening the immune system.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="news-containers">
+                <div class="news-container">
+                    <div class="news-img">
+                        <div class="news-new">NEW</div>
+                        <img src="{% static 'image/news-6.png' %}" alt="">
+                        
+                    </div>
+                    <div class="news-dis">
+                        2 Days Ago
+                    </div>
+                    <div class="news-head">
+                        GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
+                    </div>
+                    <a style="text-decoration: none; color: inherit;" href="">
+                        <div class="news-read">
+                            <p>Read</p>
+                            <img class="default-image" src="{% static 'image/arrowread.svg' %}" alt="">
+                            <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
+                        </div>
+                    </a>
+                </div>
+                <div class="news-container">
+                    <div class="news-img">
+                        <div class="news-new">NEW</div>
+                        <img src="{% static 'image/news-7.png' %}" alt="">
+                        
+                    </div>
+                    <div class="news-dis">
+                        2 Days Ago
+                    </div>
+                    <div class="news-head">
+                        GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
+                    </div>
+                    <a style="text-decoration: none; color: inherit;" href="">
+                        <div class="news-read">
+                            <p>Read</p>
+                            <img class="default-image" src="{% static 'image/arrowread.svg' %}" alt="">
+                            <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
+                        </div>
+                    </a>
+                </div>
+                <div class="news-container">
+                    <div class="news-img">
+                        <div class="news-new">NEW</div>
+                        <img src="{% static 'image/news-8.png' %}" alt="">
+                        
+                    </div>
+                    <div class="news-dis">
+                        2 Days Ago
+                    </div>
+                    <div class="news-head">
+                        GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
+                    </div>
+                    <a style="text-decoration: none; color: inherit;" href="">
+                        <div class="news-read">
+                            <p>Read</p>
+                            <img class="default-image" src="{% static 'image/arrowread.svg' %}" alt="">
+                            <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-row">
+            <div style="display: flex;width: 400px;">
+                <img src="{% static 'image/SPAI_LOGO.jpg" alt="Company Logo" class="logo-foot">
+                <span class="companyfoot-name">SPORTS PSYCHOLOGY ASSOSIATION OF INDIA</span>
+            </div>
+            <div style="display: flex;">
+                <div class="quicklinks">
+                    <ul style="list-style-type: none;">
+                        <li style="font-size: 14px;font-weight: 900;">Quick Links</li>
+                        <li><hr style="width: auto;" class="hrline"></li>
+                        <li><a href="">About Us</a></li>
+                        <li><a href="">News</a></li>
+                        <li><a href="">Gallery</a></li>
+                        <li><a href="">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div style="left: 75%;" class="quicklinks">
+                    <ul style="list-style-type: none;">
+                        <li style="font-size: 14px;font-weight: 900;">Contact Us</li>
+                        <li><hr style="width: auto;" class="hrline"></li>
+                        <li><span class="email"><img src="{% static 'image/email.svg' %}" alt="Email Icon"> spaionlineindia@gmail.com</span></li>
+                        <li><span class="phone"><img src="{% static 'image/Vector.svg' %}" alt="Phone Icon"> +91 9958 998 684</span></li>
+                        <li style="color: transparent;">.</li>
+                        <li style="color: transparent;">.</li>
+                        
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+    </footer>
+    <script type="text/javascript" src="js/news.js"></script>
+</body>
+</html>
