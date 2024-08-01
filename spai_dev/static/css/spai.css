@@ -1592,4 +1592,6 @@ input::placeholder{
   font-weight:600;
 }
 
-
+.loading-index img{
+  margin-left: 8px;
+}
