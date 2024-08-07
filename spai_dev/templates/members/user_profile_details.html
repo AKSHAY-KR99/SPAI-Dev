@@ -11,7 +11,7 @@
             {% csrf_token %}
             <!-- Step 1: First name and last name -->
             <div id="step-1" class="step active">
-                <p>Step 1</p>
+                <p>Step 2</p>
                 <div class="degree-section">
                     <label for="degree">Degree</label>
                     <input class="user-profile" type="text" placeholder="Degree" id="degree" name="degree"
@@ -47,18 +47,25 @@
                     <input class="user-profile address-input" type="number" placeholder="Pin code" id="pin" name="pin"
                            required>
                 </div>
-                <button id="next-btn" type="button" onclick="showNextStep()">Next</button>
+                <!--                <div class="loading-index">-->
+                <!--                    <img src="{% static 'image/line_blue.png' %}" alt="50%">-->
+                <!--                    <img src="{% static 'image/line_blue.png' %}" alt="50%">-->
+                <!--                    <img src="{% static 'image/line_white.png' %}" alt="50%">-->
+                <!--                </div>-->
+                <div class="btn-grp-1">
+                    <button id="next-btn" type="button" onclick="showNextStep()">Next</button>
+                </div>
             </div>
 
             <!-- Step 2: Pin code, house name, and street name -->
             <div id="step-2" class="step" style="display: none;">
-                <p>Step 2</p>
+                <p>Step 3</p>
                 <div class="photo-section">
                     <label for="photo">Photo</label>
                     <input class="user-profile" type="file" accept="image/*" placeholder="Select your photo" id="photo"
                            name="photo"
                            required>
-                    <img src="{% static 'image/profile.png' %}" alt="profile" class="profile-icon">
+                    <!--                    <img src="{% static 'image/profile.png' %}" alt="profile" class="profile-icon">-->
                 </div>
                 <div class="non-photo-upload">
                     <div class="phone-section">
@@ -89,15 +96,22 @@
                                name="research_interest"
                                required>
                     </div>
-                    <button class="step2-btn" id="prev-btn" type="button" onclick="showPrevStep()">Previous</button>
-                    <button id="submit-btn" class="step2-btn" type="submit">Submit</button>
+                    <!--                    <div class="loading-index">-->
+                    <!--                        <img src="{% static 'image/line_blue.png' %}" alt="50%">-->
+                    <!--                        <img src="{% static 'image/line_blue.png' %}" alt="50%">-->
+                    <!--                        <img src="{% static 'image/line_blue.png' %}" alt="50%">-->
+                    <!--                    </div>-->
+                    <div class="btn-grp-2">
+                        <button class="step2-btn" id="prev-btn" type="button" onclick="showPrevStep()">Previous</button>
+                        <button id="submit-btn" class="step2-btn" type="submit">Submit</button>
+                    </div>
                 </div>
             </div>
         </form>
 
     </div>
-    <div class="image-section">
-        <img src="{% static 'image/running_logo.png' %}" alt="Login Image">
+    <div class="image-section-2">
+        <img src="{% static 'image/Frame_2.png' %}" alt="Login Image">
     </div>
 </div>
 <script type="text/javascript">
