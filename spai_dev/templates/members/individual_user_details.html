@@ -9,9 +9,11 @@
         <h1>User Details</h1>
     </div>
     {% if user %}
+        {% if user.photo %}
     <div class="image-container">
         <img src="{{user.photo.url}}" alt="User image">
     </div>
+        {% endif %}
     <table>
         <tr>
             <td><b>First name</b></td>
@@ -97,10 +99,24 @@
         </tr>
 
     </table>
+
+    {% if user.admin_approved %}
+        <button id="download-certificate">Download Certificate</button>
+    {% endif %}
+
     {% endif %}
 </div>
 {% endblock %}
 
 {% block footer %}
 {% include 'footer.html' %}
+
+<script>
+    $(document).ready(function() {
+        $('#download-certificate').on('click', function() {
+            window.location.href = '{% url "generate_certificate" user.slug_value %}';
+        });
+    });
+</script>
+
 {% endblock %}
