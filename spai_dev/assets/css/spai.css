@@ -875,6 +875,7 @@ footer{
   
 }
 /*********************************************************/
+
 @media (max-width: 498px){
   .sep{
     margin-left: 80%;
@@ -964,6 +965,12 @@ footer{
   .jointoday{
     margin-left: -400px;
   }
+  .image-section-2 img {
+    width: 447px;
+    height: 446px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
 }
 @media (min-width: 1240px) {
  /* Desktop devices 1024*/
@@ -1040,11 +1047,12 @@ footer{
   grid-column: 2;
   padding: 20px;
   border-radius: 10px;
+  margin-top: 25px;
 }
 
 .image-section-2 img {
-  width: 723px;
-  height: 719px;
+  width: 657px;
+  height: 666px;
   object-fit: cover;
   border-radius: 10px;
 }
@@ -1056,7 +1064,7 @@ footer{
 }
 
 .content-section{
-  margin-top: 160px;
+  margin-top: 90px;
 }
 
 .email-section {
@@ -1613,20 +1621,42 @@ input::placeholder{
   margin-top: 73px;
 }
 
-#pre-loader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #fff;
-  z-index: 9999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+
+
+/* style for demo  */
+
+.userlisting{
+  margin: 20px;
+  padding: 10px;
 }
 
-#pre-loader img {
-  width: 50px;
-  height: 50px;
+.content-box{
+  background-color: #0000001f;
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
 }
+
+.content-box table{ 
+  border-spacing: 0 20px;
+  margin-left: 20px;
+
+}
+
+.image-container img{
+  width: 400px;
+  height: 280px;
+  border-radius: 6px;
+}
+
+.user-details-ind{
+  margin-left: 50px;
+}
+
+.user-profile-icon img{
+  width: 25px;
+  height: 25px;
+}
+

@@ -1,9 +1,18 @@
+
 from django.utils import timezone
+import datetime
+import os
+
+import pdfkit
+
 from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.forms import model_to_dict
+from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
+from django.template import Template
+from django.template.loader import get_template
 from django.views.generic import TemplateView
 from django.urls import reverse
 from django.core.paginator import Paginator
@@ -24,6 +33,7 @@ def index(request):
     }
     return render(request, 'mainpages/home.html', context)
     # return render(request, 'members/member_details.html', context)
+
 
 def history(request):
     context = {'page': 'about', 'page2': 'history'}
@@ -46,7 +56,8 @@ def about_members(request):
 
 
 def members(request):
-    context = {'page': 'members'}
+    users = User.objects.all()
+    context = {'users': users}
     return render(request, 'mainpages/members.html', context)
 
 
@@ -81,9 +92,10 @@ def user_registration(request):
         context = {"form": form}
         return render(request, "members/user_registration.html", context)
 
+
 def gallery(request):
     gallery_objects = GalleryManagement.objects.all()
-    context = {'page': 'gallery', 'gallery_objects': gallery_objects, 'admin_key': admin_key}
+    context = {'page': 'gallery', 'gallery_objects': gallery_objects}
     return render(request, 'mainpages/gallery.html', context)
 
 def news(request):
@@ -101,15 +113,13 @@ def news(request):
     else:
         paginator = Paginator(all_events, 9)
         current_tab = 'all'  # Default to 'all' if the tab is not specified
-
     page_obj = paginator.get_page(page_number)
-
     context = {
         'page_obj': page_obj,
         'current_tab': current_tab,
     }
-
     return render(request, 'mainpages/news.html', context)
+
 # def news(request):
 #     event_object = EventManagement.objects.all().order_by('-id')
 #     paginator = Paginator(event_object, 9)
@@ -118,6 +128,7 @@ def news(request):
 #     admin_key=True
 #     context = {'page_obj': page_obj, 'event_object': event_object,'admin_key':admin_key}
 #     return render(request, 'mainpages/news.html', context)
+
 
 def news_detail(request,pk):
     event_object=EventManagement.objects.get(pk=pk)
@@ -131,6 +142,7 @@ def news_detail(request,pk):
         'related_events': upcoming_events,
         }
     return render(request, 'mainpages/news_details.html', context)    
+
 
 def eventadd(request):
     if request.method == 'POST':
@@ -224,14 +236,15 @@ def user_profile_details(request):
         form = forms.UserDetailForm(request.user)
     return render(request, 'members/user_profile_details.html', {'form': form})
 
+
 def user_logout(request):
     logout(request)
     return redirect('index')
 
 
 def user_details_vew(request, *args, **kwargs):
-    if request.user.user_role == settings.ADMIN_ROLE_VALUE:
-        slug = kwargs.get("slug", None)
+    slug = kwargs.get("slug", None)
+    if request.user.user_role == settings.ADMIN_ROLE_VALUE or request.user.slug_value == slug:
         user_data = {}
         context = {}
         user = User.objects.filter(slug_value=slug).first()
@@ -274,13 +287,13 @@ def admin_approval(request, *args, **kwargs):
         slug = kwargs.get("slug", None)
         user = User.objects.filter(slug_value=slug).first()
         if user is None:
-            return redirect("about_members")
+            return redirect("members")
         user.admin_approved = True
         user.save()
         user_status_change(slug, user.status)
-        return redirect('about_members')
+        return redirect('members')
     else:
-        return redirect('login')
+        return redirect('login_page')
 
 
 def user_login_page(request):
@@ -322,3 +335,22 @@ def get_next_step(status):
         return 'Admin approval pending'
     if status == settings.ADMIN_APPROVAL_PENDING:
         return 'Admin Approved, No action needed'
+
+
+def certificate(request):
+    if request.user.is_authenticated and request.user.admin_approved:
+        user = User.objects.get(slug_value=request.user.slug_value)
+        context = {"name": user.first_name, "email": user.email, "date":user.date_created,
+                   "current_date": datetime.date.today(), "current_time": datetime.datetime.now().time()}
+        wkhtml_to_pdf = os.path.join(settings.BASE_DIR, "wkhtmltopdf.exe")
+        template_path = 'pdf_template.html'
+        template = get_template(template_path)
+        html = template.render(context)
+        config = pdfkit.configuration(wkhtmltopdf=wkhtml_to_pdf)
+        pdf = pdfkit.from_string(html, False, configuration=config)
+        response = HttpResponse(pdf, content_type='application/pdf')
+        response['Content-Disposition'] = f'attachment; filename="{user.first_name}_certificate.pdf"'
+        return response
+    else:
+        return redirect('login_page')
+

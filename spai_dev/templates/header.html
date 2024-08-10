@@ -1,32 +1,40 @@
 {% load static %}
 <header>
-  <div class="top-row">
-      <div style="display: flex;">
-          <img src="{% static 'image/SPAI_LOGO.jpg' %}" alt="Company Logo" class="logo">
-          <span class="company-name">SPORTS PSYCHOLOGY ASSOCIATION OF INDIA</span>
-      </div>
-      
-      <div class="contact-info">
-          <span class="phone"><img src="{% static 'image/Vector.svg' %}" alt="Phone Icon"> +91 9958 998 684</span>
-          <span class="email"><img src="{% static 'image/email.svg' %}" alt="Email Icon"> spaionlineindia@gmail.com</span>
-      </div>
-      <div class="sep">
-          <div class="login-button">
-            {% if request.user.is_authenticated %}
-              <a style="text-decoration: none; color: white;" href="{% url 'logout' %}">Member logout</a>
-            {% else %}
-              <a style="text-decoration: none; color: white;" href="{% url 'login_page' %}">Member Login</a>
-            {% endif %}
-          </div>
-      <div class="menu-icon">
-          <img src="{% static 'image/menu.svg' %}" alt="Menu Icon">
-      </div>
-      </div>
-      
-  </div>
-  <hr class="hrline">
-  {% block menu %}
-      {% include 'navbar.html' %}
-  {% endblock %}
+    <div class="top-row">
+        <div style="display: flex;">
+            <img src="{% static 'image/SPAI_LOGO.jpg' %}" alt="Company Logo" class="logo">
+            <span class="company-name">SPORTS PSYCHOLOGY ASSOCIATION OF INDIA</span>
+        </div>
+
+        <div class="contact-info">
+            <span class="phone"><img src="{% static 'image/Vector.svg' %}" alt="Phone Icon"> +91 9958 998 684</span>
+            <span class="email"><img src="{% static 'image/email.svg' %}"
+                                     alt="Email Icon"> spaionlineindia@gmail.com</span>
+        </div>
+         {% if request.user.is_authenticated %}
+        <div class="user-profile-icon">
+            <a href="{% url 'individual_user_details' user.slug_value %}">
+                <img src="{% static 'image/profile-icon.svg'%}" alt="">
+            </a>
+        </div>
+        {% endif %}
+        <div class="sep">
+            <div class="login-button">
+                {% if request.user.is_authenticated %}
+                <a style="text-decoration: none; color: white;" href="{% url 'logout' %}">Member logout</a>
+                {% else %}
+                <a style="text-decoration: none; color: white;" href="{% url 'login_page' %}">Member Login</a>
+                {% endif %}
+            </div>
+            <div class="menu-icon">
+                <img src="{% static 'image/menu.svg' %}" alt="Menu Icon">
+            </div>
+        </div>
+
+    </div>
+    <hr class="hrline">
+    {% block menu %}
+    {% include 'navbar.html' %}
+    {% endblock %}
 </header>
 
