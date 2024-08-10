@@ -1,0 +1,45 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+{% if request.user.user_role == 1 %}
+<div class="userlisting">
+    <div class="content-box">
+        <table>
+            <tr>
+                <th>Sl. No</th>
+                <th>Name</th>
+                <th>E mail</th>
+                <th>Status</th>
+                <th>Date of Join</th>
+                <th>View</th>
+            </tr>
+            {% for user in users %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{user.first_name}} {{user.last_name}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.status}}</td>
+                <td>{{user.date_created}}</td>
+                <td><a href="{% url 'individual_user_details' user.slug_value %}">
+                    view
+                </a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% else %}
+
+<h1 style="text-align:center;  font-weight: 600;">Admin authentication is required</h1>
+
+{% endif %}
+{% endblock %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}
