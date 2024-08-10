@@ -101,7 +101,9 @@
     </table>
 
     {% if user.admin_approved %}
+    <a href="{% url 'certificate' %}">
         <button id="download-certificate">Download Certificate</button>
+        </a>
     {% endif %}
 
     {% endif %}
@@ -110,13 +112,4 @@
 
 {% block footer %}
 {% include 'footer.html' %}
-
-<script>
-    $(document).ready(function() {
-        $('#download-certificate').on('click', function() {
-            window.location.href = '{% url "generate_certificate" user.slug_value %}';
-        });
-    });
-</script>
-
 {% endblock %}

@@ -1,5 +1,5 @@
+import datetime
 import os
-from datetime import datetime
 
 import pdfkit
 from django.conf import settings
@@ -232,7 +232,7 @@ def admin_approval(request, *args, **kwargs):
         user_status_change(slug, user.status)
         return redirect('members')
     else:
-        return redirect('login')
+        return redirect('login_page')
 
 
 def user_login_page(request):
@@ -291,5 +291,5 @@ def certificate(request):
         response['Content-Disposition'] = f'attachment; filename="{user.first_name}_certificate.pdf"'
         return response
     else:
-        return redirect('login')
+        return redirect('login_page')
 
