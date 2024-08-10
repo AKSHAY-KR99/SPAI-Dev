@@ -1,0 +1,139 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block cssfiles %}
+    <link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sub/members.css' %}">
+{% endblock %}
+
+{% block header %}
+    {% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="content">
+    <div class="name">
+        <div class="num">
+            <img src="{% static 'image/back.svg' %}" alt="">
+        </div>
+        <h1>Angela Bower</h1>
+    </div>
+    <div class="pic">
+        <img src="{% static 'image/member2.png' %}" alt="">
+    </div>
+    <div class="details_container">
+        <div class="number">
+            <div class="num">
+                <p>01</p>
+            </div>
+        </div>
+        <div class="labels">
+            <p>First name</p>
+            <p>Last name</p>
+            <p>User name</p>
+            <p>Password</p>
+        </div>
+        <div class="details">
+            <p>Angela Bower</p>
+            <p>Lynn Tanner</p>
+            <p>Kate Tanner</p>
+            <p>Mike Torello</p>
+        </div>
+    </div>
+    <div class="details_container">
+        <div class="number">
+            <div class="num">
+                <p>02</p>
+            </div>
+        </div>
+        <div class="labels">
+            <p>E mail</p>
+            <p>Alternate E mail</p>
+            <p>Phone number</p>
+            <p>Alternate Phone number</p>
+        </div>
+        <div class="details">
+            <p>email@email.com</p>
+            <p>email@email.com</p>
+            <p>98766544332</p>
+            <p>98867564545</p>
+        </div>
+    </div>
+    <div class="details_container">
+        <div class="number">
+            <div class="num">
+                <p>03</p>
+            </div>
+        </div>
+        <div class="labels">
+            <p>Degree</p>
+            <p>Proffession</p>
+            <p>Institution</p>
+            <p>Department</p>
+            <p>Specialized in</p>
+            <p>Research Interest</p>
+        </div>
+        <div class="details">
+            <p>Computer science</p>
+            <p>computer application</p>
+            <p>kannur university</p>
+            <p>department of information technology</p>
+            <p>artificial intelligence</p>
+            <p>machine learning</p>
+        </div>
+    </div>
+    <div class="details_container">
+        <div class="number">
+            <div class="num">
+                <p>04</p>
+            </div>
+        </div>
+        <div class="labels">
+            <p>House name</p>
+            <p>street name</p>
+            <p>City name</p>
+            <p>PIN</p>
+            <p>State</p>
+        </div>
+        <div class="details">
+            <p>new house</p>
+            <p>mambaram</p>
+            <p>kannur</p>
+            <p>670857</p>
+            <p>kerala</p>
+        </div>
+    </div>
+    <div style="display: flex; justify-content: center;width: 100%;">
+        <a style="text-decoration: none; color: inherit;" href="">
+            <div class="news-seemore">
+                <div class="seemoretext">
+                    Accept
+                </div>
+            </div>
+        </a>
+        <a style="text-decoration: none; color: inherit;" href="">
+            <div class="news-seemore">
+                <div class="seemoretext">
+                    Reject
+                </div>
+            </div>
+        </a>
+    </div>
+</div> 
+
+{% endblock %}
+
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}
+{% block jsfile %}
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('.menu-icon').addEventListener('click', function() {
+            document.querySelector('.navbar').classList.toggle('active');
+        });
+    });
+</script> 
+    {% endblock %}
+

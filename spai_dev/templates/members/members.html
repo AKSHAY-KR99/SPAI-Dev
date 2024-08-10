@@ -1,0 +1,151 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block cssfiles %}
+    <link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sub/members.css' %}">
+{% endblock %}
+
+{% block header %}
+    {% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+<table>
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th class="email">Email</th>
+            <th>First Name</th>
+            <th>Register Date</th>
+            <th class="status">Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="username">
+                <img src="{% static 'image/member1.png' %}" alt="">
+                Roger Press
+            </td>
+            <td class="email">vtorres@icloud.com</td>
+            <td>Devon Miles</td>
+            <td>16/07/2024</td>
+            <td class="status">Active</td>
+            <td>
+                <a href="">
+                    <div class="view">
+                        <img src="{% static 'image/eye.svg' %}" alt="">
+                        <p>View</p>
+                    </div>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td class="username">
+                <img src="{% static 'image/dureha.png' %}" alt="">
+                Roger Press
+            </td>
+            <td class="email">vtorres@icloud.com</td>
+            <td>Devon Miles</td>
+            <td>16/07/2024</td>
+            <td class="status">Active</td>
+            <td>
+                <a href="member_details.html">
+                    <div class="view">
+                        <img src="{% static 'image/eye.svg' %}" alt="">
+                        <p>View</p>
+                    </div>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td class="username">
+                <img src="{% static 'image/neetu.png' %}" alt="">
+                Roger Press
+            </td>
+            <td class="email">vtorres@icloud.com</td>
+            <td>Devon Miles</td>
+            <td>16/07/2024</td>
+            <td class="status">Active</td>
+            <td>
+                <a href="">
+                    <div class="view">
+                        <img src="{% static 'image/eye.svg' %}" alt="">
+                        <p>View</p>
+                    </div>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td class="username">
+                <img src="{% static 'image/Kamalesh.png' %}" alt="">
+                Roger Press
+            </td>
+            <td class="email">vtorres@icloud.com</td>
+            <td>Devon Miles</td>
+            <td>16/07/2024</td>
+            <td class="status">Active</td>
+            <td>
+                <a href="">
+                    <div class="view">
+                        <img src="{% static 'image/eye.svg' %}" alt="">
+                        <p>View</p>
+                    </div>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td class="username">
+                <img src="{% static 'image/member1.png' %}" alt="">
+                Roger Press
+            </td>
+            <td class="email">vtorres@icloud.com</td>
+            <td>Devon Miles</td>
+            <td>16/07/2024</td>
+            <td class="status">Active</td>
+            <td>
+                <a href="">
+                    <div class="view">
+                        <img src="{% static 'image/eye.svg' %}" alt="">
+                        <p>View</p>
+                    </div>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td class="username">
+                <img src="{% static 'image/dureha.png' %}" alt="">
+                Roger Press
+            </td>
+            <td class="email">vtorres@icloud.com</td>
+            <td>Devon Miles</td>
+            <td>16/07/2024</td>
+            <td class="status">Active</td>
+            <td>
+                <a href="">
+                    <div class="view">
+                        <img src="{% static 'image/eye.svg' %}" alt="">
+                        <p>View</p>
+                    </div>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+{% endblock %}
+
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}
+{% block jsfile %}
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('.menu-icon').addEventListener('click', function() {
+            document.querySelector('.navbar').classList.toggle('active');
+        });
+    });
+</script> 
+    {% endblock %}

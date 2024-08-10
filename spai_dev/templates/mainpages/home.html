@@ -102,15 +102,31 @@
         News & Events
     </div>
     <div class="news-containers">
+        {% for event in upcoming_events %}
         <div class="news-container">
+            <div class="news-img">
+                <div class="news-new">{{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }}</div>
+                <img src="{{ event.image.url }}" alt="">
+            </div>
+            <div class="news-dis">
+                {{ event.datetime }}
+            </div>
+            <div class="news-head" style="text-transform: uppercase;">
+                {{ event.title }}
+            </div>
+            <a style="text-decoration: none; color: inherit;" href="{% url 'news_detail' event.id %}">
+                <div class="news-read">
+                    <p>Read</p>
+                    <img class="default-image" src="{% static 'image/arrowread.svg' %}" alt="">
+                    <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+        <!-- <div class="news-container">
             <div class="news-img">
                 <div class="news-new">NEW</div>
                 <img src="{% static 'image/news3.png' %}" alt="">
-                <a href="">
-                    <div class="news-delete">
-                        <img src="{% static 'image/delete-icon.svg' %}" alt="">
-                    </div>
-                </a>
 
             </div>
             <div class="news-dis">
@@ -131,11 +147,7 @@
             <div class="news-img">
                 <div class="news-new">NEW</div>
                 <img src="{% static 'image/news2.png' %}" alt="">
-                <a href="">
-                    <div class="news-delete">
-                        <img src="{% static 'image/delete-icon.svg' %}" alt="">
-                    </div>
-                </a>
+
 
             </div>
             <div class="news-dis">
@@ -156,11 +168,6 @@
             <div class="news-img">
                 <div class="news-new">NEW</div>
                 <img src="{% static 'image/news-7.png' %}" alt="">
-                <a href="">
-                    <div class="news-delete">
-                        <img src="{% static 'image/delete-icon.svg' %}" alt="">
-                    </div>
-                </a>
 
             </div>
             <div class="news-dis">
@@ -176,11 +183,11 @@
                     <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
                 </div>
             </a>
-        </div>
+        </div> -->
 
     </div>
     <div style="display: flex; justify-content: center;width: 100%;">
-        <a style="text-decoration: none; color: inherit;" href="">
+        <a style="text-decoration: none; color: inherit;" href="{% url 'news' %}">
             <div class="news-seemore">
                 <div class="seemoretext">
                     See More
