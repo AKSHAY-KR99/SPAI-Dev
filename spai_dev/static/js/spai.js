@@ -14,31 +14,55 @@ heroPics[currentPic].classList.add('active');
 heroTexts[currentPic].classList.add('active');
 
 /*****news*************************** */
-document.addEventListener('DOMContentLoaded', function () {
-    const floatingDivs = document.querySelectorAll('.news-containers');
-
+document.addEventListener('DOMContentLoaded', function() {
+    const newsContainers = document.querySelectorAll('.news-container');
+    
     const observerOptions = {
-        root: null, // Use the viewport as the container
+        root: null, // viewport
         rootMargin: '0px',
-        threshold: 0.2 // Trigger when 10% of the element is visible
+        threshold: 0.1 // Trigger when 10% of the container is visible
     };
 
-    function handleIntersection(entries, observer) {
+    const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+                entry.target.classList.add('animate'); // Add the class to start animation
             } else {
-                entry.target.classList.remove('visible');
+                entry.target.classList.remove('animate'); // Remove the class when out of view
             }
         });
-    }
+    }, observerOptions);
 
-    const observer = new IntersectionObserver(handleIntersection, observerOptions);
-
-    floatingDivs.forEach(div => {
-        observer.observe(div);
+    newsContainers.forEach(container => {
+        observer.observe(container); // Observe each container
     });
 });
+
+// document.addEventListener('DOMContentLoaded', function () {
+//     const floatingDivs = document.querySelectorAll('.news-containers');
+
+//     const observerOptions = {
+//         root: null, // Use the viewport as the container
+//         rootMargin: '0px',
+//         threshold: 0.2 // Trigger when 10% of the element is visible
+//     };
+
+//     function handleIntersection(entries, observer) {
+//         entries.forEach(entry => {
+//             if (entry.isIntersecting) {
+//                 entry.target.classList.add('visible');
+//             } else {
+//                 entry.target.classList.remove('visible');
+//             }
+//         });
+//     }
+
+//     const observer = new IntersectionObserver(handleIntersection, observerOptions);
+
+//     floatingDivs.forEach(div => {
+//         observer.observe(div);
+//     });
+// });
 
 /************************************************/
 

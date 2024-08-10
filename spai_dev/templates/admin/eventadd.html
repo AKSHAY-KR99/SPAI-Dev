@@ -1,17 +1,65 @@
 {% extends 'main.html' %}
 {% load static %}
+{% block cssfiles %}
+    <link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sub/eventadd.css' %}">
+{% endblock %}
 {% block header %}
     {% include 'header.html' %}
 {% endblock %}
 {% block content %}
-<h1 style="color: transparent;">.</h1>
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ frm.as_p }}
-    <input type="submit" value="Add">
-</form>
+<main class="form-main">
+    <div class="form-wrapper">
+        <h2>Create New Event</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" placeholder="Enter event title" required maxlength="50">
+            </div>
+            <div class="form-group">
+                <label for="image">Image:</label>
+                <div class="image-upload">
+                    <input type="file" id="image" name="image" accept="image/*" onchange="previewImage(event)">
+                    <label for="image" class="image-label">Choose an image</label>
+                    <div id="imagePreview" class="image-preview" style="display: none;">
+                        <img id="preview" src="#" alt="Image Preview" style="display: none;">
+                    </div>
+                    <small id="imageError" class="error-message"></small>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="datetime">Date & Time:</label>
+                <input type="datetime-local" id="datetime" name="datetime" required>
+            </div>
+            <div class="form-group">
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location" placeholder="Enter event location" required maxlength="50">
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" rows="5" placeholder="Enter event description"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="registration_link">Registration Link:</label>
+                <input type="url" id="registration_link" name="registration_link" placeholder="http://example.com" maxlength="200">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn-submit">Create</button>
+            </div>
+        </form>
+    </div>
+    <div class="image-section">
+        <img src="{% static 'image/Frame.png' %}" alt="Login Image">
+    </div>
+</main>
 {% endblock %}
 
 {% block footer %}
 {% include 'footer.html' %}
+{% endblock %}
+{% block jsfile %}
+<script type="text/javascript" src="{% static 'js/sub/eventadd.js' %}"></script>   
 {% endblock %}

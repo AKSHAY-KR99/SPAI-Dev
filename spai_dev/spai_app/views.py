@@ -1,3 +1,4 @@
+from django.utils import timezone
 from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -11,10 +12,18 @@ from . import models, forms
 from .models import GalleryManagement, User, EventManagement, UserDetailModel
 
 
-# Create your views here.
 def index(request):
-    context = {}
+    now = timezone.now()
+    upcoming_events = list(EventManagement.objects.filter(datetime__gte=now).order_by('datetime')[:3])
+    if len(upcoming_events) < 3:
+        remaining_slots = 3 - len(upcoming_events)
+        past_events = list(EventManagement.objects.filter(datetime__lt=now).order_by('-datetime')[:remaining_slots])
+        upcoming_events.extend(past_events)
+    context = {
+        'upcoming_events': upcoming_events,
+    }
     return render(request, 'mainpages/home.html', context)
+    # return render(request, 'members/member_details.html', context)
 
 def history(request):
     context = {'page': 'about', 'page2': 'history'}
@@ -77,32 +86,84 @@ def gallery(request):
     context = {'page': 'gallery', 'gallery_objects': gallery_objects, 'admin_key': admin_key}
     return render(request, 'mainpages/gallery.html', context)
 
-
 def news(request):
-    event_object = EventManagement.objects.all().order_by('-id')
-    paginator = Paginator(event_object, 9)
-    page_number = request.GET.get('page')
+    all_events = EventManagement.objects.all().order_by('-id')
+    upcoming_events = EventManagement.objects.filter(datetime__gte=timezone.now()).order_by('datetime')
+    past_events = EventManagement.objects.filter(datetime__lt=timezone.now()).order_by('-datetime')
+
+    page_number = request.GET.get('page', 1)
+    current_tab = request.GET.get('tab', 'all')
+
+    if current_tab == 'upcoming':
+        paginator = Paginator(upcoming_events, 9)
+    elif current_tab == 'post':
+        paginator = Paginator(past_events, 9)
+    else:
+        paginator = Paginator(all_events, 9)
+        current_tab = 'all'  # Default to 'all' if the tab is not specified
+
     page_obj = paginator.get_page(page_number)
-    admin_key=True
-    context = {'page_obj': page_obj, 'event_object': event_object,'admin_key':admin_key}
+
+    context = {
+        'page_obj': page_obj,
+        'current_tab': current_tab,
+    }
+
     return render(request, 'mainpages/news.html', context)
+# def news(request):
+#     event_object = EventManagement.objects.all().order_by('-id')
+#     paginator = Paginator(event_object, 9)
+#     page_number = request.GET.get('page')
+#     page_obj = paginator.get_page(page_number)
+#     admin_key=True
+#     context = {'page_obj': page_obj, 'event_object': event_object,'admin_key':admin_key}
+#     return render(request, 'mainpages/news.html', context)
 
 def news_detail(request,pk):
     event_object=EventManagement.objects.get(pk=pk)
-    context={"event":event_object}
+    upcoming_events = list(EventManagement.objects.filter(datetime__gt=event_object.datetime).order_by('datetime')[:3])
+    if len(upcoming_events) < 3:
+        remaining_slots = 3 - len(upcoming_events)
+        past_events = list(EventManagement.objects.filter(datetime__lt=event_object.datetime).order_by('-datetime')[:remaining_slots])
+        upcoming_events.extend(past_events)
+    context={
+        "event":event_object,
+        'related_events': upcoming_events,
+        }
     return render(request, 'mainpages/news_details.html', context)    
 
 def eventadd(request):
-    if request.POST:
-        frm = forms.EventManagementForm(request.POST, request.FILES)
-        if frm.is_valid:
-            frm.save()
-            print("success")
-            return redirect('news')
-    else:
-        frm = forms.EventManagementForm()
-    context = {'page': 'news', 'frm': frm}
-    return render(request, 'admin/eventadd.html', context)
+    if request.method == 'POST':
+        title = request.POST['title']
+        image = request.FILES['image']
+        datetime = request.POST['datetime']
+        location = request.POST['location']
+        description = request.POST.get('description', '')
+        registration_link = request.POST.get('registration_link', '')
+
+        EventManagement.objects.create(
+            title=title,
+            image=image,
+            datetime=datetime,
+            location=location,
+            description=description,
+            registration_link=registration_link
+        )
+        return redirect('news')  # Redirect to a success page after creation
+
+    return render(request, 'admin/eventadd.html')
+
+# def eventadd(request):
+#     if request.POST:
+#         frm = forms.EventManagementForm(request.POST, request.FILES)
+#         if frm.is_valid:
+#             frm.save()
+#             print("success")
+#             return redirect('news')
+#     else:
+#         frm = forms.EventManagementForm()
+#     context = {'page': 'news', 'frm': frm}
+#     return render(request, 'admin/eventadd.html', context)
 
 
 def delete_event(request, event_id):

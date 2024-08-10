@@ -4,7 +4,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-
+document.querySelectorAll('.tab-item').forEach(item => {
+  item.addEventListener('click', function() {
+      const tab = this.getAttribute('data-tab');
+      window.location.href = `?tab=${tab}`;
+  });
+});
 
 document.addEventListener('DOMContentLoaded', () => {
     const container = document.querySelector('.news-container');

@@ -31,13 +31,58 @@
                 <div class="news-detail-content-text">
                     <p>
                         {{event.description}}<br>
-                        Physical exercise is the performance of some activity in order to develop or maintain physical fitness and overall health.It is often directed toward also honing athletic ability or skill.Frequent and regular physical exercise is an important component in the prevention of some diseases such as heart disease, cardiovascular disease, Type 2 diabetes and obesity.Exercises are generally grouped into three types depending on the overall effect they have on the human body: Flexibility exercises such as stretching improve the range of motion of muscles and joints; aerobic exercises such as walking and running focus on increasing cardiovascular endurance; and anaerobic exercises such as weight training, functional training or sprinting increase short-term muscle strength.Physical exercise is considered important for maintaining physical fitness including healthy weight; building and maintaining healthy bones, muscles, and joints; promoting physiological well-being; reducing surgical risks; and strengthening the immune system.
+                        <!-- Physical exercise is the performance of some activity in order to develop or maintain physical fitness and overall health.It is often directed toward also honing athletic ability or skill.Frequent and regular physical exercise is an important component in the prevention of some diseases such as heart disease, cardiovascular disease, Type 2 diabetes and obesity.Exercises are generally grouped into three types depending on the overall effect they have on the human body: Flexibility exercises such as stretching improve the range of motion of muscles and joints; aerobic exercises such as walking and running focus on increasing cardiovascular endurance; and anaerobic exercises such as weight training, functional training or sprinting increase short-term muscle strength.Physical exercise is considered important for maintaining physical fitness including healthy weight; building and maintaining healthy bones, muscles, and joints; promoting physiological well-being; reducing surgical risks; and strengthening the immune system. -->
                     </p>
+                    {% if event.location != null %}
+                    <h4 style="display: inline;">Location:</h4> <span>{{ event.location }}</span>
+                    {% endif %}
+                    <br><br>
+                    {% if event.registration_link and event.registration_link|slice:":7" == "http://" or event.registration_link|slice:":8" == "https://" %}
+                    <h4 style="display: inline;">Registration Link:</h4> 
+                    <span>
+                        <a style="text-decoration: underline; color: blue;" 
+                           href="{{ event.registration_link }}" 
+                           target="_blank" 
+                           rel="noopener noreferrer">
+                           {{ event.registration_link }}
+                        </a>
+                    </span>
+                {% endif %}
                 </div>
             </div>
         </div>
+
+        
         <div class="news-containers">
+            {% for event in related_events %}
             <div class="news-container">
+                <div class="news-img">
+                    <div class="news-new">{{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }}</div>
+                    <img src="{{ event.image.url }}" alt="">
+                    {% if request.user.user_role == 1 %}
+                    <a class="delete-link" href="{% url 'event_delete' event.id %}">
+                        <div class="news-delete">
+                            <img src="{% static 'image/delete-icon.svg' %}" alt="">
+                        </div>
+                    </a>
+                    {% endif %}
+                </div>
+                <div class="news-dis">
+                    {{ event.datetime }}
+                </div>
+                <div class="news-head" style="text-transform: uppercase;">
+                    {{ event.title }}
+                </div>
+                <a style="text-decoration: none; color: inherit;" href="{% url 'news_detail' event.id %}">
+                    <div class="news-read">
+                        <p>Read</p>
+                        <img class="default-image" src="{% static 'image/arrowread.svg' %}" alt="">
+                        <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+            <!-- <div class="news-container">
                 <div class="news-img">
                     <div class="news-new">NEW</div>
                     <img src="{% static 'image/news-6.png' %}" alt="">
@@ -96,7 +141,7 @@
                         <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
                     </div>
                 </a>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
