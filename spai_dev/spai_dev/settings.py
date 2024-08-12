@@ -186,3 +186,6 @@ STATE_CHOICES = [
     ("West Bengal", "West Bengal")
 ]
 
+
+# login session info
+SESSION_COOKIE_AGE = 43200

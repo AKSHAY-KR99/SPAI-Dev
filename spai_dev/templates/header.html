@@ -13,7 +13,7 @@
         </div>
          {% if request.user.is_authenticated %}
         <div class="user-profile-icon">
-            <a href="{% url 'individual_user_details' user.slug_value %}">
+            <a href="{% url 'individual_user_details' request.user.slug_value %}">
                 <img src="{% static 'image/profile-icon.svg'%}" alt="">
             </a>
         </div>

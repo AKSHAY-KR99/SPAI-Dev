@@ -1,4 +1,3 @@
-
 from django.utils import timezone
 import datetime
 import os
@@ -11,7 +10,6 @@ from django.contrib.auth.decorators import login_required
 from django.forms import model_to_dict
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
-from django.template import Template
 from django.template.loader import get_template
 from django.views.generic import TemplateView
 from django.urls import reverse
@@ -40,7 +38,6 @@ def history(request):
     return render(request, 'mainpages/history.html', context)
 
 
-@login_required
 def about_members(request):
     context = {}
     user_details_vew(request)
@@ -55,26 +52,14 @@ def about_members(request):
     return render(request, 'about/members.html', context)
 
 
+@login_required
 def members(request):
-    users = User.objects.all()
-    context = {'users': users}
-    return render(request, 'mainpages/members.html', context)
-
-
-def membership(request):
-    if request.method == "POST":
-        form = forms.UserRegistrationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            logout(request)
-            return redirect("login")
-        else:
-            context = {'page': 'members', 'page2': 'membership', "form": form}
-            return render(request, "members/membership.html", context)
-    else:
-        form = forms.UserRegistrationForm()
-        context = {'page': 'members', 'page2': 'membership', "form": form}
-        return render(request, "members/membership.html", context)
+    if request.user.user_role == settings.ADMIN_ROLE_VALUE:
+        users = User.objects.all()
+        for user in users:
+            user.next_step = get_next_step(user.status)
+        context = {'users': users}
+        return render(request, 'mainpages/members.html', context)
 
 
 def user_registration(request):
@@ -98,6 +83,7 @@ def gallery(request):
     context = {'page': 'gallery', 'gallery_objects': gallery_objects}
     return render(request, 'mainpages/gallery.html', context)
 
+
 def news(request):
     all_events = EventManagement.objects.all().order_by('-id')
     upcoming_events = EventManagement.objects.filter(datetime__gte=timezone.now()).order_by('datetime')
@@ -120,32 +106,25 @@ def news(request):
     }
     return render(request, 'mainpages/news.html', context)
 
-# def news(request):
-#     event_object = EventManagement.objects.all().order_by('-id')
-#     paginator = Paginator(event_object, 9)
-#     page_number = request.GET.get('page')
-#     page_obj = paginator.get_page(page_number)
-#     admin_key=True
-#     context = {'page_obj': page_obj, 'event_object': event_object,'admin_key':admin_key}
-#     return render(request, 'mainpages/news.html', context)
 
-
-def news_detail(request,pk):
-    event_object=EventManagement.objects.get(pk=pk)
+def news_detail(request, pk):
+    event_object = EventManagement.objects.get(pk=pk)
     upcoming_events = list(EventManagement.objects.filter(datetime__gt=event_object.datetime).order_by('datetime')[:3])
     if len(upcoming_events) < 3:
         remaining_slots = 3 - len(upcoming_events)
-        past_events = list(EventManagement.objects.filter(datetime__lt=event_object.datetime).order_by('-datetime')[:remaining_slots])
+        past_events = list(
+            EventManagement.objects.filter(datetime__lt=event_object.datetime).order_by('-datetime')[:remaining_slots])
         upcoming_events.extend(past_events)
-    context={
-        "event":event_object,
+    context = {
+        "event": event_object,
         'related_events': upcoming_events,
-        }
-    return render(request, 'mainpages/news_details.html', context)    
+    }
+    return render(request, 'mainpages/news_details.html', context)
 
 
+@login_required
 def eventadd(request):
-    if request.method == 'POST':
+    if request.method == 'POST' and request.user.user_role == settings.ADMIN_ROLE_VALUE:
         title = request.POST['title']
         image = request.FILES['image']
         datetime = request.POST['datetime']
@@ -165,27 +144,19 @@ def eventadd(request):
 
     return render(request, 'admin/eventadd.html')
 
-# def eventadd(request):
-#     if request.POST:
-#         frm = forms.EventManagementForm(request.POST, request.FILES)
-#         if frm.is_valid:
-#             frm.save()
-#             print("success")
-#             return redirect('news')
-#     else:
-#         frm = forms.EventManagementForm()
-#     context = {'page': 'news', 'frm': frm}
-#     return render(request, 'admin/eventadd.html', context)
 
-
+@login_required
 def delete_event(request, event_id):
-    event = get_object_or_404(EventManagement, id=event_id)
-    event.delete()
+    if request.user.user_role == settings.ADMIN_ROLE_VALUE:
+        event = get_object_or_404(EventManagement, id=event_id)
+        event.delete()
+        return redirect(reverse('news'))
     return redirect(reverse('news'))
 
 
+@login_required
 def add_image_template(request):
-    if request.POST:
+    if request.POST and request.user.user_role == settings.ADMIN_ROLE_VALUE:
         frm = forms.GalleryManagementForm(request.POST, request.FILES)
         if frm.is_valid:
             frm.save()
@@ -212,16 +183,16 @@ def user_login(request):
     return render(request, 'mainpages/login.html', {'form': form})
 
 
-class GalleryUploadDelete(TemplateView):
-    template_name = 'mainpages/gallery.html'
-    model = models.GalleryManagement
-    form_class = forms.GalleryManagementForm
-    context = {}
-
-    def get(self, request, *args, **kwargs):
-        instance = self.model.objects.get(id=kwargs["id"])
-        instance.delete()
-        return redirect("gallery")
+@login_required
+def delete_gallery_item(request, *args, **kwargs):
+    if request.user.user_role == settings.ADMIN_ROLE_VALUE:
+        try:
+            instance = models.GalleryManagement.objects.get(id=kwargs["id"])
+            instance.delete()
+            return redirect("gallery")
+        except:
+            return redirect("gallery")
+    return redirect("gallery")
 
 
 @login_required
@@ -337,10 +308,14 @@ def get_next_step(status):
         return 'Admin Approved, No action needed'
 
 
-def certificate(request):
+def certificate(request, *args, **kwargs):
+    slug = kwargs.get("slug", None)
     if request.user.is_authenticated and request.user.admin_approved:
-        user = User.objects.get(slug_value=request.user.slug_value)
-        context = {"name": user.first_name, "email": user.email, "date":user.date_created,
+        if request.user.user_role == settings.ADMIN_ROLE_VALUE:
+            user = User.objects.get(slug_value=slug)
+        else:
+            user = User.objects.get(slug_value=request.user.slug_value)
+        context = {"name": user.first_name, "email": user.email, "date": user.date_created,
                    "current_date": datetime.date.today(), "current_time": datetime.datetime.now().time()}
         wkhtml_to_pdf = os.path.join(settings.BASE_DIR, "wkhtmltopdf.exe")
         template_path = 'pdf_template.html'
@@ -353,4 +328,3 @@ def certificate(request):
         return response
     else:
         return redirect('login_page')
-

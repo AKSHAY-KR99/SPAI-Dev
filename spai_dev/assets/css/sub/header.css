@@ -264,3 +264,8 @@ nav {
       height: 150.45px;
   }
 }
+@media (min-width: 1240px) and (max-width: 1340px){
+  .navbar{
+      height: 30px;
+  }
+}
