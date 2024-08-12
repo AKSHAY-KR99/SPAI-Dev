@@ -101,7 +101,7 @@
     </table>
 
     {% if user.admin_approved %}
-    <a href="{% url 'certificate' %}">
+    <a href="{% url 'certificate' user.slug_value %}">
         <button id="download-certificate">Download Certificate</button>
         </a>
     {% endif %}
