@@ -30,7 +30,7 @@ def index(request):
         'upcoming_events': upcoming_events,
     }
     return render(request, 'mainpages/home.html', context)
-    # return render(request, 'members/member_details.html', context)
+    # return render(request, 'members/members.html', context)
 
 
 def history(request):
@@ -248,7 +248,8 @@ def user_details_vew(request, *args, **kwargs):
             user_data['research_interest'] = user_detail_dict.get("research_interest", None)
         context['user'] = user_data
 
-        return render(request, 'members/individual_user_details.html', context)
+        # return render(request, 'members/individual_user_details.html', context)
+        return render(request, 'members/member_details.html', context)
     else:
         return redirect('login')
 

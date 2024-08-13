@@ -239,7 +239,10 @@ a{
   .news-read:hover .default-image {
     display: none;
   }
-
+.related{
+  display: none;
+  width: 100%;
+}
   @media (max-width: 768px) {
 
   
@@ -256,6 +259,10 @@ a{
     }
   }
   @media (max-width: 1260px){
+    .related{
+      display: block;
+      margin-left: 10%;
+    }
     .news-content{
       flex-direction: column;
       justify-content: center;

@@ -49,28 +49,18 @@
                     </span>
                 {% endif %}
                 </div>
-                <div class="news-read">
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdutj_BRMP5GlfhegLn1uSJsnbIlASTQ9RKv4zYVvL_t4saHA/viewform?usp=sf_link"><p class="texttextext">Register</p></a>
-                    <img class="default-image" src="{% static 'image/arrowread.svg' %}" alt="">
-                    <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
-                </div>
             </div>
         </div>
 
-        
+        <div class="related">
+            <h1>Related News</h1>
+        </div>
         <div class="news-containers">
             {% for event in related_events %}
             <div class="news-container">
                 <div class="news-img">
                     <div class="news-new">{{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }}</div>
                     <img src="{{ event.image.url }}" alt="">
-                    {% if request.user.user_role == 1 %}
-                    <a class="delete-link" href="{% url 'event_delete' event.id %}">
-                        <div class="news-delete">
-                            <img src="{% static 'image/delete-icon.svg' %}" alt="">
-                        </div>
-                    </a>
-                    {% endif %}
                 </div>
                 <div class="news-dis">
                     {{ event.datetime }}
