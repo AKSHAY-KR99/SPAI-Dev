@@ -1,0 +1,130 @@
+.news-tabs {
+    /* margin-bottom: 20px; */
+    margin-top: 40px;
+    margin-left: 8%;
+  }
+  
+  .tab-list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    /* border-bottom: 2px solid #ddd; */
+  }
+  
+  .tab-item {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    background-color: #f5f5f5;
+    margin-right: 5px;
+  }
+  
+  .tab-item.active {
+    background-color: #fff;
+    border-bottom: 2px solid #007bff;
+  }
+  
+  .tab-content .tab-panel {
+    display: none;
+
+  }
+  
+  .tab-content .tab-panel.active {
+    display: block;
+    justify-content: center;
+  }
+  .tab-content{
+    /* margin-left: 110px;
+    margin-right: 110px; */
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+.heading{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.text{
+    font-family: "Poppins",sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+}
+
+.details {
+    max-width: 50%;
+}
+
+.details label {
+    display: block;
+    margin: 10px 0 5px;
+    font-size: 16px;
+}
+
+.details input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.qr-code img {
+    width: 150px;
+    height: 150px;
+}
+.news-seemore{
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: 40px;
+    margin-top: 20px;
+    border: 2px 0px 0px 0px;
+    opacity: 0px;
+    background: rgba(0, 0, 0, 1);
+    border: 2px solid rgba(255, 255, 255, 1);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  }
+  .seemoretext{
+    opacity: 1;
+    font-family: "Poppins",sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 30px;
+    text-align: center;
+    color: rgba(255, 255, 255, 1); 
+  }
+  
+@media (max-width: 520px) {
+    .container{
+        width: 350px;
+    }
+}
+@media (max-width: 480px) {
+    .container{
+        width: 300px;
+    }
+}
+@media (max-width: 390px) {
+    .container{
+        width: 250px;
+    }
+}
