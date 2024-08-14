@@ -20,6 +20,7 @@ urlpatterns = [
     path('logout/', views.user_logout, name='logout'),
     path('user/detail/<str:slug>', views.user_details_vew, name='individual_user_details'),
     path('user/admin/approve/<str:slug>', views.admin_approval, name='user_approval'),
+    path('user/admin/reject/<str:slug>', views.admin_rejection, name='user_reject'),
     path('certificate/<str:slug>', views.certificate, name='certificate'),
     path('gallery/delete/<int:id>', views.delete_gallery_item, name='galleryimagedelete')
 
