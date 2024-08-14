@@ -358,3 +358,11 @@ def admin_action(status):
     if status == settings.USER_DETAILS_ADDED:
         return 'Admin approval pending'
     return 'No action needed'
+
+
+# certificate download
+# status change for admin and other user
+#
+# payment model
+#
+# login authentication error
