@@ -149,6 +149,7 @@ USER_CREATED = "user_created"
 USER_DETAILS_ADDED = "user_details_added"
 ADMIN_APPROVAL_PENDING = "admin_approval_pending"
 ADMIN_APPROVED = "admin_approved"
+ADMIN_REJECTED = "admin_rejected"
 
 ADMIN_ROLE_VALUE = 1
 MEMBER_ROLE_VALUE = 2

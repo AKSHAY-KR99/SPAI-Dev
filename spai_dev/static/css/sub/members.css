@@ -111,7 +111,18 @@ td img{
     border-radius: 15px;
     align-items: center;
     position: relative;
+    cursor: pointer;
+    transform: scale(1);
+    transition: .3s;
+    
 }
+
+.num:hover{
+    transform: scale(1.05);
+    transition: .3s;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+}
+
 .num img{
     position: absolute;
     text-align: left;

@@ -23,17 +23,130 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
+<!--        <tr>-->
+<!--            <td class="username">-->
+<!--                <img src="{% static 'image/member1.png' %}" alt="">-->
+<!--                Roger Press-->
+<!--            </td>-->
+<!--            <td class="email">vtorres@icloud.com</td>-->
+<!--            <td>Devon Miles</td>-->
+<!--            <td>16/07/2024</td>-->
+<!--            <td class="status">Active</td>-->
+<!--            <td>-->
+<!--                <a href="">-->
+<!--                    <div class="view">-->
+<!--                        <img src="{% static 'image/eye.svg' %}" alt="">-->
+<!--                        <p>View</p>-->
+<!--                    </div>-->
+<!--                </a>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td class="username">-->
+<!--                <img src="{% static 'image/dureha.png' %}" alt="">-->
+<!--                Roger Press-->
+<!--            </td>-->
+<!--            <td class="email">vtorres@icloud.com</td>-->
+<!--            <td>Devon Miles</td>-->
+<!--            <td>16/07/2024</td>-->
+<!--            <td class="status">Active</td>-->
+<!--            <td>-->
+<!--                <a href="member_details.html">-->
+<!--                    <div class="view">-->
+<!--                        <img src="{% static 'image/eye.svg' %}" alt="">-->
+<!--                        <p>View</p>-->
+<!--                    </div>-->
+<!--                </a>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td class="username">-->
+<!--                <img src="{% static 'image/neetu.png' %}" alt="">-->
+<!--                Roger Press-->
+<!--            </td>-->
+<!--            <td class="email">vtorres@icloud.com</td>-->
+<!--            <td>Devon Miles</td>-->
+<!--            <td>16/07/2024</td>-->
+<!--            <td class="status">Active</td>-->
+<!--            <td>-->
+<!--                <a href="">-->
+<!--                    <div class="view">-->
+<!--                        <img src="{% static 'image/eye.svg' %}" alt="">-->
+<!--                        <p>View</p>-->
+<!--                    </div>-->
+<!--                </a>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td class="username">-->
+<!--                <img src="{% static 'image/Kamalesh.png' %}" alt="">-->
+<!--                Roger Press-->
+<!--            </td>-->
+<!--            <td class="email">vtorres@icloud.com</td>-->
+<!--            <td>Devon Miles</td>-->
+<!--            <td>16/07/2024</td>-->
+<!--            <td class="status">Active</td>-->
+<!--            <td>-->
+<!--                <a href="">-->
+<!--                    <div class="view">-->
+<!--                        <img src="{% static 'image/eye.svg' %}" alt="">-->
+<!--                        <p>View</p>-->
+<!--                    </div>-->
+<!--                </a>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td class="username">-->
+<!--                <img src="{% static 'image/member1.png' %}" alt="">-->
+<!--                Roger Press-->
+<!--            </td>-->
+<!--            <td class="email">vtorres@icloud.com</td>-->
+<!--            <td>Devon Miles</td>-->
+<!--            <td>16/07/2024</td>-->
+<!--            <td class="status">Active</td>-->
+<!--            <td>-->
+<!--                <a href="">-->
+<!--                    <div class="view">-->
+<!--                        <img src="{% static 'image/eye.svg' %}" alt="">-->
+<!--                        <p>View</p>-->
+<!--                    </div>-->
+<!--                </a>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td class="username">-->
+<!--                <img src="{% static 'image/dureha.png' %}" alt="">-->
+<!--                Roger Press-->
+<!--            </td>-->
+<!--            <td class="email">vtorres@icloud.com</td>-->
+<!--            <td>Devon Miles</td>-->
+<!--            <td>16/07/2024</td>-->
+<!--            <td class="status">Active</td>-->
+<!--            <td>-->
+<!--                <a href="">-->
+<!--                    <div class="view">-->
+<!--                        <img src="{% static 'image/eye.svg' %}" alt="">-->
+<!--                        <p>View</p>-->
+<!--                    </div>-->
+<!--                </a>-->
+<!--            </td>-->
+<!--        </tr>-->
+    {% for user in users%}
+    <tr>
             <td class="username">
-                <img src="{% static 'image/member1.png' %}" alt="">
-                Roger Press
+                {% if user.photo %}
+                <img src="{{ user.photo.url }}" alt="">
+                {% else %}
+                <img src="{% static 'image/profile-icon.svg' %}" alt="photo">
+                {% endif %}
+                {{user.username}}
             </td>
-            <td class="email">vtorres@icloud.com</td>
-            <td>Devon Miles</td>
-            <td>16/07/2024</td>
-            <td class="status">Active</td>
+            <td class="email">{{user.email}}</td>
+            <td>{{user.first_name}} {{user.last_name}}</td>
+            <td>{{user.date_created}}</td>
+            <td class="status">{{user.next_step}}</td>
             <td>
-                <a href="">
+                <a href="{% url 'individual_user_details' user.slug_value %}">
                     <div class="view">
                         <img src="{% static 'image/eye.svg' %}" alt="">
                         <p>View</p>
@@ -41,96 +154,9 @@
                 </a>
             </td>
         </tr>
-        <tr>
-            <td class="username">
-                <img src="{% static 'image/dureha.png' %}" alt="">
-                Roger Press
-            </td>
-            <td class="email">vtorres@icloud.com</td>
-            <td>Devon Miles</td>
-            <td>16/07/2024</td>
-            <td class="status">Active</td>
-            <td>
-                <a href="member_details.html">
-                    <div class="view">
-                        <img src="{% static 'image/eye.svg' %}" alt="">
-                        <p>View</p>
-                    </div>
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <td class="username">
-                <img src="{% static 'image/neetu.png' %}" alt="">
-                Roger Press
-            </td>
-            <td class="email">vtorres@icloud.com</td>
-            <td>Devon Miles</td>
-            <td>16/07/2024</td>
-            <td class="status">Active</td>
-            <td>
-                <a href="">
-                    <div class="view">
-                        <img src="{% static 'image/eye.svg' %}" alt="">
-                        <p>View</p>
-                    </div>
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <td class="username">
-                <img src="{% static 'image/Kamalesh.png' %}" alt="">
-                Roger Press
-            </td>
-            <td class="email">vtorres@icloud.com</td>
-            <td>Devon Miles</td>
-            <td>16/07/2024</td>
-            <td class="status">Active</td>
-            <td>
-                <a href="">
-                    <div class="view">
-                        <img src="{% static 'image/eye.svg' %}" alt="">
-                        <p>View</p>
-                    </div>
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <td class="username">
-                <img src="{% static 'image/member1.png' %}" alt="">
-                Roger Press
-            </td>
-            <td class="email">vtorres@icloud.com</td>
-            <td>Devon Miles</td>
-            <td>16/07/2024</td>
-            <td class="status">Active</td>
-            <td>
-                <a href="">
-                    <div class="view">
-                        <img src="{% static 'image/eye.svg' %}" alt="">
-                        <p>View</p>
-                    </div>
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <td class="username">
-                <img src="{% static 'image/dureha.png' %}" alt="">
-                Roger Press
-            </td>
-            <td class="email">vtorres@icloud.com</td>
-            <td>Devon Miles</td>
-            <td>16/07/2024</td>
-            <td class="status">Active</td>
-            <td>
-                <a href="">
-                    <div class="view">
-                        <img src="{% static 'image/eye.svg' %}" alt="">
-                        <p>View</p>
-                    </div>
-                </a>
-            </td>
-        </tr>
+    {% endfor %}
+
+
     </tbody>
 </table>
 

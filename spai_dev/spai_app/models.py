@@ -10,7 +10,8 @@ from django.db import models
 
 
 def user_detail_image_path(instance, filename):
-    return f'user_detail/image/{instance.user.slug_value}/{filename}'
+    path = f'user_detail/image/{instance.user.slug_value}/{filename}'
+    return path
 
 
 class GalleryManagement(models.Model):
@@ -27,6 +28,7 @@ class GalleryManagement(models.Model):
     def __str__(self):
         return str(self.image_name)
 
+
 class EventManagement(models.Model):
     title = models.CharField(max_length=50, null=True, blank=True)
     image = models.ImageField(upload_to='SPAI/images/Events')
@@ -42,6 +44,7 @@ class EventManagement(models.Model):
 
     def __str__(self):
         return str(self.title)
+
 
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, password, **extra_fields):
@@ -119,7 +122,9 @@ class UserDetailModel(models.Model):
     research_interest = models.CharField(max_length=50, null=True, blank=True)
 
     def delete(self, *args, **kwargs):
-        os.remove(self.image.path)
+        if self.photo:
+            os.remove(self.photo.path)
         super(UserDetailModel, self).delete(*args, **kwargs)
+
     def __str__(self):
         return str(self.user.email)
