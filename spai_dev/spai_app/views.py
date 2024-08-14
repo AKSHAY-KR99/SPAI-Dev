@@ -31,6 +31,7 @@ def index(request):
     }
     return render(request, 'mainpages/home.html', context)
     # return render(request, 'members/members.html', context)
+    # return render(request, 'members/payment_page.html', context)
 
 
 def history(request):
@@ -220,7 +221,6 @@ def user_details_vew(request, *args, **kwargs):
         context = {}
         user_data = get_user_full_details(slug)
         context['user'] = user_data
-        # return render(request, 'members/individual_user_details.html', context)
         return render(request, 'members/member_details.html', context)
     else:
         return redirect('login')

@@ -1,0 +1,128 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block cssfiles %}
+    <link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sub/payment.css' %}">
+{% endblock %}
+
+{% block header %}
+    {% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="heading">
+    <div class="text">
+        Payment Method
+    </div>
+</div>
+<div class="news-tabs">
+    <ul class="tab-list">
+        <li class="tab-item active" data-tab="all">QR Code</li>
+        <li class="tab-item" data-tab="upcoming">Bank</li>
+
+    </ul>
+</div>
+
+<div class="tab-content">
+    <div class="tab-panel active" id="all">
+        <!-- All news content -->
+        <div class="container">
+            <div class="qr-code">
+                <img src="{% static 'image/qr.png' %}" alt="QR Code">
+            </div>
+            <div class="details">
+                <label for="ref-id"><strong>Reference ID:</strong></label>
+                <input type="text" id="ref-id" name="ref-id" placeholder="Enter Reference ID">
+                
+                <label for="bank-name"><strong>Bank Name:</strong></label>
+                <input type="text" id="bank-name" name="bank-name" placeholder="Enter Bank Name">
+
+                <label for="bank-name"><strong>File:</strong></label>
+                <input type="file" id="file" name="file" placeholder="browse">
+            </div>
+            <div style="display: flex; justify-content: center;width: 100%;">
+                <a style="text-decoration: none; color: inherit;" href="">
+                    <div class="news-seemore">
+                        <div class="seemoretext">
+                            Submit
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+        <!-- Add more news items here -->
+    </div>
+    <div class="tab-panel" id="upcoming">
+        <!-- Upcoming news content -->
+        <div class="container">
+            <!-- <div class="qr-code">
+                <img src="images/qr.png" alt="QR Code">
+            </div> -->
+            <div class="details">
+                <div style="padding: 5px;background-color:blanchedalmond;">
+                    <label for="ref-id"><strong>Account No:</strong></label>
+                    <label for="ref-id"><strong>2987 9807 7664 8689</strong></label><br>
+                    <!-- <input type="text" id="ref-id" name="ref-id" placeholder="Enter Reference ID"> -->
+                    
+                    <label for="bank-name"><strong>IFCS: SBI00986s</strong></label><br>
+                    <!-- <input type="text" id="bank-name" name="bank-name" placeholder="Enter Bank Name"> -->
+                </div>
+                
+
+                <label for="ref-id"><strong>Reference ID:</strong></label>
+                <input type="text" id="ref-id" name="ref-id" placeholder="Enter Reference ID">
+                
+                <label for="bank-name"><strong>Bank Name:</strong></label>
+                <input type="text" id="bank-name" name="bank-name" placeholder="Enter Bank Name">
+
+                <label for="bank-name"><strong>File:</strong></label>
+                <input type="file" id="file" name="file" placeholder="browse">
+                
+            </div>
+            <div style="display: flex; justify-content: center;width: 100%;">
+                <a style="text-decoration: none; color: inherit;" href="">
+                    <div class="news-seemore">
+                        <div class="seemoretext">
+                            Submit
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+        <!-- Add more news items here -->
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}
+{% block jsfile %}
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('.menu-icon').addEventListener('click', function() {
+            document.querySelector('.navbar').classList.toggle('active');
+        });
+    });
+        document.querySelectorAll('.tab-item').forEach(item => {
+    item.addEventListener('click', function() {
+        // Remove active class from all tabs
+        document.querySelectorAll('.tab-item').forEach(tab => tab.classList.remove('active'));
+        // Add active class to the clicked tab
+        this.classList.add('active');
+
+        // Hide all tab panels
+        document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+        // Show the selected tab panel
+        const targetPanel = document.getElementById(this.dataset.tab);
+        targetPanel.classList.add('active');
+    });
+});
+
+</script> 
+    {% endblock %}
