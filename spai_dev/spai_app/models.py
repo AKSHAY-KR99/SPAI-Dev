@@ -7,26 +7,13 @@ from django.utils.crypto import get_random_string
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 from django.db import models
+from django.utils import timezone
 
 
 def user_detail_image_path(instance, filename):
     path = f'user_detail/image/{instance.user.slug_value}/{filename}'
     return path
 
-
-class GalleryManagement(models.Model):
-    image = models.ImageField(upload_to='SPAI/images/gallery')
-    upload_date = models.DateTimeField(auto_now=True)
-    image_name = models.CharField(max_length=50, null=True, blank=True)
-    description = models.TextField(blank=True, null=True)
-
-    def delete(self, *args, **kwargs):
-        # Delete the image file from the local directory
-        os.remove(self.image.path)
-        super(GalleryManagement, self).delete(*args, **kwargs)
-
-    def __str__(self):
-        return str(self.image_name)
 
 
 class EventManagement(models.Model):
@@ -45,7 +32,34 @@ class EventManagement(models.Model):
     def __str__(self):
         return str(self.title)
 
+class GalleryManagement(models.Model):
+    image = models.ImageField(upload_to='SPAI/images/gallery',null=True)
+    upload_date = models.DateTimeField(default=timezone.now)
+    image_name = models.CharField(max_length=50, null=True, blank=True)
+    description = models.TextField(blank=True, null=True)
+    event = models.ForeignKey(EventManagement, on_delete=models.SET_NULL, null=True, blank=True)
+    place = models.CharField(max_length=255,null=True)
 
+    def delete(self, *args, **kwargs):
+        # Delete the image file from the local directory
+        os.remove(self.image.path)
+        super(GalleryManagement, self).delete(*args, **kwargs)
+
+    def __str__(self):
+        return str(self.image_name)
+
+class GalleryImage(models.Model):
+    gallery = models.ForeignKey(GalleryManagement, related_name='images', on_delete=models.CASCADE)
+    images = models.ImageField(upload_to='gallery_images/')
+    caption = models.CharField(max_length=255, blank=True, null=True)
+
+    def __str__(self):
+        return f"Image {self.id} - {self.gallery.image_name}"
+    def delete(self, *args, **kwargs):
+        # Delete the image file from the local directory
+        os.remove(self.image.path)
+        super(GalleryImage, self).delete(*args, **kwargs)
+    
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, password, **extra_fields):
         if not email:

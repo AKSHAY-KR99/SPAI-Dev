@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Gallery</title>
+  <style>
+    .image-preview-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .image-preview {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      overflow: hidden;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .image-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .remove-image {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      padding: 3px 7px;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Add Gallery</h1>
+  <form id="galleryForm" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <br>
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" required maxlength="50"><br><br>
+
+    <label for="description">Description:</label>
+    <input type="text" id="description" name="description" required maxlength="50"><br><br>
+
+    <label for="place">Place:</label>
+    <input type="text" id="place" name="place" required maxlength="50"><br><br>
+
+    <label for="mainimage">Main Image:</label>
+    <input type="file" id="mainimage" name="mainimage"><br><br>
+
+
+    <label for="images">Images:</label>
+    <input type="file" id="images" accept="image/*"><br><br>
+
+    <div class="image-preview-container" id="imagePreviewContainer"></div><br>
+
+    <button type="submit">Save Gallery</button>
+  </form>
+
+  <script>
+    const imageInput = document.getElementById('images');
+    const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+    const galleryForm = document.getElementById('galleryForm');
+    let selectedFiles = [];
+
+    imageInput.addEventListener('change', function() {
+      const files = Array.from(this.files);
+
+      // Add new files to the selectedFiles array
+      files.forEach(file => {
+        selectedFiles.push(file);
+        const reader = new FileReader();
+        reader.onload = function(event) {
+          const imgElement = document.createElement('div');
+          imgElement.className = 'image-preview';
+
+          imgElement.innerHTML = `
+            <img src="${event.target.result}" alt="${file.name}">
+            <button class="remove-image" onclick="removeImage(${selectedFiles.length - 1})">x</button>
+          `;
+          
+          imagePreviewContainer.appendChild(imgElement);
+        };
+        reader.readAsDataURL(file);
+      });
+
+      // Clear the input so that it can trigger the change event again for the next file selection
+      imageInput.value = '';
+    });
+
+    function removeImage(index) {
+      selectedFiles.splice(index, 1);
+      updatePreviews();
+    }
+
+    function updatePreviews() {
+      imagePreviewContainer.innerHTML = '';
+
+      selectedFiles.forEach((file, index) => {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+          const imgElement = document.createElement('div');
+          imgElement.className = 'image-preview';
+
+          imgElement.innerHTML = `
+            <img src="${event.target.result}" alt="${file.name}">
+            <button class="remove-image" onclick="removeImage(${index})">x</button>
+          `;
+          
+          imagePreviewContainer.appendChild(imgElement);
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    galleryForm.addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent the default form submission
+
+      const formData = new FormData(galleryForm); // Create a new FormData object
+
+      // Append the selected images to the FormData object
+      selectedFiles.forEach((file, index) => {
+        formData.append(`images_${index}`, file); // Use a unique name for each file
+      });
+
+      // Send the form data to the backend using Fetch API
+      fetch(galleryForm.action, {
+        method: 'POST',
+        body: formData,
+      })
+      .then(response => {
+        if (response.ok) {
+          window.location.href = '/gallery/'; // Redirect to the gallery list on success
+        } else {
+          console.error('Failed to submit the form');
+        }
+      })
+      .catch(error => {
+        // Handle error
+        console.error('Error:', error);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -26,6 +26,13 @@
     {% block footer %}
     {% include 'footer.html' %}
     {% endblock %}
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('.menu-icon').addEventListener('click', function() {
+                document.querySelector('.navbar').classList.toggle('active');
+            });
+        });
+    </script> 
     {% block jsfile %}
     <script type="text/javascript" src="{% static 'js/spai.js' %}"></script>   
     {% endblock %}

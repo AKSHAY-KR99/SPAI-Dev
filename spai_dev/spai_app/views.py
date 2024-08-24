@@ -16,7 +16,7 @@ from django.urls import reverse
 from django.core.paginator import Paginator
 
 from . import models, forms
-from .models import GalleryManagement, User, EventManagement, UserDetailModel
+from .models import GalleryManagement, User, EventManagement, UserDetailModel,GalleryImage
 
 
 def index(request):
@@ -86,6 +86,60 @@ def gallery(request):
     context = {'page': 'gallery', 'gallery_objects': gallery_objects}
     return render(request, 'mainpages/gallery.html', context)
 
+#*************************************************
+def gallery_list(request):
+    galleries = GalleryManagement.objects.all()
+    return render(request, 'mainpages/gallery.html', {'galleries': galleries})
+
+def gallery_detail(request, pk):
+    gallery = GalleryManagement.objects.get(pk=pk)
+    images = GalleryImage.objects.filter(gallery=gallery)
+    return render(request, 'mainpages/gallery_detail.html', {'gallery': gallery, 'images': images})
+
+
+def gallery_create(request):
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        description = request.POST.get('description')
+        place = request.POST.get('place')
+        image = request.FILES.get('mainimage')
+        # Create the gallery instance
+        gallery = GalleryManagement.objects.create(
+            image_name=title,
+            description=description,
+            place=place,
+            image=image
+        )
+
+        # Loop through the files in request.FILES
+        for key in request.FILES:
+            image = request.FILES[key]
+            GalleryImage.objects.create(gallery=gallery, images=image)
+
+        return redirect('gallery_list')  # Return a success response
+
+    return render(request, 'admin/galleryadd.html')  # Render the add gallery template
+
+
+# def gallery_update(request, pk):
+#     gallery = get_object_or_404(Gallery, pk=pk)
+#     if request.method == "POST":
+#         form = GalleryForm(request.POST, instance=gallery)
+#         if form.is_valid():
+#             gallery = form.save()
+#             # Optionally, handle image updates
+#             return redirect('gallery_detail', pk=gallery.pk)
+#     else:
+#         form = GalleryForm(instance=gallery)
+#     return render(request, 'admin/galleryadd.html', {'form': form, 'title': 'Update Gallery'})
+
+def gallery_delete(request, pk):
+    gallery = get_object_or_404(GalleryManagement, pk=pk)
+    gallery.delete()
+    return redirect('gallery_list')
+
+
+#*****************************************/
 
 def news(request):
     all_events = EventManagement.objects.all().order_by('-id')
