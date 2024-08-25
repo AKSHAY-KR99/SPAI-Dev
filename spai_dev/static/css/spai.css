@@ -1785,5 +1785,7 @@ input::placeholder{
   cursor: pointer;
 }
 
-
-
+.unauthorized{
+  font-size: 170px;
+  text-align: center;
+}

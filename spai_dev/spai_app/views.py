@@ -6,19 +6,59 @@ import pdfkit
 
 from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
 from django.forms import model_to_dict
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import get_template
-from django.views.generic import TemplateView
 from django.urls import reverse
 from django.core.paginator import Paginator
 
 from . import models, forms
 from .models import GalleryManagement, User, EventManagement, UserDetailModel,GalleryImage
+from .decorators import admin_only, authenticated_only, common_user_only
 
 
+# Frequently used methods
+def admin_action(status):
+    if status == settings.USER_DETAILS_ADDED:
+        return 'Admin approval pending'
+    return 'No action needed'
+
+
+def user_status_change(slug, current_status):
+    user = User.objects.get(slug_value=slug)
+    if user is not None:
+        if current_status == settings.USER_CREATED:
+            user.status = settings.USER_DETAILS_ADDED
+        elif current_status == settings.USER_DETAILS_ADDED:
+            user.status = settings.PAYMENT_PENDING
+        elif current_status == settings.PAYMENT_PENDING:
+            user.status = settings.PAYMENT_DONE
+        elif current_status == settings.PAYMENT_DONE:
+            user.status = settings.ADMIN_APPROVAL_PENDING
+        elif current_status == settings.ADMIN_APPROVAL_PENDING:
+            user.status = settings.ADMIN_APPROVED
+        else:
+            pass
+        user.save()
+
+
+def get_next_step(status):
+    if status == settings.USER_CREATED:
+        return 'User created, Details not added'
+    if status == settings.USER_DETAILS_ADDED:
+        return 'User Details added, Payment not completed'
+    if status == settings.PAYMENT_PENDING:
+        return 'Payment Pending'
+    if status == settings.PAYMENT_DONE:
+        return 'Payment completed, Admin Approval Pending'
+    if status == settings.ADMIN_APPROVAL_PENDING:
+        return 'Admin Approved, No action needed'
+    if status == settings.ADMIN_REJECTED:
+        return 'Admin Rejected'
+
+
+# Views
 def index(request):
     now = timezone.now()
     upcoming_events = list(EventManagement.objects.filter(datetime__gte=now).order_by('datetime')[:3])
@@ -53,7 +93,7 @@ def about_members(request):
     return render(request, 'about/members.html', context)
 
 
-@login_required
+@authenticated_only
 def members(request):
     if request.user.user_role == settings.ADMIN_ROLE_VALUE:
         users = User.objects.all()
@@ -86,10 +126,11 @@ def gallery(request):
     context = {'page': 'gallery', 'gallery_objects': gallery_objects}
     return render(request, 'mainpages/gallery.html', context)
 
-#*************************************************
+
 def gallery_list(request):
     galleries = GalleryManagement.objects.all()
     return render(request, 'mainpages/gallery.html', {'galleries': galleries})
+
 
 def gallery_detail(request, pk):
     gallery = GalleryManagement.objects.get(pk=pk)
@@ -97,13 +138,13 @@ def gallery_detail(request, pk):
     return render(request, 'mainpages/gallery_detail.html', {'gallery': gallery, 'images': images})
 
 
+@admin_only
 def gallery_create(request):
     if request.method == 'POST':
         title = request.POST.get('title')
         description = request.POST.get('description')
         place = request.POST.get('place')
         image = request.FILES.get('mainimage')
-        # Create the gallery instance
         gallery = GalleryManagement.objects.create(
             image_name=title,
             description=description,
@@ -121,25 +162,12 @@ def gallery_create(request):
     return render(request, 'admin/galleryadd.html')  # Render the add gallery template
 
 
-# def gallery_update(request, pk):
-#     gallery = get_object_or_404(Gallery, pk=pk)
-#     if request.method == "POST":
-#         form = GalleryForm(request.POST, instance=gallery)
-#         if form.is_valid():
-#             gallery = form.save()
-#             # Optionally, handle image updates
-#             return redirect('gallery_detail', pk=gallery.pk)
-#     else:
-#         form = GalleryForm(instance=gallery)
-#     return render(request, 'admin/galleryadd.html', {'form': form, 'title': 'Update Gallery'})
-
+@admin_only
 def gallery_delete(request, pk):
     gallery = get_object_or_404(GalleryManagement, pk=pk)
     gallery.delete()
     return redirect('gallery_list')
 
-
-#*****************************************/
 
 def news(request):
     all_events = EventManagement.objects.all().order_by('-id')
@@ -179,7 +207,7 @@ def news_detail(request, pk):
     return render(request, 'mainpages/news_details.html', context)
 
 
-@login_required
+@admin_only
 def eventadd(request):
     if request.method == 'POST' and request.user.user_role == settings.ADMIN_ROLE_VALUE:
         title = request.POST['title']
@@ -202,7 +230,7 @@ def eventadd(request):
     return render(request, 'admin/eventadd.html')
 
 
-@login_required
+@admin_only
 def delete_event(request, event_id):
     if request.user.user_role == settings.ADMIN_ROLE_VALUE:
         event = get_object_or_404(EventManagement, id=event_id)
@@ -211,7 +239,7 @@ def delete_event(request, event_id):
     return redirect(reverse('news'))
 
 
-@login_required
+@admin_only
 def add_image_template(request):
     if request.POST and request.user.user_role == settings.ADMIN_ROLE_VALUE:
         frm = forms.GalleryManagementForm(request.POST, request.FILES)
@@ -239,7 +267,7 @@ def user_login(request):
     return render(request, 'mainpages/login.html', {'form': form})
 
 
-@login_required
+@admin_only
 def delete_gallery_item(request, *args, **kwargs):
     if request.user.user_role == settings.ADMIN_ROLE_VALUE:
         try:
@@ -251,14 +279,16 @@ def delete_gallery_item(request, *args, **kwargs):
     return redirect("gallery")
 
 
-@login_required
+@authenticated_only
 def user_profile_details(request):
     if request.method == 'POST':
         form = forms.UserDetailForm(request.user, request.POST, request.FILES)
         if form.is_valid():
+            request.user.status = settings.USER_DETAILS_ADDED
+            request.user.save()
             form.save()
             user_status_change(request.user.slug_value, request.user.status)
-            return redirect('index')  # redirect to a success page
+            return redirect('payment_model', slug=request.user.slug_value)  # redirect to a success page
     else:
         form = forms.UserDetailForm(request.user)
     return render(request, 'members/user_profile_details.html', {'form': form})
@@ -269,6 +299,7 @@ def user_logout(request):
     return redirect('index')
 
 
+@authenticated_only
 def user_details_vew(request, *args, **kwargs):
     slug = kwargs.get("slug", None)
     if request.user.user_role == settings.ADMIN_ROLE_VALUE or request.user.slug_value == slug:
@@ -280,6 +311,7 @@ def user_details_vew(request, *args, **kwargs):
         return redirect('login')
 
 
+@admin_only
 def admin_approval(request, *args, **kwargs):
     if request.user.user_role == settings.ADMIN_ROLE_VALUE:
         slug = kwargs.get("slug", None)
@@ -294,6 +326,7 @@ def admin_approval(request, *args, **kwargs):
         return redirect('login_page')
 
 
+@admin_only
 def admin_rejection(request, *args, **kwargs):
     if request.user.user_role == settings.ADMIN_ROLE_VALUE:
         slug = kwargs.get("slug", None)
@@ -326,31 +359,7 @@ def user_login_page(request):
     return render(request, 'members/user_login.html', {'form': form})
 
 
-def user_status_change(slug, current_status):
-    user = User.objects.get(slug_value=slug)
-    if user is not None:
-        if current_status == settings.USER_CREATED:
-            user.status = settings.USER_DETAILS_ADDED
-        elif current_status == settings.USER_DETAILS_ADDED:
-            user.status = settings.ADMIN_APPROVAL_PENDING
-        elif current_status == settings.ADMIN_APPROVAL_PENDING:
-            user.status = settings.ADMIN_APPROVED
-        else:
-            pass
-        user.save()
-
-
-def get_next_step(status):
-    if status == settings.USER_CREATED:
-        return 'User details adding pending'
-    if status == settings.USER_DETAILS_ADDED:
-        return 'Admin approval pending'
-    if status == settings.ADMIN_APPROVAL_PENDING:
-        return 'Admin Approved, No action needed'
-    if status == settings.ADMIN_REJECTED:
-        return 'Admin Rejected'
-
-
+@authenticated_only
 def certificate(request, *args, **kwargs):
     slug = kwargs.get("slug", None)
     if request.user.is_authenticated and request.user.admin_approved:
@@ -408,15 +417,23 @@ def get_user_full_details(slug):
     return user_data
 
 
-def admin_action(status):
-    if status == settings.USER_DETAILS_ADDED:
-        return 'Admin approval pending'
-    return 'No action needed'
+@authenticated_only
+def payment_model(request, *args, **kwargs):
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            slug = kwargs.get("slug", None)
+            user = User.objects.filter(slug_value=slug).first()
+            if not user:
+                return redirect("login_page")
+            form = forms.PaymentForm(request.user, request.POST, request.FILES)
+            if form.is_valid():
+                form.save()
+                user_status_change(request.user.slug_value, request.user.status)
+                return redirect("index")
+        else:
+            form = forms.PaymentForm(request.user)
+        return render(request, 'members/payment_page.html', {'form': form})
 
 
-# certificate download
-# status change for admin and other user
-#
-# payment model
-#
-# login authentication error
+def unauthorized_page_403(request):
+    return render(request, 'permission/403_page.html')

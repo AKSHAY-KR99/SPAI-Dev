@@ -13,11 +13,13 @@
     <div class="news-title">
         <img class="bg-running" src="{% static 'image/running-2-bg.png' %}" alt="">
         <p>Gallery</p>
+        {% if request.user.is_superuser %}
         <a href="{% url 'gallery_create' %}">
             <div class="news-add">
                 ADD Albem
             </div>
         </a>
+        {% endif %}
     </div>
     <div class="news-containers">
         {% for images in galleries %}
@@ -27,12 +29,13 @@
                     {{ images.upload_date|date:"d" }} {{ images.upload_date|date:"F" }}
                 </div>
                 <img src="{{ images.image.url }}" alt="">
+                {% if request.user.is_superuser %}
                 <a href="{% url 'gallery_delete' images.id %}">
                     <div class="news-delete">
                         <img src="{% static 'image/delete-icon.svg' %}" alt="">
                     </div>
                 </a>
-                
+                {% endif %}
             </div>
             <div class="news-dis">
                 {{ images.upload_date }}

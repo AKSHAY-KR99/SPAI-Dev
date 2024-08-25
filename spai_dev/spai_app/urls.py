@@ -28,6 +28,9 @@ urlpatterns = [
     path('user/admin/approve/<str:slug>', views.admin_approval, name='user_approval'),
     path('user/admin/reject/<str:slug>', views.admin_rejection, name='user_reject'),
     path('certificate/<str:slug>', views.certificate, name='certificate'),
-    path('gallery/delete/<int:id>', views.delete_gallery_item, name='galleryimagedelete')
+    path('gallery/delete/<int:id>', views.delete_gallery_item, name='galleryimagedelete'),
+    path('user/payment/<str:slug>', views.payment_model, name='payment_model'),
 
+    # error pages
+    path('unauthorized/403/', views.unauthorized_page_403, name='unauthorized_403')
 ]
