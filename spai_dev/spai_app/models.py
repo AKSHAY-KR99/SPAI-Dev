@@ -11,9 +11,23 @@ from django.utils import timezone
 
 
 def user_detail_image_path(instance, filename):
-    path = f'user_detail/image/{instance.user.slug_value}/{filename}'
+    path = f'user_detail/{instance.user.slug_value}/image/{filename}'
     return path
 
+
+def user_detail_payment_path(instance, filename):
+    path = f'user_detail/{instance.user_info.slug_value}/payment/{instance.payment_type}/{filename}'
+    return path
+
+
+def generate_unique_slug():
+    slug = slugify(get_random_string(length=32))
+    unique_slug = slug
+    num = 1
+    while User.objects.filter(slug_value=unique_slug).exists():
+        unique_slug = '{}-{}'.format(slug, num)
+        num += 1
+    return unique_slug
 
 
 class EventManagement(models.Model):
@@ -25,20 +39,20 @@ class EventManagement(models.Model):
     registration_link = models.CharField(max_length=200, null=True, blank=True)
 
     def delete(self, *args, **kwargs):
-        # Delete the image file from the local directory
         os.remove(self.image.path)
         super(EventManagement, self).delete(*args, **kwargs)
 
     def __str__(self):
         return str(self.title)
 
+
 class GalleryManagement(models.Model):
-    image = models.ImageField(upload_to='SPAI/images/gallery',null=True)
+    image = models.ImageField(upload_to='SPAI/images/gallery', null=True)
     upload_date = models.DateTimeField(default=timezone.now)
     image_name = models.CharField(max_length=50, null=True, blank=True)
     description = models.TextField(blank=True, null=True)
     event = models.ForeignKey(EventManagement, on_delete=models.SET_NULL, null=True, blank=True)
-    place = models.CharField(max_length=255,null=True)
+    place = models.CharField(max_length=255, null=True)
 
     def delete(self, *args, **kwargs):
         # Delete the image file from the local directory
@@ -48,6 +62,7 @@ class GalleryManagement(models.Model):
     def __str__(self):
         return str(self.image_name)
 
+
 class GalleryImage(models.Model):
     gallery = models.ForeignKey(GalleryManagement, related_name='images', on_delete=models.CASCADE)
     images = models.ImageField(upload_to='gallery_images/')
@@ -55,11 +70,13 @@ class GalleryImage(models.Model):
 
     def __str__(self):
         return f"Image {self.id} - {self.gallery.image_name}"
+
     def delete(self, *args, **kwargs):
         # Delete the image file from the local directory
         os.remove(self.image.path)
         super(GalleryImage, self).delete(*args, **kwargs)
-    
+
+
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, password, **extra_fields):
         if not email:
@@ -111,16 +128,6 @@ class User(AbstractBaseUser, PermissionsMixin):
         return str(self.email)
 
 
-def generate_unique_slug():
-    slug = slugify(get_random_string(length=32))
-    unique_slug = slug
-    num = 1
-    while User.objects.filter(slug_value=unique_slug).exists():
-        unique_slug = '{}-{}'.format(slug, num)
-        num += 1
-    return unique_slug
-
-
 class UserDetailModel(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_details')
     degree = models.CharField(max_length=50, null=True, blank=True)
@@ -142,3 +149,21 @@ class UserDetailModel(models.Model):
 
     def __str__(self):
         return str(self.user.email)
+
+
+class PaymentModel(models.Model):
+    user_info = models.ForeignKey(User, on_delete=models.CASCADE, related_name='payment_model')
+    transaction_id = models.CharField(max_length=50, null=True, blank=True)
+    reference_id = models.CharField(max_length=50, null=True, blank=True)
+    bank_name = models.CharField(max_length=50, null=True, blank=True)
+    payment_reported_date = models.DateField(auto_now_add=True)
+    payment_type = models.PositiveSmallIntegerField(choices=settings.PAYMENT_TYPE, blank=True, null=True)
+    document = models.FileField(upload_to=user_detail_payment_path, null=True, blank=True)
+
+    def __str__(self):
+        return str(self.user_info)
+
+    def delete(self, *args, **kwargs):
+        if self.document:
+            os.remove(self.document.path)
+        super(PaymentModel, self).delete(*args, **kwargs)

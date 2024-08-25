@@ -2,7 +2,7 @@ import re
 from django.conf import settings
 from django.contrib.auth.hashers import check_password
 from django.forms import ModelForm
-from .models import GalleryManagement, UserDetailModel, User,EventManagement
+from .models import GalleryManagement, UserDetailModel, User,EventManagement, PaymentModel
 from django import forms
 
 
@@ -128,3 +128,19 @@ class UserLoginForm(forms.Form):
 
         return cleaned_data
 
+
+class PaymentForm(forms.ModelForm):
+    class Meta:
+        model = PaymentModel
+        fields = ('transaction_id', 'reference_id', 'bank_name', 'payment_type', 'document')
+
+    def __init__(self, user, *args, **kwargs):
+        super(PaymentForm, self).__init__(*args, **kwargs)
+        self.user = user
+
+    def save(self, commit=True):
+        instance = super(PaymentForm, self).save(commit=False)
+        instance.user_info = self.user
+        if commit:
+            instance.save()
+        return instance
