@@ -1,0 +1,32 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block cssfiles %}
+<link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/style1.css' %}">
+{% endblock %}
+{% block header %}
+    {% include 'header.html' %}
+{% endblock %}
+{% block content %}
+<div class="gallery">
+    {% for img in images %}
+        <div class="gallery-item">
+            <img src="{{ img.images.url }}" alt="{{ obj.image_alt }}">
+            {% if admin_key %}
+            <a href="{%url 'galleryimagedelete' obj.id %}" class="delete-button">
+                <button>Delete</button> 
+            </a>
+            {% endif %}
+        </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}
+{% block jsfile %}
+    {% endblock %}

@@ -5,7 +5,13 @@ urlpatterns = [
     path('', views.index, name="index"),
     path('history/', views.history, name="history"),
     path('about_members/', views.about_members, name="about_members"),
-    path('gallery/', views.gallery, name="gallery"),
+    path('gallery/', views.gallery_list, name="gallery_list"),
+
+    path('gallery/<int:pk>/', views.gallery_detail, name='gallery_detail'),
+    path('gallery/create/', views.gallery_create, name='gallery_create'),
+    # path('gallery/<int:pk>/update/', views.gallery_update, name='gallery_update'),
+    path('gallery/delete/<int:pk>/', views.gallery_delete, name='gallery_delete'),
+
     path('news/', views.news, name="news"),
     path('news/<int:pk>/', views.news_detail, name="news_detail"),
     path('events/delete/<int:event_id>/', views.delete_event, name='event_delete'),
