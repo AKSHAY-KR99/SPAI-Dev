@@ -133,35 +133,58 @@
             {% if user.admin_approved %}
             <p>
                 <a style="text-decoration: none; color: inherit;" href="{% url 'certificate' user.slug_value %}">
-                    <div class="news-seemore">
-                        <div class="seemoretext">
-                            Download
-                        </div>
-                    </div>
-                </a>
+                            Click here to Download</a>
             </p>
             {% else %}
             <p>Under processing</p>
             {% endif %}
         </div>
     </div>
-    {% if request.user.is_superuser or user.admin_approved %}
+    {% if request.user.is_superuser %}
+    {% if user.payment %}
+    <div class="details_container">
+        <div class="number">
+            <div class="num">
+                <p>06</p>
+            </div>
+        </div>
+        <div class="labels">
+            <p>Payment date</p>
+            <p>Transaction id</p>
+            <p>Reference id</p>
+            <p>Bank name</p>
+            <p>Payment type</p>
+            <p>Proof</p>
+        </div>
+        <div class="details">
+            <p>{{user.payment_date}}</p>
+            <p>{{user.transaction_id}}</p>
+            <p>{{user.reference_id}}</p>
+            <p>{{user.bank_name}}</p>
+            <p>{{user.payment_type}}</p>
+            <p>
+                 {{user.payment_doc}}
+
+            </p>
+        </div>
+    </div>
     <div style="display: flex; justify-content: center;width: 100%;">
         <a style="text-decoration: none; color: inherit;" href="{% url 'user_approval' user.slug_value %}">
             <div class="news-seemore">
                 <div class="seemoretext">
-                    Accept
+                    Approve
                 </div>
             </div>
         </a>
-        <a style="text-decoration: none; color: inherit;" href="{% url 'user_reject' user.slug_value %}">
-            <div class="news-seemore">
-                <div class="seemoretext">
-                    Reject
-                </div>
-            </div>
-        </a>
+<!--        <a style="text-decoration: none; color: inherit;" href="{% url 'user_reject' user.slug_value %}">-->
+<!--            <div class="news-seemore">-->
+<!--                <div class="seemoretext">-->
+<!--                    Reject-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </a>-->
     </div>
+    {% endif %}
     {% endif %}
 </div>
 
