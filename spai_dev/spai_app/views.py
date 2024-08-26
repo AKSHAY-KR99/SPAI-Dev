@@ -14,8 +14,8 @@ from django.urls import reverse
 from django.core.paginator import Paginator
 
 from . import models, forms
-from .models import GalleryManagement, User, EventManagement, UserDetailModel,GalleryImage
-from .decorators import admin_only, authenticated_only, common_user_only
+from .models import GalleryManagement, User, EventManagement, UserDetailModel,GalleryImage, PaymentModel
+from .decorators import admin_only, authenticated_only
 
 
 # Frequently used methods
@@ -52,7 +52,7 @@ def get_next_step(status):
         return 'Payment Pending'
     if status == settings.PAYMENT_DONE:
         return 'Payment completed, Admin Approval Pending'
-    if status == settings.ADMIN_APPROVAL_PENDING:
+    if status in [settings.ADMIN_APPROVAL_PENDING, settings.ADMIN_APPROVED]:
         return 'Admin Approved, No action needed'
     if status == settings.ADMIN_REJECTED:
         return 'Admin Rejected'
@@ -93,7 +93,7 @@ def about_members(request):
     return render(request, 'about/members.html', context)
 
 
-@authenticated_only
+@admin_only
 def members(request):
     if request.user.user_role == settings.ADMIN_ROLE_VALUE:
         users = User.objects.all()
@@ -414,6 +414,21 @@ def get_user_full_details(slug):
         user_data['photo'] = user_detail_dict.get("photo", None)
         user_data['specialized_in'] = user_detail_dict.get("specialized_in", None)
         user_data['research_interest'] = user_detail_dict.get("research_interest", None)
+        user_data['payment'] = False
+
+    payment_data = PaymentModel.objects.filter(user_info=user).order_by('-payment_reported_date').first()
+    if payment_data is not None:
+        payment_dict = model_to_dict(payment_data)
+        user_data['payment'] = True
+        user_data["transaction_id"] = payment_dict.get("transaction_id", None)
+        user_data["reference_id"] = payment_dict.get("reference_id", None)
+        user_data["bank_name"] = payment_dict.get("bank_name", None)
+        p_t = payment_dict.get("payment_type", None)
+        user_data["payment_type"] = settings.QR_CODE_NAME
+        if p_t == settings.BANK_TRANSFER:
+            user_data["payment_type"] = settings.BANK_TRANSFER_NAME
+        user_data["payment_doc"] = payment_dict.get("document", None)
+        user_data["payment_date"] = payment_data.payment_reported_date
     return user_data
 
 
@@ -437,3 +452,4 @@ def payment_model(request, *args, **kwargs):
 
 def unauthorized_page_403(request):
     return render(request, 'permission/403_page.html')
+
