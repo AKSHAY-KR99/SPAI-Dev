@@ -1786,7 +1786,11 @@ input::placeholder{
   border-radius: 50%;
 }
 
-.unauthorized{
-  font-size: 170px;
-  text-align: center;
+.image-403 {
+  margin-left: 35%;
+}
+
+.image-403 img {
+  max-width: 50%;
+  height: auto;
 }
