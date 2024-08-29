@@ -2,17 +2,20 @@
 {% load static %}
 {% block cssfiles %}
 <link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
-    <link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
-<link rel="stylesheet" href="{% static 'css/style1.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/gallery_detail.css' %}">
 {% endblock %}
 {% block header %}
     {% include 'header.html' %}
 {% endblock %}
 {% block content %}
+<div class="news-title">
+    <p>{{ gallery.image_name }}</p>
+</div>
 <div class="gallery">
     {% for img in images %}
         <div class="gallery-item">
-            <img src="{{ img.images.url }}" alt="{{ obj.image_alt }}">
+            <img src="{{ img.images.url }}" alt="{{ obj.image_alt }}" onclick="openLightbox('{{ img.images.url }}')">
             {% if admin_key %}
             <a href="{%url 'galleryimagedelete' obj.id %}" class="delete-button">
                 <button>Delete</button> 
@@ -20,7 +23,12 @@
             {% endif %}
         </div>
     {% endfor %}
+</div>
 
+<!-- Lightbox structure -->
+<div id="lightbox" class="lightbox">
+    <span class="close" onclick="closeLightbox()">&times;</span>
+    <img class="lightbox-content" id="lightboxImage">
 </div>
 
 {% endblock %}
@@ -29,4 +37,17 @@
 {% include 'footer.html' %}
 {% endblock %}
 {% block jsfile %}
-    {% endblock %}
+<script>
+    function openLightbox(src) {
+        var lightbox = document.getElementById("lightbox");
+        var lightboxImage = document.getElementById("lightboxImage");
+        lightboxImage.src = src;
+        lightbox.style.display = "block";
+    }
+
+    function closeLightbox() {
+        var lightbox = document.getElementById("lightbox");
+        lightbox.style.display = "none";
+    }
+</script>
+{% endblock %}

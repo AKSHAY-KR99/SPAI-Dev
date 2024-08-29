@@ -1,0 +1,101 @@
+.news-title {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 48px;
+    margin-bottom: 30px;
+  }
+  .news-title p{
+    font-family: "Poppins",sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 48px;
+    text-align: center;
+  }
+  @media (max-width: 768px) {
+    .news-title{
+        margin-top: 20px;
+      }
+  }
+      
+.gallery {
+    display: flex;
+    justify-content: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 40px;
+    /* max-width: 1200px; */
+    
+    margin: 30px;
+    position: relative;
+    bottom: 45px;
+    justify-content: center;
+  }
+  
+  
+  .gallery-item {
+    width: 220px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    display: flex;
+  }
+  
+  .gallery-item img {
+    width: 220px;
+    height: 200px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .gallery-item img:hover {
+    transform: scale(1.1);
+  }
+  .gallery-item {
+    position: relative; /* add this to position the delete button absolutely */
+  }
+  .gallery-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .gallery-title {
+    font-size: 35px;
+    flex: 1;
+    display: grid;
+    place-items: center;
+    
+  }
+  .lightbox {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9); /* Black background with opacity */
+}
+
+.lightbox-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
