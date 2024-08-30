@@ -150,19 +150,10 @@ USER_DETAILS_ADDED = "user_details_added"
 ADMIN_APPROVAL_PENDING = "admin_approval_pending"
 ADMIN_APPROVED = "admin_approved"
 ADMIN_REJECTED = "admin_rejected"
-PAYMENT_PENDING = "payment_pending"
-PAYMENT_DONE = "payment_completed"
 
 ADMIN_ROLE_VALUE = 1
 MEMBER_ROLE_VALUE = 2
 ROLE_CHOICES = ((ADMIN_ROLE_VALUE, "ADMIN"), (MEMBER_ROLE_VALUE, "MEMBER"))
-
-
-QR_CODE = 1
-BANK_TRANSFER = 2
-PAYMENT_TYPE = ((QR_CODE, "QR CODE"), (BANK_TRANSFER, "BANK TRANSFER"))
-QR_CODE_NAME = "QR code"
-BANK_TRANSFER_NAME = "Bank Transfer"
 
 STATE_CHOICES = [
     ("", "Select state"),

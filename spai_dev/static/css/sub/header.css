@@ -5,7 +5,6 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
-
 header {
   background-color: white;
   padding: 10px 20px;
@@ -58,6 +57,10 @@ header {
 .email img{
   margin-right:7px ;
 }
+.sep{
+  position: relative;
+  justify-content: center;
+}
 .login-button {
   background-color: black;
   color: white;
@@ -67,7 +70,55 @@ header {
   border-radius: 8px;
   margin-right: 50px;
 }
+.user-profile-icon{
+  margin: 10px;
+  width: 50px;
+  height: 50px;
+}
+.user-profile-icon img{
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.user-profile-container {
+  position: relative;
+  display: inline-block;
+}
 
+
+
+.dropdown-menu3 {
+  display: none;
+  position: absolute;
+  top: 50px; /* Position it below the icon */
+  right: 0;
+  background-color: white;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.dropdown-menu3 a {
+  /* display: block; */
+  padding: 10px 20px;
+  text-decoration: none;
+  color: black;
+}
+
+.dropdown-menu3 a:hover {
+  background-color: #f1f1f1;
+}
+.down{
+  display: flex;
+  flex-direction: row;
+  font-family: "Poppins",sans-serif;
+}
+.down img{
+  
+  margin-right: 10px;
+}
 .login-button1 {
   background-color: black;
   color: white;
@@ -228,6 +279,8 @@ nav {
   }
   .sep {
       display: flex;
+      flex-direction: row;
+      align-items: center;
   }
   .menu-icon {
       display: block;

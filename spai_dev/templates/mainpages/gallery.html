@@ -23,7 +23,8 @@
     </div>
     <div class="news-containers">
         {% for images in galleries %}
-        <div class="news-container">
+        <a style="text-decoration: none; color: inherit;" href="{% url 'gallery_detail' images.id %}">
+        <div class="news-container" style="height: 300px;">
             <div class="news-img">
                 <div class="news-new">
                     {{ images.upload_date|date:"d" }} {{ images.upload_date|date:"F" }}
@@ -43,14 +44,15 @@
             <div class="news-head">
                 {{ images.image_name }}
             </div>
-            <a style="text-decoration: none; color: inherit;" href="{% url 'gallery_detail' images.id %}">
+            <!-- <a style="text-decoration: none; color: inherit;" href="{% url 'gallery_detail' images.id %}">
                 <div class="news-read">
                     <p>Read</p>
                     <img class="default-image" src="{% static 'image/arrowread.svg' %}" alt="">
                     <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
                 </div>
-            </a>
+            </a> -->
         </div>
+    </a>
         {% endfor %}
     </div>
     <div style="display: flex; justify-content: center;width: 100%;">
