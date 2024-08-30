@@ -20,7 +20,7 @@
             {% else %}
             <div class="user-profile-container">
                 <div class="user-profile-icon" id="userProfileIcon">
-                    <img src="{% static 'image/member2.png' %}" alt="User Profile">
+                    <img src="{% static 'image/profilecheck.svg' %}" alt="User Profile">
                 </div>
                 <div class="dropdown-menu3" id="dropdownMenu3">
                     <a class="down" href="{% url 'individual_user_details' request.user.slug_value %}">
