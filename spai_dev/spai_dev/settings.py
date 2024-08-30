@@ -1,8 +1,5 @@
-
-
 import os
 from pathlib import Path
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -16,7 +13,7 @@ SECRET_KEY = 'django-insecure-5qhlplha*3#*!4lv$)$de2_($ky+lo^^q-!l8%qb1wqk61d=!i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.1.4','127.0.0.1']
+ALLOWED_HOSTS = ['akshaykr99.pythonanywhere.com']
 
 # Application definition
 
@@ -45,7 +42,7 @@ ROOT_URLCONF = 'spai_dev.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -77,11 +74,14 @@ WSGI_APPLICATION = 'spai_dev.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'db_2',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': '127.0.0.1',
+        'NAME': 'akshaykr99$default',
+        'USER': 'akshaykr99',
+        'PASSWORD': 'spai@123',
+        'HOST': 'akshaykr99.mysql.pythonanywhere-services.com',
         'PORT': '3306',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        }
     }
 }
 
@@ -168,7 +168,6 @@ ADMIN_ROLE_VALUE = 1
 MEMBER_ROLE_VALUE = 2
 ROLE_CHOICES = ((ADMIN_ROLE_VALUE, "ADMIN"), (MEMBER_ROLE_VALUE, "MEMBER"))
 
-
 QR_CODE = 1
 BANK_TRANSFER = 2
 PAYMENT_TYPE = ((QR_CODE, "QR CODE"), (BANK_TRANSFER, "BANK TRANSFER"))
@@ -206,7 +205,6 @@ STATE_CHOICES = [
     ("Uttarakhand", "Uttarakhand"),
     ("West Bengal", "West Bengal")
 ]
-
 
 # login session info
 SESSION_COOKIE_AGE = 43200
