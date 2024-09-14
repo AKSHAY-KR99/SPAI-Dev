@@ -61,15 +61,15 @@ def get_next_step(status):
 # Views
 def index(request):
     now = timezone.now()
-    upcoming_events = list(EventManagement.objects.filter(datetime__gte=now).order_by('datetime')[:3])
-    if len(upcoming_events) < 3:
-        remaining_slots = 3 - len(upcoming_events)
+    upcoming_events = list(EventManagement.objects.filter(datetime__gte=now).order_by('datetime')[:5])
+    if len(upcoming_events) < 5:
+        remaining_slots = 5 - len(upcoming_events)
         past_events = list(EventManagement.objects.filter(datetime__lt=now).order_by('-datetime')[:remaining_slots])
         upcoming_events.extend(past_events)
     context = {
         'upcoming_events': upcoming_events,
     }
-    return render(request, 'mainpages/home.html', context)
+    return render(request, 'mainpages/new_home.html', context)
     # return render(request, 'members/members.html', context)
     # return render(request, 'members/payment_page.html', context)
 
@@ -129,7 +129,11 @@ def gallery(request):
 
 def gallery_list(request):
     galleries = GalleryManagement.objects.all()
-    return render(request, 'mainpages/gallery.html', {'galleries': galleries})
+    page_number = request.GET.get('page', 1)
+    paginator = Paginator(galleries, 9)
+    page_obj = paginator.get_page(page_number)
+    context={'galleries': galleries,'page_obj':page_obj}
+    return render(request, 'mainpages/gallery.html',context )
 
 
 def gallery_detail(request, pk):
@@ -138,7 +142,7 @@ def gallery_detail(request, pk):
     return render(request, 'mainpages/gallery_detail.html', {'gallery': gallery, 'images': images})
 
 
-@admin_only
+
 def gallery_create(request):
     if request.method == 'POST':
         title = request.POST.get('title')

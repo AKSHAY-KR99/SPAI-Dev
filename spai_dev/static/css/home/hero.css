@@ -1,0 +1,273 @@
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+  }
+  
+ 
+  /*Hero***************************************************************/
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+  }
+  
+  .hero-pic {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .full-width-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.5s;
+  }
+  
+  .full-width-img:not(:first-child) {
+    opacity: 0;
+  }
+  
+  .full-width-img.active {
+    opacity: 1;
+  }
+  
+  @keyframes floatUp {
+    from {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+  }
+  
+  .hero-texts {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 1;
+  }
+  
+  .hero-text {
+    display: none;
+    font-size: 3.6%;
+    margin-bottom: 20px;
+    font-weight: 500; /* Increased font weight */
+  }
+  
+  .hero-text.active {
+    display: block;
+    animation: floatUp 1.5s ease-out forwards;
+  }
+  
+  .welcome {
+    width: auto;
+    height: 267.44px;
+    font-family: "Poppins", sans-serif;
+    font-size: 48px;
+    font-weight: 900;
+    line-height: 50px; /* Reduced line-height */
+    text-align: left;
+  }
+  
+  .spai {
+    width: 228px;
+    height: 144px;
+    top: 577.72px;
+    left: 152px;
+    gap: 0px;
+    opacity: 0px;
+    font-family: "Poppins", sans-serif;
+    font-size: 96px;
+    font-weight: 900;
+    line-height: 96px; /* Adjusted line-height */
+    text-align: left;
+    margin-top: -10px; /* Adjusted margin to reduce gap */
+  }
+  .grady {
+  position: absolute; /* Position the gradient overlay absolutely */
+  width: 100%; /* Make it span the full width of the hero container */
+  height: 291.7px; /* Adjust height as needed */
+  bottom: 0; /* Align it to the bottom of the hero container */
+  gap: 0px;
+  opacity: 0.5; /* Adjust opacity as needed */
+  background: linear-gradient(0deg, #000000 46.15%, rgba(0, 0, 0, 0) 96.1%);
+  
+  }
+  .jointoday {
+  width: 200.41px;
+  height: 50.74px;
+  margin-top: -60px; /* Adjust as needed */
+  background: rgba(0, 0, 0, 1);
+  border: 2px solid rgba(255, 255, 255, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  
+  }
+  
+  .jointodaytext {
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 30px;
+  text-align: center;
+  color: #ffffff; /* Ensure the text color contrasts with the background */
+  opacity: 1; /* Set opacity to fully visible */
+  }
+  .vertical-line {
+    position: absolute;
+    top: 60%;
+    transform: translateY(-50%);
+    right: 50px;
+    width: 4px;
+    height: 70%;
+    background-color: #fff;
+    z-index: 1;
+    border: none;
+  }
+  .downarrow{
+    width: 17.01px;
+    height: 19px;
+    gap: 0px;
+    opacity: 0px;
+    margin-left: 50%;
+    margin-top: 90px; /* Adjust as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .dot {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: #fff;
+  }
+  
+  .above {
+    top: -15px;
+    right: 0;
+  }
+  
+  .below {
+    bottom: -15px;
+    right: 0;
+  }
+  
+  .math {
+    width: 100%;
+    height: auto;
+    top: 780px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    background: rgba(253, 252, 252, 1);
+    z-index: 2;
+  }
+  .math-text{
+    justify-content: space-between; 
+    flex-direction: column;
+    display: flex;
+  }
+  .math-title{
+    width: auto;
+    height: 24px;
+    margin-top: 30px;
+    gap: 0px;
+    opacity: 0px;
+    font-family: "Poppins",sans-serif;
+    font-size: 16px;
+    font-weight: 400px;
+    line-height: 24px;
+    text-align: center;
+      
+  }
+  .math-num{
+    width: 139px;
+    height: 72px;
+    margin-top: 0px;
+    margin-left: 60px;
+    gap: 0px;
+    opacity: 0px;
+    font-family: "Poppins",sans-serif;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 72px;
+    text-align: left;
+      
+  }
+  
+  .verti {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 25%;
+    width: 4px;
+    height: 80%;
+    background-color: rgba(218, 218, 218, 1);
+    z-index: 1;
+    border: none;
+    border-radius: 50%;
+  }
+  
+    /*********************************/
+@media (max-width: 768px){
+    .hero-texts {
+        width: 80%;
+    }
+    .hero-text {
+        font-size: 24px;
+    }
+    .welcome, .spai {
+        font-size: 36px;
+        line-height: 40px;
+    }
+    .math {
+        display: none;
+    }
+}
+@media (min-width: 800px){
+    .welcome{
+      margin-left: -400px;
+    }
+    .jointoday{
+      margin-left: -400px;
+    }
+  
+  }
+  @media (min-width: 1240px) {
+    /* Desktop devices 1024*/
+   
+   
+   .welcome{
+     margin-left: -600px;
+   }
+   .jointoday{
+     margin-left: -600px;
+   }
+   .math {
+       width: 963.25px;
+       height: 151.09px;
+       top: 780px; /* Adjust the top position */
+       left: 50%; /* Center horizontally, but need to adjust for width */
+       transform: translateX(-50%); /* Center horizontally */
+       position: absolute; /* or relative, depending on your needs */
+       gap: 0px;
+       opacity: 1; /* Change to 1 if you want it fully visible */
+       background: rgba(253, 252, 252, 1);
+     
+       z-index: 2;
+     }
+   
+   }
