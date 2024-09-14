@@ -1,0 +1,648 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block cssfiles %}
+<link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/home/about.css' %}">
+<link rel="stylesheet" href="{% static 'css/home/assosiate.css' %}">
+<link rel="stylesheet" href="{% static 'css/home/executive.css' %}">
+<link rel="stylesheet" href="{% static 'css/home/hero.css' %}">
+<link rel="stylesheet" href="{% static 'css/home/news.css' %}">
+<!-- Add SwiperJS styles -->
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+<!-- Add SwiperJS script -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+{% endblock %}
+{% block header %}
+{% include 'header.html' %}
+{% endblock %}
+{% block content %}
+{% if request.user.is_authenticated and request.user.status == 'user_created' %}
+<div class="complete-profile">
+    <div class="information-text">
+        <p> <span>Hi {{request.user.first_name}} {{request.user.last_name}}, </span><br>
+        <a href="{% url 'user_profile_details' %}" style="text-decoration: none;">click here</a> to complete your profile.
+        </p>
+    </div>
+</div>
+{% endif %}
+<div class="hero">
+    <div class="hero-pic">
+        <img class="full-width-img" src="{% static 'image/swim.png' %}" alt="Image 1">
+        <img class="full-width-img" src="{% static 'image/track.png' %}" alt="Image 2">
+
+        <div class="vertical-line">
+            <span class="dot above" style="top: -2px;"></span>
+            <span class="dot above"></span>
+            <span class="dot above" style="top: -30px;"></span>
+            <span class="dot above" style="top: -45px;"></span>
+            <span class="dot below" style="bottom: -2px "></span>
+            <span class="dot below"></span>
+
+        </div>
+    </div>
+    <div class="hero-texts">
+        <div class="hero-text active">
+            <div class="welcome">
+                WELCOME<br>
+                TO<br>
+                <div class="spai">SPAI</div>
+            </div>
+            <a style="text-decoration: none; color: inherit;" href="">
+                <div class="jointoday">
+                    <div class="jointodaytext">
+                        Learn More
+                    </div>
+                </div>
+            </a>
+            <div class="downarrow">
+                <img src="{% static 'image/doubledownarroow.svg' %}" alt="">
+            </div>
+        </div>
+        <div class="hero-text">
+            <div class="welcome">
+                <div class="spai">JOIN
+                    SPAI
+                </div>
+            </div>
+            <a style="text-decoration: none; color: inherit;" href="">
+                <div class="jointoday">
+                    <a href="{% url 'user_registration' %}" style="text-decoration: none;"> <div class="jointodaytext">
+                        Join Today
+                    </div> </a>
+                </div>
+            </a>
+            <div class="downarrow">
+                <img src="{% static 'image/doubledownarroow.svg' %}" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="grady"></div>
+</div>
+<div class="math">
+    <div class="math-text">
+        <div style="display: flex;gap: 40px;">
+            <div style="justify-content: center;">
+                <div class="math-title">Athletes</div>
+                <div class="math-num">1900+</div>
+            </div>
+            <div>
+                <div class="math-title">Experts</div>
+                <div class="math-num">45+</div>
+            </div>
+            <div>
+                <div class="math-title">Professionals</div>
+                <div class="math-num">35+</div>
+            </div>
+            <div>
+                <div class="math-title">LIFETIME MEMBERS</div>
+                <div class="math-num">700+</div>
+            </div>
+        </div>
+
+    </div>
+    <span class="verti"></span>
+    <span class="verti" style="right: 50%;"></span>
+    <span class="verti" style="right: 75%;"></span>
+
+</div>
+<div class="news">
+    <div class="news-title">
+        News & Events
+    </div>
+    <div class="swiper news-containers">
+        
+            <div class="swiper-wrapper" style="margin-bottom: 30px;">
+                {% for event in upcoming_events %}
+                <div class="swiper-slide">
+                    <div class="news-container">
+                        <div class="news-img">
+                            <div class="news-new">{{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }}</div>
+                            <img src="{{ event.image.url }}" alt="">
+                        </div>
+                        <div class="news-dis">
+                            {{ event.datetime }}
+                        </div>
+                        <div class="news-head" style="text-transform: uppercase;">
+                            {{ event.title }}
+                        </div>
+                        <a style="text-decoration: none; color: inherit;" href="{% url 'news_detail' event.id %}">
+                            <div class="news-read">
+                                <p>Read</p>
+                                <img class="default-image" src="{% static 'image/arrowread.svg' %}" alt="">
+                                <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="swiper-slide">
+                    <div class="news-container">
+                        <div class="news-img">
+                            <div class="news-new">NEW</div>
+                            <img src="{% static 'image/news-4.png' %}" alt="">
+                        </div>
+                        <div class="news-dis">
+                            2 Days Ago
+                        </div>
+                        <div class="news-head">
+                            GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
+                        </div>
+                        <div class="news-read">
+                            <p>Read</p>
+                            <img src="{% static 'image/arrowread.svg' %}" alt="">
+                            <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="news-container">
+                        <div class="news-img">
+                            <div class="news-new">NEW</div>
+                            <img src="{% static 'image/news-5.png' %}" alt="">
+                        </div>
+                        <div class="news-dis">
+                            2 Days Ago
+                        </div>
+                        <div class="news-head">
+                            GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
+                        </div>
+                        <div class="news-read">
+                            <p>Read</p>
+                            <img src="{% static 'image/arrowread.svg' %}" alt="">
+                            <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="news-container">
+                        <div class="news-img">
+                            <div class="news-new">NEW</div>
+                            <img src="{% static 'image/news-6.png' %}" alt="">
+                        </div>
+                        <div class="news-dis">
+                            2 Days Ago
+                        </div>
+                        <div class="news-head">
+                            GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
+                        </div>
+                        <div class="news-read">
+                            <p>Read</p>
+                            <img src="{% static 'image/arrowread.svg' %}" alt="">
+                            <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="news-container">
+                        <div class="news-img">
+                            <div class="news-new">NEW</div>
+                            <img src="{% static 'image/news-7.png' %}" alt="">
+                        </div>
+                        <div class="news-dis">
+                            2 Days Ago
+                        </div>
+                        <div class="news-head">
+                            GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
+                        </div>
+                        <div class="news-read">
+                            <p>Read</p>
+                            <img src="{% static 'image/arrowread.svg' %}" alt="">
+                            <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <!-- <div class="swiper-slide">
+                    <div class="news-container">
+                        <div class="news-img">
+                            <div class="news-new">NEW</div>
+                            <img src="{% static 'image/news1.png' %}" alt="">
+                        </div>
+                        <div class="news-dis">
+                            2 Days Ago
+                        </div>
+                        <div class="news-head">
+                            GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
+                        </div>
+                        <div class="news-read">
+                            <p>Read</p>
+                            <img src="{% static 'image/arrowread.svg' %}" alt="">
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="news-container">
+                        <div class="news-img">
+                            <img src="{% static 'image/news1.png' %}" alt="">
+                        </div>
+                        <div class="news-dis">
+                            2 Days Ago
+                        </div>
+                        <div class="news-head">
+                            GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
+                        </div>
+                        <div class="news-read">
+                            <p>Read</p>
+                            <img src="{% static 'image/arrowread.svg' %}" alt="">
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="news-container">
+                        <div class="news-img">
+                            <img src="{% static 'image/news1.png' %}" alt="">
+                        </div>
+                        <div class="news-dis">
+                            2 Days Ago
+                        </div>
+                        <div class="news-head">
+                            GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
+                        </div>
+                        <div class="news-read">
+                            <p>Read</p>
+                            <img src="{% static 'image/arrowread.svg' %}" alt="">
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="news-container">
+                        <div class="news-img">
+                            <img src="{% static 'image/news1.png' %}" alt="">
+                        </div>
+                        <div class="news-dis">
+                            2 Days Ago
+                        </div>
+                        <div class="news-head">
+                            GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
+                        </div>
+                        <div class="news-read">
+                            <p>Read</p>
+                            <img src="{% static 'image/arrowread.svg' %}" alt="">
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="news-container">
+                        <div class="news-img">
+                            <img src="{% static 'image/news1.png' %}" alt="">
+                        </div>
+                        <div class="news-dis">
+                            2 Days Ago
+                        </div>
+                        <div class="news-head">
+                            GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
+                        </div>
+                        <div class="news-read">
+                            <p>Read</p>
+                            <img src="{% static 'image/arrowread.svg' %}" alt="">
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="news-container">
+                        <div class="news-img">
+                            <img src="{% static 'image/news1.png' %}" alt="">
+                        </div>
+                        <div class="news-dis">
+                            2 Days Ago
+                        </div>
+                        <div class="news-head">
+                            GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
+                        </div>
+                        <div class="news-read">
+                            <p>Read</p>
+                            <img src="{% static 'image/arrowread.svg' %}" alt="">
+                        </div>
+                        
+                    </div>
+                </div> -->
+                
+                <!-- <div class="news-container">
+                    <div class="news-img">
+                        <img src="{% static 'image/news1.png' %}" alt="">
+                    </div>
+                    <div class="news-dis">
+                        2 Days Ago
+                    </div>
+                    <div class="news-head">
+                        GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
+                    </div>
+                    <div class="news-read">
+                        <p>Read</p>
+                        <img src="{% static 'image/arrowread.svg' %}" alt="">
+                    </div>
+                    
+                </div>
+                <div class="swiper-slide news-container">
+                    <div class="news-img">
+                        <img src="{% static 'image/news1.png' %}" alt="">
+                    </div>
+                    <div class="news-dis">
+                        2 Days Ago
+                    </div>
+                    <div class="news-head">
+                        GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
+                    </div>
+                    <div class="news-read">
+                        <p>Read</p>
+                        <img src="{% static 'image/arrowread.svg' %}" alt="">
+                    </div>
+                    
+                </div>
+                <div class="swiper-slide news-container">
+                    <div class="news-img">
+                        <img src="{% static 'image/news1.png' %}" alt="">
+                    </div>
+                    <div class="news-dis">
+                        2 Days Ago
+                    </div>
+                    <div class="news-head">
+                        GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
+                    </div>
+                    <div class="news-read">
+                        <p>Read</p>
+                        <img src="{% static 'image/arrowread.svg' %}" alt="">
+                    </div>
+                    
+                </div>
+                <div class="swiper-slide news-container">
+                    <div class="news-img">
+                        <img src="{% static 'image/news1.png' %}" alt="">
+                    </div>
+                    <div class="news-dis">
+                        2 Days Ago
+                    </div>
+                    <div class="news-head">
+                        GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
+                    </div>
+                    <div class="news-read">
+                        <p>Read</p>
+                        <img src="{% static 'image/arrowread.svg' %}" alt="">
+                    </div>
+                    
+                </div>
+                <div class="swiper-slide news-container">
+                    <div class="news-img">
+                        <img src="{% static 'image/news1.png' %}" alt="">
+                    </div>
+                    <div class="news-dis">
+                        2 Days Ago
+                    </div>
+                    <div class="news-head">
+                        GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
+                    </div>
+                    <div class="news-read">
+                        <p>Read</p>
+                        <img src="{% static 'image/arrowread.svg' %}" alt="">
+                    </div>
+                    
+                </div> -->
+                
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <!-- <div class="swiper-button-prev"></div> -->
+          
+    </div>
+    <div style="display: flex; justify-content: center;width: 100%;">
+        <a style="text-decoration: none; color: inherit;" href="">
+            <div class="news-seemore">
+                <div class="seemoretext">
+                    See More
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+<div class="associate">
+    <div class="associate-title">
+        Associated partners
+    </div>
+    <div class="associate-containers">
+        <div class="associate-container">
+            <img src="{% static 'image/asso3.svg' %}" alt="">
+        </div>
+        <div class="associate-container">
+            <img src="{% static 'image/asso2.svg' %}" alt="">
+        </div>
+        <div class="associate-container">
+            <img src="{% static 'image/asso1.svg' %}" alt="">
+        </div>
+    </div>
+</div>
+<div class="about">
+    <div style="margin-top: 100px;" class="associate-title">
+        ABOUT US
+    </div>
+    <div class="about-content">
+        <div>
+            <div class="about-text">
+                <p>The first governing council was headed by Prof. Jitendra Mohan with M.L. Kamlesh as secretary general
+                    and H.A. Khan as finance secretary. Today, the organization is headed by Prof. N.S. Mann with Dilip
+                    K. Dureha in the driving seat. The SPAI has linkages with the International Society of Sport
+                    Psychology, and Asian South- Pacific Association of Sport Psychology, and proceeds on the way to
+                    progress in close co- operation with national sports associations, universities, Sports Authority of
+                    India, National Institute of Sports, and such as other institutions and organizations as would love
+                    to benefit from expert advice and service this body can render. Beginning with an ominous strength
+                    of 13, SPAI has grown in stature both vertically and horizontally. Today, it is proud to have a
+                    cadre strength of approximately 500 members from various shades of research, application and
+                    literary interests across the country. Several members of the Association have earned international
+                    recognition for their valuable contribution to the phenomenal growth of sport psychology as an
+                    athlete-and-coach friendly area of interaction</p>
+            </div>
+            <a style="text-decoration: none; color: inherit;" href="">
+                <div style="margin-left: 68px;margin-top: 150px; " class="news-seemore">
+                    <div class="seemoretext">
+                        See More
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="aboutimg">
+            <img src="{% static 'image/aboutrun.png' %}" alt="">
+        </div>
+    </div>
+
+</div>
+<div class="executive">
+    <div style="margin-top: 80px;" class="associate-title">
+        EXECUTIE BODY
+    </div>
+    <div class="swiper executie-containers">
+        <div class="swiper-wrapper" style="margin-bottom: 30px;">
+            <div class="swiper-slide">
+                <div class="executie-container">
+                    <div class="exe-img">
+                        <img src="{% static 'image/Kamalesh.png' %}" alt="">
+                    </div>
+                    <div class="exe-text">
+                        PROF M.L KAMLESH
+                        <img class="exe-email" src="{% static 'image/email.svg' %}" alt="">
+                        <img class="exe-phone" src="{% static 'image/Vector.svg' %}" alt="">
+                    </div>
+                    <div class="exe-posi">
+                        Patron
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="executie-container">
+                    <div class="exe-img">
+                        <img src="{% static 'image/sureshkutty.png' %}" alt="">
+                    </div>
+                    <div class="exe-text">
+                        SURESH KUTTY K
+                        <img class="exe-email" src="{% static 'image/email.svg' %}" alt="">
+                        <img class="exe-phone" src="{% static 'image/Vector.svg' %}" alt="">
+                    </div>
+                    <div class="exe-posi">
+                        Joint Secretary
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="executie-container">
+                    <div class="exe-img">
+                        <img src="{% static 'image/neetu.png' %}" alt="">
+                    </div>
+                    <div class="exe-text">
+                        DR. NEETU JOSHI
+                        <img class="exe-email" src="{% static 'image/email.svg' %}" alt="">
+                        <img class="exe-phone" src="{% static 'image/Vector.svg' %}" alt="">
+                    </div>
+                    <div class="exe-posi">
+                        Regional Secretary
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="executie-container">
+                    <div class="exe-img">
+                        <img src="{% static 'image/dureha.png' %}" alt="">
+                    </div>
+                    <div class="exe-text">
+                        PROF DILIP DUREHA
+                        <img class="exe-email" src="{% static 'image/email.svg' %}" alt="">
+                        <img class="exe-phone" src="{% static 'image/Vector.svg' %}" alt="">
+                    </div>
+                    <div class="exe-posi">
+                        President
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        
+    </div>
+</div>
+{% endblock %}
+
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}
+{% block jsfile %}
+<script>
+    var swiper = new Swiper('.news-containers', {
+        slidesPerView: 1.2, // You can set this to 'auto' for responsive slides
+        spaceBetween: 2,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+            478: {
+            slidesPerView: 1.5, // 2 slides on tablets
+            
+            },
+            580: {
+            slidesPerView: 1.8, // 2 slides on tablets
+            
+            },
+            680: {
+            slidesPerView: 2.2, // 2 slides on tablets
+            
+            },
+            768: {
+            slidesPerView: 2, // 2 slides on tablets
+            
+            },
+            879:{
+                slidesPerView: 2.3
+            },
+            980:{
+                slidesPerView: 2.6
+            },
+            1110: {
+            slidesPerView: 3.2, // 3 slides on desktops
+            
+            },
+        },
+        autoplay: {
+            delay: 3000, // Time between slides (in milliseconds)
+            disableOnInteraction: false, // Keeps autoplay active even after user interaction
+            
+        },
+        speed:400,
+        loop: true, // Enable loop mode if required
+    });
+    var swiper2 = new Swiper('.executie-containers', {
+        slidesPerView: 1, // You can set this to 'auto' for responsive slides
+        spaceBetween: 2,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+            400:{
+                slidesPerView: 1.5,
+            },
+            480:{
+                slidesPerView: 1.8,
+            },
+            580:{
+                slidesPerView: 2.2,
+            },
+            679:{
+                slidesPerView: 2.5,
+            },
+            863:{
+                slidesPerView: 3,
+            },
+            951:{
+                slidesPerView: 3.3,
+            },
+            1137: {
+            slidesPerView: 4, // 3 slides on desktops
+            
+            },
+            
+        },
+        
+        speed:400,
+        // loop: true, // Enable loop mode if required
+    });
+</script>
+    <script type="text/javascript" src="{% static 'js/new_home.js' %}"></script>   
+{% endblock %}
