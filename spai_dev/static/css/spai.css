@@ -1794,3 +1794,8 @@ input::placeholder{
   max-width: 50%;
   height: auto;
 }
+
+.required-star{
+  color: red;
+  font-size: 15px;
+}
