@@ -3,3 +3,9 @@ media/user_detail/
 media/gallery_images/
 
 media/SPAI/
+
+spai_app/__pycache__/
+
+spai_app/migrations/__pycache__/
+
+**/__pycache__/
