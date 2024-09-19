@@ -1,7 +1,7 @@
 from django.utils import timezone
 import datetime
 import os
-
+from django.contrib import messages
 import pdfkit
 
 from django.conf import settings
@@ -172,6 +172,33 @@ def gallery_delete(request, pk):
     gallery.delete()
     return redirect('gallery_list')
 
+def delete_gallery_image(request, image_id):
+
+    # Get the image object or return a 404 if not found
+    obj = GalleryImage.objects.get(pk=image_id)
+    gallery_id = obj.gallery.pk  # Save gallery ID to redirect back later
+
+    # Delete the image file
+    obj.delete()
+
+    # Add a success message
+    messages.success(request, 'Image deleted successfully.')
+
+    # Redirect back to the gallery detail page
+    return redirect('gallery_detail', pk=gallery_id)
+
+def add_gallery_image(request, gallery_id):
+    gallery = get_object_or_404(GalleryManagement, id=gallery_id)
+    
+    if request.method == 'POST' and request.FILES['image']:
+        image = request.FILES['image']
+        # Create a new GalleryImage object
+        new_image = GalleryImage.objects.create(gallery=gallery, images=image)
+        new_image.save()
+        messages.success(request, 'Image added successfully.')
+        return redirect('gallery_detail', pk=gallery_id)
+    
+    return redirect('gallery_detail', pk=gallery_id)
 
 def news(request):
     all_events = EventManagement.objects.all().order_by('-id')
@@ -204,16 +231,21 @@ def news_detail(request, pk):
         past_events = list(
             EventManagement.objects.filter(datetime__lt=event_object.datetime).order_by('-datetime')[:remaining_slots])
         upcoming_events.extend(past_events)
+    if GalleryManagement.objects.filter(event=event_object).exists():
+        gallery = GalleryManagement.objects.get(event=event_object)
+    else:
+        gallery = None 
     context = {
         "event": event_object,
         'related_events': upcoming_events,
+        "gallery":gallery
     }
     return render(request, 'mainpages/news_details.html', context)
 
 
-@admin_only
+
 def eventadd(request):
-    if request.method == 'POST' and request.user.user_role == settings.ADMIN_ROLE_VALUE:
+    if request.method == 'POST':
         title = request.POST['title']
         image = request.FILES['image']
         datetime = request.POST['datetime']
@@ -221,7 +253,7 @@ def eventadd(request):
         description = request.POST.get('description', '')
         registration_link = request.POST.get('registration_link', '')
 
-        EventManagement.objects.create(
+        event=EventManagement.objects.create(
             title=title,
             image=image,
             datetime=datetime,
@@ -229,6 +261,22 @@ def eventadd(request):
             description=description,
             registration_link=registration_link
         )
+        # Check if the checkbox for multiple images is checked
+        if 'multipleImagesCheck' in request.POST:
+            gallery = GalleryManagement.objects.create(
+                image=image,
+                upload_date=datetime,
+                image_name=title,
+                description=description,
+                event=event,
+                place=location   
+            )
+            
+            # Handle multiple images upload
+            multiple_images = request.FILES.getlist('multiple_images')
+            GalleryImage.objects.create(gallery=gallery, images=image)
+            for image_file in multiple_images:
+                GalleryImage.objects.create(gallery=gallery, images=image_file)
         return redirect('news')  # Redirect to a success page after creation
 
     return render(request, 'admin/eventadd.html')

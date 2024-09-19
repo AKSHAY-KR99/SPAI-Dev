@@ -73,7 +73,7 @@ class GalleryImage(models.Model):
 
     def delete(self, *args, **kwargs):
         # Delete the image file from the local directory
-        os.remove(self.image.path)
+        os.remove(self.images.path)
         super(GalleryImage, self).delete(*args, **kwargs)
 
 
