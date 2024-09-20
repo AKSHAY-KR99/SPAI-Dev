@@ -11,6 +11,8 @@ urlpatterns = [
     path('gallery/create/', views.gallery_create, name='gallery_create'),
     # path('gallery/<int:pk>/update/', views.gallery_update, name='gallery_update'),
     path('gallery/delete/<int:pk>/', views.gallery_delete, name='gallery_delete'),
+    path('gallery/image/delete/<int:image_id>/', views.delete_gallery_image, name='delete_gallery_image'),
+     path('gallery/image/add/<int:gallery_id>/', views.add_gallery_image, name='add_gallery_image'),
 
     path('news/', views.news, name="news"),
     path('news/<int:pk>/', views.news_detail, name="news_detail"),
@@ -28,7 +30,7 @@ urlpatterns = [
     path('user/admin/approve/<str:slug>', views.admin_approval, name='user_approval'),
     path('user/admin/reject/<str:slug>', views.admin_rejection, name='user_reject'),
     path('certificate/<str:slug>', views.certificate, name='certificate'),
-    path('gallery/delete/<int:id>', views.delete_gallery_item, name='galleryimagedelete'),
+    
     path('user/payment/<str:slug>', views.payment_model, name='payment_model'),
 
     # error pages

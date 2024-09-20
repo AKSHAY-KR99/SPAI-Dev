@@ -19,6 +19,11 @@
     <div class="news-content">
         <div class="news-details">
             <div class="news-detail-img">
+                {% if gallery %}
+                <a href="{% url 'gallery_detail' gallery.id %}">
+                    <div class="news-new-detail">More Images <img src="{% static 'image/arrowreadwhite.svg' %}" alt=""></div>
+                </a>
+                {% endif %}
                 <img src="{{ event.image.url }}" alt="">
             </div>
             <div class="news-detail-content">

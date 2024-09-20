@@ -46,6 +46,18 @@
                 <label for="registration_link">Registration Link:</label>
                 <input type="url" id="registration_link" name="registration_link" placeholder="http://example.com" maxlength="200">
             </div>
+            <!-- Add Checkbox to Show Multiple Image Upload -->
+            <div class="form-group">
+                <label for="multipleImagesCheck">Would you like to feature this in the gallery?</label>
+                <input type="checkbox" id="multipleImagesCheck" name="multipleImagesCheck" onchange="toggleMultipleImageUpload()">
+            </div>
+
+            <!-- Multiple Image Upload Field (Initially Hidden) -->
+            <div class="form-group" id="multipleImageField" style="display: none;">
+                <label for="multiple_images">Upload Multiple Images:</label>
+                <input type="file" id="multiple_images" name="multiple_images" accept="image/*" multiple>
+                <small>Upload multiple images if needed.</small>
+            </div>
             <div class="form-group">
                 <button type="submit" class="btn-submit">Create</button>
             </div>
@@ -62,4 +74,16 @@
 {% endblock %}
 {% block jsfile %}
 <script type="text/javascript" src="{% static 'js/sub/eventadd.js' %}"></script>   
+<script>
+    function toggleMultipleImageUpload() {
+        var checkbox = document.getElementById("multipleImagesCheck");
+        var multipleImageField = document.getElementById("multipleImageField");
+        
+        if (checkbox.checked) {
+            multipleImageField.style.display = "block";
+        } else {
+            multipleImageField.style.display = "none";
+        }
+    }
+</script>
 {% endblock %}

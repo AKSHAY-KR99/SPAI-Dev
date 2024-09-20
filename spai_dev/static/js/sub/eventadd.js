@@ -3,6 +3,16 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelector('.navbar').classList.toggle('active');
     });
 });
+function toggleMultipleImageUpload() {
+    var checkbox = document.getElementById("multipleImagesCheck");
+    var multipleImageField = document.getElementById("multipleImageField");
+    
+    if (checkbox.checked) {
+        multipleImageField.style.display = "block";
+    } else {
+        multipleImageField.style.display = "none";
+    }
+}
 document.getElementById('eventForm').addEventListener('submit', function(event) {
     let isValid = true;
 
