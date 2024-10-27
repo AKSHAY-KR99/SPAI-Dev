@@ -1,0 +1,32 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block cssfiles %}
+    <link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sub/content.css' %}">
+{% endblock %}
+
+{% block header %}
+    {% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="about-container" > 
+    <div class="about">
+        <h1>INTRODUCTION OF SPAI JOURNAL </h1>
+        <div class="about-content">
+            <p>SPAI has instituted two channels of communication. First, a newsletter to highlight its achievements for the information of the members as well as the academic world in the country. After a few issues, limited resources did not allow it to be published anymore, at least for the time being. Second, after a persistent discussion and debate over years, SPAI launched its own journal named Indian Journal of Sport Psychology in January at the XXII National Conference of Sport Psychology in Irinjalakuda, Trissur, Kerala in January 2013. M. L. Kamlesh was persuaded to take up the responsibility of being its editor-in-chief with a five-member editorial board. Notwithstanding the initial teething troubles and continued hiccups especially on three accounts: (i) financial management, (ii) hesitation of the research scholars to contribute research papers for publication, and (iii) status of the journal vis-à-vis other scientific journals published in India and abroad, only three issues could be published during 2013-14. Th effort is afoot to revive both publications.   </p>
+        </div>
+    </div>
+    
+</div>
+
+
+{% endblock %}
+
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock %}
+{% block jsfile %}
+<script type="text/javascript" src="{% static 'js/sub/news.js' %}"></script>   
+{% endblock %}

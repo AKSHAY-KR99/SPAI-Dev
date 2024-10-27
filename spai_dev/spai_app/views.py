@@ -70,9 +70,19 @@ def index(request):
         'upcoming_events': upcoming_events,
     }
     return render(request, 'mainpages/new_home.html', context)
-    # return render(request, 'members/members.html', context)
-    # return render(request, 'members/payment_page.html', context)
+    #return render(request, 'static_pages/about/about.html', context)
+    #return render(request, 'members/payment_page.html', context)
 
+def about_page(request):
+    page=request.GET.get('page')
+    print(page)
+    if page=="about_spai":
+        return render(request, 'static_pages/about/about.html')
+def publications(request):
+    page=request.GET.get('page')
+    print(page)
+    if page=="about_spai_journal":
+        return render(request, 'static_pages/publications/spai_journel.html')
 
 def history(request):
     context = {'page': 'about', 'page2': 'history'}

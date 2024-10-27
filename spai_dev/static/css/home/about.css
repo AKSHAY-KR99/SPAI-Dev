@@ -1,14 +1,14 @@
 /*About.......................................*/
   
 .about-content{
-    flex-wrap: wrap;
+  background-image: url('../sub/running-2-bg.png');
     display: flex;
     justify-content: space-between;
-    margin-top: 30px;
+    margin-top: 10px;
     position: relative;
     width: 100%;
     height: auto;
-    background: rgba(249, 250, 252, 1);
+    /* background: rgba(249, 250, 252, 1); */
     padding: 40px; /* Add padding for better spacing */
     box-sizing: border-box;
     opacity: 0;
@@ -33,11 +33,11 @@
   }
   
   .about-text{
-    width: 567.69px;
+    text-indent: 5em;
+   
     height: auto;
     font-family: "Poppins",sans-serif;
     font-size: 16px;
-    margin-left: 10%;
     font-weight: 400;
     line-height: 24px;
     text-align: left;
@@ -47,11 +47,10 @@
   .aboutimg{
     width: auto;
     height: auto;
-    margin-left: 80px;
+    margin-left: 20px;
   }
-  .aboutimg img{
-    margin-top: 60px;
-    width: 100%;
+  .aboutimg img{  
+    width: 550px;
     height: auto;
   }
   .bg-running{
@@ -66,6 +65,26 @@
   
   
   }
+.about-seemore{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 268.41px;
+    height: 62.74px;
+    border: 2px 0px 0px 0px;
+    opacity: 0px;
+    background: rgba(0, 0, 0, 1);
+    border: 2px solid rgba(255, 255, 255, 1);
+  }
+  .about-seemoretext{
+    opacity: 1;
+    font-family: "Poppins",sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 30px;
+    text-align: center;
+    color: rgba(255, 255, 255, 1); 
+  }
    /*********************************************************/
   
 
@@ -77,11 +96,37 @@
   }
   
   @media (max-width: 768px) {
+    .about-seemore{
+        width: 180px;
+        height: 55px;
+      }
+      .about-seemoretext{
+        font-size: 15px;
+      }
     /* Mobile devices */
-    .aboutimg img{
-      display: none;
+    
+    .about-text{
+      width: 100%;
+    }
+    .about-content{
+      padding: 30px;
+    }
+    .about-content1{
+      padding: 20px;
     }
 
   
   }
-  
+  @media (max-width: 1058px){
+    .aboutimg img{
+      width: 400px;
+    }
+  }
+  @media (max-width: 900px){
+    .aboutimg img{
+      width: 100%;
+    }
+    .about-content{
+      flex-direction: column;
+    }
+  }

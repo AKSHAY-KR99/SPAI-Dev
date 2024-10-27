@@ -1,0 +1,35 @@
+
+.about-container{
+    height: auto;
+    background-image: url('./running-2-bg.png');
+    
+    background-repeat: no-repeat;
+    background-color: #F2F2ED;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    overflow-x: hidden;
+}
+.about{
+    border:3px solid rgba(255, 255, 255, 1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: mymove 5s infinite;
+    border-radius: 5px 100px 5px 100px;
+}
+@keyframes mymove {
+    50% {border: 3px solid black;}
+  }
+.about-content{
+    text-indent: 5em;
+    font-size: large;
+    line-height:35px;
+}
+@media (max-width: 768px){
+    .about-container{
+        padding: 0px;
+    }
+}
