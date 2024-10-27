@@ -265,6 +265,7 @@ background-color: black !important; /* Active bullet in orange */
           align-items: center;
           gap: 10px;
           width: 280px;
+          height: 330px;
       }
      
 }

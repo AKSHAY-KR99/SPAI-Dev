@@ -5,6 +5,9 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
+li{
+  list-style: none;
+}
 header {
   background-color: white;
   padding: 10px 20px;
@@ -88,10 +91,10 @@ header {
 
 
 
-.dropdown-menu3 {
+/* .dropdown-menu3 {
   display: none;
   position: absolute;
-  top: 50px; /* Position it below the icon */
+  top: 50px; 
   right: 0;
   background-color: white;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -101,7 +104,7 @@ header {
 }
 
 .dropdown-menu3 a {
-  /* display: block; */
+
   padding: 10px 20px;
   text-decoration: none;
   color: black;
@@ -109,7 +112,7 @@ header {
 
 .dropdown-menu3 a:hover {
   background-color: #f1f1f1;
-}
+} */
 .down{
   display: flex;
   flex-direction: row;
@@ -126,7 +129,10 @@ header {
   cursor: pointer;
   font-family: "Poppins", sans-serif;
   border-radius: 8px;
+  margin-right: 50px;
   display: none;
+  height: 30px;
+  
 }
 
 .menu-icon {
@@ -156,6 +162,9 @@ nav {
 
 .navbar li {
   position: relative;
+  display: flex;
+  font-weight: 400;
+  height: 30px;
 }
 
 .navbar a {
@@ -223,33 +232,67 @@ nav {
   display: block;
 }
 
+
 .dropdown-menu {
   display: none;
   position: absolute;
+  background-color: white;
   top: 100%;
-  left: 0;
-  background: white;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  z-index: 1000;
-  border-radius: 11px;
+  z-index: 100;
+  min-width: 200px; /* Set a minimum width */
+  padding: 0; /* Remove extra padding */
+  padding: 0px;
 }
+
 
 .dropdown-menu li {
-  width: 100%;
-}
+  padding-left: 20px;
+  padding-right: 20px;
+  align-items: center;
+  border: 1px solid rgba(218, 218, 218, 1);
+  padding-top: 10px;
+  padding-bottom: 10px;
 
+
+}
+.dropdown-menu li:hover::after {
+  width: 0%;
+}
 .dropdown-menu a {
   display: block;
-  padding: 10px;
   color: black;
   text-decoration: none;
+  
 }
 
-.dropdown-menu a:hover {
+.dropdown-menu li:hover {
   background: rgba(236, 236, 236, 1);
+}
+
+.side-down:hover .side {
+  display: block !important;
+}
+.side-downB:hover .dropdown-menu {
+  display: block !important;
+}
+.side{
+  top: 0% !important;
+  left: 100% !important;
+  display: none !important;
+}
+.sideB{
+  top: 0% !important;
+  left: 100% !important;
+  display: none !important;
+}
+.nav-arrow{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  
+}
+.nav-arrow img{
+  width: 7px;
 }
 @media (max-width: 498px){
   .sep{
@@ -288,11 +331,15 @@ nav {
   .navbar {
       display: none;
       flex-direction: column;
-      align-items: center;
+      /* align-items: center; */
       gap: 10px;
+      height: 100%;
   }
   .navbar.active {
       display: flex;
+  }
+  .navbar li:hover::after {
+    width: 0%;
   }
 }
 
@@ -312,10 +359,7 @@ nav {
       text-align: left;
       font-weight: 400;
   }
-  .dropdown-menu {
-      width: 100%;
-      height: 150.45px;
-  }
+
 }
 @media (min-width: 1240px) and (max-width: 1340px){
   .navbar{

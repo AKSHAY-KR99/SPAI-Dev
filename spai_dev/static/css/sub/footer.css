@@ -60,6 +60,17 @@ footer{
     text-decoration: none; 
     color: inherit;
   }
+  .social-pics{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+  }
+  .social-pics img{
+    width: 40px;
+    height: 40px;
+  }
   @media (max-width: 768px) {
 
   .footer-row{
