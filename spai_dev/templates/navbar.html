@@ -5,8 +5,8 @@
         <a href="#">ABOUT</a>
         <ul class="dropdown-menu">
             <li><a href="{% url 'about_page' %}?page=about_spai">About Spai</a></li>
-            <li><a href="#">Our mission</a></li>
-            <li><a href="{% url 'history' %}">History</a></li>
+            <li><a href="{% url 'about_page' %}?page=mission">Our mission</a></li>
+            <li><a href="{% url 'about_page' %}?page=history">History</a></li>
             <li class="side-down">
               <a class="nav-arrow" href="#">
                 <div style="display: flex;justify-content: space-between;">Leadership<img src="{% static 'image/triangle.svg' %}" alt=""></div>
@@ -20,8 +20,8 @@
                   <li><a href="#">Committees</a></li>
               </ul>
             </li>
-            <li><a href="#">Message from the President</a></li>
-            <li><a href="#">Message from the Secretary</a></li>
+            <li><a href="{% url 'about_page' %}?page=message_from_president">Message from the President</a></li>
+            <li><a href="{% url 'about_page' %}?page=message_from_secretary">Message from the Secretary</a></li>
         </ul>
     </li>
     <li class="dropdown">

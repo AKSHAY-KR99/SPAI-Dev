@@ -2,7 +2,7 @@
 {% load static %}
 {% block cssfiles %}
 <link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
-    <link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
 <link rel="stylesheet" href="{% static 'css/home/about.css' %}">
 <link rel="stylesheet" href="{% static 'css/home/assosiate.css' %}">
 <link rel="stylesheet" href="{% static 'css/home/executive.css' %}">
@@ -23,7 +23,8 @@
 <div class="complete-profile">
     <div class="information-text">
         <p> <span>Hi {{request.user.first_name}} {{request.user.last_name}}, </span><br>
-        <a href="{% url 'user_profile_details' %}" style="text-decoration: none;">click here</a> to complete your profile.
+            <a href="{% url 'user_profile_details' %}" style="text-decoration: none;">click here</a> to complete your
+            profile.
         </p>
     </div>
 </div>
@@ -71,9 +72,11 @@
             </div>
             <a style="text-decoration: none; color: inherit;" href="">
                 <div class="jointoday">
-                    <a href="{% url 'user_registration' %}" style="text-decoration: none;"> <div class="jointodaytext">
-                        Join Today
-                    </div> </a>
+                    <a href="{% url 'user_registration' %}" style="text-decoration: none;">
+                        <div class="jointodaytext">
+                            Join Today
+                        </div>
+                    </a>
                 </div>
             </a>
             <div class="downarrow">
@@ -115,32 +118,32 @@
         News & Events
     </div>
     <div class="swiper news-containers">
-        
-            <div class="swiper-wrapper" style="margin-bottom: 30px;">
-                {% for event in upcoming_events %}
-                <div class="swiper-slide">
-                    <div class="news-container">
-                        <div class="news-img">
-                            <div class="news-new">{{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }}</div>
-                            <img src="{{ event.image.url }}" alt="">
-                        </div>
-                        <div class="news-dis">
-                            {{ event.datetime }}
-                        </div>
-                        <div class="news-head" style="text-transform: uppercase;">
-                            {{ event.title }}
-                        </div>
-                        <a style="text-decoration: none; color: inherit;" href="{% url 'news_detail' event.id %}">
-                            <div class="news-read">
-                                <p>Read</p>
-                                <img class="default-image" src="{% static 'image/arrowread.svg' %}" alt="">
-                                <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
-                            </div>
-                        </a>
+
+        <div class="swiper-wrapper" style="margin-bottom: 30px;">
+            {% for event in upcoming_events %}
+            <div class="swiper-slide">
+                <div class="news-container">
+                    <div class="news-img">
+                        <div class="news-new">{{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }}</div>
+                        <img src="{{ event.image.url }}" alt="">
                     </div>
+                    <div class="news-dis">
+                        {{ event.datetime }}
+                    </div>
+                    <div class="news-head" style="text-transform: uppercase;">
+                        {{ event.title }}
+                    </div>
+                    <a style="text-decoration: none; color: inherit;" href="{% url 'news_detail' event.id %}">
+                        <div class="news-read">
+                            <p>Read</p>
+                            <img class="default-image" src="{% static 'image/arrowread.svg' %}" alt="">
+                            <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
+                        </div>
+                    </a>
                 </div>
-                {% endfor %}
-                <!-- <div class="swiper-slide">
+            </div>
+            {% endfor %}
+            <!-- <div class="swiper-slide">
                     <div class="news-container">
                         <div class="news-img">
                             <div class="news-new">NEW</div>
@@ -220,8 +223,8 @@
                         
                     </div>
                 </div> -->
-                
-                <!-- <div class="swiper-slide">
+
+            <!-- <div class="swiper-slide">
                     <div class="news-container">
                         <div class="news-img">
                             <div class="news-new">NEW</div>
@@ -330,8 +333,8 @@
                         
                     </div>
                 </div> -->
-                
-                <!-- <div class="news-container">
+
+            <!-- <div class="news-container">
                     <div class="news-img">
                         <img src="{% static 'image/news1.png' %}" alt="">
                     </div>
@@ -411,12 +414,12 @@
                     </div>
                     
                 </div> -->
-                
-            </div>
-            <div class="swiper-pagination"></div>
-            <div class="swiper-button-next"></div>
-            <!-- <div class="swiper-button-prev"></div> -->
-          
+
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <!-- <div class="swiper-button-prev"></div> -->
+
     </div>
     <div style="display: flex; justify-content: center;width: 100%;">
         <a style="text-decoration: none; color: inherit;" href="{% url 'news' %}">
@@ -453,38 +456,38 @@
                 <img src="{% static 'image/PRESIDENT.png' %}" alt="">
             </div>
             <div class="msg3">
-            <i>
-                <div class="content">Greetings from SPAI. <br>
-                    <p>I am excited to update you regarding the activities of Sports Psychology Association of India
-                        (SPAI). Ever since the formation of SPAI in 1985, the organisation has made its existence as
-                        per the objectives of the association. With more than 650 life members and four regional
-                        secretaries, SPAI looks forward to having a calendar of activities across the country to
-                        spread the message of SPAI and to build expertise and provide service of sports psychology
-                        to all budding sportspersons</p>
-                    <p>The SPAI annual conference brings in all applied practitioners who work across various
-                        professional fields and sports, where they share their expertise and best practices; provide
-                        professional exposure to upcoming sports psychologists, grow better job opportunities and
-                        provide networking for future directions in the practicing field.</p>
-                    <p>SPAI aims to spread awareness and knowledge and provide expert consultancy and services
-                        through its pioneering members, practitioners in the field and through academic programmes
-                        and resources through its publication unit and web resources. </p>
-                    <p>SPAI has in its future agenda to support young aspiring sports psychologist by providing
-                        internships and fellowships and awards for academic and research in the field. </p>
-                    <p>With plenty of new happenings proposed by the executive council of SPAI, we would continue to
-                        advance the organisational activity and the field of practice. We look forward for
-                        collaboration from institutions and like mined associations for mutually beneficial
-                        programme and action plans. </p>
-                    <p>Look forward for future updates on sports psychology and let us work together for better
-                        prosperity and success in the field</p>
+                <i>
+                    <div class="content">Greetings from SPAI. <br>
+                        <p>I am excited to update you regarding the activities of Sports Psychology Association of India
+                            (SPAI). Ever since the formation of SPAI in 1985, the organisation has made its existence as
+                            per the objectives of the association. With more than 650 life members and four regional
+                            secretaries, SPAI looks forward to having a calendar of activities across the country to
+                            spread the message of SPAI and to build expertise and provide service of sports psychology
+                            to all budding sportspersons</p>
+                        <p>The SPAI annual conference brings in all applied practitioners who work across various
+                            professional fields and sports, where they share their expertise and best practices; provide
+                            professional exposure to upcoming sports psychologists, grow better job opportunities and
+                            provide networking for future directions in the practicing field.</p>
+                        <p>SPAI aims to spread awareness and knowledge and provide expert consultancy and services
+                            through its pioneering members, practitioners in the field and through academic programmes
+                            and resources through its publication unit and web resources. </p>
+                        <p>SPAI has in its future agenda to support young aspiring sports psychologist by providing
+                            internships and fellowships and awards for academic and research in the field. </p>
+                        <p>With plenty of new happenings proposed by the executive council of SPAI, we would continue to
+                            advance the organisational activity and the field of practice. We look forward for
+                            collaboration from institutions and like mined associations for mutually beneficial
+                            programme and action plans. </p>
+                        <p>Look forward for future updates on sports psychology and let us work together for better
+                            prosperity and success in the field</p>
+                    </div>
+                </i>
+                <div style="width: 100%;display: flex;justify-content: end;">
+                    <div class='author'>Dr Anil Kharwande<br>
+                        President <br>
+                        Sports Psychology Association of India
+                    </div>
                 </div>
-            </i>
-            <div style="width: 100%;display: flex;justify-content: end;">
-                <div class='author'>Dr Anil Kharwande<br>
-                    President <br>
-                    Sports Psychology Association of India
-                </div>
-            </div>
-            
+
             </div>
         </div>
     </blockquote>
@@ -535,7 +538,14 @@
         </div>
         <div class="about2">
             <div class="about-text">
-                <p>The Sports Psychology Association of India (SPAI) is a professional organization dedicated to promoting the field of sports psychology in India. Its mission is to enhance athletic performance and mental well-being through the application of psychological principles in sports. Sports Psychology Association of India plays a crucial role in advancing research, providing training for professionals, and raising awareness about the importance of mental conditioning and psychological support in sports. It organizes workshops, conferences, and educational programs to foster collaboration among athletes, coaches, sports psychologists, and researchers across the country.  </p>
+                <p>The Sports Psychology Association of India (SPAI) is a professional organization dedicated to
+                    promoting the field of sports psychology in India. Its mission is to enhance athletic performance
+                    and mental well-being through the application of psychological principles in sports. Sports
+                    Psychology Association of India plays a crucial role in advancing research, providing training for
+                    professionals, and raising awareness about the importance of mental conditioning and psychological
+                    support in sports. It organizes workshops, conferences, and educational programs to foster
+                    collaboration among athletes, coaches, sports psychologists, and researchers across the country.
+                </p>
             </div>
             <a style="text-decoration: none; color: inherit;" href="{% url 'about_page' %}?page=about_spai">
                 <div style="margin-left: 68px;" class="about-seemore">
@@ -618,7 +628,7 @@
         <div class="swiper-pagination"></div>
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
-        
+
     </div>
 </div>
 {% endblock %}
@@ -642,38 +652,38 @@
         },
         breakpoints: {
             478: {
-            slidesPerView: 1.5, // 2 slides on tablets
-            
+                slidesPerView: 1.5, // 2 slides on tablets
+
             },
             580: {
-            slidesPerView: 1.8, // 2 slides on tablets
-            
+                slidesPerView: 1.8, // 2 slides on tablets
+
             },
             680: {
-            slidesPerView: 2.2, // 2 slides on tablets
-            
+                slidesPerView: 2.2, // 2 slides on tablets
+
             },
             768: {
-            slidesPerView: 2, // 2 slides on tablets
-            
+                slidesPerView: 2, // 2 slides on tablets
+
             },
-            879:{
+            879: {
                 slidesPerView: 2.3
             },
-            980:{
+            980: {
                 slidesPerView: 2.6
             },
             1110: {
-            slidesPerView: 3.2, // 3 slides on desktops
-            
+                slidesPerView: 3.2, // 3 slides on desktops
+
             },
         },
         autoplay: {
             delay: 3000, // Time between slides (in milliseconds)
             disableOnInteraction: false, // Keeps autoplay active even after user interaction
-            
+
         },
-        speed:400,
+        speed: 400,
         loop: true, // Enable loop mode if required
     });
     var swiper2 = new Swiper('.executie-containers', {
@@ -688,34 +698,34 @@
             prevEl: '.swiper-button-prev',
         },
         breakpoints: {
-            400:{
+            400: {
                 slidesPerView: 1.5,
             },
-            480:{
+            480: {
                 slidesPerView: 1.8,
             },
-            580:{
+            580: {
                 slidesPerView: 2.2,
             },
-            679:{
+            679: {
                 slidesPerView: 2.5,
             },
-            863:{
+            863: {
                 slidesPerView: 3,
             },
-            951:{
+            951: {
                 slidesPerView: 3.3,
             },
             1137: {
-            slidesPerView: 4, // 3 slides on desktops
-            
+                slidesPerView: 4, // 3 slides on desktops
+
             },
-            
+
         },
-        
-        speed:400,
+
+        speed: 400,
         // loop: true, // Enable loop mode if required
     });
 </script>
-    <script type="text/javascript" src="{% static 'js/new_home.js' %}"></script>   
+<script type="text/javascript" src="{% static 'js/new_home.js' %}"></script>
 {% endblock %}

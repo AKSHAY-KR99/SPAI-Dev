@@ -75,9 +75,16 @@ def index(request):
 
 def about_page(request):
     page=request.GET.get('page')
-    print(page)
     if page=="about_spai":
         return render(request, 'static_pages/about/about.html')
+    if page=="mission":
+        return render(request, 'static_pages/about/mission.html')
+    if page=="history":
+        return render(request, 'static_pages/about/history.html')
+    if page=="message_from_president":
+        return render(request, 'static_pages/about/msgpresident.html')
+    if page=="message_from_secretary":
+        return render(request, 'static_pages/about/msgsecretary.html')
 def publications(request):
     page=request.GET.get('page')
     print(page)

@@ -5,7 +5,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
-li{
+header li{
   list-style: none;
 }
 header {

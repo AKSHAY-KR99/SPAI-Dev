@@ -1,4 +1,6 @@
-
+.about-container p{
+    text-indent: 3rem;
+}
 .about-container{
     height: auto;
     background-image: url('./running-2-bg.png');
@@ -31,5 +33,248 @@
 @media (max-width: 768px){
     .about-container{
         padding: 0px;
+    }
+}
+.mission-top-row{
+    display: block;
+    text-align: center;
+}
+.m-v-container{
+    /* border: 1px solid black; */
+    background-image: url('./img/missionbg.jpg');   
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 40px;
+    padding: 20px;
+    background-color: white;
+}
+.vission{
+    background-image: url('./img/missionbg2.jpg');
+}
+.mission-icon img{
+    width: 40px;
+}
+.mission-icon{
+    display: flex;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+    border-radius: 50px;
+    margin-bottom: 10px;
+    background-color: white;
+}
+.m-v-container ol {
+    padding-left: 20px;       
+    margin-top: 10px;  
+      
+}
+.m-v-container ol li {
+    margin-bottom: 8px; 
+    color: inherit; 
+
+}
+.mission-vission {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+@media (max-width: 860px){
+    .mission-vission{
+        flex-direction: column;
+    }
+    .mission{
+        padding: 20px;
+    }
+}
+/* Fade-in for the main container */
+.about-container.mission {
+    animation: fadeIn 1s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Title animation */
+.mission-top-row h1 {
+    animation: slideInFromTop 1.5s ease-in-out forwards;
+    transform-origin: top;
+}
+
+@keyframes slideInFromTop {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Mission and Vision icon animation */
+/* .mission-icon img {
+    animation: iconPop 1.2s ease-out forwards;
+    opacity: 1; 
+}
+
+@keyframes iconPop {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+} */
+
+/* Cascading effect for list items */
+.m-v-container ol li {
+    animation: fadeSlideIn 0.6s ease forwards;
+    opacity: 1; /* Ensure visibility */
+    transform: translateX(0); /* Set back to default */
+}
+
+@keyframes fadeSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Zoom effect on hover without opacity */
+.m-v-container:hover {
+    transform: scale(1.01);
+    transition: transform 0.2s ease;
+}
+.m-v-container {
+    transform: scale(1);
+    transition: transform 0.2s ease-in; /* Slower hover-in */
+}
+.pic-on{
+    display: block;
+}
+.pic-off{
+    display: none;
+}
+.m-v-container:hover .pic-off{
+    display: block;
+}
+.m-v-container:hover .pic-on{
+    display: none;
+}
+
+.history-wrap{
+    padding: 50px;
+}
+.history{
+    flex-direction: column;
+    gap: 60px;
+}
+.history p{
+    line-height: 2rem;
+    font-size: 18px;
+    margin-top: 0px;
+}
+
+/* Container for table to add padding */
+.table-container {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Basic table styling */
+.styled-table {
+    width: 80%;
+    border-collapse: collapse;
+    font-size: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header styling */
+.styled-table thead tr {
+    background-color: #4CAF50;
+    color: #fff;
+    text-align: left;
+}
+
+/* Header cell styling */
+.styled-table th, .styled-table td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+/* Row styling */
+.styled-table tbody tr {
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.2s;
+}
+
+/* Hover effect on rows */
+.styled-table tbody tr{
+    background-color: #f1f1f1;
+}
+
+/* Alternate row color */
+.styled-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    .styled-table {
+        width: 100%;
+        font-size: 12px;
+    }
+    .styled-table th, .styled-table td {
+        padding: 10px;
+    }
+}
+.history .m-v-container{
+    background-image: none !important;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+.m-v-container:hover .run{
+    background-color: black;
+}
+@media (max-width: 860px){
+    .about-container.mission.history-wrap{
+        padding: 20px !important;
+    }
+}
+@media (max-width: 540px){
+    .history p{
+        font-size: 15px;
+    }
+    .styled-table {
+        width: 60%;
+
+    }
+    .history .m-v-container{
+        width: 400px;
+    }
+}
+@media (max-width: 460px){
+    .history .m-v-container{
+        width: 350px;
+    }
+}
+@media (max-width: 400px){
+    .history .m-v-container{
+        width: 300px;
     }
 }
