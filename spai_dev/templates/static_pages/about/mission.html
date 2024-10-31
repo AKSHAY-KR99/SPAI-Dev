@@ -1,0 +1,83 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block cssfiles %}
+<link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/content.css' %}">
+{% endblock %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="about-container mission">
+    <div class="mission-top-row">
+        <h1>MISSION AND VISION OF SPORTS PSYCHOLOGY ASSOCIATION OF INDIA</h1>
+        <p>The Sports Psychology Association of India (SPAI), like most professional organizations, likely has a mission
+            and vision aimed at promoting the field of sports psychology and supporting the mental well-being and
+            performance of athletes.</p>
+    </div>
+    <div class="mission-vission">
+        <div class="m-v-container">
+            <div style="display: flex;align-items: center;">
+                <div class="mission-icon">
+                    <img class="pic-on" src="{% static 'image/mission1.svg' %}" alt="">
+                    <img class="pic-off" src="{% static 'image/mission2.svg' %}" alt="">
+                </div>
+                <h3 style="margin-left: 10px;">Mission</h3>
+            </div>
+            The mission of the Sports Psychology Association of India (SPAI) is to:
+            <ol>
+                <li>Promote the field of Sports Psychology by fostering research, education and professional
+                    practice in
+                    Sports Psychology across India.</li>
+                <li>Enhance athlete performance and well-being by integrating psychological principles and
+                    techniques into sports training, coaching, and management.</li>
+                <li>Develop professional standards and provide certification, training and continuous education for
+                    sports psychologists, coaches, and other stakeholders in the sports ecosystem.</li>
+                <li>Collaborate with sports organizations to create mental training programs that improve focus,
+                    resilience, motivation, and emotional control in athletes.</li>
+                <li>Research and development, promoting research in the field of sports psychology and advancing
+                    scientific knowledge to benefit athletes and sports organization.</li>
+            </ol>
+        </div>
+        <div class="m-v-container vission">
+            <div style="display: flex;align-items: center;">
+                <div class="mission-icon">
+                    <img class="pic-on" src="{% static 'image/eye5.svg' %}" alt="">
+                    <img class="pic-off" src="{% static 'image/eye4.svg' %}" alt="">
+                </div>
+                <h3 style="margin-left: 10px;">Vision</h3>
+            </div>
+            The Vision of Sports psychology Association of India is to:
+            <ol>
+                <li>Be the leading authority in sports psychology in India, advancing the mental and emotional
+                    well-being
+                    of athletes and contributing to their holistic development.</li>
+                <li>Create a culture where sports psychology is recognized as essential to athletic success and is
+                    seamlessly integrated into all levels of sports training and competition.</li>
+                <li>Empower athletes to achieve their highest potential through scientifically supported psychological
+                    interventions, ensuring balanced performance and well-being.</li>
+                <li> Foster excellence in the field of sports psychology by developing highly skilled professionals who
+                    contribute to national and international sporting success.</li>
+                <li>Promote mental health and resilience in sports by increasing the awareness and application of sports
+                    psychology in abundant sports.</li>
+                <li>Building professional networks, creating a strong network of sports psychologist across India and
+                    fostering collaboration with international bodies to share best practices.
+                </li>
+            </ol>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}
+{% block jsfile %}
+<script type="text/javascript" src="{% static 'js/sub/news.js' %}"></script>
+{% endblock %}
