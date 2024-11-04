@@ -16,11 +16,14 @@
     {% for img in images %}
         <div class="gallery-item">
             <img src="{{ img.images.url }}" alt="{{ img.caption }}" onclick="openLightbox('{{ img.images.url }}')">
+            {% if request.user.user_role == 1 %}
             <a class="news-delete" href="{% url 'delete_gallery_image' img.id %}">delete</a>
+            {% endif %}
         </div>
     {% endfor %}
 
     <!-- File Input for Adding a New Gallery Image -->
+    {% if request.user.user_role == 1 %}
     <div class="gallery-item upload-item">
         <form method="POST" enctype="multipart/form-data" action="{% url 'add_gallery_image' gallery.id %}">
             {% csrf_token %}
@@ -30,6 +33,7 @@
             <input id="image-upload" type="file" name="image" accept="image/*" onchange="this.form.submit()" class="upload-input">
         </form>
     </div>
+    {% endif %}
 </div>
 
 <!-- Lightbox structure -->
