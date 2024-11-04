@@ -16,6 +16,7 @@ from django.core.paginator import Paginator
 from . import models, forms
 from .models import GalleryManagement, User, EventManagement, UserDetailModel,GalleryImage, PaymentModel
 from .decorators import admin_only, authenticated_only
+from .utils import render_to_pdf
 
 
 # Frequently used methods
@@ -438,15 +439,17 @@ def certificate(request, *args, **kwargs):
             user = User.objects.get(slug_value=request.user.slug_value)
         context = {"name": user.first_name, "email": user.email, "date": user.date_created,
                    "current_date": datetime.date.today(), "current_time": datetime.datetime.now().time()}
-        wkhtml_to_pdf = os.path.join(settings.BASE_DIR, "wkhtmltopdf.exe")
         template_path = 'pdf_template.html'
         template = get_template(template_path)
         html = template.render(context)
-        config = pdfkit.configuration(wkhtmltopdf=wkhtml_to_pdf)
-        pdf = pdfkit.from_string(html, False, configuration=config)
-        response = HttpResponse(pdf, content_type='application/pdf')
-        response['Content-Disposition'] = f'attachment; filename="{user.first_name}_certificate.pdf"'
-        return response
+        pdf = render_to_pdf(template_path, context)
+        if pdf:
+            response = HttpResponse(pdf, content_type='application/pdf')
+            filename = f"{user.username}_certificate.pdf"
+            content = f"inline; filename={filename}"
+            response['Content-Disposition'] = content
+            return response
+        return HttpResponse("Something went wrong..!")
     else:
         return redirect('login_page')
 
