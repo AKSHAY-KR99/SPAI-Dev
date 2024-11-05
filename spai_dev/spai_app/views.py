@@ -546,3 +546,21 @@ def create_or_update_life_member(request):
             serializer.save(upload_date=timezone.now(), update_date=timezone.now())
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@admin_only
+def life_members_get(request):
+    if request.user.user_role == settings.ADMIN_ROLE_VALUE:
+        members = LifeMembers.objects.all()
+        context = {'members': members}
+        return render(request, 'members/life_members.html', context)
+
+@admin_only
+def life_member_info(request, *args, **kwargs):
+    uid = kwargs.get("uid", None)
+    if request.user.user_role == settings.ADMIN_ROLE_VALUE:
+        context = {}
+        user_data = LifeMembers.objects.get(uid=uid)
+        context['user'] = user_data
+        return render(request, 'members/life_member_details.html', context)
+    else:
+        return redirect('login')

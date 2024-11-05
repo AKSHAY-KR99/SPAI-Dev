@@ -1,0 +1,68 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block cssfiles %}
+<link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/members.css' %}">
+{% endblock %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="content">
+    <div class="name">
+        <div class="num" onclick="window.history.back()">
+            <img src="{% static 'image/back.svg' %}" alt="">
+        </div>
+        <h1>{{user.name}}</h1>
+    </div>
+
+    <div class="details_container">
+        <div class="number">
+            <div class="num">
+                <p>01</p>
+            </div>
+        </div>
+        <div class="labels">
+            <p>Name</p>
+            <p>Email</p>
+            <p>Mobile</p>
+            <p>Address</p>
+            <p>Membership Date</p>
+            <p>Active Status</p>
+            <p>Upload Date</p>
+            <p>Update Date</p>
+
+        </div>
+        <div class="details">
+            <p>{{user.name}}</p>
+            <p>{{user.email}}</p>
+            <p>{{user.mobile}}</p>
+            <p>{{user.address}}</p>
+            <p>{{user.membership_date}}</p>
+            <p>{{user.active}}</p>
+            <p>{{user.upload_date}}</p>
+            <p>{{user.update_date}}</p>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}
+{% block jsfile %}
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('.menu-icon').addEventListener('click', function() {
+            document.querySelector('.navbar').classList.toggle('active');
+        });
+    });
+</script>
+{% endblock %}
+
