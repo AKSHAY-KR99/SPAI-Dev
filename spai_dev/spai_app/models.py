@@ -170,3 +170,17 @@ class PaymentModel(models.Model):
         if self.document:
             os.remove(self.document.path)
         super(PaymentModel, self).delete(*args, **kwargs)
+
+
+class LifeMembers(models.Model):
+    name = models.CharField(max_length=50, null=True, blank=True)
+    address = models.TextField(null=True, blank=True)
+    mobile = models.CharField(max_length=15, null=True, blank=True)
+    email = models.EmailField(max_length=50, null=True, blank=True)
+    membership_date = models.DateField(null=True, blank=True)
+    upload_date = models.DateTimeField(null=True, blank=True)
+    update_date = models.DateTimeField(null=True, blank=True)
+    is_expire = models.BooleanField(null=True, blank=True)
+
+    def __str__(self):
+        return str(self.name)
