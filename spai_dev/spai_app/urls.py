@@ -38,4 +38,8 @@ urlpatterns = [
 
     path('about', views.about_page, name='about_page'),
     path('publications', views.publications, name='publications'),
+
+    #rest api
+    path('life-members', views.create_or_update_life_member, name='life-members')
+
 ]

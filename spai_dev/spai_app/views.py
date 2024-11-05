@@ -1,9 +1,6 @@
-from django.utils import timezone
 import datetime
-import os
-from django.contrib import messages
-import pdfkit
 
+from django.contrib import messages
 from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 from django.forms import model_to_dict
@@ -17,11 +14,17 @@ from . import models, forms
 from .models import GalleryManagement, User, EventManagement, UserDetailModel,GalleryImage, PaymentModel
 from .decorators import admin_only, authenticated_only
 from .utils import render_to_pdf
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import status
+from django.utils import timezone
+from .models import LifeMembers
+from .serializers import LifeMembersSerializer
 
 
 # Frequently used methods
-def admin_action(status):
-    if status == settings.USER_DETAILS_ADDED:
+def admin_action(sts):
+    if sts == settings.USER_DETAILS_ADDED:
         return 'Admin approval pending'
     return 'No action needed'
 
@@ -525,3 +528,21 @@ def payment_model(request, *args, **kwargs):
 def unauthorized_page_403(request):
     return render(request, 'permission/403_page.html')
 
+
+#rest API
+@api_view(['POST'])
+def create_or_update_life_member(request):
+    email = request.data.get('email')
+    life_member = LifeMembers.objects.filter(email=email).first()
+    if life_member:
+        serializer = LifeMembersSerializer(life_member, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save(update_date=timezone.now())
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    else:
+        serializer = LifeMembersSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(upload_date=timezone.now(), update_date=timezone.now())
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
