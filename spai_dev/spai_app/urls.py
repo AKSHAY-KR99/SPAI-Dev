@@ -12,7 +12,7 @@ urlpatterns = [
     # path('gallery/<int:pk>/update/', views.gallery_update, name='gallery_update'),
     path('gallery/delete/<int:pk>/', views.gallery_delete, name='gallery_delete'),
     path('gallery/image/delete/<int:image_id>/', views.delete_gallery_image, name='delete_gallery_image'),
-     path('gallery/image/add/<int:gallery_id>/', views.add_gallery_image, name='add_gallery_image'),
+    path('gallery/image/add/<int:gallery_id>/', views.add_gallery_image, name='add_gallery_image'),
 
     path('news/', views.news, name="news"),
     path('news/<int:pk>/', views.news_detail, name="news_detail"),
@@ -30,7 +30,9 @@ urlpatterns = [
     path('user/admin/approve/<str:slug>', views.admin_approval, name='user_approval'),
     path('user/admin/reject/<str:slug>', views.admin_rejection, name='user_reject'),
     path('certificate/<str:slug>', views.certificate, name='certificate'),
-    
+    path('get/life-members', views.life_members_get, name='life_members_get'),
+    path('get/life-member/<str:uid>', views.life_member_info, name='life_member_info'),
+
     path('user/payment/<str:slug>', views.payment_model, name='payment_model'),
 
     # error pages
@@ -39,7 +41,7 @@ urlpatterns = [
     path('about', views.about_page, name='about_page'),
     path('publications', views.publications, name='publications'),
 
-    #rest api
+    # rest api
     path('life-members', views.create_or_update_life_member, name='life-members')
 
 ]

@@ -180,7 +180,13 @@ class LifeMembers(models.Model):
     membership_date = models.DateField(null=True, blank=True)
     upload_date = models.DateTimeField(null=True, blank=True)
     update_date = models.DateTimeField(null=True, blank=True)
-    is_expire = models.BooleanField(null=True, blank=True)
+    active = models.BooleanField(null=True, blank=True)
+    uid = models.SlugField(auto_created=True, blank=True, null=True, unique=True)
+
+    def save(self, *args, **kwargs):
+        if not self.uid:
+            self.uid = generate_unique_slug()
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return str(self.name)
