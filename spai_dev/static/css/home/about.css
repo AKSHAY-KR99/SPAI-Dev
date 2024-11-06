@@ -1,10 +1,15 @@
 /*About.......................................*/
-  
+.about{
+  margin-top: 90px;
+}
+.about h1{
+  text-align: center;
+  margin-bottom: 0%;
+}  
 .about-content{
   background-image: url('../sub/running-2-bg.png');
     display: flex;
     justify-content: space-between;
-    margin-top: 10px;
     position: relative;
     width: 100%;
     height: auto;
@@ -96,6 +101,9 @@
   }
   
   @media (max-width: 768px) {
+    .about{
+      margin-top: 150px;
+    }
     .about-seemore{
         width: 180px;
         height: 55px;

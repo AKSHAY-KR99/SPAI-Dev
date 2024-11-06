@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Update index
         currentPic = (currentPic + 1) % 7;
-        index = (index + 1) % 2;
+        index = (index + 1) % 7;
         // Add 'active' class to the new items
         heroPics[currentPic].classList.add('active');
         heroTexts[index].classList.add('active');
