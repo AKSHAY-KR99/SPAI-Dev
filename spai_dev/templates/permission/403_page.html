@@ -1,44 +1,30 @@
+{% extends 'main.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spai</title>
-    {% block cssfiles %}
-    <link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
-        <link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
-    <link rel="stylesheet" href="{% static 'css/sub/home.css' %}">
-    {% endblock %}
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-</head>
-<body>
-    {% block header %}
-    {% include 'header.html' %}
-    {% endblock %}
+{% block cssfiles %}
+<link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/content.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/permissions.css' %}">
+{% endblock %}
 
-    {% block content %}
+{% block header %}
+{% include 'header.html' %}
+{% endblock %}
 
-    <div class="image-403">
-        <img src="{% static 'image/403_forbidden.png' %}" alt="">
-    </div>
+{% block content %}
 
-    {% endblock %}
+<div class="image-403">
+    <img src="{% static 'image/403_forbidden.png' %}" alt="">
+</div>
+<div class="error-content">
+    <h1>403 <br> <span>Unauthorized person</span></h1>
+</div>
 
-    {% block footer %}
-    {% include 'footer.html' %}
-    {% endblock %}
-    <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelector('.menu-icon').addEventListener('click', function() {
-                document.querySelector('.navbar').classList.toggle('active');
-            });
-        });
-    </script>
-    {% block jsfile %}
-    <script type="text/javascript" src="{% static 'js/spai.js' %}"></script>
-    {% endblock %}
-</body>
-</html>
+{% endblock %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}
+{% block jsfile %}
+<script type="text/javascript" src="{% static 'js/sub/news.js' %}"></script>
+{% endblock %}
