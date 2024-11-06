@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+body {
+    background-image: url('Frame_2.png'); /* Replace with the path to your image */
+    background-size: cover; /* Cover the entire page */
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.95); /* Adjust color and opacity here */
+    z-index: -1; /* Place it behind the form content */
+}
+
+.internship-form {
+    padding: 50px;
+    font-family: 'Poppins', sans-serif;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.form-section {
+    margin-bottom: 30px;
+}
+
+.form-section h3 {
+    font-size: 30px;
+    color: #000000;
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #19681c;
+}
+
+label {
+    font-size: 15px;
+    font-weight: bold;
+    color: #000000;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.flex-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 15px;
+}
+
+.flex-row > div {
+    flex: 1;
+}
+
+input[type="text"].special-text,
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+button.intern {
+    width: 50%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(40, 40, 255);
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+    margin: 20px auto 0;
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    transition: .3s;
+}
+
+button.intern:hover {
+    transition: .3s;
+    transform: scale(1.01);
+}
+
+button.intern:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+}
+
+.required-star{
+    color: red;
+    font-size: 15px;
+  }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Delay each input field slightly for a staggered effect */
+.fade-in:nth-child(1) { animation-delay: 0.1s; }
+.fade-in:nth-child(2) { animation-delay: 0.2s; }
+.fade-in:nth-child(3) { animation-delay: 0.3s; }
+.fade-in:nth-child(4) { animation-delay: 0.4s; }
+.fade-in:nth-child(5) { animation-delay: 0.5s; }
