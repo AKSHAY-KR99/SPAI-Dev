@@ -21,6 +21,7 @@
     align-items: center;
     animation: mymove 5s infinite;
     border-radius: 5px 100px 5px 100px;
+    padding-bottom: 70px;
 }
 @keyframes mymove {
     50% {border: 3px solid black;}
@@ -41,7 +42,7 @@
 }
 .m-v-container{
     /* border: 1px solid black; */
-    background-image: url('./img/missionbg.jpg');   
+    /* background-image: url('./img/missionbg.jpg');    */
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -49,9 +50,9 @@
     padding: 20px;
     background-color: white;
 }
-.vission{
+/* .vission{
     background-image: url('./img/missionbg2.jpg');
-}
+} */
 .mission-icon img{
     width: 40px;
 }
@@ -77,12 +78,15 @@
 }
 .mission-vission {
     display: flex;
-    gap: 20px;
+    flex-direction: column;
+    margin: 30px;
+    gap: 30px;
     align-items: flex-start;
 }
 @media (max-width: 860px){
     .mission-vission{
         flex-direction: column;
+        margin: 0%;
     }
     .mission{
         padding: 20px;
