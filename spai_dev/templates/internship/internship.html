@@ -1,0 +1,157 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block cssfiles %}
+<link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/content.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/internship.css' %}">
+{% endblock %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="internship-container">
+    <div class="internship-form">
+        <form id="internship-registration" action="#" method="post">
+            <!-- Section 1: Intern Details -->
+            <div class="form-section">
+                <h3>Intern Details</h3>
+                <div class="flex-row">
+                    <div>
+                        <label for="first-name">First Name <span class="required-star">*</span></label>
+                        <input type="text" id="first-name" name="first_name" class="fade-in special-text" required>
+                    </div>
+                    <div>
+                        <label for="last-name">Last Name <span class="required-star">*</span></label>
+                        <input type="text" id="last-name" name="last_name" class="fade-in special-text" required>
+                    </div>
+                </div>
+                <div class="flex-row">
+                    <div>
+                        <label for="email">Email <span class="required-star">*</span></label>
+                        <input type="email" id="email" name="email" class="fade-in" required>
+                    </div>
+                    <div>
+                        <label for="phone">Phone <span class="required-star">*</span></label>
+                        <input type="tel" id="phone" name="phone" class="fade-in" required>
+                    </div>
+                </div>
+                <div class="flex-row">
+                    <div>
+                        <label for="college">College/Institution <span class="required-star">*</span></label>
+                        <input type="text" id="college" name="college" class="fade-in special-text" required>
+                    </div>
+                    <div>
+                        <label for="university">University <span class="required-star">*</span></label>
+                        <input type="text" id="university" name="university" class="fade-in special-text" required>
+                    </div>
+                </div>
+                <div>
+                    <label for="department">Department <span class="required-star">*</span></label>
+                    <input type="text" id="department" name="department" class="fade-in special-text" required>
+                </div>
+            </div>
+
+            <!-- Section 2: Internship Interest -->
+            <div class="form-section">
+                <h3>Internship Interest</h3>
+                <div class="flex-row">
+                    <div>
+                        <label for="interest-area">Area of Interest <span class="required-star">*</span></label>
+                        <input type="text" id="interest-area" name="interest_area" class="fade-in special-text" required>
+                    </div>
+                    <div>
+                        <label for="location-preference">Location Preference <span
+                                class="required-star">*</span></label>
+                        <input type="text" id="location-preference" name="location_preference" class="fade-in special-text" required>
+                    </div>
+                </div>
+                <div class="flex-row">
+                    <div>
+                        <label for="start-date">Start Date <span class="required-star">*</span></label>
+                        <input type="date" id="start-date" name="start_date" class="fade-in" required>
+                    </div>
+                    <div>
+                        <label for="end-date">End Date <span class="required-star">*</span></label>
+                        <input type="date" id="end-date" name="end_date" class="fade-in" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3: Academic Background -->
+            <div class="form-section">
+                <h3>Academic Background</h3>
+                <div class="flex-row">
+                    <div>
+                        <label for="qualification">Degree/Qualification <span class="required-star">*</span></label>
+                        <input type="text" id="qualification" name="qualification" class="fade-in special-text" required>
+                    </div>
+                    <div>
+                        <label for="course-name">Course Name <span class="required-star">*</span></label>
+                        <input type="text" id="course-name" name="course_name" class="fade-in special-text" required>
+                    </div>
+                </div>
+                <div class="flex-row">
+                    <div>
+                        <label for="passing-year">Year of Passing <span class="required-star">*</span></label>
+                        <input type="number" id="passing-year" name="passing_year" class="fade-in" required>
+                    </div>
+                    <div>
+                        <label for="score">Score <span class="required-star">*</span></label>
+                        <input type="text" id="score" name="score" class="fade-in special-text" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Agreement and Submit -->
+            <div class="form-section">
+                <label for="agreement">
+                    <input type="checkbox" id="agreement" name="agreement" required><i>
+                        I Consent to processing of my personal data entered above to Sports Psychology Association of
+                        India to contact me.*</i>
+                </label>
+                <button class="intern" type="submit" id="submit-btn" disabled>Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}
+{% block jsfile %}
+<script type="text/javascript" src="{% static 'js/sub/news.js' %}"></script>
+<script>
+    const agreementCheckbox = document.getElementById('agreement');
+    const submitButton = document.getElementById('submit-btn');
+
+    agreementCheckbox.addEventListener('change', function () {
+        submitButton.disabled = !agreementCheckbox.checked;
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const inputs = document.querySelectorAll("input[type='text'], input[type='email'], input[type='tel'], input[type='date'], input[type='number']");
+
+    function handleScroll() {
+        inputs.forEach(input => {
+            const rect = input.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 100) { // Start animation 100px before entering viewport
+                input.classList.add("fade-in");
+            }
+        });
+    }
+
+    // Trigger animation on scroll
+    window.addEventListener("scroll", handleScroll);
+
+    // Trigger animation initially if inputs are already in view
+    handleScroll();
+});
+</script>
+{% endblock %}

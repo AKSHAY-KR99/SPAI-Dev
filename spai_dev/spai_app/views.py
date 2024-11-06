@@ -564,3 +564,8 @@ def life_member_info(request, *args, **kwargs):
         return render(request, 'members/life_member_details.html', context)
     else:
         return redirect('login')
+
+
+def internship_page(request):
+    context = {}
+    return render(request, 'internship/internship.html', context)

@@ -32,6 +32,7 @@ urlpatterns = [
     path('certificate/<str:slug>', views.certificate, name='certificate'),
     path('get/life-members', views.life_members_get, name='life_members_get'),
     path('get/life-member/<str:uid>', views.life_member_info, name='life_member_info'),
+    path('join-internship/', views.internship_page, name='internship_page'),
 
     path('user/payment/<str:slug>', views.payment_model, name='payment_model'),
 
