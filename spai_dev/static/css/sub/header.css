@@ -91,7 +91,7 @@ header {
 
 
 
-/* .dropdown-menu3 {
+.dropdown-menu3 {
   display: none;
   position: absolute;
   top: 50px; 
@@ -112,7 +112,7 @@ header {
 
 .dropdown-menu3 a:hover {
   background-color: #f1f1f1;
-} */
+}
 .down{
   display: flex;
   flex-direction: row;

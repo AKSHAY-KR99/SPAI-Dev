@@ -44,7 +44,6 @@
   }
   .exe-text{
     display: flex;
-    justify-content: space-evenly;
     margin-top: 15px;
     margin-left: 15px;
     font-family: "Poppins",sans-serif;

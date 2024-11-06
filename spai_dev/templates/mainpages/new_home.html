@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="{% static 'css/home/hero.css' %}">
 <link rel="stylesheet" href="{% static 'css/home/news.css' %}">
 <link rel="stylesheet" href="{% static 'css/home/message.css' %}">
+<link rel="stylesheet" href="{% static 'css/home/maths.css' %}">
 <!-- Add SwiperJS styles -->
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 
@@ -83,10 +84,51 @@
                 <img src="{% static 'image/doubledownarroow.svg' %}" alt="">
             </div>
         </div>
+        {% for event in upcoming_events %}
+        <div class="hero-text">
+            <div class="welcome">
+                READ<br>
+                THE<br>
+                <div class="spai">EVENT</div>
+            </div>
+            <a style="text-decoration: none; color: inherit;" href="{% url 'news_detail' event.id %}">
+                <div class="jointoday">
+                    <div class="jointodaytext">
+                        Read
+                    </div>
+                </div>
+            </a>
+            <div class="downarrow">
+                <img src="{% static 'image/doubledownarroow.svg' %}" alt="">
+            </div>
+        </div>
+        {% endfor %}
     </div>
     <div class="grady"></div>
+    <div class="maths">
+        <div class="item">
+            <h4>Athletes</h4>
+            <h1>1900+</h1>
+        </div>
+        <hr class="custom-hr">
+        <div class="item">
+            <h4>Experts</h4>
+            <h1>45+</h1>
+        </div>
+        <hr class="custom-hr">
+        <div class="item">
+            <h4>Professionals</h4>
+            <h1>35+</h1>
+        </div>
+        <hr class="custom-hr">
+        <div class="item">
+            <h4>Members</h4>
+            <h1>700+</h1>
+        </div>
+    </div>
 </div>
-<div class="math">
+<!-- <div class="math">
+
     <div class="math-text">
         <div style="display: flex;gap: 40px;">
             <div style="justify-content: center;">
@@ -112,6 +154,115 @@
     <span class="verti" style="right: 50%;"></span>
     <span class="verti" style="right: 75%;"></span>
 
+</div> -->
+<div class="about">
+    <h1>ABOUT US</h1>
+    <div class="about-content">
+        <div class="aboutimg">
+            <img src="{% static 'image/aboutrun.png' %}" alt="">
+        </div>
+        <div class="about2">
+            <div class="about-text">
+                <p>The Sports Psychology Association of India (SPAI) is a professional organization dedicated to
+                    promoting the field of sports psychology in India. Its mission is to enhance athletic performance
+                    and mental well-being through the application of psychological principles in sports. Sports
+                    Psychology Association of India plays a crucial role in advancing research, providing training for
+                    professionals, and raising awareness about the importance of mental conditioning and psychological
+                    support in sports. It organizes workshops, conferences, and educational programs to foster
+                    collaboration among athletes, coaches, sports psychologists, and researchers across the country.
+                </p>
+            </div>
+            <a style="text-decoration: none; color: inherit;" href="{% url 'about_page' %}?page=about_spai">
+                <div style="margin-left: 68px;" class="about-seemore">
+                    <div class="about-seemoretext">
+                        See More
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+</div>
+<div class="messages">
+    <h1>Message From President</h1>
+
+    <blockquote class="q-card q-card-color-1">
+        <div class="msg2">
+            <div class="msg-pic">
+                <img src="{% static 'image/PRESIDENT.png' %}" alt="">
+            </div>
+            <div class="msg3">
+                <i>
+                    <div class="content">Greetings from SPAI. <br>
+                        <p>I am excited to update you regarding the activities of Sports Psychology Association of India
+                            (SPAI). Ever since the formation of SPAI in 1985, the organisation has made its existence as
+                            per the objectives of the association. With more than 650 life members and four regional
+                            secretaries, SPAI looks forward to having a calendar of activities across the country to
+                            spread the message of SPAI and to build expertise and provide service of sports psychology
+                            to all budding sportspersons</p>
+                        <p>The SPAI annual conference brings in all applied practitioners who work across various
+                            professional fields and sports, where they share their expertise and best practices; provide
+                            professional exposure to upcoming sports psychologists, grow better job opportunities and
+                            provide networking for future directions in the practicing field.</p>
+                        <p>SPAI aims to spread awareness and knowledge and provide expert consultancy and services
+                            through its pioneering members, practitioners in the field and through academic programmes
+                            and resources through its publication unit and web resources. </p>
+                        <p>SPAI has in its future agenda to support young aspiring sports psychologist by providing
+                            internships and fellowships and awards for academic and research in the field. </p>
+                        <p>With plenty of new happenings proposed by the executive council of SPAI, we would continue to
+                            advance the organisational activity and the field of practice. We look forward for
+                            collaboration from institutions and like mined associations for mutually beneficial
+                            programme and action plans. </p>
+                        <p>Look forward for future updates on sports psychology and let us work together for better
+                            prosperity and success in the field</p>
+                    </div>
+                </i>
+                <div style="width: 100%;display: flex;justify-content: end;">
+                    <div class='author'>Dr Anil Kharwande<br>
+                        President <br>
+                        Sports Psychology Association of India
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </blockquote>
+</div>
+<div class="messages">
+    <h1>Message From General Secretary General of SPAI</h1>
+
+    <blockquote class="q-card q-card-color-2">
+        <i>
+            <div class="content">
+                <p>Indian sports performance often highlights the phrase “so close yet so far” especially in major
+                    sporting events like Olympic Games, Commonwealth Games ad World Championships. Among the various
+                    factors the mental strength and lack of professional mental support and preparation has often
+                    been questioned recently.</p>
+                <p>SPAI, the pioneer association of Sports Psychology in India with its affiliation with
+                    International
+                    Society of Sports Psychology (ISSP) and ASPAP understands the organisational responsibility in
+                    turning the tables and letting better podium finish for Indian athletes.</p>
+                <p>With the initiation of certification programme, Sports Psychology Association of India aims to
+                    provide resources, training and create a platform for sports psychologists to get equipped,
+                    grow, develop, network and collaborate for supporting Indian sports. Strengthening
+                    collaborations
+                    between sports federations, sports academies, training centres, and sports science
+                    professionals,
+                    could enhance its impact. Additionally, organizing workshops and seminars could help educate
+                    coaches, athletes, and parents about the benefits of sports psychology. </p>
+                <p>The time and considerable energy devoted to strategic execution of SPAI projects and schemes,
+                    and diverse committees constituted, which are updated on the website would enable better
+                    functioning of the association. The continued publication of our official journal and
+                    the organising of the prestigious annual national conference needs to be prioritised and
+                    taken up in the best interests and progress of the association.</p>
+                <p>Considering the opportune to engage with SPAI, and continued relationship and interactive
+                    reciprocal communication lets make our growth more exiting. </p>
+            </div>
+        </i>
+        <div class='author'>Prof Anil Ramachandran <br>
+            Secretary General, SPAI
+        </div>
+    </blockquote>
 </div>
 <div class="news">
     <div class="news-title">
@@ -447,117 +598,6 @@
         </div>
     </div>
 </div>
-<div class="messages">
-    <h1>Message From President</h1>
-
-    <blockquote class="q-card q-card-color-1">
-        <div class="msg2">
-            <div class="msg-pic">
-                <img src="{% static 'image/PRESIDENT.png' %}" alt="">
-            </div>
-            <div class="msg3">
-                <i>
-                    <div class="content">Greetings from SPAI. <br>
-                        <p>I am excited to update you regarding the activities of Sports Psychology Association of India
-                            (SPAI). Ever since the formation of SPAI in 1985, the organisation has made its existence as
-                            per the objectives of the association. With more than 650 life members and four regional
-                            secretaries, SPAI looks forward to having a calendar of activities across the country to
-                            spread the message of SPAI and to build expertise and provide service of sports psychology
-                            to all budding sportspersons</p>
-                        <p>The SPAI annual conference brings in all applied practitioners who work across various
-                            professional fields and sports, where they share their expertise and best practices; provide
-                            professional exposure to upcoming sports psychologists, grow better job opportunities and
-                            provide networking for future directions in the practicing field.</p>
-                        <p>SPAI aims to spread awareness and knowledge and provide expert consultancy and services
-                            through its pioneering members, practitioners in the field and through academic programmes
-                            and resources through its publication unit and web resources. </p>
-                        <p>SPAI has in its future agenda to support young aspiring sports psychologist by providing
-                            internships and fellowships and awards for academic and research in the field. </p>
-                        <p>With plenty of new happenings proposed by the executive council of SPAI, we would continue to
-                            advance the organisational activity and the field of practice. We look forward for
-                            collaboration from institutions and like mined associations for mutually beneficial
-                            programme and action plans. </p>
-                        <p>Look forward for future updates on sports psychology and let us work together for better
-                            prosperity and success in the field</p>
-                    </div>
-                </i>
-                <div style="width: 100%;display: flex;justify-content: end;">
-                    <div class='author'>Dr Anil Kharwande<br>
-                        President <br>
-                        Sports Psychology Association of India
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </blockquote>
-</div>
-<div class="messages">
-    <h1>Message From General Secretary General of SPAI</h1>
-
-    <blockquote class="q-card q-card-color-2">
-        <i>
-            <div class="content">
-                <p>Indian sports performance often highlights the phrase “so close yet so far” especially in major
-                    sporting events like Olympic Games, Commonwealth Games ad World Championships. Among the various
-                    factors the mental strength and lack of professional mental support and preparation has often
-                    been questioned recently.</p>
-                <p>SPAI, the pioneer association of Sports Psychology in India with its affiliation with
-                    International
-                    Society of Sports Psychology (ISSP) and ASPAP understands the organisational responsibility in
-                    turning the tables and letting better podium finish for Indian athletes.</p>
-                <p>With the initiation of certification programme, Sports Psychology Association of India aims to
-                    provide resources, training and create a platform for sports psychologists to get equipped,
-                    grow, develop, network and collaborate for supporting Indian sports. Strengthening
-                    collaborations
-                    between sports federations, sports academies, training centres, and sports science
-                    professionals,
-                    could enhance its impact. Additionally, organizing workshops and seminars could help educate
-                    coaches, athletes, and parents about the benefits of sports psychology. </p>
-                <p>The time and considerable energy devoted to strategic execution of SPAI projects and schemes,
-                    and diverse committees constituted, which are updated on the website would enable better
-                    functioning of the association. The continued publication of our official journal and
-                    the organising of the prestigious annual national conference needs to be prioritised and
-                    taken up in the best interests and progress of the association.</p>
-                <p>Considering the opportune to engage with SPAI, and continued relationship and interactive
-                    reciprocal communication lets make our growth more exiting. </p>
-            </div>
-        </i>
-        <div class='author'>Prof Anil Ramachandran <br>
-            Secretary General, SPAI
-        </div>
-    </blockquote>
-</div>
-<div class="about">
-    <div style="margin-top: 100px;" class="associate-title">
-        ABOUT US
-    </div>
-    <div class="about-content">
-        <div class="aboutimg">
-            <img src="{% static 'image/aboutrun.png' %}" alt="">
-        </div>
-        <div class="about2">
-            <div class="about-text">
-                <p>The Sports Psychology Association of India (SPAI) is a professional organization dedicated to
-                    promoting the field of sports psychology in India. Its mission is to enhance athletic performance
-                    and mental well-being through the application of psychological principles in sports. Sports
-                    Psychology Association of India plays a crucial role in advancing research, providing training for
-                    professionals, and raising awareness about the importance of mental conditioning and psychological
-                    support in sports. It organizes workshops, conferences, and educational programs to foster
-                    collaboration among athletes, coaches, sports psychologists, and researchers across the country.
-                </p>
-            </div>
-            <a style="text-decoration: none; color: inherit;" href="{% url 'about_page' %}?page=about_spai">
-                <div style="margin-left: 68px;" class="about-seemore">
-                    <div class="about-seemoretext">
-                        See More
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
-
-</div>
 <div class="executive">
     <div style="margin-top: 80px;" class="associate-title">
         EXECUTIE BODY
@@ -569,10 +609,10 @@
                     <div class="exe-img">
                         <img src="{% static 'image/PRESIDENT.png' %}" alt="">
                     </div>
-                    <div class="exe-text">
+                    <div class="exe-text" style="text-align: left;">
                         DR. ANIL KARWANDE
-                        <img class="exe-email" src="{% static 'image/email.svg' %}" alt="">
-                        <img class="exe-phone" src="{% static 'image/Vector.svg' %}" alt="">
+                        <!-- <img class="exe-email" src="{% static 'image/email.svg' %}" alt="">
+                        <img class="exe-phone" src="{% static 'image/Vector.svg' %}" alt=""> -->
                     </div>
                     <div class="exe-posi">
                         President
@@ -586,8 +626,8 @@
                     </div>
                     <div class="exe-text">
                         PROF ANIL RAMACHANDRAN
-                        <img class="exe-email" src="{% static 'image/email.svg' %}" alt="">
-                        <img class="exe-phone" src="{% static 'image/Vector.svg' %}" alt="">
+                        <!-- <img class="exe-email" src="{% static 'image/email.svg' %}" alt="">
+                        <img class="exe-phone" src="{% static 'image/Vector.svg' %}" alt=""> -->
                     </div>
                     <div class="exe-posi">
                         Secretary
@@ -601,8 +641,8 @@
                     </div>
                     <div class="exe-text">
                         PROF(DR.) MAHENDRAN KUMAR SINGH
-                        <img class="exe-email" src="{% static 'image/email.svg' %}" alt="">
-                        <img class="exe-phone" src="{% static 'image/Vector.svg' %}" alt="">
+                        <!-- <img class="exe-email" src="{% static 'image/email.svg' %}" alt="">
+                        <img class="exe-phone" src="{% static 'image/Vector.svg' %}" alt=""> -->
                     </div>
                     <div class="exe-posi">
                         Treasurer
@@ -616,8 +656,8 @@
                     </div>
                     <div class="exe-text">
                         PROF(DR.) M.L.KAMLESH
-                        <img class="exe-email" src="{% static 'image/email.svg' %}" alt="">
-                        <img class="exe-phone" src="{% static 'image/Vector.svg' %}" alt="">
+                        <!-- <img class="exe-email" src="{% static 'image/email.svg' %}" alt="">
+                        <img class="exe-phone" src="{% static 'image/Vector.svg' %}" alt=""> -->
                     </div>
                     <div class="exe-posi">
                         Patron

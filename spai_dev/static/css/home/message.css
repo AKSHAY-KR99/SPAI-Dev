@@ -1,14 +1,14 @@
 .messages::before, .messages::after { margin: 0; padding: 0; box-sizing: border-box }
 .messages h1{ text-align: center; font-weight: 800; color: rgb(6 6 6); text-transform: uppercase }
 .messages blockquote { max-width: 100%; margin-inline: auto;}
-.content p{text-indent: 3rem;font-family: "Poppins",sans-serif;line-height: 25px;}
+.content p{text-indent: 1rem;font-family: "Poppins",sans-serif;line-height: 25px;}
 .messages{
     margin: 40px 40px 10px 40px;
 }
 blockquote.q-card-color-1{
   --accent-color: black;
   --bg-color: white;
-  --dot-color: rgb(202, 202, 202);
+  --dot-color: rgb(202, 202, 202,0.2);
   --text-color: black;
   --text-color-author: rgb(243 243 243);
 
@@ -17,7 +17,7 @@ blockquote.q-card-color-1{
 blockquote.q-card-color-2{
   --accent-color: black;
   --bg-color: #F2F2ED;
-  --dot-color: rgb(202, 202, 202);
+  --dot-color: rgb(202, 202, 202,0.2);
   --text-color: black;
   --text-color-author: white;
 }
@@ -32,7 +32,7 @@ blockquote.q-card-color-3{
 
 /* blockquote card setup*/
 blockquote.q-card{
-  --padding: 1rem;
+  --padding: 3rem;
   padding: var(--padding);
   color: var(--text-color, black);
   font-weight: 600;
@@ -42,7 +42,9 @@ blockquote.q-card{
   background-image: radial-gradient( circle, var(--dot-color, rgb(0 0 0 / .125)) calc(25% - 1px), transparent 25% );
   background-size: 0.5rem 0.5rem;
   border-radius: 40px;
-  box-shadow: 0.5rem 0.5rem 1rem rgb(0 0 0 / .5)
+  /* box-shadow: 0.5rem 0.5rem 1rem rgb(0 0 0 / .5) */
+  box-shadow: 0px 10px 12px rgba(0, 0, 0, 0.2); /* Shadow effect */
+  padding-bottom: 60px;
   
 }
 blockquote.q-card::before{
@@ -68,8 +70,10 @@ blockquote.q-card::before{
 .author{
   color: var(--text-color-author, white);
   background-color: var(--accent-color, black);
-  justify-self: end;
   font-size: 0.75em;  
+  /* color: black; */
+  /* font-size: smaller; */
+  justify-self: end;
   padding: 0.5em 1em;
   border-radius: 0.25rem;
   width: 240px;
@@ -84,7 +88,7 @@ blockquote.q-card::before{
 .msg-pic img{
 
     width: 250px;
-    margin-right: 20px;
+    margin-right: var(--padding);
 }
 @media (max-width: 900px){
     .msg2{
@@ -94,6 +98,9 @@ blockquote.q-card::before{
 @media (max-width: 768px){
     .messages{
         margin: 40px 20px 10px 20px;
+    }
+    .blockquote.q-card{
+      padding: 1rem;
     }
 }
 
