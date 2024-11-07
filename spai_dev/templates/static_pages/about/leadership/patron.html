@@ -1,0 +1,77 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block cssfiles %}
+<link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/content.css' %}">
+{% endblock %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="about-container mission">
+    <div class="mission-top-row">
+        <h1 style="margin-bottom: 0%;">PATRON OF SPORTS PSYCHOLOGY ASSOCIATION OF INDIA</h1>
+    </div>
+    <div class="mission-vission">
+        <div class="m-v-container">
+            <div style="display: flex;align-items: center;">
+                <!-- <div class="mission-icon">
+                    <img class="pic-on" src="{% static 'image/football1.svg' %}" alt="">
+                    <img class="pic-off" src="{% static 'image/football2.svg' %}" alt="">
+                </div> -->
+
+            </div>
+            <div class="president-wrapper">
+                <div class="president-pic">
+                    <img src="{% static 'image/Kamlesh.png' %}" alt="">
+                </div>
+                <div class="president-content">
+                    <h2>Prof. (Dr.) M.L. Kamlesh</h2>
+                    <p>
+                        Decorated with the accolade of Doctor of Science by the Open International University of
+                        Medicina Alternativa, Colombo (Sri Lanka) for his outstanding contribution to the science of
+                        physical education, Professor M.L. Kamlesh (b.1940), M.A. (English), M.Ed. (Physical Education),
+                        Ph.D., well-known for excellence in academics, research, sport psychology and administration in
+                        India and abroad, occupies the top-spot among the fraternity of physical educationists in the
+                        country. Dr. Kamlesh has authored 29 books and published more than 72 research papers and 62
+                        articles in national and international journals and periodicals and given 77 keynote addresses
+                        and invited lectures at various national (181) and international conferences (30).This former
+                        Principal, of the Sports Authority of India’s Laxmibai National College of Physical Education,
+                        Thiruvananthapuram, and former Dean, Faculty of Physical Education, University of Kerala, with
+                        an outstanding career of more than 45 years, was the founder member of Sports Psychology
+                        Association of India, which he very successfully served first as Secretary General for two
+                        terms, and then as President for next two terms. He has been bestowed upon Life-time Achievement
+                        Award by(1) Sports Psychology Association of India in 2004 for distinguished role in the
+                        development of sport psychology in the country; (2) the Alumni Association of Physical
+                        Education, Jiwaji University, Gwalior in 2005; (3) University of Delhi (2011); (4) by Punjabi
+                        University, Patiala (2012); and by (5) Guru scientist, University, Amritsar (2014) for rendering
+                        outstanding service to physical education and sport as a teacher, a researcher, a scientist and
+                        an administrator. He was awarded ASPASP Fellowshipat the 8th International Congress of
+                        Asian-South Pacific Association of Sport Psychology, June 29-July 3, 2018, organized by the
+                        Korean Society of Sport Psychology at Keimyung University, Deagu, Republic Korea. SPAI
+                        Presidential Award – 2023 for Excellence in Promoting Sports Psychology. Awarded at Dr. Ambedkar
+                        College, Deekasha Bhoomi, Nagpur on 28 March 2023 at the closing of the 30th National Conference
+                        of Sports Psychology.
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}
+{% block jsfile %}
+<script type="text/javascript" src="{% static 'js/sub/news.js' %}"></script>
+{% endblock %}

@@ -89,11 +89,26 @@ def about_page(request):
         return render(request, 'static_pages/about/msgpresident.html')
     if page=="message_from_secretary":
         return render(request, 'static_pages/about/msgsecretary.html')
+    if page=="president":
+        return render(request, 'static_pages/about/leadership/president.html')
+    if page=="secretary":
+        return render(request, 'static_pages/about/leadership/secretary.html')
+    if page=="patron":
+        return render(request, 'static_pages/about/leadership/patron.html')
+    if page=="committee":
+        return render(request, 'static_pages/about/leadership/committee.html')
+    if page=="pre_committee":
+        return render(request, 'static_pages/about/leadership/previous_year.html')
 def publications(request):
     page=request.GET.get('page')
     print(page)
     if page=="about_spai_journal":
         return render(request, 'static_pages/publications/spai_journel.html')
+def academic(request):
+    page=request.GET.get('page')
+    if page=="about_internship":
+        return render(request, 'static_pages/academic/internship/about.html')
+
 
 def history(request):
     context = {'page': 'about', 'page2': 'history'}

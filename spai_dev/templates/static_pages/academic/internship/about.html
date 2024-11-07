@@ -1,0 +1,71 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block cssfiles %}
+<link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/content.css' %}">
+{% endblock %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="about-container">
+    <div class="about">
+        <h1 style="text-transform:uppercase;">About Sports Psychology Association of India Internship </h1>
+        <div class="about-content">
+            <p>The Sports Psychology Association of India (SPAI) internship program offers aspiring sports psychologists
+                an opportunity to gain hands-on experience in the field of sports psychology. Interns typically work
+                alongside experienced professionals, assisting in mental skills training, research, athlete counselling,
+                and psychological assessments for performance enhancement. The internship aims to bridge academic
+                knowledge with practical application, in allowing students to develop skills in understanding athlete
+                behavior, improving mental toughness, and promoting overall psychological well-being in sports contexts.
+            </p>
+            PURPOSE <br>
+            The purpose of the sports psychology internship is to provide students and aspiring professionals with
+            practical, hands-on experience in applying psychological principles to the sports environment.
+            <ol style="text-indent: 0%;">
+                <li>Skill Development: Interns to apply mental training techniques, such as goal-setting, orientation and
+                    skills which are applied in sports psychology to improve athlete performance and well-being.</li>
+                <li>Professional Exposure: The Internship exposes students to real-world scenarios where they interact with
+                    athletes, coaches, and teams, giving them insight into the day-to-day challenges faced by sports
+                    psychologist.</li>
+                <li>Research and application: Interns often assist in research projects, data analysis, and assessment,
+                    allowing them to contribute to advancements in sports psychology and apply theoretical knowledge to
+                    practice.</li>
+                <li>Networking and mentorship: Internships off the opportunity to build relationships with experienced
+                    professionals, expanding the intern’s network and providing mentorship for future career development.</li>
+                <li>Career readiness: The hands-on experience prepares interns for careers in sports psychology by enhancing
+                    their understanding of psychological strategies, ethical considerations, and professional standards in the
+                    field.</li>
+            </ol>
+            <p>Overall, the internship aims to bridge the gap between academic learning and professional practice in sports
+                psychology.</p> 
+                <div class="join">
+                    <a style="text-decoration: none; color: inherit;" href="{% url 'internship_page' %}">
+                        <div class="news-seemore">
+                            <div class="seemoretext">JOIN SPAI INTERNSHIP</div>
+                        </div>
+                    </a>
+                    <a style="text-decoration: none; color: inherit;" href="{% url 'login_page' %}">
+                        <div class="news-seemore">
+                            <div class="seemoretext">JOIN SPAI </div>
+                        </div>
+                    </a>
+                </div>
+                
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}
+{% block jsfile %}
+<script type="text/javascript" src="{% static 'js/sub/news.js' %}"></script>
+{% endblock %}

@@ -1,10 +1,11 @@
-.about-container p{
+.about-container p {
     text-indent: 3rem;
 }
-.about-container{
+
+.about-container {
     height: auto;
     background-image: url('./running-2-bg.png');
-    
+
     background-repeat: no-repeat;
     background-color: #F2F2ED;
     display: flex;
@@ -13,8 +14,9 @@
     padding: 20px;
     overflow-x: hidden;
 }
-.about{
-    border:3px solid rgba(255, 255, 255, 1);
+
+.about {
+    border: 3px solid rgba(255, 255, 255, 1);
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -23,24 +25,31 @@
     border-radius: 5px 100px 5px 100px;
     padding-bottom: 70px;
 }
+
 @keyframes mymove {
-    50% {border: 3px solid black;}
-  }
-.about-content{
+    50% {
+        border: 3px solid black;
+    }
+}
+
+.about-content {
     text-indent: 5em;
     font-size: large;
-    line-height:35px;
+    line-height: 35px;
 }
-@media (max-width: 768px){
-    .about-container{
+
+@media (max-width: 768px) {
+    .about-container {
         padding: 0px;
     }
 }
-.mission-top-row{
+
+.mission-top-row {
     display: block;
     text-align: center;
 }
-.m-v-container{
+
+.m-v-container {
     /* border: 1px solid black; */
     /* background-image: url('./img/missionbg.jpg');    */
     background-repeat: no-repeat;
@@ -50,13 +59,15 @@
     padding: 20px;
     background-color: white;
 }
+
 /* .vission{
     background-image: url('./img/missionbg2.jpg');
 } */
-.mission-icon img{
+.mission-icon img {
     width: 40px;
 }
-.mission-icon{
+
+.mission-icon {
     display: flex;
     justify-content: center;
     width: 50px;
@@ -66,16 +77,19 @@
     margin-bottom: 10px;
     background-color: white;
 }
+
 .m-v-container ol {
-    padding-left: 20px;       
-    margin-top: 10px;  
-      
-}
-.m-v-container ol li {
-    margin-bottom: 8px; 
-    color: inherit; 
+    padding-left: 20px;
+    margin-top: 10px;
 
 }
+
+.m-v-container ol li {
+    margin-bottom: 8px;
+    color: inherit;
+
+}
+
 .mission-vission {
     display: flex;
     flex-direction: column;
@@ -83,15 +97,18 @@
     gap: 30px;
     align-items: flex-start;
 }
-@media (max-width: 860px){
-    .mission-vission{
+
+@media (max-width: 860px) {
+    .mission-vission {
         flex-direction: column;
         margin: 0%;
     }
-    .mission{
+
+    .mission {
         padding: 20px;
     }
 }
+
 /* Fade-in for the main container */
 .about-container.mission {
     animation: fadeIn 1s ease-in-out forwards;
@@ -101,6 +118,7 @@
     0% {
         opacity: 0;
     }
+
     100% {
         opacity: 1;
     }
@@ -117,6 +135,7 @@
         transform: translateY(-50px);
         opacity: 0;
     }
+
     100% {
         transform: translateY(0);
         opacity: 1;
@@ -143,8 +162,10 @@
 /* Cascading effect for list items */
 .m-v-container ol li {
     animation: fadeSlideIn 0.6s ease forwards;
-    opacity: 1; /* Ensure visibility */
-    transform: translateX(0); /* Set back to default */
+    opacity: 1;
+    /* Ensure visibility */
+    transform: translateX(0);
+    /* Set back to default */
 }
 
 @keyframes fadeSlideIn {
@@ -152,6 +173,7 @@
         opacity: 0;
         transform: translateX(-20px);
     }
+
     100% {
         opacity: 1;
         transform: translateX(0);
@@ -163,31 +185,39 @@
     transform: scale(1.01);
     transition: transform 0.2s ease;
 }
+
 .m-v-container {
     transform: scale(1);
-    transition: transform 0.2s ease-in; /* Slower hover-in */
+    transition: transform 0.2s ease-in;
+    /* Slower hover-in */
 }
-.pic-on{
+
+.pic-on {
     display: block;
 }
-.pic-off{
-    display: none;
-}
-.m-v-container:hover .pic-off{
-    display: block;
-}
-.m-v-container:hover .pic-on{
+
+.pic-off {
     display: none;
 }
 
-.history-wrap{
+.m-v-container:hover .pic-off {
+    display: block;
+}
+
+.m-v-container:hover .pic-on {
+    display: none;
+}
+
+.history-wrap {
     padding: 50px;
 }
-.history{
+
+.history {
     flex-direction: column;
     gap: 60px;
 }
-.history p{
+
+.history p {
     line-height: 2rem;
     font-size: 18px;
     margin-top: 0px;
@@ -195,6 +225,7 @@
 
 /* Container for table to add padding */
 .table-container {
+    overflow-x: auto; /* Enables horizontal scrolling */
     padding: 20px;
     display: flex;
     justify-content: center;
@@ -217,7 +248,8 @@
 }
 
 /* Header cell styling */
-.styled-table th, .styled-table td {
+.styled-table th,
+.styled-table td {
     padding: 12px 15px;
     text-align: left;
 }
@@ -229,7 +261,7 @@
 }
 
 /* Hover effect on rows */
-.styled-table tbody tr{
+.styled-table tbody tr {
     background-color: #f1f1f1;
 }
 
@@ -244,41 +276,147 @@
         width: 100%;
         font-size: 12px;
     }
-    .styled-table th, .styled-table td {
+
+    .styled-table th,
+    .styled-table td {
         padding: 10px;
     }
 }
-.history .m-v-container{
+
+.history .m-v-container {
     background-image: none !important;
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
 }
-.m-v-container:hover .run{
+
+.m-v-container:hover .run {
     background-color: black;
 }
-@media (max-width: 860px){
-    .about-container.mission.history-wrap{
+
+@media (max-width: 860px) {
+    .about-container.mission.history-wrap {
         padding: 20px !important;
     }
 }
-@media (max-width: 540px){
-    .history p{
+
+@media (max-width: 540px) {
+    .history p {
         font-size: 15px;
     }
+
     .styled-table {
         width: 60%;
 
     }
-    .history .m-v-container{
+
+    .history .m-v-container {
         width: 400px;
     }
 }
-@media (max-width: 460px){
-    .history .m-v-container{
+
+@media (max-width: 460px) {
+    .history .m-v-container {
         width: 350px;
     }
 }
-@media (max-width: 400px){
-    .history .m-v-container{
+
+@media (max-width: 400px) {
+    .history .m-v-container {
         width: 300px;
+    }
+}
+
+.president-wrapper {
+    display: flex;
+}
+
+.president-pic {
+    margin-right: 40px;
+    margin-left: 20px;
+    margin-top: 20px;
+
+
+}
+
+.president-pic img {
+    width: 250px;
+    height: 300px;
+    border-radius: 30px;
+
+}
+
+.president-content {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.president-wrapper .positext {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 15px;
+    text-align: left;
+    color: rgba(163, 163, 163, 1);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    .president-wrapper {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .president-wrapper h2 {
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .president-pic {
+        margin-right: 20px;
+    }
+
+    .president-wrapper .positext {
+        text-align: center;
+    }
+}
+
+.news-seemore {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 260px;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 40px;
+    margin-top: 20px;
+    border: 2px 0px 0px 0px;
+    opacity: 0px;
+    background: rgba(0, 0, 0, 1);
+    border: 2px solid rgba(255, 255, 255, 1);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.seemoretext {
+    opacity: 1;
+    font-family: "Poppins", sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 30px;
+    text-align: center;
+    color: rgba(255, 255, 255, 1);
+}
+
+.join {
+    display: flex;
+    text-indent: 0%;
+    justify-content: center;
+    gap: 100px;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 712px) {
+    .join{
+        gap:20px;
     }
 }
