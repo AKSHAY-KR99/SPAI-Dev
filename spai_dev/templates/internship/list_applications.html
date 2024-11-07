@@ -1,0 +1,61 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block cssfiles %}
+    <link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sub/members.css' %}">
+{% endblock %}
+
+{% block header %}
+    {% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+<table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th class="email">Email</th>
+                <th>Phone</th>
+                <th>College</th>
+                <th>Interested Area</th>
+                <th>Applied Date</th>
+                <th>View</th>
+            </tr>
+        </thead>
+        <tbody>
+    
+        {% for application in applications%}
+        <tr>
+                <td class="username">
+                    {{application.first_name}} {{application.last_name}}
+                </td>
+                <td class="email">{{application.email}}</td>
+                <td>{{application.phone}}</td>
+                <td>{{application.college}}</td>
+                <td>{{application.interest_area}}</td>
+                <td>{{application.apply_date}}</td>
+                <td>
+                    <a href="{% url 'application_retrieve' application.pk %}">
+                        <div class="view">
+                            <img src="{% static 'image/eye.svg' %}" alt="">
+                            <p>View</p>
+                        </div>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    
+    
+        </tbody>
+    </table>
+
+{% endblock %}
+
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock %}
+
+{% block jsfile %}
+<script type="text/javascript" src="{% static 'js/sub/news.js' %}"></script>   
+{% endblock %}
