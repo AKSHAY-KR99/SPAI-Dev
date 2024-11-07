@@ -1,0 +1,64 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block cssfiles %}
+<link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/content.css' %}">
+{% endblock %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="about-container mission">
+    <div class="mission-top-row">
+        <h1 style="margin-bottom: 0%;">PRESIDENT OF SPORTS PSYCHOLOGY ASSOCIATION OF INDIA</h1>
+    </div>
+    <div class="mission-vission">
+        <div class="m-v-container">
+            <div style="display: flex;align-items: center;">
+                <!-- <div class="mission-icon">
+                    <img class="pic-on" src="{% static 'image/football1.svg' %}" alt="">
+                    <img class="pic-off" src="{% static 'image/football2.svg' %}" alt="">
+                </div> -->
+                
+            </div>
+            <div class="president-wrapper">
+                <div class="president-pic">
+                    <img src="{% static 'image/PRESIDENT.png' %}" alt="">
+                </div>
+                <div class="president-content">
+                    <h2>Dr. Anil Karwande</h2>
+                    <p>
+                        Dr Anil Karwande is President of Sports Psychology Association of India. Dr Anil has done his PhD in
+                        Physical Education. He’s the founder of NET JRF GURUKUL. He’s the academic counselor for Solapur University
+                        and the Vice-President Vishwa Punarnirman Sangh. He is the Former Principal of IDCPE Nagpur and a former
+                        member board of Management LNIPE Deemed University Gwalior. He's working on a project to Increase awareness
+                        of entry into the Defense Forces. He is the President of KREEDA BHARTI Vidarbha-Prant and Maharashtra. He
+                        has received a letter of Recognition by Indian Association of Sports Medicine for the upliftment of Sports
+                        Medicine in the country.He has received Rajiv Gandhi Education Excellence Award given by the Indian Society
+                        Council. He has received Bharat Vidya Ratan Award 2010 given by the Health and Development Association. He
+                        has received the Ideal Teacher Award 2013 given by Maharastra State Physical & Educational Teacher
+                        Association. He has participated in more than 100 seminars and conference at national and international
+                        level.
+                    </p>
+                    
+                </div>
+            </div>
+            
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}
+{% block jsfile %}
+<script type="text/javascript" src="{% static 'js/sub/news.js' %}"></script>
+{% endblock %}

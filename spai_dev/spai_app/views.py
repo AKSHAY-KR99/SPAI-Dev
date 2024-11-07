@@ -91,12 +91,16 @@ def about_page(request):
     if page == "message_from_secretary":
         return render(request, 'static_pages/about/msgsecretary.html')
 
-
 def publications(request):
     page = request.GET.get('page')
     print(page)
     if page == "about_spai_journal":
         return render(request, 'static_pages/publications/spai_journel.html')
+def academic(request):
+    page=request.GET.get('page')
+    if page=="about_internship":
+        return render(request, 'static_pages/academic/internship/about.html')
+
 
 
 def history(request):
