@@ -1,0 +1,113 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block cssfiles %}
+<link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/members.css' %}">
+{% endblock %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="content">
+    <div class="name">
+        <div class="num" onclick="window.history.back()">
+            <img src="{% static 'image/back.svg' %}" alt="">
+        </div>
+        <h1>{{user.first_name}} {{user.last_name}}</h1>
+    </div>
+
+    <div class="details_container">
+        <div class="number">
+            <div class="num">
+                <p>01</p>
+            </div>
+        </div>
+        <div class="labels">
+            <p>Email</p>
+            <p>Mobile</p>
+            <p>College</p>
+            <p>University</p>
+            <p>Department</p>
+        </div>
+        <div class="details">
+            <p>{{user.email}}</p>
+            <p>{{user.phone}}</p>
+            <p>{{user.college}}</p>
+            <p>{{user.university}}</p>
+            <p>{{user.department}}</p>
+        </div>
+    </div>
+    <div class="details_container">
+        <div class="number">
+            <div class="num">
+                <p>02</p>
+            </div>
+        </div>
+        <div class="labels">
+            <p>Interested Area</p>
+            <p>Location Preference</p>
+            <p>Start Date</p>
+            <p>End Date</p>
+        </div>
+        <div class="details">
+            <p>{{user.interest_area}}</p>
+            <p>{{user.location_preference}}</p>
+            <p>{{user.start_date}}</p>
+            <p>{{user.end_date}}</p>
+        </div>
+    </div>
+    <div class="details_container">
+        <div class="number">
+            <div class="num">
+                <p>03</p>
+            </div>
+        </div>
+        <div class="labels">
+            <p>Qualification</p>
+            <p>Course Name</p>
+            <p>Passing Year</p>
+            <p>Score</p>
+        </div>
+        <div class="details">
+            <p>{{user.qualification}}</p>
+            <p>{{user.course_name}}</p>
+            <p>{{user.passing_year}}</p>
+            <p>{{user.score}}</p>
+        </div>
+    </div>
+    <div class="details_container">
+        <div class="number">
+            <div class="num">
+                <p>04</p>
+            </div>
+        </div>
+        <div class="labels">
+            <p>Applied Date</p>
+            <p>Applied Time</p>
+        </div>
+        <div class="details">
+            <p>{{user.apply_date}}</p>
+            <p>{{user.apply_time}}</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}
+{% block jsfile %}
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('.menu-icon').addEventListener('click', function() {
+            document.querySelector('.navbar').classList.toggle('active');
+        });
+    });
+</script>
+{% endblock %}
+

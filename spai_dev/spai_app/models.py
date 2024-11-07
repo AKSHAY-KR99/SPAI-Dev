@@ -190,3 +190,30 @@ class LifeMembers(models.Model):
 
     def __str__(self):
         return str(self.name)
+
+
+class InternshipApplication(models.Model):
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    email = models.EmailField()
+    phone = models.CharField(max_length=15)
+    college = models.CharField(max_length=100)
+    university = models.CharField(max_length=100)
+    department = models.CharField(max_length=100)
+
+    interest_area = models.CharField(max_length=100)
+    location_preference = models.CharField(max_length=100)
+    start_date = models.DateField()
+    end_date = models.DateField()
+
+    qualification = models.CharField(max_length=100)
+    course_name = models.CharField(max_length=100)
+    passing_year = models.PositiveIntegerField()
+    score = models.CharField(max_length=10)
+
+    apply_date = models.DateField(auto_now=True)
+    apply_time = models.TimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.first_name}"
+

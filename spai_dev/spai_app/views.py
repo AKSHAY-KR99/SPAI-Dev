@@ -11,7 +11,7 @@ from django.urls import reverse
 from django.core.paginator import Paginator
 
 from . import models, forms
-from .models import GalleryManagement, User, EventManagement, UserDetailModel,GalleryImage, PaymentModel
+from .models import GalleryManagement, User, EventManagement, UserDetailModel, GalleryImage, PaymentModel
 from .decorators import admin_only, authenticated_only
 from .utils import render_to_pdf
 from rest_framework.decorators import api_view
@@ -74,39 +74,44 @@ def index(request):
         'upcoming_events': upcoming_events,
     }
     return render(request, 'mainpages/new_home.html', context)
-    #return render(request, 'static_pages/about/about.html', context)
-    #return render(request, 'members/payment_page.html', context)
+    # return render(request, 'static_pages/about/about.html', context)
+    # return render(request, 'members/payment_page.html', context)
+
 
 def about_page(request):
-    page=request.GET.get('page')
-    if page=="about_spai":
+    page = request.GET.get('page')
+    if page == "about_spai":
         return render(request, 'static_pages/about/about.html')
-    if page=="mission":
+    if page == "mission":
         return render(request, 'static_pages/about/mission.html')
-    if page=="history":
+    if page == "history":
         return render(request, 'static_pages/about/history.html')
-    if page=="message_from_president":
+    if page == "message_from_president":
         return render(request, 'static_pages/about/msgpresident.html')
-    if page=="message_from_secretary":
+    if page == "message_from_secretary":
         return render(request, 'static_pages/about/msgsecretary.html')
-    if page=="president":
+    if page == "president":
         return render(request, 'static_pages/about/leadership/president.html')
-    if page=="secretary":
+    if page == "secretary":
         return render(request, 'static_pages/about/leadership/secretary.html')
-    if page=="patron":
+    if page == "patron":
         return render(request, 'static_pages/about/leadership/patron.html')
-    if page=="committee":
+    if page == "committee":
         return render(request, 'static_pages/about/leadership/committee.html')
-    if page=="pre_committee":
+    if page == "pre_committee":
         return render(request, 'static_pages/about/leadership/previous_year.html')
+
+
 def publications(request):
-    page=request.GET.get('page')
+    page = request.GET.get('page')
     print(page)
-    if page=="about_spai_journal":
+    if page == "about_spai_journal":
         return render(request, 'static_pages/publications/spai_journel.html')
+
+
 def academic(request):
-    page=request.GET.get('page')
-    if page=="about_internship":
+    page = request.GET.get('page')
+    if page == "about_internship":
         return render(request, 'static_pages/academic/internship/about.html')
 
 
@@ -168,15 +173,14 @@ def gallery_list(request):
     page_number = request.GET.get('page', 1)
     paginator = Paginator(galleries, 9)
     page_obj = paginator.get_page(page_number)
-    context={'galleries': galleries,'page_obj':page_obj}
-    return render(request, 'mainpages/gallery.html',context )
+    context = {'galleries': galleries, 'page_obj': page_obj}
+    return render(request, 'mainpages/gallery.html', context)
 
 
 def gallery_detail(request, pk):
     gallery = GalleryManagement.objects.get(pk=pk)
     images = GalleryImage.objects.filter(gallery=gallery)
     return render(request, 'mainpages/gallery_detail.html', {'gallery': gallery, 'images': images})
-
 
 
 def gallery_create(request):
@@ -208,8 +212,8 @@ def gallery_delete(request, pk):
     gallery.delete()
     return redirect('gallery_list')
 
-def delete_gallery_image(request, image_id):
 
+def delete_gallery_image(request, image_id):
     # Get the image object or return a 404 if not found
     obj = GalleryImage.objects.get(pk=image_id)
     gallery_id = obj.gallery.pk  # Save gallery ID to redirect back later
@@ -223,9 +227,10 @@ def delete_gallery_image(request, image_id):
     # Redirect back to the gallery detail page
     return redirect('gallery_detail', pk=gallery_id)
 
+
 def add_gallery_image(request, gallery_id):
     gallery = get_object_or_404(GalleryManagement, id=gallery_id)
-    
+
     if request.method == 'POST' and request.FILES['image']:
         image = request.FILES['image']
         # Create a new GalleryImage object
@@ -233,8 +238,9 @@ def add_gallery_image(request, gallery_id):
         new_image.save()
         messages.success(request, 'Image added successfully.')
         return redirect('gallery_detail', pk=gallery_id)
-    
+
     return redirect('gallery_detail', pk=gallery_id)
+
 
 def news(request):
     all_events = EventManagement.objects.all().order_by('-id')
@@ -270,14 +276,13 @@ def news_detail(request, pk):
     if GalleryManagement.objects.filter(event=event_object).exists():
         gallery = GalleryManagement.objects.get(event=event_object)
     else:
-        gallery = None 
+        gallery = None
     context = {
         "event": event_object,
         'related_events': upcoming_events,
-        "gallery":gallery
+        "gallery": gallery
     }
     return render(request, 'mainpages/news_details.html', context)
-
 
 
 def eventadd(request):
@@ -289,7 +294,7 @@ def eventadd(request):
         description = request.POST.get('description', '')
         registration_link = request.POST.get('registration_link', '')
 
-        event=EventManagement.objects.create(
+        event = EventManagement.objects.create(
             title=title,
             image=image,
             datetime=datetime,
@@ -305,9 +310,9 @@ def eventadd(request):
                 image_name=title,
                 description=description,
                 event=event,
-                place=location   
+                place=location
             )
-            
+
             # Handle multiple images upload
             multiple_images = request.FILES.getlist('multiple_images')
             GalleryImage.objects.create(gallery=gallery, images=image)
@@ -544,7 +549,7 @@ def unauthorized_page_403(request):
     return render(request, 'permission/403_page.html')
 
 
-#rest API
+# rest API
 @api_view(['POST'])
 def create_or_update_life_member(request):
     email = request.data.get('email')
@@ -562,12 +567,14 @@ def create_or_update_life_member(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
 @admin_only
 def life_members_get(request):
     if request.user.user_role == settings.ADMIN_ROLE_VALUE:
         members = LifeMembers.objects.all()
         context = {'members': members}
         return render(request, 'members/life_members.html', context)
+
 
 @admin_only
 def life_member_info(request, *args, **kwargs):
@@ -582,5 +589,30 @@ def life_member_info(request, *args, **kwargs):
 
 
 def internship_page(request):
+    if request.method == 'POST':
+        form = forms.InternshipApplicationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = forms.InternshipApplicationForm()
+    return render(request, 'internship/internship.html', {'form': form})
+
+
+def list_applications(request):
     context = {}
-    return render(request, 'internship/internship.html', context)
+    applications = models.InternshipApplication.objects.all()
+    context['applications'] = applications
+    return render(request, 'internship/list_applications.html', context)
+
+
+@admin_only
+def application_retrieve(request, *args, **kwargs):
+    pk = kwargs.get("pk", None)
+    if request.user.user_role == settings.ADMIN_ROLE_VALUE:
+        context = {}
+        user_data = models.InternshipApplication.objects.get(pk=pk)
+        context['user'] = user_data
+        return render(request, 'internship/view_applications.html', context)
+    else:
+        return redirect('login')

@@ -128,3 +128,26 @@ button.intern:disabled {
 .fade-in:nth-child(3) { animation-delay: 0.3s; }
 .fade-in:nth-child(4) { animation-delay: 0.4s; }
 .fade-in:nth-child(5) { animation-delay: 0.5s; }
+
+
+.full-list {
+    display: flex;
+    justify-content: flex-end; /* Aligns to the right on larger screens */
+    margin: 20px 150px 0;
+}
+
+.full-list a {
+    text-decoration: none;
+    padding: 10px 15px;
+    background-color: #000000; /* Change this to match your theme */
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+@media (max-width: 768px) {
+    .full-list {
+        justify-content: center; /* Centers the link on smaller screens */
+    }
+}

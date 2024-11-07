@@ -13,9 +13,14 @@
 
 {% block content %}
 <div class="internship-container">
+    {% if request.user.user_role == 1 %}
+    <div class="full-list">
+        <a href="{% url 'list_applications' %}">View all Applications</a>
+    </div>
+    {% endif %}
     <div class="internship-form">
-        <form id="internship-registration" action="#" method="post">
-            <!-- Section 1: Intern Details -->
+        <form id="internship-registration" action="{% url 'internship_page' %}" method="post">
+            {% csrf_token %}
             <div class="form-section">
                 <h3>Intern Details</h3>
                 <div class="flex-row">
@@ -54,7 +59,6 @@
                 </div>
             </div>
 
-            <!-- Section 2: Internship Interest -->
             <div class="form-section">
                 <h3>Internship Interest</h3>
                 <div class="flex-row">
@@ -80,7 +84,6 @@
                 </div>
             </div>
 
-            <!-- Section 3: Academic Background -->
             <div class="form-section">
                 <h3>Academic Background</h3>
                 <div class="flex-row">
@@ -105,7 +108,6 @@
                 </div>
             </div>
 
-            <!-- Agreement and Submit -->
             <div class="form-section">
                 <label for="agreement">
                     <input type="checkbox" id="agreement" name="agreement" required><i>

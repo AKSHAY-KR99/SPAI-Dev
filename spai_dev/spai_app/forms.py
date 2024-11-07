@@ -2,7 +2,7 @@ import re
 from django.conf import settings
 from django.contrib.auth.hashers import check_password
 from django.forms import ModelForm
-from .models import GalleryManagement, UserDetailModel, User,EventManagement, PaymentModel
+from .models import GalleryManagement, UserDetailModel, User,EventManagement, PaymentModel, InternshipApplication
 from django import forms
 
 
@@ -144,3 +144,14 @@ class PaymentForm(forms.ModelForm):
         if commit:
             instance.save()
         return instance
+
+
+class InternshipApplicationForm(forms.ModelForm):
+    class Meta:
+        model = InternshipApplication
+        fields = [
+            'first_name', 'last_name', 'email', 'phone', 'college', 'university', 'department',
+            'interest_area', 'location_preference', 'start_date', 'end_date',
+            'qualification', 'course_name', 'passing_year', 'score'
+        ]
+        read_only_fields = ['apply_date', 'apply_date']
