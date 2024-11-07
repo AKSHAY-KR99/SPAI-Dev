@@ -12,12 +12,12 @@
                 <div style="display: flex;justify-content: space-between;">Leadership<img src="{% static 'image/triangle.svg' %}" alt=""></div>
                 </a>
               <ul class="dropdown-menu side">
-                  <li><a href="#">President</a></li>
-                  <li><a href="#">Secretary</a></li>
+                  <li><a href="{% url 'about_page' %}?page=president">President</a></li>
+                  <li><a href="{% url 'about_page' %}?page=secretary">Secretary</a></li>
                   <li><a href="#">Regional secres</a></li>
-                  <li><a href="#">Patrons</a></li>
-                  <li><a href="#">Previous year council</a></li>
-                  <li><a href="#">Committees</a></li>
+                  <li><a href="{% url 'about_page' %}?page=patron">Patrons</a></li>
+                  <li><a href="{% url 'about_page' %}?page=pre_committee">Previous year council</a></li>
+                  <li><a href="{% url 'about_page' %}?page=committee">Committees</a></li>
               </ul>
             </li>
             <li><a href="{% url 'about_page' %}?page=message_from_president">Message from the President</a></li>
@@ -131,7 +131,7 @@
                     <div style="display: flex;justify-content: space-between;">Internship<img src="{% static 'image/triangle.svg' %}" alt=""></div>
                     </a>
                 <ul class="dropdown-menu side">
-                    <li><a href="#">About SPAI Internship</a></li>
+                    <li><a href="{% url 'academic' %}?page=about_internship">About SPAI Internship</a></li>
                     <li><a href="#">SPAI Mentors</a></li>
                     <li><a href="{% url 'internship_page' %}">Join Internship</a></li>
                     <li><a href="#">Internship Testimonials</a></li>
