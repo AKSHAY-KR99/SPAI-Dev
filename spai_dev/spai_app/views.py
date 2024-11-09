@@ -460,8 +460,7 @@ def certificate(request, *args, **kwargs):
             user = User.objects.get(slug_value=slug)
         else:
             user = User.objects.get(slug_value=request.user.slug_value)
-        context = {"name": user.first_name, "email": user.email, "date": user.date_created,
-                   "current_date": datetime.date.today(), "current_time": datetime.datetime.now().time()}
+        context = {"name": user.first_name, "email": user.email, "date": user.date_created}
         template_path = 'pdf_template.html'
         template = get_template(template_path)
         html = template.render(context)
@@ -552,16 +551,22 @@ def unauthorized_page_403(request):
 # rest API
 @api_view(['POST'])
 def create_or_update_life_member(request):
-    email = request.data.get('email')
-    life_member = LifeMembers.objects.filter(email=email).first()
+    data = {key: (value if value != "" else None) for key, value in request.data.items()}
+
+    name = data.get('name')
+    life_member = None
+
+    if name:
+        life_member = LifeMembers.objects.filter(name=name).first()
+
     if life_member:
-        serializer = LifeMembersSerializer(life_member, data=request.data, partial=True)
+        serializer = LifeMembersSerializer(life_member, data=data, partial=True)
         if serializer.is_valid():
             serializer.save(update_date=timezone.now())
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     else:
-        serializer = LifeMembersSerializer(data=request.data)
+        serializer = LifeMembersSerializer(data=data)
         if serializer.is_valid():
             serializer.save(upload_date=timezone.now(), update_date=timezone.now())
             return Response(serializer.data, status=status.HTTP_201_CREATED)
