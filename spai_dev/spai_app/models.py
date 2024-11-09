@@ -175,7 +175,7 @@ class PaymentModel(models.Model):
 class LifeMembers(models.Model):
     name = models.CharField(max_length=50, null=True, blank=True)
     address = models.TextField(null=True, blank=True)
-    mobile = models.CharField(max_length=15, null=True, blank=True)
+    mobile = models.CharField(max_length=30, null=True, blank=True)
     email = models.EmailField(max_length=50, null=True, blank=True)
     membership_date = models.DateField(null=True, blank=True)
     upload_date = models.DateTimeField(null=True, blank=True)
