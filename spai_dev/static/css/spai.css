@@ -609,21 +609,21 @@ input::placeholder{
 .btn-grp-2{
   margin-top: 73px;
 }
-.reg-form-section{
+/* .reg-form-section{
   margin-left: 25%;
 }
 @media (max-width: 520px){
   .reg-form-section{
     margin-left: 18%;
   }
-}
+} */
 @media (max-width: 440px){
   .welcome{
     height: 200px;
   }
-  .reg-form-section{
+  /* .reg-form-section{
     margin-left: 10%;
-  }
+  } */
 }
 @media (min-width: 780px) and (max-width: 980px){
 .image-section-2 img{

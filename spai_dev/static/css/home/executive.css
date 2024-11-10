@@ -1,5 +1,8 @@
 /*executie************************************************/
-  
+.executive{
+  margin-left: 10px;
+  margin-right: 10px;
+}  
 .executie-containers{
     flex-wrap: wrap;
     margin-top: 40px;

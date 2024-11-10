@@ -71,13 +71,11 @@
                     SPAI
                 </div>
             </div>
-            <a style="text-decoration: none; color: inherit;" href="">
+            <a style="text-decoration: none; color: inherit;" href="{% url 'user_registration' %}">
                 <div class="jointoday">
-                    <a href="{% url 'user_registration' %}" style="text-decoration: none;">
-                        <div class="jointodaytext">
-                            Join Today
-                        </div>
-                    </a>
+                    <div class="jointodaytext">
+                        Join Today
+                    </div>
                 </div>
             </a>
             <div class="downarrow">
@@ -127,34 +125,6 @@
         </div>
     </div>
 </div>
-<!-- <div class="math">
-
-    <div class="math-text">
-        <div style="display: flex;gap: 40px;">
-            <div style="justify-content: center;">
-                <div class="math-title">Athletes</div>
-                <div class="math-num">1900+</div>
-            </div>
-            <div>
-                <div class="math-title">Experts</div>
-                <div class="math-num">45+</div>
-            </div>
-            <div>
-                <div class="math-title">Professionals</div>
-                <div class="math-num">35+</div>
-            </div>
-            <div>
-                <div class="math-title">LIFETIME MEMBERS</div>
-                <div class="math-num">700+</div>
-            </div>
-        </div>
-
-    </div>
-    <span class="verti"></span>
-    <span class="verti" style="right: 50%;"></span>
-    <span class="verti" style="right: 75%;"></span>
-
-</div> -->
 <div class="about">
     <h1>ABOUT US</h1>
     <div class="about-content">
@@ -727,7 +697,7 @@
         loop: true, // Enable loop mode if required
     });
     var swiper2 = new Swiper('.executie-containers', {
-        slidesPerView: 1, // You can set this to 'auto' for responsive slides
+        slidesPerView: 1.2, // You can set this to 'auto' for responsive slides
         spaceBetween: 2,
         pagination: {
             el: '.swiper-pagination',
@@ -757,7 +727,7 @@
                 slidesPerView: 3.3,
             },
             1137: {
-                slidesPerView: 4, // 3 slides on desktops
+                slidesPerView: 3.85 , // 3 slides on desktops
 
             },
 
