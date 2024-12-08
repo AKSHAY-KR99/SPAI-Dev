@@ -15,11 +15,14 @@
 
 <!-- Add SwiperJS script -->
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+
 {% endblock %}
 {% block header %}
 {% include 'header.html' %}
 {% endblock %}
 {% block content %}
+
 {% if request.user.is_authenticated and request.user.status == 'user_created' %}
 <div class="complete-profile">
     <div class="information-text">
@@ -32,8 +35,15 @@
 {% endif %}
 <div class="hero">
     <div class="hero-pic">
-        <img class="full-width-img" src="{% static 'image/swim.png' %}" alt="Image 1">
-        <img class="full-width-img" src="{% static 'image/track.png' %}" alt="Image 2">
+        <!-- <img class="full-width-img" src="{% static 'image/swim.png' %}" alt="Image 1"> -->
+        
+        <!-- <img class="full-width-img" src="{% static 'image/weight.jpg' %}" alt="Image 2">
+        <img class="full-width-img" src="{% static 'image/tennis.jpg' %}" alt="Image 1">
+        <img class="full-width-img" src="{% static 'image/bgfootball.jpg' %}" alt="Image 2"> -->
+
+        <img class="full-width-img" src="{% static 'image/DISPAY_IMG_1.jpg' %}" alt="Image 1">
+        <img class="full-width-img" src="{% static 'image/DISPAY_IMG_2.jpg' %}" alt="Image 2">
+        <img class="full-width-img" src="{% static 'image/DISPAY_IMG_3.jpg' %}" alt="Image 3">
         {% for event in upcoming_events %}
         <img class="full-width-img" src="{{ event.image.url }}" alt="Image {{ event.id }}">
         {% endfor %}
@@ -58,6 +68,23 @@
                 <div class="jointoday">
                     <div class="jointodaytext">
                         Learn More
+                    </div>
+                </div>
+            </a>
+            <div class="downarrow">
+                <img src="{% static 'image/doubledownarroow.svg' %}" alt="">
+            </div>
+        </div>
+        <div class="hero-text">
+            <div class="welcome">
+                <div class="spai">JOIN
+                    SPAI
+                </div>
+            </div>
+            <a style="text-decoration: none; color: inherit;" href="{% url 'user_registration' %}">
+                <div class="jointoday">
+                    <div class="jointodaytext">
+                        Join Today
                     </div>
                 </div>
             </a>

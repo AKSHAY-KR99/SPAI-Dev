@@ -14,7 +14,7 @@
               <ul class="dropdown-menu side">
                   <li><a href="{% url 'about_page' %}?page=president">President</a></li>
                   <li><a href="{% url 'about_page' %}?page=secretary">Secretary</a></li>
-                  <li><a href="#">Regional secres</a></li>
+                  <li><a href="{% url 'about_page' %}?page=regional">Regional secres</a></li>
                   <li><a href="{% url 'about_page' %}?page=patron">Patrons</a></li>
                   <li><a href="{% url 'about_page' %}?page=pre_committee">Previous year council</a></li>
                   <li><a href="{% url 'about_page' %}?page=committee">Committees</a></li>
@@ -29,7 +29,7 @@
         <ul class="dropdown-menu">
             <li><a href="{% url 'news' %}?tab=upcoming">Upcoming Events</a></li>
             <li><a href="{% url 'news' %}?tab=post">Events Organized</a></li>
-            <li><a href="{% url 'news' %}">Major Highlights</a></li>
+            <li><a href="{% url 'membership' %}?page=major">Major Highlights</a></li>
             <li><a href="{% url 'gallery_list' %}">Gallery</a></li>
         </ul>
     </li>
@@ -41,7 +41,7 @@
                 <div style="display: flex;justify-content: space-between;">Join SPAI<img src="{% static 'image/triangle.svg' %}" alt=""></div>
                 </a>
               <ul class="dropdown-menu side">
-                  <li><a href="#">About Membership Privilege</a></li>
+                  <li><a href="{% url 'membership' %}?page=previlege">About Membership Privilege</a></li>
               </ul>
             </li>
             <li><a href="{% url 'about_page' %}?page=committee">Executive Members</a></li>
@@ -58,12 +58,12 @@
                 <div style="display: flex;justify-content: space-between;">Editorial Board<img src="{% static 'image/triangle.svg' %}" alt=""></div>
                 </a>
               <ul class="dropdown-menu side">
-                  <li><a href="#">Editorial Board Members</a></li>
-                  <li><a href="#">Join as Editor</a></li>
-                  <li><a href="#">Join as Reviewer</a></li>
+                  <li><a href="{% url 'publications' %}?page=editorial">Editorial Board Members</a></li>
+                  <li><a href="{% url 'publications' %}?page=joinaseditor">Join as Editor</a></li>
+                  <li><a href="{% url 'publications' %}?page=joinasreviewer">Join as Reviewer</a></li>
               </ul>
             </li>
-            <li><a href="#">Journal Archives</a></li>
+            <li><a href="{% url 'publications' %}?page=journal_archives">Journal Archives</a></li>
         </ul>
     </li>
     <li class="dropdown">
@@ -74,13 +74,13 @@
                 <div style="display: flex;justify-content: space-between;">Academic Program<img src="{% static 'image/triangle.svg' %}" alt=""></div>
                 </a>
               <ul class="dropdown-menu side">
-                  <li><a href="#">Certification Program in SP</a></li>
+                  <li><a href="{% url 'academic' %}?page=certification">Certification Program in SPAI</a></li>
                   <!-- <li><a href="#">A</a></li>
                   <li><a href="#">A</a></li>
                   <li><a href="#">A</a></li> -->
               </ul>
             </li>
-            <li><a href="#">MOU Collaboration</a></li>
+            <li><a href="{% url 'academic' %}?page=mou">MOU Collaboration</a></li>
             <li class="side-down" style="height: 45px;">
               <a class="nav-arrow" href="#">
                 <div style="display: flex;justify-content: space-between;">Workshop/Seminars/ Conferences<img src="{% static 'image/triangle.svg' %}" alt=""></div>
@@ -91,9 +91,9 @@
                         <div style="display: flex;justify-content: space-between;">Annual Conference<img src="{% static 'image/triangle.svg' %}" alt=""></div>
                         </a>
                     <ul class="dropdown-menu sideB">
-                        <li><a href="#">Upcomming Annual</a></li>
-                        <li><a href="#">Past Annual</a></li>
-                        <li><a href="#">Annual Conf Archives</a></li>
+                        <li><a href="{% url 'academic' %}?page=upcoming_annual">Upcomming Annual</a></li>
+                        <li><a href="{% url 'academic' %}?page=past_annual">Past Annual</a></li>
+                        <li><a href="{% url 'academic' %}?page=annual_archives">Annual Conf Archives</a></li>
                     </ul>
                 </li>
                 <li class="side-downB">
@@ -101,8 +101,8 @@
                         <div style="display: flex;justify-content: space-between;">National Workshops or Seminars<img src="{% static 'image/triangle.svg' %}" alt=""></div>
                         </a>
                     <ul class="dropdown-menu sideB">
-                        <li><a href="#">Upcomming</a></li>
-                        <li><a href="#">Completed</a></li>
+                        <li><a href="{% url 'academic' %}?page=upcoming_national_workshop">Upcomming</a></li>
+                        <li><a href="{% url 'academic' %}?page=completed_national_workshop">Completed</a></li>
                     </ul>
                 </li>
                 <li class="side-downB" style="height: 45px;">
@@ -110,8 +110,8 @@
                         <div style="display: flex;justify-content: space-between;">State Regional Workshops or Seminars<img src="{% static 'image/triangle.svg' %}" alt=""></div>
                         </a>
                     <ul class="dropdown-menu sideB">
-                        <li><a href="#">Upcomming</a></li>
-                        <li><a href="#">Completed</a></li>
+                        <li><a href="{% url 'academic' %}?page=upcoming_state_workshop">Upcomming</a></li>
+                        <li><a href="{% url 'academic' %}?page=completed_state_workshop">Completed</a></li>
                     </ul>
                 </li>
                 
@@ -122,8 +122,8 @@
                     <div style="display: flex;justify-content: space-between;">Online Lectures /Webinars<img src="{% static 'image/triangle.svg' %}" alt=""></div>
                     </a>
                 <ul class="dropdown-menu side">
-                    <li><a href="#">Upcomming</a></li>
-                    <li><a href="#">Completed</a></li>
+                    <li><a href="{% url 'academic' %}?page=upcoming_online_webinars">Upcomming</a></li>
+                    <li><a href="{% url 'academic' %}?page=completed_online_webinars">Completed</a></li>
                 </ul>
             </li>
             <li class="side-down">
@@ -132,9 +132,9 @@
                     </a>
                 <ul class="dropdown-menu side">
                     <li><a href="{% url 'academic' %}?page=about_internship">About SPAI Internship</a></li>
-                    <li><a href="#">SPAI Mentors</a></li>
+                    <li><a href="{% url 'academic' %}?page=mentors">SPAI Mentors</a></li>
                     <li><a href="{% url 'internship_page' %}">Join Internship</a></li>
-                    <li><a href="#">Internship Testimonials</a></li>
+                    <li><a href="{% url 'academic' %}?page=internship_testimonials">Internship Testimonials</a></li>
                 </ul>
             </li>
             <li class="side-down">
@@ -142,12 +142,12 @@
                     <div style="display: flex;justify-content: space-between;">Awards<img src="{% static 'image/triangle.svg' %}" alt=""></div>
                     </a>
                 <ul class="dropdown-menu side">
-                    <li><a href="#">SPAI Awards</a></li>
-                    <li><a href="#">Best Research Award</a></li>
-                    <li><a href="#">Best Paper Presenter Award</a></li>
-                    <li><a href="#">Best Poster Presentation Award</a></li>
-                    <li><a href="#">Best Publications</a></li>
-                    <li><a href="#">Student Research Award</a></li>
+                    <li><a href="{% url 'academic' %}?page=spai_award">SPAI Awards</a></li>
+                    <li><a href="{% url 'academic' %}?page=research">Best Research Award</a></li>
+                    <li><a href="{% url 'academic' %}?page=paper_presenter">Best Paper Presenter Award</a></li>
+                    <li><a href="{% url 'academic' %}?page=poster_presentation">Best Poster Presentation Award</a></li>
+                    <li><a href="{% url 'academic' %}?page=publication">Best Publications</a></li>
+                    <li><a href="{% url 'academic' %}?page=student_research">Student Research Award</a></li>
                 </ul>
             </li>
             <li class="side-down">
@@ -155,11 +155,11 @@
                     <div style="display: flex;justify-content: space-between;">Grants<img src="{% static 'image/triangle.svg' %}" alt=""></div>
                     </a>
                 <ul class="dropdown-menu side">
-                    <li><a href="#">SPAI Research Grant</a></li>
-                    <li><a href="#">Call for Grants</a></li>
+                    <li><a href="{% url 'academic' %}?page=research_grant">SPAI Research Grant</a></li>
+                    <li><a href="{% url 'academic' %}?page=call_for_grants">Call for Grants</a></li>
                 </ul>
             </li>
-            <li><a href="#">Latest Updates in Sports Psychology</a></li>
+            <li><a href="{% url 'academic' %}?page=latest_update">Latest Updates in Sports Psychology</a></li>
         </ul>
     </li>
     <li class="search-li">

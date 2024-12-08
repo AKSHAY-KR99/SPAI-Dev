@@ -42,6 +42,7 @@ urlpatterns = [
     path('unauthorized/403/', views.unauthorized_page_403, name='unauthorized_403'),
 
     path('about', views.about_page, name='about_page'),
+    path('membership', views.membership, name='membership'),
     path('publications', views.publications, name='publications'),
     path('academic', views.academic, name='academic'),
 

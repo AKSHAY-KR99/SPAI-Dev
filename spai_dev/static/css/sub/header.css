@@ -299,6 +299,13 @@ nav {
     margin-left: 80%;
   }
 }
+@media (max-width: 1040px){
+  .sideB{
+    top: 100% !important;
+    left: 20% !important;
+    background-color: aquamarine;
+  }
+}
 @media (max-width: 700px) {
   .menu-icon {
       display: block;
@@ -309,6 +316,12 @@ nav {
   .login-button1 {
       display: block;
   }
+  .side{
+    top: 100% !important;
+    left: 20% !important;
+    background-color: #ccc;
+  }
+  
 }
 
 @media (max-width: 768px) {

@@ -1,0 +1,58 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block cssfiles %}
+<link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/content.css' %}">
+{% endblock %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="about-container mission">
+    <div class="mission-top-row">
+        <h1>CALL FOR MANUSCRIPTS</h1>
+    </div>
+    <div class="mission-vission">
+        <div class="m-v-container">
+            <div style="display: flex;align-items: center;">
+                <div class="mission-icon">
+                    <img class="pic-on" src="{% static 'image/highlight1.svg' %}" alt="">
+                    <img class="pic-off" src="{% static 'image/highlight2.svg' %}" alt="">
+                </div>
+                <i>
+                    <h3 style="margin-left: 10px;">Important Instructions</h3>
+                </i>
+            </div>
+            <ol>
+                <li>We recommend to read the <a href="https://www.ijfmr.com/publication-guidelines.php"
+                        target="_blank">publication guidelines/process</a> , <a
+                        href="https://www.ijfmr.com/fees-and-payment.php" target="_blank">Fees &
+                        Payment</a> and <a href="https://www.ijfmr.com/faq.php" target="_blank">FAQs</a> before
+                    submitting
+                    your research paper.</li>
+                <li>Kindly fill all the details properly as certificate will be generated on the basis of the
+                    information provided as under.</li>
+                <li>All input fields marked with red left border are mandatory, they must be filled in.</li>
+                <li>It is important that you provide functioning email address and functioning mobile number of the
+                    first author correctly because all communication will occur on those email address and/or mobile
+                    number.</li>
+            <li>Details of the paper (Title, Abstract, Keywords, Author Name(s), Designation(s), Organization Name(s)) must be same as mentioned in the research paper which you are submitting.</li>
+            <li>Please write Abstract in <b>Sentence case</b>, email address in lower case and all other fields in <b>Title Case</b> (Capitalize first character of each words). It's better NOT to write in UPPER CASE.</li>
+            </ol>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}
+{% block jsfile %}
+<script type="text/javascript" src="{% static 'js/sub/news.js' %}"></script>
+{% endblock %}
