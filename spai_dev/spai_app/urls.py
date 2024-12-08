@@ -35,6 +35,7 @@ urlpatterns = [
     path('join-internship/', views.internship_page, name='internship_page'),
     path('list/applications/', views.list_applications, name='list_applications'),
     path('get/<int:pk>/application', views.application_retrieve, name='application_retrieve'),
+    path('publications/manuscript', views.call_for_manuscript, name='call_for_manuscript'),
 
     path('user/payment/<str:slug>', views.payment_model, name='payment_model'),
 

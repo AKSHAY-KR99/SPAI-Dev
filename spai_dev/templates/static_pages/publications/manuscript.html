@@ -1,0 +1,152 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block cssfiles %}
+<link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/content.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/manuscript.css' %}">
+{% endblock %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+
+<div class="manuscript-container">
+    <!-- Section: Call for Manuscript -->
+    <h1 style="text-align: center;">Call for Manuscript</h1>
+
+    <!-- Section: Important Instructions -->
+    <h2>Important Instructions</h2>
+    <ul>
+        <li>Instruction 1: Please adhere to the guidelines provided: Please adhere to the guidelines provided: Please
+            adhere to the guidelines provided: Please adhere to the guidelines provided: Please adhere to the guidelines
+            provided: Please adhere to the guidelines provided: Please adhere to the guidelines provided: Please adhere
+            to the guidelines provided.</li>
+        <li>Instruction 2: Submit documents in the specified formats only.</li>
+        <li>Instruction 3: Ensure the originality of the research work.</li>
+    </ul>
+
+    <!-- Section: Research Paper Submission -->
+    <h1 style="text-align: center;">Submit Research Paper</h1>
+    <h3 style="text-align: center;">Please fill the details of the research paper</h3>
+
+    <form id="manuscript-form">
+        <!-- Research Paper Details Section -->
+        <div class="research-papper-deatils">
+            <div>
+                <label for="title">Title of the Paper <span class="required-star">*</span></label>
+                <input type="text" id="title" name="title" placeholder="Please write in Title Case (NOT IN CAPITALS)"
+                    required>
+            </div>
+            <div>
+                <label for="abstract">Abstract <span class="required-star">*</span></label>
+                <textarea id="abstract" name="abstract" rows="5"
+                    placeholder="Short background information about the research" required></textarea>
+            </div>
+            <div>
+                <label for="keywords">Keywords <span class="required-star">*</span></label>
+                <input type="text" id="keywords" name="keywords" placeholder="Comma seperated list" required>
+            </div>
+            <div>
+                <label for="research-area">Research Area <span class="required-star">*</span></label>
+                <input type="text" id="research-area" name="research-area" placeholder="Research Area" required>
+            </div>
+            <div>
+                <label for="paper-file">Select Research Paper <span class="required-star">*</span></label>
+                <label for="paper-file" class="custom-file-label">Choose File</label>
+                <input type="file" id="paper-file" name="paper-file" accept=".doc,.odt,.pdf" required>
+                <span id="file-name">No file chosen</span>
+            </div>
+            <div>
+                <label for="editor-message">Message to the Editor <span class="required-star">*</span></label>
+                <textarea id="editor-message" name="editor-message" placeholder="Write Message here"
+                    rows="3"></textarea>
+            </div>
+        </div>
+
+        <div class="authors-details">
+            <h4>Authors Details</h4>
+            <p>Provide details of the authors associated with the research paper.</p>
+            <button type="button" id="add-author">Add Another Author</button>
+            <div class="author-group">
+                <div>
+                    <input type="text" id="author-name" name="author-name[]" placeholder="Author Name" required>
+                </div>
+                <div>
+                    <input type="text" id="designation" name="designation[]" placeholder="Designation" required>
+                </div>
+                <div>
+                    <input type="text" id="organization" name="organization[]" placeholder="Organization" required>
+                </div>
+                <div>
+                    <input type="email" id="email" name="email[]" placeholder="Email Address" required>
+                </div>
+                <div>
+                    <input type="tel" id="mobile" name="mobile[]" placeholder="Mobile Number" required>
+                </div>
+            </div>
+        </div>
+
+        <!-- Address for Communication Section -->
+        <div class="address-communication">
+            <h4>Address for Communication</h4>
+            <div class="input-row">
+                <input type="text" id="country" name="country" placeholder="Country" required>
+                <input type="text" id="state" name="state" placeholder="State" required>
+            </div>
+            <div class="input-row">
+                <input type="text" id="city" name="city" placeholder="City/District" required>
+                <input type="text" id="postal-code" name="postal-code" placeholder="Postal Code" required>
+            </div>
+            <div class="input-row">
+                <textarea id="address" name="address" rows="3" placeholder="Address" required></textarea>
+            </div>
+        </div>
+
+        <!-- Agreement Checkbox and Submit Button -->
+        <div>
+            <input type="checkbox" id="agree" name="agree" required>
+            <label for="agree">I agree</label>
+        </div>
+        <div>
+            <button class="manuscript" type="submit" id="submit-button" disabled>Submit</button>
+        </div>
+    </form>
+    <div class="footer-links">
+        <a href="#" target="blank">Submit research papper</a>
+        <a href="#" target="blank">Downloads</a>
+        <a href="#" target="blank">Payment method</a>
+        <a href="#" target="blank">Dummy Link</a>
+        <a href="#" target="blank">Dummy Link</a>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+{% include 'footer.html' %}
+
+{% endblock %}
+
+{% block jsfile %}
+<script type="text/javascript" src="{% static 'js/sub/news.js' %}"></script>
+<script>
+    document.getElementById('agree').addEventListener('change', function () {
+        document.getElementById('submit-button').disabled = !this.checked;
+    });
+
+    document.getElementById('add-author').addEventListener('click', function () {
+        const authorGroup = document.querySelector('.author-group').cloneNode(true);
+        document.querySelector('.authors-details').appendChild(authorGroup);
+    });
+</script>
+<script>
+    document.getElementById('paper-file').addEventListener('change', function () {
+    const fileName = this.files[0] ? this.files[0].name : 'No file chosen';
+    document.getElementById('file-name').textContent = fileName;
+});
+
+</script>
+{% endblock %}

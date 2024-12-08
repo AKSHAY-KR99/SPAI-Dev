@@ -573,24 +573,20 @@ def create_or_update_life_member(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-@admin_only
+# @admin_only
 def life_members_get(request):
-    if request.user.user_role == settings.ADMIN_ROLE_VALUE:
-        members = LifeMembers.objects.all()
-        context = {'members': members}
-        return render(request, 'members/life_members.html', context)
+    members = LifeMembers.objects.all()
+    context = {'members': members}
+    return render(request, 'members/life_members.html', context)
 
 
-@admin_only
+# @admin_only
 def life_member_info(request, *args, **kwargs):
     uid = kwargs.get("uid", None)
-    if request.user.user_role == settings.ADMIN_ROLE_VALUE:
-        context = {}
-        user_data = LifeMembers.objects.get(uid=uid)
-        context['user'] = user_data
-        return render(request, 'members/life_member_details.html', context)
-    else:
-        return redirect('login')
+    context = {}
+    user_data = LifeMembers.objects.get(uid=uid)
+    context['user'] = user_data
+    return render(request, 'members/life_member_details.html', context)
 
 
 def internship_page(request):
@@ -621,3 +617,8 @@ def application_retrieve(request, *args, **kwargs):
         return render(request, 'internship/view_applications.html', context)
     else:
         return redirect('login')
+
+
+def call_for_manuscript(request):
+    context = {}
+    return render(request, 'static_pages/publications/manuscript.html', context)
