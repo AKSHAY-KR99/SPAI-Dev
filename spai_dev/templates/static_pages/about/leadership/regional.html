@@ -1,0 +1,100 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block cssfiles %}
+<link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/content.css' %}">
+{% endblock %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="about-container mission">
+    <div class="mission-top-row">
+        <h1>REGIONAL SECRETARY OF SPORTS PSYCHOLOGY ASSOCIATION OF INDIA</h1>
+    </div>
+    <div class="regional mission-vission">
+        <div style="height: 195px;" class="m-v-container">
+            <div style="display: flex;align-items: center;">
+                <div class="mission-icon">
+                    <img class="pic-on" src="{% static 'image/navigation1.svg' %}" alt="">
+                    <img class="pic-off" src="{% static 'image/navigation2.svg' %}" alt="">
+                </div>
+                <h3 style="margin-left: 10px;">North</h3>
+            </div>
+            <i style="font-size: 16px;">Dr.Amanendra Mann <br>
+                Associate Professor <br>
+                DAV College, Chandigarh <br>
+                </i>
+        </div>
+        <div style="height: 195px;" class="m-v-container">
+            <div style="display: flex;align-items: center;">
+                <div class="mission-icon">
+                    <img class="pic-on" src="{% static 'image/navigation1.svg' %}" alt="">
+                    <img class="pic-off" src="{% static 'image/navigation2.svg' %}" alt="">
+                </div>
+                <h3 style="margin-left: 10px;">South</h3>
+            </div>
+            <i style="font-size: 16px;">Prof Shahin Ahmed <br>
+                Professor <br>
+                Tamil Nadu Physical Education and Sports University <br>
+                Chennai <br>
+                
+                </i>
+        </div>
+        <div style="height: 195px;" class="m-v-container">
+            <div style="display: flex;align-items: center;">
+                <div class="mission-icon">
+                    <img class="pic-on" src="{% static 'image/navigation1.svg' %}" alt="">
+                    <img class="pic-off" src="{% static 'image/navigation2.svg' %}" alt="">
+                </div>
+                <h3 style="margin-left: 10px;">East</h3>
+            </div>
+            <i style="font-size: 16px;">Dr Sudarsan Biswas <br>
+                Associate Professor <br>
+                Visva Bharathi University <br>
+                Shantiniketan, West Bengal    <br>            
+                </i>
+        </div>
+        <div style="height: 195px;" class="m-v-container">
+            <div style="display: flex;align-items: center;">
+                <div class="mission-icon">
+                    <img class="pic-on" src="{% static 'image/navigation1.svg' %}" alt="">
+                    <img class="pic-off" src="{% static 'image/navigation2.svg' %}" alt="">
+                </div>
+                <h3 style="margin-left: 10px;">West</h3>
+            </div>
+            <i style="font-size: 16px;">Dr Neetu Joshi <br>
+                Assistant Professor <br>
+                B.P.C.A's College of Physical Education, <br>
+                Wadala, Mumbai                <br>
+                </i>
+        </div>
+        <div style="height: 195px;" class="m-v-container">
+            <div style="display: flex;align-items: center;">
+                <div class="mission-icon">
+                    <img class="pic-on" src="{% static 'image/navigation1.svg' %}" alt="">
+                    <img class="pic-off" src="{% static 'image/navigation2.svg' %}" alt="">
+                </div>
+                <h3 style="margin-left: 10px;">Central</h3>
+            </div>
+            <i style="font-size: 16px;">Dr Krishnakant Sahu <br>
+                Associate Professor <br>
+                LNIPE, Gwalior <br>
+                </i>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}
+{% block jsfile %}
+<script type="text/javascript" src="{% static 'js/sub/news.js' %}"></script>
+{% endblock %}
