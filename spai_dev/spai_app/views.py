@@ -100,19 +100,83 @@ def about_page(request):
         return render(request, 'static_pages/about/leadership/committee.html')
     if page == "pre_committee":
         return render(request, 'static_pages/about/leadership/previous_year.html')
-
+    if page == "regional":
+        return render(request, 'static_pages/about/leadership/regional.html')
+    
+def membership(request):
+    page = request.GET.get('page')
+    print(page)
+    if page == "previlege":
+        return render(request, 'static_pages/membership/previlege.html')
+    if page == "major":
+        return render(request, 'static_pages/news/major.html') 
 
 def publications(request):
     page = request.GET.get('page')
     print(page)
     if page == "about_spai_journal":
         return render(request, 'static_pages/publications/spai_journel.html')
+    if page == "editorial":
+        return render(request, 'static_pages/publications/editorial.html')
+    if page == "joinaseditor":
+        return render(request, 'static_pages/publications/joinaseditor.html')
+    if page == "joinasreviewer":
+        return render(request, 'static_pages/publications/joinasreviewer.html')
+    if page == "call_for_manuscripts":
+        return render(request, 'static_pages/publications/call.html')
+    if page == "journal_archives":
+        return render(request, 'static_pages/publications/journalarchieve.html')  
 
 
 def academic(request):
     page = request.GET.get('page')
     if page == "about_internship":
         return render(request, 'static_pages/academic/internship/about.html')
+    if page == "upcoming_annual":
+        return render(request, 'static_pages/academic/anual_conference/upcoming.html')
+    if page == "past_annual":
+        return render(request, 'static_pages/academic/anual_conference/past.html')
+    if page == "annual_archives":
+        return render(request, 'static_pages/academic/anual_conference/archives.html')
+    if page == "spai_award":
+        return render(request, 'static_pages/academic/awards/awards.html')
+    if page == "paper_presenter":
+        return render(request, 'static_pages/academic/awards/papper.html')
+    if page == "poster_presentation":
+        return render(request, 'static_pages/academic/awards/poster.html')
+    if page == "publication":
+        return render(request, 'static_pages/academic/awards/publications.html')
+    if page == "research":
+        return render(request, 'static_pages/academic/awards/research.html')
+    if page == "student_research":
+        return render(request, 'static_pages/academic/awards/student.html')
+    if page == "research_grant":
+        return render(request, 'static_pages/academic/grant/research.html')
+    if page == "call_for_grants":
+        return render(request, 'static_pages/academic/grant/call.html')
+    if page == "mentors":
+        return render(request, 'static_pages/academic/internship/mentors.html')
+    if page == "internship_testimonials":
+        return render(request, 'static_pages/academic/internship/testimonials.html')
+    if page == "upcoming_online_webinars":
+        return render(request, 'static_pages/academic/online/upcoming.html')
+    if page == "completed_online_webinars":
+        return render(request, 'static_pages/academic/online/past.html')
+    if page == "upcoming_state_workshop":
+        return render(request, 'static_pages/academic/state_workshop/upcomming.html')
+    if page == "completed_state_workshop":
+        return render(request, 'static_pages/academic/state_workshop/past.html')
+    if page == "upcoming_national_workshop":
+        return render(request, 'static_pages/academic/workshop/upcoming.html')
+    if page == "completed_national_workshop":
+        return render(request, 'static_pages/academic/workshop/past.html')
+    if page == "certification":
+        return render(request, 'static_pages/academic/certification.html')
+    if page == "latest_update":
+        return render(request, 'static_pages/academic/latest_update.html')
+    if page == "mou":
+        return render(request, 'static_pages/academic/mou.html')
+    
 
 
 def history(request):

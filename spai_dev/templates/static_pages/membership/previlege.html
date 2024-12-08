@@ -1,0 +1,70 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block cssfiles %}
+<link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/content.css' %}">
+{% endblock %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="about-container mission">
+    <div class="mission-top-row">
+        <h1>SPAI MEMBERSHIP PRIVILEGES</h1>
+    </div>
+    <div class="mission-vission">
+        <div class="m-v-container">
+            <div style="display: flex;align-items: center;">
+                <div class="mission-icon">
+                    <img class="pic-on" src="{% static 'image/swim1.svg' %}" alt="">
+                    <img class="pic-off" src="{% static 'image/swim2.svg' %}" alt="">
+                </div>
+                <h3 style="margin-left: 10px;">PRIVILEGES</h3>
+            </div>
+            <i style="font-size: 16px;">The Sports psychology Association of India (SPAI) offers numerous privileges
+                    to its members, which are designed to enhance the growth of sports psychology and provide critical
+                    support for athletes and professionals in the field. Membership privileges are: </i>
+            <ol>
+                <li><b>Professional Networking:</b> Sports Psychology Association of India provides opportunities for
+                    members to connect with national and international professionals in sports psychology, through
+                    affiliations with organizations like the International Society of Sports Psychology and Asian
+                    South-Pacific Association of Sports psychology.</li>
+                <li><b>Access to research and resources:</b> Sports Psychology Association of India offers members
+                    access to the latest research in sports psychology, including journals and publications. Members
+                    also get the opportunity to publish their own work in SPAI journal, contributing to the academic
+                    body of sports psychology knowledge in India.</li>
+                <li><b>Training and educations:</b> Sports Psychology actively promote sports psychology education in
+                    India by supporting the creation of certified sports psychologists. Members can benefit from these
+                    initiatives by gaining access to specialized training and certification courses. </li>
+                <li><b>Awards and Recognition:</b> Sports Psychology Association of India acknowledges the contributions
+                    of its members through various awards such as the Best Research paper, Lifetime Achievement Award,
+                    and Scientist Award. </li>
+            </ol>
+            <p>These privileges position Sports Psychology Association of India to significantly contribute to the
+                growth and development of sports psychology in India, while advancing their own careers through
+                research, education and networking opportunities. </p>
+                <div class="button-1-wrapper">
+                    <a style="text-decoration: none;" href="">
+                        <div class="button-1">
+                            Join as Member
+                        </div>
+                    </a>
+                </div>
+        </div>
+        
+    </div>
+
+</div>
+
+
+{% endblock %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}
+{% block jsfile %}
+<script type="text/javascript" src="{% static 'js/sub/news.js' %}"></script>
+{% endblock %}
