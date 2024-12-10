@@ -34,6 +34,7 @@ class EventManagement(models.Model):
     title = models.CharField(max_length=50, null=True, blank=True)
     image = models.ImageField(upload_to='SPAI/images/Events')
     datetime = models.DateTimeField()  # Updated field to store both date and time
+    end_date = models.DateField(null=True, blank=True)
     location = models.CharField(max_length=50, null=True, blank=True)
     description = models.TextField(blank=True, null=True)
     registration_link = models.CharField(max_length=200, null=True, blank=True)
