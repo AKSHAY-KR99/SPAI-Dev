@@ -1376,3 +1376,82 @@ footer{
   }
 
 }
+
+
+
+
+
+<div class="tab-content">
+    <!-- <form action="" method="post" name="qr_code" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="tab-panel active" id="all">
+            <div class="container">
+                <div class="qr-code">
+                    <img src="{% static 'image/qr.png' %}" alt="QR Code">
+                </div>
+                <div class="details">
+                    <label><strong>Reference ID:</strong></label>
+                    <input type="text" name="reference_id" placeholder="Enter Reference ID">
+
+                    <label><strong>Bank Name:</strong></label>
+                    <input type="text" name="bank_name" placeholder="Enter Bank Name">
+
+                    <label><strong>File:</strong></label>
+                    <input type="file" name="document" placeholder="browse">
+                </div>
+                <input type="hidden" name="payment_type" value="1">
+                <div style="display: flex; justify-content: center;width: 100%;">
+                    <a style="text-decoration: none; color: inherit;" href="">
+                        <div class="news-seemore">
+                            <div class="seemoretext">
+                                <input type="submit" value="Submit">
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </form> -->
+    <form action="" method="post" name="bank_trans" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="tab-panel active" id="upcoming">
+            <div class="container">
+                <!-- <div class="qr-code">
+                    <img src="images/qr.png" alt="QR Code">
+                </div> -->
+                <div class="details">
+                    <div style="padding: 5px;background-color:blanchedalmond;">
+                        <label><strong>Account No:</strong></label>
+                        <label><strong>2987 9807 7664 8689</strong></label><br>
+                        <!-- <input type="text" id="ref-id" name="ref-id" placeholder="Enter Reference ID"> -->
+
+                        <label><strong>IFCS: SBI00986s</strong></label><br>
+                        <!-- <input type="text" id="bank-name" name="bank-name" placeholder="Enter Bank Name"> -->
+                    </div>
+
+
+                    <label><strong>Transaction ID:</strong></label>
+                    <input type="text" name="transaction_id" placeholder="Enter Transaction ID">
+
+                    <label><strong>Bank Name:</strong></label>
+                    <input type="text" name="bank_name" placeholder="Enter Bank Name">
+
+                    <label><strong>File:</strong></label>
+                    <input type="file" name="document" placeholder="browse">
+
+                </div>
+                <input type="hidden" name="payment_type" value="2">
+                <div style="display: flex; justify-content: center;width: 100%;">
+                    <a style="text-decoration: none; color: inherit;" href="">
+                        <div class="news-seemore">
+                            <div class="seemoretext">
+                                <input type="submit" value="Submit">
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

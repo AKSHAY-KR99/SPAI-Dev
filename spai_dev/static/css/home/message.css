@@ -76,8 +76,9 @@ blockquote.q-card::before{
   justify-self: end;
   padding: 0.5em 1em;
   border-radius: 0.25rem;
-  width: 240px;
+  width: 230px;
   align-items: end;
+  margin-top: 10px;
 }
 .author::before{
   content: ""
