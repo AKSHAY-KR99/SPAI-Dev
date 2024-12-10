@@ -111,6 +111,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     state = models.CharField(max_length=30, choices=settings.STATE_CHOICES, default="None", null=True, blank=True)
     status = models.CharField(max_length=30, null=True, blank=True)
     user_role = models.PositiveSmallIntegerField(choices=settings.ROLE_CHOICES, blank=True, null=True)
+    reg_no = models.CharField(max_length=15, null=True, blank=True)
 
     date_created = models.DateField(auto_now_add=True)
     slug_value = models.SlugField(auto_created=True, blank=True, null=True, unique=True)
