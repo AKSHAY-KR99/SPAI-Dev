@@ -1,8 +1,10 @@
 {% extends 'main.html' %}
 {% load static %}
+
 {% block header %}
 {% include 'header.html' %}
 {% endblock %}
+
 {% block content %}
 <div class="grid-container">
     <div class="reg-form-section">
@@ -16,35 +18,38 @@
                             First name <span class="required-star">*</span>
                         </label>
                         <input class="user-firstname" type="text" id="first_name" placeholder="First name"
-                               name="first_name"
-                               required>
+                               name="first_name" required value="{{ request.POST.first_name|default:'' }}">
                     </div>
                     <div class="l-name-section">
                         <label for="last_name">
                             Last name
                         </label>
                         <input class="user-lastname" type="text" id="last_name" placeholder="Last name"
-                               name="last_name">
+                               name="last_name" value="{{ request.POST.last_name|default:'' }}">
                     </div>
                     <div class="username-section">
                         <label for="username">Username <span class="required-star">*</span></label>
                         <input class="user-username" type="text" placeholder="Username" id="username" name="username"
-                               required>
+                               required value="{{ request.POST.username|default:'' }}">
                     </div>
                     <div class="email-section">
                         <label for="email">E mail <span class="required-star">*</span></label>
                         <input class="user-email" type="email" id="email" name="email" placeholder="Email Address"
-                               required>
+                               required value="{{ request.POST.email|default:'' }}">
                     </div>
                     <div class="state-section">
                         <label for="state">State <span class="required-star">*</span></label>
-                        <select name="state" id="state"></select>
+                        <select name="state" id="state">
+                            <option value="">Select state</option>
+                            {% for state in states %}
+                                <option value="{{ state }}" {% if state == request.POST.state %} selected {% endif %}>{{ state }}</option>
+                            {% endfor %}
+                        </select>
                     </div>
                     <div class="password1-section">
                         <label for="password">Password <span class="required-star">*</span></label>
                         <input class="user-password" placeholder="Password" type="password" id="password"
-                               name="password"
-                               required>
+                               name="password" required>
                     </div>
                     <div class="password2-section">
                         <label for="confirm_password">Confirm Password <span class="required-star">*</span></label>
@@ -65,32 +70,50 @@
         <img src="{% static 'image/Frame_2.png' %}" alt="Login Image">
     </div>
 </div>
+
 <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function() {
+        // Add click event listener for the menu icon
         document.querySelector('.menu-icon').addEventListener('click', function() {
             document.querySelector('.navbar').classList.toggle('active');
         });
+
+        // Retain selected state in dropdown after form submission
+        const selectedState = "{{ request.POST.state }}"; // Get the previously selected state value from Django
+        const stateSelect = document.getElementById("state");
+        if (selectedState) {
+            for (let option of stateSelect.options) {
+                if (option.value === selectedState) {
+                    option.selected = true;
+                }
+            }
+        }
     });
 </script>
+
 {% endblock %}
+
 {% block footer %}
 {% include 'footer.html' %}
 <script>
-    const stateSelected = document.querySelector("#state")
-
-    const states = ["Select state","Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
+    // State list populated via JS
+    const states = [
+        "Select state", "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
         "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh",
         "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan",
-        "Sikkim", "Tamil Nadu","Telangana","Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal"]
+        "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal"
+    ];
 
-    function populateStates(){
-        let html_data = ""
-        for(let i=0;i<states.length;++i){
-            html_data += `<option>${states[i]}</option>`
+    const stateSelected = document.querySelector("#state");
+
+    function populateStates() {
+        let html_data = "";
+        for (let i = 0; i < states.length; ++i) {
+            html_data += `<option>${states[i]}</option>`;
         }
-        stateSelected.innerHTML = html_data
+        stateSelected.innerHTML = html_data;
     }
 
-    populateStates()
+    populateStates();
 </script>
 {% endblock %}
