@@ -2,16 +2,16 @@ import smtplib
 from email.mime.text import MIMEText
 
 # Define the sender and receiver email addresses
-sender_email = "akshayakr4@gmail.com"
-receiver_email = "akshaydaskp121@gmail.com"
+sender_email = "spai05138@gmail.com"
+receiver_email = "arathiashokan59@gmail.com"
 
 # Define the email subject and body
-subject = "Cyber cell India Ltd"
-body = ("Hi Akshay Das, "
-        "You are under cyber cell surveillance. your phone activated illegal VPN several times for viewing porn web "
-        "site. so you are under surveillance, please be vulnerable."
-        "from department of Cyber Cell"
-        "India")
+subject = "SPAI Membership"
+body = ("Hai Arathi Ashok\n"
+        "We are glad to inform you that you successfully registered in SPAI.\n\n"
+        "Secretery of SPAI\n"
+        "Prof. Anil Ramachandran\n"
+        "Sd/-")
 
 # Create a text message
 msg = MIMEText(body)
@@ -30,7 +30,7 @@ server = smtplib.SMTP(smtp_server, smtp_port)
 server.starttls()
 
 # Login to the SMTP server
-server.login(sender_email, "fggartibcnylqtga")
+server.login(sender_email, "cbycsxyyvldqrsrg")
 
 # Send the email
 server.sendmail(sender_email, receiver_email, msg.as_string())
