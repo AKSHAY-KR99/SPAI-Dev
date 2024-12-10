@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
 <link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
 <link rel="stylesheet" href="{% static 'css/sub/payment.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/content.css' %}">
 {% endblock %}
 
 {% block header %}
@@ -11,93 +12,100 @@
 {% endblock %}
 
 {% block content %}
-<div class="heading">
+<!-- <div class="heading">
     <div class="text">
         Payment Method
     </div>
-</div>
-<div class="news-tabs">
+</div> -->
+<!-- <div class="news-tabs">
     <ul class="tab-list">
         <li class="tab-item active" data-tab="all">QR Code</li>
         <li class="tab-item" data-tab="upcoming">Bank</li>
 
     </ul>
-</div>
-
-<div class="tab-content">
-    <form action="" method="post" name="qr_code" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="tab-panel active" id="all">
-            <div class="container">
-                <div class="qr-code">
-                    <img src="{% static 'image/qr.png' %}" alt="QR Code">
+</div> -->
+<div class="about-container mission">
+    <div class="mission-top-row">
+        <h1>PAYMENT</h1>
+    </div>
+    <div style="margin-top: 0px;" class="mission-vission">
+        <div class="m-v-container">
+            <div style="display: flex;align-items: center;">
+                <div class="mission-icon">
+                    <img class="pic-on" src="{% static 'image/payment1.svg' %}" alt="">
+                    <img class="pic-off" src="{% static 'image/payment2.svg' %}" alt="">
                 </div>
-                <div class="details">
-                    <label><strong>Reference ID:</strong></label>
-                    <input type="text" name="reference_id" placeholder="Enter Reference ID">
-
-                    <label><strong>Bank Name:</strong></label>
-                    <input type="text" name="bank_name" placeholder="Enter Bank Name">
-
-                    <label><strong>File:</strong></label>
-                    <input type="file" name="document" placeholder="browse">
-                </div>
-                <input type="hidden" name="payment_type" value="1">
-                <div style="display: flex; justify-content: center;width: 100%;">
-                    <a style="text-decoration: none; color: inherit;" href="">
-                        <div class="news-seemore">
-                            <div class="seemoretext">
-                                <input type="submit" value="Submit">
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
+                <h3 style="margin-left: 10px;">Payment method</h3>
             </div>
-        </div>
-    </form>
-    <form action="" method="post" name="bank_trans" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="tab-panel" id="upcoming">
-            <div class="container">
-                <!-- <div class="qr-code">
-                    <img src="images/qr.png" alt="QR Code">
-                </div> -->
+            <p><b><i style="font-size: 16px;line-height: 35px;">Note: Application form complete in all respects with two
+                    photographs with Life membership fee of Rs 2500 payment in Cash/Demand draft or online payment to
+                    Sports Psychology Association of India </i></b></p>
+            <form action="" method="post" name="bank_trans" enctype="multipart/form-data">
+                {% csrf_token %}
+
                 <div class="details">
-                    <div style="padding: 5px;background-color:blanchedalmond;">
-                        <label><strong>Account No:</strong></label>
-                        <label><strong>2987 9807 7664 8689</strong></label><br>
+                    <div style="padding: 15px;background-color:whitesmoke;margin: 20px;width: fit-content;">
+                        <label><strong>Account No: 55042868323</strong></label><br>
+                        <!-- <label><strong></strong></label><br> -->
                         <!-- <input type="text" id="ref-id" name="ref-id" placeholder="Enter Reference ID"> -->
 
-                        <label><strong>IFCS: SBI00986s</strong></label><br>
+                        <label><strong>IFSC Code: SBIN0002875</strong></label>
+                        <label><strong>State Bank of India, Mela Road, Gwalior (MP)</strong></label>
+
                         <!-- <input type="text" id="bank-name" name="bank-name" placeholder="Enter Bank Name"> -->
+                    </div>
+                    Membership form may be handed over to or posted to:
+                    <div class="post-address-wrapper">
+                        <div class="postaddress">
+                            <b> Dr M K Singh <br>
+                                Finance Secretary, SPAI <br></b>
+                            Professor, Department of Sports Psychology <br>
+                            LNIPE, Gwalior <br>
+                            Mob: 7587300426 <br>
+                        </div>
+                        <div class="postaddress">
+                            <b>Dr Anil Ramachandran <br>
+                                Secretary General, SPAI <br></b>
+                            Professor & Head <br>
+                            School of Physical Education and Sports <br>
+                            Sciences, Kannur University, Kannur, Kerala <br>
+                            Mob: 9447027990 <br>
+                        </div>
+                    </div>
+                    <div class="input-wrapper">
+                        <div>
+                            Transaction ID:
+                            <input type="text" name="transaction_id" placeholder="Enter Transaction ID">
+                        </div>
+
+                        <div>
+                            Bank Name:
+                            <input type="text" name="bank_name" placeholder="Enter Bank Name">
+                        </div>
+
+                        <div>
+                            File:
+                            <input type="file" id="document" name="document" placeholder="browse">
+                            <!-- <label for="document" class="image-label">Choose an image</label> -->
+                        </div>
+
                     </div>
 
 
-                    <label><strong>Transaction ID:</strong></label>
-                    <input type="text" name="transaction_id" placeholder="Enter Transaction ID">
-
-                    <label><strong>Bank Name:</strong></label>
-                    <input type="text" name="bank_name" placeholder="Enter Bank Name">
-
-                    <label><strong>File:</strong></label>
-                    <input type="file" name="document" placeholder="browse">
-
                 </div>
                 <input type="hidden" name="payment_type" value="2">
-                <div style="display: flex; justify-content: center;width: 100%;">
-                    <a style="text-decoration: none; color: inherit;" href="">
-                        <div class="news-seemore">
-                            <div class="seemoretext">
-                                <input type="submit" value="Submit">
-                            </div>
-                        </div>
-                    </a>
+                <div class="payment-submit">
+
+                    <input type="submit" value="Submit">
+
                 </div>
-            </div>
+
+            </form>
         </div>
-    </form>
+    </div>
+
 </div>
+
 
 {% endblock %}
 
@@ -107,25 +115,25 @@
 {% endblock %}
 {% block jsfile %}
 <script type="text/javascript">
-    document.addEventListener('DOMContentLoaded', function() {
-        document.querySelector('.menu-icon').addEventListener('click', function() {
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelector('.menu-icon').addEventListener('click', function () {
             document.querySelector('.navbar').classList.toggle('active');
         });
     });
-        document.querySelectorAll('.tab-item').forEach(item => {
-    item.addEventListener('click', function() {
-        // Remove active class from all tabs
-        document.querySelectorAll('.tab-item').forEach(tab => tab.classList.remove('active'));
-        // Add active class to the clicked tab
-        this.classList.add('active');
+    document.querySelectorAll('.tab-item').forEach(item => {
+        item.addEventListener('click', function () {
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab-item').forEach(tab => tab.classList.remove('active'));
+            // Add active class to the clicked tab
+            this.classList.add('active');
 
-        // Hide all tab panels
-        document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
-        // Show the selected tab panel
-        const targetPanel = document.getElementById(this.dataset.tab);
-        targetPanel.classList.add('active');
+            // Hide all tab panels
+            document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+            // Show the selected tab panel
+            const targetPanel = document.getElementById(this.dataset.tab);
+            targetPanel.classList.add('active');
+        });
     });
-});
 
 </script>
 {% endblock %}

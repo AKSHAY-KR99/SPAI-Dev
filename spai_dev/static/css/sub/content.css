@@ -6,7 +6,7 @@
     height: auto;
     background-image: url('./running-2-bg.png');
 
-    background-repeat: no-repeat;
+    background-repeat:no-repeat;
     background-color: #F2F2ED;
     display: flex;
     flex-direction: column;
@@ -14,14 +14,16 @@
     padding: 20px;
     overflow-x: hidden;
 }
-
+.run-repeat{
+    background-repeat:repeat !important;
+}
 .about {
-    border: 3px solid rgba(255, 255, 255, 1);
+    /* border: 3px solid rgba(255, 255, 255, 1); */
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    animation: mymove 5s infinite;
+    /* animation: mymove 5s infinite; */
     border-radius: 5px 100px 5px 100px;
     padding-bottom: 70px;
 }
@@ -43,7 +45,125 @@
         padding: 0px;
     }
 }
+/*****animation***********************/
+/* Keyframes for fade-in effect */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
+/* Keyframes for text slide-in */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Keyframes for slight scaling */
+@keyframes scaleUp {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Apply animations to container */
+.about-container {
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Animate heading */
+.about h1 {
+    animation: fadeIn 1.5s ease-in-out;
+    animation-delay: 0.1s; /* Start slightly after container */
+    animation-fill-mode: forwards; /* Ensure final state persists */
+    opacity: 0; /* Initial state */
+}
+
+/* Animate paragraph content */
+.about-content p {
+    animation: scaleUp 1.5s ease-in-out;
+    animation-fill-mode: forwards;
+    opacity: 0; /* Initial state */
+}
+.about-content p:nth-child(1) {
+    animation-delay: 0.3s; /* First paragraph starts immediately */
+}
+
+.about-content p:nth-child(2) {
+    animation-delay: 0.8s; /* Second paragraph starts after the first */
+}
+
+.about-content p:nth-child(3) {
+    animation-delay: 1.3s; /* Third paragraph starts after the second */
+}
+.about-content p:nth-child(4) {
+    animation-delay: 1.8s; /* Third paragraph starts after the second */
+}
+
+
+/* Keyframes for fade-in animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Starts slightly below */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Moves to its original position */
+    }
+}
+
+/* Animated list container */
+.animated-list {
+    list-style: decimal; /* Keep the default numbered list */
+    padding-left: 20px; /* Optional: Adjust padding for indentation */
+}
+
+/* Individual list items */
+.animated-list li {
+    opacity: 0; /* Initially hidden */
+    animation: fadeInUp 0.8s ease-in-out; /* Animation duration and easing */
+    animation-fill-mode: forwards; /* Retain the final state */
+}
+
+/* Sequential delay for list items */
+.animated-list li:nth-child(1) {
+    animation-delay: 1.3s; /* Starts animation after 0.2s */
+}
+
+.animated-list li:nth-child(2) {
+    animation-delay: 1.8s; /* Starts after 0.4s */
+}
+
+.animated-list li:nth-child(3) {
+    animation-delay: 2.2s; /* Starts after 0.6s */
+}
+
+.animated-list li:nth-child(4) {
+    animation-delay: 2.5s; /* Starts after 0.8s */
+}
+
+.animated-list li:nth-child(5) {
+    animation-delay: 3s; /* Starts after 1s */
+}
+
+/**********mission************************************/
 .mission-top-row {
     display: block;
     text-align: center;
@@ -77,6 +197,20 @@
     margin-bottom: 10px;
     background-color: white;
 }
+.m-v-container p {
+    animation: scaleUp 1.5s ease-in-out;
+    animation-fill-mode: forwards;
+    opacity: 0; /* Initial state */
+    animation-delay: 0.3s;
+}
+.m-v-container h3,.m-v-container i{
+    animation: scaleUp 1.5s ease-in-out;
+    animation-fill-mode: forwards;
+    opacity: 0; /* Initial state */
+    animation-delay: 0.1s;
+}
+
+
 
 .m-v-container ol {
     padding-left: 20px;
@@ -125,7 +259,7 @@
 }
 
 /* Title animation */
-.mission-top-row h1 {
+.mission-top-row h1,.mission-top-row p {
     animation: slideInFromTop 1.5s ease-in-out forwards;
     transform-origin: top;
 }
@@ -141,7 +275,38 @@
         opacity: 1;
     }
 }
+.animated-list1 {
+    list-style: decimal; /* Keep the default numbered list */
+    padding-left: 20px; /* Optional: Adjust padding for indentation */
+}
 
+/* Individual list items */
+.animated-list1 li {
+    opacity: 0; /* Initially hidden */
+    animation: fadeInUp 0.8s ease-in-out; /* Animation duration and easing */
+    animation-fill-mode: forwards; /* Retain the final state */
+}
+
+/* Sequential delay for list items */
+.animated-list1 li:nth-child(1) {
+    animation-delay: 0.5s; /* Starts animation after 0.2s */
+}
+
+.animated-list1 li:nth-child(2) {
+    animation-delay: 0.8s; /* Starts after 0.4s */
+}
+
+.animated-list1 li:nth-child(3) {
+    animation-delay: 1.2s; /* Starts after 0.6s */
+}
+
+.animated-list1 li:nth-child(4) {
+    animation-delay: 1.5s; /* Starts after 0.8s */
+}
+
+.animated-list1 li:nth-child(5) {
+    animation-delay: 2s; /* Starts after 1s */
+}
 /* Mission and Vision icon animation */
 /* .mission-icon img {
     animation: iconPop 1.2s ease-out forwards;
@@ -160,13 +325,7 @@
 } */
 
 /* Cascading effect for list items */
-.m-v-container ol li {
-    animation: fadeSlideIn 0.6s ease forwards;
-    opacity: 1;
-    /* Ensure visibility */
-    transform: translateX(0);
-    /* Set back to default */
-}
+
 
 @keyframes fadeSlideIn {
     0% {
@@ -396,7 +555,13 @@
     background: rgba(0, 0, 0, 1);
     border: 2px solid rgba(255, 255, 255, 1);
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border-radius: 10px;
 }
+.news-seemore:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); /* Slightly enlarge the button */
+  }
 
 .seemoretext {
     opacity: 1;
@@ -457,5 +622,11 @@
     align-items: center;
     font-weight: bold;
     font-size: 20px;
-    font-family: "Poppins",sans-serif;
+    font-family: "Poppins",sans-serif;transition: all 0.3s ease;
+    border-radius: 10px;
 }
+.button-1:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); /* Slightly enlarge the button */
+  }
+    
