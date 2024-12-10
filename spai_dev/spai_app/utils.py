@@ -21,14 +21,13 @@ def get_registration_num():
     reg_no = "SPAILM"
     year = datetime.now().year
     reg_no = reg_no + str(year)
-    user = User.objects.filter(admin_approved=True).order_by('-date_created').first()
-    if user:
-        if user.reg_no is not None:
-            reg = user.reg_no
-            reg = reg[10:]
-            reg = int(reg) + 1
-            reg_no = reg_no + str(reg)
-        else:
-            reg_no = reg_no + "1"
+    user = User.objects.filter(admin_approved=True, user_role=2).order_by('-date_created').first()
+    if user and user.reg_no is not None:
+        reg = user.reg_no
+        reg = reg[10:]
+        reg = int(reg) + 1
+        reg_no = reg_no + str(reg)
+    else:
+        reg_no = reg_no + "1"
     return reg_no
 
