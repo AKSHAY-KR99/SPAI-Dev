@@ -1,32 +1,48 @@
 {% extends 'main.html' %}
 {% load static %}
 {% block cssfiles %}
-    <link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
-    <link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
-    <link rel="stylesheet" href="{% static 'css/sub/content.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/content.css' %}">
 {% endblock %}
 
 {% block header %}
-    {% include 'header.html' %}
+{% include 'header.html' %}
 {% endblock %}
 
 {% block content %}
-<div class="about-container" > 
+<div class="about-container run-repeat">
     <div class="about">
         <h1>ABOUT SPORTS PSYCHOLOGY ASSOCIATION OF INDIA </h1>
         <div class="about-content">
-            <p><b>Sports Psychology Association of India</b> is a growing platform that focuses on understanding how psychological factors affect performance and how participation in sports and exercise impacts psychological and physical well-being. As Indian athletes continue to make their mark in international sports, the demand for sports psychology services has grown. Over the last two decades, there has been increasing recognition of the role of mental training in achieving elite athletic performance, with a growing number of Indian athletes working with sports psychologist. Sports psychologist helps athletes to deal with pressures, anxiety related to competition, intensifies their concentration and manages stress. The Sports Psychology Association of India (SPAI) plays a key role in promoting sports psychology across India. The association organizes conferences, workshops, and training programs for professional and athletes. With Indian sports moving towards more scientific and data driven approaches, sports psychology is expected to grow significantly. The Indian government’s focus on elite athlete development through initiatives like KheloIndia and the Target Olympic Podium Scheme also supports the integration of sports psychology. The Sports Psychology Association of India (SPAI) is a national organization committed to the advancement of sports psychology as an essential component of athletic development in India. Founded with the goal of integrating psychological principles into the world of sports, Sports Psychology Association of India promotes the mental well-being and performance enhancements of athletes across all levels.</p>
+            <p><b>Sports Psychology Association of India</b> is a growing platform that focuses on understanding how
+                psychological factors affect performance and how participation in sports and exercise impacts
+                psychological and physical well-being. As Indian athletes continue to make their mark in international
+                sports, the demand for sports psychology services has grown. Over the last two decades, there has been
+                increasing recognition of the role of mental training in achieving elite athletic performance, with a
+                growing number of Indian athletes working with sports psychologist. Sports psychologist helps athletes
+                to deal with pressures, anxiety related to competition, intensifies their concentration and manages
+                stress. The Sports Psychology Association of India (SPAI) plays a key role in promoting sports
+                psychology across India. The association organizes conferences, workshops, and training programs for
+                professional and athletes. With Indian sports moving towards more scientific and data driven approaches,
+                sports psychology is expected to grow significantly. The Indian government’s focus on elite athlete
+                development through initiatives like KheloIndia and the Target Olympic Podium Scheme also supports the
+                integration of sports psychology. The Sports Psychology Association of India (SPAI) is a national
+                organization committed to the advancement of sports psychology as an essential component of athletic
+                development in India. Founded with the goal of integrating psychological principles into the world of
+                sports, Sports Psychology Association of India promotes the mental well-being and performance
+                enhancements of athletes across all levels.</p>
         </div>
     </div>
-    
+
 </div>
 
 
 {% endblock %}
 
 {% block footer %}
-    {% include 'footer.html' %}
+{% include 'footer.html' %}
 {% endblock %}
 {% block jsfile %}
-<script type="text/javascript" src="{% static 'js/sub/news.js' %}"></script>   
+<script type="text/javascript" src="{% static 'js/sub/news.js' %}"></script>
 {% endblock %}
