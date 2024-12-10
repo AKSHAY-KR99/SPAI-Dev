@@ -3,6 +3,7 @@ import datetime
 from django.contrib import messages
 from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
+from django.core.mail import EmailMessage
 from django.forms import model_to_dict
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
@@ -102,14 +103,16 @@ def about_page(request):
         return render(request, 'static_pages/about/leadership/previous_year.html')
     if page == "regional":
         return render(request, 'static_pages/about/leadership/regional.html')
-    
+
+
 def membership(request):
     page = request.GET.get('page')
     print(page)
     if page == "previlege":
         return render(request, 'static_pages/membership/previlege.html')
     if page == "major":
-        return render(request, 'static_pages/news/major.html') 
+        return render(request, 'static_pages/news/major.html')
+
 
 def publications(request):
     page = request.GET.get('page')
@@ -125,7 +128,7 @@ def publications(request):
     if page == "call_for_manuscripts":
         return render(request, 'static_pages/publications/call.html')
     if page == "journal_archives":
-        return render(request, 'static_pages/publications/journalarchieve.html')  
+        return render(request, 'static_pages/publications/journalarchieve.html')
 
 
 def academic(request):
@@ -176,7 +179,6 @@ def academic(request):
         return render(request, 'static_pages/academic/latest_update.html')
     if page == "mou":
         return render(request, 'static_pages/academic/mou.html')
-    
 
 
 def history(request):
@@ -475,6 +477,7 @@ def admin_approval(request, *args, **kwargs):
         user = User.objects.filter(slug_value=slug).first()
         if user is None:
             return redirect("members")
+        send_email_with_attachment(request, slug)
         user.admin_approved = True
         user.save()
         user_status_change(slug, user.status)
@@ -538,6 +541,44 @@ def certificate(request, *args, **kwargs):
         return HttpResponse("Something went wrong..!")
     else:
         return redirect('login_page')
+
+
+def send_email_with_attachment(request, slug):
+    if request.user.user_role == settings.ADMIN_ROLE_VALUE:
+        user = User.objects.get(slug_value=slug)
+    else:
+        user = User.objects.get(slug_value=request.user.slug_value)
+
+    subject = "SPAI Member Registration"
+    message = (
+        f"Hi {user.first_name},\nYour registration for SPAI life membership is successfully approved by the "
+        f"excecutive.\nyour username is {user.email} and your SPAI registration id is {user.user_role}.\n"
+        f"your SPAI official registration certificate is attached with the message, Thank you\n\n\n"
+        f"Executive Committee\nSports Psychology Association of India\n")
+
+    sender_email = "SPAI Online <spai05138@gmail.com>"
+    recipient_list = [user.email]
+    context = {"name": user.first_name, "email": user.email, "date": user.date_created}
+    template_path = 'pdf_template.html'
+    pdf_content = render_to_pdf(template_path, context)
+
+    if pdf_content:
+        email = EmailMessage(
+            subject=subject,
+            body=message,
+            from_email=sender_email,
+            to=recipient_list,
+        )
+        file_name = f"{user.first_name}_certificate.pdf"
+        email.attach(file_name, pdf_content, "application/pdf")
+
+        try:
+            email.send()
+            print("Email sent successfully!")
+        except Exception as e:
+            print(f"Failed to send email: {e}")
+    else:
+        print("Failed to generate PDF.")
 
 
 def get_user_full_details(slug):
