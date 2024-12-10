@@ -132,7 +132,7 @@
             {% endif %}
             {% if user.admin_approved %}
             <p>
-                <a style="text-decoration: none; color: inherit;" href="{% url 'certificate' user.slug_value %}">
+                <a style="text-decoration: none; color: inherit;" href="{% url 'certificate' user.slug_value %}" target="blank">
                             Click here to Download</a>
             </p>
             {% else %}
@@ -169,6 +169,7 @@
         </div>
     </div>
     <div style="display: flex; justify-content: center;width: 100%;">
+        {% if not user.admin_approved %}
         <a style="text-decoration: none; color: inherit;" href="{% url 'user_approval' user.slug_value %}">
             <div class="news-seemore">
                 <div class="seemoretext">
@@ -176,13 +177,7 @@
                 </div>
             </div>
         </a>
-<!--        <a style="text-decoration: none; color: inherit;" href="{% url 'user_reject' user.slug_value %}">-->
-<!--            <div class="news-seemore">-->
-<!--                <div class="seemoretext">-->
-<!--                    Reject-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </a>-->
+        {% endif %}
     </div>
     {% endif %}
     {% endif %}
