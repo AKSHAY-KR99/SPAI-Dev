@@ -14,6 +14,7 @@
 <table>
     <thead>
         <tr>
+            <th>Registration No</th>
             <th>Username</th>
             <th class="email">Email</th>
             <th>First Name</th>
@@ -26,6 +27,7 @@
 
     {% for user in users%}
     <tr>
+        <td class="email">{{user.reg_no}}</td>
             <td class="username">
                 {% if user.photo %}
                 <img src="{{ user.photo.url }}" alt="">

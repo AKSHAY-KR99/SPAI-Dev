@@ -14,7 +14,7 @@ from django.core.paginator import Paginator
 from . import models, forms
 from .models import GalleryManagement, User, EventManagement, UserDetailModel, GalleryImage, PaymentModel
 from .decorators import admin_only, authenticated_only
-from .utils import render_to_pdf
+from .utils import render_to_pdf, get_registration_num
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
@@ -107,7 +107,6 @@ def about_page(request):
 
 def membership(request):
     page = request.GET.get('page')
-    print(page)
     if page == "previlege":
         return render(request, 'static_pages/membership/previlege.html')
     if page == "major":
@@ -116,7 +115,6 @@ def membership(request):
 
 def publications(request):
     page = request.GET.get('page')
-    print(page)
     if page == "about_spai_journal":
         return render(request, 'static_pages/publications/spai_journel.html')
     if page == "editorial":
@@ -478,7 +476,9 @@ def admin_approval(request, *args, **kwargs):
         if user is None:
             return redirect("members")
         send_email_with_attachment(request, slug)
+        reg_no = get_registration_num()
         user.admin_approved = True
+        user.reg_no = reg_no
         user.save()
         user_status_change(slug, user.status)
         return redirect('members')
@@ -598,6 +598,7 @@ def get_user_full_details(slug):
     user_data['next_step'] = get_next_step(user_dict.get("status", None))
     user_data['date_created'] = user.date_created
     user_data['admin_action'] = admin_action(user_dict.get("status", None))
+    user_data['reg_no'] = user_dict.get("reg_no", None)
 
     user_details = UserDetailModel.objects.filter(user=user.id).first()
     if user_details is not None:
