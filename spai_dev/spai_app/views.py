@@ -10,6 +10,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import get_template
 from django.urls import reverse
 from django.core.paginator import Paginator
+from datetime import datetime
 
 from . import models, forms
 from .models import GalleryManagement, User, EventManagement, UserDetailModel, GalleryImage, PaymentModel
@@ -475,11 +476,12 @@ def admin_approval(request, *args, **kwargs):
         user = User.objects.filter(slug_value=slug).first()
         if user is None:
             return redirect("members")
-        send_email_with_attachment(request, slug)
         reg_no = get_registration_num()
         user.admin_approved = True
+        user.date_approved = datetime.now()
         user.reg_no = reg_no
         user.save()
+        send_email_with_attachment(request, slug)
         user_status_change(slug, user.status)
         return redirect('members')
     else:
@@ -681,7 +683,7 @@ def create_or_update_life_member(request):
         if serializer.is_valid():
             serializer.save(upload_date=timezone.now(), update_date=timezone.now())
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response({"error": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
 
 # @admin_only
