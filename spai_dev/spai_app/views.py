@@ -608,6 +608,11 @@ def payment_model(request, *args, **kwargs):
         return render(request, 'members/payment_page.html', {'form': form})
 
 
+def fee_and_payment(request):
+    context = {}
+    return render(request, 'members/fee_and_payment.html', context)
+
+
 def unauthorized_page_403(request):
     return render(request, 'permission/403_page.html')
 

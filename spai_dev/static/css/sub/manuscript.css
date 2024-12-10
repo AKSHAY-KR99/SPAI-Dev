@@ -163,14 +163,14 @@
   margin-top: 20px;
 }
 .authors-details h4 {
-  font-size: 18px;
+  font-size: 16px;
   color: #000000;
   margin-bottom: 15px;
   text-align: left; /* Align heading to the left */
 }
 .authors-details p {
-  font-size: 0.9rem;
-  color: #000000;
+  font-size: 14px;
+  color: #ff0000;
   text-align: left; /* Align paragraph to the left */
   margin-bottom: 20px;
 }
@@ -295,7 +295,7 @@
   margin-top: 20px;
 }
 .address-communication h4 {
-  font-size: 1.3rem;
+  font-size: 16px;
   color: #000000;
   margin-bottom: 15px;
   text-align: left; /* Align heading to the left */
@@ -418,7 +418,10 @@ button.manuscript:disabled {
   cursor: not-allowed;
 }
 
-
+.agreement_policy{
+  font-weight: bold;
+  font-style: italic;
+}
 
 /* General Styles for Footer Links */
 .footer-links {
@@ -437,14 +440,14 @@ button.manuscript:disabled {
   font-family: 'Poppins', sans-serif; /* Consistent font style */
   padding: 5px 15px; /* Adds some padding for clickable area */
   border-radius: 5px; /* Adds slight roundness to edges */
-  background-color: #f0f0f0; /* Light background for visibility */
+  background-color: #ffffff; /* Light background for visibility */
   transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
 }
 
 .footer-links a:hover {
-  background-color: #e0e0e0; /* Slightly darker background on hover */
+  background-color: #000000; /* Slightly darker background on hover */
   transform: scale(1.05); /* Subtle zoom effect on hover */
-  color: #000; /* Keep text color consistent */
+  color: #ffffff; /* Keep text color consistent */
 }
 
 .footer-links a:active {

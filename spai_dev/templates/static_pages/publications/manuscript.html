@@ -12,22 +12,42 @@
 {% endblock %}
 
 {% block content %}
+<div class="about-container mission">
+    <div class="mission-top-row">
+        <h1>CALL FOR MANUSCRIPTS</h1>
+    </div>
+    <div class="mission-vission">
+        <div class="m-v-container">
+            <div style="display: flex;align-items: center;">
+                <div class="mission-icon">
+                    <img class="pic-on" src="{% static 'image/highlight1.svg' %}" alt="">
+                    <img class="pic-off" src="{% static 'image/highlight2.svg' %}" alt="">
+                </div>
+                <i>
+                    <h3 style="margin-left: 10px;">Important Instructions</h3>
+                </i>
+            </div>
+            <ol>
+                <li>We recommend to read the <a href="https://www.ijfmr.com/publication-guidelines.php"
+                        target="_blank">publication guidelines/process</a> , <a
+                        href="https://www.ijfmr.com/fees-and-payment.php" target="_blank">Fees &
+                        Payment</a> and <a href="https://www.ijfmr.com/faq.php" target="_blank">FAQs</a> before
+                    submitting
+                    your research paper.</li>
+                <li>Kindly fill all the details properly as certificate will be generated on the basis of the
+                    information provided as under.</li>
+                <li>All input fields marked with red star are mandatory, they must be filled in.</li>
+                <li>It is important that you provide functioning email address and functioning mobile number of the
+                    first author correctly because all communication will occur on those email address and/or mobile
+                    number.</li>
+            <li>Details of the paper (Title, Abstract, Keywords, Author Name(s), Designation(s), Organization Name(s)) must be same as mentioned in the research paper which you are submitting.</li>
+            <li>Please write Abstract in <b>Sentence case</b>, email address in lower case and all other fields in <b>Title Case</b> (Capitalize first character of each words). It's better NOT to write in UPPER CASE.</li>
+            </ol>
+        </div>
+    </div>
 
+</div>
 <div class="manuscript-container">
-    <!-- Section: Call for Manuscript -->
-    <h1 style="text-align: center;">Call for Manuscript</h1>
-
-    <!-- Section: Important Instructions -->
-    <h2>Important Instructions</h2>
-    <ul>
-        <li>Instruction 1: Please adhere to the guidelines provided: Please adhere to the guidelines provided: Please
-            adhere to the guidelines provided: Please adhere to the guidelines provided: Please adhere to the guidelines
-            provided: Please adhere to the guidelines provided: Please adhere to the guidelines provided: Please adhere
-            to the guidelines provided.</li>
-        <li>Instruction 2: Submit documents in the specified formats only.</li>
-        <li>Instruction 3: Ensure the originality of the research work.</li>
-    </ul>
-
     <!-- Section: Research Paper Submission -->
     <h1 style="text-align: center;">Submit Research Paper</h1>
     <h3 style="text-align: center;">Please fill the details of the research paper</h3>
@@ -54,7 +74,7 @@
                 <input type="text" id="research-area" name="research-area" placeholder="Research Area" required>
             </div>
             <div>
-                <label for="paper-file">Select Research Paper <span class="required-star">*</span></label>
+                <label for="paper-file">Select Research Paper(doc or ODT) <span class="required-star">*</span></label>
                 <label for="paper-file" class="custom-file-label">Choose File</label>
                 <input type="file" id="paper-file" name="paper-file" accept=".doc,.odt,.pdf" required>
                 <span id="file-name">No file chosen</span>
@@ -67,8 +87,8 @@
         </div>
 
         <div class="authors-details">
-            <h4>Authors Details</h4>
-            <p>Provide details of the authors associated with the research paper.</p>
+            <h4>Authors Details <span class="required-star">*</span></h4>
+            <p>Don’t write Dr. Prof. Mr. Mrs. etc salutations before authors’ names, these will be removed, these are against international standards.</p>
             <button type="button" id="add-author">Add Another Author</button>
             <div class="author-group">
                 <div>
@@ -91,7 +111,7 @@
 
         <!-- Address for Communication Section -->
         <div class="address-communication">
-            <h4>Address for Communication</h4>
+            <h4>Address for Communication <span class="required-star">*</span></h4>
             <div class="input-row">
                 <input type="text" id="country" name="country" placeholder="Country" required>
                 <input type="text" id="state" name="state" placeholder="State" required>
@@ -108,18 +128,26 @@
         <!-- Agreement Checkbox and Submit Button -->
         <div>
             <input type="checkbox" id="agree" name="agree" required>
-            <label for="agree">I agree</label>
+            <label class="agreement_policy" for="agree">I agree with the journal policies</label>
         </div>
         <div>
             <button class="manuscript" type="submit" id="submit-button" disabled>Submit</button>
         </div>
     </form>
     <div class="footer-links">
-        <a href="#" target="blank">Submit research papper</a>
-        <a href="#" target="blank">Downloads</a>
-        <a href="#" target="blank">Payment method</a>
-        <a href="#" target="blank">Dummy Link</a>
-        <a href="#" target="blank">Dummy Link</a>
+        <a href="{% url 'about_page' %}?page=about_spai">About SPAI journal</a>
+        <a href="{% url 'fee_and_payment' %}" >Fee & payments</a>
+        <a href="#" class="no-scroll">Current issue</a>
+        <a href="{% url 'publications' %}?page=journal_archives">Publication Archive</a>
+        <a href="{% url 'call_for_manuscript' %}">Submit Research Paper</a>
+        <a href="#" class="no-scroll">Track submission Status</a>
+        <a href="{% url 'call_for_manuscript' %}">Publication Guidelines</a>
+        <a href="#" class="no-scroll">Publication Ethics</a>
+        <a href="#" class="no-scroll">Peer Review & Plagiarism</a>
+        <a href="{% url 'publications' %}?page=joinaseditor">Join as Editor</a>
+        <a href="{% url 'publications' %}?page=joinasreviewer">Join as Reviewer</a>
+        <a href="{% url 'publications' %}?page=editorial">Editors & Reviewers</a>
+        <a href="#" class="no-scroll">Website/Journal policies</a>
     </div>
 </div>
 
@@ -148,5 +176,16 @@
     document.getElementById('file-name').textContent = fileName;
 });
 
+</script>
+<script>
+    // Select all links with class "no-scroll"
+    const links = document.querySelectorAll('.no-scroll');
+
+    // Loop through each link and add event listener
+    links.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default behavior (scrolling to top)
+        });
+    });
 </script>
 {% endblock %}
