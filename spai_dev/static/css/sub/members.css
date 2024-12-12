@@ -2,6 +2,100 @@ a{
     text-decoration: none; 
     color: inherit;
   }
+  .life-h{
+    width: 100%;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background-image: url('./running-2-bg.png'); */
+    
+  }
+  .life-h h1{
+    text-transform: uppercase;
+    animation: fadeInUp 1.5s ease-in-out;
+    animation-delay: 0.1s; /* Start slightly after container */
+    animation-fill-mode: forwards; /* Ensure final state persists */
+    opacity: 0; /* Initial state */
+
+  }
+  @keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Starts slightly below */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Moves to its original position */
+    }
+}
+  @keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+  .news-tabs {
+    /* margin-bottom: 20px; */
+  
+    margin-left: 10%;
+    margin-bottom: 20px;
+  }
+  
+  .tab-list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    /* border-bottom: 2px solid #ddd; */
+  }
+  
+  .tab-item {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    background-color: #f5f5f5;
+    margin-right: 5px;
+    animation: fadeIn 1s ease-in-out;
+    animation-delay: 0.4s; /* Start slightly after container */
+    animation-fill-mode: forwards; /* Ensure final state persists */
+    opacity: 0; /* Initial state */
+  }
+  
+  .tab-item.active {
+    background-color: #fff;
+    border-bottom: 2px solid #007bff;
+  }
+
+  /* .tabs{
+    margin-left: 10%;
+    display: flex;
+    
+  }
+  .tab{
+    margin: 10px;
+    display: flex;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    justify-content: center;
+    cursor: pointer;
+  } */
+  .table{
+    animation: fadeInUp 1s ease-in-out;
+    animation-delay: 0.05s; /* Start slightly after container */
+    animation-fill-mode: forwards; /* Ensure final state persists */
+    opacity: 0; /* Initial state */
+    display: none;
+  }
+  .table.active{
+    display: table;
+  }
 table {
     /* width: 1052px; */
     margin-left: 10%;
