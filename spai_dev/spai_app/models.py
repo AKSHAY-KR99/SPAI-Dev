@@ -20,6 +20,11 @@ def user_detail_payment_path(instance, filename):
     return path
 
 
+def paper_submission_path(instance, filename):
+    path = f'research_papers/{instance.title}/{filename}'
+    return path
+
+
 def generate_unique_slug():
     slug = slugify(get_random_string(length=32))
     unique_slug = slug
@@ -220,3 +225,35 @@ class InternshipApplication(models.Model):
     def __str__(self):
         return f"{self.first_name}"
 
+
+class Manuscript(models.Model):
+    title = models.CharField(max_length=200)
+    abstract = models.TextField()
+    keywords = models.CharField(max_length=255)
+    research_area = models.CharField(max_length=255)
+    paper_file = models.FileField(upload_to=paper_submission_path)
+    editor_message = models.TextField(null=True, blank=True)
+
+    country = models.CharField(max_length=100)
+    state = models.CharField(max_length=100)
+    city = models.CharField(max_length=100)
+    postal_code = models.CharField(max_length=20)
+    address = models.TextField()
+
+    paper_no = models.CharField(max_length=20, null=True, blank=True)
+    date_created = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
+
+
+class Author(models.Model):
+    manuscript = models.ForeignKey(Manuscript, on_delete=models.CASCADE, related_name="authors")
+    name = models.CharField(max_length=200)
+    designation = models.CharField(max_length=100)
+    organization = models.CharField(max_length=200)
+    email = models.EmailField()
+    mobile = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.name

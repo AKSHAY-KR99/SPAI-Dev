@@ -3,7 +3,7 @@ from io import BytesIO
 from django.http import HttpResponse
 from django.template.loader import get_template
 from xhtml2pdf import pisa
-from .models import User
+from .models import User, Manuscript
 
 
 def render_to_pdf(template_src, context_dict):
@@ -31,3 +31,17 @@ def get_registration_num():
         reg_no = reg_no + "1"
     return reg_no
 
+
+def get_research_paper_no():
+    num = "SPAIRP"
+    year = datetime.now().year
+    num = num + str(year)
+    rp = Manuscript.objects.all().order_by('-date_created').first()
+    if rp and rp.paper_no is not None:
+        n = rp.paper_no
+        n = n[10:]
+        n = int(n) + 1
+        num = num + str(n)
+    else:
+        num = num + "1"
+    return num

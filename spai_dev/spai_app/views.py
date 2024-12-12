@@ -15,7 +15,7 @@ from datetime import datetime
 from . import models, forms
 from .models import GalleryManagement, User, EventManagement, UserDetailModel, GalleryImage, PaymentModel
 from .decorators import admin_only, authenticated_only
-from .utils import render_to_pdf, get_registration_num
+from .utils import render_to_pdf, get_registration_num, get_research_paper_no
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
@@ -733,5 +733,38 @@ def application_retrieve(request, *args, **kwargs):
 
 
 def call_for_manuscript(request):
-    context = {}
-    return render(request, 'static_pages/publications/manuscript.html', context)
+    # import pdb;pdb.set_trace()
+    if request.method == 'POST':
+        manuscript_form = forms.ManuscriptForm(request.POST, request.FILES)
+        if manuscript_form.is_valid():
+            manuscript = manuscript_form.save(commit=False)
+            rp_no = get_research_paper_no()
+            # print(rp_no)
+            manuscript.paper_no = rp_no
+            manuscript.save()
+
+            author_names = request.POST.getlist('name[]')
+            designations = request.POST.getlist('designation[]')
+            organizations = request.POST.getlist('organization[]')
+            emails = request.POST.getlist('email[]')
+            mobiles = request.POST.getlist('mobile[]')
+
+            authors = []
+            for name, designation, organization, email, mobile in zip(author_names, designations, organizations, emails,
+                                                                      mobiles):
+                authors.append(models.Author(
+                    manuscript=manuscript,
+                    name=name,
+                    designation=designation,
+                    organization=organization,
+                    email=email,
+                    mobile=mobile
+                ))
+                # print(authors)
+            models.Author.objects.bulk_create(authors)
+            return redirect("index")
+        manuscript_form = forms.ManuscriptForm()
+        return render(request, 'static_pages/publications/manuscript.html', {'form': manuscript_form})
+    return render(request, 'static_pages/publications/manuscript.html')
+
+
