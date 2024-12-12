@@ -1,8 +1,9 @@
 import re
 from django.conf import settings
 from django.contrib.auth.hashers import check_password
-from django.forms import ModelForm
-from .models import GalleryManagement, UserDetailModel, User,EventManagement, PaymentModel, InternshipApplication
+from django.forms import ModelForm, modelformset_factory
+from .models import GalleryManagement, UserDetailModel, User, EventManagement, PaymentModel, InternshipApplication, \
+    Manuscript, Author
 from django import forms
 
 
@@ -155,3 +156,38 @@ class InternshipApplicationForm(forms.ModelForm):
             'qualification', 'course_name', 'passing_year', 'score'
         ]
         read_only_fields = ['apply_date', 'apply_date']
+
+
+class ManuscriptForm(forms.ModelForm):
+    class Meta:
+        model = Manuscript
+        fields = [
+            'title', 'abstract', 'keywords', 'research_area', 'paper_file', 'editor_message',
+            'country', 'state', 'city', 'postal_code', 'address', 'paper_no',
+        ]
+
+    def clean_keywords(self):
+        """Ensure keywords are separated by commas and remove any excess spaces."""
+        keywords = self.cleaned_data.get('keywords', '')
+        # Clean up the keywords string, remove extra spaces and split by commas
+        keywords_list = [keyword.strip() for keyword in keywords.split(',')]
+        return ', '.join(keywords_list)  # Store keywords as a clean comma-separated string
+
+    def clean_paper_file(self):
+        """Ensure paper file is not empty and is in correct format."""
+        paper_file = self.cleaned_data.get('paper_file', None)
+        if paper_file:
+            # Additional validation logic for paper file (like checking file extension, size etc.)
+            if paper_file.name.split('.')[-1] not in ['pdf', 'doc', 'docx', 'odt']:
+                raise forms.ValidationError("File must be in .pdf, .doc, .docx, or .odt format.")
+        return paper_file
+
+
+class AuthorForm(forms.ModelForm):
+    class Meta:
+        model = Author
+        fields = ['name', 'designation', 'organization', 'email', 'mobile']
+
+
+# Author formset (allows adding multiple authors)
+AuthorFormSet = modelformset_factory(Author, form=AuthorForm, extra=1, can_delete=True)
