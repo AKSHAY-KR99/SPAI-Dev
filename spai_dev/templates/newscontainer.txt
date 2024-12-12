@@ -1455,3 +1455,69 @@ footer{
         </div>
     </form>
 </div>
+
+
+
+
+{% extends 'main.html' %}
+{% load static %}
+{% block cssfiles %}
+    <link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sub/members.css' %}">
+{% endblock %}
+
+{% block header %}
+    {% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th class="email">Email</th>
+            <th>Membership Date</th>
+            <th class="status">Active</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for user in members%}
+    <tr>
+            <td class="username">
+                {{user.name}}
+            </td>
+            <td class="email">{{user.email}}</td>
+            <td>{{user.membership_date}}</td>
+            <td class="status">{{user.active}}</td>
+            <td>
+                <a href="{% url 'life_member_info' user.uid %}">
+                    <div class="view">
+                        <img src="{% static 'image/eye.svg' %}" alt="">
+                        <p>View</p>
+                    </div>
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+
+
+    </tbody>
+</table>
+
+{% endblock %}
+
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}
+{% block jsfile %}
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('.menu-icon').addEventListener('click', function() {
+            document.querySelector('.navbar').classList.toggle('active');
+        });
+    });
+</script>
+    {% endblock %}

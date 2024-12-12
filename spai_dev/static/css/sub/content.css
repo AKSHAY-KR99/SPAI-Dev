@@ -100,6 +100,13 @@
     animation: scaleUp 1.5s ease-in-out;
     animation-fill-mode: forwards;
     opacity: 0; /* Initial state */
+    font-size: 16px;
+    font-weight: 400;
+    
+    text-align: justify;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+ 
 }
 .about-content p:nth-child(1) {
     animation-delay: 0.3s; /* First paragraph starts immediately */
@@ -246,8 +253,12 @@
 /* Fade-in for the main container */
 .about-container.mission {
     animation: fadeIn 1s ease-in-out forwards;
+    
 }
-
+.about-container.mission.bg-2 {
+    background-image: url(./img/mission-image.jpg) !important;
+    
+}
 @keyframes fadeIn {
     0% {
         opacity: 0;

@@ -4,6 +4,9 @@
 <link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
 <link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
 <link rel="stylesheet" href="{% static 'css/sub/content.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/content2.css' %}">
+
+
 {% endblock %}
 
 {% block header %}
@@ -11,9 +14,25 @@
 {% endblock %}
 
 {% block content %}
+<div class="hero">
+    <div class="hero-pic">
+        
+        <!-- <img class="full-width-img" src="{% static 'image/about1.0.png' %}" alt="Image 2"> -->
+        <img class="full-width-img" src="{% static 'image/basket.jpg' %}" alt="Image 2">
+        <img src="{% static 'image/about2.1.png' %}" alt="" class="about2 on">
+        <img src="{% static 'image/about2.png' %}" alt="" class="about2 of">
+
+    </div>
+    <div class="about-h-texts">
+        <img src="{% static 'image/about3.png' %}" alt="">
+        <h6>About spai</h6>
+        <h2>Passion for the Game<br>
+            Driven by Excellence</h2>
+    </div>
+</div>
 <div class="about-container run-repeat">
     <div class="about">
-        <h1>ABOUT SPORTS PSYCHOLOGY ASSOCIATION OF INDIA </h1>
+        <h1 style="margin-bottom: 0%;">ABOUT SPORTS PSYCHOLOGY ASSOCIATION OF INDIA </h1>
         <div class="about-content">
             <p><b>Sports Psychology Association of India</b> is a growing platform that focuses on understanding how
                 psychological factors affect performance and how participation in sports and exercise impacts
