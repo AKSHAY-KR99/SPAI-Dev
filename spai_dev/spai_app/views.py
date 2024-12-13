@@ -82,102 +82,106 @@ def index(request):
 
 def about_page(request):
     page = request.GET.get('page')
+    context={"page":1}
     if page == "about_spai":
-        return render(request, 'static_pages/about/about.html')
+        return render(request, 'static_pages/about/about.html',context)
     if page == "mission":
-        return render(request, 'static_pages/about/mission.html')
+        return render(request, 'static_pages/about/mission.html',context)
     if page == "history":
-        return render(request, 'static_pages/about/history.html')
+        return render(request, 'static_pages/about/history.html',context)
     if page == "message_from_president":
-        return render(request, 'static_pages/about/msgpresident.html')
+        return render(request, 'static_pages/about/msgpresident.html',context)
     if page == "message_from_secretary":
-        return render(request, 'static_pages/about/msgsecretary.html')
+        return render(request, 'static_pages/about/msgsecretary.html',context)
     if page == "president":
-        return render(request, 'static_pages/about/leadership/president.html')
+        return render(request, 'static_pages/about/leadership/president.html',context)
     if page == "secretary":
-        return render(request, 'static_pages/about/leadership/secretary.html')
+        return render(request, 'static_pages/about/leadership/secretary.html',context)
     if page == "patron":
-        return render(request, 'static_pages/about/leadership/patron.html')
+        return render(request, 'static_pages/about/leadership/patron.html',context)
     if page == "committee":
-        return render(request, 'static_pages/about/leadership/committee.html')
+        return render(request, 'static_pages/about/leadership/committee.html',context)
     if page == "pre_committee":
-        return render(request, 'static_pages/about/leadership/previous_year.html')
+        return render(request, 'static_pages/about/leadership/previous_year.html',context)
     if page == "regional":
-        return render(request, 'static_pages/about/leadership/regional.html')
+        return render(request, 'static_pages/about/leadership/regional.html',context)
 
 
 def membership(request):
     page = request.GET.get('page')
+    context={"page":3}
     if page == "previlege":
-        return render(request, 'static_pages/membership/previlege.html')
+        return render(request, 'static_pages/membership/previlege.html',context)
     if page == "major":
-        return render(request, 'static_pages/news/major.html')
+        return render(request, 'static_pages/news/major.html',{"page":2})
 
 
 def publications(request):
+    context={"page":4}
     page = request.GET.get('page')
     if page == "about_spai_journal":
-        return render(request, 'static_pages/publications/spai_journel.html')
+        return render(request, 'static_pages/publications/spai_journel.html',context)
     if page == "editorial":
-        return render(request, 'static_pages/publications/editorial.html')
+        return render(request, 'static_pages/publications/editorial.html',context)
     if page == "joinaseditor":
-        return render(request, 'static_pages/publications/joinaseditor.html')
+        return render(request, 'static_pages/publications/joinaseditor.html',context)
     if page == "joinasreviewer":
-        return render(request, 'static_pages/publications/joinasreviewer.html')
+        return render(request, 'static_pages/publications/joinasreviewer.html',context)
     if page == "call_for_manuscripts":
-        return render(request, 'static_pages/publications/call.html')
+        return render(request, 'static_pages/publications/call.html',context)
     if page == "journal_archives":
-        return render(request, 'static_pages/publications/journalarchieve.html')
+        return render(request, 'static_pages/publications/journalarchieve.html',context)
 
 
 def academic(request):
+    context={"page":5}
     page = request.GET.get('page')
     if page == "about_internship":
-        return render(request, 'static_pages/academic/internship/about.html')
+        return render(request, 'static_pages/academic/internship/about.html',context)
     if page == "upcoming_annual":
-        return render(request, 'static_pages/academic/anual_conference/upcoming.html')
+        return render(request, 'static_pages/academic/anual_conference/upcoming.html',context)
     if page == "past_annual":
-        return render(request, 'static_pages/academic/anual_conference/past.html')
+        return render(request, 'static_pages/academic/anual_conference/past.html',context)
     if page == "annual_archives":
-        return render(request, 'static_pages/academic/anual_conference/archives.html')
+        return render(request, 'static_pages/academic/anual_conference/archives.html',context)
     if page == "spai_award":
-        return render(request, 'static_pages/academic/awards/awards.html')
+        return render(request, 'static_pages/academic/awards/awards.html',context)
     if page == "paper_presenter":
-        return render(request, 'static_pages/academic/awards/papper.html')
+        return render(request, 'static_pages/academic/awards/papper.html',context)
     if page == "poster_presentation":
-        return render(request, 'static_pages/academic/awards/poster.html')
+        return render(request, 'static_pages/academic/awards/poster.html',context)
     if page == "publication":
-        return render(request, 'static_pages/academic/awards/publications.html')
+        return render(request, 'static_pages/academic/awards/publications.html',context)
     if page == "research":
-        return render(request, 'static_pages/academic/awards/research.html')
+        return render(request, 'static_pages/academic/awards/research.html',context)
     if page == "student_research":
-        return render(request, 'static_pages/academic/awards/student.html')
+        return render(request, 'static_pages/academic/awards/student.html',context)
     if page == "research_grant":
-        return render(request, 'static_pages/academic/grant/research.html')
+        return render(request, 'static_pages/academic/grant/research.html',context)
     if page == "call_for_grants":
-        return render(request, 'static_pages/academic/grant/call.html')
+        return render(request, 'static_pages/academic/grant/call.html',context)
     if page == "mentors":
-        return render(request, 'static_pages/academic/internship/mentors.html')
+        return render(request, 'static_pages/academic/internship/mentors.html',context)
     if page == "internship_testimonials":
-        return render(request, 'static_pages/academic/internship/testimonials.html')
+        return render(request, 'static_pages/academic/internship/testimonials.html',context)
     if page == "upcoming_online_webinars":
-        return render(request, 'static_pages/academic/online/upcoming.html')
+        return render(request, 'static_pages/academic/online/upcoming.html',context)
     if page == "completed_online_webinars":
-        return render(request, 'static_pages/academic/online/past.html')
+        return render(request, 'static_pages/academic/online/past.html',context)
     if page == "upcoming_state_workshop":
-        return render(request, 'static_pages/academic/state_workshop/upcomming.html')
+        return render(request, 'static_pages/academic/state_workshop/upcomming.html',context)
     if page == "completed_state_workshop":
-        return render(request, 'static_pages/academic/state_workshop/past.html')
+        return render(request, 'static_pages/academic/state_workshop/past.html',context)
     if page == "upcoming_national_workshop":
-        return render(request, 'static_pages/academic/workshop/upcoming.html')
+        return render(request, 'static_pages/academic/workshop/upcoming.html',context)
     if page == "completed_national_workshop":
-        return render(request, 'static_pages/academic/workshop/past.html')
+        return render(request, 'static_pages/academic/workshop/past.html',context)
     if page == "certification":
-        return render(request, 'static_pages/academic/certification.html')
+        return render(request, 'static_pages/academic/certification.html',context)
     if page == "latest_update":
-        return render(request, 'static_pages/academic/latest_update.html')
+        return render(request, 'static_pages/academic/latest_update.html',context)
     if page == "mou":
-        return render(request, 'static_pages/academic/mou.html')
+        return render(request, 'static_pages/academic/mou.html',context)
 
 
 def history(request):
@@ -238,7 +242,7 @@ def gallery_list(request):
     page_number = request.GET.get('page', 1)
     paginator = Paginator(galleries, 9)
     page_obj = paginator.get_page(page_number)
-    context = {'galleries': galleries, 'page_obj': page_obj}
+    context = {'galleries': galleries, 'page_obj': page_obj,'page':2}
     return render(request, 'mainpages/gallery.html', context)
 
 
@@ -326,6 +330,7 @@ def news(request):
     context = {
         'page_obj': page_obj,
         'current_tab': current_tab,
+        'page':2
     }
     return render(request, 'mainpages/news.html', context)
 
@@ -764,7 +769,7 @@ def call_for_manuscript(request):
             models.Author.objects.bulk_create(authors)
             return redirect("index")
         manuscript_form = forms.ManuscriptForm()
-        return render(request, 'static_pages/publications/manuscript.html', {'form': manuscript_form})
-    return render(request, 'static_pages/publications/manuscript.html')
+        return render(request, 'static_pages/publications/manuscript.html', {'form': manuscript_form,'page':4})
+    return render(request, 'static_pages/publications/manuscript.html',{'page':4})
 
 

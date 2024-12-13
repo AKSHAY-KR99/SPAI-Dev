@@ -1,187 +1,201 @@
 {% load static %}
 <nav>
-  <ul class="navbar">
-    <li class="dropdown">
-        <a href="#">ABOUT</a>
-        <ul class="dropdown-menu">
-            <li><a href="{% url 'about_page' %}?page=about_spai">About Spai</a></li>
-            <li><a href="{% url 'about_page' %}?page=mission">Our mission</a></li>
-            <li><a href="{% url 'about_page' %}?page=history">History</a></li>
-            <li class="side-down">
-              <a class="nav-arrow" href="#">
-                <div style="display: flex;justify-content: space-between;">Leadership<img src="{% static 'image/triangle.svg' %}" alt=""></div>
-                </a>
-              <ul class="dropdown-menu side">
-                  <li><a href="{% url 'about_page' %}?page=president">President</a></li>
-                  <li><a href="{% url 'about_page' %}?page=secretary">Secretary</a></li>
-                  <li><a href="{% url 'about_page' %}?page=regional">Regional Secretaries</a></li>
-                  <li><a href="{% url 'about_page' %}?page=patron">Patrons</a></li>
-                  <li><a href="{% url 'about_page' %}?page=pre_committee">Previous year council</a></li>
-                  <li><a href="{% url 'about_page' %}?page=committee">Committees</a></li>
-              </ul>
-            </li>
-            <li><a href="{% url 'about_page' %}?page=message_from_president">Message from the President</a></li>
-            <li><a href="{% url 'about_page' %}?page=message_from_secretary">Message from the Secretary</a></li>
-        </ul>
-    </li>
-    <li class="dropdown">
-        <a href="#">NEWS & EVENTS</a>
-        <ul class="dropdown-menu">
-            <li><a href="{% url 'news' %}?tab=upcoming">Upcoming Events</a></li>
-            <li><a href="{% url 'news' %}?tab=post">Events Organized</a></li>
-            <li><a href="{% url 'membership' %}?page=major">Major Highlights</a></li>
-            <li><a href="{% url 'gallery_list' %}">Gallery</a></li>
-        </ul>
-    </li>
-    <li class="dropdown">
-        <a href="{% url 'members' %}">MEMBERSHIP</a>
-        <ul class="dropdown-menu">
-            <li class="side-down">
-              <a class="nav-arrow" href="{% url 'user_registration' %}">
-                <div style="display: flex;justify-content: space-between;">Join SPAI<img src="{% static 'image/triangle.svg' %}" alt=""></div>
-                </a>
-              <ul class="dropdown-menu side">
-                  <li><a href="{% url 'membership' %}?page=previlege">About Membership Privilege</a></li>
-              </ul>
-            </li>
-            <li><a href="{% url 'about_page' %}?page=committee">Executive Members</a></li>
-            <li><a href="{% url 'life_members_get' %}">Life Members</a></li>
-        </ul>
-    </li>
-    <li class="dropdown">
-        <a href="#">PUBLICATIONS</a>
-        <ul class="dropdown-menu">
-            <li><a href="{% url 'publications' %}?page=about_spai_journal">About SPAI Journal</a></li>
-            <li><a href="{% url 'call_for_manuscript' %}">Call for manuscripts</a></li>
-            <li class="side-down">
-              <a class="nav-arrow" href="#">
-                <div style="display: flex;justify-content: space-between;">Editorial Board<img src="{% static 'image/triangle.svg' %}" alt=""></div>
-                </a>
-              <ul class="dropdown-menu side">
-                  <li><a href="{% url 'publications' %}?page=editorial">Editorial Board Members</a></li>
-                  <li><a href="{% url 'publications' %}?page=joinaseditor">Join as Editor</a></li>
-                  <li><a href="{% url 'publications' %}?page=joinasreviewer">Join as Reviewer</a></li>
-              </ul>
-            </li>
-            <li><a href="{% url 'publications' %}?page=journal_archives">Journal Archives</a></li>
-        </ul>
-    </li>
-    <li class="dropdown">
-        <a href="#">ACADEMIC & RESOURCES</a>
-        <ul class="dropdown-menu">
-            <li class="side-down">
-              <a class="nav-arrow" href="#">
-                <div style="display: flex;justify-content: space-between;">Academic Program<img src="{% static 'image/triangle.svg' %}" alt=""></div>
-                </a>
-              <ul class="dropdown-menu side">
-                  <li><a href="{% url 'academic' %}?page=certification">Certification Program in SPAI</a></li>
-                  <!-- <li><a href="#">A</a></li>
+    <ul class="navbar">
+        <li class="dropdown {% if page == 1 %}high{% endif %}">
+            <a href="#" class="main-a">ABOUT</a>
+            <ul class="dropdown-menu">
+                <li><a class="main-b" href="{% url 'about_page' %}?page=about_spai">About Spai</a></li>
+                <li><a class="main-b" href="{% url 'about_page' %}?page=mission">Our mission</a></li>
+                <li><a class="main-b" href="{% url 'about_page' %}?page=history">History</a></li>
+                <li class="side-down">
+                    <a class="nav-arrow main-b" href="#">
+                        <div style="display: flex;justify-content: space-between;">Leadership<img
+                                src="{% static 'image/triangle.svg' %}" alt=""></div>
+                    </a>
+                    <ul class="dropdown-menu side">
+                        <li><a class="main-c" href="{% url 'about_page' %}?page=president">President</a></li>
+                        <li><a class="main-c" href="{% url 'about_page' %}?page=secretary">Secretary</a></li>
+                        <li><a class="main-c" href="{% url 'about_page' %}?page=regional">Regional Secretaries</a></li>
+                        <li><a class="main-c" href="{% url 'about_page' %}?page=patron">Patrons</a></li>
+                        <li><a class="main-c" href="{% url 'about_page' %}?page=pre_committee">Previous year council</a></li>
+                        <li><a class="main-c" href="{% url 'about_page' %}?page=committee">Committees</a></li>
+                    </ul>
+                </li>
+                <li><a class="main-b" href="{% url 'about_page' %}?page=message_from_president">Message from the President</a></li>
+                <li><a class="main-b" href="{% url 'about_page' %}?page=message_from_secretary">Message from the Secretary</a></li>
+            </ul>
+        </li>
+        <li class="dropdown {% if page == 2 %}high{% endif %}">
+            <a href="#" class="main-a">NEWS & EVENTS</a>
+            <ul class="dropdown-menu">
+                <li><a class="main-b" href="{% url 'news' %}?tab=upcoming">Upcoming Events</a></li>
+                <li><a class="main-b" href="{% url 'news' %}?tab=post">Events Organized</a></li>
+                <li><a class="main-b" href="{% url 'membership' %}?page=major">Major Highlights</a></li>
+                <li><a class="main-b" href="{% url 'gallery_list' %}">Gallery</a></li>
+            </ul>
+        </li>
+        <li class="dropdown {% if page == 3 %}high{% endif %}">
+            <a class="main-a" href="{% url 'members' %}">MEMBERSHIP</a>
+            <ul class="dropdown-menu">
+                <li class="side-down">
+                    <a class="nav-arrow main-b" href="{% url 'user_registration' %}">
+                        <div style="display: flex;justify-content: space-between;">Join SPAI<img
+                                src="{% static 'image/triangle.svg' %}" alt=""></div>
+                    </a>
+                    <ul class="dropdown-menu side">
+                        <li><a class="main-c" href="{% url 'membership' %}?page=previlege">About Membership Privilege</a></li>
+                    </ul>
+                </li>
+                <li><a class="main-b" href="{% url 'about_page' %}?page=committee">Executive Members</a></li>
+                <li><a class="main-b" href="{% url 'life_members_get' %}">Life Members</a></li>
+            </ul>
+        </li>
+        <li class="dropdown {% if page == 4 %}high{% endif %}">
+            <a class="main-a" href="#">PUBLICATIONS</a>
+            <ul class="dropdown-menu">
+                <li><a class="main-b" href="{% url 'publications' %}?page=about_spai_journal">About SPAI Journal</a>
+                </li>
+                <li><a class="main-b" href="{% url 'call_for_manuscript' %}">Call for manuscripts</a></li>
+                <li class="side-down">
+                    <a class="nav-arrow main-b" href="#">
+                        <div style="display: flex;justify-content: space-between;">Editorial Board<img
+                                src="{% static 'image/triangle.svg' %}" alt=""></div>
+                    </a>
+                    <ul class="dropdown-menu side">
+                        <li><a class="main-c" href="{% url 'publications' %}?page=editorial">Editorial Board Members</a></li>
+                        <li><a class="main-c" href="{% url 'publications' %}?page=joinaseditor">Join as Editor</a></li>
+                        <li><a class="main-c" href="{% url 'publications' %}?page=joinasreviewer">Join as Reviewer</a></li>
+                    </ul>
+                </li>
+                <li><a class="main-b" href="{% url 'publications' %}?page=journal_archives">Journal Archives</a></li>
+            </ul>
+        </li>
+        <li class="dropdown {% if page == 5 %}high{% endif %}">
+            <a class="main-a" href="#">ACADEMIC & RESOURCES</a>
+            <ul class="dropdown-menu">
+                <li class="side-down">
+                    <a class="nav-arrow main-b" href="#">
+                        <div style="display: flex;justify-content: space-between;">Academic Program<img
+                                src="{% static 'image/triangle.svg' %}" alt=""></div>
+                    </a>
+                    <ul class="dropdown-menu side">
+                        <li><a class="main-c" href="{% url 'academic' %}?page=certification">Certification Program in SPAI</a></li>
+                        <!-- <li><a href="#">A</a></li>
                   <li><a href="#">A</a></li>
                   <li><a href="#">A</a></li> -->
-              </ul>
-            </li>
-            <li><a href="{% url 'academic' %}?page=mou">MOU Collaboration</a></li>
-            <li class="side-down" style="height: 45px;">
-              <a class="nav-arrow" href="#">
-                <div style="display: flex;justify-content: space-between;">Workshop/Seminars/ Conferences<img src="{% static 'image/triangle.svg' %}" alt=""></div>
-                </a>
-              <ul class="dropdown-menu side">
-                <li class="side-downB">
-                    <a class="nav-arrow" href="#">
-                        <div style="display: flex;justify-content: space-between;">Annual Conference<img src="{% static 'image/triangle.svg' %}" alt=""></div>
-                        </a>
-                    <ul class="dropdown-menu sideB">
-                        <li><a href="{% url 'academic' %}?page=upcoming_annual">Upcomming Annual</a></li>
-                        <li><a href="{% url 'academic' %}?page=past_annual">Past Annual</a></li>
-                        <li><a href="{% url 'academic' %}?page=annual_archives">Annual Conf Archives</a></li>
                     </ul>
                 </li>
-                <li class="side-downB">
-                    <a class="nav-arrow" href="#">
-                        <div style="display: flex;justify-content: space-between;">National Workshops or Seminars<img src="{% static 'image/triangle.svg' %}" alt=""></div>
-                        </a>
-                    <ul class="dropdown-menu sideB">
-                        <li><a href="{% url 'academic' %}?page=upcoming_national_workshop">Upcomming</a></li>
-                        <li><a href="{% url 'academic' %}?page=completed_national_workshop">Completed</a></li>
+                <li><a class="main-b" href="{% url 'academic' %}?page=mou">MOU Collaboration</a></li>
+                <li class="side-down" style="height: 45px;">
+                    <a class="nav-arrow main-b" href="#">
+                        <div style="display: flex;justify-content: space-between;">Workshop/Seminars/ Conferences<img
+                                src="{% static 'image/triangle.svg' %}" alt=""></div>
+                    </a>
+                    <ul class="dropdown-menu side">
+                        <li class="side-downB">
+                            <a class="nav-arrow main-c" href="#">
+                                <div style="display: flex;justify-content: space-between;">Annual Conference<img
+                                        src="{% static 'image/triangle.svg' %}" alt=""></div>
+                            </a>
+                            <ul class="dropdown-menu sideB">
+                                <li><a href="{% url 'academic' %}?page=upcoming_annual">Upcomming Annual</a></li>
+                                <li><a href="{% url 'academic' %}?page=past_annual">Past Annual</a></li>
+                                <li><a href="{% url 'academic' %}?page=annual_archives">Annual Conf Archives</a></li>
+                            </ul>
+                        </li>
+                        <li class="side-downB">
+                            <a class="nav-arrow main-c" href="#">
+                                <div style="display: flex;justify-content: space-between;">National Workshops or
+                                    Seminars<img src="{% static 'image/triangle.svg' %}" alt=""></div>
+                            </a>
+                            <ul class="dropdown-menu sideB">
+                                <li><a href="{% url 'academic' %}?page=upcoming_national_workshop">Upcomming</a></li>
+                                <li><a href="{% url 'academic' %}?page=completed_national_workshop">Completed</a></li>
+                            </ul>
+                        </li>
+                        <li class="side-downB" style="height: 45px;">
+                            <a class="nav-arrow main-c" href="#">
+                                <div style="display: flex;justify-content: space-between;">State Regional Workshops or
+                                    Seminars<img src="{% static 'image/triangle.svg' %}" alt=""></div>
+                            </a>
+                            <ul class="dropdown-menu sideB">
+                                <li><a href="{% url 'academic' %}?page=upcoming_state_workshop">Upcomming</a></li>
+                                <li><a href="{% url 'academic' %}?page=completed_state_workshop">Completed</a></li>
+                            </ul>
+                        </li>
+
                     </ul>
                 </li>
-                <li class="side-downB" style="height: 45px;">
-                    <a class="nav-arrow" href="#">
-                        <div style="display: flex;justify-content: space-between;">State Regional Workshops or Seminars<img src="{% static 'image/triangle.svg' %}" alt=""></div>
-                        </a>
-                    <ul class="dropdown-menu sideB">
-                        <li><a href="{% url 'academic' %}?page=upcoming_state_workshop">Upcomming</a></li>
-                        <li><a href="{% url 'academic' %}?page=completed_state_workshop">Completed</a></li>
+                <li class="side-down">
+                    <a class="nav-arrow main-b" href="#">
+                        <div style="display: flex;justify-content: space-between;">Online Lectures /Webinars<img
+                                src="{% static 'image/triangle.svg' %}" alt=""></div>
+                    </a>
+                    <ul class="dropdown-menu side">
+                        <li><a class="main-c" href="{% url 'academic' %}?page=upcoming_online_webinars">Upcomming</a></li>
+                        <li><a class="main-c" href="{% url 'academic' %}?page=completed_online_webinars">Completed</a></li>
                     </ul>
                 </li>
-                
-              </ul>
-            </li>
-            <li class="side-down">
-                <a class="nav-arrow" href="#">
-                    <div style="display: flex;justify-content: space-between;">Online Lectures /Webinars<img src="{% static 'image/triangle.svg' %}" alt=""></div>
+                <li class="side-down">
+                    <a class="nav-arrow main-b" href="#">
+                        <div style="display: flex;justify-content: space-between;">Internship<img
+                                src="{% static 'image/triangle.svg' %}" alt=""></div>
                     </a>
-                <ul class="dropdown-menu side">
-                    <li><a href="{% url 'academic' %}?page=upcoming_online_webinars">Upcomming</a></li>
-                    <li><a href="{% url 'academic' %}?page=completed_online_webinars">Completed</a></li>
-                </ul>
-            </li>
-            <li class="side-down">
-                <a class="nav-arrow" href="#">
-                    <div style="display: flex;justify-content: space-between;">Internship<img src="{% static 'image/triangle.svg' %}" alt=""></div>
+                    <ul class="dropdown-menu side">
+                        <li><a class="main-c" href="{% url 'academic' %}?page=about_internship">About SPAI Internship</a></li>
+                        <li><a class="main-c" href="{% url 'academic' %}?page=mentors">SPAI Mentors</a></li>
+                        <li><a class="main-c" href="{% url 'internship_page' %}">Join Internship</a></li>
+                        <li><a class="main-c" href="{% url 'academic' %}?page=internship_testimonials">Internship Testimonials</a></li>
+                    </ul>
+                </li>
+                <li class="side-down">
+                    <a class="nav-arrow main-b" href="#">
+                        <div style="display: flex;justify-content: space-between;">Awards<img
+                                src="{% static 'image/triangle.svg' %}" alt=""></div>
                     </a>
-                <ul class="dropdown-menu side">
-                    <li><a href="{% url 'academic' %}?page=about_internship">About SPAI Internship</a></li>
-                    <li><a href="{% url 'academic' %}?page=mentors">SPAI Mentors</a></li>
-                    <li><a href="{% url 'internship_page' %}">Join Internship</a></li>
-                    <li><a href="{% url 'academic' %}?page=internship_testimonials">Internship Testimonials</a></li>
-                </ul>
-            </li>
-            <li class="side-down">
-                <a class="nav-arrow" href="#">
-                    <div style="display: flex;justify-content: space-between;">Awards<img src="{% static 'image/triangle.svg' %}" alt=""></div>
+                    <ul class="dropdown-menu side">
+                        <li><a class="main-c" href="{% url 'academic' %}?page=spai_award">SPAI Awards</a></li>
+                        <li><a class="main-c" href="{% url 'academic' %}?page=research">Best Research Award</a></li>
+                        <li><a class="main-c" href="{% url 'academic' %}?page=paper_presenter">Best Paper Presenter Award</a></li>
+                        <li><a class="main-c" href="{% url 'academic' %}?page=poster_presentation">Best Poster Presentation Award</a>
+                        </li>
+                        <li><a class="main-c" href="{% url 'academic' %}?page=publication">Best Publications</a></li>
+                        <li><a class="main-c" href="{% url 'academic' %}?page=student_research">Student Research Award</a></li>
+                    </ul>
+                </li>
+                <li class="side-down">
+                    <a class="nav-arrow main-b" href="#">
+                        <div style="display: flex;justify-content: space-between;">Grants<img
+                                src="{% static 'image/triangle.svg' %}" alt=""></div>
                     </a>
-                <ul class="dropdown-menu side">
-                    <li><a href="{% url 'academic' %}?page=spai_award">SPAI Awards</a></li>
-                    <li><a href="{% url 'academic' %}?page=research">Best Research Award</a></li>
-                    <li><a href="{% url 'academic' %}?page=paper_presenter">Best Paper Presenter Award</a></li>
-                    <li><a href="{% url 'academic' %}?page=poster_presentation">Best Poster Presentation Award</a></li>
-                    <li><a href="{% url 'academic' %}?page=publication">Best Publications</a></li>
-                    <li><a href="{% url 'academic' %}?page=student_research">Student Research Award</a></li>
-                </ul>
-            </li>
-            <li class="side-down">
-                <a class="nav-arrow" href="#">
-                    <div style="display: flex;justify-content: space-between;">Grants<img src="{% static 'image/triangle.svg' %}" alt=""></div>
-                    </a>
-                <ul class="dropdown-menu side">
-                    <li><a href="{% url 'academic' %}?page=research_grant">SPAI Research Grant</a></li>
-                    <li><a href="{% url 'academic' %}?page=call_for_grants">Call for Grants</a></li>
-                </ul>
-            </li>
-            <li><a href="{% url 'academic' %}?page=latest_update">Latest Updates in Sports Psychology</a></li>
-        </ul>
-    </li>
-    <li class="search-li">
-        <div class="search-wrapper">
-            <input type="text" class="search-input" placeholder="search here...">
-            <button class="search-button">
-                <img src="{% static 'image/search.svg' %}" alt="Search">
-            </button>
-        </div>
-    </li>
-      <li>
-        {% if request.user.is_authenticated %}
-        <div></div>
-        {% else %}
-          <div class="login-button1">
-             
-              <!-- <a style="text-decoration: none; color: white;" href="{% url 'logout' %}">Member logout</a> -->
-            
-              <a style="text-decoration: none; color: white;" href="{% url 'login_page' %}">Member Login</a>
-            
-          </div>
-          {% endif %}
-      </li>                
-  </ul>
+                    <ul class="dropdown-menu side">
+                        <li><a class="main-c" href="{% url 'academic' %}?page=research_grant">SPAI Research Grant</a></li>
+                        <li><a class="main-c" href="{% url 'academic' %}?page=call_for_grants">Call for Grants</a></li>
+                    </ul>
+                </li>
+                <li><a class="main-b" href="{% url 'academic' %}?page=latest_update">Latest Updates in Sports Psychology</a></li>
+            </ul>
+        </li>
+        <li class="search-li">
+            <div class="search-wrapper">
+                <input type="text" class="search-input" placeholder="search here...">
+                <button class="search-button">
+                    <img src="{% static 'image/search.svg' %}" alt="Search">
+                </button>
+            </div>
+        </li>
+        <li>
+            {% if request.user.is_authenticated %}
+            <div></div>
+            {% else %}
+            <div class="login-button1">
+
+                <!-- <a style="text-decoration: none; color: white;" href="{% url 'logout' %}">Member logout</a> -->
+
+                <a style="text-decoration: none; color: white;" href="{% url 'login_page' %}">Member Login</a>
+
+            </div>
+            {% endif %}
+        </li>
+    </ul>
 </nav>
