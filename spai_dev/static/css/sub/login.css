@@ -1,0 +1,60 @@
+/* General styling for error box */
+.error-box {
+    width: 80%;
+    background-color: red;
+    color: white;
+    padding: 14px;
+    margin-top: 30px;
+    margin-left: 28px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    opacity: 0; /* Initially hidden */
+    transform: translateY(30px); /* Initially positioned lower */
+    animation: fadeInUp 1s 1s forwards; /* Combined fade-in and slide-up animation */
+}
+
+/* Combined Fade-In and Slide-Up animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px); /* Start 20px below */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Move to the final position */
+    }
+}
+
+.error-box ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.error-box li {
+    margin-bottom: 1px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .error-box {
+        font-size: 12px;
+        padding: 10px;
+    }
+
+    .error-box li {
+        margin-bottom: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .error-box {
+        font-size: 11px;
+        padding: 8px;
+    }
+
+    .error-box li {
+        margin-bottom: 4px;
+    }
+}

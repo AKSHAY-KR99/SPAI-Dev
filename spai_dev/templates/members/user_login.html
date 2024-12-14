@@ -1,5 +1,14 @@
 {% extends 'main.html' %}
 {% load static %}
+
+{% block cssfiles %}
+<link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/content.css' %}">
+<link rel="stylesheet" href="{% static 'css/spai.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/login.css' %}">
+{% endblock %}
+
 {% block header %}
 {% include 'header.html' %}
 {% endblock %}
@@ -21,33 +30,35 @@
                     </div>
                     <div class="login-button-section">
                         <input type="submit" value="Login">
-
                     </div>
                     <div class="register-link">
                         <p>Don't have an account? <a href="{% url 'user_registration'%}">Register</a></p>
                     </div>
                 </div>
             </form>
+            <!-- Error messages container -->
+            {% if form.errors %}
+            <div class="error-box">
+                <ul>
+                    {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                    {% for field in form %}
+                    {% if field.errors %}
+                    {% for error in field.errors %}
+                    <li>{{ field.label }}: {{ error }}</li>
+                    {% endfor %}
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
         </div>
     </div>
     <div class="image-section">
         <img src="{% static 'image/Frame.png' %}" alt="Login Image">
     </div>
 </div>
-{% if form.errors %}
-<ul>
-    {% for error in form.non_field_errors %}
-    <li>{{ error }}</li>
-    {% endfor %}
-    {% for field in form %}
-    {% if field.errors %}
-    {% for error in field.errors %}
-    <li>{{ field.label }}: {{ error }}</li>
-    {% endfor %}
-    {% endif %}
-    {% endfor %}
-</ul>
-{% endif %}
 <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function() {
         document.querySelector('.menu-icon').addEventListener('click', function() {
