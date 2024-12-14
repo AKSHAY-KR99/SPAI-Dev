@@ -1,0 +1,105 @@
+.maths {
+    width: 963.25px;
+    height: 151.09px;
+    top: 89%;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    background: rgba(253, 252, 252, 1);
+    z-index: 20;
+    display: flex;
+}
+
+.maths .item {
+    width: 25%;
+    height: 100%;
+    /* border-right: 1px solid black; */
+    text-align: center;
+}
+
+.maths h1 {
+    font-family: "Poppins", sans-serif;
+    font-size: 48px;
+    font-weight: 400;
+    margin-top: 0%;
+
+}
+
+.maths h4 {
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #242424;
+    margin-bottom: 0%;
+
+
+}
+
+.maths .custom-hr {
+    border: 1px solid rgba(218, 218, 218, 1);
+    /* Remove default styling */
+    height: 100px;
+    /* Set thickness */
+    background-color: #007bff;
+    /* Set color */
+    margin: 20px 0;
+    /* Add vertical spacing */
+}
+
+@media (max-width:1000px) {
+    .maths {
+        width: 700px;
+        height: 109.76px;
+    }
+    .maths h1 {
+        font-family: "Poppins", sans-serif;
+        font-size: 34.89px;
+        font-weight: 400;
+        margin-top: 0%;
+    
+    }
+}
+@media (max-width:760px){
+    .maths{
+        width: 600px;
+        height: auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 100px 100px;
+        align-items: center;
+        justify-items: center;
+    }
+    .maths .custom-hr{
+        display: none;
+    }
+} 
+@media (max-width:640px){
+    .maths{
+        width: 500px;
+        height: auto;
+    }
+}
+@media (max-width:540px){
+    .maths{
+        width: 400px;
+        
+    }
+}
+@media (max-width:440px){
+    .maths{
+        width: 300px;
+        
+    }
+    .maths h1 {
+        font-family: "Poppins", sans-serif;
+        font-size: 30px;
+        font-weight: 300;
+        margin-top: 0%;
+    
+    }
+    .maths h4{
+        font-size: 14px;
+        font-weight: 300;
+    }
+}
