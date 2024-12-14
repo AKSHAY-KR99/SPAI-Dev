@@ -114,6 +114,10 @@ def membership(request):
         return render(request, 'static_pages/membership/previlege.html',context)
     if page == "major":
         return render(request, 'static_pages/news/major.html',{"page":2})
+    if page == "exe_meeting":
+        return render(request, 'static_pages/news/exe_meeting.html',{"page":2})
+    if page == "general_body":
+        return render(request, 'static_pages/news/general_body.html',{"page":2})
 
 
 def publications(request):
