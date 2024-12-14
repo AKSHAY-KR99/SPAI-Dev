@@ -1,0 +1,140 @@
+/*About.......................................*/
+.about{
+  margin-top: 90px;
+}
+.about h1{
+  text-align: center;
+  margin-bottom: 0%;
+}  
+.about-content{
+  background-image: url('../sub/running-2-bg.png');
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+    height: auto;
+    /* background: rgba(249, 250, 252, 1); */
+    padding: 40px; /* Add padding for better spacing */
+    box-sizing: border-box;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+  }
+  .about-content1{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    position: relative;
+    width: 100%;
+    height: auto;
+    background: rgba(249, 250, 252, 1);
+    padding: 40px; /* Add padding for better spacing */
+    box-sizing: border-box;
+    z-index: 1;
+  }
+  .about-content.visible{
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .about-text{
+    text-indent: 5em;
+   
+    height: auto;
+    font-family: "Poppins",sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    
+    
+  }
+  .aboutimg{
+    width: auto;
+    height: auto;
+    margin-left: 20px;
+  }
+  .aboutimg img{  
+    width: 550px;
+    height: auto;
+  }
+  .bg-running{
+    position: absolute;
+    width: 624px;
+    height: 624px;
+    top: 0px;
+    left: 0px;
+    gap: 0px;
+    opacity: 0px;
+    z-index: 0; /* Ensures image is behind the text */
+  
+  
+  }
+.about-seemore{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 268.41px;
+    height: 62.74px;
+    border: 2px 0px 0px 0px;
+    opacity: 0px;
+    background: rgba(0, 0, 0, 1);
+    border: 2px solid rgba(255, 255, 255, 1);
+  }
+  .about-seemoretext{
+    opacity: 1;
+    font-family: "Poppins",sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 30px;
+    text-align: center;
+    color: rgba(255, 255, 255, 1); 
+  }
+   /*********************************************************/
+  
+
+   @media (max-width: 700px){
+    .about-text{
+      width: 80%;
+    }
+
+  }
+  
+  @media (max-width: 768px) {
+    .about{
+      margin-top: 150px;
+    }
+    .about-seemore{
+        width: 180px;
+        height: 55px;
+      }
+      .about-seemoretext{
+        font-size: 15px;
+      }
+    /* Mobile devices */
+    
+    .about-text{
+      width: 100%;
+    }
+    .about-content{
+      padding: 30px;
+    }
+    .about-content1{
+      padding: 20px;
+    }
+
+  
+  }
+  @media (max-width: 1058px){
+    .aboutimg img{
+      width: 400px;
+    }
+  }
+  @media (max-width: 900px){
+    .aboutimg img{
+      width: 100%;
+    }
+    .about-content{
+      flex-direction: column;
+    }
+  }

@@ -1,0 +1,18 @@
+.image-403 img{
+    width: 25%;
+    margin-left: 37%;
+}
+
+.error-content{
+    text-align: center;
+}
+
+.error-content h1{
+    font-size: 30px;
+    font-weight: bolder;
+    color: red;
+}
+
+.error-content span{
+    font-size: 20px;
+}

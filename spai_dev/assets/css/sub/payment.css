@@ -1,130 +1,253 @@
 .news-tabs {
-    /* margin-bottom: 20px; */
-    margin-top: 40px;
-    margin-left: 8%;
-  }
-  
-  .tab-list {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    /* border-bottom: 2px solid #ddd; */
-  }
-  
-  .tab-item {
-    padding: 10px 20px;
-    cursor: pointer;
-    border: 1px solid #ddd;
-    border-bottom: none;
-    background-color: #f5f5f5;
-    margin-right: 5px;
-  }
-  
-  .tab-item.active {
-    background-color: #fff;
-    border-bottom: 2px solid #007bff;
-  }
-  
-  .tab-content .tab-panel {
-    display: none;
+  /* margin-bottom: 20px; */
+  margin-top: 40px;
+  margin-left: 8%;
+}
 
-  }
-  
-  .tab-content .tab-panel.active {
-    display: block;
-    justify-content: center;
-  }
-  .tab-content{
-    /* margin-left: 110px;
+.tab-list {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  /* border-bottom: 2px solid #ddd; */
+}
+
+.tab-item {
+  padding: 10px 20px;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  border-bottom: none;
+  background-color: #f5f5f5;
+  margin-right: 5px;
+}
+
+.tab-item.active {
+  background-color: #fff;
+  border-bottom: 2px solid #007bff;
+}
+
+.tab-content .tab-panel {
+  display: none;
+
+}
+
+.tab-content .tab-panel.active {
+  display: block;
+  justify-content: center;
+}
+
+.tab-content {
+  /* margin-left: 110px;
     margin-right: 110px; */
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-  }
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
 
-.heading{
-    width: 100%;
-    display: flex;
-    justify-content: center;
+.heading {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
-.text{
-    font-family: "Poppins",sans-serif;
-    font-size: 30px;
-    font-weight: bold;
+
+.text {
+  font-family: "Poppins", sans-serif;
+  font-size: 30px;
+  font-weight: bold;
 }
+
 .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 400px;
 }
 
 .details {
-    max-width: 50%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center;
+    align-items: center; */
 }
 
 .details label {
-    display: block;
-    margin: 10px 0 5px;
-    font-size: 16px;
+  display: block;
+  margin: 10px 0 5px;
+  font-size: 16px;
 }
 
-.details input {
+/* .details input {
+    min-width: 200px;
     width: 100%;
+    flex-wrap: wrap;
     padding: 8px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    font-size: 14px;
-}
+} */
 
 .qr-code img {
-    width: 150px;
-    height: 150px;
+  width: 150px;
+  height: 150px;
 }
-.news-seemore{
-    padding-left: 10px;
-    padding-right: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: auto;
-    height: 40px;
-    margin-top: 20px;
-    border: 2px 0px 0px 0px;
-    opacity: 0px;
-    background: rgba(0, 0, 0, 1);
-    border: 2px solid rgba(255, 255, 255, 1);
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-  }
-  .seemoretext{
-    opacity: 1;
-    font-family: "Poppins",sans-serif;
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 30px;
-    text-align: center;
-    color: rgba(255, 255, 255, 1); 
-  }
-  
+
+.news-seemore {
+  padding-left: 10px;
+  padding-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: 40px;
+  margin-top: 20px;
+  border: 2px 0px 0px 0px;
+  opacity: 0px;
+  background: rgba(0, 0, 0, 1);
+  border: 2px solid rgba(255, 255, 255, 1);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.seemoretext {
+  opacity: 1;
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 30px;
+  text-align: center;
+  color: rgba(255, 255, 255, 1);
+}
+
 @media (max-width: 520px) {
-    .container{
-        width: 350px;
-    }
+  .container {
+    width: 350px;
+  }
 }
+
 @media (max-width: 480px) {
-    .container{
-        width: 300px;
-    }
+  .container {
+    width: 300px;
+  }
 }
+
 @media (max-width: 390px) {
-    .container{
-        width: 250px;
-    }
+  .container {
+    width: 250px;
+  }
 }
+
+.post-address-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 100px;
+  margin: 20px;
+}
+
+.postaddress {
+  background-color: whitesmoke;
+  padding: 25px;
+
+}
+
+@media (max-width: 1074px) {
+  .post-address-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    margin: 20px;
+  }
+}
+
+@media (max-width: 1030px) {
+  .post-address-wrapper {
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.input-wrapper {
+  display: flex;
+  /* Flexbox layout */
+  flex-wrap: wrap;
+  /* Allow wrapping to next row */
+  gap: 50px;
+  /* Space between items */
+  align-items: center;
+  margin: 20px;
+}
+
+.input-wrapper div {
+  flex: 1;
+  /* Each item takes equal space */
+  min-width: 200px;
+  /* Ensure fields don’t shrink too much */
+}
+
+input[type="text"],
+input[type="file"] {
+  width: 100%;
+  /* Input fields stretch to fill their container */
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.image-label {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #007bff;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-bottom: 10px;
+}
+
+.image-label:hover {
+  background: #0056b3;
+}
+
+.image-upload input[type="file"] {
+  display: none;
+}
+
+/* Adjust layout on smaller screens */
+@media (max-width: 600px) {
+  .input-wrapper div {
+    flex: 100%;
+    /* Full width for smaller screens */
+  }
+}
+
+.payment-submit {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.payment-submit input {
+  width: 150px;
+  height: 40px;
+  font-size: 18px;
+  background-color: black;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  border: 4px solid black;
+  transition: all 0.3s ease; /* Smooth transition for hover effect */
+  border-radius: 10px;
+}
+
+/* Hover effect */
+.payment-submit input:hover {
+  border: 4px solid #0056b3;
+  background-color: #0056b3;
+  transform: scale(1.05); /* Slightly enlarge the button */
+}
+

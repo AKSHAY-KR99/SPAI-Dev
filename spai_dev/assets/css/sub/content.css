@@ -1,0 +1,643 @@
+.about-container p {
+    text-indent: 3rem;
+}
+
+.about-container {
+    height: auto;
+    background-image: url('./running-2-bg.png');
+
+    background-repeat:no-repeat;
+    background-color: #F2F2ED;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    overflow-x: hidden;
+}
+.run-repeat{
+    background-repeat:repeat !important;
+}
+.about {
+    /* border: 3px solid rgba(255, 255, 255, 1); */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* animation: mymove 5s infinite; */
+    border-radius: 5px 100px 5px 100px;
+    padding-bottom: 70px;
+}
+
+@keyframes mymove {
+    50% {
+        border: 3px solid black;
+    }
+}
+
+.about-content {
+    text-indent: 5em;
+    font-size: large;
+    line-height: 35px;
+}
+
+@media (max-width: 768px) {
+    .about-container {
+        padding: 0px;
+    }
+}
+/*****animation***********************/
+/* Keyframes for fade-in effect */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Keyframes for text slide-in */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Keyframes for slight scaling */
+@keyframes scaleUp {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Apply animations to container */
+.about-container {
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Animate heading */
+.about h1 {
+    animation: fadeIn 1.5s ease-in-out;
+    animation-delay: 0.1s; /* Start slightly after container */
+    animation-fill-mode: forwards; /* Ensure final state persists */
+    opacity: 0; /* Initial state */
+}
+
+/* Animate paragraph content */
+.about-content p {
+    animation: scaleUp 1.5s ease-in-out;
+    animation-fill-mode: forwards;
+    opacity: 0; /* Initial state */
+    font-size: 16px;
+    font-weight: 400;
+    
+    text-align: justify;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+ 
+}
+.about-content p:nth-child(1) {
+    animation-delay: 0.3s; /* First paragraph starts immediately */
+}
+
+.about-content p:nth-child(2) {
+    animation-delay: 0.8s; /* Second paragraph starts after the first */
+}
+
+.about-content p:nth-child(3) {
+    animation-delay: 1.3s; /* Third paragraph starts after the second */
+}
+.about-content p:nth-child(4) {
+    animation-delay: 1.8s; /* Third paragraph starts after the second */
+}
+
+
+/* Keyframes for fade-in animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Starts slightly below */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Moves to its original position */
+    }
+}
+
+/* Animated list container */
+.animated-list {
+    list-style: decimal; /* Keep the default numbered list */
+    padding-left: 20px; /* Optional: Adjust padding for indentation */
+}
+
+/* Individual list items */
+.animated-list li {
+    opacity: 0; /* Initially hidden */
+    animation: fadeInUp 0.8s ease-in-out; /* Animation duration and easing */
+    animation-fill-mode: forwards; /* Retain the final state */
+}
+
+/* Sequential delay for list items */
+.animated-list li:nth-child(1) {
+    animation-delay: 1.3s; /* Starts animation after 0.2s */
+}
+
+.animated-list li:nth-child(2) {
+    animation-delay: 1.8s; /* Starts after 0.4s */
+}
+
+.animated-list li:nth-child(3) {
+    animation-delay: 2.2s; /* Starts after 0.6s */
+}
+
+.animated-list li:nth-child(4) {
+    animation-delay: 2.5s; /* Starts after 0.8s */
+}
+
+.animated-list li:nth-child(5) {
+    animation-delay: 3s; /* Starts after 1s */
+}
+
+/**********mission************************************/
+.mission-top-row {
+    display: block;
+    text-align: center;
+}
+
+.m-v-container {
+    /* border: 1px solid black; */
+    /* background-image: url('./img/missionbg.jpg');    */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 40px;
+    padding: 20px;
+    background-color: white;
+}
+
+/* .vission{
+    background-image: url('./img/missionbg2.jpg');
+} */
+.mission-icon img {
+    width: 40px;
+}
+
+.mission-icon {
+    display: flex;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+    border-radius: 50px;
+    margin-bottom: 10px;
+    background-color: white;
+}
+.m-v-container p {
+    animation: scaleUp 1.5s ease-in-out;
+    animation-fill-mode: forwards;
+    opacity: 0; /* Initial state */
+    animation-delay: 0.3s;
+}
+.m-v-container h3,.m-v-container i{
+    animation: scaleUp 1.5s ease-in-out;
+    animation-fill-mode: forwards;
+    opacity: 0; /* Initial state */
+    animation-delay: 0.1s;
+}
+
+
+
+.m-v-container ol {
+    padding-left: 20px;
+    margin-top: 10px;
+
+}
+
+.m-v-container ol li {
+    margin-bottom: 8px;
+    color: inherit;
+
+}
+
+.mission-vission {
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+@media (max-width: 860px) {
+    .mission-vission {
+        flex-direction: column;
+        margin: 0%;
+    }
+
+    .mission {
+        padding: 20px;
+    }
+}
+
+/* Fade-in for the main container */
+.about-container.mission {
+    animation: fadeIn 1s ease-in-out forwards;
+    
+}
+.about-container.mission.bg-2 {
+    background-image: url(./img/mission-image.jpg) !important;
+    
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Title animation */
+.mission-top-row h1,.mission-top-row p {
+    animation: slideInFromTop 1.5s ease-in-out forwards;
+    transform-origin: top;
+}
+
+@keyframes slideInFromTop {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+.animated-list1 {
+    list-style: decimal; /* Keep the default numbered list */
+    padding-left: 20px; /* Optional: Adjust padding for indentation */
+}
+
+/* Individual list items */
+.animated-list1 li {
+    opacity: 0; /* Initially hidden */
+    animation: fadeInUp 0.8s ease-in-out; /* Animation duration and easing */
+    animation-fill-mode: forwards; /* Retain the final state */
+}
+
+/* Sequential delay for list items */
+.animated-list1 li:nth-child(1) {
+    animation-delay: 0.5s; /* Starts animation after 0.2s */
+}
+
+.animated-list1 li:nth-child(2) {
+    animation-delay: 0.8s; /* Starts after 0.4s */
+}
+
+.animated-list1 li:nth-child(3) {
+    animation-delay: 1.2s; /* Starts after 0.6s */
+}
+
+.animated-list1 li:nth-child(4) {
+    animation-delay: 1.5s; /* Starts after 0.8s */
+}
+
+.animated-list1 li:nth-child(5) {
+    animation-delay: 2s; /* Starts after 1s */
+}
+/* Mission and Vision icon animation */
+/* .mission-icon img {
+    animation: iconPop 1.2s ease-out forwards;
+    opacity: 1; 
+}
+
+@keyframes iconPop {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+} */
+
+/* Cascading effect for list items */
+
+
+@keyframes fadeSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Zoom effect on hover without opacity */
+.m-v-container:hover {
+    transform: scale(1.01);
+    transition: transform 0.2s ease;
+}
+
+.m-v-container {
+    transform: scale(1);
+    transition: transform 0.2s ease-in;
+    /* Slower hover-in */
+}
+
+.pic-on {
+    display: block;
+}
+
+.pic-off {
+    display: none;
+}
+
+.m-v-container:hover .pic-off {
+    display: block;
+}
+
+.m-v-container:hover .pic-on {
+    display: none;
+}
+
+.history-wrap {
+    padding: 50px;
+}
+
+.history {
+    flex-direction: column;
+    gap: 60px;
+}
+
+.history p {
+    line-height: 2rem;
+    font-size: 18px;
+    margin-top: 0px;
+}
+
+/* Container for table to add padding */
+.table-container {
+    overflow-x: auto;
+    /* Enables horizontal scrolling */
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Basic table styling */
+.styled-table {
+    width: 80%;
+    border-collapse: collapse;
+    font-size: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header styling */
+.styled-table thead tr {
+    background-color: #4CAF50;
+    color: #fff;
+    text-align: left;
+}
+
+/* Header cell styling */
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+/* Row styling */
+.styled-table tbody tr {
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.2s;
+}
+
+/* Hover effect on rows */
+.styled-table tbody tr {
+    background-color: #f1f1f1;
+}
+
+/* Alternate row color */
+.styled-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    .styled-table {
+        width: 100%;
+        font-size: 12px;
+    }
+
+    .styled-table th,
+    .styled-table td {
+        padding: 10px;
+    }
+}
+
+.history .m-v-container {
+    background-image: none !important;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.m-v-container:hover .run {
+    background-color: black;
+}
+
+@media (max-width: 860px) {
+    .about-container.mission.history-wrap {
+        padding: 20px !important;
+    }
+}
+
+@media (max-width: 540px) {
+    .history p {
+        font-size: 15px;
+    }
+
+    .styled-table {
+        width: 60%;
+
+    }
+
+    .history .m-v-container {
+        width: 400px;
+    }
+}
+
+@media (max-width: 460px) {
+    .history .m-v-container {
+        width: 350px;
+    }
+}
+
+@media (max-width: 400px) {
+    .history .m-v-container {
+        width: 300px;
+    }
+}
+
+.president-wrapper {
+    display: flex;
+}
+
+.president-pic {
+    margin-right: 40px;
+    margin-left: 20px;
+    margin-top: 20px;
+
+
+}
+
+.president-pic img {
+    width: 250px;
+    height: 300px;
+    border-radius: 30px;
+
+}
+
+.president-content {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.president-wrapper .positext {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 15px;
+    text-align: left;
+    color: rgba(163, 163, 163, 1);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    .president-wrapper {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .president-wrapper h2 {
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .president-pic {
+        margin-right: 20px;
+    }
+
+    .president-wrapper .positext {
+        text-align: center;
+    }
+}
+
+.news-seemore {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 260px;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 40px;
+    margin-top: 20px;
+    border: 2px 0px 0px 0px;
+    opacity: 0px;
+    background: rgba(0, 0, 0, 1);
+    border: 2px solid rgba(255, 255, 255, 1);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border-radius: 10px;
+}
+.news-seemore:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); /* Slightly enlarge the button */
+  }
+
+.seemoretext {
+    opacity: 1;
+    font-family: "Poppins", sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 30px;
+    text-align: center;
+    color: rgba(255, 255, 255, 1);
+}
+
+.join {
+    display: flex;
+    text-indent: 0%;
+    justify-content: center;
+    gap: 100px;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 712px) {
+    .join {
+        gap: 20px;
+    }
+}
+
+.regional {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 columns of equal width */
+    gap: 10px;
+}
+@media (max-width: 979px){
+    .regional{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+}
+@media (max-width: 631px){
+    .regional{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    
+}
+.button-1-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.button-1{
+    border:3px solid white;
+    display: flex;
+    background-color: black;
+    width: 210px;
+    height: 50px;
+    color: white;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: "Poppins",sans-serif;transition: all 0.3s ease;
+    border-radius: 10px;
+}
+.button-1:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); /* Slightly enlarge the button */
+  }
+    

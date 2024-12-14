@@ -1,0 +1,479 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+.manuscript-container {
+  padding: 20px 20px; /* Adds 20px top/bottom and 40px left/right padding */
+  max-width: 80%; /* Optional: Limits the container's width for better readability */
+  margin: 0 auto; /* Centers the container horizontally */ 
+}
+
+.research-papper-deatils div {
+  margin-bottom: 10px; /* Adds spacing between each input group */
+}
+
+.research-papper-deatils label:not(.custom-file-label) {
+  display: block; /* Ensures labels are on their own line above the input */
+  margin-bottom: 5px; /* Adds a small gap between the label and the input */
+  font-weight: bold; /* Makes labels stand out */
+  color: #000000; /* Gives labels a neutral color */
+}
+
+.research-papper-deatils input[type="text"],
+.research-papper-deatils input[type="file"],
+.research-papper-deatils textarea {
+  width: 100%; /* Ensures inputs take up the full width of the container */
+  padding: 10px; /* Adds space inside the input for better readability */
+  border: 1px solid #ccc; /* Gives inputs a neutral border */
+  border-radius: 5px; /* Adds a slight roundness to the edges */
+  font-size: 16px; /* Sets an easy-to-read font size */
+  box-sizing: border-box; /* Includes padding in the total width */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Adds smooth focus/hover animations */
+}
+
+/* Hover effect */
+.research-papper-deatils input[type="text"]:hover,
+.research-papper-deatils input[type="file"]:hover,
+.research-papper-deatils textarea:hover {
+  border-color: #000000; /* Changes border color on hover */
+}
+
+/* Focus effect */
+.research-papper-deatils input[type="text"]:focus,
+.research-papper-deatils input[type="file"]:focus,
+.research-papper-deatils textarea:focus {
+  border-color: #000000; /* Highlights border in a vibrant color */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Adds a subtle glow */
+  outline: none; 
+}
+
+.research-papper-deatils input[type="file"] {
+  display: none; /* Hides the default file input */
+}
+
+.custom-file-label {
+  display: inline-block;
+  background-color: rgb(40, 40, 255); /* Button background color */
+  color: rgb(255, 255, 255); /* Button text color */
+  padding: 10px 20px; /* Padding for the button */
+  font-size: 12px; /* Font size for the button text */
+  font-weight: bold; /* Makes the text bold */
+  border-radius: 5px; /* Adds rounded corners */
+  cursor: pointer; /* Shows pointer cursor on hover */
+  text-align: center;
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.custom-file-label:hover {
+  background-color: rgb(13, 13, 192); /* Darker shade for hover effect */
+}
+
+.custom-file-label:active {
+  background-color: #004085; /* Even darker shade when clicked */
+}
+
+#file-name {
+  display: block;
+  margin-top: 10px;
+  font-size: 10px;
+  color: #005f20; /* Neutral color for file name */
+  word-break: break-word; /* Ensures long file names wrap */
+}
+
+/* Placeholder styling */
+.research-papper-deatils input::placeholder,
+.research-papper-deatils textarea::placeholder {
+    font-size: 12px; /* Adjust the font size */
+    font-family: 'Poppins', sans-serif; /* Set the font family */
+    color: #6b6b6b; /* Sets the color of the placeholder text */
+    opacity: 1; /* Ensures the placeholder is fully visible */
+}
+
+/* Add focus effect for inputs */
+.research-papper-deatils input:focus::placeholder,
+.research-papper-deatils textarea:focus::placeholder {
+    color: #ccc; /* Slightly dim the placeholder when input is focused */
+}
+
+.required-star{
+  color: red;
+  font-size: 12px;
+}
+
+@media (max-width: 768px) {
+  .manuscript-container {
+      padding: 15px 20px; /* Reduce padding for smaller screens */
+  }
+
+  .address-communication div {
+      flex-wrap: wrap; /* Wraps fields to new lines if needed */
+      gap: 15px; /* Adjust gap between fields */
+  }
+
+  .address-communication div input {
+      flex: 1 1 calc(50% - 15px); /* Fields take 50% width minus gap */
+  }
+
+  /* Adjust label and input spacing */
+  label {
+      font-size: 14px; /* Smaller label font */
+  }
+
+  input,
+  textarea {
+      font-size: 14px; /* Smaller font for inputs */
+      padding: 8px; /* Reduced padding for inputs */
+  }
+}
+
+/* Responsive styles for small devices (mobile phones) */
+@media (max-width: 480px) {
+  .manuscript-container {
+      padding: 10px 15px; /* Further reduce padding */
+  }
+
+  .address-communication div {
+      flex-direction: column; /* Stack fields vertically */
+      gap: 10px; /* Reduce spacing between fields */
+  }
+
+  .address-communication div input {
+      flex: 1 1 100%; /* Fields take full width */
+  }
+
+  input,
+  textarea {
+      font-size: 13px; /* Slightly smaller font size */
+      padding: 6px; /* Adjust padding for smaller screens */
+  }
+
+  .custom-file-label {
+      font-size: 14px; /* Adjust file button size */
+      padding: 8px 15px; /* Adjust button padding */
+  }
+
+  h1, h2, h3, h4 {
+      font-size: 18px; /* Smaller heading font sizes */
+  }
+}
+
+
+
+
+/* Authors Details Styling */
+.authors-details {
+  margin-top: 20px;
+}
+.authors-details h4 {
+  font-size: 16px;
+  color: #000000;
+  margin-bottom: 15px;
+  text-align: left; /* Align heading to the left */
+}
+.authors-details p {
+  font-size: 14px;
+  color: #ff0000;
+  text-align: left; /* Align paragraph to the left */
+  margin-bottom: 20px;
+}
+
+.authors-details input[type="text"]:hover,
+.authors-details input[type="email"]:hover,
+.authors-details input[type="tel"]:hover,
+.authors-details textarea:hover {
+  border-color: #000000; /* Changes border color on hover */
+}
+
+/* Focus effect */
+.authors-details input[type="text"]:focus,
+.authors-details input[type="email"]:focus,
+.authors-details input[type="tel"]:focus,
+.authors-details textarea:focus {
+  border-color: #000000; /* Highlights border in a vibrant color */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Adds a subtle glow */
+  outline: none; 
+}
+
+.authors-details input[type="text"],
+.authors-details input[type="email"],
+.authors-details input[type="tel"]{
+  transition: 0.3s ease;
+}
+
+.author-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap:28px;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.author-group div {
+  flex: 1 1 calc(20% - 28px); /* Five input boxes in one row */
+  min-width: 120px;
+}
+
+.author-group input {
+  width: 90%;
+  padding: 10px;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.author-group input::placeholder {
+  color: #aaa;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+
+}
+
+#add-author {
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: rgb(40, 40, 255) ;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-bottom: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+#add-author:hover {
+  background-color: rgb(13, 13, 192);
+  transform: scale(1.05);
+}
+
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .author-group {
+      gap: 10px;
+  }
+  .author-group div {
+      flex: 1 1 calc(33% - 10px); /* Three input boxes in one row */
+  }
+}
+
+@media (max-width: 768px) {
+  .author-group div {
+      flex: 1 1 calc(50% - 10px); /* Two input boxes in one row */
+  }
+  #add-author {
+    float: none; /* Remove float for small devices */
+    width: 100%; /* Make the button full-width */
+    text-align: center;
+}
+}
+
+@media (max-width: 480px) {
+  .author-group {
+      flex-direction: column; /* Stack input boxes vertically */
+      gap: 15px; /* Add space between stacked inputs */
+  }
+  .author-group div {
+      flex: 1 1 100%; /* Each input box takes full width */
+      width: 100%; /* Ensure full width */
+  }
+  .author-group input {
+      width: 100%; /* Input boxes fill the container width */
+  }
+  #add-author{
+    width: 100%;
+  }
+  
+}
+
+
+
+/* address details */
+.address-communication {
+  margin-top: 20px;
+}
+.address-communication h4 {
+  font-size: 16px;
+  color: #000000;
+  margin-bottom: 15px;
+  text-align: left; /* Align heading to the left */
+}
+
+.address-communication .input-row {
+  display: flex;
+  gap: 16px; /* Space between inputs */
+  margin-bottom: 14px;
+}
+
+.address-communication input,
+.address-communication textarea {
+  width: 100%; /* Make inputs responsive */
+  padding: 8px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  font-family: 'Poppins', sans-serif;
+}
+
+.address-communication input::placeholder,
+.address-communication textarea::placeholder {
+  color: #aaa;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+}
+
+.address-communication input[type="text"]:hover,
+.address-communication input[type="tel"]:hover,
+.address-communication textarea:hover {
+  border-color: #000000; /* Changes border color on hover */
+}
+
+/* Focus effect */
+.address-communication input[type="text"]:focus,
+.address-communication input[type="tel"]:focus,
+.address-communication textarea:focus {
+  border-color: #000000; /* Highlights border in a vibrant color */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Adds a subtle glow */
+  outline: none; 
+}
+
+.address-communication input[type="text"],
+.address-communication input[type="tel"], .address-communication textarea{
+  transition: 0.3s ease;
+}
+
+
+/* Specific Row Styling */
+.address-communication .input-row textarea {
+  flex: 1 1 100%; /* Address textarea spans the full width */
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .address-communication .input-row {
+      gap: 15px; /* Adjust gap for medium devices */
+  }
+
+  .address-communication input,
+  .address-communication textarea {
+      font-size: 0.9rem; /* Adjust font size */
+      padding: 8px; /* Adjust padding */
+  }
+}
+
+@media (max-width: 768px) {
+  .address-communication .input-row {
+      flex-wrap: wrap; /* Stack inputs vertically */
+      gap: 15px; /* Adjust gap for small devices */
+  }
+
+  .address-communication input {
+      flex: 1 1 calc(50% - 15px); /* Inputs take half width */
+  }
+
+  .address-communication .input-row textarea {
+      flex: 1 1 100%; /* Textarea spans full width */
+  }
+}
+
+@media (max-width: 480px) {
+  .address-communication .input-row {
+      flex-direction: column; /* Stack inputs in one column */
+      gap: 10px; /* Reduce gap for smaller screens */
+  }
+
+  .address-communication input,
+  .address-communication textarea {
+      flex: 1 1 100%; /* Inputs and textarea span full width */
+  }
+}
+
+
+button.manuscript {
+  width: 50%;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(40, 40, 255);
+  color: rgb(255, 255, 255);
+  font-size: 15px;
+  cursor: pointer;
+  margin: 20px auto 0;
+  display: block;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  transition: .3s;
+}
+
+button.manuscript:hover {
+  transition: .3s;
+  transform: scale(1.01);
+}
+
+button.manuscript:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+.agreement_policy{
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* General Styles for Footer Links */
+.footer-links {
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping to new rows */
+  justify-content: center; /* Centers the rows on the page */
+  gap: 25px; /* Space between each link */
+  margin: 90px 0; /* Adds some vertical spacing */
+  padding: 10px;
+}
+
+.footer-links a {
+  text-decoration: none; /* Removes underline from links */
+  color: #000; /* Default link color */
+  font-size: 15px; /* Sets a readable font size */
+  font-family: 'Poppins', sans-serif; /* Consistent font style */
+  padding: 5px 15px; /* Adds some padding for clickable area */
+  border-radius: 5px; /* Adds slight roundness to edges */
+  background-color: #ffffff; /* Light background for visibility */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
+}
+
+.footer-links a:hover {
+  background-color: #000000; /* Slightly darker background on hover */
+  transform: scale(1.05); /* Subtle zoom effect on hover */
+  color: #ffffff; /* Keep text color consistent */
+}
+
+.footer-links a:active {
+  background-color: #ccc; /* Even darker background when clicked */
+}
+
+/* Responsive Design for Medium Devices */
+@media (max-width: 768px) {
+  .footer-links {
+      gap: 15px; /* Slightly reduce gap between links */
+  }
+
+  .footer-links a {
+      font-size: 0.9rem; /* Reduce font size for medium screens */
+      padding: 4px 8px; /* Adjust padding for better fit */
+  }
+}
+
+/* Responsive Design for Small Devices */
+@media (max-width: 480px) {
+  .footer-links {
+      gap: 10px; /* Further reduce gap between links */
+  }
+
+  .footer-links a {
+      font-size: 0.8rem; /* Smaller font size for small screens */
+      padding: 3px 6px; /* Adjust padding for smaller screens */
+  }
+}

@@ -1,0 +1,91 @@
+/*executie************************************************/
+.executive{
+  margin-left: 10px;
+  margin-right: 10px;
+}  
+.executie-containers{
+    flex-wrap: wrap;
+    margin-top: 40px;
+    display: flex; /* Use flexbox */
+    justify-content: center;
+    gap: 2%;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+    
+  }
+  .executie-containers.visible{
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .executie-container{
+    margin: 15px;
+    width: 254px;
+    height: 348px;
+    gap: 0px;
+    border-radius:12px;
+    opacity: 0px;
+    border: 1px solid #909090;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.1);
+  
+  }
+  .exe-img{
+    width: 254px;
+    height: 259px;
+    gap: 0px;
+    border-radius: 12px 12px 0px 0px;
+    opacity: 0px;
+  
+  }
+  .exe-img img{
+    width: 100%;
+    height: 100%;
+    gap: 0px;
+    border-radius: 12px 12px 0px 0px;
+    opacity: 0px;
+  
+  }
+  .exe-text{
+    display: flex;
+    margin-top: 15px;
+    margin-left: 15px;
+    font-family: "Poppins",sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+    text-align: left;
+      
+  }
+  .exe-text img{
+    width: 12px;
+    height: 12px;
+    
+  }
+  .exe-phone{
+    margin-left: 28px;
+    margin-right: 15px;
+  }
+  .exe-email{
+    margin-left: 30px;
+  }
+  
+  .exe-posi{
+    width: 150.79px;
+    height: 20.88px;
+    margin-left: 15px;
+    font-family: "Poppins",sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 15px;
+    text-align: left;
+    color: rgba(163, 163, 163, 1);
+  
+  
+    
+  }
+  @media (max-width: 400px){
+    .executie-containers{
+      padding-left: 15% !important;
+    }
+  }
+ 

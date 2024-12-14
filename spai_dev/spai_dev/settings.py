@@ -70,29 +70,18 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'spai_dev.wsgi.application'
 
-# Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'spai_db',
-        'USER': 'spai_user',
-        'PASSWORD': 'spai@123',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.mysql',  # MySQL backend
+        'NAME': 'spai_check',  # Database name
+        'USER': 'root',  # Database user
+        'PASSWORD': 'root',  # Database password
+        'HOST': 'localhost',  # Database host, use 'localhost' or the IP of your MySQL server
+        'PORT': '3306',  # MySQL default port
     }
 }
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'spai123',
-#         'HOST':'localhost',
-#         'PORT':'5432',
-#         'USER':'postgres',
-#         'PASSWORD':'windows'
-#     }
-# }
+
 import mimetypes
 
 mimetypes.add_type("text/css", ".css", True)
