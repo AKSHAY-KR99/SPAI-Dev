@@ -2,7 +2,7 @@
 <nav>
     <ul class="navbar">
         <li class="dropdown {% if page == 1 %}high{% endif %}">
-            <a href="#" class="main-a">ABOUT</a>
+            <a href="{% url 'about_page' %}?page=about_spai" class="main-a">ABOUT</a>
             <ul class="dropdown-menu">
                 <li><a class="main-b" href="{% url 'about_page' %}?page=about_spai">About Spai</a></li>
                 <li><a class="main-b" href="{% url 'about_page' %}?page=mission">Our mission</a></li>
@@ -26,7 +26,7 @@
             </ul>
         </li>
         <li class="dropdown {% if page == 2 %}high{% endif %}">
-            <a href="#" class="main-a">NEWS & EVENTS</a>
+            <a href="{% url 'news' %}?tab=post  " class="main-a">NEWS & EVENTS</a>
             <ul class="dropdown-menu">
                 <li><a class="main-b" href="{% url 'news' %}?tab=upcoming">Upcoming Events</a></li>
                 <li><a class="main-b" href="{% url 'news' %}?tab=post">Events Organized</a></li>
