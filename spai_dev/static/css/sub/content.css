@@ -259,6 +259,10 @@
     background-image: url(./img/mission-image.jpg) !important;
     
 }
+.about-container.mission.bg-3 {
+    background-image: url(../../image/basket.jpg) !important;
+    
+}
 @keyframes fadeIn {
     0% {
         opacity: 0;
@@ -380,6 +384,7 @@
 
 .history-wrap {
     padding: 50px;
+    background-image: url('./img/mission-image.jpg') !important;
 }
 
 .history {

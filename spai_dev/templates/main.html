@@ -15,7 +15,8 @@
     {% endblock %}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <style>
         /* Fullscreen loading screen */
         #loading-screen {
@@ -66,11 +67,13 @@
         document.addEventListener("DOMContentLoaded", function () {
             const loader = document.getElementById('loading-screen');
             const images = document.querySelectorAll('img'); // Select all images
-            const minimumDuration = 0; // Minimum loader duration
+            const minimumDuration = 500; // Minimum loader duration (in ms)
+            const maxLoadingTime = 10000; // Maximum allowed loading time (in ms)
             const startTime = Date.now();
 
             let imagesLoaded = 0;
             const totalImages = images.length;
+            let allImagesChecked = false;
 
             // Check when each image is loaded
             images.forEach((img) => {
@@ -88,9 +91,18 @@
                 }
             });
 
+            // Fallback to stop the loader after maxLoadingTime
+            setTimeout(() => {
+                if (!allImagesChecked) {
+                    console.warn("Not all images loaded in time, stopping loader.");
+                    checkAllLoaded(true); // Force stop
+                }
+            }, maxLoadingTime);
+
             // Check if all images are loaded
-            function checkAllLoaded() {
-                if (imagesLoaded === totalImages) {
+            function checkAllLoaded(forceStop = false) {
+                if (forceStop || imagesLoaded === totalImages) {
+                    allImagesChecked = true; // Prevent further checks
                     const elapsedTime = Date.now() - startTime;
                     const remainingTime = Math.max(minimumDuration - elapsedTime, 0);
 
