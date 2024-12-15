@@ -81,7 +81,16 @@ DATABASES = {
         'PORT': '3306',  # MySQL default port
     }
 }
-
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'spai123',
+#         'HOST':'localhost',
+#         'PORT':'5432',
+#         'USER':'postgres',
+#         'PASSWORD':'windows'
+#     }
+# }
 import mimetypes
 
 mimetypes.add_type("text/css", ".css", True)
