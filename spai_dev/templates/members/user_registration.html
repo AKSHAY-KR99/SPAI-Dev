@@ -1,6 +1,12 @@
 {% extends 'main.html' %}
 {% load static %}
-
+{% block cssfiles %}
+<link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/content.css' %}">
+<link rel="stylesheet" href="{% static 'css/spai.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/reg.css' %}">
+{% endblock %}
 {% block header %}
 {% include 'header.html' %}
 {% endblock %}
@@ -10,6 +16,22 @@
     <div class="reg-form-section">
         <div class="reg-content-section">
             <p class="member-registration-header">Registration</p>
+            {% if form.errors %}
+            <div class="error-box reg">
+                <ul>
+                    {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                    {% for field in form %}
+                    {% if field.errors %}
+                    {% for error in field.errors %}
+                    <li>* {{ error }}</li>
+                    {% endfor %}
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
             <form method="post">
                 {% csrf_token %}
                 <div class="reg-input-manager animated-list2">

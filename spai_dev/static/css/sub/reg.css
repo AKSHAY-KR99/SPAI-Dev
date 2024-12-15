@@ -4,13 +4,13 @@
     background-color: rgb(221, 0, 0);
     color: white;
     padding: 14px;
-    margin-top: 28px;
+    margin-top: 30px;
     margin-left: 28px;
     border-radius: 8px;
     font-size: 14px;
     font-weight: 600;
     opacity: 0; /* Initially hidden */
-    transform: translateY(30px); /* Initially positioned lower */
+    transform: translateY(-30px); /* Initially positioned lower */
     animation: fadeInUp 1s 1s forwards; /* Combined fade-in and slide-up animation */
 }
 
@@ -18,7 +18,7 @@
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(30px); /* Start 20px below */
+        transform: translateY(-30px); /* Start 20px below */
     }
     to {
         opacity: 1;
