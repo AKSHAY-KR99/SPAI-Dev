@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 from django.core.mail import EmailMessage
+from django.db.models import Q
 from django.forms import model_to_dict
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
@@ -700,8 +701,10 @@ def get_user_full_details(req, slug):
 @authenticated_only
 def payment_model(request, *args, **kwargs):
     if request.user.is_authenticated:
+        slug = kwargs.get("slug", None)
+        if request.user.slug_value != slug:
+            return redirect("index")
         if request.method == 'POST':
-            slug = kwargs.get("slug", None)
             user = User.objects.filter(slug_value=slug).first()
             if not user:
                 return redirect("login_page")
@@ -842,3 +845,14 @@ def call_for_manuscript(request):
         manuscript_form = forms.ManuscriptForm()
         return render(request, 'static_pages/publications/manuscript.html', {'form': manuscript_form, 'page': 4})
     return render(request, 'static_pages/publications/manuscript.html', {'page': 4})
+
+
+def search_view(request):
+    query = request.GET.get('query', '')
+    results = []
+
+    if query:
+        results = EventManagement.objects.filter(
+            Q(title__icontains=query) | Q(location__icontains=query)
+        )
+    return render(request, 'mainpages/search_results.html', {'results': results, 'query': query})

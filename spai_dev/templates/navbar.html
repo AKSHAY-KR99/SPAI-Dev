@@ -17,12 +17,15 @@
                         <li><a class="main-c" href="{% url 'about_page' %}?page=secretary">Secretary</a></li>
                         <li><a class="main-c" href="{% url 'about_page' %}?page=regional">Regional Secretaries</a></li>
                         <li><a class="main-c" href="{% url 'about_page' %}?page=patron">Patrons</a></li>
-                        <li><a class="main-c" href="{% url 'about_page' %}?page=pre_committee">Previous year council</a></li>
+                        <li><a class="main-c" href="{% url 'about_page' %}?page=pre_committee">Previous year council</a>
+                        </li>
                         <li><a class="main-c" href="{% url 'about_page' %}?page=committee">Committees</a></li>
                     </ul>
                 </li>
-                <li><a class="main-b" href="{% url 'about_page' %}?page=message_from_president">Message from the President</a></li>
-                <li><a class="main-b" href="{% url 'about_page' %}?page=message_from_secretary">Message from the Secretary</a></li>
+                <li><a class="main-b" href="{% url 'about_page' %}?page=message_from_president">Message from the
+                    President</a></li>
+                <li><a class="main-b" href="{% url 'about_page' %}?page=message_from_secretary">Message from the
+                    Secretary</a></li>
             </ul>
         </li>
         <li class="dropdown {% if page == 2 %}high{% endif %}">
@@ -38,7 +41,7 @@
                     <ul class="dropdown-menu side">
                         <li><a class="main-c" href="{% url 'membership' %}?page=exe_meeting">Executive Meetings</a></li>
                         <li><a class="main-c" href="{% url 'membership' %}?page=general_body">General Body</a></li>
-                        
+
                     </ul>
                 </li>
                 <li><a class="main-b" href="{% url 'membership' %}?page=major">Major Highlights</a></li>
@@ -54,7 +57,8 @@
                                 src="{% static 'image/triangle.svg' %}" alt=""></div>
                     </a>
                     <ul class="dropdown-menu side">
-                        <li><a class="main-c" href="{% url 'membership' %}?page=previlege">About Membership Privilege</a></li>
+                        <li><a class="main-c" href="{% url 'membership' %}?page=previlege">About Membership
+                            Privilege</a></li>
                     </ul>
                 </li>
                 <li><a class="main-b" href="{% url 'about_page' %}?page=committee">Executive Members</a></li>
@@ -73,9 +77,11 @@
                                 src="{% static 'image/triangle.svg' %}" alt=""></div>
                     </a>
                     <ul class="dropdown-menu side">
-                        <li><a class="main-c" href="{% url 'publications' %}?page=editorial">Editorial Board Members</a></li>
+                        <li><a class="main-c" href="{% url 'publications' %}?page=editorial">Editorial Board Members</a>
+                        </li>
                         <li><a class="main-c" href="{% url 'publications' %}?page=joinaseditor">Join as Editor</a></li>
-                        <li><a class="main-c" href="{% url 'publications' %}?page=joinasreviewer">Join as Reviewer</a></li>
+                        <li><a class="main-c" href="{% url 'publications' %}?page=joinasreviewer">Join as Reviewer</a>
+                        </li>
                     </ul>
                 </li>
                 <li><a class="main-b" href="{% url 'publications' %}?page=journal_archives">Journal Archives</a></li>
@@ -90,7 +96,8 @@
                                 src="{% static 'image/triangle.svg' %}" alt=""></div>
                     </a>
                     <ul class="dropdown-menu side">
-                        <li><a class="main-c" href="{% url 'academic' %}?page=certification">Certification Program in SPAI</a></li>
+                        <li><a class="main-c" href="{% url 'academic' %}?page=certification">Certification Program in
+                            SPAI</a></li>
                         <!-- <li><a href="#">A</a></li>
                   <li><a href="#">A</a></li>
                   <li><a href="#">A</a></li> -->
@@ -143,8 +150,10 @@
                                 src="{% static 'image/triangle.svg' %}" alt=""></div>
                     </a>
                     <ul class="dropdown-menu side">
-                        <li><a class="main-c" href="{% url 'academic' %}?page=upcoming_online_webinars">Upcomming</a></li>
-                        <li><a class="main-c" href="{% url 'academic' %}?page=completed_online_webinars">Completed</a></li>
+                        <li><a class="main-c" href="{% url 'academic' %}?page=upcoming_online_webinars">Upcomming</a>
+                        </li>
+                        <li><a class="main-c" href="{% url 'academic' %}?page=completed_online_webinars">Completed</a>
+                        </li>
                     </ul>
                 </li>
                 <li class="side-down">
@@ -153,10 +162,12 @@
                                 src="{% static 'image/triangle.svg' %}" alt=""></div>
                     </a>
                     <ul class="dropdown-menu side">
-                        <li><a class="main-c" href="{% url 'academic' %}?page=about_internship">About SPAI Internship</a></li>
+                        <li><a class="main-c" href="{% url 'academic' %}?page=about_internship">About SPAI
+                            Internship</a></li>
                         <li><a class="main-c" href="{% url 'academic' %}?page=mentors">SPAI Mentors</a></li>
                         <li><a class="main-c" href="{% url 'internship_page' %}">Join Internship</a></li>
-                        <li><a class="main-c" href="{% url 'academic' %}?page=internship_testimonials">Internship Testimonials</a></li>
+                        <li><a class="main-c" href="{% url 'academic' %}?page=internship_testimonials">Internship
+                            Testimonials</a></li>
                     </ul>
                 </li>
                 <li class="side-down">
@@ -167,11 +178,14 @@
                     <ul class="dropdown-menu side">
                         <li><a class="main-c" href="{% url 'academic' %}?page=spai_award">SPAI Awards</a></li>
                         <li><a class="main-c" href="{% url 'academic' %}?page=research">Best Research Award</a></li>
-                        <li><a class="main-c" href="{% url 'academic' %}?page=paper_presenter">Best Paper Presenter Award</a></li>
-                        <li><a class="main-c" href="{% url 'academic' %}?page=poster_presentation">Best Poster Presentation Award</a>
+                        <li><a class="main-c" href="{% url 'academic' %}?page=paper_presenter">Best Paper Presenter
+                            Award</a></li>
+                        <li><a class="main-c" href="{% url 'academic' %}?page=poster_presentation">Best Poster
+                            Presentation Award</a>
                         </li>
                         <li><a class="main-c" href="{% url 'academic' %}?page=publication">Best Publications</a></li>
-                        <li><a class="main-c" href="{% url 'academic' %}?page=student_research">Student Research Award</a></li>
+                        <li><a class="main-c" href="{% url 'academic' %}?page=student_research">Student Research
+                            Award</a></li>
                     </ul>
                 </li>
                 <li class="side-down">
@@ -180,20 +194,25 @@
                                 src="{% static 'image/triangle.svg' %}" alt=""></div>
                     </a>
                     <ul class="dropdown-menu side">
-                        <li><a class="main-c" href="{% url 'academic' %}?page=research_grant">SPAI Research Grant</a></li>
+                        <li><a class="main-c" href="{% url 'academic' %}?page=research_grant">SPAI Research Grant</a>
+                        </li>
                         <li><a class="main-c" href="{% url 'academic' %}?page=call_for_grants">Call for Grants</a></li>
                     </ul>
                 </li>
-                <li><a class="main-b" href="{% url 'academic' %}?page=latest_update">Latest Updates in Sports Psychology</a></li>
+                <li><a class="main-b" href="{% url 'academic' %}?page=latest_update">Latest Updates in Sports
+                    Psychology</a></li>
             </ul>
         </li>
         <li class="search-li">
-            <div class="search-wrapper">
-                <input type="text" class="search-input" placeholder="search here...">
-                <button class="search-button">
-                    <img src="{% static 'image/search.svg' %}" alt="Search">
-                </button>
-            </div>
+<!--            <div class="search-wrapper">-->
+                <form class="search-wrapper" method="get" action="{% url 'search' %}">
+                    <input type="text" name="query" class="search-input" placeholder="search here..."
+                           value="{{ query }}">
+                    <button type="submit" class="search-button">
+                        <img src="{% static 'image/search.svg' %}" alt="Search">
+                    </button>
+                </form>
+<!--            </div>-->
         </li>
         <li>
             {% if request.user.is_authenticated %}
