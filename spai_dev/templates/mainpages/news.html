@@ -1,13 +1,13 @@
 {% extends 'main.html' %}
 {% load static %}
 {% block cssfiles %}
-    <link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
-    <link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
-    <link rel="stylesheet" href="{% static 'css/sub/news.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/news.css' %}">
 {% endblock %}
 
 {% block header %}
-    {% include 'header.html' %}
+{% include 'header.html' %}
 {% endblock %}
 
 {% block content %}
@@ -38,7 +38,16 @@
                 {% for event in page_obj %}
                 <div class="news-container">
                     <div class="news-img">
+                        {% if event.datetime|date:"Y-m-d" == event.end_date|date:"Y-m-d" %}
                         <div class="news-new">{{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }}</div>
+                        {% else %}
+                        <div class="news-new">
+                            {{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }} -
+                            {{ event.end_date|date:"d" }} {{ event.end_date|date:"F" }}
+                        </div>
+                        {% endif %}
+
+
                         <img src="{{ event.image.url }}" alt="">
                         {% if request.user.user_role == 1 %}
                         <a class="delete-link" href="{% url 'event_delete' event.id %}">
@@ -49,7 +58,13 @@
                         {% endif %}
                     </div>
                     <div class="news-dis">
-                        {{ event.datetime }}
+                        {% if event.datetime|date:"Y-m-d" == event.end_date|date:"Y-m-d" %}
+                        {{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }} {{ event.datetime|time }}
+                        {% else %}
+                        {{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }} {{ event.datetime|time }} -
+                        {{ event.end_date|date:"d" }} {{ event.end_date|date:"F" }}
+                        {% endif %}
+
                     </div>
                     <div class="news-head" style="text-transform: uppercase;">
                         {{ event.title }}
@@ -67,29 +82,31 @@
             <!-- Pagination for All Events -->
             <div style="display: flex; justify-content: center;width: 100%;">
                 {% if page_obj.has_previous %}
-                <a style="text-decoration: none; color: inherit;" href="?page={{ page_obj.previous_page_number }}&tab={{ current_tab }}">
+                <a style="text-decoration: none; color: inherit;"
+                    href="?page={{ page_obj.previous_page_number }}&tab={{ current_tab }}">
                     <div class="news-seemore">
                         <div class="seemoretext">&lt;</div>
                     </div>
                 </a>
                 {% endif %}
                 {% for page_num in page_obj.paginator.page_range %}
-                    {% if page_obj.number == page_num %}
-                    <a style="text-decoration: none; color: inherit;" href="?page={{ page_num }}&tab={{ current_tab }}">
-                        <div class="news-seemore">
-                            <div class="seemoretext" style="font-weight: bold;">{{ page_num }}</div>
-                        </div>
-                    </a>
-                    {% else %}
-                    <a style="text-decoration: none; color: inherit;" href="?page={{ page_num }}&tab={{ current_tab }}">
-                        <div class="news-seemore">
-                            <div class="seemoretext">{{ page_num }}</div>
-                        </div>
-                    </a>
-                    {% endif %}
+                {% if page_obj.number == page_num %}
+                <a style="text-decoration: none; color: inherit;" href="?page={{ page_num }}&tab={{ current_tab }}">
+                    <div class="news-seemore">
+                        <div class="seemoretext" style="font-weight: bold;">{{ page_num }}</div>
+                    </div>
+                </a>
+                {% else %}
+                <a style="text-decoration: none; color: inherit;" href="?page={{ page_num }}&tab={{ current_tab }}">
+                    <div class="news-seemore">
+                        <div class="seemoretext">{{ page_num }}</div>
+                    </div>
+                </a>
+                {% endif %}
                 {% endfor %}
                 {% if page_obj.has_next %}
-                <a style="text-decoration: none; color: inherit;" href="?page={{ page_obj.next_page_number }}&tab={{ current_tab }}">
+                <a style="text-decoration: none; color: inherit;"
+                    href="?page={{ page_obj.next_page_number }}&tab={{ current_tab }}">
                     <div class="news-seemore">
                         <div class="seemoretext">&gt;</div>
                     </div>
@@ -133,29 +150,31 @@
             <!-- Pagination for Upcoming Events -->
             <div style="display: flex; justify-content: center;width: 100%;">
                 {% if page_obj.has_previous %}
-                <a style="text-decoration: none; color: inherit;" href="?page={{ page_obj.previous_page_number }}&tab={{ current_tab }}">
+                <a style="text-decoration: none; color: inherit;"
+                    href="?page={{ page_obj.previous_page_number }}&tab={{ current_tab }}">
                     <div class="news-seemore">
                         <div class="seemoretext">&lt;</div>
                     </div>
                 </a>
                 {% endif %}
                 {% for page_num in page_obj.paginator.page_range %}
-                    {% if page_obj.number == page_num %}
-                    <a style="text-decoration: none; color: inherit;" href="?page={{ page_num }}&tab={{ current_tab }}">
-                        <div class="news-seemore">
-                            <div class="seemoretext" style="font-weight: bold;">{{ page_num }}</div>
-                        </div>
-                    </a>
-                    {% else %}
-                    <a style="text-decoration: none; color: inherit;" href="?page={{ page_num }}&tab={{ current_tab }}">
-                        <div class="news-seemore">
-                            <div class="seemoretext">{{ page_num }}</div>
-                        </div>
-                    </a>
-                    {% endif %}
+                {% if page_obj.number == page_num %}
+                <a style="text-decoration: none; color: inherit;" href="?page={{ page_num }}&tab={{ current_tab }}">
+                    <div class="news-seemore">
+                        <div class="seemoretext" style="font-weight: bold;">{{ page_num }}</div>
+                    </div>
+                </a>
+                {% else %}
+                <a style="text-decoration: none; color: inherit;" href="?page={{ page_num }}&tab={{ current_tab }}">
+                    <div class="news-seemore">
+                        <div class="seemoretext">{{ page_num }}</div>
+                    </div>
+                </a>
+                {% endif %}
                 {% endfor %}
                 {% if page_obj.has_next %}
-                <a style="text-decoration: none; color: inherit;" href="?page={{ page_obj.next_page_number }}&tab={{ current_tab }}">
+                <a style="text-decoration: none; color: inherit;"
+                    href="?page={{ page_obj.next_page_number }}&tab={{ current_tab }}">
                     <div class="news-seemore">
                         <div class="seemoretext">&gt;</div>
                     </div>
@@ -199,29 +218,31 @@
             <!-- Pagination for Past Events -->
             <div style="display: flex; justify-content: center;width: 100%;">
                 {% if page_obj.has_previous %}
-                <a style="text-decoration: none; color: inherit;" href="?page={{ page_obj.previous_page_number }}&tab={{ current_tab }}">
+                <a style="text-decoration: none; color: inherit;"
+                    href="?page={{ page_obj.previous_page_number }}&tab={{ current_tab }}">
                     <div class="news-seemore">
                         <div class="seemoretext">&lt;</div>
                     </div>
                 </a>
                 {% endif %}
                 {% for page_num in page_obj.paginator.page_range %}
-                    {% if page_obj.number == page_num %}
-                    <a style="text-decoration: none; color: inherit;" href="?page={{ page_num }}&tab={{ current_tab }}">
-                        <div class="news-seemore">
-                            <div class="seemoretext" style="font-weight: bold;">{{ page_num }}</div>
-                        </div>
-                    </a>
-                    {% else %}
-                    <a style="text-decoration: none; color: inherit;" href="?page={{ page_num }}&tab={{ current_tab }}">
-                        <div class="news-seemore">
-                            <div class="seemoretext">{{ page_num }}</div>
-                        </div>
-                    </a>
-                    {% endif %}
+                {% if page_obj.number == page_num %}
+                <a style="text-decoration: none; color: inherit;" href="?page={{ page_num }}&tab={{ current_tab }}">
+                    <div class="news-seemore">
+                        <div class="seemoretext" style="font-weight: bold;">{{ page_num }}</div>
+                    </div>
+                </a>
+                {% else %}
+                <a style="text-decoration: none; color: inherit;" href="?page={{ page_num }}&tab={{ current_tab }}">
+                    <div class="news-seemore">
+                        <div class="seemoretext">{{ page_num }}</div>
+                    </div>
+                </a>
+                {% endif %}
                 {% endfor %}
                 {% if page_obj.has_next %}
-                <a style="text-decoration: none; color: inherit;" href="?page={{ page_obj.next_page_number }}&tab={{ current_tab }}">
+                <a style="text-decoration: none; color: inherit;"
+                    href="?page={{ page_obj.next_page_number }}&tab={{ current_tab }}">
                     <div class="news-seemore">
                         <div class="seemoretext">&gt;</div>
                     </div>
@@ -236,8 +257,8 @@
 {% endblock %}
 
 {% block footer %}
-    {% include 'footer.html' %}
+{% include 'footer.html' %}
 {% endblock %}
 {% block jsfile %}
-<script type="text/javascript" src="{% static 'js/sub/news.js' %}"></script>   
+<script type="text/javascript" src="{% static 'js/sub/news.js' %}"></script>
 {% endblock %}
