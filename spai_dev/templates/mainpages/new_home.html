@@ -329,11 +329,23 @@
             <div class="swiper-slide">
                 <div class="news-container">
                     <div class="news-img">
+                        {% if event.datetime|date:"Y-m-d" == event.end_date|date:"Y-m-d" %}
                         <div class="news-new">{{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }}</div>
+                        {% else %}
+                        <div class="news-new">
+                            {{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }} -
+                            {{ event.end_date|date:"d" }} {{ event.end_date|date:"F" }}
+                        </div>
+                        {% endif %}
                         <img src="{{ event.image.url }}" alt="">
                     </div>
                     <div class="news-dis">
-                        {{ event.datetime }}
+                        {% if event.datetime|date:"Y-m-d" == event.end_date|date:"Y-m-d" %}
+                        {{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }} {{ event.datetime|time }}
+                        {% else %}
+                        {{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }} {{ event.datetime|time }} -
+                        {{ event.end_date|date:"d" }} {{ event.end_date|date:"F" }}
+                        {% endif %}
                     </div>
                     <div class="news-head" style="text-transform: uppercase;">
                         {{ event.title }}

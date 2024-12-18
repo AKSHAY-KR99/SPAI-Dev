@@ -367,11 +367,12 @@ def eventadd(request):
         location = request.POST['location']
         description = request.POST.get('description', '')
         registration_link = request.POST.get('registration_link', '')
-
+        end_date = request.POST['end_date']
         event = EventManagement.objects.create(
             title=title,
             image=image,
             datetime=datetime,
+            end_date=end_date,
             location=location,
             description=description,
             registration_link=registration_link
