@@ -3,6 +3,7 @@ import os
 from django.conf import settings
 from django.contrib.auth.base_user import BaseUserManager, AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils.crypto import get_random_string
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
@@ -124,6 +125,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     admin_approved = models.BooleanField(default=False)
     date_approved = models.DateTimeField(null=True, blank=True)
+    approval_percentage = models.IntegerField(null=True, blank=True,
+                                              validators=[MinValueValidator(0), MaxValueValidator(100)])
+    executive = models.PositiveSmallIntegerField(choices=settings.EXECUTIVE_CHOICES, blank=True, null=True)
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
@@ -208,6 +212,7 @@ class InternshipApplication(models.Model):
     college = models.CharField(max_length=100)
     university = models.CharField(max_length=100)
     department = models.CharField(max_length=100)
+    internship_id = models.CharField(max_length=50, null=True, blank=True)
 
     interest_area = models.CharField(max_length=100)
     location_preference = models.CharField(max_length=100)
