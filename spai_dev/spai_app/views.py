@@ -15,7 +15,7 @@ from datetime import datetime
 from . import models, forms
 from .models import GalleryManagement, User, EventManagement, UserDetailModel, GalleryImage, PaymentModel
 from .decorators import admin_only, authenticated_only
-from .utils import render_to_pdf, get_registration_num, get_research_paper_no
+from .utils import render_to_pdf, get_registration_num, get_research_paper_no, send_mail_to_executives
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
@@ -26,7 +26,7 @@ from .serializers import LifeMembersSerializer
 
 # Frequently used methods
 def admin_action(sts):
-    if sts == settings.USER_DETAILS_ADDED:
+    if sts == settings.EX_2_APPROVED:
         return 'Admin approval pending'
     return 'No action needed'
 
@@ -41,6 +41,14 @@ def user_status_change(slug, current_status):
         elif current_status == settings.PAYMENT_PENDING:
             user.status = settings.PAYMENT_DONE
         elif current_status == settings.PAYMENT_DONE:
+            user.status = settings.EX_1_APPROVAL_PENDING
+        elif current_status == settings.EX_1_APPROVAL_PENDING:
+            user.status = settings.EX_1_APPROVED
+        elif current_status == settings.EX_1_APPROVED:
+            user.status = settings.EX_2_APPROVAL_PENDING
+        elif current_status == settings.EX_2_APPROVAL_PENDING:
+            user.status = settings.EX_2_APPROVED
+        elif current_status == settings.EX_2_APPROVED:
             user.status = settings.ADMIN_APPROVAL_PENDING
         elif current_status == settings.ADMIN_APPROVAL_PENDING:
             user.status = settings.ADMIN_APPROVED
@@ -50,6 +58,7 @@ def user_status_change(slug, current_status):
 
 
 def get_next_step(status):
+    # import pdb;pdb.set_trace()
     if status == settings.USER_CREATED:
         return 'User created, Details not added'
     if status == settings.USER_DETAILS_ADDED:
@@ -57,7 +66,13 @@ def get_next_step(status):
     if status == settings.PAYMENT_PENDING:
         return 'Payment Pending'
     if status == settings.PAYMENT_DONE:
-        return 'Payment completed, Admin Approval Pending'
+        return 'Payment completed, Executive Approval Pending'
+    if status in [settings.EX_1_APPROVAL_PENDING, settings.EX_2_APPROVAL_PENDING]:
+        return 'Executive Approval Pending'
+    if status == settings.EX_1_APPROVED:
+        return 'First Executive Approved, Waiting for Second Approval'
+    if status == settings.EX_2_APPROVED:
+        return 'Executives Are Approved, Admin Approval Pending'
     if status in [settings.ADMIN_APPROVAL_PENDING, settings.ADMIN_APPROVED]:
         return 'Admin Approved, No action needed'
     if status == settings.ADMIN_REJECTED:
@@ -209,14 +224,14 @@ def about_members(request):
 
 @admin_only
 def members(request):
-    if request.user.user_role == settings.ADMIN_ROLE_VALUE:
-        users = User.objects.all()
-        user_list = []
-        for user in users:
-            user_data = get_user_full_details(user.slug_value)
-            user_list.append(user_data)
-        context = {'users': user_list}
-        return render(request, 'members/members.html', context)
+    # if request.user.user_role == settings.ADMIN_ROLE_VALUE:
+    users = User.objects.all()
+    user_list = []
+    for user in users:
+        user_data = get_user_full_details(request, user.slug_value)
+        user_list.append(user_data)
+    context = {'users': user_list}
+    return render(request, 'members/members.html', context)
 
 
 def user_registration(request):
@@ -452,6 +467,7 @@ def user_profile_details(request):
         form = forms.UserDetailForm(request.user, request.POST, request.FILES)
         if form.is_valid():
             request.user.status = settings.USER_DETAILS_ADDED
+            request.user.approval_percentage = 0
             request.user.save()
             form.save()
             user_status_change(request.user.slug_value, request.user.status)
@@ -469,43 +485,63 @@ def user_logout(request):
 @authenticated_only
 def user_details_vew(request, *args, **kwargs):
     slug = kwargs.get("slug", None)
-    if request.user.user_role == settings.ADMIN_ROLE_VALUE or request.user.slug_value == slug:
+    if request.user.user_role == settings.ADMIN_ROLE_VALUE or request.user.slug_value == slug or request.user.executive in [settings.SECRETARY, settings.PRESIDENT]:
         context = {}
-        user_data = get_user_full_details(slug)
+        user_data = get_user_full_details(request, slug)
         context['user'] = user_data
         return render(request, 'members/member_details.html', context)
     else:
-        return redirect('login')
+        return redirect('login_page')
 
 
-@admin_only
+@authenticated_only
 def admin_approval(request, *args, **kwargs):
-    if request.user.user_role == settings.ADMIN_ROLE_VALUE:
+    if request.user.executive in [settings.SECRETARY, settings.PRESIDENT]:
         slug = kwargs.get("slug", None)
         user = User.objects.filter(slug_value=slug).first()
         if user is None:
             return redirect("members")
-        reg_no = get_registration_num()
-        user.admin_approved = True
-        user.date_approved = datetime.now()
-        user.reg_no = reg_no
+        if user.approval_percentage == 0:
+            user.approval_percentage = 50
+            user.status = settings.EX_1_APPROVED
+        elif user.approval_percentage == 50:
+            user.approval_percentage = 100
+            user.status = settings.EX_2_APPROVED
         user.save()
-        send_email_with_attachment(request, slug)
-        user_status_change(slug, user.status)
         return redirect('members')
+    elif request.user.user_role == settings.ADMIN_ROLE_VALUE:
+        slug = kwargs.get("slug", None)
+        user = User.objects.filter(slug_value=slug).first()
+        if user is None:
+            return redirect("members")
+        if user.approval_percentage == 100 and user.status == settings.EX_2_APPROVED:
+            reg_no = get_registration_num()
+            user.admin_approved = True
+            user.date_approved = datetime.now()
+            user.reg_no = reg_no
+            user.save()
+            send_email_with_attachment(request, slug)
+            user_status_change(slug, user.status)
+            return redirect('members')
+        else:
+            return redirect("members")
     else:
         return redirect('login_page')
 
 
 @admin_only
-def admin_rejection(request, *args, **kwargs):
-    if request.user.user_role == settings.ADMIN_ROLE_VALUE:
+def executive_approval(request, *args, **kwargs):
+    if request.user.executive in [settings.SECRETARY, settings.PRESIDENT]:
         slug = kwargs.get("slug", None)
         user = User.objects.filter(slug_value=slug).first()
         if user is None:
             return redirect("members")
-        user.admin_approved = False
-        user.status = settings.ADMIN_REJECTED
+        if user.approval_percentage == 0:
+            user.approval_percentage = 50
+            user.status = settings.EX_1_APPROVED
+        elif user.approval_percentage == 50:
+            user.approval_percentage = 100
+            user.status = settings.EX_2_APPROVED
         user.save()
         return redirect('members')
     else:
@@ -513,6 +549,8 @@ def admin_rejection(request, *args, **kwargs):
 
 
 def user_login_page(request):
+    if request.user.is_authenticated:
+        return redirect('index')
     if request.method == 'POST':
         form = forms.UserLoginForm(request.POST or None)
         if form.is_valid():
@@ -551,7 +589,7 @@ def certificate(request, *args, **kwargs):
             return response
         return HttpResponse("Something went wrong..!")
     else:
-        return redirect('login_page')
+        return redirect('index')
 
 
 def send_email_with_attachment(request, slug):
@@ -563,7 +601,7 @@ def send_email_with_attachment(request, slug):
     subject = "SPAI Member Registration"
     message = (
         f"Hi {user.first_name},\nYour registration for SPAI life membership is successfully approved by the "
-        f"excecutive.\nyour username is {user.email} and your SPAI registration id is {user.user_role}.\n"
+        f"excecutive.\nyour username is {user.email} and your SPAI registration id is {user.reg_no}.\n"
         f"your SPAI official registration certificate is attached with the message, Thank you\n\n\n"
         f"Executive Committee\nSports Psychology Association of India\n")
 
@@ -592,7 +630,7 @@ def send_email_with_attachment(request, slug):
         print("Failed to generate PDF.")
 
 
-def get_user_full_details(slug):
+def get_user_full_details(req, slug):
     user_data = {}
     user = User.objects.filter(slug_value=slug).first()
     if user is None:
@@ -640,6 +678,18 @@ def get_user_full_details(slug):
             user_data["payment_type"] = settings.BANK_TRANSFER_NAME
         user_data["payment_doc"] = payment_dict.get("document", None)
         user_data["payment_date"] = payment_data.payment_reported_date
+        # import pdb;pdb.set_trace()
+        key = False
+        if req.user.user_role == settings.ADMIN_ROLE_VALUE and not user.admin_approved and user.approval_percentage == 100 and user.status == settings.EX_2_APPROVED:
+            key = True
+        elif req.user.executive in [settings.SECRETARY, settings.PRESIDENT]:
+            if (user.approval_percentage == 0 and user.status == settings.PAYMENT_DONE) or \
+                    (user.approval_percentage == 50 and user.status == settings.EX_1_APPROVED):
+                key = True
+            elif user.approval_percentage == 100:
+                key = False
+        user_data["key"] = key
+
     return user_data
 
 
@@ -655,6 +705,7 @@ def payment_model(request, *args, **kwargs):
             if form.is_valid():
                 form.save()
                 user_status_change(request.user.slug_value, request.user.status)
+                send_mail_to_executives(user, request.get_host())
                 return redirect("index")
         else:
             form = forms.PaymentForm(request.user)
