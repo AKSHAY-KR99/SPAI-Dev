@@ -128,6 +128,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     approval_percentage = models.IntegerField(null=True, blank=True,
                                               validators=[MinValueValidator(0), MaxValueValidator(100)])
     executive = models.PositiveSmallIntegerField(choices=settings.EXECUTIVE_CHOICES, blank=True, null=True)
+    active_key = models.BooleanField(null=True, blank=True, default=False)
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
