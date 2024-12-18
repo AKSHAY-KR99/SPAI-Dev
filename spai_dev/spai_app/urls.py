@@ -27,8 +27,8 @@ urlpatterns = [
     path('members/', views.members, name="members"),
     path('logout/', views.user_logout, name='logout'),
     path('user/detail/<str:slug>', views.user_details_vew, name='individual_user_details'),
-    path('user/admin/approve/<str:slug>', views.admin_approval, name='user_approval'),
-    path('user/admin/reject/<str:slug>', views.admin_rejection, name='user_reject'),
+    path('user/executive/approve/<str:slug>', views.admin_approval, name='user_approval'),
+    # path('user/executive/approval/<str:slug>', views.executive_approval, name='executive_approval'),
     path('certificate/<str:slug>', views.certificate, name='certificate'),
     path('get/life-members', views.life_members_get, name='life_members_get'),
     path('get/life-member/<str:uid>', views.life_member_info, name='life_member_info'),
@@ -39,6 +39,7 @@ urlpatterns = [
 
     path('user/payment/<str:slug>', views.payment_model, name='payment_model'),
     path('payment/info', views.fee_and_payment, name='fee_and_payment'),
+    path('search/', views.search_view, name='search'),
 
     # error pages
     path('unauthorized/403/', views.unauthorized_page_403, name='unauthorized_403'),

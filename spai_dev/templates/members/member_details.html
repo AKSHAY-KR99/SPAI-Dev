@@ -120,14 +120,14 @@
         </div>
         <div class="labels">
             <p>Current status</p>
-            {% if request.user.is_superuser %}
+            {% if request.user.is_superuser or request.user.executive == 1 or request.user.executive == 2 %}
             <p>Admin action</p>
             {% endif %}
             <p>Certificate</p>
         </div>
         <div class="details">
             <p>{{user.next_step}}</p>
-            {% if request.user.is_superuser %}
+            {% if request.user.is_superuser or request.user.executive == 1 or request.user.executive == 2 %}
             <p>{{user.admin_action}}</p>
             {% endif %}
             {% if user.admin_approved %}
@@ -140,7 +140,7 @@
             {% endif %}
         </div>
     </div>
-    {% if request.user.is_superuser %}
+    {% if request.user.is_superuser or request.user.executive == 1 or request.user.executive == 2 %}
     {% if user.payment %}
     <div class="details_container">
         <div class="number">
@@ -169,7 +169,7 @@
         </div>
     </div>
     <div style="display: flex; justify-content: center;width: 100%;">
-        {% if not user.admin_approved%}
+        {% if user.key %}
         <a style="text-decoration: none; color: inherit;" href="{% url 'user_approval' user.slug_value %}">
             <div class="news-seemore">
                 <div class="seemoretext">

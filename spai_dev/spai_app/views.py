@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 from django.core.mail import EmailMessage
+from django.db.models import Q
 from django.forms import model_to_dict
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
@@ -15,7 +16,7 @@ from datetime import datetime
 from . import models, forms
 from .models import GalleryManagement, User, EventManagement, UserDetailModel, GalleryImage, PaymentModel
 from .decorators import admin_only, authenticated_only
-from .utils import render_to_pdf, get_registration_num, get_research_paper_no
+from .utils import render_to_pdf, get_registration_num, get_research_paper_no, send_mail_to_executives
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
@@ -26,7 +27,7 @@ from .serializers import LifeMembersSerializer
 
 # Frequently used methods
 def admin_action(sts):
-    if sts == settings.USER_DETAILS_ADDED:
+    if sts == settings.EX_2_APPROVED:
         return 'Admin approval pending'
     return 'No action needed'
 
@@ -41,6 +42,14 @@ def user_status_change(slug, current_status):
         elif current_status == settings.PAYMENT_PENDING:
             user.status = settings.PAYMENT_DONE
         elif current_status == settings.PAYMENT_DONE:
+            user.status = settings.EX_1_APPROVAL_PENDING
+        elif current_status == settings.EX_1_APPROVAL_PENDING:
+            user.status = settings.EX_1_APPROVED
+        elif current_status == settings.EX_1_APPROVED:
+            user.status = settings.EX_2_APPROVAL_PENDING
+        elif current_status == settings.EX_2_APPROVAL_PENDING:
+            user.status = settings.EX_2_APPROVED
+        elif current_status == settings.EX_2_APPROVED:
             user.status = settings.ADMIN_APPROVAL_PENDING
         elif current_status == settings.ADMIN_APPROVAL_PENDING:
             user.status = settings.ADMIN_APPROVED
@@ -50,6 +59,7 @@ def user_status_change(slug, current_status):
 
 
 def get_next_step(status):
+    # import pdb;pdb.set_trace()
     if status == settings.USER_CREATED:
         return 'User created, Details not added'
     if status == settings.USER_DETAILS_ADDED:
@@ -57,8 +67,16 @@ def get_next_step(status):
     if status == settings.PAYMENT_PENDING:
         return 'Payment Pending'
     if status == settings.PAYMENT_DONE:
-        return 'Payment completed, Admin Approval Pending'
-    if status in [settings.ADMIN_APPROVAL_PENDING, settings.ADMIN_APPROVED]:
+        return 'Payment completed, Executive Approval Pending'
+    if status in [settings.EX_1_APPROVAL_PENDING, settings.EX_2_APPROVAL_PENDING]:
+        return 'Executive Approval Pending'
+    if status == settings.EX_1_APPROVED:
+        return 'First Executive Approved, Waiting for Second Approval'
+    if status == settings.EX_2_APPROVED:
+        return 'Executives Are Approved, Admin Approval Pending'
+    if status == settings.ADMIN_APPROVAL_PENDING:
+        return 'Admin Approval Pending'
+    if status == settings.ADMIN_APPROVED:
         return 'Admin Approved, No action needed'
     if status == settings.ADMIN_REJECTED:
         return 'Admin Rejected'
@@ -82,110 +100,110 @@ def index(request):
 
 def about_page(request):
     page = request.GET.get('page')
-    context={"page":1}
+    context = {"page": 1}
     if page == "about_spai":
-        return render(request, 'static_pages/about/about.html',context)
+        return render(request, 'static_pages/about/about.html', context)
     if page == "mission":
-        return render(request, 'static_pages/about/mission.html',context)
+        return render(request, 'static_pages/about/mission.html', context)
     if page == "history":
-        return render(request, 'static_pages/about/history.html',context)
+        return render(request, 'static_pages/about/history.html', context)
     if page == "message_from_president":
-        return render(request, 'static_pages/about/msgpresident.html',context)
+        return render(request, 'static_pages/about/msgpresident.html', context)
     if page == "message_from_secretary":
-        return render(request, 'static_pages/about/msgsecretary.html',context)
+        return render(request, 'static_pages/about/msgsecretary.html', context)
     if page == "president":
-        return render(request, 'static_pages/about/leadership/president.html',context)
+        return render(request, 'static_pages/about/leadership/president.html', context)
     if page == "secretary":
-        return render(request, 'static_pages/about/leadership/secretary.html',context)
+        return render(request, 'static_pages/about/leadership/secretary.html', context)
     if page == "patron":
-        return render(request, 'static_pages/about/leadership/patron.html',context)
+        return render(request, 'static_pages/about/leadership/patron.html', context)
     if page == "committee":
-        return render(request, 'static_pages/about/leadership/committee.html',context)
+        return render(request, 'static_pages/about/leadership/committee.html', context)
     if page == "pre_committee":
-        return render(request, 'static_pages/about/leadership/previous_year.html',context)
+        return render(request, 'static_pages/about/leadership/previous_year.html', context)
     if page == "regional":
-        return render(request, 'static_pages/about/leadership/regional.html',context)
+        return render(request, 'static_pages/about/leadership/regional.html', context)
 
 
 def membership(request):
     page = request.GET.get('page')
-    context={"page":3}
+    context = {"page": 3}
     if page == "previlege":
-        return render(request, 'static_pages/membership/previlege.html',context)
+        return render(request, 'static_pages/membership/previlege.html', context)
     if page == "major":
-        return render(request, 'static_pages/news/major.html',{"page":2})
+        return render(request, 'static_pages/news/major.html', {"page": 2})
     if page == "exe_meeting":
-        return render(request, 'static_pages/news/exe_meeting.html',{"page":2})
+        return render(request, 'static_pages/news/exe_meeting.html', {"page": 2})
     if page == "general_body":
-        return render(request, 'static_pages/news/general_body.html',{"page":2})
+        return render(request, 'static_pages/news/general_body.html', {"page": 2})
 
 
 def publications(request):
-    context={"page":4}
+    context = {"page": 4}
     page = request.GET.get('page')
     if page == "about_spai_journal":
-        return render(request, 'static_pages/publications/spai_journel.html',context)
+        return render(request, 'static_pages/publications/spai_journel.html', context)
     if page == "editorial":
-        return render(request, 'static_pages/publications/editorial.html',context)
+        return render(request, 'static_pages/publications/editorial.html', context)
     if page == "joinaseditor":
-        return render(request, 'static_pages/publications/joinaseditor.html',context)
+        return render(request, 'static_pages/publications/joinaseditor.html', context)
     if page == "joinasreviewer":
-        return render(request, 'static_pages/publications/joinasreviewer.html',context)
+        return render(request, 'static_pages/publications/joinasreviewer.html', context)
     if page == "call_for_manuscripts":
-        return render(request, 'static_pages/publications/call.html',context)
+        return render(request, 'static_pages/publications/call.html', context)
     if page == "journal_archives":
-        return render(request, 'static_pages/publications/journalarchieve.html',context)
+        return render(request, 'static_pages/publications/journalarchieve.html', context)
 
 
 def academic(request):
-    context={"page":5}
+    context = {"page": 5}
     page = request.GET.get('page')
     if page == "about_internship":
-        return render(request, 'static_pages/academic/internship/about.html',context)
+        return render(request, 'static_pages/academic/internship/about.html', context)
     if page == "upcoming_annual":
-        return render(request, 'static_pages/academic/anual_conference/upcoming.html',context)
+        return render(request, 'static_pages/academic/anual_conference/upcoming.html', context)
     if page == "past_annual":
-        return render(request, 'static_pages/academic/anual_conference/past.html',context)
+        return render(request, 'static_pages/academic/anual_conference/past.html', context)
     if page == "annual_archives":
-        return render(request, 'static_pages/academic/anual_conference/archives.html',context)
+        return render(request, 'static_pages/academic/anual_conference/archives.html', context)
     if page == "spai_award":
-        return render(request, 'static_pages/academic/awards/awards.html',context)
+        return render(request, 'static_pages/academic/awards/awards.html', context)
     if page == "paper_presenter":
-        return render(request, 'static_pages/academic/awards/papper.html',context)
+        return render(request, 'static_pages/academic/awards/papper.html', context)
     if page == "poster_presentation":
-        return render(request, 'static_pages/academic/awards/poster.html',context)
+        return render(request, 'static_pages/academic/awards/poster.html', context)
     if page == "publication":
-        return render(request, 'static_pages/academic/awards/publications.html',context)
+        return render(request, 'static_pages/academic/awards/publications.html', context)
     if page == "research":
-        return render(request, 'static_pages/academic/awards/research.html',context)
+        return render(request, 'static_pages/academic/awards/research.html', context)
     if page == "student_research":
-        return render(request, 'static_pages/academic/awards/student.html',context)
+        return render(request, 'static_pages/academic/awards/student.html', context)
     if page == "research_grant":
-        return render(request, 'static_pages/academic/grant/research.html',context)
+        return render(request, 'static_pages/academic/grant/research.html', context)
     if page == "call_for_grants":
-        return render(request, 'static_pages/academic/grant/call.html',context)
+        return render(request, 'static_pages/academic/grant/call.html', context)
     if page == "mentors":
-        return render(request, 'static_pages/academic/internship/mentors.html',context)
+        return render(request, 'static_pages/academic/internship/mentors.html', context)
     if page == "internship_testimonials":
-        return render(request, 'static_pages/academic/internship/testimonials.html',context)
+        return render(request, 'static_pages/academic/internship/testimonials.html', context)
     if page == "upcoming_online_webinars":
-        return render(request, 'static_pages/academic/online/upcoming.html',context)
+        return render(request, 'static_pages/academic/online/upcoming.html', context)
     if page == "completed_online_webinars":
-        return render(request, 'static_pages/academic/online/past.html',context)
+        return render(request, 'static_pages/academic/online/past.html', context)
     if page == "upcoming_state_workshop":
-        return render(request, 'static_pages/academic/state_workshop/upcomming.html',context)
+        return render(request, 'static_pages/academic/state_workshop/upcomming.html', context)
     if page == "completed_state_workshop":
-        return render(request, 'static_pages/academic/state_workshop/past.html',context)
+        return render(request, 'static_pages/academic/state_workshop/past.html', context)
     if page == "upcoming_national_workshop":
-        return render(request, 'static_pages/academic/workshop/upcoming.html',context)
+        return render(request, 'static_pages/academic/workshop/upcoming.html', context)
     if page == "completed_national_workshop":
-        return render(request, 'static_pages/academic/workshop/past.html',context)
+        return render(request, 'static_pages/academic/workshop/past.html', context)
     if page == "certification":
-        return render(request, 'static_pages/academic/certification.html',context)
+        return render(request, 'static_pages/academic/certification.html', context)
     if page == "latest_update":
-        return render(request, 'static_pages/academic/latest_update.html',context)
+        return render(request, 'static_pages/academic/latest_update.html', context)
     if page == "mou":
-        return render(request, 'static_pages/academic/mou.html',context)
+        return render(request, 'static_pages/academic/mou.html', context)
 
 
 def history(request):
@@ -209,14 +227,14 @@ def about_members(request):
 
 @admin_only
 def members(request):
-    if request.user.user_role == settings.ADMIN_ROLE_VALUE:
-        users = User.objects.all()
-        user_list = []
-        for user in users:
-            user_data = get_user_full_details(user.slug_value)
-            user_list.append(user_data)
-        context = {'users': user_list}
-        return render(request, 'members/members.html', context)
+    # if request.user.user_role == settings.ADMIN_ROLE_VALUE:
+    users = User.objects.all()
+    user_list = []
+    for user in users:
+        user_data = get_user_full_details(request, user.slug_value)
+        user_list.append(user_data)
+    context = {'users': user_list}
+    return render(request, 'members/members.html', context)
 
 
 def user_registration(request):
@@ -246,7 +264,7 @@ def gallery_list(request):
     page_number = request.GET.get('page', 1)
     paginator = Paginator(galleries, 9)
     page_obj = paginator.get_page(page_number)
-    context = {'galleries': galleries, 'page_obj': page_obj,'page':2}
+    context = {'galleries': galleries, 'page_obj': page_obj, 'page': 2}
     return render(request, 'mainpages/gallery.html', context)
 
 
@@ -334,7 +352,7 @@ def news(request):
     context = {
         'page_obj': page_obj,
         'current_tab': current_tab,
-        'page':2
+        'page': 2
     }
     return render(request, 'mainpages/news.html', context)
 
@@ -453,6 +471,7 @@ def user_profile_details(request):
         form = forms.UserDetailForm(request.user, request.POST, request.FILES)
         if form.is_valid():
             request.user.status = settings.USER_DETAILS_ADDED
+            request.user.approval_percentage = 0
             request.user.save()
             form.save()
             user_status_change(request.user.slug_value, request.user.status)
@@ -470,43 +489,65 @@ def user_logout(request):
 @authenticated_only
 def user_details_vew(request, *args, **kwargs):
     slug = kwargs.get("slug", None)
-    if request.user.user_role == settings.ADMIN_ROLE_VALUE or request.user.slug_value == slug:
+    if request.user.user_role == settings.ADMIN_ROLE_VALUE or request.user.slug_value == slug or request.user.executive in [
+        settings.SECRETARY, settings.PRESIDENT]:
         context = {}
-        user_data = get_user_full_details(slug)
+        user_data = get_user_full_details(request, slug)
         context['user'] = user_data
         return render(request, 'members/member_details.html', context)
     else:
-        return redirect('login')
+        return redirect('login_page')
 
 
-@admin_only
+@authenticated_only
 def admin_approval(request, *args, **kwargs):
-    if request.user.user_role == settings.ADMIN_ROLE_VALUE:
+    if request.user.executive in [settings.SECRETARY, settings.PRESIDENT]:
         slug = kwargs.get("slug", None)
         user = User.objects.filter(slug_value=slug).first()
         if user is None:
             return redirect("members")
-        reg_no = get_registration_num()
-        user.admin_approved = True
-        user.date_approved = datetime.now()
-        user.reg_no = reg_no
+        if user.approval_percentage == 0:
+            user.approval_percentage = 50
+            user.status = settings.EX_1_APPROVED
+        elif user.approval_percentage == 50:
+            user.approval_percentage = 100
+            user.status = settings.EX_2_APPROVED
         user.save()
-        send_email_with_attachment(request, slug)
-        user_status_change(slug, user.status)
         return redirect('members')
+    elif request.user.user_role == settings.ADMIN_ROLE_VALUE:
+        slug = kwargs.get("slug", None)
+        user = User.objects.filter(slug_value=slug).first()
+        if user is None:
+            return redirect("members")
+        if user.approval_percentage == 100 and user.status == settings.EX_2_APPROVED:
+            reg_no = get_registration_num()
+            user.admin_approved = True
+            user.date_approved = datetime.now()
+            user.reg_no = reg_no
+            user.active_key = True
+            user.save()
+            send_email_with_attachment(request, slug)
+            user_status_change(slug, user.status)
+            return redirect('members')
+        else:
+            return redirect("members")
     else:
         return redirect('login_page')
 
 
 @admin_only
-def admin_rejection(request, *args, **kwargs):
-    if request.user.user_role == settings.ADMIN_ROLE_VALUE:
+def executive_approval(request, *args, **kwargs):
+    if request.user.executive in [settings.SECRETARY, settings.PRESIDENT]:
         slug = kwargs.get("slug", None)
         user = User.objects.filter(slug_value=slug).first()
         if user is None:
             return redirect("members")
-        user.admin_approved = False
-        user.status = settings.ADMIN_REJECTED
+        if user.approval_percentage == 0:
+            user.approval_percentage = 50
+            user.status = settings.EX_1_APPROVED
+        elif user.approval_percentage == 50:
+            user.approval_percentage = 100
+            user.status = settings.EX_2_APPROVED
         user.save()
         return redirect('members')
     else:
@@ -514,6 +555,8 @@ def admin_rejection(request, *args, **kwargs):
 
 
 def user_login_page(request):
+    if request.user.is_authenticated:
+        return redirect('index')
     if request.method == 'POST':
         form = forms.UserLoginForm(request.POST or None)
         if form.is_valid():
@@ -552,7 +595,7 @@ def certificate(request, *args, **kwargs):
             return response
         return HttpResponse("Something went wrong..!")
     else:
-        return redirect('login_page')
+        return redirect('index')
 
 
 def send_email_with_attachment(request, slug):
@@ -564,7 +607,7 @@ def send_email_with_attachment(request, slug):
     subject = "SPAI Member Registration"
     message = (
         f"Hi {user.first_name},\nYour registration for SPAI life membership is successfully approved by the "
-        f"excecutive.\nyour username is {user.email} and your SPAI registration id is {user.user_role}.\n"
+        f"excecutive.\nyour username is {user.email} and your SPAI registration id is {user.reg_no}.\n"
         f"your SPAI official registration certificate is attached with the message, Thank you\n\n\n"
         f"Executive Committee\nSports Psychology Association of India\n")
 
@@ -593,7 +636,7 @@ def send_email_with_attachment(request, slug):
         print("Failed to generate PDF.")
 
 
-def get_user_full_details(slug):
+def get_user_full_details(req, slug):
     user_data = {}
     user = User.objects.filter(slug_value=slug).first()
     if user is None:
@@ -611,6 +654,7 @@ def get_user_full_details(slug):
     user_data['date_created'] = user.date_created
     user_data['admin_action'] = admin_action(user_dict.get("status", None))
     user_data['reg_no'] = user_dict.get("reg_no", None)
+    user_data['active_key'] = user_dict.get("active_key", False)
 
     user_details = UserDetailModel.objects.filter(user=user.id).first()
     if user_details is not None:
@@ -641,14 +685,27 @@ def get_user_full_details(slug):
             user_data["payment_type"] = settings.BANK_TRANSFER_NAME
         user_data["payment_doc"] = payment_dict.get("document", None)
         user_data["payment_date"] = payment_data.payment_reported_date
+        key = False
+        if req.user.user_role == settings.ADMIN_ROLE_VALUE and not user.admin_approved and user.approval_percentage == 100 and user.status == settings.EX_2_APPROVED:
+            key = True
+        elif req.user.executive in [settings.SECRETARY, settings.PRESIDENT]:
+            if (user.approval_percentage == 0 and user.status == settings.PAYMENT_DONE) or \
+                    (user.approval_percentage == 50 and user.status == settings.EX_1_APPROVED):
+                key = True
+            elif user.approval_percentage == 100:
+                key = False
+        user_data["key"] = key
+
     return user_data
 
 
 @authenticated_only
 def payment_model(request, *args, **kwargs):
     if request.user.is_authenticated:
+        slug = kwargs.get("slug", None)
+        if request.user.slug_value != slug:
+            return redirect("index")
         if request.method == 'POST':
-            slug = kwargs.get("slug", None)
             user = User.objects.filter(slug_value=slug).first()
             if not user:
                 return redirect("login_page")
@@ -656,6 +713,7 @@ def payment_model(request, *args, **kwargs):
             if form.is_valid():
                 form.save()
                 user_status_change(request.user.slug_value, request.user.status)
+                send_mail_to_executives(user, request.get_host())
                 return redirect("index")
         else:
             form = forms.PaymentForm(request.user)
@@ -698,8 +756,20 @@ def create_or_update_life_member(request):
 
 # @admin_only
 def life_members_get(request):
-    members = LifeMembers.objects.all()
-    context = {'members': members}
+    life_members = LifeMembers.objects.all()
+    all_members = User.objects.all()
+    new_members = []
+    active_members = []
+    in_active_members = []
+    for user in all_members:
+        user_data = get_user_full_details(request, user.slug_value)
+        new_members.append(user_data)
+        if user_data['active_key'] is True:
+            active_members.append(user_data)
+        else:
+            in_active_members.append(user_data)
+    context = {'life_members': life_members, 'new_members': new_members, 'active': active_members,
+               'non_active': in_active_members}
     return render(request, 'members/life_members.html', context)
 
 
@@ -774,7 +844,16 @@ def call_for_manuscript(request):
             models.Author.objects.bulk_create(authors)
             return redirect("index")
         manuscript_form = forms.ManuscriptForm()
-        return render(request, 'static_pages/publications/manuscript.html', {'form': manuscript_form,'page':4})
-    return render(request, 'static_pages/publications/manuscript.html',{'page':4})
+        return render(request, 'static_pages/publications/manuscript.html', {'form': manuscript_form, 'page': 4})
+    return render(request, 'static_pages/publications/manuscript.html', {'page': 4})
 
 
+def search_view(request):
+    query = request.GET.get('query', '')
+    results = []
+
+    if query:
+        results = EventManagement.objects.filter(
+            Q(title__icontains=query) | Q(location__icontains=query)
+        )
+    return render(request, 'mainpages/search_results.html', {'results': results, 'query': query})

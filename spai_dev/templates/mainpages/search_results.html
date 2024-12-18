@@ -1,0 +1,55 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block cssfiles %}
+<link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/news.css' %}">
+{% endblock %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="news-title" style="margin-bottom: 50px;">
+    <img class="bg-running" src="{% static 'image/running-2-bg.png' %}" alt="">
+    <p>Search result for {{query}}</p>
+</div>
+<div class="news-containers">
+    {% for event in results %}
+    <div class="news-container">
+        <div class="news-img">
+            <div class="news-new">{{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }}</div>
+            <img src="{{ event.image.url }}" alt="">
+            {% if request.user.user_role == 1 %}
+            <a class="delete-link" href="{% url 'event_delete' event.id %}">
+                <div class="news-delete">
+                    <img src="{% static 'image/delete-icon.svg' %}" alt="">
+                </div>
+            </a>
+            {% endif %}
+        </div>
+        <div class="news-dis">
+            {{ event.datetime }}
+        </div>
+        <div class="news-head" style="text-transform: uppercase;">
+            {{ event.title }}
+        </div>
+        <a style="text-decoration: none; color: inherit;" href="{% url 'news_detail' event.id %}">
+            <div class="news-read">
+                <p>Read</p>
+                <img class="default-image" src="{% static 'image/arrowread.svg' %}" alt="">
+                <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}
+{% block jsfile %}
+<script type="text/javascript" src="{% static 'js/sub/news.js' %}"></script>
+{% endblock %}

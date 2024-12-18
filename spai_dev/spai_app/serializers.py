@@ -4,9 +4,10 @@ from .models import LifeMembers
 
 class LifeMembersSerializer(serializers.ModelSerializer):
     membership_date = serializers.DateField(
-        format="%d-%m-%Y",
-        input_formats=["%d.%m.%Y", "%d-%m-%Y", "%Y-%m-%d"],
-        required=False
+        format="%d-%m-%Y",  # This is the desired output format
+        input_formats=["%d.%m.%Y", "%d-%m-%Y", "%Y-%m-%d", "%d.%m.%y"],
+        required=False,
+        allow_null=True
     )
     upload_date = serializers.DateTimeField(format="%d-%m-%Y %H:%M:%S", required=False)
     update_date = serializers.DateTimeField(format="%d-%m-%Y %H:%M:%S", required=False)

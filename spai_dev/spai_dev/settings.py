@@ -151,6 +151,10 @@ ADMIN_APPROVED = "admin_approved"
 ADMIN_REJECTED = "admin_rejected"
 PAYMENT_PENDING = "payment_pending"
 PAYMENT_DONE = "payment_completed"
+EX_1_APPROVAL_PENDING = "executive_1_approval_pending"
+EX_2_APPROVAL_PENDING = "executive_2_approval_pending"
+EX_1_APPROVED = "executive_1_approved"
+EX_2_APPROVED = "executive_2_approved"
 
 QR_CODE = 1
 BANK_TRANSFER = 2
@@ -161,6 +165,12 @@ BANK_TRANSFER_NAME = "Bank Transfer"
 ADMIN_ROLE_VALUE = 1
 MEMBER_ROLE_VALUE = 2
 ROLE_CHOICES = ((ADMIN_ROLE_VALUE, "ADMIN"), (MEMBER_ROLE_VALUE, "MEMBER"))
+
+SECRETARY = 1
+PRESIDENT = 2
+EXECUTIVE_CHOICES = ((SECRETARY, "SECRETARY"), (PRESIDENT, "PRESIDENT"))
+
+
 
 STATE_CHOICES = [
     ("", "Select state"),
