@@ -13,32 +13,26 @@
 {% endblock %}
 
 {% block content %}
-<h2 class="fade-in" style="text-align:center;">Internship Applications</h2>
+<h2 class="fade-in" style="text-align:center;">Research Pappers List</h2>
 <table class="fade-in">
     <thead>
         <tr>
-            <th>Name</th>
-            <th class="email">Email</th>
-            <th>Phone</th>
-            <th>College</th>
-            <th>Interested Area</th>
-            <th>Applied Date</th>
+            <th>Paper No</th>
+            <th>Title</th>
+            <th>Research Area</th>
+            <th>Submit date</th>
             <th>View</th>
         </tr>
     </thead>
     <tbody>
     {% for application in applications %}
     <tr>
-        <td class="username">
-            {{ application.first_name }} {{ application.last_name }}
-        </td>
-        <td class="email">{{ application.email }}</td>
-        <td>{{ application.phone }}</td>
-        <td>{{ application.college }}</td>
-        <td>{{ application.interest_area }}</td>
-        <td>{{ application.apply_date }}</td>
+        <td>{{ application.paper_no }}</td>
+        <td>{{ application.title }}</td>
+        <td>{{ application.research_area }}</td>
+        <td>{{ application.date_created }}</td>
         <td>
-            <a href="{% url 'application_retrieve' application.pk %}">
+            <a href="{% url 'research_paper_retrieve' application.pk %}">
                 <div class="view">
                     <img src="{% static 'image/eye.svg' %}" alt="">
                     <p>View</p>

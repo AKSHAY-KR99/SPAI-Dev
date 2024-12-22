@@ -36,6 +36,8 @@ urlpatterns = [
     path('list/applications/', views.list_applications, name='list_applications'),
     path('get/<int:pk>/application', views.application_retrieve, name='application_retrieve'),
     path('publications/manuscript', views.call_for_manuscript, name='call_for_manuscript'),
+    path('publications/manuscripts/list', views.research_paper_list, name='list_manuscripts'),
+    path('publications/manuscripts/<int:pk>/get', views.research_paper_retrieve, name='research_paper_retrieve'),
 
     path('user/payment/<str:slug>', views.payment_model, name='payment_model'),
     path('payment/info', views.fee_and_payment, name='fee_and_payment'),

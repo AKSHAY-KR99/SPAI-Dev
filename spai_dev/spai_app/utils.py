@@ -54,14 +54,20 @@ def send_mail_to_executives(user, host):
     executives = User.objects.filter(executive__in=[settings.SECRETARY, settings.PRESIDENT])
     if executives:
         executive_emails = [user.email for user in executives]
-        subject = "SPAI New Member Registration"
+        executive_names = [user.first_name for user in executives]
+        subject = "Notification of Registration Completion"
         link = f"{host}/user/detail/{user.slug_value}"
         message = (
-            "New registration noticed.\n"
-            f"Name : {user.first_name} {user.last_name}\n"
-            f"Email : {user.email}\n"
-            f"Approval link : {link}"
-            )
+            f"\nDear {executive_names[0]} and {executive_names[1]},\n"
+            f"I am writing to inform you that the registration process for {user.first_name} {user.last_name}({user.email}) has been "
+            f"successfully completed. All required information and documentation have been submitted and verified as "
+            f"per the guidelines.\n"
+            f"Looking forward to your confirmation\n"
+            f"\nBest regards,\n"
+            f"{user.first_name} {user.last_name}\n"
+            f"{user.email}\n\n"
+            f"Click on the link to view profile {link}"
+        )
 
         sender_email = "SPAI Online <spai05138@gmail.com>"
         recipient_list = executive_emails
