@@ -6,7 +6,7 @@
     height: auto;
     background-image: url('./running-2-bg.png');
 
-    background-repeat:no-repeat;
+    background-repeat: no-repeat;
     background-color: #F2F2ED;
     display: flex;
     flex-direction: column;
@@ -14,9 +14,11 @@
     padding: 20px;
     overflow-x: hidden;
 }
-.run-repeat{
-    background-repeat:repeat !important;
+
+.run-repeat {
+    background-repeat: repeat !important;
 }
+
 .about {
     /* border: 3px solid rgba(255, 255, 255, 1); */
     padding: 20px;
@@ -45,6 +47,7 @@
         padding: 0px;
     }
 }
+
 /*****animation***********************/
 /* Keyframes for fade-in effect */
 @keyframes fadeIn {
@@ -52,6 +55,7 @@
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -64,6 +68,7 @@
         opacity: 0;
         transform: translateX(-100%);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
@@ -76,6 +81,7 @@
         transform: scale(0.9);
         opacity: 0;
     }
+
     to {
         transform: scale(1);
         opacity: 1;
@@ -90,37 +96,47 @@
 /* Animate heading */
 .about h1 {
     animation: fadeIn 1.5s ease-in-out;
-    animation-delay: 0.1s; /* Start slightly after container */
-    animation-fill-mode: forwards; /* Ensure final state persists */
-    opacity: 0; /* Initial state */
+    animation-delay: 0.1s;
+    /* Start slightly after container */
+    animation-fill-mode: forwards;
+    /* Ensure final state persists */
+    opacity: 0;
+    /* Initial state */
 }
 
 /* Animate paragraph content */
 .about-content p {
     animation: scaleUp 1.5s ease-in-out;
     animation-fill-mode: forwards;
-    opacity: 0; /* Initial state */
+    opacity: 0;
+    /* Initial state */
     font-size: 16px;
     font-weight: 400;
-    
+
     text-align: justify;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
- 
+
 }
+
 .about-content p:nth-child(1) {
-    animation-delay: 0.3s; /* First paragraph starts immediately */
+    animation-delay: 0.3s;
+    /* First paragraph starts immediately */
 }
 
 .about-content p:nth-child(2) {
-    animation-delay: 0.8s; /* Second paragraph starts after the first */
+    animation-delay: 0.8s;
+    /* Second paragraph starts after the first */
 }
 
 .about-content p:nth-child(3) {
-    animation-delay: 1.3s; /* Third paragraph starts after the second */
+    animation-delay: 1.3s;
+    /* Third paragraph starts after the second */
 }
+
 .about-content p:nth-child(4) {
-    animation-delay: 1.8s; /* Third paragraph starts after the second */
+    animation-delay: 1.8s;
+    /* Third paragraph starts after the second */
 }
 
 
@@ -128,46 +144,59 @@
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(20px); /* Starts slightly below */
+        transform: translateY(20px);
+        /* Starts slightly below */
     }
+
     to {
         opacity: 1;
-        transform: translateY(0); /* Moves to its original position */
+        transform: translateY(0);
+        /* Moves to its original position */
     }
 }
 
 /* Animated list container */
 .animated-list {
-    list-style: decimal; /* Keep the default numbered list */
-    padding-left: 20px; /* Optional: Adjust padding for indentation */
+    list-style: decimal;
+    /* Keep the default numbered list */
+    padding-left: 20px;
+    /* Optional: Adjust padding for indentation */
 }
 
 /* Individual list items */
 .animated-list li {
-    opacity: 0; /* Initially hidden */
-    animation: fadeInUp 0.8s ease-in-out; /* Animation duration and easing */
-    animation-fill-mode: forwards; /* Retain the final state */
+    opacity: 0;
+    /* Initially hidden */
+    animation: fadeInUp 0.8s ease-in-out;
+    /* Animation duration and easing */
+    animation-fill-mode: forwards;
+    /* Retain the final state */
 }
 
 /* Sequential delay for list items */
 .animated-list li:nth-child(1) {
-    animation-delay: 1.3s; /* Starts animation after 0.2s */
+    animation-delay: 1.3s;
+    /* Starts animation after 0.2s */
 }
 
 .animated-list li:nth-child(2) {
-    animation-delay: 1.8s; /* Starts after 0.4s */
+    animation-delay: 1.8s;
+    /* Starts after 0.4s */
 }
 
 .animated-list li:nth-child(3) {
-    animation-delay: 2.2s; /* Starts after 0.6s */
+    animation-delay: 2.2s;
+    /* Starts after 0.6s */
 }
 
 .animated-list li:nth-child(4) {
-    animation-delay: 2.5s; /* Starts after 0.8s */
+    animation-delay: 2.5s;
+    /* Starts after 0.8s */
 }
 
 .animated-list li:nth-child(5) {
-    animation-delay: 3s; /* Starts after 1s */
+    animation-delay: 3s;
+    /* Starts after 1s */
 }
 
 /**********mission************************************/
@@ -185,6 +214,8 @@
     border-radius: 40px;
     padding: 20px;
     background-color: white;
+    box-sizing: border-box;
+    width: 100%;
 }
 
 /* .vission{
@@ -204,16 +235,21 @@
     margin-bottom: 10px;
     background-color: white;
 }
+
 .m-v-container p {
     animation: scaleUp 1.5s ease-in-out;
     animation-fill-mode: forwards;
-    opacity: 0; /* Initial state */
+    opacity: 0;
+    /* Initial state */
     animation-delay: 0.3s;
 }
-.m-v-container h3,.m-v-container i{
+
+.m-v-container h3,
+.m-v-container i {
     animation: scaleUp 1.5s ease-in-out;
     animation-fill-mode: forwards;
-    opacity: 0; /* Initial state */
+    opacity: 0;
+    /* Initial state */
     animation-delay: 0.1s;
 }
 
@@ -253,16 +289,19 @@
 /* Fade-in for the main container */
 .about-container.mission {
     animation: fadeIn 1s ease-in-out forwards;
-    
+
 }
+
 .about-container.mission.bg-2 {
     background-image: url(./img/mission-image.jpg) !important;
-    
+
 }
+
 .about-container.mission.bg-3 {
     background-image: url(../../image/basket.jpg) !important;
-    
+
 }
+
 @keyframes fadeIn {
     0% {
         opacity: 0;
@@ -274,7 +313,8 @@
 }
 
 /* Title animation */
-.mission-top-row h1,.mission-top-row p {
+.mission-top-row h1,
+.mission-top-row p {
     animation: slideInFromTop 1.5s ease-in-out forwards;
     transform-origin: top;
 }
@@ -290,38 +330,50 @@
         opacity: 1;
     }
 }
+
 .animated-list1 {
-    list-style: decimal; /* Keep the default numbered list */
-    padding-left: 20px; /* Optional: Adjust padding for indentation */
+    list-style: decimal;
+    /* Keep the default numbered list */
+    padding-left: 20px;
+    /* Optional: Adjust padding for indentation */
 }
 
 /* Individual list items */
 .animated-list1 li {
-    opacity: 0; /* Initially hidden */
-    animation: fadeInUp 0.8s ease-in-out; /* Animation duration and easing */
-    animation-fill-mode: forwards; /* Retain the final state */
+    opacity: 0;
+    /* Initially hidden */
+    animation: fadeInUp 0.8s ease-in-out;
+    /* Animation duration and easing */
+    animation-fill-mode: forwards;
+    /* Retain the final state */
 }
 
 /* Sequential delay for list items */
 .animated-list1 li:nth-child(1) {
-    animation-delay: 0.5s; /* Starts animation after 0.2s */
+    animation-delay: 0.5s;
+    /* Starts animation after 0.2s */
 }
 
 .animated-list1 li:nth-child(2) {
-    animation-delay: 0.8s; /* Starts after 0.4s */
+    animation-delay: 0.8s;
+    /* Starts after 0.4s */
 }
 
 .animated-list1 li:nth-child(3) {
-    animation-delay: 1.2s; /* Starts after 0.6s */
+    animation-delay: 1.2s;
+    /* Starts after 0.6s */
 }
 
 .animated-list1 li:nth-child(4) {
-    animation-delay: 1.5s; /* Starts after 0.8s */
+    animation-delay: 1.5s;
+    /* Starts after 0.8s */
 }
 
 .animated-list1 li:nth-child(5) {
-    animation-delay: 2s; /* Starts after 1s */
+    animation-delay: 2s;
+    /* Starts after 1s */
 }
+
 /* Mission and Vision icon animation */
 /* .mission-icon img {
     animation: iconPop 1.2s ease-out forwards;
@@ -574,10 +626,12 @@
     transition: all 0.3s ease;
     border-radius: 10px;
 }
+
 .news-seemore:hover {
     background-color: #0056b3;
-    transform: scale(1.05); /* Slightly enlarge the button */
-  }
+    transform: scale(1.05);
+    /* Slightly enlarge the button */
+}
 
 .seemoretext {
     opacity: 1;
@@ -609,25 +663,29 @@
     /* 3 columns of equal width */
     gap: 10px;
 }
-@media (max-width: 979px){
-    .regional{
+
+@media (max-width: 979px) {
+    .regional {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
 }
-@media (max-width: 631px){
-    .regional{
+
+@media (max-width: 631px) {
+    .regional {
         grid-template-columns: repeat(1, 1fr);
     }
-    
+
 }
-.button-1-wrapper{
+
+.button-1-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.button-1{
-    border:3px solid white;
+
+.button-1 {
+    border: 3px solid white;
     display: flex;
     background-color: black;
     width: 210px;
@@ -638,11 +696,104 @@
     align-items: center;
     font-weight: bold;
     font-size: 20px;
-    font-family: "Poppins",sans-serif;transition: all 0.3s ease;
+    font-family: "Poppins", sans-serif;
+    transition: all 0.3s ease;
     border-radius: 10px;
 }
+
 .button-1:hover {
     background-color: #0056b3;
-    transform: scale(1.05); /* Slightly enlarge the button */
-  }
+    transform: scale(1.05);
+    /* Slightly enlarge the button */
+}
+
+.mission-grid-wrapp {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 50px;
+
+}
+
+.m-item {
+    padding: 17px 26px 17px 26px;
+    border-radius: 8px;
+    border: 1px solid #E8E8E8;
+    transition: transform 0.3s ease;
+    background-color: #fdfdfd;
+}
+.m-item:hover{
+    background-color: #f8f8f8;
+    transform: scale(1.005);
+}
+.m-item h5 {
+    margin: 0%;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+
+}
+
+.m-item p {
     
+    text-indent: 0%;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #777777;
+
+}
+@media (max-width: 990px){
+    .mission-grid-wrapp {
+        grid-template-columns: repeat(2, 1fr);   
+    }
+}
+@media (max-width: 630px){
+    .mission-grid-wrapp {
+        grid-template-columns: repeat(1, 1fr); 
+    }
+}
+.mission-grid-wrapp div {
+    opacity: 0;
+    /* Initially hidden */
+    animation: fadeInUp 0.8s ease-in-out;
+    /* Animation duration and easing */
+    animation-fill-mode: forwards;
+    /* Retain the final state */
+}
+
+/* Sequential delay for list items */
+.mission-grid-wrapp div:nth-child(1) {
+    animation-delay: 0.3s;
+    /* Starts animation after 0.2s */
+}
+
+.mission-grid-wrapp div:nth-child(2) {
+    animation-delay: 0.5s;
+    /* Starts after 0.4s */
+}
+
+.mission-grid-wrapp div:nth-child(3) {
+    animation-delay: 0.8s;
+    /* Starts after 0.6s */
+}
+
+.mission-grid-wrapp div:nth-child(4) {
+    animation-delay: 1.2s;
+    /* Starts after 0.8s */
+}
+.mission-grid-wrapp div:nth-child(5) {
+    animation-delay: 1.5s;
+    /* Starts after 0.8s */
+}
+.mission-grid-wrapp div:nth-child(6) {
+    animation-delay: 1.8s;
+    /* Starts after 0.8s */
+}
