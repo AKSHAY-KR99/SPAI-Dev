@@ -19,10 +19,12 @@
     </div>
     {% endif %}
     <div class="internship-form">
+        <h1 class="fade-in">Submit Your Internship</h1>
+        <h4 class="fade-in">Please fill the internship details</h4>
         <form id="internship-registration" action="{% url 'internship_page' %}" method="post">
             {% csrf_token %}
             <div class="form-section">
-                <h3>Intern Details</h3>
+                <h3 class="fade-in">Intern Details</h3>
                 <div class="flex-row">
                     <div>
                         <label for="first-name">First Name <span class="required-star">*</span></label>
@@ -60,7 +62,7 @@
             </div>
 
             <div class="form-section">
-                <h3>Internship Interest</h3>
+                <h3 class="fade-in">Internship Interest</h3>
                 <div class="flex-row">
                     <div>
                         <label for="interest-area">Area of Interest <span class="required-star">*</span></label>
@@ -85,7 +87,7 @@
             </div>
 
             <div class="form-section">
-                <h3>Academic Background</h3>
+                <h3 class="fade-in">Academic Background</h3>
                 <div class="flex-row">
                     <div>
                         <label for="qualification">Degree/Qualification <span class="required-star">*</span></label>
@@ -114,18 +116,17 @@
                         I Consent to processing of my personal data entered above to Sports Psychology Association of
                         India to contact me.*</i>
                 </label>
-                <button class="intern" type="submit" id="submit-btn" disabled>Submit</button>
+                <button class="intern fade-in" type="submit" id="submit-btn" disabled>Submit</button>
             </div>
         </form>
     </div>
 </div>
-
-
 {% endblock %}
 
 {% block footer %}
 {% include 'footer.html' %}
 {% endblock %}
+
 {% block jsfile %}
 <script type="text/javascript" src="{% static 'js/sub/news.js' %}"></script>
 <script>
@@ -138,22 +139,24 @@
 </script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-    const inputs = document.querySelectorAll("input[type='text'], input[type='email'], input[type='tel'], input[type='date'], input[type='number']");
-
-    function handleScroll() {
-        inputs.forEach(input => {
-            const rect = input.getBoundingClientRect();
-            if (rect.top < window.innerHeight - 100) { // Start animation 100px before entering viewport
-                input.classList.add("fade-in");
-            }
+        // Create an Intersection Observer
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                // If the element is in the viewport, add 'visible' class to trigger animation
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Stop observing after it becomes visible
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is visible in the viewport
         });
-    }
 
-    // Trigger animation on scroll
-    window.addEventListener("scroll", handleScroll);
-
-    // Trigger animation initially if inputs are already in view
-    handleScroll();
-});
+        // Target all elements that should be animated
+        const elements = document.querySelectorAll('.fade-in');
+        elements.forEach(element => {
+            observer.observe(element); // Start observing each element
+        });
+    });
 </script>
 {% endblock %}

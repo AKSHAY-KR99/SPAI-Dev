@@ -60,9 +60,9 @@
         <div class="details">
             <p>{{user.email}}</p>
             {% if user.alternate_email %}
-                <p>{{user.alternate_email}}</p>
+            <p>{{user.alternate_email}}</p>
             {% else %}
-                <p>None</p>
+            <p>None</p>
             {% endif %}
             <p>{{user.phone_number}}</p>
             <p>{{user.alternate_number}}</p>
@@ -132,8 +132,9 @@
             {% endif %}
             {% if user.admin_approved %}
             <p>
-                <a style="text-decoration: none; color: inherit;" href="{% url 'certificate' user.slug_value %}" target="blank">
-                            Click here to Download</a>
+                <a style="text-decoration: none; color: inherit;" href="{% url 'certificate' user.slug_value %}"
+                   target="blank">
+                    Click here to Download</a>
             </p>
             {% else %}
             <p>Under processing</p>
@@ -162,10 +163,11 @@
             <p>{{user.reference_id}}</p>
             <p>{{user.bank_name}}</p>
             <p>{{user.payment_type}}</p>
-            <p>
-                 {{user.payment_doc}}
-
-            </p>
+            <a href="{{user.payment_doc.url}}" target="_blank">
+                <p>
+                    Click to view
+                </p>
+            </a>
         </div>
     </div>
     <div style="display: flex; justify-content: center;width: 100%;">

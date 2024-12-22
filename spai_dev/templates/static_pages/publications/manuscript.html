@@ -45,10 +45,8 @@
                 </i>
             </div>
             <ol class="animated-list1">
-                <li>We recommend to read the <a href="https://www.ijfmr.com/publication-guidelines.php"
-                        target="_blank">publication guidelines/process</a> , <a
-                        href="https://www.ijfmr.com/fees-and-payment.php" target="_blank">Fees &
-                        Payment</a> and <a href="https://www.ijfmr.com/faq.php" target="_blank">FAQs</a> before
+                <li>We recommend to read the publication guidelines/process, Fees &
+                        Payment and before
                     submitting
                     your research paper.</li>
                 <li>Kindly fill all the details properly as certificate will be generated on the basis of the
@@ -64,91 +62,95 @@
     </div>
 
 </div>
-<div class="manuscript-container">
+<div class="manuscript-container fade-in-up">
     <!-- Section: Research Paper Submission -->
-    <h1 style="text-align: center;">Submit Research Paper</h1>
-    <h3 style="text-align: center;">Please fill the details of the research paper</h3>
-
+    <h1 class="fade-in-up" style="text-align: center;">Submit Research Paper</h1>
+    <h3 class="fade-in-up" style="text-align: center;">Please fill the details of the research paper</h3>
+    {% if request.user.user_role == 1 %}
+    <div class="full-list">
+        <a href="{% url 'list_manuscripts' %}">View all Applications</a>
+    </div>
+    {% endif %}
     <form id="manuscript-form" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <!-- Research Paper Details Section -->
-        <div class="research-papper-deatils">
-            <div>
+        <div class="research-papper-deatils fade-in-up">
+            <div class="fade-in-up">
                 <label for="title">Title of the Paper <span class="required-star">*</span></label>
                 <input type="text" id="title" name="title" placeholder="Please write in Title Case (NOT IN CAPITALS)"
                     required>
             </div>
-            <div>
+            <div class="fade-in-up">
                 <label for="abstract">Abstract <span class="required-star">*</span></label>
                 <textarea id="abstract" name="abstract" rows="5"
                     placeholder="Short background information about the research" required></textarea>
             </div>
-            <div>
+            <div class="fade-in-up">
                 <label for="keywords">Keywords <span class="required-star">*</span></label>
-                <input type="text" id="keywords" name="keywords" placeholder="Comma seperated list" required>
+                <input type="text" id="keywords" name="keywords" placeholder="Comma separated list" required>
             </div>
-            <div>
+            <div class="fade-in-up">
                 <label for="research-area">Research Area <span class="required-star">*</span></label>
                 <input type="text" id="research-area" name="research_area" placeholder="Research Area" required>
             </div>
-            <div>
+            <div class="fade-in-up">
                 <label for="paper-file">Select Research Paper(doc or ODT) <span class="required-star">*</span></label>
                 <label for="paper-file" class="custom-file-label">Choose File</label>
                 <input type="file" id="paper-file" name="paper_file" accept=".doc,.odt,.pdf" required>
                 <span id="file-name">No file chosen</span>
             </div>
-            <div>
+            <div class="fade-in-up">
                 <label for="editor-message">Message to the Editor <span class="required-star">*</span></label>
                 <textarea id="editor-message" name="editor-message" placeholder="Write Message here"
                     rows="3"></textarea>
             </div>
         </div>
 
-        <div class="authors-details">
-            <h4>Authors Details <span class="required-star">*</span></h4>
-            <p>Don’t write Dr. Prof. Mr. Mrs. etc salutations before authors’ names, these will be removed, these are against international standards.</p>
-            <button type="button" id="add-author">Add Another Author</button>
+        <div class="authors-details fade-in-up">
+            <h4 class="fade-in-up">Authors Details <span class="required-star">*</span></h4>
+            <p class="fade-in-up">Don’t write Dr. Prof. Mr. Mrs. etc salutations before authors’ names, these will be removed, these are against international standards.</p>
+            <button type="button" id="add-author" class="fade-in-up">Add Another Author</button>
             <div class="author-group">
-                <div>
+                <div class="fade-in-up">
                     <input type="text" id="author-name" name="name[]" placeholder="Author Name" required>
                 </div>
-                <div>
+                <div class="fade-in-up">
                     <input type="text" id="designation" name="designation[]" placeholder="Designation" required>
                 </div>
-                <div>
+                <div class="fade-in-up">
                     <input type="text" id="organization" name="organization[]" placeholder="Organization" required>
                 </div>
-                <div>
+                <div class="fade-in-up">
                     <input type="email" id="email" name="email[]" placeholder="Email Address" required>
                 </div>
-                <div>
+                <div class="fade-in-up">
                     <input type="tel" id="mobile" name="mobile[]" placeholder="Mobile Number" required>
                 </div>
             </div>
         </div>
 
         <!-- Address for Communication Section -->
-        <div class="address-communication">
-            <h4>Address for Communication <span class="required-star">*</span></h4>
-            <div class="input-row">
+        <div class="address-communication fade-in-up">
+            <h4 class="fade-in-up">Address for Communication <span class="required-star">*</span></h4>
+            <div class="input-row fade-in-up">
                 <input type="text" id="country" name="country" placeholder="Country" required>
                 <input type="text" id="state" name="state" placeholder="State" required>
             </div>
-            <div class="input-row">
+            <div class="input-row fade-in-up">
                 <input type="text" id="city" name="city" placeholder="City/District" required>
                 <input type="text" id="postal-code" name="postal_code" placeholder="Postal Code" required>
             </div>
-            <div class="input-row">
+            <div class="input-row fade-in-up">
                 <textarea id="address" name="address" rows="3" placeholder="Address" required></textarea>
             </div>
         </div>
 
         <!-- Agreement Checkbox and Submit Button -->
-        <div>
+        <div class="fade-in-up">
             <input type="checkbox" id="agree" name="agree" required>
             <label class="agreement_policy" for="agree">I agree with the journal policies</label>
         </div>
-        <div>
+        <div class="fade-in-up">
             <button class="manuscript" type="submit" id="submit-button" disabled>Submit</button>
         </div>
     </form>
@@ -168,6 +170,7 @@
         <a href="#" class="no-scroll">Website/Journal policies</a>
     </div>
 </div>
+
 
 {% endblock %}
 
@@ -206,4 +209,25 @@
         });
     });
 </script>
+<script>
+    // Create an Intersection Observer
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            // If the element is in the viewport, add 'visible' class to trigger animation
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target); // Stop observing after it becomes visible
+            }
+        });
+    }, {
+        threshold: 0.1 // Trigger the animation when 10% of the element is in view
+    });
+
+    // Target all elements that need the fade-in animation
+    const elements = document.querySelectorAll('.fade-in-up');
+    elements.forEach(element => {
+        observer.observe(element); // Start observing each element
+    });
+</script>
+
 {% endblock %}

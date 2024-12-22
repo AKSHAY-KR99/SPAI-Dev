@@ -605,12 +605,16 @@ def send_email_with_attachment(request, slug):
     else:
         user = User.objects.get(slug_value=request.user.slug_value)
 
-    subject = "SPAI Member Registration"
+    subject = "send_mail_to_executives"
     message = (
-        f"Hi {user.first_name},\nYour registration for SPAI life membership is successfully approved by the "
-        f"excecutive.\nyour username is {user.email} and your SPAI registration id is {user.reg_no}.\n"
-        f"your SPAI official registration certificate is attached with the message, Thank you\n\n\n"
-        f"Executive Committee\nSports Psychology Association of India\n")
+        f"Dear {user.first_name} {user.last_name},\nI hope this email finds you well.\n"
+        f"We are pleased to inform you that your registration for membership with the Sports"
+        f" Psychology Association of India (SPAI) has been successfully approved.\n"
+        f"Your registration ID/number is: {user.reg_no}. Please retain this for future reference.\n"
+        f"If you have any questions or require further assistance, feel free to reach out to us at "
+        f"secretaryspai@gmail.com.\n"
+        f"We look forward to your active participation and involvement with SPAI.\n"
+        f"Warm regards,\nProf. Anil Ramachandran\nSecretary, SPAI\nanilrkannuruniv.ac.in")
 
     sender_email = "SPAI Online <spai05138@gmail.com>"
     recipient_list = [user.email]
@@ -800,6 +804,28 @@ def list_applications(request):
     applications = models.InternshipApplication.objects.all()
     context['applications'] = applications
     return render(request, 'internship/list_applications.html', context)
+
+
+def research_paper_list(request):
+    context = {}
+    applications = models.Manuscript.objects.all()
+    context['applications'] = applications
+    return render(request, 'static_pages/publications/list_manuscripts.html', context)
+
+
+def research_paper_retrieve(request, *args, **kwargs):
+    pk = kwargs.get("pk", None)
+    if request.user.user_role == settings.ADMIN_ROLE_VALUE:
+        context = {}
+        paper = models.Manuscript.objects.get(pk=pk)
+        authors = models.Author.objects.filter(manuscript=paper)
+        print(paper)
+        print(authors)
+        context['paper'] = paper
+        context['authors'] = authors
+        return render(request, 'static_pages/publications/view_research_paper.html', context)
+    else:
+        return redirect('login')
 
 
 @admin_only

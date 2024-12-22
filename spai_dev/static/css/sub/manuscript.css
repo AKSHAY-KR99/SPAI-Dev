@@ -4,6 +4,22 @@
   padding: 20px 20px; /* Adds 20px top/bottom and 40px left/right padding */
   max-width: 80%; /* Optional: Limits the container's width for better readability */
   margin: 0 auto; /* Centers the container horizontally */ 
+  background: ;
+}
+
+.manuscript-container h1{
+  text-transform: uppercase;
+  color: rgb(207, 0, 0);
+  margin-bottom: -15px;
+}
+
+.manuscript-container h3{
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+.research-papper-deatils{
+    font-family: 'Poppins', sans-serif;
 }
 
 .research-papper-deatils div {
@@ -431,11 +447,12 @@ button.manuscript:disabled {
   gap: 25px; /* Space between each link */
   margin: 90px 0; /* Adds some vertical spacing */
   padding: 10px;
+  font-weight: 600;
 }
 
 .footer-links a {
   text-decoration: none; /* Removes underline from links */
-  color: #000; /* Default link color */
+  color: #000000; /* Default link color */
   font-size: 15px; /* Sets a readable font size */
   font-family: 'Poppins', sans-serif; /* Consistent font style */
   padding: 5px 15px; /* Adds some padding for clickable area */
@@ -445,7 +462,7 @@ button.manuscript:disabled {
 }
 
 .footer-links a:hover {
-  background-color: #000000; /* Slightly darker background on hover */
+  background-color: #080f4e; /* Slightly darker background on hover */
   transform: scale(1.05); /* Subtle zoom effect on hover */
   color: #ffffff; /* Keep text color consistent */
 }
@@ -475,5 +492,68 @@ button.manuscript:disabled {
   .footer-links a {
       font-size: 0.8rem; /* Smaller font size for small screens */
       padding: 3px 6px; /* Adjust padding for smaller screens */
+  }
+}
+
+/* Initial state - Hidden and slightly moved */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+/* Animation applied after element enters the viewport */
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Apply slight delays for each element */
+.research-papper-deatils div,
+.authors-details div,
+.address-communication div,
+.research-papper-deatils div:nth-child(2),
+.authors-details div:nth-child(2),
+.address-communication div:nth-child(2),
+.research-papper-deatils div:nth-child(3),
+.authors-details div:nth-child(3),
+.address-communication div:nth-child(3),
+.research-papper-deatils div:nth-child(4),
+.authors-details div:nth-child(4),
+.address-communication div:nth-child(4),
+.research-papper-deatils div:nth-child(5),
+.authors-details div:nth-child(5),
+.address-communication div:nth-child(5),
+.research-papper-deatils div:nth-child(6),
+.authors-details div:nth-child(6),
+.address-communication div:nth-child(6),
+.research-papper-deatils div:nth-child(7),
+.authors-details div:nth-child(7),
+.address-communication div:nth-child(7),
+/* Button and submit section */
+button.manuscript {
+  transition-delay: 0.1s;
+}
+
+
+.full-list {
+  display: flex;
+  justify-content: flex-end; /* Aligns to the right on larger screens */
+  margin: 20px 150px 0;
+}
+
+.full-list a {
+  text-decoration: none;
+  padding: 10px 15px;
+  background-color: #000000; /* Change this to match your theme */
+  color: white;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+@media (max-width: 768px) {
+  .full-list {
+      justify-content: center; /* Centers the link on smaller screens */
   }
 }
