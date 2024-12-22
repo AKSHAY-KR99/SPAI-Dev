@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
 <link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
 <link rel="stylesheet" href="{% static 'css/sub/payment.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/content.css' %}">
 {% endblock %}
 
 {% block header %}
@@ -11,11 +12,61 @@
 {% endblock %}
 
 {% block content %}
-<div class="heading">
-    <div class="text">
-        Fee and payments
+<div class="payment">
+    <div class="payment-head">
+        <h1>PAYMENT</h1>
     </div>
+    <div class="payment-container">
+        <h3>Sports Psychology Association Membership</h3>
+        <h4>Complete your life membership payment of ₹2,500</h4>
+        <div class="payment-instructions">
+            <h5>Payment Instructions</h5>
+            <h4>Please complete the application form with two photographs and submit the life membership fee of
+                <b>₹2,500</b> via
+                Cash/Demand draft or Online payment</h4>
+        </div>
+        <div class="acc_details">
+            <div class="acc_line">
+                <h5>Account Number</h5>
+                <h6>55042868323</h6>
+            </div>
+            <div class="acc_line">
+                <h5>IFSC Code</h5>
+                <h6>SBIN0002875</h6>
+            </div>
+            <div class="acc_line" style="border-bottom: 0px solid #D0D0D0;padding-bottom: 0px;margin-bottom: 0%;">
+                <h5>Bank & Branch</h5>
+                <h6>State Bank of India, Mela Road, Gwalior (MP)</h6>
+            </div>
+        </div>
+        <div class="payment-inputs">
+            <h4>Submit Documents To</h4>
+            <div class="payment-addresses">
+                <div class="payment-address">
+                    <b> Dr M K Singh <br>
+                        Finance Secretary, SPAI <br></b>
+                    Professor, Department of Sports Psychology <br>
+                    LNIPE, Gwalior <br>
+                    Mob: 7587300426 <br>
+                </div>
+                <div class="payment-address">
+                    <b>Dr Anil Ramachandran <br>
+                        Secretary General, SPAI <br></b>
+                    Professor & Head <br>
+                    School of Physical Education and Sports <br>
+                    Sciences, Kannur University, Kannur, Kerala <br>
+                    Mob: 9447027990 <br>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
 </div>
+
+
+
 {% endblock %}
 
 
@@ -24,10 +75,25 @@
 {% endblock %}
 {% block jsfile %}
 <script type="text/javascript">
-    document.addEventListener('DOMContentLoaded', function() {
-        document.querySelector('.menu-icon').addEventListener('click', function() {
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelector('.menu-icon').addEventListener('click', function () {
             document.querySelector('.navbar').classList.toggle('active');
         });
     });
+    document.querySelectorAll('.tab-item').forEach(item => {
+        item.addEventListener('click', function () {
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab-item').forEach(tab => tab.classList.remove('active'));
+            // Add active class to the clicked tab
+            this.classList.add('active');
+
+            // Hide all tab panels
+            document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+            // Show the selected tab panel
+            const targetPanel = document.getElementById(this.dataset.tab);
+            targetPanel.classList.add('active');
+        });
+    });
+
 </script>
 {% endblock %}

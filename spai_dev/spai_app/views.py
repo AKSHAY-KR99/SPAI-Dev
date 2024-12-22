@@ -687,14 +687,15 @@ def get_user_full_details(req, slug):
         user_data["payment_doc"] = payment_dict.get("document", None)
         user_data["payment_date"] = payment_data.payment_reported_date
         key = False
-        if req.user.user_role == settings.ADMIN_ROLE_VALUE and not user.admin_approved and user.approval_percentage == 100 and user.status == settings.EX_2_APPROVED:
-            key = True
-        elif req.user.executive in [settings.SECRETARY, settings.PRESIDENT]:
-            if (user.approval_percentage == 0 and user.status == settings.PAYMENT_DONE) or \
-                    (user.approval_percentage == 50 and user.status == settings.EX_1_APPROVED):
+        if req.user.is_authenticated:
+            if req.user.user_role == settings.ADMIN_ROLE_VALUE and not user.admin_approved and user.approval_percentage == 100 and user.status == settings.EX_2_APPROVED:
                 key = True
-            elif user.approval_percentage == 100:
-                key = False
+            elif req.user.executive in [settings.SECRETARY, settings.PRESIDENT]:
+                if (user.approval_percentage == 0 and user.status == settings.PAYMENT_DONE) or \
+                        (user.approval_percentage == 50 and user.status == settings.EX_1_APPROVED):
+                    key = True
+                elif user.approval_percentage == 100:
+                    key = False
         user_data["key"] = key
 
     return user_data
