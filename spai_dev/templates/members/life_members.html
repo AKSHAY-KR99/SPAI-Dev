@@ -13,7 +13,13 @@
 {% block content %}
 <div class="life-h">
     <h1>life members</h1>
-
+    <form class="search-wrapper" style="margin-bottom:15px;" method="get" action="{% url 'search_lm' %}">
+        <input type="text" name="query" class="search-input" placeholder="search life members..."
+               value="{{ query }}">
+        <button type="submit" class="search-button">
+            <img src="{% static 'image/search.svg' %}" alt="Search">
+        </button>
+    </form>
 </div>
 <div class="news-tabs">
     <ul class="tab-list">
@@ -30,157 +36,159 @@
 
 <table class="table active" id="new">
     <thead>
-        <tr>
-            <th>Registration No</th>
-            <th>Username</th>
-            <th class="email">Email</th>
-            <th>First Name</th>
-            <th>Register Date</th>
-            <th class="status">Status</th>
-            <th>Actions</th>
-        </tr>
+    <tr>
+        <th>Registration No</th>
+        <th>Username</th>
+        <th class="email">Email</th>
+        <th>First Name</th>
+        <th>Register Date</th>
+        <th class="status">Status</th>
+        <th>Actions</th>
+    </tr>
     </thead>
     <tbody>
 
     {% for user in new_members%}
     <tr>
         <td class="email">{{user.reg_no}}</td>
-            <td class="username">
-                {% if user.photo %}
-                <img src="{{ user.photo.url }}" alt="">
-                {% else %}
-                <img src="{% static 'image/profile-icon.svg' %}" alt="photo">
-                {% endif %}
-                {{user.username}}
-            </td>
-            <td class="email">{{user.email}}</td>
-            <td>{{user.first_name}} {{user.last_name}}</td>
-            <td>{{user.date_created}}</td>
-            <td class="status">{{user.next_step}}</td>
-            <td>
-                <a href="{% url 'individual_user_details' user.slug_value %}">
-                    <div class="view">
-                        <img src="{% static 'image/eye.svg' %}" alt="">
-                        <p>View</p>
-                    </div>
-                </a>
-            </td>
-        </tr>
+        <td class="username">
+            {% if user.photo %}
+            <img src="{{ user.photo.url }}" alt="">
+            {% else %}
+            <img src="{% static 'image/profile-icon.svg' %}" alt="photo">
+            {% endif %}
+            {{user.username}}
+        </td>
+        <td class="email">{{user.email}}</td>
+        <td>{{user.first_name}} {{user.last_name}}</td>
+        <td>{{user.date_created}}</td>
+        <td class="status">{{user.next_step}}</td>
+        <td>
+            <a href="{% url 'individual_user_details' user.slug_value %}">
+                <div class="view">
+                    <img src="{% static 'image/eye.svg' %}" alt="">
+                    <p>View</p>
+                </div>
+            </a>
+        </td>
+    </tr>
     {% endfor %}
     </tbody>
 </table>
 
 <table class="table" id="life">
     <thead>
-        <tr>
-            <th>Name</th>
-            <th class="email">Email</th>
-            <th>Membership Date</th>
-            <th class="status">Active</th>
-            <th>Action</th>
-        </tr>
+    <tr>
+        <th>Register No</th>
+        <th>Name</th>
+        <th class="email">Email</th>
+        <th>Membership Date</th>
+        <th class="status">Active</th>
+        <th>Action</th>
+    </tr>
     </thead>
     <tbody>
-        {% for user in life_members %}
-        <tr>
-            <td class="username">
-                {{user.name}}
-            </td>
-            <td class="email">{{user.email}}</td>
-            <td>{{user.membership_date}}</td>
-            <td class="status">{{user.active}}</td>
-            <td>
-                <a href="{% url 'life_member_info' user.uid %}">
-                    <div class="view">
-                        <img src="{% static 'image/eye.svg' %}" alt="">
-                        <p>View</p>
-                    </div>
-                </a>
-            </td>
-        </tr>
-        {% endfor %}
+    {% for user in life_members %}
+    <tr>
+        <td>{{user.reg_no}}</td>
+        <td class="username">
+            {{user.name}}
+        </td>
+        <td class="email">{{user.email}}</td>
+        <td>{{user.membership_date}}</td>
+        <td class="status">{{user.active}}</td>
+        <td>
+            <a href="{% url 'life_member_info' user.uid %}">
+                <div class="view">
+                    <img src="{% static 'image/eye.svg' %}" alt="">
+                    <p>View</p>
+                </div>
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
     </tbody>
 </table>
 
 <table class="table" id="active-m">
     <thead>
-        <tr>
-            <th>Registration No</th>
-            <th>Username</th>
-            <th class="email">Email</th>
-            <th>First Name</th>
-            <th>Register Date</th>
-            <th class="status">Status</th>
-            <th>Actions</th>
-        </tr>
+    <tr>
+        <th>Registration No</th>
+        <th>Username</th>
+        <th class="email">Email</th>
+        <th>First Name</th>
+        <th>Register Date</th>
+        <th class="status">Status</th>
+        <th>Actions</th>
+    </tr>
     </thead>
     <tbody>
 
     {% for user in active%}
     <tr>
         <td class="email">{{user.reg_no}}</td>
-            <td class="username">
-                {% if user.photo %}
-                <img src="{{ user.photo.url }}" alt="">
-                {% else %}
-                <img src="{% static 'image/profile-icon.svg' %}" alt="photo">
-                {% endif %}
-                {{user.username}}
-            </td>
-            <td class="email">{{user.email}}</td>
-            <td>{{user.first_name}} {{user.last_name}}</td>
-            <td>{{user.date_created}}</td>
-            <td class="status">{{user.next_step}}</td>
-            <td>
-                <a href="{% url 'individual_user_details' user.slug_value %}">
-                    <div class="view">
-                        <img src="{% static 'image/eye.svg' %}" alt="">
-                        <p>View</p>
-                    </div>
-                </a>
-            </td>
-        </tr>
+        <td class="username">
+            {% if user.photo %}
+            <img src="{{ user.photo.url }}" alt="">
+            {% else %}
+            <img src="{% static 'image/profile-icon.svg' %}" alt="photo">
+            {% endif %}
+            {{user.username}}
+        </td>
+        <td class="email">{{user.email}}</td>
+        <td>{{user.first_name}} {{user.last_name}}</td>
+        <td>{{user.date_created}}</td>
+        <td class="status">{{user.next_step}}</td>
+        <td>
+            <a href="{% url 'individual_user_details' user.slug_value %}">
+                <div class="view">
+                    <img src="{% static 'image/eye.svg' %}" alt="">
+                    <p>View</p>
+                </div>
+            </a>
+        </td>
+    </tr>
     {% endfor %}
     </tbody>
 </table>
 <table class="table" id="non-active">
     <thead>
-        <tr>
-            <th>Registration No</th>
-            <th>Username</th>
-            <th class="email">Email</th>
-            <th>First Name</th>
-            <th>Register Date</th>
-            <th class="status">Status</th>
-            <th>Actions</th>
-        </tr>
+    <tr>
+        <th>Registration No</th>
+        <th>Username</th>
+        <th class="email">Email</th>
+        <th>First Name</th>
+        <th>Register Date</th>
+        <th class="status">Status</th>
+        <th>Actions</th>
+    </tr>
     </thead>
     <tbody>
 
     {% for user in non_active%}
     <tr>
         <td class="email">{{user.reg_no}}</td>
-            <td class="username">
-                {% if user.photo %}
-                <img src="{{ user.photo.url }}" alt="">
-                {% else %}
-                <img src="{% static 'image/profile-icon.svg' %}" alt="photo">
-                {% endif %}
-                {{user.username}}
-            </td>
-            <td class="email">{{user.email}}</td>
-            <td>{{user.first_name}} {{user.last_name}}</td>
-            <td>{{user.date_created}}</td>
-            <td class="status">{{user.next_step}}</td>
-            <td>
-                <a href="{% url 'individual_user_details' user.slug_value %}">
-                    <div class="view">
-                        <img src="{% static 'image/eye.svg' %}" alt="">
-                        <p>View</p>
-                    </div>
-                </a>
-            </td>
-        </tr>
+        <td class="username">
+            {% if user.photo %}
+            <img src="{{ user.photo.url }}" alt="">
+            {% else %}
+            <img src="{% static 'image/profile-icon.svg' %}" alt="photo">
+            {% endif %}
+            {{user.username}}
+        </td>
+        <td class="email">{{user.email}}</td>
+        <td>{{user.first_name}} {{user.last_name}}</td>
+        <td>{{user.date_created}}</td>
+        <td class="status">{{user.next_step}}</td>
+        <td>
+            <a href="{% url 'individual_user_details' user.slug_value %}">
+                <div class="view">
+                    <img src="{% static 'image/eye.svg' %}" alt="">
+                    <p>View</p>
+                </div>
+            </a>
+        </td>
+    </tr>
     {% endfor %}
     </tbody>
 </table>

@@ -40,6 +40,7 @@ urlpatterns = [
     path('user/payment/<str:slug>', views.payment_model, name='payment_model'),
     path('payment/info', views.fee_and_payment, name='fee_and_payment'),
     path('search/', views.search_view, name='search'),
+    path('lm/search', views.search_lm, name='search_lm'),
 
     # error pages
     path('unauthorized/403/', views.unauthorized_page_403, name='unauthorized_403'),

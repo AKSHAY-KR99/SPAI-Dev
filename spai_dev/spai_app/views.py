@@ -1,4 +1,5 @@
 import datetime
+from itertools import chain
 
 from django.contrib import messages
 from django.conf import settings
@@ -856,3 +857,26 @@ def search_view(request):
             Q(title__icontains=query) | Q(location__icontains=query)
         )
     return render(request, 'mainpages/search_results.html', {'results': results, 'query': query})
+
+
+def search_lm(request):
+    query = request.GET.get('query', '')
+    user_results = []
+    lm_results = []
+    if query:
+        lm_results = LifeMembers.objects.filter(
+            Q(reg_no__icontains=query) |
+            Q(name__icontains=query) |
+            Q(email__icontains=query) |
+            Q(membership_date__icontains=query)
+        )
+
+        # Search in User model
+        user_results = User.objects.filter(
+            Q(reg_no__icontains=query) |
+            Q(first_name__icontains=query) |
+            Q(email__icontains=query) |
+            Q(date_created__icontains=query)
+        )
+    return render(request, 'mainpages/lm_search_results.html',
+                  {'user_results': user_results, 'lm_results': lm_results, 'query': query})
