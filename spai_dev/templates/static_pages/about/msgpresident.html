@@ -1,105 +1,101 @@
 {% extends 'main.html' %}
 {% load static %}
 {% block cssfiles %}
-    <link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
-    <link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
-    <link rel="stylesheet" href="{% static 'css/home/message.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/home/message.css' %}">
 {% endblock %}
 
 {% block header %}
-    {% include 'header.html' %}
+{% include 'header.html' %}
 {% endblock %}
 
 {% block content %}
-<div style="margin-top: 0%;" class="messages">
-    <h1 style="margin-top: 0%;">Message From President</h1>
-
-    <blockquote class="q-card q-card-color-1">
-        <div class="msg2">
-            <div class="msg-pic">
-                <img src="{% static 'image/PRESIDENT.png' %}" alt="">
-            </div>
-            <div class="msg3">
-                <i>
-                    <div class="content">Greetings from SPAI. <br>
-                        <p>I am excited to update you regarding the activities of Sports Psychology Association of India
-                            (SPAI). Ever since the formation of SPAI in 1985, the organisation has made its existence as
-                            per the objectives of the association. With more than 650 life members and four regional
-                            secretaries, SPAI looks forward to having a calendar of activities across the country to
-                            spread the message of SPAI and to build expertise and provide service of sports psychology
-                            to all budding sportspersons</p>
-                        <p>The SPAI annual conference brings in all applied practitioners who work across various
-                            professional fields and sports, where they share their expertise and best practices; provide
-                            professional exposure to upcoming sports psychologists, grow better job opportunities and
-                            provide networking for future directions in the practicing field.</p>
-                        <p>SPAI aims to spread awareness and knowledge and provide expert consultancy and services
-                            through its pioneering members, practitioners in the field and through academic programmes
-                            and resources through its publication unit and web resources. </p>
-                        <p>SPAI has in its future agenda to support young aspiring sports psychologist by providing
-                            internships and fellowships and awards for academic and research in the field. </p>
-                        <p>With plenty of new happenings proposed by the executive council of SPAI, we would continue to
-                            advance the organisational activity and the field of practice. We look forward for
-                            collaboration from institutions and like mined associations for mutually beneficial
-                            programme and action plans. </p>
-                        <p>Look forward for future updates on sports psychology and let us work together for better
-                            prosperity and success in the field</p>
-                    </div>
-                </i>
-                <div style="width: 100%;display: flex;justify-content: end;">
-                    <div class='author'>Dr Anil Kharwande<br>
-                        President <br>
-                        Sports Psychology Association of India
-                    </div>
-                </div>
-
-            </div>
+<div class="message">
+    <div class="msg-head">
+        <h1>Message From President</h1>
+    </div>
+    <div class="msg-content">
+        <div class="msg-pic">
+            <img src="{% static 'image/msg_pre.png' %}" alt="">
         </div>
-    </blockquote>
+        <div class="msg">
+            <img src="{% static 'image/msg.svg' %}" alt="">
+            <h6>Greetings from SPAI.</h6>
+            <p>
+                I am excited to update you regarding the activities of Sports Psychology Association of India (SPAI).
+                Ever since the formation of SPAI in 1985, the organisation has made its existence as per the objectives
+                of the association. With more than 650 life members and four regional secretaries, SPAI looks forward to
+                having a calendar of activities across the country to spread the message of SPAI and to build expertise
+                and provide service of sports psychology to all budding sportspersons</p>
+
+
+            <p>The SPAI annual conference brings in all applied practitioners who work across various professional
+                fields and sports, where they share their expertise and best practices; provide professional exposure to
+                upcoming sports psychologists, grow better job opportunities and provide networking for future
+                directions in the practicing field.</p>
+
+            <p>SPAI aims to spread awareness and knowledge and provide expert consultancy and services through its
+                pioneering members, practitioners in the field and through academic programmes and resources through its
+                publication unit and web resources.</p>
+
+            <p>SPAI has in its future agenda to support young aspiring sports psychologist by providing internships and
+                fellowships and awards for academic and research in the field.</p>
+
+            <p>With plenty of new happenings proposed by the executive council of SPAI, we would continue to advance
+                the organisational activity and the field of practice. We look forward for collaboration from
+                institutions and like mined associations for mutually beneficial programme and action plans.</p>
+
+            <p>Look forward for future updates on sports psychology and let us work together for better prosperity and
+                success in the field</p>
+            </p>
+        </div>
+    </div>
 </div>
 
 
 {% endblock %}
 
 {% block footer %}
-    {% include 'footer.html' %}
+{% include 'footer.html' %}
 {% endblock %}
 {% block jsfile %}
 <script>
     document.addEventListener("DOMContentLoaded", () => {
-    const messagesContainers = document.querySelectorAll('.messages');
+        const messagesContainers = document.querySelectorAll('.messages');
 
-    if (messagesContainers.length > 0) {
-        console.log("Messages containers found.");
+        if (messagesContainers.length > 0) {
+            console.log("Messages containers found.");
 
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    console.log("Messages container is in view. Adding animation.");
-                    entry.target.classList.add('animate');
-                } else {
-                    console.log("Messages container is out of view. Removing animation.");
-                    entry.target.classList.remove('animate');
-                }
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        console.log("Messages container is in view. Adding animation.");
+                        entry.target.classList.add('animate');
+                    } else {
+                        console.log("Messages container is out of view. Removing animation.");
+                        entry.target.classList.remove('animate');
+                    }
+                });
+            }, { threshold: 0.01 });
+
+            messagesContainers.forEach(container => {
+                observer.observe(container);
             });
-        }, { threshold: 0.01 });
-
-        messagesContainers.forEach(container => {
-            observer.observe(container);
+        } else {
+            console.error("No messages containers found.");
+        }
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelector('.menu-icon').addEventListener('click', function () {
+            document.querySelector('.navbar').classList.toggle('active');
         });
-    } else {
-        console.error("No messages containers found.");
-    }
-});
-document.addEventListener('DOMContentLoaded', function() {
-            document.querySelector('.menu-icon').addEventListener('click', function() {
-                document.querySelector('.navbar').classList.toggle('active');
-            });
-        });
+    });
 
-        document.getElementById('userProfileIcon').addEventListener('click', function() {
-    var dropdownMenu = document.getElementById('dropdownMenu3');
-    dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
-});
+    document.getElementById('userProfileIcon').addEventListener('click', function () {
+        var dropdownMenu = document.getElementById('dropdownMenu3');
+        dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+    });
 </script>
 
 {% endblock %}

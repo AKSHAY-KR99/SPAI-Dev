@@ -36,56 +36,100 @@
 
 <table class="table active" id="new">
     <thead>
-    <tr>
-        <th>Registration No</th>
-        <th>Username</th>
-        <th class="email">Email</th>
-        <th>First Name</th>
-        <th>Register Date</th>
-        <th class="status">Status</th>
-        <th>Actions</th>
-    </tr>
+        <tr>
+            <th onclick="sortTable(0)">Registration No <span class="sort-icon">&#9650;&#9660;</span></th>
+            <th onclick="sortTable(1)">Username<span class="sort-icon">&#9650;&#9660;</span></th>
+            <th class="email">Email</th>
+            <th onclick="sortTable(3)">First Name <span class="sort-icon">&#9650;&#9660;</span></th>
+            <th onclick="sortTable(4)">Register Date <span class="sort-icon">&#9650;&#9660;</span></th>
+            <th class="status">Status</th>
+            <th>Actions</th>
+        </tr>
     </thead>
     <tbody>
-
-    {% for user in new_members%}
-    <tr>
-        <td class="email">{{user.reg_no}}</td>
-        <td class="username">
-            {% if user.photo %}
-            <img src="{{ user.photo.url }}" alt="">
-            {% else %}
-            <img src="{% static 'image/profile-icon.svg' %}" alt="photo">
-            {% endif %}
-            {{user.username}}
-        </td>
-        <td class="email">{{user.email}}</td>
-        <td>{{user.first_name}} {{user.last_name}}</td>
-        <td>{{user.date_created}}</td>
-        <td class="status">{{user.next_step}}</td>
-        <td>
-            <a href="{% url 'individual_user_details' user.slug_value %}">
-                <div class="view">
-                    <img src="{% static 'image/eye.svg' %}" alt="">
-                    <p>View</p>
-                </div>
-            </a>
-        </td>
-    </tr>
-    {% endfor %}
+        {% for user in new_members %}
+        <tr>
+            <td class="email">{{ user.reg_no }}</td>
+            <td class="username">
+                {% if user.photo %}
+                <img src="{{ user.photo.url }}" alt="">
+                {% else %}
+                <img src="{% static 'image/profile-icon.svg' %}" alt="photo">
+                {% endif %}
+                {{ user.username }}
+            </td>
+            <td class="email">{{ user.email }}</td>
+            <td>{{ user.first_name }} {{ user.last_name }}</td>
+            <td>{{ user.date_created }}</td>
+            <td class="status">{{ user.next_step }}</td>
+            <td>
+                <a href="{% url 'individual_user_details' user.slug_value %}">
+                    <div class="view">
+                        <img src="{% static 'image/eye.svg' %}" alt="">
+                        <p>View</p>
+                    </div>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
     </tbody>
 </table>
 
+<script>
+    let ascending = true;
+
+    function sortTable(columnIndex) {
+        const table = document.getElementById("new");
+        const rows = Array.from(table.tBodies[0].rows);
+        const sortFunction = (a, b) => {
+            let valA = a.cells[columnIndex].textContent.trim();
+            let valB = b.cells[columnIndex].textContent.trim();
+
+            // Parse as numbers or dates if necessary
+            if (!isNaN(valA) && !isNaN(valB)) {
+                valA = parseFloat(valA);
+                valB = parseFloat(valB);
+            } else if (columnIndex === 4) { // Assuming column 4 is the date
+                valA = new Date(valA);
+                valB = new Date(valB);
+            }
+
+            if (valA < valB) return ascending ? -1 : 1;
+            if (valA > valB) return ascending ? 1 : -1;
+            return 0;
+        };
+
+        rows.sort(sortFunction);
+
+        // Re-append sorted rows to the table
+        rows.forEach(row => table.tBodies[0].appendChild(row));
+
+        // Toggle sorting order for next click
+        ascending = !ascending;
+    }
+</script>
+
+<style>
+    th {
+        cursor: pointer;
+    }
+    .sort-icon {
+        font-size: 0.8em;
+        margin-left: 5px;
+    }
+</style>
+
+
 <table class="table" id="life">
     <thead>
-    <tr>
-        <th>Register No</th>
-        <th>Name</th>
-        <th class="email">Email</th>
-        <th>Membership Date</th>
-        <th class="status">Active</th>
-        <th>Action</th>
-    </tr>
+        <tr>
+            <th onclick="sortTable(0)">Registration No <span class="sort-icon">&#9650;&#9660;</span></th>
+            <th onclick="sortTable(1)">Name <span class="sort-icon">&#9650;&#9660;</span></th>
+            <th class="email">Email</th>
+            <th onclick="sortTable(3)">Membership Date<span class="sort-icon">&#9650;&#9660;</span></th>
+            <th class="status">Active</th>
+            <th>Action</th>
+        </tr>
     </thead>
     <tbody>
     {% for user in life_members %}
@@ -112,15 +156,15 @@
 
 <table class="table" id="active-m">
     <thead>
-    <tr>
-        <th>Registration No</th>
-        <th>Username</th>
-        <th class="email">Email</th>
-        <th>First Name</th>
-        <th>Register Date</th>
-        <th class="status">Status</th>
-        <th>Actions</th>
-    </tr>
+        <tr>
+            <th onclick="sortTable(0)">Registration No <span class="sort-icon">&#9650;&#9660;</span></th>
+            <th onclick="sortTable(1)">Username <span class="sort-icon">&#9650;&#9660;</span></th>
+            <th class="email">Email</th>
+            <th onclick="sortTable(3)">First Name</th>
+            <th onclick="sortTable(4)">Register Date <span class="sort-icon">&#9650;&#9660;</span></th>
+            <th class="status">Status</th>
+            <th>Actions</th>
+        </tr>
     </thead>
     <tbody>
 
@@ -153,15 +197,15 @@
 </table>
 <table class="table" id="non-active">
     <thead>
-    <tr>
-        <th>Registration No</th>
-        <th>Username</th>
-        <th class="email">Email</th>
-        <th>First Name</th>
-        <th>Register Date</th>
-        <th class="status">Status</th>
-        <th>Actions</th>
-    </tr>
+        <tr>
+            <th onclick="sortTable(0)">Registration No <span class="sort-icon">&#9650;&#9660;</span></th>
+            <th onclick="sortTable(1)">Username <span class="sort-icon">&#9650;&#9660;</span></th>
+            <th class="email">Email</th>
+            <th onclick="sortTable(3)">First Name</th>
+            <th onclick="sortTable(4)">Register Date <span class="sort-icon">&#9650;&#9660;</span></th>
+            <th class="status">Status</th>
+            <th>Actions</th>
+        </tr>
     </thead>
     <tbody>
 

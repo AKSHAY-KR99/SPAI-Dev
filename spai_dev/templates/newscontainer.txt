@@ -1,852 +1,259 @@
-    <div class="news-containers">
-        {% for event in page_obj %}
-        <div class="news-container">
-            <div class="news-img">
-                <div class="news-new">{{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }}</div>
-                <img src="{{ event.image.url }}" alt="">
-                {% if request.user.user_role == 1 %}
-                <a class="delete-link" href="{% url 'event_delete' event.id %}">
-                    <div class="news-delete">
-                        <img src="{% static 'image/delete-icon.svg' %}" alt="">
-                    </div>
+{% extends 'main.html' %}
+{% load static %}
+{% block cssfiles %}
+    <link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sub/news_details.css' %}">
+{% endblock %}
+
+{% block header %}
+    {% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="news">
+    <div class="news-title">
+        <p>News & Events</p>
+    </div>
+    <div class="news-content">
+        <div class="news-details">
+            <div class="news-detail-img">
+                {% if gallery %}
+                <a href="{% url 'gallery_detail' gallery.id %}">
+                    <div class="news-new-detail">More Images <img src="{% static 'image/arrowreadwhite.svg' %}" alt=""></div>
                 </a>
                 {% endif %}
+                <img src="{{ event.image.url }}" alt="">
             </div>
-            <div class="news-dis">
-                {{ event.datetime }}
-            </div>
-            <div class="news-head" style="text-transform: uppercase;">
-                {{ event.title }}
-            </div>
-            <a style="text-decoration: none; color: inherit;" href="{% url 'news_detail' event.id %}">
-                <div class="news-read">
-                    <p>Read</p>
-                    <img class="default-image" src="{% static 'image/arrowread.svg' %}" alt="">
-                    <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
+            <div class="news-detail-content">
+                <div class="news-dis" style="margin-left: 0%;">
+                    {% if event.datetime|date:"Y-m-d" == event.end_date|date:"Y-m-d" %}
+                        {{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }} {{ event.datetime|time }}
+                        {% else %}
+                        {{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }} {{ event.datetime|time }} -
+                        {{ event.end_date|date:"d" }} {{ event.end_date|date:"F" }}
+                        {% endif %}
                 </div>
-            </a>
+                <div class="news-head" style="margin-left: 0%;">
+                    {{ event.title }}
+                </div>
+                <div class="news-detail-content-text">
+                    <p>
+                        {{event.description}}<br>
+                        <!-- Physical exercise is the performance of some activity in order to develop or maintain physical fitness and overall health.It is often directed toward also honing athletic ability or skill.Frequent and regular physical exercise is an important component in the prevention of some diseases such as heart disease, cardiovascular disease, Type 2 diabetes and obesity.Exercises are generally grouped into three types depending on the overall effect they have on the human body: Flexibility exercises such as stretching improve the range of motion of muscles and joints; aerobic exercises such as walking and running focus on increasing cardiovascular endurance; and anaerobic exercises such as weight training, functional training or sprinting increase short-term muscle strength.Physical exercise is considered important for maintaining physical fitness including healthy weight; building and maintaining healthy bones, muscles, and joints; promoting physiological well-being; reducing surgical risks; and strengthening the immune system. -->
+                    </p>
+                    {% if event.location != null %}
+                    <h4 style="display: inline;">Location:</h4> <span>{{ event.location }}</span>
+                    {% endif %}
+                    <br><br>
+                    {% if event.registration_link and event.registration_link|slice:":7" == "http://" or event.registration_link|slice:":8" == "https://" %}
+                    <h4 style="display: inline;">Registration Link:</h4> 
+                    <span>
+                        <a style="text-decoration: underline; color: blue;" 
+                           href="{{ event.registration_link }}" 
+                           target="_blank" 
+                           rel="noopener noreferrer">
+                           click here
+                        </a>
+                    </span>
+                {% endif %}
+                </div>
+            </div>
         </div>
-        {% endfor %}
 
-        <!-- <div class="news-container">
-            <div class="news-img">
-                <div class="news-new">NEW</div>
-                <img src="{% static 'image/news1.png' %}" alt="">
-                <a href="">
-                    <div class="news-delete">
-                        <img src="{% static 'image/delete-icon.svg' %}" alt="">
+        <div class="related">
+            <h1>Related News</h1>
+        </div>
+        <div class="news-containers">
+            {% for event in related_events %}
+            <div class="news-container">
+                <div class="news-img">
+                    <div class="news-new">{{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }}</div>
+                    <img src="{{ event.image.url }}" alt="">
+                </div>
+                <div class="news-dis">
+                    {{ event.datetime }}
+                </div>
+                <div class="news-head" style="text-transform: uppercase;">
+                    {{ event.title }}
+                </div>
+                <a style="text-decoration: none; color: inherit;" href="{% url 'news_detail' event.id %}">
+                    <div class="news-read">
+                        <p>Read</p>
+                        <img class="default-image" src="{% static 'image/arrowread.svg' %}" alt="">
+                        <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
                     </div>
                 </a>
-
             </div>
-            <div class="news-dis">
-                2 Days Ago
-            </div>
-            <div class="news-head">
-                GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
-            </div>
-            <a style="text-decoration: none; color: inherit;" href="">
-                <div class="news-read">
-                    <p>Read</p>
-                    <img class="default-image" src="{% static 'image/arrowread.svg' %}" alt="">
-                    <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
+            {% endfor %}
+            <!-- <div class="news-container">
+                <div class="news-img">
+                    <div class="news-new">NEW</div>
+                    <img src="{% static 'image/news-6.png' %}" alt="">
+                    
                 </div>
-            </a>
-        </div>
-        <div class="news-container">
-            <div class="news-img">
-                <div class="news-new">NEW</div>
-                <img src="{% static 'image/news-4.png' %}" alt="">
-                <a href="">
-                    <div class="news-delete">
-                        <img src="{% static 'image/delete-icon.svg' %}" alt="">
+                <div class="news-dis">
+                    2 Days Ago
+                </div>
+                <div class="news-head">
+                    GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
+                </div>
+                <a style="text-decoration: none; color: inherit;" href="">
+                    <div class="news-read">
+                        <p>Read</p>
+                        <img class="default-image" src="{% static 'image/arrowread.svg' %}" alt="">
+                        <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
                     </div>
                 </a>
-
             </div>
-            <div class="news-dis">
-                2 Days Ago
-            </div>
-            <div class="news-head">
-                GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
-            </div>
-            <a style="text-decoration: none; color: inherit;" href="">
-                <div class="news-read">
-                    <p>Read</p>
-                    <img class="default-image" src="{% static 'image/arrowread.svg' %}" alt="">
-                    <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
+            <div class="news-container">
+                <div class="news-img">
+                    <div class="news-new">NEW</div>
+                    <img src="{% static 'image/news-7.png' %}" alt="">
+                    
                 </div>
-            </a>
-        </div>
-        <div class="news-container">
-            <div class="news-img">
-                <div class="news-new">NEW</div>
-                <img src="{% static 'image/news-5.png' %}" alt="">
-                <a href="">
-                    <div class="news-delete">
-                        <img src="{% static 'image/delete-icon.svg' %}" alt="">
+                <div class="news-dis">
+                    2 Days Ago
+                </div>
+                <div class="news-head">
+                    GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
+                </div>
+                <a style="text-decoration: none; color: inherit;" href="">
+                    <div class="news-read">
+                        <p>Read</p>
+                        <img class="default-image" src="{% static 'image/arrowread.svg' %}" alt="">
+                        <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
                     </div>
                 </a>
-
             </div>
-            <div class="news-dis">
-                2 Days Ago
-            </div>
-            <div class="news-head">
-                GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
-            </div>
-            <a style="text-decoration: none; color: inherit;" href="">
-                <div class="news-read">
-                    <p>Read</p>
-                    <img class="default-image" src="{% static 'image/arrowread.svg' %}" alt="">
-                    <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
+            <div class="news-container">
+                <div class="news-img">
+                    <div class="news-new">NEW</div>
+                    <img src="{% static 'image/news-8.png' %}" alt="">
+                    
                 </div>
-            </a>
-        </div>
-        <div class="news-container">
-            <div class="news-img">
-                <div class="news-new">NEW</div>
-                <img src="{% static 'image/news-6.png' %}" alt="">
-                <a href="">
-                    <div class="news-delete">
-                        <img src="{% static 'image/delete-icon.svg' %}" alt="">
+                <div class="news-dis">
+                    2 Days Ago
+                </div>
+                <div class="news-head">
+                    GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
+                </div>
+                <a style="text-decoration: none; color: inherit;" href="">
+                    <div class="news-read">
+                        <p>Read</p>
+                        <img class="default-image" src="{% static 'image/arrowread.svg' %}" alt="">
+                        <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
                     </div>
                 </a>
-
-            </div>
-            <div class="news-dis">
-                2 Days Ago
-            </div>
-            <div class="news-head">
-                GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
-            </div>
-            <a style="text-decoration: none; color: inherit;" href="">
-                <div class="news-read">
-                    <p>Read</p>
-                    <img class="default-image" src="{% static 'image/arrowread.svg' %}" alt="">
-                    <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
-                </div>
-            </a>
+            </div> -->
         </div>
-        <div class="news-container">
-            <div class="news-img">
-                <div class="news-new">NEW</div>
-                <img src="{% static 'image/news-7.png' %}" alt="">
-                <a href="">
-                    <div class="news-delete">
-                        <img src="{% static 'image/delete-icon.svg' %}" alt="">
-                    </div>
-                </a>
-
-            </div>
-            <div class="news-dis">
-                2 Days Ago
-            </div>
-            <div class="news-head">
-                GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
-            </div>
-            <a style="text-decoration: none; color: inherit;" href="">
-                <div class="news-read">
-                    <p>Read</p>
-                    <img class="default-image" src="{% static 'image/arrowread.svg' %}" alt="">
-                    <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
-                </div>
-            </a>
-        </div>
-        <div class="news-container">
-            <div class="news-img">
-                <div class="news-new">NEW</div>
-                <img src="{% static 'image/news-8.png' %}" alt="">
-                <a href="">
-                    <div class="news-delete">
-                        <img src="{% static 'image/delete-icon.svg' %}" alt="">
-                    </div>
-                </a>
-
-            </div>
-            <div class="news-dis">
-                2 Days Ago
-            </div>
-            <div class="news-head">
-                GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
-            </div>
-            <a style="text-decoration: none; color: inherit;" href="">
-                <div class="news-read">
-                    <p>Read</p>
-                    <img class="default-image" src="{% static 'image/arrowread.svg' %}" alt="">
-                    <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
-                </div>
-            </a>
-        </div>
-        <div class="news-container">
-            <div class="news-img">
-                <div class="news-new">NEW</div>
-                <img src="{% static 'image/news-9.png' %}" alt="">
-                <a href="">
-                    <div class="news-delete">
-                        <img src="{% static 'image/delete-icon.svg' %}" alt="">
-                    </div>
-                </a>
-
-            </div>
-            <div class="news-dis">
-                2 Days Ago
-            </div>
-            <div class="news-head">
-                GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
-            </div>
-            <a style="text-decoration: none; color: inherit;" href="">
-                <div class="news-read">
-                    <p>Read</p>
-                    <img class="default-image" src="{% static 'image/arrowread.svg' %}" alt="">
-                    <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
-                </div>
-            </a>
-        </div>
-        <div class="news-container">
-            <div class="news-img">
-                <div class="news-new">NEW</div>
-                <img src="{% static 'image/news-10.png' %}" alt="">
-                <a href="">
-                    <div class="news-delete">
-                        <img src="{% static 'image/delete-icon.svg' %}" alt="">
-                    </div>
-                </a>
-
-            </div>
-            <div class="news-dis">
-                2 Days Ago
-            </div>
-            <div class="news-head">
-                GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
-            </div>
-            <a style="text-decoration: none; color: inherit;" href="">
-                <div class="news-read">
-                    <p>Read</p>
-                    <img class="default-image" src="{% static 'image/arrowread.svg' %}" alt="">
-                    <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
-                </div>
-            </a>
-        </div>
-        <div class="news-container">
-            <div class="news-img">
-                <div class="news-new">NEW</div>
-                <img src="{% static 'image/news-11.png' %}" alt="">
-                <a href="">
-                    <div class="news-delete">
-                        <img src="{% static 'image/delete-icon.svg' %}" alt="">
-                    </div>
-                </a>
-
-            </div>
-            <div class="news-dis">
-                2 Days Ago
-            </div>
-            <div class="news-head">
-                GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
-            </div>
-            <a style="text-decoration: none; color: inherit;" href="">
-                <div class="news-read">
-                    <p>Read</p>
-                    <img class="default-image" src="{% static 'image/arrowread.svg' %}" alt="">
-                    <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
-                </div>
-            </a>
-        </div> -->
-
     </div>
-    <div style="display: flex; justify-content: center;width: 100%;">
-        {% if page_obj.has_previous %}
-        <!-- <a style="text-decoration: none; color: inherit;" href="?page=1">
-            <div class="news-seemore">
-                <div class="seemoretext">&laquo;</div>
-            </div>
-        </a> -->
-        <a style="text-decoration: none; color: inherit;" href="?page={{ page_obj.previous_page_number }}">
-            <div class="news-seemore">
-                <div class="seemoretext">&lt;</div>
-            </div>
-        </a>
-        {% endif %}
-    
-        {% for page_num in page_obj.paginator.page_range %}
-            {% if page_obj.number == page_num %}
-            <a style="text-decoration: none; color: inherit;" href="?page={{ page_num }}">
-                <div class="news-seemore">
-                    <div class="seemoretext" style="font-weight: bold;">{{ page_num }}</div>
-                </div>
-            </a>
-            {% else %}
-            <a style="text-decoration: none; color: inherit;" href="?page={{ page_num }}">
-                <div class="news-seemore">
-                    <div class="seemoretext">{{ page_num }}</div>
-                </div>
-            </a>
-            {% endif %}
-        {% endfor %}
-    
-        {% if page_obj.has_next %}
-        <a style="text-decoration: none; color: inherit;" href="?page={{ page_obj.next_page_number }}">
-            <div class="news-seemore">
-                <div class="seemoretext">&gt;</div>
-            </div>
-        </a>
-        <!-- <a style="text-decoration: none; color: inherit;" href="?page={{ page_obj.paginator.num_pages }}">
-            <div class="news-seemore">
-                <div class="seemoretext">&raquo;</div>
-            </div>
-        </a> -->
-        {% endif %}
-    </div>
+</div>
+{% endblock %}
 
 
-    {% load static %}
-<nav>
-  <ul class="navbar">
-      <li><a href="{% url 'index' %}">Home</a></li>
-      <li><a href="{% url 'members' %}">Members & Membership</a></li>
-      <li class="dropdown"><a href="{% url 'news' %}">News & Events</a></li>
-      <li class="dropdown">
-          <a href="#">Publications</a>
-          <ul class="dropdown-menu">
-              <li><a href="#">Event 1</a></li>
-              <li class="side-down">
-                <a href="#">Events 2</a>
-                <ul class="dropdown-menu side">
-                    <li><a href="#">Event 3</a></li>
-                    <li><a href="#">Event 3</a></li>
-                    <li><a href="#">Event 3</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Event 3</a></li>
-          </ul>
-      </li>
-      <li><a href="{% url 'history' %}">History</a></li>
-      <li><a href="{% url 'gallery_list' %}">Gallery</a></li>
-      <li class="search-li">
-          <div class="search-wrapper">
-              <input type="text" class="search-input" placeholder="search here...">
-              <button class="search-button">
-                  <img src="{% static 'image/search.svg' %}" alt="Search">
-              </button>
-          </div>
-      </li>
-      <li>
-        {% if request.user.is_authenticated %}
-        <div></div>
-        {% else %}
-          <div class="login-button1">
-             
-              <!-- <a style="text-decoration: none; color: white;" href="{% url 'logout' %}">Member logout</a> -->
-            
-              <a style="text-decoration: none; color: white;" href="{% url 'login_page' %}">Member Login</a>
-            
-          </div>
-          {% endif %}
-      </li>                
-  </ul>
-</nav>
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}
+{% block jsfile %}
+<script type="text/javascript" src="{% static 'js/sub/news.js' %}"></script>  
+    {% endblock %}
 
 
 
-header {
-  background-color: white;
-  padding: 10px 20px;
-  height: auto;
+
+.news{
+  overflow-x: hidden;
+  overflow-y: hidden;
+  background-image: url('./running-2-bg.png');
+  background-repeat: no-repeat;
 }
-
-.hrline {
-  width: 100%;
-  height: 0;
-  border: 1px solid rgba(218, 218, 218, 1);
-}
-
-.top-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.logo {
-  width: 63.41px;
-  height: 77px;
-}
-.phone img{
-  margin-right:7px ;
-}
-.email img{
-  margin-right:7px ;
-}
-.company-name {
-  margin: 10px;
-  width: 250px;
-  height: 60px;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  font-size: 20px;
-  text-transform: uppercase;
-  color: #000000;
+a{
+    text-decoration: none; 
+    color: inherit;
+  }
+  .news-title {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 48px;
+    z-index: 1;
+  }
+  .news-title p{
+    font-family: "Poppins",sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 48px;
+    text-align: center;
+  }
+  .bg-running{
+    position: absolute;
+    width: auto;
+    height: auto;
+    top: 120px;
+    left: 0px;
+    gap: 0px;
+    opacity: 0.7;
+    z-index: 0; 
   
-}
-
-.contact-info {
-  display: flex;
-  align-items: center;
-  gap: 50px;
-  flex-wrap: wrap;
-}
-
-.contact-info span {
-  display: flex;
-  align-items: center;
-}
-
-.login-button {
-  background-color: black;
-  color: white;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-family: "Poppins", sans-serif;
-  border-radius: 8px;
-  margin-right: 50px;
-}
-.login-button1{
-  background-color: black;
-  color: white;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-family: "Poppins", sans-serif;
-  border-radius: 8px; 
-  display: none;
-}
-.menu-icon {
-  display: none;
-  cursor: pointer;
-}
-
-.menu-icon img {
-  width: 30px;
-  height: 30px;
-}
-
-nav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 10px;
-}
-
-.navbar {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.navbar li {
-  position: relative;
-}
-
-.navbar a {
-  text-decoration: none;
-  color: black;
-  font-family: "Poppins", sans-serif;
-  font-size: 14px;
-  line-height: 21px;
-}
-
-.navbar li::after {
-  content: '';
-  position: absolute;
-  left: 10%;
-  bottom: 0;
-  width: 0;
-  height: 4px;
-  background-color: black;
-  transition: width 0.3s;
-  border-radius: 8px;
-}
-
-.navbar li:hover::after {
-  width: 80%;
-}
-.search-li::after{
-  display: none;
-}
-.search-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.search-input {
-  width: 255.51px;
-  height: 36.76px;
-  padding-left: 15px;
-  border-radius: 8px;
-  background: rgba(244, 244, 244, 1);
-  border: 1px solid #ccc;
-  padding-right: 40px;
-  font-family: "Poppins", sans-serif;
-}
-
-.search-button {
-  position: absolute;
-  right: 10px;
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.search-button img {
-  width: 16px;
-  height: 16px;
-}
-
-.dropdown:hover .dropdown-menu {
-  display: block;
-}
-
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: white;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  z-index: 1000;
-  border-radius: 11px;
-}
-
-.dropdown-menu li {
-  width: 100%;
-}
-
-.dropdown-menu a {
-  display: block;
-  padding: 10px;
-  color: black;
-  text-decoration: none;
-}
-
-.dropdown-menu a:hover {
-  background: rgba(236, 236, 236, 1);
-}
-/*Hero***************************************************************/
-.hero {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  z-index: 1;
-}
-
-.hero-pic {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.full-width-img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: opacity 0.5s;
-}
-
-.full-width-img:not(:first-child) {
-  opacity: 0;
-}
-
-.full-width-img.active {
-  opacity: 1;
-}
-
-@keyframes floatUp {
-  from {
-      opacity: 0;
-      transform: translateY(100px);
+  
   }
-  to {
-      opacity: 1;
-      transform: translateY(0);
-  }
-}
-
-.hero-texts {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  color: white;
-  z-index: 1;
-}
-
-.hero-text {
-  display: none;
-  font-size: 3.6%;
-  margin-bottom: 20px;
-  font-weight: 500; /* Increased font weight */
-}
-
-.hero-text.active {
-  display: block;
-  animation: floatUp 1.5s ease-out forwards;
-}
-
-.welcome {
-  width: auto;
-  height: 267.44px;
-  font-family: "Poppins", sans-serif;
-  font-size: 48px;
-  font-weight: 900;
-  line-height: 50px; /* Reduced line-height */
-  text-align: left;
-}
-
-.spai {
-  width: 228px;
-  height: 144px;
-  top: 577.72px;
-  left: 152px;
-  gap: 0px;
-  opacity: 0px;
-  font-family: "Poppins", sans-serif;
-  font-size: 96px;
-  font-weight: 900;
-  line-height: 96px; /* Adjusted line-height */
-  text-align: left;
-  margin-top: -10px; /* Adjusted margin to reduce gap */
-}
-.grady {
-position: absolute; /* Position the gradient overlay absolutely */
-width: 100%; /* Make it span the full width of the hero container */
-height: 291.7px; /* Adjust height as needed */
-bottom: 0; /* Align it to the bottom of the hero container */
-gap: 0px;
-opacity: 0.5; /* Adjust opacity as needed */
-background: linear-gradient(0deg, #000000 46.15%, rgba(0, 0, 0, 0) 96.1%);
+.news-content{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 7%;
+    margin-right: 7%;
+    justify-content: space-between;
 
 }
-.jointoday {
-width: 200.41px;
-height: 50.74px;
-margin-top: -60px; /* Adjust as needed */
-background: rgba(0, 0, 0, 1);
-border: 2px solid rgba(255, 255, 255, 1);
-display: flex;
-align-items: center;
-justify-content: center;
-
-
-}
-
-.jointodaytext {
-font-family: "Poppins", sans-serif;
-font-size: 20px;
-font-weight: 600;
-line-height: 30px;
-text-align: center;
-color: #ffffff; /* Ensure the text color contrasts with the background */
-opacity: 1; /* Set opacity to fully visible */
-}
-.vertical-line {
-  position: absolute;
-  top: 60%;
-  transform: translateY(-50%);
-  right: 50px;
-  width: 4px;
-  height: 70%;
-  background-color: #fff;
-  z-index: 1;
-  border: none;
-}
-.downarrow{
-  width: 17.01px;
-  height: 19px;
-  gap: 0px;
-  opacity: 0px;
-  margin-left: 50%;
-  margin-top: 90px; /* Adjust as needed */
+.news-details{
   display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.dot {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background-color: #fff;
-}
-
-.above {
-  top: -15px;
-  right: 0;
-}
-
-.below {
-  bottom: -15px;
-  right: 0;
-}
-
-.math {
-  width: 100%;
-  height: auto;
-  top: 780px;
-  left: 50%;
-  transform: translateX(-50%);
-  position: absolute;
-  background: rgba(253, 252, 252, 1);
-  z-index: 2;
-}
-.math-text{
-  justify-content: space-between; 
   flex-direction: column;
-  display: flex;
-}
-.math-title{
-  width: auto;
-  height: 24px;
-  margin-top: 30px;
-  gap: 0px;
-  opacity: 0px;
-  font-family: "Poppins",sans-serif;
-  font-size: 16px;
-  font-weight: 400px;
-  line-height: 24px;
-  text-align: center;
-    
-}
-.math-num{
-  width: 139px;
-  height: 72px;
-  margin-top: 0px;
-  margin-left: 60px;
-  gap: 0px;
-  opacity: 0px;
-  font-family: "Poppins",sans-serif;
-  font-size: 48px;
-  font-weight: 400;
-  line-height: 72px;
-  text-align: left;
-    
-}
-
-.verti {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 25%;
-  width: 4px;
-  height: 80%;
-  background-color: rgba(218, 218, 218, 1);
-  z-index: 1;
-  border: none;
-  border-radius: 50%;
-}
-
-  /*********************************
-
-/*news and Eventsssss*************************************/
-.news-title {
-  justify-content: center;
-  margin-top: 10%;
-  width: 100%;
-  height: 48px;
   align-items: center;
-  font-family: "Poppins",sans-serif;
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 48px;
-  text-align: center;
-}
-.news-containers{
-  margin-top: 20px;
-  
-  display: flex; /* Use flexbox */
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1%;
-  /* opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 1s ease-out, transform 1s ease-out; */
-}
-/* .news-containers.visible {
-  opacity: 1;
-  transform: translateY(0);
-} */
-.news-container{
   opacity: 0;
-  transform: scale(1.1); /* Start slightly zoomed in */
-  transition: transform 0.6s ease-out, opacity 0.6s ease-out;
-  width: 325px;
-  height: 366px;
-  border-radius: 18px;
-  margin: 30px;
-  gap: 0px;
-  z-index: 2;
-  opacity: 0px; 
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  transform: scale(1.03); /* Start slightly zoomed in */
+  animation: zoomOut 0.8s ease-out forwards; /* 0.6s duration, ease-out timing function */
+    width: auto;
+    z-index: 1;
+}
+.news-detail-img{
+    margin-top: 50px;
+    width: 713px;
+    height: 420px;
+    
+    
+}
+.more-images{
+  position: absolute;
+  background-color: blue;
+  z-index: 1;
+  top: 100px;
+  left: 100px;
+}
+.news-detail-content-text{
+    width: 713px;
+}
+.news-detail-content-text p{
+    font-family: "Poppins",sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    text-align: left;
 
 }
-.news-container.animate {
-  opacity: 1;
-  transform: scale(1); /* End at normal size */
-}
-
-/* Apply staggered animation delays */
-.news-container:nth-child(1).animate {
-  transition-delay: 0s;
-}
-
-.news-container:nth-child(2).animate {
-  transition-delay: 0.2s;
-}
-
-.news-container:nth-child(3).animate {
-  transition-delay: 0.4s;
-}
-.news-container:hover {
-  transform: scale(1.02); /* Zoom in by 10% */
-}
-.news-img img{
-  width: 314px;
-  height: 196px;
-  border-radius: 18px;
-  margin: 5px;
-
-
-}
-.news-img{
-  position: relative;
-  z-index: 0;
-}
-.news-new{
+.news-new-detail{
   padding: 8px 20px 8px;
   opacity: 1;
   z-index: 1;
   position: absolute;
   width: auto;
   height: auto;
-  top: 15px;
+  top: 60px;
   left: 20px;
   gap: 0px;
   border-radius: 61px;
-  background: rgba(52, 127, 235, 1);
+  background: rgb(224, 129, 5);
   font-family: "Poppins",sans-serif;
   font-size: 10px;
   font-weight: 600;
@@ -855,669 +262,277 @@ opacity: 1; /* Set opacity to fully visible */
   color: rgba(255, 255, 255, 1);
 
 }
-.news-delete{
-  opacity: 1;
-  z-index: 1;
-  position: absolute;
-  width: auto;
-  height: auto;
-  top: 15px;
-  right: 20px;
-  gap: 0px;
+.news-new-detail img{
+  margin-left: 5px;
+  width: 10px !important;
+  height: 10px !important;
+}
+.news-detail-img img{
+  position: relative;
+  z-index: 0;
+    width: 713px;
+    height: 420px;
+    border-radius: 18px;
+}
+  .news-containers{
+    z-index: 1;
+    margin-top: 20px;
+    
+    display: flex; /* Use flexbox */
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1%;
+  }
+  
+  .news-container{
+    opacity: 0;
+    transform: scale(1.1); /* Start slightly zoomed in */
+    animation: zoomOut 0.8s ease-out forwards; /* 0.6s duration, ease-out timing function */
+    margin-top: 30px;
+    width: 325px;
+    height: 366px;
+    border-radius: 18px;
+    /* margin: 30px; */
+    /* margin-l: 30px; */
+    gap: 0px;
+    z-index: 2;
+    opacity: 0px; 
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease,box-shadow 0.3s ease;
+  
+  }
+  @keyframes zoomOut {
+    to {
+        opacity: 1;
+        transform: scale(1); /* End at normal size */
+    }
+  }
+  .news-container:nth-child(1) {
+    animation-delay: 0s;
+  }
+  
+  .news-container:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  
+  .news-container:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+  .news-container:hover {
+    transform: scale(1.15); /* Zoom in by 15% */
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.25); /* Increase box-shadow on hover */
+  }
+  .news-img img{
+    width: 314px;
+    height: 196px;
+    border-radius: 18px;
+    margin: 5px;
+  
+  
+  }
+  .news-img{
+    position: relative;
+    z-index: 0;
+  }
+  .news-new{
+    padding: 8px 20px 8px;
+    opacity: 1;
+    z-index: 1;
+    position: absolute;
+    width: auto;
+    height: auto;
+    top: 15px;
+    left: 20px;
+    gap: 0px;
+    border-radius: 61px;
+    background: rgba(52, 127, 235, 1);
+    font-family: "Poppins",sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 15px;
+    text-align: center;
+    color: rgba(255, 255, 255, 1);
+  
+  }
 
-}
-.news-delete img{
-  width:30px;
-  height: auto;
-}
-.news-head{
-  width: 267px;
-  height: 48px;
+  .news-head{
+    width: 267px;
+    height: 48px;
+    margin-left: 10%;
+  margin-right: 5px;
+  margin-top: 5px;
+    gap: 0px;
+    opacity: 0px;
+    font-family: "Poppins",sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    text-align: left;
+  
+  }
+  .news-dis{
+    width: 292.2px;
+    height: 18px;
+    top: 1489px;
+    left: 932px;
+    gap: 0px;
+    opacity: 0px;
+    
+  
+  
   margin-left: 10%;
-margin-right: 5px;
-margin-top: 5px;
-  gap: 0px;
-  opacity: 0px;
-  font-family: "Poppins",sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 24px;
-  text-align: left;
-
-}
-.news-dis{
-  width: 292.2px;
-  height: 18px;
-  top: 1489px;
-  left: 932px;
+  margin-right: 10%;
+  margin-top: 2%;
   gap: 0px;
   opacity: 0px;
   
-
-
-margin-left: 10%;
-margin-right: 10%;
-margin-top: 2%;
-gap: 0px;
-opacity: 0px;
-
-font-size: 12px;
-font-weight: 400;
-line-height: 18px;
-text-align: left;
-
-font-family:"Poppins",sans-serif;
-font-weight:400;
-}
-.news-read{
-  display: flex;
-  width: 130px;
-  height: 46px;
-  border-radius: 61px;
-  border: 1px solid black;
-  opacity: 0px;
-  margin-left: 10%;
-  margin-top: 10px;
-  justify-content: space-between;
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-  transition: .3s;
-  
-}
-.news-read:hover{
-  background-color: #000000;
-  color: white;
-  transition: .3s;
-}
-.news-read p{
-  width: 42px;
-  height: 24px;
-  font-family: "Poppins",sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  text-align: left;
-  margin-left: 20%;
-  margin-top: 7%;
-
-  
-}
-.news-read img{
-  width: 8.19px;
-  height: 8.19px;
-  margin-top: 13%;
-  margin-right: 20%;
-
-}
-.default-image{
-  display: block;
-}
-.hover-image{
-  display: none;
-}
-
-.news-read:hover .hover-image {
-  display: block;
-}
-
-.news-read:hover .default-image {
-  display: none;
-}
-.news-seemore{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 268.41px;
-  height: 62.74px;
-  margin-top: 20px;
-  border: 2px 0px 0px 0px;
-  opacity: 0px;
-  background: rgba(0, 0, 0, 1);
-  border: 2px solid rgba(255, 255, 255, 1);
-}
-.seemoretext{
-  opacity: 1;
-  font-family: "Poppins",sans-serif;
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 30px;
-  text-align: center;
-  color: rgba(255, 255, 255, 1); 
-}
-/************************************************/
-
-/*Footer************************************/
-footer{
-  width: 100%;
-  height: auto;
-  margin-top: 70px;
-  background: rgba(248, 248, 248, 1);
-
-}
-.footer-row{
-  display: flex;
-  align-items:normal;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin-top: 50px;
-}
-.logo-foot{
-  width: 63.41px;
-  height: 77px;
-  margin-top: 20px;
-  margin-left: 44.68px;
-  gap: 0px;
-  opacity: 0px;
-
-}
-
-
-.companyfoot-name {
-  margin: 30px;
-  width: 250px;
-  height: 60px;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  font-size: 20px;
-  text-transform: uppercase;
-  color: #000000;
-}
-.quicklinks{
-  margin-right: 10px;
-  margin-top: 10px;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-}
-.quicklinks li{
-  margin-top: 10px;
-  gap: 10px;
-  opacity: 0px;
-  font-family: "Poppins",sans-serif;
   font-size: 12px;
   font-weight: 400;
   line-height: 18px;
   text-align: left;
-
-}
-.quicklinks li a{
-  text-decoration: none; 
-  color: inherit;
-}
-/***************************************/
-
-/*Asoociate**********************/
-.associate-title{
-  justify-content: center;
-  margin-top: 5%;
-  width: 100%;
-  height: 48px;
-  align-items: center;
-  font-family: "Poppins",sans-serif;
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 48px;
-  text-align: center;
-
-}
-.associate-containers{
-  flex-wrap: wrap;
-  margin-top: 40px;
-  display: flex; /* Use flexbox */
-  justify-content: center;
-  gap: 6%;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 1s ease-out, transform 1s ease-out;
-}
-.associate-containers.visible{
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.associate-container{
-  margin: 15px;
-  background: rgba(248, 248, 248, 1);
-  width: 240px;
-  height: 151.09px;
-  align-items: center;
-  border-bottom: 3px solid rgba(0, 0, 0, 1);
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-
-}
-.associate-container img{
-  width: 90.2px;
-  height: 103.49px;
-  margin-left: 80px;
-  margin-top: 25px;
-  gap: 0px;
-  opacity: 0px;
   
-}
-/****************************************************/
-
-/*About.......................................*/
-
-.about-content{
-  flex-wrap: wrap;
-  display: flex;
-  justify-content: space-between;
-  margin-top: 30px;
-  position: relative;
-  width: 100%;
-  height: auto;
-  background: rgba(249, 250, 252, 1);
-  padding: 40px; /* Add padding for better spacing */
-  box-sizing: border-box;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 1s ease-out, transform 1s ease-out;
-}
-.about-content1{
-  display: flex;
-  justify-content: space-between;
-  margin-top: 30px;
-  position: relative;
-  width: 100%;
-  height: auto;
-  background: rgba(249, 250, 252, 1);
-  padding: 40px; /* Add padding for better spacing */
-  box-sizing: border-box;
-  z-index: 1;
-}
-.about-content.visible{
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.about-text{
-  width: 567.69px;
-  height: auto;
-  font-family: "Poppins",sans-serif;
-  font-size: 16px;
-  margin-left: 10%;
-  font-weight: 400;
-  line-height: 24px;
-  text-align: left;
-  
-  
-}
-.aboutimg{
-  width: auto;
-  height: auto;
-  margin-left: 80px;
-}
-.aboutimg img{
-  margin-top: 60px;
-  width: 100%;
-  height: auto;
-}
-.bg-running{
-  position: absolute;
-  width: 624px;
-  height: 624px;
-  top: 0px;
-  left: 0px;
-  gap: 0px;
-  opacity: 0px;
-  z-index: 0; /* Ensures image is behind the text */
-
-
-}
-/******************************************************/
-
-/*executie************************************************/
-
-.executie-containers{
-  flex-wrap: wrap;
-  margin-top: 40px;
-  display: flex; /* Use flexbox */
-  justify-content: center;
-  gap: 2%;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 1s ease-out, transform 1s ease-out;
-  
-}
-.executie-containers.visible{
-  opacity: 1;
-  transform: translateY(0);
-}
-.executie-container{
-  margin: 15px;
-  width: 254px;
-  height: 348px;
-  gap: 0px;
-  border-radius:12px;
-  opacity: 0px;
-  border: 1px solid #909090;
-  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.1);
-
-}
-.exe-img{
-  width: 254px;
-  height: 259px;
-  gap: 0px;
-  border-radius: 12px 12px 0px 0px;
-  opacity: 0px;
-
-}
-.exe-text{
-  display: flex;
-  
-  width: 250.46px;
-  height: 25.06px;
-  margin-top: 15px;
-  margin-left: 15px;
-  font-family: "Poppins",sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 18px;
-  text-align: left;
-    
-}
-.exe-text img{
-  width: 12px;
-  height: 12px;
-  
-}
-.exe-phone{
-  margin-left: 28px;
-}
-.exe-email{
-  margin-left: 30px;
-}
-
-.exe-posi{
-  width: 150.79px;
-  height: 20.88px;
-  margin-left: 15px;
-  font-family: "Poppins",sans-serif;
-  font-size: 10px;
-  font-weight: 600;
-  line-height: 15px;
-  text-align: left;
-  color: rgba(163, 163, 163, 1);
-
-
-  
-}
-/*********************************************************/
-
-@media (max-width: 498px){
-  .sep{
-    margin-left: 80%;
+  font-family:"Poppins",sans-serif;
+  font-weight:400;
   }
-}
-@media (max-width: 700px){
-  .about-text{
-    width: 80%;
-  }
-  .menu-icon{
-    margin-left: 85%;
-  }
-  .login-button{
-    display: none;
-  }
-  .login-button1{
-    display: block;
-  }
-}
-
-@media (max-width: 768px) {
-  /* Mobile devices */
-  .aboutimg img{
-    display: none;
-  }
-  .top-row {
-    justify-content: center;
-    gap: 13px;
-}
-.footer-row{
-  justify-content: center;
-    gap: 13px;
-}
-.contact-info{
-  gap: 10px;
-  justify-content: center;
-}
-.sep{
-  display: flex;
-  
-}
-.menu-icon {
-    display: block;
-}
-.navbar {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-}
-.navbar.active {
+  .news-read{
     display: flex;
-}
-.nav-toggle {
-    display: block;
-}
-.news-title{
-  margin-top: 20px;
-}
-.news-containers{
-  margin-top: 20px;
-}
-  .news-container{
-    flex-direction: column;
-      align-items: center;
-      gap: 10px;
+    width: 130px;
+    height: 46px;
+    border-radius: 61px;
+    border: 1px solid black;
+    opacity: 0px;
+    margin-left: 10%;
+    margin-top: 10px;
+    justify-content: space-between;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    
   }
-  .hero-texts {
-      width: 80%;
+  .news-read:hover{
+    background-color: #000000;
+    color: white;
   }
-  .hero-text {
-      font-size: 24px;
-  }
-  .welcome, .spai {
-      font-size: 36px;
-      line-height: 40px;
-  }
-  .math {
-      display: none;
-  }
-}
-
-@media (min-width: 800px){
-  .welcome{
-    margin-left: -400px;
-  }
-  .jointoday{
-    margin-left: -400px;
-  }
-
-}
-@media (min-width: 1240px) {
- /* Desktop devices 1024*/
-
-.nav {
-  justify-content: space-between;
-}
-.navbar {
-  gap: 70px;
-}
-.navbar li {
-  display: flex;
-  font-weight: 400;
-  height: 30px;
-}
-.navbar a {
-  text-align: left;
-  font-weight: 400;
-}
-.dropdown-menu {
-  width: 100%;
-  height: 150.45px;
-}
-.welcome{
-  margin-left: -600px;
-}
-.jointoday{
-  margin-left: -600px;
-}
-.math {
-    width: 963.25px;
-    height: 151.09px;
-    top: 780px; /* Adjust the top position */
-    left: 50%; /* Center horizontally, but need to adjust for width */
-    transform: translateX(-50%); /* Center horizontally */
-    position: absolute; /* or relative, depending on your needs */
-    gap: 0px;
-    opacity: 1; /* Change to 1 if you want it fully visible */
-    background: rgba(253, 252, 252, 1);
+  .news-read p{
+    width: 42px;
+    height: 24px;
+    font-family: "Poppins",sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: left;
+    margin-left: 20%;
+    margin-top: 7%;
   
-    z-index: 2;
+    
   }
-
+  .news-read img{
+    width: 8.19px;
+    height: 8.19px;
+    margin-top: 13%;
+    margin-right: 20%;
+  
+  }
+  .default-image{
+    display: block;
+  }
+  .hover-image{
+    display: none;
+  }
+  
+  .news-read:hover .hover-image {
+    display: block;
+  }
+  
+  .news-read:hover .default-image {
+    display: none;
+  }
+.related{
+  display: none;
+  width: 100%;
 }
 
+  @media (max-width: 768px) {
 
+  
+  .news-title{
+    margin-top: 20px;
+  }
+  .news-containers{
+    margin-top: 20px;
+  }
+    .news-container{
+      flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+  }
+  @media (max-width: 1260px){
+    .related{
+      display: block;
+      margin-left: 10%;
+    }
+    .news-content{
+      flex-direction: column;
+      justify-content: center;
+  
+  }
+  .news-containers{
+    flex-direction: row;
+  }
+  
+  }
+  @media (max-width: 1024px){
+    .news-details{
 
-
-
-<div class="tab-content">
-    <!-- <form action="" method="post" name="qr_code" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="tab-panel active" id="all">
-            <div class="container">
-                <div class="qr-code">
-                    <img src="{% static 'image/qr.png' %}" alt="QR Code">
-                </div>
-                <div class="details">
-                    <label><strong>Reference ID:</strong></label>
-                    <input type="text" name="reference_id" placeholder="Enter Reference ID">
-
-                    <label><strong>Bank Name:</strong></label>
-                    <input type="text" name="bank_name" placeholder="Enter Bank Name">
-
-                    <label><strong>File:</strong></label>
-                    <input type="file" name="document" placeholder="browse">
-                </div>
-                <input type="hidden" name="payment_type" value="1">
-                <div style="display: flex; justify-content: center;width: 100%;">
-                    <a style="text-decoration: none; color: inherit;" href="">
-                        <div class="news-seemore">
-                            <div class="seemoretext">
-                                <input type="submit" value="Submit">
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-            </div>
-        </div>
-    </form> -->
-    <form action="" method="post" name="bank_trans" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="tab-panel active" id="upcoming">
-            <div class="container">
-                <!-- <div class="qr-code">
-                    <img src="images/qr.png" alt="QR Code">
-                </div> -->
-                <div class="details">
-                    <div style="padding: 5px;background-color:blanchedalmond;">
-                        <label><strong>Account No:</strong></label>
-                        <label><strong>2987 9807 7664 8689</strong></label><br>
-                        <!-- <input type="text" id="ref-id" name="ref-id" placeholder="Enter Reference ID"> -->
-
-                        <label><strong>IFCS: SBI00986s</strong></label><br>
-                        <!-- <input type="text" id="bank-name" name="bank-name" placeholder="Enter Bank Name"> -->
-                    </div>
-
-
-                    <label><strong>Transaction ID:</strong></label>
-                    <input type="text" name="transaction_id" placeholder="Enter Transaction ID">
-
-                    <label><strong>Bank Name:</strong></label>
-                    <input type="text" name="bank_name" placeholder="Enter Bank Name">
-
-                    <label><strong>File:</strong></label>
-                    <input type="file" name="document" placeholder="browse">
-
-                </div>
-                <input type="hidden" name="payment_type" value="2">
-                <div style="display: flex; justify-content: center;width: 100%;">
-                    <a style="text-decoration: none; color: inherit;" href="">
-                        <div class="news-seemore">
-                            <div class="seemoretext">
-                                <input type="submit" value="Submit">
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </form>
-</div>
-
-
-
-
-{% extends 'main.html' %}
-{% load static %}
-{% block cssfiles %}
-    <link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
-    <link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
-    <link rel="stylesheet" href="{% static 'css/sub/members.css' %}">
-{% endblock %}
-
-{% block header %}
-    {% include 'header.html' %}
-{% endblock %}
-
-{% block content %}
-<table>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th class="email">Email</th>
-            <th>Membership Date</th>
-            <th class="status">Active</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for user in members%}
-    <tr>
-            <td class="username">
-                {{user.name}}
-            </td>
-            <td class="email">{{user.email}}</td>
-            <td>{{user.membership_date}}</td>
-            <td class="status">{{user.active}}</td>
-            <td>
-                <a href="{% url 'life_member_info' user.uid %}">
-                    <div class="view">
-                        <img src="{% static 'image/eye.svg' %}" alt="">
-                        <p>View</p>
-                    </div>
-                </a>
-            </td>
-        </tr>
-    {% endfor %}
-
-
-    </tbody>
-</table>
-
-{% endblock %}
-
-
-{% block footer %}
-{% include 'footer.html' %}
-{% endblock %}
-{% block jsfile %}
-<script type="text/javascript">
-    document.addEventListener('DOMContentLoaded', function() {
-        document.querySelector('.menu-icon').addEventListener('click', function() {
-            document.querySelector('.navbar').classList.toggle('active');
-        });
-    });
-</script>
-    {% endblock %}
+      width: 100%;
+      height: auto;
+    }
+    .news-detail-img{
+      height: auto;
+    }
+    .news-detail-img img{
+      width: 100%;
+      height: auto;
+    }
+    .news-detail-content-text{
+      width: 100%;
+  }
+  }
+  @media (max-width: 820px){
+    .news-detail-img{
+      width: auto;
+    }
+    .news-detail-img img{
+      width: 600px;
+      height: auto;
+    }
+  }
+  @media (max-width: 680px){
+    .news-detail-img img{
+      width: 550px;
+    }
+  }
+  @media (max-width: 630px){
+      .news-detail-img img{
+        width: 500px;
+      }
+  }
+  @media (max-width: 590px){
+    .bg-running{
+      width: 80%;
+    }
+    .news-detail-img img{
+      width: 400px;
+    }
+}
+@media (max-width: 460px){
+  .news-detail-img img{
+    width: 350px;
+  }
+  .news-container{
+    margin-right: 10%;
+  }
+  .news-containers{
+    margin-top: 0%;
+  }
+}

@@ -234,7 +234,7 @@
 }
 
 .skill {
-    background: #85C08E;
+    background: #5cbd6a;
     padding: 13px 26px 13px 26px;
     gap: 10px;
     width: 320px;
@@ -247,22 +247,26 @@
     position: relative;
     transition: transform 0.3s ease;
 }
-.skill:hover{
+
+.skill:hover {
     transform: scale(1.02);
 }
+
 .skill-content {
     position: absolute;
     bottom: 50px;
     z-index: 2;
     width: 90%;
 }
-.skill-icon{
+
+.skill-icon {
     position: absolute;
     right: 20px;
     top: 20px;
     z-index: 1;
-    
+
 }
+
 .skill-content h4 {
     text-transform: uppercase;
     color: #FFFFFF;
@@ -300,3 +304,111 @@
     border-radius: 50%;
 }
 
+
+.major-image {
+    border-radius: 40px;
+    padding: 20px;
+    background-color: black;
+    box-sizing: border-box;
+    color: white;
+    width: 1000em;
+    box-sizing: border-box;
+}
+
+.major-pic {
+    width: 100%;
+    border-radius: 40px;
+
+}
+
+.major-pic img {
+    width: 100%;
+    height: auto;
+}
+
+.previleges {
+    padding: 20px 100px;
+}
+
+.pre-head {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.pre-head h1 {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 38.73px;
+    margin-bottom: 0%;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+
+}
+
+.pre-head p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.36px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+
+}
+
+.pre-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+@media (max-width: 720px){
+    .pre-content{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+.previl {
+
+    padding: 22px 36px 22px 36px;
+
+    border-radius: 8px;
+    background: #3B82F6;
+
+
+}
+
+.head-row {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 20px;
+}
+
+.head-row h3 {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24.2px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    margin: 0%;
+    color: #FFFFFF;
+
+
+}
+
+.previl p {
+    color: #FFFFFF;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 28px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    text-indent: 0%;
+
+}

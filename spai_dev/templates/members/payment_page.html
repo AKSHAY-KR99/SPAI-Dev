@@ -12,99 +12,76 @@
 {% endblock %}
 
 {% block content %}
-<!-- <div class="heading">
-    <div class="text">
-        Payment Method
-    </div>
-</div> -->
-<!-- <div class="news-tabs">
-    <ul class="tab-list">
-        <li class="tab-item active" data-tab="all">QR Code</li>
-        <li class="tab-item" data-tab="upcoming">Bank</li>
-
-    </ul>
-</div> -->
-<div class="about-container mission">
-    <div class="mission-top-row">
+<div class="payment">
+    <div class="payment-head">
         <h1>PAYMENT</h1>
     </div>
-    <div style="margin-top: 0px;" class="mission-vission">
-        <div class="m-v-container">
-            <div style="display: flex;align-items: center;">
-                <div class="mission-icon">
-                    <img class="pic-on" src="{% static 'image/payment1.svg' %}" alt="">
-                    <img class="pic-off" src="{% static 'image/payment2.svg' %}" alt="">
-                </div>
-                <h3 style="margin-left: 10px;">Payment method</h3>
-            </div>
-            <p><b><i style="font-size: 16px;line-height: 35px;">Note: Application form complete in all respects with two
-                    photographs with Life membership fee of Rs 2500 payment in Cash/Demand draft or online payment to
-                    Sports Psychology Association of India </i></b></p>
-            <form action="" method="post" name="bank_trans" enctype="multipart/form-data">
-                {% csrf_token %}
-
-                <div class="details">
-                    <div style="padding: 15px;background-color:whitesmoke;margin: 20px;width: fit-content;">
-                        <label><strong>Account No: 55042868323</strong></label><br>
-                        <!-- <label><strong></strong></label><br> -->
-                        <!-- <input type="text" id="ref-id" name="ref-id" placeholder="Enter Reference ID"> -->
-
-                        <label><strong>IFSC Code: SBIN0002875</strong></label>
-                        <label><strong>State Bank of India, Mela Road, Gwalior (MP)</strong></label>
-
-                        <!-- <input type="text" id="bank-name" name="bank-name" placeholder="Enter Bank Name"> -->
-                    </div>
-                    Membership form may be handed over to or posted to:
-                    <div class="post-address-wrapper">
-                        <div class="postaddress">
-                            <b> Dr M K Singh <br>
-                                Finance Secretary, SPAI <br></b>
-                            Professor, Department of Sports Psychology <br>
-                            LNIPE, Gwalior <br>
-                            Mob: 7587300426 <br>
-                        </div>
-                        <div class="postaddress">
-                            <b>Dr Anil Ramachandran <br>
-                                Secretary General, SPAI <br></b>
-                            Professor & Head <br>
-                            School of Physical Education and Sports <br>
-                            Sciences, Kannur University, Kannur, Kerala <br>
-                            Mob: 9447027990 <br>
-                        </div>
-                    </div>
-                    <div class="input-wrapper">
-                        <div>
-                            Transaction ID:
-                            <input type="text" name="transaction_id" placeholder="Enter Transaction ID">
-                        </div>
-
-                        <div>
-                            Bank Name:
-                            <input type="text" name="bank_name" placeholder="Enter Bank Name">
-                        </div>
-
-                        <div>
-                            File:
-                            <input type="file" id="document" name="document" placeholder="browse">
-                            <!-- <label for="document" class="image-label">Choose an image</label> -->
-                        </div>
-
-                    </div>
-
-
-                </div>
-                <input type="hidden" name="payment_type" value="2">
-                <div class="payment-submit">
-
-                    <input type="submit" value="Submit">
-
-                </div>
-
-            </form>
+    <div class="payment-container">
+        <h3>Sports Psychology Association Membership</h3>
+        <h4>Complete your life membership payment of ₹2,500</h4>
+        <div class="payment-instructions">
+            <h5>Payment Instructions</h5>
+            <h4>Please complete the application form with two photographs and submit the life membership fee of
+                <b>₹2,500</b> via
+                Cash/Demand draft or Online payment</h4>
         </div>
+        <div class="acc_details">
+            <div class="acc_line">
+                <h5>Account Number</h5>
+                <h6>55042868323</h6>
+            </div>
+            <div class="acc_line">
+                <h5>IFSC Code</h5>
+                <h6>SBIN0002875</h6>
+            </div>
+            <div class="acc_line" style="border-bottom: 0px solid #D0D0D0;padding-bottom: 0px;margin-bottom: 0%;">
+                <h5>Bank & Branch</h5>
+                <h6>State Bank of India, Mela Road, Gwalior (MP)</h6>
+            </div>
+        </div>
+        <form action="" method="post" name="bank_trans" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="payment-inputs">
+                <h4>Transaction Details</h4>
+                <h6>Transaction ID</h6>
+                <input type="text" name="transaction_id" placeholder="Enter Transaction ID">
+                <h6>Bank Name</h6>
+                <input type="text" name="bank_name" placeholder="Enter Bank Name">
+                <h6>Upload Payment Proof</h6>
+                <input type="file" id="document" name="document" placeholder="browse">
+                <input type="hidden" name="payment_type" value="1">
+                <div class="payment-submit">
+                    <input type="submit" value="Submit Payment Details">
+                </div>
+                
+            </div>
+        </form>
+        <div class="payment-inputs">
+            <h4>Submit Documents To</h4>
+            <div class="payment-addresses">
+                <div class="payment-address">
+                    <b> Dr M K Singh <br>
+                        Finance Secretary, SPAI <br></b>
+                    Professor, Department of Sports Psychology <br>
+                    LNIPE, Gwalior <br>
+                    Mob: 7587300426 <br>
+                </div>
+                <div class="payment-address">
+                    <b>Dr Anil Ramachandran <br>
+                        Secretary General, SPAI <br></b>
+                    Professor & Head <br>
+                    School of Physical Education and Sports <br>
+                    Sciences, Kannur University, Kannur, Kerala <br>
+                    Mob: 9447027990 <br>
+                </div>
+            </div>
+        </div>
+
     </div>
 
+
 </div>
+
 
 
 {% endblock %}

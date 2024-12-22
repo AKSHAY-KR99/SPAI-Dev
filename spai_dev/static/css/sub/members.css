@@ -60,7 +60,7 @@ a{
     padding: 10px 20px;
     cursor: pointer;
     border: 1px solid #ddd;
-    border-bottom: none;
+    
     background-color: #f5f5f5;
     margin-right: 10px;
     animation: fadeIn 1s ease-in-out;
@@ -68,7 +68,9 @@ a{
     animation-fill-mode: forwards; /* Ensure final state persists */
     opacity: 0; /* Initial state */
     transition: all 0.3s ease;
-    border-radius: 7px 7px 0px 0px;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 500;
   }
   
   @keyframes fadeIn {
@@ -92,10 +94,12 @@ a{
 }
 
   .tab-item.active {
-    background-color: #fff;
-    border-bottom: 2px solid #007bff;
+    background-color: black;
+    color: white;
+    /* border-bottom: 2px solid #007bff; */
     transform: scale(1.1);
     transition: all 0.3s ease;
+    font-weight: 600;
   }
   @media (max-width: 550px){
     .tab-item{

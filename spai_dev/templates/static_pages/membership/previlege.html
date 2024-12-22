@@ -12,13 +12,13 @@
 {% endblock %}
 
 {% block content %}
-<div class="hero">
+<!-- <div class="hero">
     <div class="hero-pic">
-        
-        <!-- <img class="full-width-img" src="{% static 'image/about1.0.png' %}" alt="Image 2"> -->
-        <img class="full-width-img" src="{% static 'image/about_jump.jpeg' %}" alt="Image 2">
-        <img src="{% static 'image/javalin.png' %}" alt="" class="about2 on">
-        <img src="{% static 'image/javalin.png' %}" alt="" class="about2 of">
+
+
+        <img class="full-width-img" src="{% static 'image/basket.jpg' %}" alt="Image 2">
+        <img src="{% static 'image/about2.1.png' %}" alt="" class="about2 on">
+        <img src="{% static 'image/about2.png' %}" alt="" class="about2 of">
 
     </div>
     <div class="about-h-texts">
@@ -27,7 +27,76 @@
         <h2>MEMBERSHIP <br>
             PRIVILEGES</h2>
     </div>
-</div>
+</div> -->
+<!-- <div class="previleges">
+    <div class="pre-head">
+        <h1>SPAI MEMBERSHIP PRIVILEGES</h1>
+        <p>Enhance your career in sports psychology with these exclusive benefits from the Sports Psychology Association
+            of India (SPAI).</p>
+    </div>
+    <div class="pre-content">
+        <div class="previl">
+            <div class="head-row">
+                <img src="{% static 'image/pre.svg' %}" alt="">
+                <h3>Professional Networking</h3>
+            </div>
+            <p>SPAI provides opportunities for
+                members to connect with national and international professionals in sports psychology,
+                through
+                affiliations with organizations like the International Society of Sports Psychology and
+                Asian
+                South-Pacific Association of Sports psychology.
+            </p>
+        </div>
+        <div class="previl" style="background: #22C55E;">
+            <div class="head-row">
+                <img src="{% static 'image/pre.svg' %}" alt="">
+                <h3>Research Access</h3>
+            </div>
+            <p>SPAI offers members
+                access to the latest research in sports psychology, including journals and publications.
+                Members
+                also get the opportunity to publish their own work in SPAI journal, contributing to the
+                academic
+                body of sports psychology knowledge in India.
+            </p>
+        </div>
+        <div class="previl" style="background: #A855F7;">
+            <div class="head-row">
+                <img src="{% static 'image/pre.svg' %}" alt="">
+                <h3>Training and Education</h3>
+            </div>
+            <p>Sports Psychology actively promote sports psychology education in
+                India by supporting the creation of certified sports psychologists. Members can benefit from
+                these
+                initiatives by gaining access to specialized training and certification courses.
+            </p>
+        </div>
+        <div class="previl" style="background: #F97316;">
+            <div class="head-row">
+                <img src="{% static 'image/pre.svg' %}" alt="">
+                <h3>Awards and Recognition</h3>
+            </div>
+            <p>SPAI acknowledges the contributions
+                of its members through various awards such as the Best Research paper, Lifetime Achievement
+                Award,
+                and Scientist Award
+            </p>
+        </div>
+    </div>
+    <div class="pre-head">
+        <p>Join SPAI to contribute to the growth of sports psychology in India while advancing your career through
+            research, education, and networking opportunities..</p>
+    </div>
+    <div class="button-1-wrapper">
+        <a style="text-decoration: none;" href="{% url 'user_registration' %}">
+            <div class="button-1" style="border-radius: 62px;">
+                Join as Member
+            </div>
+        </a>
+    </div>
+
+</div> -->
 <div class="about-container mission">
     <div class="mission-top-row">
         <h1 style="margin-bottom: 0%;">SPAI MEMBERSHIP PRIVILEGES</h1>
@@ -42,12 +111,12 @@
                 <h3 style="margin-left: 10px;">PRIVILEGES</h3>
             </div>
             <!-- <p style="text-indent: 0%;margin-top: 0%;margin-bottom: 0%;"> -->
-                <i style="font-size: 16px;">The Sports
-                    psychology Association of India (SPAI) offers numerous privileges
-                    to its members, which are designed to enhance the growth of sports psychology and provide critical
-                    support for athletes and professionals in the field. Membership privileges are: </i>
+            <p style="font-size: 16px;margin-top: 0%;">The Sports
+                psychology Association of India (SPAI) offers numerous privileges
+                to its members, which are designed to enhance the growth of sports psychology and provide critical
+                support for athletes and professionals in the field. Membership privileges are: </p>
             <!-- </p> -->
-            <ol class="animated-list1">
+            <!-- <ol class="animated-list1">
                 <li><b>Professional Networking:</b> Sports Psychology Association of India provides opportunities for
                     members to connect with national and international professionals in sports psychology, through
                     affiliations with organizations like the International Society of Sports Psychology and Asian
@@ -62,17 +131,67 @@
                 <li><b>Awards and Recognition:</b> Sports Psychology Association of India acknowledges the contributions
                     of its members through various awards such as the Best Research paper, Lifetime Achievement Award,
                     and Scientist Award. </li>
-            </ol>
+            </ol> -->
+            <div class="pre-content">
+                <div class="previl">
+                    <div class="head-row">
+                        <img src="{% static 'image/pre.svg' %}" alt="">
+                        <h3>Professional Networking</h3>
+                    </div>
+                    <p>SPAI provides opportunities for
+                        members to connect with national and international professionals in sports psychology,
+                        through
+                        affiliations with organizations like the International Society of Sports Psychology and
+                        Asian
+                        South-Pacific Association of Sports psychology.
+                    </p>
+                </div>
+                <div class="previl" style="background: #22C55E;">
+                    <div class="head-row">
+                        <img src="{% static 'image/pre.svg' %}" alt="">
+                        <h3>Research Access</h3>
+                    </div>
+                    <p>SPAI offers members
+                        access to the latest research in sports psychology, including journals and publications.
+                        Members
+                        also get the opportunity to publish their own work in SPAI journal, contributing to the
+                        academic
+                        body of sports psychology knowledge in India.
+                    </p>
+                </div>
+                <div class="previl" style="background: #A855F7;">
+                    <div class="head-row">
+                        <img src="{% static 'image/pre.svg' %}" alt="">
+                        <h3>Training and Education</h3>
+                    </div>
+                    <p>Sports Psychology actively promote sports psychology education in
+                        India by supporting the creation of certified sports psychologists. Members can benefit from
+                        these
+                        initiatives by gaining access to specialized training and certification courses.
+                    </p>
+                </div>
+                <div class="previl" style="background: #F97316;">
+                    <div class="head-row">
+                        <img src="{% static 'image/pre.svg' %}" alt="">
+                        <h3>Awards and Recognition</h3>
+                    </div>
+                    <p>SPAI acknowledges the contributions
+                        of its members through various awards such as the Best Research paper, Lifetime Achievement
+                        Award,
+                        and Scientist Award
+                    </p>
+                </div>
+            </div>
             <p>These privileges position Sports Psychology Association of India to significantly contribute to the
                 growth and development of sports psychology in India, while advancing their own careers through
                 research, education and networking opportunities. </p>
 
             <div class="button-1-wrapper">
-                    <a style="text-decoration: none;" href="{% url 'user_registration' %}">
-                        <div class="button-1">
-                            Join as Member
-                        </div>
-                    </a>
+                <a style="text-decoration: none;" href="{% url 'user_registration' %}">
+                    <div class="button-1" style="border-radius: 62px;">
+                        Join as Member
+                    </div>
+                </a>
             </div>
         </div>
 
