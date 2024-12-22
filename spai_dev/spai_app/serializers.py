@@ -20,6 +20,6 @@ class LifeMembersSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = LifeMembers
-        fields = ['name', 'address', 'mobile', 'email', 'membership_date', 'upload_date', 'update_date', 'active',
-                  'uid']
+        fields = ['reg_no', 'name', 'address', 'mobile', 'email', 'membership_date', 'upload_date', 'update_date',
+                  'active', 'uid', 'lm_key']
         read_only_fields = ['upload_date', 'update_date']

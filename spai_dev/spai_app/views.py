@@ -1,4 +1,5 @@
 import datetime
+from itertools import chain
 
 from django.contrib import messages
 from django.conf import settings
@@ -686,14 +687,15 @@ def get_user_full_details(req, slug):
         user_data["payment_doc"] = payment_dict.get("document", None)
         user_data["payment_date"] = payment_data.payment_reported_date
         key = False
-        if req.user.user_role == settings.ADMIN_ROLE_VALUE and not user.admin_approved and user.approval_percentage == 100 and user.status == settings.EX_2_APPROVED:
-            key = True
-        elif req.user.executive in [settings.SECRETARY, settings.PRESIDENT]:
-            if (user.approval_percentage == 0 and user.status == settings.PAYMENT_DONE) or \
-                    (user.approval_percentage == 50 and user.status == settings.EX_1_APPROVED):
+        if req.user.is_authenticated:
+            if req.user.user_role == settings.ADMIN_ROLE_VALUE and not user.admin_approved and user.approval_percentage == 100 and user.status == settings.EX_2_APPROVED:
                 key = True
-            elif user.approval_percentage == 100:
-                key = False
+            elif req.user.executive in [settings.SECRETARY, settings.PRESIDENT]:
+                if (user.approval_percentage == 0 and user.status == settings.PAYMENT_DONE) or \
+                        (user.approval_percentage == 50 and user.status == settings.EX_1_APPROVED):
+                    key = True
+                elif user.approval_percentage == 100:
+                    key = False
         user_data["key"] = key
 
     return user_data
@@ -857,3 +859,26 @@ def search_view(request):
             Q(title__icontains=query) | Q(location__icontains=query)
         )
     return render(request, 'mainpages/search_results.html', {'results': results, 'query': query})
+
+
+def search_lm(request):
+    query = request.GET.get('query', '')
+    user_results = []
+    lm_results = []
+    if query:
+        lm_results = LifeMembers.objects.filter(
+            Q(reg_no__icontains=query) |
+            Q(name__icontains=query) |
+            Q(email__icontains=query) |
+            Q(membership_date__icontains=query)
+        )
+
+        # Search in User model
+        user_results = User.objects.filter(
+            Q(reg_no__icontains=query) |
+            Q(first_name__icontains=query) |
+            Q(email__icontains=query) |
+            Q(date_created__icontains=query)
+        )
+    return render(request, 'mainpages/lm_search_results.html',
+                  {'user_results': user_results, 'lm_results': lm_results, 'query': query})

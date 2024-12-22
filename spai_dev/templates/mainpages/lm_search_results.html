@@ -1,0 +1,88 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block cssfiles %}
+<link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/members.css' %}">
+{% endblock %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="life-h">
+    <h1 style="text-transform: none;">Search result for {{query}}</h1>
+    <form class="search-wrapper" style="margin-bottom:15px;" method="get" action="{% url 'search_lm' %}">
+        <input type="text" name="query" class="search-input" placeholder="search life members..."
+               value="{{ query }}">
+        <button type="submit" class="search-button">
+            <img src="{% static 'image/search.svg' %}" alt="Search">
+        </button>
+    </form>
+</div>
+
+<table class="life-member-table">
+    <thead>
+        <tr>
+            <th>Registration No</th>
+            <th>Name</th>
+            <th class="email">Email</th>
+            <th>Register Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+
+    {% for user in user_results %}
+    <tr>
+        <td class="email">{{user.reg_no}}</td>
+            <td class="username">
+                <img src="{% static 'image/profile-icon.svg' %}" alt="photo">
+                {{user.first_name}} {{user.last_name}}
+            </td>
+            <td class="email">{{user.email}}</td>
+            <td>{{user.date_created}}</td>
+            <td>
+                <a href="{% url 'individual_user_details' user.slug_value %}">
+                    <div class="view">
+                        <img src="{% static 'image/eye.svg' %}" alt="">
+                        <p>View</p>
+                    </div>
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+
+    {% for user in lm_results %}
+    <tr>
+        <td class="email">{{user.reg_no}}</td>
+            <td class="username">
+                <img src="{% static 'image/profile-icon.svg' %}" alt="photo">
+                {{user.name}}
+            </td>
+            <td class="email">{{user.email}}</td>
+            <td>{{user.membership_date}}</td>
+            <td>
+                <a href="{% url 'life_member_info' user.uid %}">
+                    <div class="view">
+                        <img src="{% static 'image/eye.svg' %}" alt="">
+                        <p>View</p>
+                    </div>
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+
+
+    </tbody>
+</table>
+
+{% endblock %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}
+{% block jsfile %}
+<script type="text/javascript" src="{% static 'js/sub/news.js' %}"></script>
+{% endblock %}

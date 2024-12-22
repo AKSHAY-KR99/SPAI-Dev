@@ -186,6 +186,7 @@ class PaymentModel(models.Model):
 
 
 class LifeMembers(models.Model):
+    reg_no = models.CharField(max_length=15, null=True, blank=True)
     name = models.CharField(max_length=50, null=True, blank=True)
     address = models.TextField(null=True, blank=True)
     mobile = models.CharField(max_length=30, null=True, blank=True)
@@ -195,6 +196,7 @@ class LifeMembers(models.Model):
     update_date = models.DateTimeField(null=True, blank=True)
     active = models.BooleanField(null=True, blank=True)
     uid = models.SlugField(auto_created=True, blank=True, null=True, unique=True)
+    lm_key = models.BooleanField(default=True)
 
     def save(self, *args, **kwargs):
         if not self.uid:
