@@ -585,7 +585,7 @@ def certificate(request, *args, **kwargs):
             user = User.objects.get(slug_value=slug)
         else:
             user = User.objects.get(slug_value=request.user.slug_value)
-        context = {"name": user.first_name, "email": user.email, "date": user.date_created}
+        context = {"name": f"{user.first_name} {user.last_name}", "reg_no": user.reg_no}
         template_path = 'pdf_template.html'
         template = get_template(template_path)
         html = template.render(context)
