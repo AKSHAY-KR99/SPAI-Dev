@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
 <link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
 <link rel="stylesheet" href="{% static 'css/sub/members.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/paginator.css' %}">
 {% endblock %}
 
 {% block header %}
@@ -117,6 +118,41 @@
     </tbody>
 </table>
 
+<div id="life-members-paginator" class="pagination" style="display: none;">
+    <ul>
+        {% if life_members.has_previous %}
+            <li><a href="?page=1&active_tab=life">First</a></li>
+            <li><a href="?page={{ life_members.previous_page_number }}&active_tab=life">Previous</a></li>
+        {% else %}
+            <li class="disabled">First</li>
+            <li class="disabled">Previous</li>
+        {% endif %}
+
+        {% with life_members.number as current_page %}
+            {% with current_page|add:-1 as start_page %}
+                {% for num in life_members.paginator.page_range %}
+                    {% if num >= start_page and num < start_page|add:3 %}
+                        {% if num == life_members.number %}
+                            <li class="active"><span>{{ num }}</span></li>
+                        {% else %}
+                            <li><a href="?page={{ num }}&active_tab=life">{{ num }}</a></li>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            {% endwith %}
+        {% endwith %}
+
+        {% if life_members.has_next %}
+            <li><a href="?page={{ life_members.next_page_number }}&active_tab=life">Next</a></li>
+            <li><a href="?page={{ life_members.paginator.num_pages }}&active_tab=life">Last</a></li>
+        {% else %}
+            <li class="disabled">Next</li>
+            <li class="disabled">Last</li>
+        {% endif %}
+    </ul>
+</div>
+
+
 <table class="table" id="active-m">
     <thead>
         <tr>
@@ -207,4 +243,53 @@
 {% endblock %}
 {% block jsfile %}
 <script type="text/javascript" src="{% static 'js\sub\life_members.js' %}"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const tabs = document.querySelectorAll('.tab-item');
+    const tables = document.querySelectorAll('.table');
+    const paginator = document.getElementById('life-members-paginator'); // Ensure this matches the ID in your paginator div
+
+    // Function to set active tab based on URL parameter
+    function setActiveTab() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const activeTab = urlParams.get('active_tab') || 'new'; // Default to 'new' if no param is found
+
+        // Show corresponding table
+        tabs.forEach(tab => {
+            if (tab.getAttribute('data-tab') === activeTab) {
+                tab.classList.add('active');
+                document.getElementById(activeTab).classList.add('active');
+                paginator.style.display = activeTab === 'life' ? 'block' : 'none'; // Show paginator for 'life'
+            } else {
+                tab.classList.remove('active');
+                document.getElementById(tab.getAttribute('data-tab')).classList.remove('active');
+            }
+        });
+    }
+
+    setActiveTab(); // Set the active tab on load
+
+    // Add click event to each tab
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function () {
+            // Update active tab
+            tabs.forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+            const activeTab = this.getAttribute('data-tab');
+
+            // Show corresponding table
+            tables.forEach(table => {
+                if (table.id === activeTab) {
+                    table.classList.add('active');
+                } else {
+                    table.classList.remove('active');
+                }
+            });
+
+            // Show paginator only for the 'life' tab
+            paginator.style.display = activeTab === 'life' ? 'block' : 'none';
+        });
+    });
+});
+</script>
 {% endblock %}

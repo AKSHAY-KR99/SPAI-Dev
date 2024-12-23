@@ -1,0 +1,58 @@
+#life-members-paginator {
+    display: flex;               
+    justify-content: center;     
+    margin: 20px auto;          
+    width: fit-content;         
+}
+
+.pagination ul {
+    list-style: none;            /* Remove bullet points */
+    padding: 0;                  /* Remove padding */
+    display: flex;               /* Arrange items horizontally */
+    gap: 10px;                /* Add space between items */
+}
+
+.pagination li {
+    display: inline-block;
+    margin: 0;
+}
+
+.pagination a {
+    font-size: 12px;
+    font-weight: 500;
+    text-decoration: none;       /* Remove underline */
+    color: #000000;              /* Primary color for links */
+    border: 1px solid #dee2e6;   /* Light border */
+    padding: 8px 12px;          /* Add some padding */
+    border-radius: 4px;         /* Rounded corners */
+    transition: background-color 0.3s, color 0.3s; /* Smooth hover effects */
+}
+
+.pagination a:hover {
+    background-color: #000000;   /* Background color on hover */
+    color: white;                /* White text on hover */
+}
+
+.pagination .active span {
+    background-color: #000000;   /* Active page background */
+    color: white;                /* White text for active page */
+    border: 1px solid #000000;   /* Match border color */
+    padding: 8px 12px;          /* Match padding with links */
+    border-radius: 4px; 
+    font-size: 13px;  
+    font-weight: 500;      /* Rounded corners */
+}
+
+.pagination .disabled {
+    color: #6c757d;              /* Grey color for disabled items */
+    border: 1px solid #dee2e6;   /* Light border */
+    padding: 8px 12px;          /* Add some padding */
+    border-radius: 4px;         /* Rounded corners */
+    pointer-events: none;  
+    font-size: 13px;  
+    font-weight: 500;     /* Disable pointer events */
+}
+
+.pagination .disabled:hover {
+    background-color: transparent; /* No hover effect for disabled */
+}
