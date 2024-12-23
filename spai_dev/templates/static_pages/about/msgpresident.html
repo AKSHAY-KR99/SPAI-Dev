@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="message">
+<div class="message animated">
     <div class="msg-head">
         <h1>Message From President</h1>
     </div>
@@ -62,30 +62,21 @@
 {% block jsfile %}
 <script>
     document.addEventListener("DOMContentLoaded", () => {
-        const messagesContainers = document.querySelectorAll('.messages');
+        const message = document.querySelector('.message');
 
-        if (messagesContainers.length > 0) {
-            console.log("Messages containers found.");
-
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        console.log("Messages container is in view. Adding animation.");
-                        entry.target.classList.add('animate');
-                    } else {
-                        console.log("Messages container is out of view. Removing animation.");
-                        entry.target.classList.remove('animate');
-                    }
-                });
-            }, { threshold: 0.01 });
-
-            messagesContainers.forEach(container => {
-                observer.observe(container);
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible'); // Add class when visible
+                } else {
+                    entry.target.classList.remove('visible'); // Optional: Remove when not visible
+                }
             });
-        } else {
-            console.error("No messages containers found.");
-        }
+        }, { threshold: 0.1 }); // Trigger when 10% of the element is visible
+
+        observer.observe(message);
     });
+
     document.addEventListener('DOMContentLoaded', function () {
         document.querySelector('.menu-icon').addEventListener('click', function () {
             document.querySelector('.navbar').classList.toggle('active');

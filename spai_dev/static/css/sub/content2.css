@@ -305,26 +305,7 @@
 }
 
 
-.major-image {
-    border-radius: 40px;
-    padding: 20px;
-    background-color: black;
-    box-sizing: border-box;
-    color: white;
-    width: 1000em;
-    box-sizing: border-box;
-}
 
-.major-pic {
-    width: 100%;
-    border-radius: 40px;
-
-}
-
-.major-pic img {
-    width: 100%;
-    height: auto;
-}
 
 .previleges {
     padding: 20px 100px;
@@ -411,4 +392,49 @@
     text-decoration-skip-ink: none;
     text-indent: 0%;
 
+}
+.major{
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    
+}
+.major-content{
+    padding: 20px 60px;
+    height: 600px; 
+    overflow-y: auto; 
+    overflow-x: hidden; 
+    box-sizing: border-box;
+}
+.major-pic-wrapper{
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: black;
+
+}
+.major-pic-wrapper h4{
+    background-color: #ff0;
+    padding: 10px;
+}
+.major-pic-wrapper img{
+    width: 100%;
+    height: auto;
+}
+/* .major-texts{
+    background-image: url('./img/image.png');
+    background-repeat: no-repeat;
+    background-size:contain;
+} */
+.major-texts h1{
+    text-transform: uppercase;
+    font-weight: 800;
+}
+.major-texts p{
+    font-weight: 400;
+}
+@media(max-width:886px){
+    .major{
+        display: flex;
+        flex-direction: column-reverse;
+        
+    }
 }

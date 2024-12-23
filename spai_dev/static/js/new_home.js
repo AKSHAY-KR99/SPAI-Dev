@@ -181,27 +181,18 @@ document.querySelector('.menu-icon').addEventListener('click', function () {
 /****messages */
 /*MESGAGE*******************************************/
 document.addEventListener("DOMContentLoaded", () => {
-    const messagesContainers = document.querySelectorAll('.messages');
+    const messages = document.querySelectorAll('.message'); // Select all message containers
 
-    if (messagesContainers.length > 0) {
-        console.log("Messages containers found.");
-
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    console.log("Messages container is in view. Adding animation.");
-                    entry.target.classList.add('animate');
-                } else {
-                    console.log("Messages container is out of view. Removing animation.");
-                    entry.target.classList.remove('animate');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        messagesContainers.forEach(container => {
-            observer.observe(container);
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible'); // Add class when visible
+            } else {
+                entry.target.classList.remove('visible'); // Optional: Remove when not visible
+            }
         });
-    } else {
-        console.error("No messages containers found.");
-    }
+    }, { threshold: 0.2 }); // Trigger when 20% of the element is visible
+
+    // Observe each message container
+    messages.forEach(message => observer.observe(message));
 });
