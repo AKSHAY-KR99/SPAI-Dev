@@ -10,8 +10,8 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import get_template
 from django.urls import reverse
-from django.core.paginator import Paginator
 from datetime import datetime
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from . import models, forms
 from .models import GalleryManagement, User, EventManagement, UserDetailModel, GalleryImage, PaymentModel
@@ -776,8 +776,24 @@ def life_members_get(request):
             active_members.append(user_data)
         else:
             in_active_members.append(user_data)
-    context = {'life_members': life_members, 'new_members': new_members, 'active': active_members,
-               'non_active': in_active_members}
+
+    # Add pagination for life_members
+    paginator = Paginator(life_members, 20)
+    page = request.GET.get('page')
+
+    try:
+        paginated_life_members = paginator.page(page)
+    except PageNotAnInteger:
+        paginated_life_members = paginator.page(1)
+    except EmptyPage:
+        paginated_life_members = paginator.page(paginator.num_pages)
+
+    context = {
+        'life_members': paginated_life_members,
+        'new_members': new_members,
+        'active': active_members,
+        'non_active': in_active_members,
+    }
     return render(request, 'members/life_members.html', context)
 
 
