@@ -46,11 +46,11 @@
 <table class="table active" id="new">
     <thead>
         <tr>
-            <th onclick="sortTable(0)">Registration No <span class="sort-icon">&#9650;&#9660;</span></th>
-            <th onclick="sortTable(1)">Username<span class="sort-icon">&#9650;&#9660;</span></th>
+            <th onclick="sortTable('new', 0);">Registration No <span class="sort-icon">&#9650;&#9660;</span></th>
+            <th onclick="sortTable('new',1)">Username<span class="sort-icon">&#9650;&#9660;</span></th>
             <th class="email">Email</th>
-            <th onclick="sortTable(3)">First Name <span class="sort-icon">&#9650;&#9660;</span></th>
-            <th onclick="sortTable(4)">Register Date <span class="sort-icon">&#9650;&#9660;</span></th>
+            <th onclick="sortTable('new',3)">First Name <span class="sort-icon">&#9650;&#9660;</span></th>
+            <th onclick="sortTable('new',4)">Register Date <span class="sort-icon">&#9650;&#9660;</span></th>
             <th class="status">Status</th>
             <th>Actions</th>
         </tr>
@@ -86,10 +86,10 @@
 <table class="table" id="life">
     <thead>
         <tr>
-            <th>Registration No</th>
-            <th onclick="sortTable(0)">Name <span class="sort-icon">&#9650;&#9660;</span></th>
+            <th onclick="sortTable('life',0)">Registration No<span class="sort-icon">&#9650;&#9660;</span></th>
+            <th onclick="sortTable('life',1)">Name <span class="sort-icon">&#9650;&#9660;</span></th>
             <th class="email">Email</th>
-            <th onclick="sortTable(2)">Membership Date<span class="sort-icon">&#9650;&#9660;</span></th>
+            <th onclick="sortTable('life',3)">Membership Date<span class="sort-icon">&#9650;&#9660;</span></th>
             <th class="status">Active</th>
             <th>Action</th>
         </tr>
@@ -120,11 +120,11 @@
 <table class="table" id="active-m">
     <thead>
         <tr>
-            <th onclick="sortTable(0)">Registration No <span class="sort-icon">&#9650;&#9660;</span></th>
-            <th onclick="sortTable(1)">Username <span class="sort-icon">&#9650;&#9660;</span></th>
+            <th onclick="sortTable('active-m',0)">Registration No <span class="sort-icon">&#9650;&#9660;</span></th>
+            <th onclick="sortTable('active-m',1)">Username <span class="sort-icon">&#9650;&#9660;</span></th>
             <th class="email">Email</th>
-            <th onclick="sortTable(3)">First Name</th>
-            <th onclick="sortTable(4)">Register Date <span class="sort-icon">&#9650;&#9660;</span></th>
+            <th onclick="sortTable('active-m',3)">First Name</th>
+            <th onclick="sortTable('active-m',4)">Register Date <span class="sort-icon">&#9650;&#9660;</span></th>
             <th class="status">Status</th>
             <th>Actions</th>
         </tr>
@@ -161,11 +161,11 @@
 <table class="table" id="non-active">
     <thead>
         <tr>
-            <th onclick="sortTable(0)">Registration No <span class="sort-icon">&#9650;&#9660;</span></th>
-            <th onclick="sortTable(1)">Username <span class="sort-icon">&#9650;&#9660;</span></th>
+            <th onclick="sortTable('non-active',0)">Registration No <span class="sort-icon">&#9650;&#9660;</span></th>
+            <th onclick="sortTable('non-active',1)">Username <span class="sort-icon">&#9650;&#9660;</span></th>
             <th class="email">Email</th>
-            <th onclick="sortTable(3)">First Name</th>
-            <th onclick="sortTable(4)">Register Date <span class="sort-icon">&#9650;&#9660;</span></th>
+            <th onclick="sortTable('non-active',3)">First Name</th>
+            <th onclick="sortTable('non-active',4)">Register Date <span class="sort-icon">&#9650;&#9660;</span></th>
             <th class="status">Status</th>
             <th>Actions</th>
         </tr>
@@ -206,61 +206,5 @@
 {% include 'footer.html' %}
 {% endblock %}
 {% block jsfile %}
-<script>
-    let ascending = true;
-
-    function sortTable(columnIndex) {
-        const table = document.getElementById("new");
-        const rows = Array.from(table.tBodies[0].rows);
-        const sortFunction = (a, b) => {
-            let valA = a.cells[columnIndex].textContent.trim();
-            let valB = b.cells[columnIndex].textContent.trim();
-
-            // Parse as numbers or dates if necessary
-            if (!isNaN(valA) && !isNaN(valB)) {
-                valA = parseFloat(valA);
-                valB = parseFloat(valB);
-            } else if (columnIndex === 4) { // Assuming column 4 is the date
-                valA = new Date(valA);
-                valB = new Date(valB);
-            }
-
-            if (valA < valB) return ascending ? -1 : 1;
-            if (valA > valB) return ascending ? 1 : -1;
-            return 0;
-        };
-
-        rows.sort(sortFunction);
-
-        // Re-append sorted rows to the table
-        rows.forEach(row => table.tBodies[0].appendChild(row));
-
-        // Toggle sorting order for next click
-        ascending = !ascending;
-    }
-</script>
-<script type="text/javascript">
-    document.addEventListener('DOMContentLoaded', function () {
-        document.querySelector('.menu-icon').addEventListener('click', function () {
-            document.querySelector('.navbar').classList.toggle('active');
-        });
-    });
-</script>
-<script>
-    document.querySelectorAll('.tab-item').forEach(item => {
-        item.addEventListener('click', function () {
-            // Remove active class from all tabs
-            document.querySelectorAll('.tab-item').forEach(tab => tab.classList.remove('active'));
-            // Add active class to the clicked tab
-            this.classList.add('active');
-
-            // Hide all tab panels
-            document.querySelectorAll('.table').forEach(panel => panel.classList.remove('active'));
-            // Show the selected tab panel
-            const targetPanel = document.getElementById(this.dataset.tab);
-            targetPanel.classList.add('active');
-        });
-    });
-
-</script>
+<script type="text/javascript" src="{% static 'js\sub\life_members.js' %}"></script>
 {% endblock %}

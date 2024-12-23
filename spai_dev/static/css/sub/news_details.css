@@ -2,7 +2,7 @@
   padding: 20px 60px;
   background-image: url('./running-2-bg.png');
   background-color: #fcfafa;
-  background-repeat: repeat;
+  background-repeat: no-repeat;
 }
 .news-head2{
   width: 100%;
