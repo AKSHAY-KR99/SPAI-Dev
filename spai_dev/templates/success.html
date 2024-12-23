@@ -1,0 +1,27 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block cssfiles %}
+    <link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/success.css' %}">
+{% endblock %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="success-page">
+    <div class="success-text">
+        <h1>Success!</h1>
+        <p>{{message}}. go back to <a style="text-decoration: none;color: rgb(241, 255, 178);" href="{% url 'index' %}">home</a></p>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock %}
+{% block jsfile %}
+<script type="text/javascript" src="{% static 'js/sub/news.js' %}"></script>
+{% endblock %}

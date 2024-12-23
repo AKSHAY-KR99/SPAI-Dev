@@ -1,5 +1,4 @@
 import datetime
-from itertools import chain
 
 from django.contrib import messages
 from django.conf import settings
@@ -34,6 +33,7 @@ def admin_action(sts):
 
 
 def user_status_change(slug, current_status):
+    # import pdb;pdb.set_trace()
     user = User.objects.get(slug_value=slug)
     if user is not None:
         if current_status == settings.USER_CREATED:
@@ -709,7 +709,7 @@ def get_user_full_details(req, slug):
 
 @authenticated_only
 def payment_model(request, *args, **kwargs):
-    if request.user.is_authenticated:
+    if request.user.is_authenticated and request.user.status == settings.PAYMENT_PENDING:
         slug = kwargs.get("slug", None)
         if request.user.slug_value != slug:
             return redirect("index")
@@ -722,7 +722,7 @@ def payment_model(request, *args, **kwargs):
                 form.save()
                 user_status_change(request.user.slug_value, request.user.status)
                 send_mail_to_executives(user, request.get_host())
-                return redirect("index")
+                return redirect(f"{reverse('success')}?message=Your application submitted successfully, your details are under validation. Thank you!")
         else:
             form = forms.PaymentForm(request.user)
         return render(request, 'members/payment_page.html', {'form': form})
@@ -795,7 +795,8 @@ def internship_page(request):
         form = forms.InternshipApplicationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('index')
+            return redirect(f"{reverse('success')}?message=Your internship application submitted successfully. Thank you!")
+        return redirect('index')
     else:
         form = forms.InternshipApplicationForm()
     return render(request, 'internship/internship.html', {'form': form})
@@ -821,8 +822,6 @@ def research_paper_retrieve(request, *args, **kwargs):
         context = {}
         paper = models.Manuscript.objects.get(pk=pk)
         authors = models.Author.objects.filter(manuscript=paper)
-        print(paper)
-        print(authors)
         context['paper'] = paper
         context['authors'] = authors
         return render(request, 'static_pages/publications/view_research_paper.html', context)
@@ -872,7 +871,7 @@ def call_for_manuscript(request):
                 ))
                 # print(authors)
             models.Author.objects.bulk_create(authors)
-            return redirect("index")
+            return redirect(f"{reverse('success')}?message=Your research paper application submitted successfully. Thank you!")
         manuscript_form = forms.ManuscriptForm()
         return render(request, 'static_pages/publications/manuscript.html', {'form': manuscript_form, 'page': 4})
     return render(request, 'static_pages/publications/manuscript.html', {'page': 4})
@@ -881,7 +880,6 @@ def call_for_manuscript(request):
 def search_view(request):
     query = request.GET.get('query', '')
     results = []
-
     if query:
         results = EventManagement.objects.filter(
             Q(title__icontains=query) | Q(location__icontains=query)
@@ -910,3 +908,9 @@ def search_lm(request):
         )
     return render(request, 'mainpages/lm_search_results.html',
                   {'user_results': user_results, 'lm_results': lm_results, 'query': query})
+
+
+def success_page(request, *args, **kwargs):
+    message = request.GET.get('message', '')
+    return render(request, 'success.html', {"message": message})
+
