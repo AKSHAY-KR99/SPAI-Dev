@@ -399,7 +399,7 @@
     
 }
 .major-content{
-    padding: 20px 40px;
+    padding: 20px 60px;
     height: 600px; 
     overflow-y: auto; 
     overflow-x: hidden; 
@@ -426,6 +426,7 @@
 } */
 .major-texts h1{
     text-transform: uppercase;
+    font-weight: 800;
 }
 .major-texts p{
     font-weight: 400;
