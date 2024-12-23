@@ -370,10 +370,12 @@ def news_detail(request, pk):
         gallery = GalleryManagement.objects.get(event=event_object)
     else:
         gallery = None
+    files = models.EventDocumentModel.objects.filter(event=event_object)
     context = {
         "event": event_object,
         'related_events': upcoming_events,
-        "gallery": gallery
+        "gallery": gallery,
+        "files": files
     }
     return render(request, 'mainpages/news_details.html', context)
 
