@@ -61,19 +61,22 @@
                 </div>
                 <h4>Resources:</h4>
                 <div class="pdf-wrapper">
-                    
-                    <a  class="pdf" href="{% static 'docs\EC MEETING 23 MARCH 2024.pdf' %}" target="_blank">
-                        Resource 1
+                    {% if files %}
+                    {% for file in files %}
+                    <a  class="pdf" href="{{ file.file.url }}" target="_blank">
+                        {{file.title}}
                     </a>
-                    <a  class="pdf" href="{% static 'docs\EC MEETING 23 MARCH 2024.pdf' %}" target="_blank">
-                        Resource 2
-                    </a>
-                    <a  class="pdf" href="{% static 'docs\EC MEETING 23 MARCH 2024.pdf' %}" target="_blank">
-                        Resource 3
-                    </a>
-                    <a  class="pdf" href="{% static 'docs\EC MEETING 23 MARCH 2024.pdf' %}" target="_blank">
-                        Resource 4
-                    </a>
+                    {% endfor %}
+                    {% endif %}
+<!--                    <a  class="pdf" href="{% static 'docs\EC MEETING 23 MARCH 2024.pdf' %}" target="_blank">-->
+<!--                        Resource 2-->
+<!--                    </a>-->
+<!--                    <a  class="pdf" href="{% static 'docs\EC MEETING 23 MARCH 2024.pdf' %}" target="_blank">-->
+<!--                        Resource 3-->
+<!--                    </a>-->
+<!--                    <a  class="pdf" href="{% static 'docs\EC MEETING 23 MARCH 2024.pdf' %}" target="_blank">-->
+<!--                        Resource 4-->
+<!--                    </a>-->
                     
                 </div>
             </div>

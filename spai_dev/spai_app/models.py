@@ -26,6 +26,11 @@ def paper_submission_path(instance, filename):
     return path
 
 
+def event_document_path(instance, filename):
+    path = f'event_doc/{instance.event.id}/{filename}'
+    return path
+
+
 def generate_unique_slug():
     slug = slugify(get_random_string(length=32))
     unique_slug = slug
@@ -265,3 +270,13 @@ class Author(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class EventDocumentModel(models.Model):
+    event = models.ForeignKey(EventManagement, on_delete=models.CASCADE, related_name='event_doc')
+    title = models.CharField(max_length=50, null=True, blank=True)
+    file = models.FileField(upload_to=event_document_path)
+
+    def __str__(self):
+        return self.title
+
