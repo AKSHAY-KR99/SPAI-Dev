@@ -25,6 +25,17 @@ margin-bottom: 50px;
   gap: 40px;
 
 }
+.animated {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.5s ease-out;
+}
+
+.animated.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .msg-pic{
   position: relative;
   /* display: flex;
@@ -33,6 +44,19 @@ margin-bottom: 50px;
 .msg-pic img{
   width: 453px;
 height: 524px;
+animation: fadeIn 1.5s ease-in-out;
+animation-delay: 0.3s;
+}
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
 }
 .msg h6{
 font-size: 20px;
