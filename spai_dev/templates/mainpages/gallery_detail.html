@@ -9,8 +9,11 @@
     {% include 'header.html' %}
 {% endblock %}
 {% block content %}
-<div class="news-title">
-    <p>{{ gallery.image_name }}</p>
+<div class="gallery-head">
+    <h1>{{ gallery.image_name }}</h1>
+    {% if gallery.description %}
+    <p style="margin: 0%;">{{ gallery.description }} (Location:{{ gallery.place }})</p>
+    {% endif %}
 </div>
 <div class="gallery">
     {% for img in images %}

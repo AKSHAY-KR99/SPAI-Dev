@@ -147,3 +147,15 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
+.discount{
+  display: flex;
+  padding: 10px 20px;
+  background-color: rgb(202, 2, 2);
+  color: white;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  justify-content: center;
+  /* width: fit-content; */
+  box-sizing: border-box;
+  
+}

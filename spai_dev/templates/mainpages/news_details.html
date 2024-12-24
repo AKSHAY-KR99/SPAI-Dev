@@ -26,18 +26,25 @@
                 {% endif %}
                 <img src="{{ event.image.url }}" alt="">
             </div>
+            {% if event.registration_link and event.registration_link|slice:":7" == "http://" or event.registration_link|slice:":8" == "https://" %}
+                <div class="discount">
+                    <h4>You have Discount</h4>
+                </div>
+                {% endif %}
             <div class="news-detail-content">
                 <div class="news-dis" style="margin-left: 0%;">
                     {% if event.datetime|date:"Y-m-d" == event.end_date|date:"Y-m-d" %}
-                        {{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }} {{ event.datetime|time }}
+                    {{ event.datetime|date:"Y" }} , {{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }} {{ event.datetime|time }}
                         {% else %}
-                        {{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }} {{ event.datetime|time }} -
+                        {{ event.datetime|date:"Y" }} , {{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }} {{ event.datetime|time }} -
                         {{ event.end_date|date:"d" }} {{ event.end_date|date:"F" }}
                         {% endif %}
                 </div>
+                
                 <div class="news-tit" style="margin-left: 0%;">
                     {{ event.title }}
                 </div>
+                
                 <div class="news-detail-content-text">
                     <p>
                         {{event.description}}<br>
@@ -48,6 +55,7 @@
                     {% endif %}
                     <br><br>
                     {% if event.registration_link and event.registration_link|slice:":7" == "http://" or event.registration_link|slice:":8" == "https://" %}
+                    
                     <h4 style="display: inline;">Registration Link:</h4> 
                     <span>
                         <a style="text-decoration: underline; color: blue;" 
@@ -109,9 +117,9 @@
                     </div>
                     <div class="news-dis">
                         {% if event.datetime|date:"Y-m-d" == event.end_date|date:"Y-m-d" %}
-                        {{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }} {{ event.datetime|time }}
+                        {{ event.datetime|date:"Y" }} , {{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }} {{ event.datetime|time }}
                         {% else %}
-                        {{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }} {{ event.datetime|time }} -
+                        {{ event.datetime|date:"Y" }} , {{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }} {{ event.datetime|time }} -
                         {{ event.end_date|date:"d" }} {{ event.end_date|date:"F" }}
                         {% endif %}
 
