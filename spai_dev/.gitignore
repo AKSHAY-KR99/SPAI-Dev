@@ -15,3 +15,5 @@ spai_app/__pycache__/
 spai_app/migrations/__pycache__/
 
 **/__pycache__/
+
+.idea/
