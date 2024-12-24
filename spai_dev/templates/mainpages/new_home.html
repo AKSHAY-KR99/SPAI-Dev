@@ -319,9 +319,9 @@
                     </div>
                     <div class="news-dis">
                         {% if event.datetime|date:"Y-m-d" == event.end_date|date:"Y-m-d" %}
-                        {{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }} {{ event.datetime|time }}
+                        {{ event.datetime|date:"Y" }} , {{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }} {{ event.datetime|time }}
                         {% else %}
-                        {{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }} {{ event.datetime|time }} -
+                        {{ event.datetime|date:"Y" }} , {{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }} {{ event.datetime|time }} -
                         {{ event.end_date|date:"d" }} {{ event.end_date|date:"F" }}
                         {% endif %}
                     </div>

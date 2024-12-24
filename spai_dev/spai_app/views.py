@@ -335,7 +335,7 @@ def add_gallery_image(request, gallery_id):
 
 
 def news(request):
-    all_events = EventManagement.objects.all().order_by('-id')
+    all_events = EventManagement.objects.all().order_by('-datetime')
     upcoming_events = EventManagement.objects.filter(datetime__gte=timezone.now()).order_by('datetime')
     past_events = EventManagement.objects.filter(datetime__lt=timezone.now()).order_by('-datetime')
 
