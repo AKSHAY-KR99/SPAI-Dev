@@ -51,6 +51,18 @@
 {% include 'footer.html' %}
 {% endblock %}
 {% block jsfile %}
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('.menu-icon').addEventListener('click', function() {
+            document.querySelector('.navbar').classList.toggle('active');
+        });
+    });
+
+    document.getElementById('userProfileIcon').addEventListener('click', function() {
+var dropdownMenu = document.getElementById('dropdownMenu3');
+dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+});
+</script>
 <script>
     function openLightbox(src) {
         var lightbox = document.getElementById("lightbox");
