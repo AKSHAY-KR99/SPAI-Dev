@@ -189,5 +189,49 @@ class AuthorForm(forms.ModelForm):
         fields = ['name', 'designation', 'organization', 'email', 'mobile']
 
 
+class ResetPasswordForm(forms.Form):
+    email = forms.EmailField(required=True,
+                             widget=forms.EmailInput(attrs={'placeholder': 'Enter your email', 'class': 'email-input'}))
+
+
+class PasswordSetFrom(forms.Form):
+    password = forms.CharField(
+        widget=forms.PasswordInput(attrs={'placeholder': 'Enter new password'}),
+        label="Password",
+        min_length=8,  # Password length validation (can adjust as needed)
+    )
+    confirm_password = forms.CharField(
+        widget=forms.PasswordInput(attrs={'placeholder': 'Confirm new password'}),
+        label="Confirm Password",
+        min_length=8,  # Password length validation (same as above)
+    )
+
+    def clean_password(self):
+        password = self.cleaned_data.get("password")
+        if len(password) < 8:
+            raise forms.ValidationError("Password must be at least 8 characters long")
+
+        if not re.search("[A-Z]", password):
+            raise forms.ValidationError("Password must contain at least one uppercase letter")
+
+        if not re.search("[a-z]", password):
+            raise forms.ValidationError("Password must contain at least one lowercase letter")
+
+        if not re.search("[@#_!]", password):
+            raise forms.ValidationError(
+                "Password must contain at least one of the following special characters: @, #, _,!")
+
+        return password
+
+    def clean_confirm_password(self):
+        cleaned_data = super().clean()
+        password = cleaned_data.get('password')
+        confirm_password = cleaned_data.get('confirm_password')
+        if str(password) != str(confirm_password):
+            raise forms.ValidationError("Passwords do not match")
+        return password
+
+
+
 # Author formset (allows adding multiple authors)
 AuthorFormSet = modelformset_factory(Author, form=AuthorForm, extra=1, can_delete=True)

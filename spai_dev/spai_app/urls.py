@@ -44,6 +44,8 @@ urlpatterns = [
     path('search/', views.search_view, name='search'),
     path('lm/search', views.search_lm, name='search_lm'),
     path('success/', views.success_page, name='success'),
+    path('email/forgot/passcode', views.email_redirection, name='email_redirection'),
+    path('reset/password/<str:slug>', views.reset_password, name='reset_password'),
 
     # error pages
     path('unauthorized/403/', views.unauthorized_page_403, name='unauthorized_403'),

@@ -17,6 +17,12 @@
     <div class="form-section">
         <div class="content-section">
             <h1 class="member-login-header">Member login</h1>
+            {% if messages %}
+            {% for message in messages %}
+            <div style="text-align: center;color: rgb(0, 119, 20);font-size: 14px;font-weight: 500;"
+                class="message {{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+            {% endif %}
             <!-- Error messages container -->
             {% if form.errors %}
             <div class="error-box login">
@@ -50,6 +56,9 @@
                     </div>
                     <div class="register-link">
                         <p>Don't have an account? <a href="{% url 'user_registration'%}">Register</a></p>
+                        {% if form.errors %}
+                        <p>Forgot you password? <a href="{% url 'email_redirection' %}">Click here</a></p>
+                        {% endif %}
                     </div>
                 </div>
             </form>
@@ -60,8 +69,8 @@
     </div>
 </div>
 <script type="text/javascript">
-    document.addEventListener('DOMContentLoaded', function() {
-        document.querySelector('.menu-icon').addEventListener('click', function() {
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelector('.menu-icon').addEventListener('click', function () {
             document.querySelector('.navbar').classList.toggle('active');
         });
     });

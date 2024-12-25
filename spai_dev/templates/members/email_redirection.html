@@ -1,0 +1,44 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block cssfiles %}
+<link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/content.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/forgot.css' %}">
+{% endblock %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+
+<div style="height: 300px;" class="about-container mission">
+    <div class="mission-top-row">
+        <h1>Forgot Password</h1>
+    </div>
+    <div class="form-container">
+        <p class="form-description">Please enter your email address to reset your password.</p>
+
+        <form action="{% url 'email_redirection' %}" method="POST" class="reset-password-form">
+            {% csrf_token %}
+            <input type="email" name="email" placeholder="Enter your email" class="email-input" required>
+            <button type="submit" class="submit-btn">Send password reset mail</button>
+        </form>
+
+        {% if messages %}
+        {% for message in messages %}
+        <div style="text-align: center;color: rgb(143, 1, 1);font-size: 13px;font-weight: 500;" class="message {{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}
+{% block jsfile %}
+<script type="text/javascript" src="{% static 'js/sub/news.js' %}"></script>
+{% endblock %}

@@ -5,18 +5,20 @@ from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 from django.core.mail import EmailMessage
 from django.db.models import Q
+from django.db.models.fields import return_None
 from django.forms import model_to_dict
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import get_template
 from django.urls import reverse
-from datetime import datetime
+from datetime import datetime, timedelta
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from . import models, forms
 from .models import GalleryManagement, User, EventManagement, UserDetailModel, GalleryImage, PaymentModel
 from .decorators import admin_only, authenticated_only
-from .utils import render_to_pdf, get_registration_num, get_research_paper_no, send_mail_to_executives
+from .utils import render_to_pdf, get_registration_num, get_research_paper_no, send_mail_to_executives, \
+    send_password_reset_email
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
@@ -722,7 +724,8 @@ def payment_model(request, *args, **kwargs):
                 form.save()
                 user_status_change(request.user.slug_value, request.user.status)
                 send_mail_to_executives(user, request.get_host())
-                return redirect(f"{reverse('success')}?message=Your application submitted successfully, your details are under validation. Thank you!")
+                return redirect(
+                    f"{reverse('success')}?message=Your application submitted successfully, your details are under validation. Thank you!")
         else:
             form = forms.PaymentForm(request.user)
         return render(request, 'members/payment_page.html', {'form': form})
@@ -811,7 +814,8 @@ def internship_page(request):
         form = forms.InternshipApplicationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect(f"{reverse('success')}?message=Your internship application submitted successfully. Thank you!")
+            return redirect(
+                f"{reverse('success')}?message=Your internship application submitted successfully. Thank you!")
         return redirect('index')
     else:
         form = forms.InternshipApplicationForm()
@@ -887,7 +891,8 @@ def call_for_manuscript(request):
                 ))
                 # print(authors)
             models.Author.objects.bulk_create(authors)
-            return redirect(f"{reverse('success')}?message=Your research paper application submitted successfully. Thank you!")
+            return redirect(
+                f"{reverse('success')}?message=Your research paper application submitted successfully. Thank you!")
         manuscript_form = forms.ManuscriptForm()
         return render(request, 'static_pages/publications/manuscript.html', {'form': manuscript_form, 'page': 4})
     return render(request, 'static_pages/publications/manuscript.html', {'page': 4})
@@ -930,3 +935,54 @@ def success_page(request, *args, **kwargs):
     message = request.GET.get('message', '')
     return render(request, 'success.html', {"message": message})
 
+
+def email_redirection(request):
+    if request.method == 'POST':
+        form = forms.ResetPasswordForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            try:
+                user = User.objects.get(email=email)
+            except User.DoesNotExist:
+                messages.error(request, 'User not found. Please check email address that you entered')
+                return redirect('email_redirection')
+            reset_request = models.PasswordResetRequest.objects.create(user=user, status=settings.EMAIL_SEND,
+                                                                       date_created=datetime.now())
+            send_password_reset_email(user, request.get_host())
+            messages.success(request, "A password reset link sent to your eamil. it expires with in 10 minutes")
+            return redirect('login_page')
+    else:
+        form = forms.ResetPasswordForm()
+    return render(request, 'members/email_redirection.html', {'form': form})
+
+
+def reset_password(request, *args, **kwargs):
+    slug = kwargs.get("slug", "")
+    context = {"slug": slug}
+    user = get_object_or_404(User, slug_value=slug)
+    tracker = models.PasswordResetRequest.objects.filter(user=user).order_by('-date_created').first()
+    if tracker and tracker.status == settings.EMAIL_SEND:
+        time_delta = timezone.now() - tracker.date_created  # Use timezone.now() instead of datetime.now()
+        if time_delta > timedelta(seconds=600):
+            messages.error(request, 'Your password reset link has expired')
+            return redirect('login_page')
+    else:
+        messages.error(request, 'You already changed your password')
+        return redirect('login_page')
+    if request.method == 'POST':
+        form = forms.PasswordSetFrom(request.POST)
+        if form.is_valid():
+            password = form.cleaned_data['password']
+            user.set_password(password)
+            tracker.status = settings.PASSWORD_RESET
+            user.save()
+            tracker.save()
+            messages.success(request, 'Password changed successfully')
+            return redirect('login_page')
+        else:
+            context["form"] = form
+            return render(request, 'members/reset_password.html', context)
+    else:
+        form = forms.PasswordSetFrom()
+        context["form"] = form
+        return render(request, 'members/reset_password.html', context)

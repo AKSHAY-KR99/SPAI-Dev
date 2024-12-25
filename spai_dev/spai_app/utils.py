@@ -3,7 +3,6 @@ from io import BytesIO
 
 from django.conf import settings
 from django.core.mail import EmailMessage
-from django.http import HttpResponse
 from django.template.loader import get_template
 from xhtml2pdf import pisa
 from .models import User, Manuscript
@@ -20,7 +19,6 @@ def render_to_pdf(template_src, context_dict):
 
 
 def get_registration_num():
-    # import pdb;pdb.set_trace()
     reg_no = "SPAILM"
     year = datetime.now().year
     reg_no = reg_no + str(year)
@@ -83,3 +81,26 @@ def send_mail_to_executives(user, host):
             print("Email sent successfully!")
         except Exception as e:
             print(f"Failed to send email: {e}")
+
+def send_password_reset_email(user, host):
+    link=f'{host}/reset/password/{user.slug_value}'
+    message = (
+        f"Dear {user.first_name} {user.last_name},\n"
+        f"Your password reset link is given below, click to reset your password.\n"
+        f"Password registration link : {link}"
+    )
+    subject = "Reset Your Password"
+    sender_email = "SPAI Online <spai05138@gmail.com>"
+    recipient_list = [user.email]
+
+    email = EmailMessage(
+        subject=subject,
+        body=message,
+        from_email=sender_email,
+        to=recipient_list,
+    )
+    try:
+        email.send()
+        print("Email sent successfully!")
+    except Exception as e:
+        print(f"Failed to send email: {e}")
