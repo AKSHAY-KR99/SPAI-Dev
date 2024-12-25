@@ -1,14 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
-
+.form-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .about-container{
     color: black;
 }
-.form-description{
+.mission-top-row p{
+    text-indent: 0%;
     text-align: center;
     font-weight: 500;
-    margin-top: -20px;
+    margin: 0%;
 }
-
+/*****************************************************************/
 .reset-password-form {
     margin-right: 60%;
     display: flex;
@@ -44,7 +50,7 @@
 }
 
 
-.submit-btn {
+/* .submit-btn {
     font-family: 'Popins', sans-serif;
     font-weight: 600;
     padding: 12px;
@@ -62,7 +68,7 @@
 
 .submit-btn:hover {
     background-color: #13492c;
-}
+} */
 
 
 @media (max-width: 768px) {
@@ -117,3 +123,63 @@
     opacity: 0;
 }
 
+/***********************************************************************/
+
+.form-real{
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.form-real input{
+    animation: fadeIn .5s ease-out forwards;
+    animation-delay: .5s;
+    opacity: 0;
+    width: 100%;
+}
+.form-real input[type="email"],input[type="text"],input[type="password"] {
+    font-family: 'Popins', sans-serif;
+    padding: 12px;
+    font-size: 14px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    box-sizing: border-box;
+}
+.form-real input[type="email"],input[type="text"],input[type="password"]::placeholder {
+    font-family: 'Popins', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+}
+.form-real input[type="email"],input[type="text"],input[type="password"]:focus {
+    border-color: #000000;
+    background-color: white;
+    outline: none;
+}
+.submit-btn {
+    font-family: 'Popins', sans-serif;
+    font-weight: 600;
+    padding: 12px;
+    font-size: 1rem;
+    background-color: #155833;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+.submit-btn:hover {
+    background-color: #13492c;
+}
+.eye-icon{
+    margin-bottom: 20px;
+    margin-left: 5px;
+}

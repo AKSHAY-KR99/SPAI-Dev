@@ -13,12 +13,23 @@
 
 {% block content %}
 
-<div style="height: 300px;" class="about-container mission">
+<div class="about-container mission">
     <div class="mission-top-row">
-        <h1>Forgot Password</h1>
+        <h1 style="margin-bottom: 0%;">Forgot Password</h1>
+        <p>Please enter your email address to reset your password.</p>
     </div>
-    <div class="form-container">
-        <p class="form-description">Please enter your email address to reset your password.</p>
+    <form action="{% url 'email_redirection' %}" method="POST" class="form-real">
+        {% csrf_token %}
+        <input type="email" name="email" placeholder="Enter your email" required>
+        <button type="submit" class="submit-btn">Send password reset mail</button>
+        {% if messages %}
+        {% for message in messages %}
+        <div style="text-align: center;color: rgb(143, 1, 1);font-size: 13px;font-weight: 500; margin-top: 20px;"
+            class="message {{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+    </form>
+    <!-- <div class="form-container">
 
         <form action="{% url 'email_redirection' %}" method="POST" class="reset-password-form">
             {% csrf_token %}
@@ -28,10 +39,11 @@
 
         {% if messages %}
         {% for message in messages %}
-        <div style="text-align: center;color: rgb(143, 1, 1);font-size: 13px;font-weight: 500;" class="message {{ message.tags }}">{{ message }}</div>
+        <div style="text-align: center;color: rgb(143, 1, 1);font-size: 13px;font-weight: 500;"
+            class="message {{ message.tags }}">{{ message }}</div>
         {% endfor %}
         {% endif %}
-    </div>
+    </div> -->
 </div>
 
 {% endblock %}

@@ -77,3 +77,60 @@ footer{
     justify-content: center;
       gap: 13px;
   }}
+
+
+  /* General Styles for Footer Links */
+.footer-links {
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping to new rows */
+  justify-content: center; /* Centers the rows on the page */
+  gap: 25px; /* Space between each link */
+  margin: 30px 0; /* Adds some vertical spacing */
+  padding: 10px;
+  font-weight: 600;
+}
+
+.footer-links a {
+  text-decoration: none; /* Removes underline from links */
+  color: #000000; /* Default link color */
+  font-size: 15px; /* Sets a readable font size */
+  font-family: 'Poppins', sans-serif; /* Consistent font style */
+  padding: 5px 15px; /* Adds some padding for clickable area */
+  border-radius: 5px; /* Adds slight roundness to edges */
+  background-color: transparent; /* Light background for visibility */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
+}
+
+.footer-links a:hover {
+  background-color: #080f4e; /* Slightly darker background on hover */
+  transform: scale(1.05); /* Subtle zoom effect on hover */
+  color: #ffffff; /* Keep text color consistent */
+}
+
+.footer-links a:active {
+  background-color: #ccc; /* Even darker background when clicked */
+}
+
+/* Responsive Design for Medium Devices */
+@media (max-width: 768px) {
+  .footer-links {
+      gap: 15px; /* Slightly reduce gap between links */
+  }
+
+  .footer-links a {
+      font-size: 0.9rem; /* Reduce font size for medium screens */
+      padding: 4px 8px; /* Adjust padding for better fit */
+  }
+}
+
+/* Responsive Design for Small Devices */
+@media (max-width: 480px) {
+  .footer-links {
+      gap: 10px; /* Further reduce gap between links */
+  }
+
+  .footer-links a {
+      font-size: 0.8rem; /* Smaller font size for small screens */
+      padding: 3px 6px; /* Adjust padding for smaller screens */
+  }
+}
