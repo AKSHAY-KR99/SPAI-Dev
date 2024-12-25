@@ -69,7 +69,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'spai_dev.wsgi.application'
-
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 DATABASES = {
     'default': {
@@ -123,9 +123,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
+
+USE_L10N = True
 
 USE_TZ = True
 
@@ -155,6 +157,8 @@ EX_1_APPROVAL_PENDING = "executive_1_approval_pending"
 EX_2_APPROVAL_PENDING = "executive_2_approval_pending"
 EX_1_APPROVED = "executive_1_approved"
 EX_2_APPROVED = "executive_2_approved"
+EMAIL_SEND = "email_send_to_the_user"
+PASSWORD_RESET = "password_changed"
 
 QR_CODE = 1
 BANK_TRANSFER = 2
@@ -338,7 +342,9 @@ EMAIL_HOST_PASSWORD = 'cbycsxyyvldqrsrg'
 #
 # LANGUAGE_CODE = 'en-us'
 #
-# TIME_ZONE = 'UTC'
+# TIME_ZONE = 'Asia/Kolkata'
+
+# USE_L10N = True
 #
 # USE_I18N = True
 #
@@ -366,6 +372,8 @@ EMAIL_HOST_PASSWORD = 'cbycsxyyvldqrsrg'
 # ADMIN_REJECTED = "admin_rejected"
 # PAYMENT_PENDING = "payment_pending"
 # PAYMENT_DONE = "payment_completed"
+# EMAIL_SEND = "email_send_to_the_user"
+# PASSWORD_RESET = "password_changed"
 #
 # QR_CODE = 1
 # BANK_TRANSFER = 2
@@ -419,3 +427,4 @@ EMAIL_HOST_PASSWORD = 'cbycsxyyvldqrsrg'
 # EMAIL_USE_TLS = True
 # EMAIL_HOST_USER = 'spai05138@gmail.com'
 # EMAIL_HOST_PASSWORD = 'cbycsxyyvldqrsrg'
+# MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
