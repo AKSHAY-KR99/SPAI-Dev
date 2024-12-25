@@ -51,7 +51,12 @@ class EventManagement(models.Model):
     registration_link = models.CharField(max_length=200, null=True, blank=True)
 
     def delete(self, *args, **kwargs):
-        os.remove(self.image.path)
+        if self.image and os.path.exists(self.image.path):
+            try:
+                os.remove(self.image.path)
+            except FileNotFoundError:
+                # The file has already been deleted, so we can skip this step
+                pass
         super(EventManagement, self).delete(*args, **kwargs)
 
     def __str__(self):
@@ -67,8 +72,12 @@ class GalleryManagement(models.Model):
     place = models.CharField(max_length=255, null=True)
 
     def delete(self, *args, **kwargs):
-        # Delete the image file from the local directory
-        os.remove(self.image.path)
+        # Ensure the gallery image is deleted when the gallery entry is deleted
+        if self.image:
+            try:
+                os.remove(self.image.path)
+            except FileNotFoundError:
+                pass
         super(GalleryManagement, self).delete(*args, **kwargs)
 
     def __str__(self):

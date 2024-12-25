@@ -278,6 +278,7 @@ def gallery_detail(request, pk):
 
 
 def gallery_create(request):
+    fs = FileSystemStorage()
     if request.method == 'POST':
         title = request.POST.get('title')
         description = request.POST.get('description')
@@ -291,9 +292,11 @@ def gallery_create(request):
         )
 
         # Loop through the files in request.FILES
-        for key in request.FILES:
-            image = request.FILES[key]
-            GalleryImage.objects.create(gallery=gallery, images=image)
+        # Process multiple image uploads
+        multiple_images = request.FILES.getlist('multiple_images')
+        for image_file in multiple_images:
+            image_name = fs.save(image_file.name, image_file)
+            GalleryImage.objects.create(gallery=gallery, images=image_name)
 
         return redirect('gallery_list')  # Return a success response
 
@@ -382,40 +385,43 @@ def news_detail(request, pk):
     return render(request, 'mainpages/news_details.html', context)
 
 
+from django.core.files.storage import FileSystemStorage
+
 def eventadd(request):
     if request.method == 'POST':
-        title = request.POST['title']
+        # Process the main event image
+        fs = FileSystemStorage()
         image = request.FILES['image']
-        datetime = request.POST['datetime']
-        location = request.POST['location']
-        description = request.POST.get('description', '')
-        registration_link = request.POST.get('registration_link', '')
-        end_date = request.POST['end_date']
+        image_name = fs.save(image.name, image)
+
+        # Create the event object
         event = EventManagement.objects.create(
-            title=title,
-            image=image,
-            datetime=datetime,
-            end_date=end_date,
-            location=location,
-            description=description,
-            registration_link=registration_link
+            title=request.POST['title'],
+            image=image_name,
+            datetime=request.POST['datetime'],
+            end_date=request.POST.get('end_date', None),
+            location=request.POST['location'],
+            description=request.POST.get('description', ''),
+            registration_link=request.POST.get('registration_link', '')
         )
+
         # Check if the checkbox for multiple images is checked
         if 'multipleImagesCheck' in request.POST:
             gallery = GalleryManagement.objects.create(
-                image=image,
-                upload_date=datetime,
-                image_name=title,
-                description=description,
+                image=image_name,
+                upload_date=request.POST['datetime'],
+                image_name=request.POST['title'],
+                description=request.POST.get('description', ''),
                 event=event,
-                place=location
+                place=request.POST['location']
             )
 
-            # Handle multiple images upload
+            # Process multiple image uploads
             multiple_images = request.FILES.getlist('multiple_images')
-            GalleryImage.objects.create(gallery=gallery, images=image)
             for image_file in multiple_images:
-                GalleryImage.objects.create(gallery=gallery, images=image_file)
+                image_name = fs.save(image_file.name, image_file)
+                GalleryImage.objects.create(gallery=gallery, images=image_name)
+
         return redirect('news')  # Redirect to a success page after creation
 
     return render(request, 'admin/eventadd.html')
