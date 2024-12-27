@@ -139,7 +139,9 @@
     opacity: 0;
     width: 100%;
 }
-.form-real input[type="email"],input[type="text"],input[type="password"] {
+.form-real input[type="email"],
+.form-real input[type="text"],
+input[type="password"] ,.p1{
     font-family: 'Popins', sans-serif;
     padding: 12px;
     font-size: 14px;
@@ -150,16 +152,23 @@
     transition: border-color 0.3s ease, background-color 0.3s ease;
     box-sizing: border-box;
 }
-.form-real input[type="email"],input[type="text"],input[type="password"]::placeholder {
+
+.form-real input[type="email"],
+.form-real input[type="text"],
+input[type="password"],.p1::placeholder {
     font-family: 'Popins', sans-serif;
     font-size: 13px;
     font-weight: 500;
 }
-.form-real input[type="email"],input[type="text"],input[type="password"]:focus {
+
+.form-real input[type="email"],
+.form-real input[type="text"],
+input[type="password"],.p1:focus {
     border-color: #000000;
     background-color: white;
     outline: none;
 }
+
 .submit-btn {
     font-family: 'Popins', sans-serif;
     font-weight: 600;
@@ -179,7 +188,11 @@
 .submit-btn:hover {
     background-color: #13492c;
 }
+
 .eye-icon{
     margin-bottom: 20px;
-    margin-left: 5px;
+    margin-left: 10px;
+    position: absolute;
+    top: 10px;
+    right: 20px;
 }

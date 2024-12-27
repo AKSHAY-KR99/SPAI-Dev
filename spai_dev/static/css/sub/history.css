@@ -1,0 +1,253 @@
+.history-head{
+    background-color: black;
+    background-image: url('./img/hist5.jpg');
+    color: white;
+    padding:25px 30px;
+    background-position: center;
+    background-size: cover;
+    animation: fadeIn 1.5s ease-in-out;
+    
+    
+}
+.history-head h1{
+    color: white;
+    font-weight: 800;
+    margin: 0%;
+    line-height: 50px;
+    font-size: 40px;
+    animation: fadeIn 1.5s ease-in-out;
+    animation-delay: 0.3s;
+}
+.history{
+    padding: 40px 50px;
+    text-align: center;
+}
+.main-his{
+    padding: 0px 40px;
+    animation: scaleUp 1.5s ease-in-out;
+    animation-delay: 0.5s;
+}
+.main-his h2{
+    color: rgb(158, 0, 0);
+    margin: 0%;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-size: 32px;
+    font-weight: 800;
+    animation: scaleUp 1.5s ease-in-out;
+    animation-delay: 0.3s;
+}
+.history p{
+    font-weight: 500;
+}
+@media(max-width:700px){
+    .main-his{
+        padding: 0px 0px;
+    }
+    .history{
+        padding: 30px;
+    }
+}
+.second{
+    animation: scaleUp 1.5s ease-in-out;
+    animation-delay: 0.6s;
+    margin-top: 30px;
+    padding: 0px 30px;
+    position: relative;
+}
+.second h3{
+    animation: scaleUp 1.5s ease-in-out;
+    animation-delay: 0.7s;
+    background-color: rgb(1, 1, 49);
+    color: white;
+    font-size: 26px;
+    font-weight: 800;
+    width: fit-content;
+    padding: 20px 20px;
+    text-align: center;
+    text-transform: uppercase;
+    position: absolute;
+    top: 0px;
+    right: 350px;
+    margin: 0%;
+}
+.content-wrapper{
+    display: grid;
+    grid-template-columns: 1fr 400px;
+}
+.content{
+    text-align: right;
+    margin-top: 90px;
+}
+.his-pic img{
+    width: 100%;
+    height: auto;
+}
+.his-pic {
+    margin:30px 20px;
+}
+@media(max-width:1140px){
+    .content{
+        margin-top: 125px;
+    }
+}
+@media(max-width:990px){
+    .second h3{
+        position: relative;
+        right: 0%;
+    }
+    .content-wrapper{
+        display: flex;
+        flex-direction: column-reverse;
+
+    }
+    .his-pic {
+        width: 100%;
+        box-sizing: border-box;
+        height: auto;
+        margin:30px 0px;
+    }
+    .content{
+        margin-top: 0px;
+    }
+
+
+}
+@media(max-width:700px){
+    .second{
+        padding: 0px 0px;
+
+    }
+}
+.lef{
+    grid-template-columns: 400px 1fr !important;
+}
+h4{
+    text-transform: uppercase;
+    color: rgb(158, 0, 0);
+    margin: 0%;
+    font-size: 20px;
+}
+.l2{
+    left: 350px;
+}
+.nc-wrapper{
+    text-align: left;
+    margin: 20px;
+}
+@media(max-width:990px){
+    .l2{
+        position: relative;
+        left: 0%;
+    }
+    .lef{
+        display: flex;
+        flex-direction: column;
+
+    }
+    .nc-wrapper{
+        margin: 20px 0px;
+    }
+
+
+}
+table {
+    width: 90%;
+    border-radius: 17px;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid rgba(225, 225, 225, 1);
+    overflow: hidden; /* Ensure border radius is applied correctly */
+    font-family: "Poppins",sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 30px;
+    text-align: left; 
+    margin: 20px 40px; 
+}
+tbody{
+    color: rgba(77, 77, 77, 1);
+
+}
+thead {
+    background-color: red;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    vertical-align: top; 
+}
+
+th {
+    border-radius: 0;
+    border: 1px solid rgba(225, 225, 225, 1);
+    background: rgba(245, 245, 245, 1);
+}
+
+td {
+    border: none;
+}
+
+tr:first-child th:first-child {
+    border-top-left-radius: 17px; /* Rounded corner for top-left cell */
+}
+
+tr:first-child th:last-child {
+    border-top-right-radius: 17px; /* Rounded corner for top-right cell */
+}
+
+tr:last-child td:first-child {
+    border-bottom-left-radius: 17px; /* Rounded corner for bottom-left cell */
+}
+
+tr:last-child td:last-child {
+    border-bottom-right-radius: 17px; /* Rounded corner for bottom-right cell */
+}
+@media(max-width:700px){
+    table{
+        margin: 20px 0px;
+        width: 100%;
+        font-size: 12px;
+    font-weight: 400;
+    }
+}
+/*****animation***********************/
+/* Keyframes for fade-in effect */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Keyframes for text slide-in */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Keyframes for slight scaling */
+@keyframes scaleUp {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
