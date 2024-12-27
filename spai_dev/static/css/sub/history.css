@@ -156,7 +156,8 @@ table {
     border-radius: 17px;
     border-collapse: separate;
     border-spacing: 0;
-    border: 1px solid rgba(225, 225, 225, 1);
+    border: 1px solid rgb(139, 139, 139);
+    /* border: 1px solid black; */
     overflow: hidden; /* Ensure border radius is applied correctly */
     font-family: "Poppins",sans-serif;
     font-size: 15px;
@@ -166,11 +167,12 @@ table {
     margin: 20px 40px; 
 }
 tbody{
-    color: rgba(77, 77, 77, 1);
+    /* color: rgba(77, 77, 77, 1); */
+    color: black;
 
 }
 thead {
-    background-color: red;
+    background-color: #2b5741;
 }
 
 th, td {
@@ -181,8 +183,10 @@ th, td {
 
 th {
     border-radius: 0;
-    border: 1px solid rgba(225, 225, 225, 1);
-    background: rgba(245, 245, 245, 1);
+    /* border: 1px solid rgba(225, 225, 225, 1);
+    background: rgba(245, 245, 245, 1); */
+    background: #2b5741;
+    color: white;
 }
 
 td {
