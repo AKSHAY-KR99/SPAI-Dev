@@ -2,7 +2,7 @@
 <nav>
     <ul class="navbar">
         <li class="dropdown {% if page == 1 %}high{% endif %}">
-            <a href="#" class="main-a">ABOUT</a>
+            <a href="{% url 'about_page' %}?page=about_spai" class="main-a">ABOUT</a>
             <ul class="dropdown-menu">
                 <li><a class="main-b" href="{% url 'about_page' %}?page=about_spai">About Spai</a></li>
                 <li><a class="main-b" href="{% url 'about_page' %}?page=mission">Our mission</a></li>
@@ -29,7 +29,7 @@
             </ul>
         </li>
         <li class="dropdown {% if page == 2 %}high{% endif %}">
-            <a href="#" class="main-a">NEWS & EVENTS</a>
+            <a href="{% url 'news' %}?tab=upcoming" class="main-a">NEWS & EVENTS</a>
             <ul class="dropdown-menu">
                 <li><a class="main-b" href="{% url 'news' %}?tab=upcoming">Upcoming Events</a></li>
                 <li><a class="main-b" href="{% url 'news' %}?tab=post">Events Organized</a></li>
@@ -49,7 +49,7 @@
             </ul>
         </li>
         <li class="dropdown {% if page == 3 %}high{% endif %}">
-            <a class="main-a" href="#">MEMBERSHIP</a>
+            <a class="main-a" href="{% url 'life_members_get' %}">MEMBERSHIP</a>
             <ul class="dropdown-menu">
                 <li class="side-down">
                     <a class="nav-arrow main-b" href="{% url 'user_registration' %}">
@@ -66,7 +66,7 @@
             </ul>
         </li>
         <li class="dropdown {% if page == 4 %}high{% endif %}">
-            <a class="main-a" href="#">PUBLICATIONS</a>
+            <a class="main-a" href="{% url 'publications' %}?page=about_spai_journal">PUBLICATIONS</a>
             <ul class="dropdown-menu">
                 <li><a class="main-b" href="{% url 'publications' %}?page=about_spai_journal">About SPAI Journal</a>
                 </li>
@@ -88,10 +88,10 @@
             </ul>
         </li>
         <li class="dropdown {% if page == 5 %}high{% endif %}">
-            <a class="main-a" href="#">ACADEMIC & RESOURCES</a>
+            <a class="main-a" href="{% url 'academic' %}?page=certification">ACADEMIC & RESOURCES</a>
             <ul class="dropdown-menu">
                 <li class="side-down">
-                    <a class="nav-arrow main-b" href="#">
+                    <a class="nav-arrow main-b" href="{% url 'academic' %}?page=certification">
                         <div style="display: flex;justify-content: space-between;">Academic Program<img
                                 src="{% static 'image/triangle.svg' %}" alt=""></div>
                     </a>

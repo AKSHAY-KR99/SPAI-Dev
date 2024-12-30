@@ -31,6 +31,15 @@
 </div>
 {% endif %}
 
+{% if request.user.is_authenticated and request.user.status == 'payment_pending' %}
+<div class="information-text-right">
+    <p><span>Hi {{request.user.first_name}} {{request.user.last_name}}, Payment for life membership is pending.</span>
+        <a class="scrolling-text" href="{% url 'payment_model' request.user.slug_value %}" style="text-decoration: none;">click here</a>
+        to complete your payment.
+    </p>
+</div>
+{% endif %}
+
 {% if request.user.is_authenticated and request.user.status == 'admin_approved' and request.user.annual_subscription is False %}
 <div class="information-text-right">
     <p><span>Hi {{request.user.first_name}} {{request.user.last_name}}, you don't have SPAI annual subscription.</span>
@@ -676,7 +685,7 @@
             <div class="swiper-slide">
                 <div class="executie-container">
                     <div class="exe-img">
-                        <img src="{% static 'image/Secretary.jpg' %}" alt="">
+                        <img src="{% static 'image/secretary.jpg' %}" alt="">
                     </div>
                     <div class="exe-text">
                         PROF ANIL RAMACHANDRAN
@@ -706,7 +715,7 @@
             <div class="swiper-slide">
                 <div class="executie-container">
                     <div class="exe-img">
-                        <img src="{% static 'image/kamlesh.png' %}" alt="">
+                        <img src="{% static 'image/Kamlesh.png' %}" alt="">
                     </div>
                     <div class="exe-text">
                         PROF(DR.) M.L.KAMLESH

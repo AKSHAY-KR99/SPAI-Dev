@@ -19,9 +19,15 @@
             </div>
             {% else %}
             <div class="user-profile-container">
+                {% if present %}
+                <div class="user-profile-icon" id="userProfileIcon">
+                    <img src="{{loc}}" alt="User Profile">
+                </div>
+                {% else %}
                 <div class="user-profile-icon" id="userProfileIcon">
                     <img src="{% static 'image/profilecheck.svg' %}" alt="User Profile">
                 </div>
+                {% endif %}
                 <div class="dropdown-menu3" id="dropdownMenu3">
                     <a class="down" href="{% url 'individual_user_details' request.user.slug_value %}">
                             <img src="{% static 'image/profilecheck.svg' %}" alt="">

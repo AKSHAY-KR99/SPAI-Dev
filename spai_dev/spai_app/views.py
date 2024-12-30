@@ -522,6 +522,7 @@ def admin_approval(request, *args, **kwargs):
             user.approval_percentage = 100
             user.status = settings.EX_2_APPROVED
         user.save()
+        user_status_change(slug, user.status)
         return redirect('members')
     elif request.user.user_role == settings.ADMIN_ROLE_VALUE:
         slug = kwargs.get("slug", None)
@@ -613,7 +614,7 @@ def send_email_with_attachment(request, slug):
     else:
         user = User.objects.get(slug_value=request.user.slug_value)
 
-    subject = "send_mail_to_executives"
+    subject = "Approval of Your Registration with SPAI"
     message = (
         f"Dear {user.first_name} {user.last_name},\nI hope this email finds you well.\n"
         f"We are pleased to inform you that your registration for membership with the Sports"
@@ -796,7 +797,7 @@ def life_members_get(request):
     for user in all_members:
         user_data = get_user_full_details(request, user.slug_value)
         new_members.append(user_data)
-        if user_data['active_key'] is True:
+        if user_data['annual_subscription'] is True:
             active_members.append(user_data)
         else:
             in_active_members.append(user_data)
