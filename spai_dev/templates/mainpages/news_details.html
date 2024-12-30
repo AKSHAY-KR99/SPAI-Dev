@@ -27,9 +27,11 @@
                 <img src="{{ event.image.url }}" alt="">
             </div>
             {% if event.registration_link and event.registration_link|slice:":7" == "http://" or event.registration_link|slice:":8" == "https://" %}
-                <div class="discount">
-                    <h4>You have Discount</h4>
-                </div>
+            {% if request.user.annual_subscription %}
+            <div class="discount">
+                    <h4>Since you are a annual subscriber, You have 50% discount on registration fee</h4>
+            </div>
+            {% endif %}
                 {% endif %}
             <div class="news-detail-content">
                 <div class="news-dis" style="margin-left: 0%;">
@@ -40,11 +42,11 @@
                         {{ event.end_date|date:"d" }} {{ event.end_date|date:"F" }}
                         {% endif %}
                 </div>
-                
+
                 <div class="news-tit" style="margin-left: 0%;">
                     {{ event.title }}
                 </div>
-                
+
                 <div class="news-detail-content-text">
                     <p>
                         {{event.description}}<br>
@@ -55,12 +57,12 @@
                     {% endif %}
                     <br><br>
                     {% if event.registration_link and event.registration_link|slice:":7" == "http://" or event.registration_link|slice:":8" == "https://" %}
-                    
-                    <h4 style="display: inline;">Registration Link:</h4> 
+
+                    <h4 style="display: inline;">Registration Link:</h4>
                     <span>
-                        <a style="text-decoration: underline; color: blue;" 
-                           href="{{ event.registration_link }}" 
-                           target="_blank" 
+                        <a style="text-decoration: underline; color: blue;"
+                           href="{{ event.registration_link }}"
+                           target="_blank"
                            rel="noopener noreferrer">
                            click here
                         </a>
@@ -85,7 +87,7 @@
 <!--                    <a  class="pdf" href="{% static 'docs\EC MEETING 23 MARCH 2024.pdf' %}" target="_blank">-->
 <!--                        Resource 4-->
 <!--                    </a>-->
-                    
+
                 </div>
             </div>
         </div>
@@ -147,7 +149,7 @@
 {% include 'footer.html' %}
 {% endblock %}
 {% block jsfile %}
-<script type="text/javascript" src="{% static 'js/sub/news.js' %}"></script>  
+<script type="text/javascript" src="{% static 'js/sub/news.js' %}"></script>
     {% endblock %}
 
 

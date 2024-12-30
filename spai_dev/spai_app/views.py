@@ -5,7 +5,6 @@ from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 from django.core.mail import EmailMessage
 from django.db.models import Q
-from django.db.models.fields import return_None
 from django.forms import model_to_dict
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
@@ -18,7 +17,7 @@ from . import models, forms
 from .models import GalleryManagement, User, EventManagement, UserDetailModel, GalleryImage, PaymentModel
 from .decorators import admin_only, authenticated_only
 from .utils import render_to_pdf, get_registration_num, get_research_paper_no, send_mail_to_executives, \
-    send_password_reset_email
+    send_password_reset_email, update_subscription_status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
@@ -35,7 +34,6 @@ def admin_action(sts):
 
 
 def user_status_change(slug, current_status):
-    # import pdb;pdb.set_trace()
     user = User.objects.get(slug_value=slug)
     if user is not None:
         if current_status == settings.USER_CREATED:
@@ -62,7 +60,6 @@ def user_status_change(slug, current_status):
 
 
 def get_next_step(status):
-    # import pdb;pdb.set_trace()
     if status == settings.USER_CREATED:
         return 'User created, Details not added'
     if status == settings.USER_DETAILS_ADDED:
@@ -88,6 +85,7 @@ def get_next_step(status):
 # Views
 def index(request):
     now = timezone.now()
+    update_subscription_status(request, True)
     upcoming_events = list(EventManagement.objects.filter(datetime__gte=now).order_by('datetime')[:5])
     if len(upcoming_events) < 5:
         remaining_slots = 5 - len(upcoming_events)
@@ -230,7 +228,6 @@ def about_members(request):
 
 @admin_only
 def members(request):
-    # if request.user.user_role == settings.ADMIN_ROLE_VALUE:
     users = User.objects.all()
     user_list = []
     for user in users:
@@ -341,8 +338,8 @@ def add_gallery_image(request, gallery_id):
 
 def news(request):
     all_events = EventManagement.objects.all().order_by('-datetime')
-    upcoming_events = EventManagement.objects.filter(datetime__gte=timezone.now()).order_by('datetime')
-    past_events = EventManagement.objects.filter(datetime__lt=timezone.now()).order_by('-datetime')
+    upcoming_events = EventManagement.objects.filter(end_date__gte=timezone.now()).order_by('datetime')
+    past_events = EventManagement.objects.filter(end_date__lt=timezone.now()).order_by('-datetime')
 
     page_number = request.GET.get('page', 1)
     current_tab = request.GET.get('tab', 'all')
@@ -386,6 +383,7 @@ def news_detail(request, pk):
 
 
 from django.core.files.storage import FileSystemStorage
+
 
 def eventadd(request):
     if request.method == 'POST':
@@ -670,6 +668,7 @@ def get_user_full_details(req, slug):
     user_data['admin_action'] = admin_action(user_dict.get("status", None))
     user_data['reg_no'] = user_dict.get("reg_no", None)
     user_data['active_key'] = user_dict.get("active_key", False)
+    user_data['annual_subscription'] = user_dict.get("annual_subscription", False)
 
     user_details = UserDetailModel.objects.filter(user=user.id).first()
     if user_details is not None:
@@ -700,6 +699,23 @@ def get_user_full_details(req, slug):
             user_data["payment_type"] = settings.BANK_TRANSFER_NAME
         user_data["payment_doc"] = payment_dict.get("document", None)
         user_data["payment_date"] = payment_data.payment_reported_date
+
+        sub_pay = models.SubscriptionPayment.objects.filter(user=user).order_by('-payment_date').first()
+        if sub_pay is not None:
+            sub_dict = model_to_dict(sub_pay)
+            user_data['sub_pay'] = True
+            user_data["sub_transaction_id"] = sub_dict.get("transaction_id", None)
+            user_data["sub_bank_name"] = sub_dict.get("bank_name", None)
+            user_data["annual_payment_date"] = sub_pay.payment_date
+            user_data["payment_file"] = sub_dict.get("document", None)
+
+        annual = models.AnnualSubscriptionModel.objects.filter(user=user).first()
+        if annual is not None:
+            annual_dict = model_to_dict(annual)
+            user_data['annual'] = True
+            user_data["start_date"] = annual_dict.get("date_created", None)
+            user_data["end_date"] = annual_dict.get("end_date", None)
+
         key = False
         if req.user.is_authenticated:
             if req.user.user_role == settings.ADMIN_ROLE_VALUE and not user.admin_approved and user.approval_percentage == 100 and user.status == settings.EX_2_APPROVED:
@@ -771,7 +787,6 @@ def create_or_update_life_member(request):
         return Response({"error": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
 
-# @admin_only
 def life_members_get(request):
     life_members = LifeMembers.objects.all()
     all_members = User.objects.all()
@@ -806,7 +821,6 @@ def life_members_get(request):
     return render(request, 'members/life_members.html', context)
 
 
-# @admin_only
 def life_member_info(request, *args, **kwargs):
     uid = kwargs.get("uid", None)
     context = {}
@@ -868,7 +882,6 @@ def application_retrieve(request, *args, **kwargs):
 
 
 def call_for_manuscript(request):
-    # import pdb;pdb.set_trace()
     if request.method == 'POST':
         manuscript_form = forms.ManuscriptForm(request.POST, request.FILES)
         if manuscript_form.is_valid():
@@ -992,3 +1005,43 @@ def reset_password(request, *args, **kwargs):
         form = forms.PasswordSetFrom()
         context["form"] = form
         return render(request, 'members/reset_password.html', context)
+
+
+def annual_sub_payment(request, *args, **kwargs):
+    if request.method == 'POST':
+        # if not (request.user.slug_value == kwargs.get("slug", "") and request.user.status == settings.ADMIN_APPROVED and request.user.annual_subscription is False):
+        #     return redirect('index')
+        form = forms.SubscriptionPaymentForm(request.POST, request.FILES)
+        if form.is_valid():
+            payment = form.save(commit=False)
+            payment.user = request.user
+            payment.save()
+            if not models.AnnualSubscriptionModel.objects.filter(user=request.user).exists():
+                sub_obj = models.AnnualSubscriptionModel.objects.create(user=request.user, active=False)
+            return redirect(
+                f"{reverse('success')}?message=Your Annual subscription payment done, your details are under validation. Thank you!")
+        else:
+            return render(request, 'members/subscription_fee.html', {"form": form})
+    else:
+        form = forms.SubscriptionPaymentForm()
+        return render(request, 'members/subscription_fee.html', {"form": form})
+
+@admin_only
+def annual_sub_approval(request, *args, **kwargs):
+    slug = kwargs.get("slug", "")
+    user = models.User.objects.get(slug_value=slug)
+    annual_model = models.AnnualSubscriptionModel.objects.filter(user=user).first()
+    if annual_model is None:
+        return redirect('individual_user_details', slug=slug)
+    current = datetime.today()
+    annual_model.date_created = current
+    annual_model.end_date = current + timedelta(days=365)
+    annual_model.active = True
+    user.annual_subscription = True
+    annual_model.save()
+    user.save()
+    return redirect('individual_user_details', slug=slug)
+
+def refresh_members(request, *args, **kwargs):
+    update_subscription_status(request, True)
+    return redirect('life_members_get')

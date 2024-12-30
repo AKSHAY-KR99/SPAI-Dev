@@ -151,11 +151,13 @@
   display: flex;
   padding: 10px 20px;
   background-color: rgb(202, 2, 2);
-  color: white;
+  color: yellow;
+  font-size: 18px;
   border-radius: 20px;
   margin-bottom: 20px;
   justify-content: center;
   /* width: fit-content; */
   box-sizing: border-box;
+  animation: scaleUp 1.5s ease-in-out;
   
 }

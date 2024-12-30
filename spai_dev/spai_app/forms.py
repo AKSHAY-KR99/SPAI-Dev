@@ -3,7 +3,7 @@ from django.conf import settings
 from django.contrib.auth.hashers import check_password
 from django.forms import ModelForm, modelformset_factory
 from .models import GalleryManagement, UserDetailModel, User, EventManagement, PaymentModel, InternshipApplication, \
-    Manuscript, Author
+    Manuscript, Author, SubscriptionPayment
 from django import forms
 
 
@@ -231,6 +231,11 @@ class PasswordSetFrom(forms.Form):
             raise forms.ValidationError("Passwords do not match")
         return password
 
+
+class SubscriptionPaymentForm(forms.ModelForm):
+    class Meta:
+        model = SubscriptionPayment
+        fields = ['transaction_id', 'bank_name', 'document']
 
 
 # Author formset (allows adding multiple authors)

@@ -1,7 +1,8 @@
 from django.contrib import admin
 from .models import (GalleryManagement, User,
                      UserDetailModel, GalleryImage, PaymentModel, EventManagement, LifeMembers, InternshipApplication,
-                     Manuscript, Author, EventDocumentModel, PasswordResetRequest)
+                     Manuscript, Author, EventDocumentModel, PasswordResetRequest, AnnualSubscriptionModel,
+                     SubscriptionPayment)
 
 
 # Register your models here.
@@ -19,3 +20,5 @@ admin.site.register(Manuscript)
 admin.site.register(Author)
 admin.site.register(EventDocumentModel)
 admin.site.register(PasswordResetRequest)
+admin.site.register(AnnualSubscriptionModel)
+admin.site.register(SubscriptionPayment)
