@@ -10,10 +10,9 @@
 <link rel="stylesheet" href="{% static 'css/home/news.css' %}">
 <link rel="stylesheet" href="{% static 'css/home/message.css' %}">
 <link rel="stylesheet" href="{% static 'css/home/maths.css' %}">
-<!-- Add SwiperJS styles -->
-<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+<link rel="stylesheet" href="{% static 'css/home/context_mess.css' %}">
 
-<!-- Add SwiperJS script -->
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 
@@ -24,19 +23,28 @@
 {% block content %}
 
 {% if request.user.is_authenticated and request.user.status == 'user_created' %}
-<div class="complete-profile">
-    <div class="information-text">
-        <p> <span>Hi {{request.user.first_name}} {{request.user.last_name}}, </span><br>
-            <a href="{% url 'user_profile_details' %}" style="text-decoration: none;">click here</a> to complete your
-            profile.
-        </p>
-    </div>
+<div class="information-text-right">
+    <p><span>Hi {{request.user.first_name}} {{request.user.last_name}}, </span>
+        <a class="scrolling-text" href="{% url 'user_profile_details' %}" style="text-decoration: none;">click here</a>
+        to complete your profile.
+    </p>
 </div>
 {% endif %}
+
+{% if request.user.is_authenticated and request.user.status == 'admin_approved' and request.user.annual_subscription is False %}
+<div class="information-text-right">
+    <p><span>Hi {{request.user.first_name}} {{request.user.last_name}}, you don't have SPAI annual subscription.</span>
+        <a class="scrolling-text" href="{% url 'annual_sub_payment' request.user.slug_value %}"
+           style="text-decoration: none;">click here</a> to Subscribe.
+    </p>
+</div>
+{% endif %}
+
+
 <div class="hero">
     <div class="hero-pic">
         <!-- <img class="full-width-img" src="{% static 'image/swim.png' %}" alt="Image 1"> -->
-        
+
         <!-- <img class="full-width-img" src="{% static 'image/weight.jpg' %}" alt="Image 2">
         <img class="full-width-img" src="{% static 'image/tennis.jpg' %}" alt="Image 1">
         <img class="full-width-img" src="{% static 'image/bgfootball.jpg' %}" alt="Image 2"> -->
@@ -257,7 +265,7 @@
         <div class="msg-pic">
             <img src="{% static 'image/msg_sec.png' %}" alt="">
         </div>
-        
+
     </div>
 </div>
 <!-- <div class="messages">
@@ -319,9 +327,11 @@
                     </div>
                     <div class="news-dis">
                         {% if event.datetime|date:"Y-m-d" == event.end_date|date:"Y-m-d" %}
-                        {{ event.datetime|date:"Y" }} , {{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }} {{ event.datetime|time }}
+                        {{ event.datetime|date:"Y" }} , {{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }} {{
+                        event.datetime|time }}
                         {% else %}
-                        {{ event.datetime|date:"Y" }} , {{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }} {{ event.datetime|time }} -
+                        {{ event.datetime|date:"Y" }} , {{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }} {{
+                        event.datetime|time }} -
                         {{ event.end_date|date:"d" }} {{ event.end_date|date:"F" }}
                         {% endif %}
                     </div>

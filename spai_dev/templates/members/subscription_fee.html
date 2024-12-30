@@ -39,6 +39,22 @@
                 <h6>State Bank of India, Mela Road, Gwalior (MP)</h6>
             </div>
         </div>
+        <form action="" method="post" name="annual_sub" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="payment-inputs">
+                <h4>Transaction Details</h4>
+                <h6>Transaction ID</h6>
+                <input type="text" name="transaction_id" placeholder="Enter Transaction ID" required>
+                <h6>Bank Name</h6>
+                <input type="text" name="bank_name" placeholder="Enter Bank Name" required>
+                <h6>Upload Payment Proof</h6>
+                <input type="file" id="document" name="document" placeholder="browse" required>
+                <div class="payment-submit">
+                    <input type="submit" value="Submit Payment Details">
+                </div>
+                
+            </div>
+        </form>
         <div class="payment-inputs">
             <h4>Submit Documents To</h4>
             <div class="payment-addresses">
@@ -61,6 +77,8 @@
         </div>
 
     </div>
+
+
 </div>
 
 

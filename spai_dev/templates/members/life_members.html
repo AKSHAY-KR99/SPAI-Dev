@@ -30,6 +30,11 @@
             <img src="{% static 'image/search.svg' %}" alt="Search">
         </button>
     </form>
+    {% if request.user.user_role == 1 or request.user.executive == 1 or request.user.executive == 2 %}
+    <div class="refresh-btn">
+        <a href="{% url 'refresh_members' %}">Refresh</a>
+    </div>
+    {% endif %}
 </div>
 <div class="news-tabs">
     <ul class="tab-list">
@@ -46,54 +51,54 @@
 
 <table class="table active" id="new">
     <thead>
-        <tr>
-            <th onclick="sortTable('new', 0);">Registration No <span class="sort-icon">&#9650;&#9660;</span></th>
-            <th onclick="sortTable('new',1)">Username<span class="sort-icon">&#9650;&#9660;</span></th>
-            <th class="email">Email</th>
-            <th onclick="sortTable('new',3)">First Name <span class="sort-icon">&#9650;&#9660;</span></th>
-            <th onclick="sortTable('new',4)">Register Date <span class="sort-icon">&#9650;&#9660;</span></th>
-            <th class="status">Status</th>
-            <th>Actions</th>
-        </tr>
+    <tr>
+        <th onclick="sortTable('new', 0);">Registration No <span class="sort-icon">&#9650;&#9660;</span></th>
+        <th onclick="sortTable('new',1)">Username<span class="sort-icon">&#9650;&#9660;</span></th>
+        <th class="email">Email</th>
+        <th onclick="sortTable('new',3)">First Name <span class="sort-icon">&#9650;&#9660;</span></th>
+        <th onclick="sortTable('new',4)">Register Date <span class="sort-icon">&#9650;&#9660;</span></th>
+        <th class="status">Status</th>
+        <th>Actions</th>
+    </tr>
     </thead>
     <tbody>
-        {% for user in new_members %}
-        <tr>
-            <td class="email">{{ user.reg_no }}</td>
-            <td class="username">
-                {% if user.photo %}
-                <img src="{{ user.photo.url }}" alt="">
-                {% else %}
-                <img src="{% static 'image/profile-icon.svg' %}" alt="photo">
-                {% endif %}
-                {{ user.username }}
-            </td>
-            <td class="email">{{ user.email }}</td>
-            <td>{{ user.first_name }} {{ user.last_name }}</td>
-            <td>{{ user.date_created }}</td>
-            <td class="status">{{ user.next_step }}</td>
-            <td>
-                <a href="{% url 'individual_user_details' user.slug_value %}">
-                    <div class="view">
-                        <img src="{% static 'image/eye.svg' %}" alt="">
-                        <p>View</p>
-                    </div>
-                </a>
-            </td>
-        </tr>
-        {% endfor %}
+    {% for user in new_members %}
+    <tr>
+        <td class="email">{{ user.reg_no }}</td>
+        <td class="username">
+            {% if user.photo %}
+            <img src="{{ user.photo.url }}" alt="">
+            {% else %}
+            <img src="{% static 'image/profile-icon.svg' %}" alt="photo">
+            {% endif %}
+            {{ user.username }}
+        </td>
+        <td class="email">{{ user.email }}</td>
+        <td>{{ user.first_name }} {{ user.last_name }}</td>
+        <td>{{ user.date_created }}</td>
+        <td class="status">{{ user.next_step }}</td>
+        <td>
+            <a href="{% url 'individual_user_details' user.slug_value %}">
+                <div class="view">
+                    <img src="{% static 'image/eye.svg' %}" alt="">
+                    <p>View</p>
+                </div>
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
     </tbody>
 </table>
 <table class="table" id="life">
     <thead>
-        <tr>
-            <th onclick="sortTable('life',0)">Registration No<span class="sort-icon">&#9650;&#9660;</span></th>
-            <th onclick="sortTable('life',1)">Name <span class="sort-icon">&#9650;&#9660;</span></th>
-            <th class="email">Email</th>
-            <th onclick="sortTable('life',3)">Membership Date<span class="sort-icon">&#9650;&#9660;</span></th>
-            <th class="status">Active</th>
-            <th>Action</th>
-        </tr>
+    <tr>
+        <th onclick="sortTable('life',0)">Registration No<span class="sort-icon">&#9650;&#9660;</span></th>
+        <th onclick="sortTable('life',1)">Name <span class="sort-icon">&#9650;&#9660;</span></th>
+        <th class="email">Email</th>
+        <th onclick="sortTable('life',3)">Membership Date<span class="sort-icon">&#9650;&#9660;</span></th>
+        <th class="status">Active</th>
+        <th>Action</th>
+    </tr>
     </thead>
     <tbody>
     {% for user in life_members %}
@@ -121,33 +126,33 @@
 <div id="life-members-paginator" class="pagination" style="display: none;">
     <ul>
         {% if life_members.has_previous %}
-            <li><a href="?page=1&active_tab=life">First</a></li>
-            <li><a href="?page={{ life_members.previous_page_number }}&active_tab=life">Previous</a></li>
+        <li><a href="?page=1&active_tab=life">First</a></li>
+        <li><a href="?page={{ life_members.previous_page_number }}&active_tab=life">Previous</a></li>
         {% else %}
-            <li class="disabled">First</li>
-            <li class="disabled">Previous</li>
+        <li class="disabled">First</li>
+        <li class="disabled">Previous</li>
         {% endif %}
 
         {% with life_members.number as current_page %}
-            {% with current_page|add:-1 as start_page %}
-                {% for num in life_members.paginator.page_range %}
-                    {% if num >= start_page and num < start_page|add:3 %}
-                        {% if num == life_members.number %}
-                            <li class="active"><span>{{ num }}</span></li>
-                        {% else %}
-                            <li><a href="?page={{ num }}&active_tab=life">{{ num }}</a></li>
-                        {% endif %}
-                    {% endif %}
-                {% endfor %}
-            {% endwith %}
+        {% with current_page|add:-1 as start_page %}
+        {% for num in life_members.paginator.page_range %}
+        {% if num >= start_page and num < start_page|add:3 %}
+        {% if num == life_members.number %}
+        <li class="active"><span>{{ num }}</span></li>
+        {% else %}
+        <li><a href="?page={{ num }}&active_tab=life">{{ num }}</a></li>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+        {% endwith %}
         {% endwith %}
 
         {% if life_members.has_next %}
-            <li><a href="?page={{ life_members.next_page_number }}&active_tab=life">Next</a></li>
-            <li><a href="?page={{ life_members.paginator.num_pages }}&active_tab=life">Last</a></li>
+        <li><a href="?page={{ life_members.next_page_number }}&active_tab=life">Next</a></li>
+        <li><a href="?page={{ life_members.paginator.num_pages }}&active_tab=life">Last</a></li>
         {% else %}
-            <li class="disabled">Next</li>
-            <li class="disabled">Last</li>
+        <li class="disabled">Next</li>
+        <li class="disabled">Last</li>
         {% endif %}
     </ul>
 </div>
@@ -155,15 +160,15 @@
 
 <table class="table" id="active-m">
     <thead>
-        <tr>
-            <th onclick="sortTable('active-m',0)">Registration No <span class="sort-icon">&#9650;&#9660;</span></th>
-            <th onclick="sortTable('active-m',1)">Username <span class="sort-icon">&#9650;&#9660;</span></th>
-            <th class="email">Email</th>
-            <th onclick="sortTable('active-m',3)">First Name</th>
-            <th onclick="sortTable('active-m',4)">Register Date <span class="sort-icon">&#9650;&#9660;</span></th>
-            <th class="status">Status</th>
-            <th>Actions</th>
-        </tr>
+    <tr>
+        <th onclick="sortTable('active-m',0)">Registration No <span class="sort-icon">&#9650;&#9660;</span></th>
+        <th onclick="sortTable('active-m',1)">Username <span class="sort-icon">&#9650;&#9660;</span></th>
+        <th class="email">Email</th>
+        <th onclick="sortTable('active-m',3)">First Name</th>
+        <th onclick="sortTable('active-m',4)">Register Date <span class="sort-icon">&#9650;&#9660;</span></th>
+        <th class="status">Status</th>
+        <th>Actions</th>
+    </tr>
     </thead>
     <tbody>
 
@@ -196,15 +201,15 @@
 </table>
 <table class="table" id="non-active">
     <thead>
-        <tr>
-            <th onclick="sortTable('non-active',0)">Registration No <span class="sort-icon">&#9650;&#9660;</span></th>
-            <th onclick="sortTable('non-active',1)">Username <span class="sort-icon">&#9650;&#9660;</span></th>
-            <th class="email">Email</th>
-            <th onclick="sortTable('non-active',3)">First Name</th>
-            <th onclick="sortTable('non-active',4)">Register Date <span class="sort-icon">&#9650;&#9660;</span></th>
-            <th class="status">Status</th>
-            <th>Actions</th>
-        </tr>
+    <tr>
+        <th onclick="sortTable('non-active',0)">Registration No <span class="sort-icon">&#9650;&#9660;</span></th>
+        <th onclick="sortTable('non-active',1)">Username <span class="sort-icon">&#9650;&#9660;</span></th>
+        <th class="email">Email</th>
+        <th onclick="sortTable('non-active',3)">First Name</th>
+        <th onclick="sortTable('non-active',4)">Register Date <span class="sort-icon">&#9650;&#9660;</span></th>
+        <th class="status">Status</th>
+        <th>Actions</th>
+    </tr>
     </thead>
     <tbody>
 

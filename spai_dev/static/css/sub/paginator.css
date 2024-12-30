@@ -56,3 +56,28 @@
 .pagination .disabled:hover {
     background-color: transparent; /* No hover effect for disabled */
 }
+
+
+.refresh-btn{
+    background-color: black;
+    color: white;
+    padding: 7px;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

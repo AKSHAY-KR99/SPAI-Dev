@@ -1,11 +1,14 @@
 from datetime import datetime
 from io import BytesIO
+from time import timezone
+
+from django.utils import timezone as tmz
 
 from django.conf import settings
 from django.core.mail import EmailMessage
 from django.template.loader import get_template
 from xhtml2pdf import pisa
-from .models import User, Manuscript
+from .models import User, Manuscript, AnnualSubscriptionModel
 
 
 def render_to_pdf(template_src, context_dict):
@@ -104,3 +107,20 @@ def send_password_reset_email(user, host):
         print("Email sent successfully!")
     except Exception as e:
         print(f"Failed to send email: {e}")
+
+def update_subscription_status(request, bulk):
+    current_date = tmz.now().today()
+    if bulk:
+        subscriptions = AnnualSubscriptionModel.objects.filter(end_date__lt=current_date)
+        for sub in subscriptions:
+            sub.user.annual_subscription = False
+            sub.active = False
+            sub.save()
+            sub.user.save()
+    else:
+        sub = AnnualSubscriptionModel.objects.filter(end_date__lt=current_date, user=request.user).first()
+        if sub is not None:
+            sub.user.annual_subscription = False
+            sub.active = False
+            sub.save()
+            sub.user.save()

@@ -1,4 +1,6 @@
 import os
+import random
+import string
 
 from django.conf import settings
 from django.contrib.auth.base_user import BaseUserManager, AbstractBaseUser
@@ -17,7 +19,11 @@ def user_detail_image_path(instance, filename):
 
 
 def user_detail_payment_path(instance, filename):
-    path = f'user_detail/{instance.user_info.slug_value}/payment/{instance.payment_type}/{filename}'
+    path = f'user_detail/{instance.user_info.slug_value}/payment/lm/{filename}'
+    return path
+
+def subscription_payment_path(instance, filename):
+    path = f'user_detail/{instance.user.slug_value}/payment/sub/{filename}'
     return path
 
 
@@ -40,6 +46,13 @@ def generate_unique_slug():
         num += 1
     return unique_slug
 
+def generate_unique_transaction_id():
+    """Generate a unique 8-character alphanumeric transaction ID."""
+    characters = string.ascii_letters + string.digits  # Letters and digits
+    while True:
+        payment_id = ''.join(random.choices(characters, k=8))
+        if not SubscriptionPayment.objects.filter(payment_id=payment_id).exists():
+            return payment_id
 
 class EventManagement(models.Model):
     title = models.CharField(max_length=50, null=True, blank=True)
@@ -143,6 +156,7 @@ class User(AbstractBaseUser, PermissionsMixin):
                                               validators=[MinValueValidator(0), MaxValueValidator(100)])
     executive = models.PositiveSmallIntegerField(choices=settings.EXECUTIVE_CHOICES, blank=True, null=True)
     active_key = models.BooleanField(null=True, blank=True, default=False)
+    annual_subscription = models.BooleanField(default=False)
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
@@ -297,3 +311,34 @@ class PasswordResetRequest(models.Model):
 
     def __str__(self):
         return f"{self.user.email} at {self.date_created}"
+
+
+class AnnualSubscriptionModel(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='annual_sub')
+    date_created = models.DateField(null=True, blank=True)
+    end_date = models.DateField(null=True, blank=True)
+    active = models.BooleanField(default=False)
+
+    def __str__(self):
+        return str(self.user)
+
+class SubscriptionPayment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='payment_model_user')
+    transaction_id = models.CharField(max_length=50, null=True, blank=True)
+    bank_name = models.CharField(max_length=50, null=True, blank=True)
+    payment_date = models.DateField(auto_now_add=True)
+    document = models.FileField(upload_to=subscription_payment_path, null=True, blank=True)
+    payment_id = models.CharField(max_length=8, unique=True, blank=True)
+
+    def __str__(self):
+        return str(self.user)
+
+    def save(self, *args, **kwargs):
+        if not self.payment_id:
+            self.payment_id = generate_unique_transaction_id()
+        super().save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        if self.document:
+            os.remove(self.document.path)
+        super(SubscriptionPayment, self).delete(*args, **kwargs)

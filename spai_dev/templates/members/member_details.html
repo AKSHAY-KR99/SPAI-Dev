@@ -37,12 +37,18 @@
             <p>Last name</p>
             <p>User name</p>
             <p>Registration No</p>
+            <p>Annual Subscription</p>
         </div>
         <div class="details">
             <p>{{user.first_name}}</p>
             <p>{{user.last_name}}</p>
             <p>{{user.username}}</p>
             <p>{{user.reg_no}}</p>
+            {% if user.annual_subscription is True%}
+                <p style="color:green">Subscribed</p>
+            {% else %}
+                <p style="color:red">Not Subscribed</p>
+            {% endif %}
         </div>
     </div>
     <div class="details_container">
@@ -131,7 +137,7 @@
             <p>{{user.admin_action}}</p>
             {% endif %}
             {% if user.admin_approved %}
-            <p>
+            <p style="color:blue;">
                 <a style="text-decoration: none; color: inherit;" href="{% url 'certificate' user.slug_value %}"
                    target="blank">
                     Click here to Download</a>
@@ -164,12 +170,71 @@
             <p>{{user.bank_name}}</p>
 <!--            <p>{{user.payment_type}}</p>-->
             <a href="{{user.payment_doc.url}}" target="_blank">
-                <p>
+                <p style="color:blue;">
                     Click to view
                 </p>
             </a>
         </div>
     </div>
+
+    {% if user.sub_pay %}
+    <div class="details_container">
+        <div class="number">
+            <div class="num">
+                <p>07</p>
+            </div>
+        </div>
+        <div class="labels">
+            <p>Payment date</p>
+            <p>Transaction id</p>
+            <p>Bank name</p>
+            <p>Payment Document</p>
+        </div>
+        <div class="details">
+            <p>{{user.annual_payment_date}}</p>
+            <p>{{user.sub_transaction_id}}</p>
+            <p>{{user.sub_bank_name}}</p>
+            <a href="{{user.payment_file.url}}" target="_blank">
+                <p>
+                    Click to view
+                </p>
+            </a>
+            {% if not user.annual_subscription %}
+            <a href="{% url 'subscription_approval' user.slug_value %}">
+                <p style="color:red;">
+                    Verify
+                </p>
+            </a>
+            {% else %}
+<!--            <a href="{% url 'individual_user_details' user.slug_value %}">-->
+            <a class="verified-sub" href="#" onclick="return false">
+                <p style="color:green;">
+                    Verified
+                </p>
+            </a>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+
+        {% if user.annual %}
+    <div class="details_container">
+        <div class="number">
+            <div class="num">
+                <p>08</p>
+            </div>
+        </div>
+        <div class="labels">
+            <p>Subscription start date</p>
+            <p>Subscription end date</p>
+        </div>
+        <div class="details">
+            <p>{{user.start_date}}</p>
+            <p>{{user.end_date}}</p>
+        </div>
+    </div>
+    {% endif %}
+
     <div style="display: flex; justify-content: center;width: 100%;">
         {% if user.key %}
         <a style="text-decoration: none; color: inherit;" href="{% url 'user_approval' user.slug_value %}">
