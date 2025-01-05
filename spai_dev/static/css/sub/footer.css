@@ -1,136 +1,171 @@
 body {
-    margin: 0;
-    font-family: "Poppins", sans-serif;
-  }
-  
-footer{
-    width: 100%;
-    height: auto;
-    margin-top: 70px;
-    background: rgba(248, 248, 248, 1);
-  
-  }
-  .footer-row{
-    display: flex;
-    align-items:normal;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+footer {
+  width: 100%;
+  height: auto;
+  margin-top: 70px;
+  background: rgba(248, 248, 248, 1);
+
+}
+
+.footer-row {
+  display: flex;
+  align-items: normal;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 50px;
+  padding: 0px 20px;
+}
+.quicklinks ul{
+  padding-left: 0%;
+}
+.logo-foot {
+  width: auto;
+  height: 72px;
+}
+
+
+.companyfoot-name {
+  width: 262px;
+  font-size: 20px;
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #8B0000;
+  line-height: 30px;
+  letter-spacing: 1px;
+}
+.foot-row-1{
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  height: fit-content;
+  align-items: center;
+  gap: 15px;
+}
+.quicklinks {
+  margin:10px 20px;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.quicklinks li {
+  margin-top: 10px;
+  gap: 10px;
+  opacity: 0px;
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  text-align: left;
+
+}
+
+.quicklinks li a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.social-pics {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+}
+
+.social-pics img {
+  width: 40px;
+  height: 40px;
+}
+
+@media (max-width: 768px) {
+
+  .footer-row {
     justify-content: space-between;
-    flex-wrap: wrap;
-    margin-top: 50px;
+    gap: 13px;
   }
-  .logo-foot{
-    width: 63.41px;
-    height: 77px;
-    margin-top: 20px;
-    margin-left: 44.68px;
-    gap: 0px;
-    opacity: 0px;
-  
-  }
-  
-  
-  .companyfoot-name {
-    margin: 30px;
-    width: 250px;
-    height: 60px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    font-size: 20px;
-    text-transform: uppercase;
-    color: #000000;
-  }
-  .quicklinks{
-    margin-right: 10px;
-    margin-top: 10px;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-  .quicklinks li{
-    margin-top: 10px;
-    gap: 10px;
-    opacity: 0px;
-    font-family: "Poppins",sans-serif;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 18px;
-    text-align: left;
-  
-  }
-  .quicklinks li a{
-    text-decoration: none; 
-    color: inherit;
-  }
-  .social-pics{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-
-  }
-  .social-pics img{
-    width: 40px;
-    height: 40px;
-  }
-  @media (max-width: 768px) {
-
-  .footer-row{
-    justify-content: center;
-      gap: 13px;
-  }}
+}
 
 
-  /* General Styles for Footer Links */
+/* General Styles for Footer Links */
 .footer-links {
   display: flex;
-  flex-wrap: wrap; /* Allows wrapping to new rows */
-  justify-content: center; /* Centers the rows on the page */
-  gap: 25px; /* Space between each link */
-  margin: 30px 0; /* Adds some vertical spacing */
+  flex-wrap: wrap;
+  /* Allows wrapping to new rows */
+  justify-content: center;
+  /* Centers the rows on the page */
+  gap: 25px;
+  /* Space between each link */
+  margin: 30px 0;
+  /* Adds some vertical spacing */
   padding: 10px;
   font-weight: 600;
 }
 
 .footer-links a {
-  text-decoration: none; /* Removes underline from links */
-  color: #000000; /* Default link color */
-  font-size: 15px; /* Sets a readable font size */
-  font-family: 'Poppins', sans-serif; /* Consistent font style */
-  padding: 5px 15px; /* Adds some padding for clickable area */
-  border-radius: 5px; /* Adds slight roundness to edges */
-  background-color: transparent; /* Light background for visibility */
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
+  text-decoration: none;
+  /* Removes underline from links */
+  color: #000000;
+  /* Default link color */
+  font-size: 15px;
+  /* Sets a readable font size */
+  font-family: 'Poppins', sans-serif;
+  /* Consistent font style */
+  padding: 5px 15px;
+  /* Adds some padding for clickable area */
+  border-radius: 5px;
+  /* Adds slight roundness to edges */
+  background-color: transparent;
+  /* Light background for visibility */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  /* Smooth hover effect */
 }
 
 .footer-links a:hover {
-  background-color: #080f4e; /* Slightly darker background on hover */
-  transform: scale(1.05); /* Subtle zoom effect on hover */
-  color: #ffffff; /* Keep text color consistent */
+  background-color: #080f4e;
+  /* Slightly darker background on hover */
+  transform: scale(1.05);
+  /* Subtle zoom effect on hover */
+  color: #ffffff;
+  /* Keep text color consistent */
 }
 
 .footer-links a:active {
-  background-color: #ccc; /* Even darker background when clicked */
+  background-color: #ccc;
+  /* Even darker background when clicked */
 }
 
 /* Responsive Design for Medium Devices */
 @media (max-width: 768px) {
   .footer-links {
-      gap: 15px; /* Slightly reduce gap between links */
+    gap: 15px;
+    /* Slightly reduce gap between links */
   }
 
   .footer-links a {
-      font-size: 0.9rem; /* Reduce font size for medium screens */
-      padding: 4px 8px; /* Adjust padding for better fit */
+    font-size: 0.9rem;
+    /* Reduce font size for medium screens */
+    padding: 4px 8px;
+    /* Adjust padding for better fit */
   }
 }
 
 /* Responsive Design for Small Devices */
 @media (max-width: 480px) {
   .footer-links {
-      gap: 10px; /* Further reduce gap between links */
+    gap: 10px;
+    /* Further reduce gap between links */
   }
 
   .footer-links a {
-      font-size: 0.8rem; /* Smaller font size for small screens */
-      padding: 3px 6px; /* Adjust padding for smaller screens */
+    font-size: 0.8rem;
+    /* Smaller font size for small screens */
+    padding: 3px 6px;
+    /* Adjust padding for smaller screens */
   }
 }

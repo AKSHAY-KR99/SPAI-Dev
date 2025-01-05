@@ -1,0 +1,68 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block cssfiles %}
+<link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/home/contactus.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/content.css' %}">
+
+{% endblock %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="contact-us " style="margin-top: 0%;animation: scaleUp 1.5s ease-in-out forwards;">
+    <div class="contact-us-row">
+        <h2>Contact us</h2>
+        <h6>we are all about spai online</h6>
+    </div>
+    <form action="" >
+        <div class="contact-us-grid-wrapper">
+            <div class="contact-us-grid">
+                <input type="text" placeholder="Your Name">
+                <input type="text" placeholder="Your Email">
+                <input type="text" placeholder="Your Phone">
+            </div>
+            <div class="contact-us-grid">
+                <textarea placeholder="Your Message" name="" id=""></textarea>
+            </div>
+        </div>
+        <div class="contact-us-row">
+            <input type="submit" value="SEND MESSAGE">
+        </div>
+    </form>
+    <div class="contact-us-row2">
+        <div class="contact-pres">
+            <div class="contact-pic">
+                <img src="{% static 'image/contact-us.jpeg' %}" alt="">
+            </div>
+            Dr.Anil Karwande <br>
+            President of SPAI
+        </div>
+        <div class="contact-pres">
+            <div class="contact-pic">
+                <img src="{% static 'image/contact-us.jpeg' %}" alt="">
+            </div>
+            Prof Anil Ramachandran <br>
+            Secretary General of SPAI
+        </div>
+        <div class="contact-pres">
+            <div class="contact-pic">
+                <img src="{% static 'image/contact-us.jpeg' %}" alt="">
+            </div>
+            Prof Anil Ramachandran <br>
+            Editorial Secretary of SPAI
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}
+{% block jsfile %}
+
+{% endblock %}

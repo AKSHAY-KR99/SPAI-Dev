@@ -97,7 +97,8 @@ def index(request):
     return render(request, 'mainpages/new_home.html', context)
     # return render(request, 'static_pages/about/about.html', context)
     # return render(request, 'members/payment_page.html', context)
-
+def add_testimonals(request):
+    return render(request, 'members/add_testimonals.html')
 
 def about_page(request):
     page = request.GET.get('page')
@@ -116,6 +117,8 @@ def about_page(request):
         return render(request, 'static_pages/about/leadership/president.html', context)
     if page == "secretary":
         return render(request, 'static_pages/about/leadership/secretary.html', context)
+    if page == "finance_secretary":
+        return render(request, 'static_pages/about/leadership/finance.html', context)
     if page == "patron":
         return render(request, 'static_pages/about/leadership/patron.html', context)
     if page == "committee":
