@@ -11,8 +11,9 @@
 <link rel="stylesheet" href="{% static 'css/home/message.css' %}">
 <link rel="stylesheet" href="{% static 'css/home/maths.css' %}">
 <link rel="stylesheet" href="{% static 'css/home/context_mess.css' %}">
-
-<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+<link rel="stylesheet" href="{% static 'css/home/contactus.css' %}">
+<link rel="stylesheet" href="{% static 'css/home/testimonals.css' %}">
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 
@@ -34,7 +35,8 @@
 {% if request.user.is_authenticated and request.user.status == 'payment_pending' %}
 <div class="information-text-right">
     <p><span>Hi {{request.user.first_name}} {{request.user.last_name}}, Payment for life membership is pending.</span>
-        <a class="scrolling-text" href="{% url 'payment_model' request.user.slug_value %}" style="text-decoration: none;">click here</a>
+        <a class="scrolling-text" href="{% url 'payment_model' request.user.slug_value %}"
+            style="text-decoration: none;">click here</a>
         to complete your payment.
     </p>
 </div>
@@ -44,12 +46,10 @@
 <div class="information-text-right">
     <p><span>Hi {{request.user.first_name}} {{request.user.last_name}}, you don't have SPAI annual subscription.</span>
         <a class="scrolling-text" href="{% url 'annual_sub_payment' request.user.slug_value %}"
-           style="text-decoration: none;">click here</a> to Subscribe.
+            style="text-decoration: none;">click here</a> to Subscribe.
     </p>
 </div>
 {% endif %}
-
-
 <div class="hero">
     <div class="hero-pic">
         <!-- <img class="full-width-img" src="{% static 'image/swim.png' %}" alt="Image 1"> -->
@@ -200,7 +200,7 @@
 </div>
 <div class="message animated" style="margin-top: 20px;">
     <div class="msg-head">
-        <h1>Message From President</h1>
+        <h1>Message from the President </h1>
     </div>
     <div class="msg-content">
         <div class="msg-pic">
@@ -211,8 +211,8 @@
             <h6>Greetings from SPAI.</h6>
             <p>
                 I am excited to update you regarding the activities of Sports Psychology Association of India (SPAI).
-                Ever since the formation of SPAI in 1985, the organisation has made its existence as per the objectives
-                of the association. With more than 650 life members and four regional secretaries, SPAI looks forward to
+                Ever since the formation of SPAI in 1985, the organization has made its existence as per the objectives
+                of the association. With more than 700 life members and five regional secretaries, SPAI looks forward to
                 having a calendar of activities across the country to spread the message of SPAI and to build expertise
                 and provide service of sports psychology to all budding sportspersons</p>
 
@@ -229,9 +229,9 @@
             <p>SPAI has in its future agenda to support young aspiring sports psychologist by providing internships and
                 fellowships and awards for academic and research in the field.</p>
 
-            <p>With plenty of new happenings proposed by the executive council of SPAI, we would continue to advance
-                the organisational activity and the field of practice. We look forward for collaboration from
-                institutions and like mined associations for mutually beneficial programme and action plans.</p>
+            <p>With plenty of new happenings proposed by the executive council of SPAI, we would continue to advance the
+                organizational activity and the field of practice. We look forward for collaboration from institutions
+                and like mined associations for mutually beneficial programme and action plans.</p>
 
             <p>Look forward for future updates on sports psychology and let us work together for better prosperity and
                 success in the field</p>
@@ -241,34 +241,31 @@
 </div>
 <div class="message animated" style="margin-top: 20px;">
     <div class="msg-head">
-        <h1>Message From General Secretary General of SPAI</h1>
+        <h1>Message from Secretary General</h1>
     </div>
     <div class="msg-content sec">
         <div class="msg">
             <img src="{% static 'image/msg.svg' %}" alt="">
-            <p>Indian sports performance often highlights the phrase “so close yet so far” especially in major
-                sporting events like Olympic Games, Commonwealth Games ad World Championships. Among the various
-                factors the mental strength and lack of professional mental support and preparation has often
-                been questioned recently.</p>
-            <p>SPAI, the pioneer association of Sports Psychology in India with its affiliation with
-                International
-                Society of Sports Psychology (ISSP) and ASPAP understands the organisational responsibility in
-                turning the tables and letting better podium finish for Indian athletes.</p>
-            <p>With the initiation of certification programme, Sports Psychology Association of India aims to
-                provide resources, training and create a platform for sports psychologists to get equipped,
-                grow, develop, network and collaborate for supporting Indian sports. Strengthening
-                collaborations
-                between sports federations, sports academies, training centres, and sports science
-                professionals,
-                could enhance its impact. Additionally, organizing workshops and seminars could help educate
-                coaches, athletes, and parents about the benefits of sports psychology. </p>
-            <p>The time and considerable energy devoted to strategic execution of SPAI projects and schemes,
-                and diverse committees constituted, which are updated on the website would enable better
-                functioning of the association. The continued publication of our official journal and
-                the organising of the prestigious annual national conference needs to be prioritised and
-                taken up in the best interests and progress of the association.</p>
-            <p>Considering the opportune to engage with SPAI, and continued relationship and interactive
-                reciprocal communication lets make our growth more exiting. </p>
+            <p>Indian sports performance often highlights the phrase “so close yet so far” especially in major sporting
+                events like Olympic Games, Commonwealth Games ad World Championships. Among the various factors, the
+                mental strength and lack of professional mental support and preparation has often been questioned
+                recently.</p>
+            <p>SPAI, the pioneer association of Sports Psychology in India with its affiliation with International
+                Society of Sports Psychology (ISSP) and ASPAP understands the organisational responsibility in turning
+                the tables and letting better podium finish for Indian athletes.</p>
+            <p>With the initiation of certification programme, Sports Psychology Association of India aims to provide
+                resources, training and create a platform for sports psychologists to get equipped, grow, develop,
+                network and collaborate for supporting Indian sports. Strengthening collaborations between sports
+                federations, sports academies, training centres, and sports science professionals, could enhance its
+                impact. Additionally, organizing workshops and seminars could help educate coaches, athletes, and
+                parents about the benefits of sports psychology. </p>
+            <p>The time and considerable energy devoted to strategic execution of SPAI projects and schemes, and diverse
+                committees constituted, which are updated on the website would enable better functioning of the
+                association. The continued publication of our official journal and the organising of the prestigious
+                annual national conference needs to be prioritised and taken up in the best interests and progress of
+                the association.</p>
+            <p>Considering the opportune to engage with SPAI, and continued relationship and interactive reciprocal
+                communication lets make our growth more exiting.</p>
             </p>
         </div>
         <div class="msg-pic">
@@ -277,42 +274,6 @@
 
     </div>
 </div>
-<!-- <div class="messages">
-    <h1>Message From General Secretary General of SPAI</h1>
-
-    <blockquote class="q-card q-card-color-2">
-        <i>
-            <div class="content">
-                <p>Indian sports performance often highlights the phrase “so close yet so far” especially in major
-                    sporting events like Olympic Games, Commonwealth Games ad World Championships. Among the various
-                    factors the mental strength and lack of professional mental support and preparation has often
-                    been questioned recently.</p>
-                <p>SPAI, the pioneer association of Sports Psychology in India with its affiliation with
-                    International
-                    Society of Sports Psychology (ISSP) and ASPAP understands the organisational responsibility in
-                    turning the tables and letting better podium finish for Indian athletes.</p>
-                <p>With the initiation of certification programme, Sports Psychology Association of India aims to
-                    provide resources, training and create a platform for sports psychologists to get equipped,
-                    grow, develop, network and collaborate for supporting Indian sports. Strengthening
-                    collaborations
-                    between sports federations, sports academies, training centres, and sports science
-                    professionals,
-                    could enhance its impact. Additionally, organizing workshops and seminars could help educate
-                    coaches, athletes, and parents about the benefits of sports psychology. </p>
-                <p>The time and considerable energy devoted to strategic execution of SPAI projects and schemes,
-                    and diverse committees constituted, which are updated on the website would enable better
-                    functioning of the association. The continued publication of our official journal and
-                    the organising of the prestigious annual national conference needs to be prioritised and
-                    taken up in the best interests and progress of the association.</p>
-                <p>Considering the opportune to engage with SPAI, and continued relationship and interactive
-                    reciprocal communication lets make our growth more exiting. </p>
-            </div>
-        </i>
-        <div class='author'>Prof Anil Ramachandran <br>
-            Secretary General, SPAI
-        </div>
-    </blockquote>
-</div> -->
 <div class="news">
     <div class="news-title">
         News & Events
@@ -336,12 +297,9 @@
                     </div>
                     <div class="news-dis">
                         {% if event.datetime|date:"Y-m-d" == event.end_date|date:"Y-m-d" %}
-                        {{ event.datetime|date:"Y" }} , {{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }} {{
-                        event.datetime|time }}
+                        {{ event.datetime|date:"Y" }} , {{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }} {{event.datetime|time }}
                         {% else %}
-                        {{ event.datetime|date:"Y" }} , {{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }} {{
-                        event.datetime|time }} -
-                        {{ event.end_date|date:"d" }} {{ event.end_date|date:"F" }}
+                        {{ event.datetime|date:"Y" }} , {{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }} {{event.datetime|time }} - {{ event.end_date|date:"d" }} {{ event.end_date|date:"F" }}                        
                         {% endif %}
                     </div>
                     <div class="news-head" style="text-transform: uppercase;">
@@ -357,278 +315,6 @@
                 </div>
             </div>
             {% endfor %}
-            <!-- <div class="swiper-slide">
-                    <div class="news-container">
-                        <div class="news-img">
-                            <div class="news-new">NEW</div>
-                            <img src="{% static 'image/news-4.png' %}" alt="">
-                        </div>
-                        <div class="news-dis">
-                            2 Days Ago
-                        </div>
-                        <div class="news-head">
-                            GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
-                        </div>
-                        <div class="news-read">
-                            <p>Read</p>
-                            <img src="{% static 'image/arrowread.svg' %}" alt="">
-                            <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="news-container">
-                        <div class="news-img">
-                            <div class="news-new">NEW</div>
-                            <img src="{% static 'image/news-5.png' %}" alt="">
-                        </div>
-                        <div class="news-dis">
-                            2 Days Ago
-                        </div>
-                        <div class="news-head">
-                            GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
-                        </div>
-                        <div class="news-read">
-                            <p>Read</p>
-                            <img src="{% static 'image/arrowread.svg' %}" alt="">
-                            <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="news-container">
-                        <div class="news-img">
-                            <div class="news-new">NEW</div>
-                            <img src="{% static 'image/news-6.png' %}" alt="">
-                        </div>
-                        <div class="news-dis">
-                            2 Days Ago
-                        </div>
-                        <div class="news-head">
-                            GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
-                        </div>
-                        <div class="news-read">
-                            <p>Read</p>
-                            <img src="{% static 'image/arrowread.svg' %}" alt="">
-                            <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="news-container">
-                        <div class="news-img">
-                            <div class="news-new">NEW</div>
-                            <img src="{% static 'image/news-7.png' %}" alt="">
-                        </div>
-                        <div class="news-dis">
-                            2 Days Ago
-                        </div>
-                        <div class="news-head">
-                            GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
-                        </div>
-                        <div class="news-read">
-                            <p>Read</p>
-                            <img src="{% static 'image/arrowread.svg' %}" alt="">
-                            <img class="hover-image" src="{% static 'image/arrowreadwhite.svg' %}" alt="">
-                        </div>
-                        
-                    </div>
-                </div> -->
-
-            <!-- <div class="swiper-slide">
-                    <div class="news-container">
-                        <div class="news-img">
-                            <div class="news-new">NEW</div>
-                            <img src="{% static 'image/news1.png' %}" alt="">
-                        </div>
-                        <div class="news-dis">
-                            2 Days Ago
-                        </div>
-                        <div class="news-head">
-                            GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
-                        </div>
-                        <div class="news-read">
-                            <p>Read</p>
-                            <img src="{% static 'image/arrowread.svg' %}" alt="">
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="news-container">
-                        <div class="news-img">
-                            <img src="{% static 'image/news1.png' %}" alt="">
-                        </div>
-                        <div class="news-dis">
-                            2 Days Ago
-                        </div>
-                        <div class="news-head">
-                            GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
-                        </div>
-                        <div class="news-read">
-                            <p>Read</p>
-                            <img src="{% static 'image/arrowread.svg' %}" alt="">
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="news-container">
-                        <div class="news-img">
-                            <img src="{% static 'image/news1.png' %}" alt="">
-                        </div>
-                        <div class="news-dis">
-                            2 Days Ago
-                        </div>
-                        <div class="news-head">
-                            GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
-                        </div>
-                        <div class="news-read">
-                            <p>Read</p>
-                            <img src="{% static 'image/arrowread.svg' %}" alt="">
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="news-container">
-                        <div class="news-img">
-                            <img src="{% static 'image/news1.png' %}" alt="">
-                        </div>
-                        <div class="news-dis">
-                            2 Days Ago
-                        </div>
-                        <div class="news-head">
-                            GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
-                        </div>
-                        <div class="news-read">
-                            <p>Read</p>
-                            <img src="{% static 'image/arrowread.svg' %}" alt="">
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="news-container">
-                        <div class="news-img">
-                            <img src="{% static 'image/news1.png' %}" alt="">
-                        </div>
-                        <div class="news-dis">
-                            2 Days Ago
-                        </div>
-                        <div class="news-head">
-                            GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
-                        </div>
-                        <div class="news-read">
-                            <p>Read</p>
-                            <img src="{% static 'image/arrowread.svg' %}" alt="">
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="news-container">
-                        <div class="news-img">
-                            <img src="{% static 'image/news1.png' %}" alt="">
-                        </div>
-                        <div class="news-dis">
-                            2 Days Ago
-                        </div>
-                        <div class="news-head">
-                            GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
-                        </div>
-                        <div class="news-read">
-                            <p>Read</p>
-                            <img src="{% static 'image/arrowread.svg' %}" alt="">
-                        </div>
-                        
-                    </div>
-                </div> -->
-
-            <!-- <div class="news-container">
-                    <div class="news-img">
-                        <img src="{% static 'image/news1.png' %}" alt="">
-                    </div>
-                    <div class="news-dis">
-                        2 Days Ago
-                    </div>
-                    <div class="news-head">
-                        GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
-                    </div>
-                    <div class="news-read">
-                        <p>Read</p>
-                        <img src="{% static 'image/arrowread.svg' %}" alt="">
-                    </div>
-                    
-                </div>
-                <div class="swiper-slide news-container">
-                    <div class="news-img">
-                        <img src="{% static 'image/news1.png' %}" alt="">
-                    </div>
-                    <div class="news-dis">
-                        2 Days Ago
-                    </div>
-                    <div class="news-head">
-                        GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
-                    </div>
-                    <div class="news-read">
-                        <p>Read</p>
-                        <img src="{% static 'image/arrowread.svg' %}" alt="">
-                    </div>
-                    
-                </div>
-                <div class="swiper-slide news-container">
-                    <div class="news-img">
-                        <img src="{% static 'image/news1.png' %}" alt="">
-                    </div>
-                    <div class="news-dis">
-                        2 Days Ago
-                    </div>
-                    <div class="news-head">
-                        GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
-                    </div>
-                    <div class="news-read">
-                        <p>Read</p>
-                        <img src="{% static 'image/arrowread.svg' %}" alt="">
-                    </div>
-                    
-                </div>
-                <div class="swiper-slide news-container">
-                    <div class="news-img">
-                        <img src="{% static 'image/news1.png' %}" alt="">
-                    </div>
-                    <div class="news-dis">
-                        2 Days Ago
-                    </div>
-                    <div class="news-head">
-                        GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
-                    </div>
-                    <div class="news-read">
-                        <p>Read</p>
-                        <img src="{% static 'image/arrowread.svg' %}" alt="">
-                    </div>
-                    
-                </div>
-                <div class="swiper-slide news-container">
-                    <div class="news-img">
-                        <img src="{% static 'image/news1.png' %}" alt="">
-                    </div>
-                    <div class="news-dis">
-                        2 Days Ago
-                    </div>
-                    <div class="news-head">
-                        GOOD REASONS TEENAGERS SHOULD PLAY SPORTS
-                    </div>
-                    <div class="news-read">
-                        <p>Read</p>
-                        <img src="{% static 'image/arrowread.svg' %}" alt="">
-                    </div>
-                    
-                </div> -->
-
         </div>
         <div class="swiper-pagination"></div>
         <div class="swiper-button-next"></div>
@@ -643,6 +329,93 @@
                 </div>
             </div>
         </a>
+    </div>
+</div>
+<div class="testimonals animated">
+    <div class="happy-clients">
+        <div class="round first-r">
+
+        </div>
+        <div class="round second-r">
+
+        </div>
+        <h1>Happy Clients <br> of the spai</h1>
+        <a href="{% url 'add_testimonals' %}">
+            ADD TESTIMONALS
+        </a>
+    </div>
+    <div class="green-container">
+        <div class="test-pic">
+            <img src="{% static 'image/contact-us.jpeg' %}" alt="">
+        </div>
+        <img src="{% static 'image/quote1.svg' %}" alt="">
+        <div class="test-content">           
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione id facere fugiat architecto quaerat, amet repellat, accusantium reprehenderit eos repudiandae labore saepe perspiciatis illum, delectus ut atque voluptatibus? Iste, sed.</p>
+            <div class="test-auther">
+                -James Robert
+            </div>
+        </div>
+        <div class="test-content">
+            <p>Machine learning (ML) is a branch of artificial intelligence (AI) focused on enabling computers and machines to imitate the way that humans learn, to perform tasks autonomously, and to improve their performance and accuracy through experience and exposure to more data.</p>
+            <div class="test-auther">
+                -Machine Learning
+            </div>
+        </div>
+        <div class="test-content">
+            <p>The quantum in "quantum computing" refers to the quantum mechanics that the system uses to calculate outputs. In physics, a quantum is the smallest possible discrete unit of any physical property.It usually refers to properties of atomic or subatomic particles.</p>
+            <div class="test-auther">
+                -Quantum Computing
+            </div>
+        </div>
+        <div class="test-arrows">
+            <img src="{% static 'image/test-back.svg' %}" alt="">
+            <img src="{% static 'image/test-next.svg' %}" alt="">
+        </div>
+
+    </div>
+</div>
+<div class="contact-us animated">
+    <div class="contact-us-row">
+        <h2>Contact us</h2>
+        <h6>we are all about spai online</h6>
+    </div>
+    <form action="" >
+        <div class="contact-us-grid-wrapper">
+            <div class="contact-us-grid">
+                <input type="text" placeholder="Your Name">
+                <input type="text" placeholder="Your Email">
+                <input type="text" placeholder="Your Phone">
+            </div>
+            <div class="contact-us-grid">
+                <textarea placeholder="Your Message" name="" id=""></textarea>
+            </div>
+        </div>
+        <div class="contact-us-row">
+            <input type="submit" value="SEND MESSAGE">
+        </div>
+    </form>
+    <div class="contact-us-row2">
+        <div class="contact-pres">
+            <div class="contact-pic">
+                <img src="{% static 'image/contact-us.jpeg' %}" alt="">
+            </div>
+            Dr.Anil Karwande <br>
+            President of SPAI
+        </div>
+        <div class="contact-pres">
+            <div class="contact-pic">
+                <img src="{% static 'image/contact-us.jpeg' %}" alt="">
+            </div>
+            Prof Anil Ramachandran <br>
+            Secretary General of SPAI
+        </div>
+        <div class="contact-pres">
+            <div class="contact-pic">
+                <img src="{% static 'image/contact-us.jpeg' %}" alt="">
+            </div>
+            Prof Anil Ramachandran <br>
+            Editorial Secretary of SPAI
+        </div>
     </div>
 </div>
 <div class="associate">
@@ -674,8 +447,7 @@
                     </div>
                     <div class="exe-text" style="text-align: left;">
                         DR. ANIL KARWANDE
-                        <!-- <img class="exe-email" src="{% static 'image/email.svg' %}" alt="">
-                        <img class="exe-phone" src="{% static 'image/Vector.svg' %}" alt=""> -->
+                        
                     </div>
                     <div class="exe-posi">
                         President
@@ -1045,7 +817,7 @@
                 slidesPerView: 3.3,
             },
             1137: {
-                slidesPerView: 3.85 , // 3 slides on desktops
+                slidesPerView: 3.85, // 3 slides on desktops
 
             },
 

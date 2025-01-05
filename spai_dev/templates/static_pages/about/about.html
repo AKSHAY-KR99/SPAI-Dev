@@ -16,7 +16,7 @@
 {% block content %}
 <div class="hero">
     <div class="hero-pic">
-        
+
         <!-- <img class="full-width-img" src="{% static 'image/about1.0.png' %}" alt="Image 2"> -->
         <img class="full-width-img" src="{% static 'image/basket.jpg' %}" alt="Image 2">
         <img src="{% static 'image/about2.1.png' %}" alt="" class="about2 on">
@@ -34,7 +34,9 @@
     <div class="about" style="padding-bottom: 20px;">
         <h1 style="margin-bottom: 0%;">ABOUT SPORTS PSYCHOLOGY ASSOCIATION OF INDIA </h1>
         <div class="about-content">
-            <p><b>Sports Psychology Association of India</b> is a growing platform that focuses on understanding how
+            <p>
+                <b>Sports Psychology Association of India</b>
+                 is a growing platform that focuses on understanding how
                 psychological factors affect performance and how participation in sports and exercise impacts
                 psychological and physical well-being. As Indian athletes continue to make their mark in international
                 sports, the demand for sports psychology services has grown. Over the last two decades, there has been
@@ -50,14 +52,15 @@
                 organization committed to the advancement of sports psychology as an essential component of athletic
                 development in India. Founded with the goal of integrating psychological principles into the world of
                 sports, Sports Psychology Association of India promotes the mental well-being and performance
-                enhancements of athletes across all levels.</p>
+                enhancements of athletes across all levels.
+            </p>
         </div>
     </div>
-    
+
 </div>
 <div class="footer-links" style="margin-top: 0px;background-color: #F2F2ED;">
     <a href="{% url 'about_page' %}?page=about_spai">About SPAI journal</a>
-    <a href="{% url 'fee_and_payment' %}" >Fee & payments</a>
+    <a href="{% url 'fee_and_payment' %}">Fee & payments</a>
     <a href="{% url 'about_page' %}?page=mission">Our mission</a>
     <a href="{% url 'about_page' %}?page=history">History</a>
     <a href="{% url 'publications' %}?page=journal_archives">Publication Archive</a>

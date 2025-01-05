@@ -1,21 +1,28 @@
 {% load static %}
 <header>
     <div class="top-row">
-        <div style="display: flex;"><a href="{% url 'index' %}">
-            <img src="{% static 'image/SPAI_LOGO-removebg.png' %}" alt="Company Logo" class="logo"> </a>
-            <span class="company-name">SPORTS PSYCHOLOGY ASSOCIATION OF INDIA</span>
+        <div class="spai-name"><a href="{% url 'index' %}">
+
+                <img src="{% static 'image/SPAI_LOGO-removebg.png' %}" alt="Company Logo" class="logo"> </a>
+            <div class="spai-row">
+                <span class="company-name">SPORTS PSYCHOLOGY ASSOCIATION OF INDIA</span>
+                <div class="registration-name">
+                    Affiliated to International Society of Sports Psychology (ISSP)
+                    Registered Under the Societies Registration Act. XXI of 1860
+                </div>
+            </div>
+
         </div>
 
         <div class="contact-info">
-            <span class="phone"><img src="{% static 'image/Vector.svg' %}" alt="Phone Icon"> +91 9447 027 990</span>
-            <span class="email"><img src="{% static 'image/email.svg' %}"
-                                     alt="Email Icon"> secretaryspai@gmail.com</span>
+            <span class="email"><img src="{% static 'image/email.svg' %}" alt="Email Icon">
+                secretaryspai@gmail.com</span>
         </div>
-        
+
         <div class="sep">
             {% if not request.user.is_authenticated %}
-            <div class="login-button">    
-                <a style="text-decoration: none; color: white;" href="{% url 'login_page' %}">Member Login</a>    
+            <div class="login-button">
+                <a style="text-decoration: none; color: white;" href="{% url 'login_page' %}">Member Login</a>
             </div>
             {% else %}
             <div class="user-profile-container">
@@ -30,17 +37,17 @@
                 {% endif %}
                 <div class="dropdown-menu3" id="dropdownMenu3">
                     <a class="down" href="{% url 'individual_user_details' request.user.slug_value %}">
-                            <img src="{% static 'image/profilecheck.svg' %}" alt="">
-                            Profile
+                        <img src="{% static 'image/profilecheck.svg' %}" alt="">
+                        Profile
                     </a>
                     <a class="down" href="{% url 'logout' %}">
                         <img src="{% static 'image/logout.svg' %}" alt="">
                         Logout
                     </a>
-                  
+
                 </div>
             </div>
-            
+
             <!-- <div class="user-profile-icon">
                 <a href="{% url 'individual_user_details' request.user.slug_value %}">
                 <a href="{% url 'logout' %}">
@@ -48,44 +55,46 @@
                 </a>
             </div> -->
             {% endif %}
+            <div>
+                
+            </div>
             <div class="menu-icon">
                 <img src="{% static 'image/menu.svg' %}" alt="Menu Icon">
             </div>
         </div>
         {% if request.user.is_authenticated %}
-        
+
         {% endif %}
 
     </div>
     <hr class="hrline">
     <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelector('.menu-icon').addEventListener('click', function() {
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelector('.menu-icon').addEventListener('click', function () {
                 document.querySelector('.navbar').classList.toggle('active');
             });
         });
 
-        document.getElementById('userProfileIcon').addEventListener('click', function() {
-    var dropdownMenu = document.getElementById('dropdownMenu3');
-    dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
-});
+        document.getElementById('userProfileIcon').addEventListener('click', function () {
+            var dropdownMenu = document.getElementById('dropdownMenu3');
+            dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+        });
 
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-    if (!event.target.matches('.user-profile-icon img')) {
-        var dropdowns = document.getElementsByClassName('dropdown-menu3');
-        for (var i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.style.display === 'block') {
-                openDropdown.style.display = 'none';
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function (event) {
+            if (!event.target.matches('.user-profile-icon img')) {
+                var dropdowns = document.getElementsByClassName('dropdown-menu3');
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.style.display === 'block') {
+                        openDropdown.style.display = 'none';
+                    }
+                }
             }
         }
-    }
-}
 
-    </script> 
+    </script>
     {% block menu %}
     {% include 'navbar.html' %}
     {% endblock %}
 </header>
-

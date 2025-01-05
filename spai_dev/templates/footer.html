@@ -1,49 +1,71 @@
 {% load static %}
 <footer>
     <div class="footer-row">
-        <div style="display: flex;width: 400px;">
+        <div class="foot-row-1">
             <img src="{% static 'image/SPAI_LOGO-removebg.png' %}" alt="Company Logo" class="logo-foot">
-            <span class="companyfoot-name">SPORTS PSYCHOLOGY ASSOSIATION OF INDIA</span>
+            <span class="companyfoot-name">SPORTS PSYCHOLOGY ASSOCIATION OF INDIA</span>
+        </div>
+        <div class="quicklinks">
+            <ul style="list-style-type: none;">
+                <li style="font-size: 14px;font-weight: 900;">Location</li>
+                <li>
+                    <hr style="width: auto;" class="hrline">
+                </li>
+                <li style="color: black;font-size: 13px;">School of Physical Education <br> and Sports Sciences,<br>Mangattuparamba Campus,<br>Kannur
+                    University <br>670567</li>
+
+                <li style="color: transparent;">.</li>
+                <li style="color: transparent;">.</li>
+
+            </ul>
         </div>
         <div class="quicklinks">
             <ul style="list-style-type: none;">
                 <li style="font-size: 14px;font-weight: 900;">Social Media</li>
-                <li><hr style="width: auto;" class="hrline"></li>
+                <li>
+                    <hr style="width: auto;" class="hrline">
+                </li>
                 <li>
                     <div class="social-pics">
-                        <a href="https://www.instagram.com/spai1987/profilecard/?igsh=MTFqZ2lnamNmamEzcQ==" target="_blank"><img src="{% static 'image/instagram.png' %}" alt=""></a>
+                        <a href="https://www.instagram.com/spai1987/profilecard/?igsh=MTFqZ2lnamNmamEzcQ=="
+                            target="_blank"><img src="{% static 'image/instagram.png' %}" alt=""></a>
                         <a href="" target="_blank"><img src="{% static 'image/facebook.png' %}" alt=""></a>
                         <a href="" target="_blank"><img src="{% static 'image/twitter.png' %}" alt=""></a>
-                        <a href="https://youtube.com/@sportspsychologyassociationofi?si=kYPwxaZyowJROgKp" target="_blank"><img src="{% static 'image/youtube.png' %}" alt=""></a>
+                        <a href="https://youtube.com/@sportspsychologyassociationofi?si=kYPwxaZyowJROgKp"
+                            target="_blank"><img src="{% static 'image/youtube.png' %}" alt=""></a>
                     </div>
                 </li>
-                
+
+            </ul>
+
+        </div>
+        <div class="quicklinks">
+            <ul style="list-style-type: none;">
+                <li style="font-size: 14px;font-weight: 900;">Quick Links</li>
+                <li>
+                    <hr style="width: auto;" class="hrline">
+                </li>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'about_page' %}?page=about_spai">About Us</a></li>
+                <li><a href="{% url 'news' %}">News</a></li>
+                <!-- <li><a href="">Contact Us</a></li> -->
             </ul>
         </div>
-        <div style="display: flex;">
-            <div class="quicklinks">
-                <ul style="list-style-type: none;">
-                    <li style="font-size: 14px;font-weight: 900;">Quick Links</li>
-                    <li><hr style="width: auto;" class="hrline"></li>
-                    <li><a href="{% url 'index' %}">Home</a></li>
-                    <li><a href="{% url 'about_page' %}?page=about_spai">About Us</a></li>
-                    <li><a href="{% url 'news' %}">News</a></li>
-                    <!-- <li><a href="">Contact Us</a></li> -->
-                </ul>
-            </div>
-            <div style="left: 75%;" class="quicklinks">
-                <ul style="list-style-type: none;">
-                    <li style="font-size: 14px;font-weight: 900;">Contact Us</li>
-                    <li><hr style="width: auto;" class="hrline"></li>
-                    <li><span class="email"><img src="{% static 'image/email.svg' %}" alt="Email Icon"> secretaryspai@gmail.com</span></li>
-                    <li><span class="phone"><img src="{% static 'image/Vector.svg' %}" alt="Phone Icon"> +91 9447 027 990</span></li>
-                    <li><span class="phone"><img src="{% static 'image/Vector.svg' %}" alt="Phone Icon">+91 9995 745 566</span></li>
-                    <li style="color: transparent;">.</li>
-                    <li style="color: transparent;">.</li>
-                    
-                </ul>
-            </div>
+        <div style="left: 75%;" class="quicklinks">
+            <ul style="list-style-type: none;">
+                <li style="font-size: 14px;font-weight: 900;">Contact Us</li>
+                <li>
+                    <hr style="width: auto;" class="hrline">
+                </li>
+                <li><span class="email"><img src="{% static 'image/email.svg' %}" alt="Email Icon">
+                        secretaryspai@gmail.com</span></li>
+                <li><span class="phone"><img src="{% static 'image/Vector.svg' %}" alt="Phone Icon"> +91 9447 027
+                        990</span></li>
+                <li><span class="phone"><img src="{% static 'image/Vector.svg' %}" alt="Phone Icon">+91 9995 745
+                        566</span></li>
+
+            </ul>
         </div>
-        
+
     </div>
 </footer>
