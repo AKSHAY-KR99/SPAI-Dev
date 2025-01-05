@@ -48,6 +48,7 @@ urlpatterns = [
     path('reset/password/<str:slug>', views.reset_password, name='reset_password'),
 
     path('about', views.about_page, name='about_page'),
+    path('add_testimonals', views.add_testimonals, name='add_testimonals'),
     path('membership', views.membership, name='membership'),
     path('publications', views.publications, name='publications'),
     path('academic', views.academic, name='academic'),
@@ -56,5 +57,7 @@ urlpatterns = [
 
     # rest api
     path('life-members', views.create_or_update_life_member, name='life-members')
+
+
 
 ]

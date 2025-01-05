@@ -1,0 +1,61 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block cssfiles %}
+<link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/content.css' %}">
+{% endblock %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="about-container mission">
+    <div class="mission-top-row">
+        <h1 style="margin-bottom: 0%;">FINANCE SECRETARY OF SPORTS PSYCHOLOGY ASSOCIATION OF INDIA</h1>
+    </div>
+    <div class="mission-vission">
+        <div class="m-v-container">
+            <div style="display: flex;align-items: center;">
+            </div>
+            <div class="president-wrapper">
+                <div class="president-pic">
+                    <img src="{% static 'image/TREASURER.png' %}" alt="">
+                </div>
+                <div class="president-content">
+                    <h2 style="margin-bottom: 0%;">Prof (Dr.) Mahendran Kumar Singh</h2>
+                    <div class="positext">
+                        Treasurer of SPAI
+                    </div>
+                    <p style="margin-top: 0%;">
+                        Prof. (Dr.) M K Singh is presently working in the department of sport psychology at LNIPE,
+                        Gwalior.He is also a chief proctor of LNIPE & a Finance Secretary of SPAI. He has more than 30
+                        Years teaching experience out which more than 17 years at Master's level. He has the following
+                        administrative experiences: Former Incharge Registrar, Former Dean Academics, Former Dean Sport
+                        Sciences, Former Dean Physical Education and Applied Areas & Former HOD, Department of Sport
+                        Psychology of LNIPE,Gwalior. He was also a Former HOD of Department of LAW at Guru Ghasidas
+                        Central University, Bilaspur, Chhattisgarh and a Former HOD Dept. of Physical Education, CSJM
+                        University, Kanpur. He has Authored Five Books & Published More than 50 Research Papers in
+                        International/National Journals out of which 06 Papers are in SCOPUS Journals. He has also
+                        presented more than 35 papers at International/National Level Conference/Seminars.
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}
+{% block jsfile %}
+<script type="text/javascript" src="{% static 'js/sub/news.js' %}"></script>
+{% endblock %}
