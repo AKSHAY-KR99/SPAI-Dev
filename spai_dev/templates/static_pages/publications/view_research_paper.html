@@ -3,7 +3,9 @@
 {% block cssfiles %}
 <link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
 <link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
-<link rel="stylesheet" href="{% static 'css/sub/members.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/content3.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/manuscript.css' %}">
+
 {% endblock %}
 
 {% block header %}
@@ -11,103 +13,84 @@
 {% endblock %}
 
 {% block content %}
-<div class="content">
-    <div class="name">
-        <div class="num" onclick="window.history.back()">
-            <img src="{% static 'image/back.svg' %}" alt="">
-        </div>
+<div class="wrapper">
+    <div class="row-1 animated-list1">
         <h1>{{paper.title}}</h1>
+        {% for author in authors %}
+        <p>{{author.name}}, {{author.designation}}, {{author.organization}},<br>
+            {{author.email}}, Mob: {{author.mobile}}
+        </p>
+        {% endfor %}
+        <p>Date Published : {{paper.date_created}}</p>
     </div>
+    <div class="row-2">
+        <div class="contents animate-z">
+            <h2>Research area</h2>
+            <div class="content">
+                <p>{{paper.research_area}}</p>
+            </div>
 
-    <div class="details_container">
-        <div class="number">
-            <div class="num">
-                <p>01</p>
+        </div>
+        <div class="contents animate-z">
+            <h2>Abstract</h2>
+            <div class="content"><p>{{paper.abstract}}</p></div>
+
+        </div>
+        <div class="contents animate-z">
+            <h2>Keywords</h2>
+            <div class="content">
+                <p>{{paper.keywords}}</p>
             </div>
+
         </div>
-        <div class="labels">
-            <p>Title</p>
-            <p>Abstract</p>
-            <p>Keywords</p>
-            <p>Research Area</p>
-            <p>Message to the editor</p>
+        <div class="contents animate-z">
+            <h2>Message to Editor</h2>
+            <div class="content">
+                <p>{{paper.editor_message}}</p>
+            </div>
+
         </div>
-        <div class="details">
-            <p>{{paper.title}}</p>
-            <p>{{paper.abstract}}</p>
-            <p>{{paper.keywords}}</p>
-            <p>{{paper.research_area}}</p>
-            <p>{{paper.editor_message}}</p>
+        <div class="contents animate-z">
+            <h2>Address for Communication</h2>
+            <div class="content">
+                <p>{{paper.address}}, {{paper.city}} <br>
+                    {{paper.state}}, {{paper.country}}, {{paper.postal_code}}
+                </p>
+            </div>
+
         </div>
+
     </div>
-    {% for author in authors %}
-    <div class="details_container">
-        <div class="number">
-            <div class="num">
-                <p class="iter">02.{{ forloop.counter|stringformat:"s" }}{{ forloop.counter|add:"a" }}</p>
-            </div>
-        </div>
-        <div class="labels">
-            <p>Name of author</p>
-            <p>Designation</p>
-            <p>Organization</p>
-            <p>Email</p>
-            <p>Mobile</p>
-        </div>
-        <div class="details">
-            <p>{{author.name}}</p>
-            <p>{{author.designation}}</p>
-            <p>{{author.organization}}</p>
-            <p>{{author.email}}</p>
-            <p>{{author.mobile}}</p>
-        </div>
+    <div class="row-3">
+        <p class=" animate-h3">{{paper.title}}</p>
+        <a href="{{ paper.paper_file.url }}" class="button-download  animate-z">
+            Click Here to Download the file
+        </a>
     </div>
-    {% endfor %}
-    <div class="details_container">
-        <div class="number">
-            <div class="num">
-                <p>03</p>
-            </div>
-        </div>
-        <div class="labels">
-            <p>Submit date</p>
-            <p>Research file</p>
-        </div>
-        <div class="details">
-            <p>{{paper.date_created}}</p>
-            <a href="{{ paper.paper_file.url }}" target="_blank"><p>check</p></a>
-        </div>
-    </div>
-    <div class="details_container">
-        <div class="number">
-            <div class="num">
-                <p>04</p>
-            </div>
-        </div>
-        <div class="labels">
-            <p>County</p>
-            <p>State</p>
-            <p>City</p>
-            <p>Postal Code</p>
-            <p>Address</p>
-        </div>
-        <div class="details">
-            <p>{{paper.country}}</p>
-            <p>{{paper.state}}</p>
-            <p>{{paper.city}}</p>
-            <p>{{paper.postal_code}}</p>
-            <p>{{paper.address}}</p>
-        </div>
+    <div class="footer-links" style="margin-top: 30px;">
+        <a href="{% url 'about_page' %}?page=about_spai">About SPAI journal</a>
+        <a href="{% url 'fee_and_payment' %}" >Fee & payments</a>
+        <a href="{% url 'about_page' %}?page=mission">Our mission</a>
+        <a href="{% url 'about_page' %}?page=history">History</a>
+        <a href="{% url 'publications' %}?page=journal_archives">Publication Archive</a>
+        <a href="{% url 'call_for_manuscript' %}">Submit Research Paper</a>
+        <a href="{% url 'about_page' %}?page=committee">Committees</a>
+        <a href="{% url 'call_for_manuscript' %}">Publication Guidelines</a>
+        <a href="{% url 'news' %}?tab=upcoming">Upcoming Events</a>
+        <a href="{% url 'news' %}?tab=post">Events Organized</a>
+        <a href="{% url 'publications' %}?page=joinaseditor">Join as Editor</a>
+        <a href="{% url 'publications' %}?page=joinasreviewer">Join as Reviewer</a>
+        <a href="{% url 'publications' %}?page=editorial">Editors & Reviewers</a>
+        <a href="{% url 'membership' %}?page=previlege">About Membership Privilege</a>
     </div>
 </div>
-
 {% endblock %}
-
 
 {% block footer %}
 {% include 'footer.html' %}
 {% endblock %}
 {% block jsfile %}
+<script type="text/javascript" src="{% static 'js/sub/history.js' %}"></script>
 <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function() {
         document.querySelector('.menu-icon').addEventListener('click', function() {

@@ -78,12 +78,12 @@ textarea {
     padding: 12px;
     font-size: 14px;
     margin-bottom: 20px;
-    border: 2px solid #ccc;
+    border: 1px solid #ccc;
     border-radius: 10px;
     width: 100%;
     transition: border-color 0.3s ease, background-color 0.3s ease;
     box-sizing: border-box;
-    border-color: #000000;
+    border-color: #7a7a7a;
     animation: scaleUp 1.5s ease-in-out;
     animation-delay: 0.3s;
 
@@ -94,12 +94,12 @@ textarea::placeholder {
     font-family: 'Popins', sans-serif;
     font-size: 13px;
     font-weight: 600;
-    color: black;
+    color: #7a7a7a;
 }
 
 .contact-us-grid input[type="text"],
 textarea:focus {
-    border-color: #000000;
+    border-color: #7a7a7a;
     background-color: white;
     outline: none;
 }
