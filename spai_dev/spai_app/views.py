@@ -132,12 +132,15 @@ def about_page(request):
 def membership(request):
     page = request.GET.get('page')
     context = {"page": 3}
+    user_key = False
+    if request.user.is_authenticated and (request.user.user_role == 1 or request.user.executive in [1, 2]):
+        user_key = True
     if page == "previlege":
         return render(request, 'static_pages/membership/previlege.html', context)
     if page == "major":
         return render(request, 'static_pages/news/major.html', {"page": 2})
     if page == "exe_meeting":
-        return render(request, 'static_pages/news/exe_meeting.html', {"page": 2})
+        return render(request, 'static_pages/news/exe_meeting.html', {"page": 2, "uk": user_key})
     if page == "general_body":
         return render(request, 'static_pages/news/general_body.html', {"page": 2})
 

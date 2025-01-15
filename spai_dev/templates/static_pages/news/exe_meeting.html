@@ -27,6 +27,8 @@
                 <h3 style="margin-left: 10px;">Minutes</h3>
             </i>
         </div>
+
+        {% if uk %}
         <div style="width: 100%; box-sizing: border-box; display: flex;justify-content: center;flex-wrap: wrap;gap: 20px;">
             <div class="button-1-wrapper">
                 <a style="text-decoration: none;" href="{% static 'docs\EC MEETING 23 MARCH 2024.pdf' %}" target="_blank">
@@ -51,6 +53,33 @@
                 </a>
             </div>
         </div>
+        {% else %}
+            <div style="width: 100%; box-sizing: border-box; display: flex;justify-content: center;flex-wrap: wrap;gap: 20px;">
+            <div class="button-1-wrapper">
+                <a style="text-decoration: none;" href="#">
+                    <div class="button-1" style="height: auto;padding: 10px;">
+                        EC MEETING 23 MARCH 2024
+                    </div>
+                </a>
+            </div>
+            <div class="button-1-wrapper">
+                <a style="text-decoration: none;" href="#">
+                    <div class="button-1" style="height: auto;padding: 10px;">
+                        EC MEETING 29 FEBRUARY 2024
+                    </div>
+                </a>
+            </div>
+            <div class="button-1-wrapper">
+                <a style="text-decoration: none;" href="#">
+                    <div class="button-1" style="height: auto; padding: 10px;">
+                        EC MEETING JUNE 5 2024
+                    </div>
+
+                </a>
+            </div>
+        </div>
+        {% endif %}
+
         </div>
         
     

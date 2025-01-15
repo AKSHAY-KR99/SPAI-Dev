@@ -1,5 +1,5 @@
 .testimonals{
-    margin: 50px 0px 30px 0px;
+    margin: 80px 0px 40px 0px;
     display: grid;
     grid-template-columns: repeat(2,1fr);
     padding: 20px 30px;
@@ -25,7 +25,7 @@
 
 }
 .happy-clients a{
-    background-color: #001f0d;
+    background-color: #0f301d;
     color: white;
     padding: 10px 20px;
     font-weight: 600;
@@ -33,7 +33,7 @@
     z-index: 1;
 }
 .green-container{
-    background-color: #001f0d;
+    background-color: #0f301d;
     color: white;
     border-radius: 30px;
     padding: 15px;
@@ -104,7 +104,7 @@
     left: 50px;
     width: 220px;
     height: 220px;
-    background-color: #a382ff;;
+    background-color: #c1abfd;;
 }
 .second-r{
     width: 200px;
