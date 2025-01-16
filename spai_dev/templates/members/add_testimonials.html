@@ -17,15 +17,16 @@
     <div class="contact-us-row">
         <h2 style="font-size:25px;">Add your Testimonials here</h2>
     </div>
-    <form action="" >
+    <form action="{% url 'upload_testimonials' %}" method="POST" >
+        {% csrf_token %}
         <div class="contact-us-grid-wrapper" style="font-family:'Popins',sans-serif;">
             <div class="contact-us-grid">
-                <input type="text" placeholder="Your Name">
-                <input type="text" placeholder="Your Email">
-                <input type="text" placeholder="Your Phone">
+                <input name="name" type="text" placeholder="Your Name" required>
+                <input type="text" name="email" placeholder="Your Email" required>
+                <input type="text" name="phone" placeholder="Your Phone" required>
             </div>
             <div class="contact-us-grid">
-                <textarea placeholder="Your Message" name="" id=""></textarea>
+                <textarea placeholder="Your Message" name="message" id="" required></textarea>
             </div>
         </div>
         <div class="contact-us-row">

@@ -1,0 +1,70 @@
+/* content.css */
+
+/* General styles for the testimonials section */
+.list-testimonals {
+    padding: 60px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-test {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between cards */
+}
+
+/* Each testimonial card */
+.each-test {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative; /* For positioning the buttons */
+}
+
+/* Hover effect for the card */
+.each-test:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Name styling */
+.each-test h3 {
+    margin: 0;
+    font-size: 17px;
+    color: #2c2c2c;
+}
+
+/* Message styling */
+.each-test p {
+    font-size: 14px;
+    margin: 10px 0 0;
+    color: #000000;
+}
+
+/* Button container */
+.test-btn {
+    position: absolute; /* Positioning buttons */
+    bottom: 20px; /* Align to the bottom of the card */
+    right: 20px; /* Align to the right of the card */
+}
+
+/* Button styles */
+.test-btn a {
+    font-size: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #fff;
+    background-color: #0c2547; /* Bootstrap primary color */
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin-left: 10px; /* Space between buttons */
+    transition: background-color 0.3s ease;
+}
+
+/* Button hover effect */
+.test-btn a:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
