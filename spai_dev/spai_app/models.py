@@ -342,3 +342,15 @@ class SubscriptionPayment(models.Model):
         if self.document:
             os.remove(self.document.path)
         super(SubscriptionPayment, self).delete(*args, **kwargs)
+
+
+class Testimonials(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    phone = models.CharField(max_length=15)
+    message = models.TextField()
+    publish = models.BooleanField(null=True)
+    date_created = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name

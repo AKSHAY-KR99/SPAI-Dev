@@ -14,7 +14,7 @@ from datetime import datetime, timedelta
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from . import models, forms
-from .models import GalleryManagement, User, EventManagement, UserDetailModel, GalleryImage, PaymentModel
+from .models import GalleryManagement, User, EventManagement, UserDetailModel, GalleryImage, PaymentModel, Testimonials
 from .decorators import admin_only, authenticated_only
 from .utils import render_to_pdf, get_registration_num, get_research_paper_no, send_mail_to_executives, \
     send_password_reset_email, update_subscription_status
@@ -94,11 +94,19 @@ def index(request):
     context = {
         'upcoming_events': upcoming_events,
     }
+
+    testimonials = Testimonials.objects.filter(publish=True).order_by('-date_created')
+    if testimonials.count() >= 3:
+        latest_testimonials = testimonials[:3]  # Get the first 3
+    else:
+        latest_testimonials = testimonials
+    context["testimonials"] = latest_testimonials
     return render(request, 'mainpages/new_home.html', context)
-    # return render(request, 'static_pages/about/about.html', context)
-    # return render(request, 'members/payment_page.html', context)
+
+
 def add_testimonals(request):
-    return render(request, 'members/add_testimonals.html')
+    return render(request, 'members/add_testimonials.html')
+
 
 def about_page(request):
     page = request.GET.get('page')
@@ -1052,3 +1060,38 @@ def annual_sub_approval(request, *args, **kwargs):
 def refresh_members(request, *args, **kwargs):
     update_subscription_status(request, True)
     return redirect('life_members_get')
+
+@admin_only
+def testimonials_list(request):
+    published = Testimonials.objects.filter(publish=True).order_by('-date_created')
+    non_published = Testimonials.objects.exclude(publish=True).order_by('-date_created')
+    return render(request, 'members/testimonial_list.html', {'published': published, 'non_published': non_published})
+
+
+def testimonial_create(request):
+    # import pdb;pdb.set_trace()
+    if request.method == 'POST':
+        form = forms.TestimonialForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = forms.TestimonialForm()
+    return render(request, 'members/add_testimonials.html', {'form': form})
+
+def approve_testimonial(request, *args, **kwargs):
+    pk = kwargs.get('pk')
+    obj = Testimonials.objects.filter(pk=pk).first()
+    if obj is not None:
+        obj.publish = True
+        obj.save()
+        return redirect('view_testimonials')
+    return redirect('view_testimonials')
+
+def delete_testimonial(request, *args, **kwargs):
+    pk = kwargs.get('pk')
+    obj = Testimonials.objects.filter(pk=pk).first()
+    if obj is not None:
+        obj.delete()
+        return redirect('view_testimonials')
+    return redirect('view_testimonials')

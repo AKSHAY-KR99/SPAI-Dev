@@ -1,0 +1,55 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block cssfiles %}
+<link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/content.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/view_test.css' %}">
+
+{% endblock %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="list-testimonals">
+    <h1 style="text-align: center;">Testimonials</h1>
+    <div class="card-test">
+        {% for obj in published %}
+        <div class="each-test">
+            <h3>{{ obj.name }}</h3>
+            <p>{{ obj.message }}</p>
+            <div class="test-btn">
+                {% if obj.publish is True %}
+
+                {% else %}
+                <a href="{% url 'approve_testimonial' obj.pk %}">Approve</a>
+                {% endif %}
+                <a href="{% url 'delete_testimonial' obj.pk %}">Delete</a>
+            </div>
+        </div>
+        {% endfor %}
+        {% for obj in non_published %}
+        <div class="each-test">
+            <h3>{{ obj.name }}</h3>
+            <p>{{ obj.message }}</p>
+            <div class="test-btn">
+                {% if obj.publish is True %}
+
+                {% else %}
+                <a href="{% url 'approve_testimonial' obj.pk %}">Approve</a>
+                {% endif %}
+                <a href="{% url 'delete_testimonial' obj.pk %}">Delete</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}
+{% block jsfile %}
+{% endblock %}

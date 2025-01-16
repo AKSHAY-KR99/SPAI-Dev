@@ -1,3 +1,5 @@
+from tkinter.font import names
+
 from django.urls import path  # type: ignore
 from . import views
 
@@ -46,6 +48,10 @@ urlpatterns = [
     path('lm/search', views.search_lm, name='search_lm'),
     path('email/forgot/passcode', views.email_redirection, name='email_redirection'),
     path('reset/password/<str:slug>', views.reset_password, name='reset_password'),
+    path('upload/testimonials', views.testimonial_create, name='upload_testimonials'),
+    path('view/testimonials', views.testimonials_list, name='view_testimonials'),
+    path('approve/<int:pk>/testimonial', views.approve_testimonial, name='approve_testimonial'),
+    path('delete/<int:pk>/testimonial', views.delete_testimonial, name='delete_testimonial'),
 
     path('about', views.about_page, name='about_page'),
     path('add_testimonals', views.add_testimonals, name='add_testimonals'),
@@ -57,7 +63,5 @@ urlpatterns = [
 
     # rest api
     path('life-members', views.create_or_update_life_member, name='life-members')
-
-
 
 ]

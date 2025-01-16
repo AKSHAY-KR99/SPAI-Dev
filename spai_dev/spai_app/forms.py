@@ -3,7 +3,7 @@ from django.conf import settings
 from django.contrib.auth.hashers import check_password
 from django.forms import ModelForm, modelformset_factory
 from .models import GalleryManagement, UserDetailModel, User, EventManagement, PaymentModel, InternshipApplication, \
-    Manuscript, Author, SubscriptionPayment
+    Manuscript, Author, SubscriptionPayment, Testimonials
 from django import forms
 
 
@@ -188,6 +188,8 @@ class AuthorForm(forms.ModelForm):
         model = Author
         fields = ['name', 'designation', 'organization', 'email', 'mobile']
 
+# Author formset (allows adding multiple authors)
+AuthorFormSet = modelformset_factory(Author, form=AuthorForm, extra=1, can_delete=True)
 
 class ResetPasswordForm(forms.Form):
     email = forms.EmailField(required=True,
@@ -238,5 +240,9 @@ class SubscriptionPaymentForm(forms.ModelForm):
         fields = ['transaction_id', 'bank_name', 'document']
 
 
-# Author formset (allows adding multiple authors)
-AuthorFormSet = modelformset_factory(Author, form=AuthorForm, extra=1, can_delete=True)
+class TestimonialForm(forms.ModelForm):
+    class Meta:
+        model = Testimonials
+        fields = ['name', 'email', 'phone', 'message', 'publish']
+
+

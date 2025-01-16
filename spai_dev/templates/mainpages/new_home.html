@@ -341,32 +341,27 @@
         </div>
         <h1>Happy Clients <br> of the spai</h1>
         <a href="{% url 'add_testimonals' %}">
-            ADD TESTIMONALS
+            ADD TESTIMONIALS
         </a>
+        {% if request.user.is_superuser or request.user.executive == 1 or request.user.executive == 2 %}
+        <a href="{% url 'view_testimonials' %}" style="margin-top: 10px;">
+            VIEW TESTIMONIALS
+        </a>
+        {% endif %}
     </div>
     <div class="green-container">
         <div class="test-pic">
             <img src="{% static 'image/contact-us.jpeg' %}" alt="">
         </div>
         <img src="{% static 'image/quote1.svg' %}" alt="">
+        {% for test in testimonials %}
         <div class="test-content">           
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione id facere fugiat architecto quaerat, amet repellat, accusantium reprehenderit eos repudiandae labore saepe perspiciatis illum, delectus ut atque voluptatibus? Iste, sed.</p>
+            <p>{{test.message}}</p>
             <div class="test-auther">
-                -James Robert
+                - {{test.name}}
             </div>
         </div>
-        <div class="test-content">
-            <p>Machine learning (ML) is a branch of artificial intelligence (AI) focused on enabling computers and machines to imitate the way that humans learn, to perform tasks autonomously, and to improve their performance and accuracy through experience and exposure to more data.</p>
-            <div class="test-auther">
-                -Machine Learning
-            </div>
-        </div>
-        <div class="test-content">
-            <p>The quantum in "quantum computing" refers to the quantum mechanics that the system uses to calculate outputs. In physics, a quantum is the smallest possible discrete unit of any physical property.It usually refers to properties of atomic or subatomic particles.</p>
-            <div class="test-auther">
-                -Quantum Computing
-            </div>
-        </div>
+        {% endfor %}
         <div class="test-arrows">
             <img src="{% static 'image/test-back.svg' %}" alt="">
             <img src="{% static 'image/test-next.svg' %}" alt="">

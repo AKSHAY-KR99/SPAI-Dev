@@ -56,10 +56,11 @@ def send_mail_to_executives(user, host):
     if executives:
         executive_emails = [user.email for user in executives]
         executive_names = [user.first_name for user in executives]
+        executive_names_string = ', '.join(executive_names)
         subject = "Notification of Registration Completion"
         link = f"{host}/user/detail/{user.slug_value}"
         message = (
-            f"\nDear {executive_names[0]} and {executive_names[1]},\n"
+            f"\nDear {executive_names_string},\n"
             f"I am writing to inform you that the registration process for {user.first_name} {user.last_name}({user.email}) has been "
             f"successfully completed. All required information and documentation have been submitted and verified as "
             f"per the guidelines.\n"
