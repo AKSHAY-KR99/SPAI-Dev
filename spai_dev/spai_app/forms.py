@@ -3,7 +3,7 @@ from django.conf import settings
 from django.contrib.auth.hashers import check_password
 from django.forms import ModelForm, modelformset_factory
 from .models import GalleryManagement, UserDetailModel, User, EventManagement, PaymentModel, InternshipApplication, \
-    Manuscript, Author, SubscriptionPayment, Testimonials
+    Manuscript, Author, SubscriptionPayment, Testimonials, ContactUs
 from django import forms
 
 
@@ -246,3 +246,7 @@ class TestimonialForm(forms.ModelForm):
         fields = ['name', 'email', 'phone', 'message', 'publish']
 
 
+class ContactUsForm(forms.ModelForm):
+    class Meta:
+        model = ContactUs
+        fields = ['name', 'email', 'phone', 'message']

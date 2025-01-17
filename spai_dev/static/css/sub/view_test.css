@@ -37,6 +37,17 @@
     color: #2c2c2c;
 }
 
+.each-test h4 {
+    margin-bottom: -20px;
+    font-size: 14px;
+    color: #2c2c2c;
+}
+
+.each-test h5 {
+    font-size: 14px;
+    color: #2c2c2c;
+}
+
 /* Message styling */
 .each-test p {
     font-size: 14px;

@@ -374,19 +374,24 @@
         <h2>Contact us</h2>
         <h6>we are all about spai online</h6>
     </div>
-    <form action="" >
+    <form action="{% url 'contact_us' %}" method="POST">
+        {% csrf_token %}
         <div class="contact-us-grid-wrapper">
             <div class="contact-us-grid">
-                <input type="text" placeholder="Your Name">
-                <input type="text" placeholder="Your Email">
-                <input type="text" placeholder="Your Phone">
+                <input name="name" type="text" placeholder="Your Name">
+                <input type="text" name="email" placeholder="Your Email">
+                <input type="text" name="phone" placeholder="Your Phone">
             </div>
             <div class="contact-us-grid">
-                <textarea placeholder="Your Message" name="" id=""></textarea>
+                <textarea placeholder="Your Message" name="message" id=""></textarea>
             </div>
         </div>
+        
         <div class="contact-us-row">
             <input type="submit" value="SEND MESSAGE">
+            {% if request.user.is_superuser or request.user.executive == 1 or request.user.executive == 2 %}
+            <a style="padding:7px;color:white;font-size:12px;text-align:center;margin-top:10px;font-weight: 600;background-color: rgb(0, 0, 0);border-radius: 5px;" href="{% url 'view_contact_us' %}">View Queries</a>
+            {% endif %}
         </div>
     </form>
     <div class="contact-us-row2">

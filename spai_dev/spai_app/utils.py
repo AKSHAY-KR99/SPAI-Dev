@@ -125,3 +125,28 @@ def update_subscription_status(request, bulk):
             sub.active = False
             sub.save()
             sub.user.save()
+
+def send_contact_us_mail(contact):
+    message = (
+        f"Hi Secretary and President,\n"
+        f"You have enquiry from {contact.name}\n"
+        f"Name: {contact.name}\n"
+        f"Email: {contact.email}\n"
+        f"Phone: {contact.phone}\n"
+        f"Query: {contact.message}\n"
+    )
+    subject = f"Enquiry from {contact.name}"
+    sender_email = "SPAI Online <spai05138@gmail.com>"
+    recipient_list = [settings.SECRETARY_EMAIL, settings.PRESIDENT_EMAIL]
+
+    email = EmailMessage(
+        subject=subject,
+        body=message,
+        from_email=sender_email,
+        to=recipient_list,
+    )
+    try:
+        email.send()
+        print("Email sent successfully!")
+    except Exception as e:
+        print(f"Failed to send email: {e}")
