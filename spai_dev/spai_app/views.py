@@ -17,7 +17,7 @@ from . import models, forms
 from .models import GalleryManagement, User, EventManagement, UserDetailModel, GalleryImage, PaymentModel, Testimonials
 from .decorators import admin_only, authenticated_only
 from .utils import render_to_pdf, get_registration_num, get_research_paper_no, send_mail_to_executives, \
-    send_password_reset_email, update_subscription_status
+    send_password_reset_email, update_subscription_status, send_contact_us_mail
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
@@ -543,7 +543,7 @@ def admin_approval(request, *args, **kwargs):
         user = User.objects.filter(slug_value=slug).first()
         if user is None:
             return redirect("members")
-        if user.approval_percentage == 100 and user.status == settings.EX_2_APPROVED:
+        if user.approval_percentage == 100 and user.status in [settings.ADMIN_APPROVAL_PENDING, settings.EX_2_APPROVED]:
             reg_no = get_registration_num()
             user.admin_approved = True
             user.date_approved = datetime.now()
@@ -733,7 +733,8 @@ def get_user_full_details(req, slug):
 
         key = False
         if req.user.is_authenticated:
-            if req.user.user_role == settings.ADMIN_ROLE_VALUE and not user.admin_approved and user.approval_percentage == 100 and user.status == settings.EX_2_APPROVED:
+            if req.user.user_role == settings.ADMIN_ROLE_VALUE and not user.admin_approved and user.approval_percentage == 100 and user.status in [
+                settings.ADMIN_APPROVAL_PENDING, settings.EX_2_APPROVED]:
                 key = True
             elif req.user.executive in [settings.SECRETARY, settings.PRESIDENT]:
                 if (user.approval_percentage == 0 and user.status == settings.PAYMENT_DONE) or \
@@ -1022,6 +1023,7 @@ def reset_password(request, *args, **kwargs):
         return render(request, 'members/reset_password.html', context)
 
 
+@authenticated_only
 def annual_sub_payment(request, *args, **kwargs):
     if request.method == 'POST':
         # if not (request.user.slug_value == kwargs.get("slug", "") and request.user.status == settings.ADMIN_APPROVED and request.user.annual_subscription is False):
@@ -1041,6 +1043,7 @@ def annual_sub_payment(request, *args, **kwargs):
         form = forms.SubscriptionPaymentForm()
         return render(request, 'members/subscription_fee.html', {"form": form})
 
+
 @admin_only
 def annual_sub_approval(request, *args, **kwargs):
     slug = kwargs.get("slug", "")
@@ -1057,9 +1060,11 @@ def annual_sub_approval(request, *args, **kwargs):
     user.save()
     return redirect('individual_user_details', slug=slug)
 
+
 def refresh_members(request, *args, **kwargs):
     update_subscription_status(request, True)
     return redirect('life_members_get')
+
 
 @admin_only
 def testimonials_list(request):
@@ -1069,7 +1074,6 @@ def testimonials_list(request):
 
 
 def testimonial_create(request):
-    # import pdb;pdb.set_trace()
     if request.method == 'POST':
         form = forms.TestimonialForm(request.POST)
         if form.is_valid():
@@ -1079,6 +1083,8 @@ def testimonial_create(request):
         form = forms.TestimonialForm()
     return render(request, 'members/add_testimonials.html', {'form': form})
 
+
+@admin_only
 def approve_testimonial(request, *args, **kwargs):
     pk = kwargs.get('pk')
     obj = Testimonials.objects.filter(pk=pk).first()
@@ -1088,6 +1094,8 @@ def approve_testimonial(request, *args, **kwargs):
         return redirect('view_testimonials')
     return redirect('view_testimonials')
 
+
+@admin_only
 def delete_testimonial(request, *args, **kwargs):
     pk = kwargs.get('pk')
     obj = Testimonials.objects.filter(pk=pk).first()
@@ -1095,3 +1103,20 @@ def delete_testimonial(request, *args, **kwargs):
         obj.delete()
         return redirect('view_testimonials')
     return redirect('view_testimonials')
+
+
+def contact_us(request):
+    if request.method == 'POST':
+        form = forms.ContactUsForm(request.POST)
+        if form.is_valid():
+            contact = form.save()
+            send_contact_us_mail(contact)
+            return redirect(
+                f"{reverse('success')}?message=Our team will connect you soon. Thank you!")
+    return redirect('index')
+
+@admin_only
+def view_contact_us(request):
+    contacts = models.ContactUs.objects.all()
+    return render(request, 'members/view_contact_us.html', {'contacts': contacts})
+
