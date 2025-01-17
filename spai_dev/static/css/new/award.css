@@ -1,0 +1,207 @@
+h1 {
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 44px;
+    margin: 0%;
+}
+
+h2 {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 24px;
+    margin: 0%;
+}
+
+h3 {
+    color: rgb(1, 1, 49);
+    font-size: 36px;
+    font-weight: 700;
+    margin: 0%;
+}
+
+p {
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.award-head-row {
+    padding: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.life{
+    border: 1px solid black;
+    border-radius: 20px;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+}
+.ph-row {
+    display: grid;
+    grid-template-columns: 500px 1fr;
+    padding: 0px 60px;
+    gap: 30px;
+}
+
+@media(max-width:1012px) {
+    .ph-row {
+        display: flex;
+        flex-direction: column;
+
+    }
+}
+
+@media(max-width:550px) {
+    .ph-row {
+        padding: 0px 30px;
+    }
+}
+
+.two {
+    grid-template-columns: 1fr !important;
+}
+
+.ph-pic {
+    width: 100%;
+    height: auto;
+}
+
+.ph-pic img {
+    width: 100%;
+    height: auto;
+}
+
+.ph-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+.award-style {
+    background-color: rgb(0, 46, 36);
+    color: white;
+    padding: 10px 60px;
+    display: grid;
+    grid-template-columns: 1fr 250px;
+    gap: 40px;
+    margin: 10px 0px;
+}
+
+.award-style-pic {
+    width: 100%;
+    position: relative;
+
+}
+
+.award-style-pic img {
+    position: absolute;
+    width: auto;
+    height: 140%;
+    top: -40px;
+}
+
+.lef-award {
+    grid-template-columns: 200px 1fr !important;
+    background-color: rgb(46, 0, 21);
+}
+
+.lef-award .award-style-pic img {
+    height: 170%;
+    left: 10px;
+
+}
+
+@media(max-width:764px) {
+    .award-style {
+        padding: 10px 40px;
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 0px;
+    }
+
+    .award-style-pic {
+        width: 100%;
+        position: relative;
+
+    }
+
+    .award-style-pic img {
+        position: relative;
+        width: 50%;
+        height: auto;
+        top: 0px;
+    }
+
+    .lef-award {
+        padding: 10px 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+    }
+
+    .lef-award .award-style-pic img {
+        position: relative;
+        width: 50%;
+        height: auto;
+        top: 0px;
+
+    }
+}
+
+.row-right {
+    grid-template-columns: 1fr 500px;
+    text-align: right;
+}
+
+@media(max-width:1012px) {
+    .row-right {
+        flex-direction: column-reverse;
+        text-align: left;
+
+    }
+}
+
+.award-list {
+    list-style-type: none;
+    /* Remove default bullets */
+    padding-left: 20px;
+    /* Optional: Adjust padding */
+}
+
+.award-list li {
+    position: relative;
+    /* Ensure we can position the diamond */
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.award-list li::before {
+    content: '';
+    /* No text, just the shape */
+    width: 10px;
+    /* Width of the diamond */
+    height: 10px;
+    /* Height of the diamond */
+    background-color: rgb(124, 0, 56);
+    /* Color of the diamond */
+    position: absolute;
+    /* Position the shape */
+    left: -18px;
+    /* Position bullet to the left of the text */
+    top: 11.5px;
+    /* Center bullet vertically */
+    transform: translateY(-50%) rotate(45deg);
+    /* Rotate to make it diamond-shaped */
+    border-radius: 2px;
+    /* Optional: round the corners for a softer shape */
+}
+.procedure{
+    align-items: start;
+    text-align: left;
+    padding-top: 0%;
+}

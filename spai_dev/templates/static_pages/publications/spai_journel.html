@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
 <link rel="stylesheet" href="{% static 'css/sub/content.css' %}">
 <link rel="stylesheet" href="{% static 'css/sub/content2.css' %}">
+<link rel="stylesheet" href="{% static 'css/new/journel.css' %}">
 {% endblock %}
 
 {% block header %}
@@ -12,21 +13,32 @@
 {% endblock %}
 
 {% block content %}
-<div class="hero">
-    <div class="hero-pic">
-
-        <!-- <img class="full-width-img" src="{% static 'image/about1.0.png' %}" alt="Image 2"> -->
-        <img class="full-width-img" src="{% static 'image/longjump.jpeg' %}" alt="Image 2">
-        <img src="{% static 'image/highjump.png' %}" alt="" class="about2 on">
-        <img src="{% static 'image/highjump.png' %}" alt="" class="about2 of">
-
+<div class="journel-nav">
+    <div class="cotting">
+        <h1>Indian journal of sports Psychology</h1>
+        <h1 style="font-size: 36px;"> (ISSN : 2320-2904)</h1>
+        <div class="navbar2">
+            <ul class="navbar2-menu">
+                <li class="navbar2-item"><a href="{% url 'publications' %}?page=about_spai_journal">About SPAI Journal</a></li>
+                <li class="navbar2-item"><a href="{% url 'call_for_manuscript' %}">Call for Manuscript</a></li>
+                <li class="navbar2-item"><a href="{% url 'publications' %}?page=journal_archives">Journal Archives</a></li>
+                <li class="navbar2-item"><a href="{% url 'publications' %}?page=editorial">Editorial Board Members</a></li>
+                <li class="navbar2-item">
+                    <form action="/search" method="GET" class="navbar2-search-form">
+                        <input type="text" name="query" class="navbar2-search" placeholder="Search...">
+                        <button type="submit" class="navbar2-search-btn">
+                            <img src="{% static 'image/new/search.svg' %}" alt="Search">
+                        </button>
+                    </form>
+                </li>   
+            </ul>
+        </div>
+        
+        
+        
     </div>
-    <div class="about-h-texts">
-        <img src="{% static 'image/about3.png' %}" alt="">
-        <h6>Introduction to</h6>
-        <h2>spai <br>
-            journal</h2>
-    </div>
+        
+    
 </div>
 <div class="about-container run-repeat">
     <div class="about">
@@ -45,8 +57,11 @@
                 India and abroad, only three issues could be published during 2013-14. Th effort is afoot to revive both
                 publications.</p>
         </div>
+        <a href="{% static 'docs\Journal front page.pdf' %}" class="explore" target="_blank">
+            Explore journal
+        </a>
     </div>
-
+    
 </div>
 
 
