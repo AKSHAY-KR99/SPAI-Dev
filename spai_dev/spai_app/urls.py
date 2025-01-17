@@ -52,6 +52,8 @@ urlpatterns = [
     path('view/testimonials', views.testimonials_list, name='view_testimonials'),
     path('approve/<int:pk>/testimonial', views.approve_testimonial, name='approve_testimonial'),
     path('delete/<int:pk>/testimonial', views.delete_testimonial, name='delete_testimonial'),
+    path('contact-us/', views.contact_us, name='contact_us'),
+    path('view/contact-us/', views.view_contact_us, name='view_contact_us'),
 
     path('about', views.about_page, name='about_page'),
     path('add_testimonals', views.add_testimonals, name='add_testimonals'),

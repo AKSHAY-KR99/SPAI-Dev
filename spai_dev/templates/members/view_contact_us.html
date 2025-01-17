@@ -1,0 +1,36 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block cssfiles %}
+<link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/content.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/view_test.css' %}">
+
+{% endblock %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="list-testimonals">
+    <h1 style="text-align: center;">Contact us Queries</h1>
+    <div class="card-test">
+        {% for obj in contacts %}
+        <div class="each-test">
+            <h4>{{ obj.name }}</h4>
+            <h4>{{ obj.email }}</h4>
+            <h4>{{ obj.phone }}</h4>
+            <h5>{{ obj.date_created }}</h5>
+            <p style="font-size:16px;">{{ obj.message }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}
+{% block jsfile %}
+{% endblock %}
