@@ -803,3 +803,26 @@
     animation-delay: 1.8s;
     /* Starts after 0.8s */
 }
+.m-v{
+
+    justify-content:space-around !important;
+
+}
+.m-v-skill{
+    width: 280px !important;
+    height: 340px !important;
+}
+.m-v-skill .skill-content {
+    bottom: 20px !important;
+
+}
+.mv-ft{
+    width: 220px;
+    height: 220px;
+}
+.m-v-skill .ball-icon{
+    margin-bottom: 20px;
+}
+.m-v-2{
+    justify-content:center !important;
+}
