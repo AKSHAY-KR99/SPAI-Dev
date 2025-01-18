@@ -303,6 +303,11 @@ class EventDocumentModel(models.Model):
     def __str__(self):
         return self.title
 
+    def delete(self, *args, **kwargs):
+        if self.file:
+            os.remove(self.file.path)
+        super(EventDocumentModel, self).delete(*args, **kwargs)
+
 
 class PasswordResetRequest(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='password_reset')
