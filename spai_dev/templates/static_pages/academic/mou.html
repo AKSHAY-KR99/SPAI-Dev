@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
 <link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
 <link rel="stylesheet" href="{% static 'css/sub/content.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/content2.css' %}">
 {% endblock %}
 
 {% block header %}
@@ -11,11 +12,33 @@
 {% endblock %}
 
 {% block content %}
-<div style="height: 200px;" class="about-container mission">
+<div class="about-container mission">
     <div class="mission-top-row">
-        <h1 style="text-transform: uppercase;">MOU Collaboration</h1>
+        <h1 style="text-transform: uppercase;"> MoU &Collaborations</h1>
         
     </div>
+    <div class="m-v-container" style="width: fit-content;padding-bottom: 50px;">
+        <div style="display: flex;align-items: center;">
+            <div class="mission-icon">
+                <img class="pic-on" src="{% static 'image/mission1.svg' %}" alt="">
+                    <img class="pic-off" src="{% static 'image/mission2.svg' %}" alt="">
+            </div>
+            <i>
+                <h3 style="margin-left: 10px;">Details of MoU &Collaborations</h3>
+            </i>
+        </div>
+        <div style="width: 100%; box-sizing: border-box; display: flex;justify-content: center;flex-wrap: wrap;gap: 20px;">
+            <div class="button-1-wrapper">
+               
+                    <div class="button-1" style="height: auto;padding: 10px;max-width: 600px;width: 100%;">
+                        MoU with Kumaraguru College of Liberal Arts and Sciences, Coimbatore
+                    </div>
+            </div>
+
+        </div>
+
+        </div>
+        
     
 
 </div>
