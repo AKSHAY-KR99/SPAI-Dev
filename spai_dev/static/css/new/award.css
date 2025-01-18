@@ -29,6 +29,7 @@ h3 {
 p {
     font-weight: 500;
     font-size: 18px;
+    line-height: 35px;
 }
 
 .award-head-row {
@@ -98,8 +99,16 @@ p {
     justify-content: end;
 }
 
+.ph-content h3{
+    color: rgb(26, 39, 114);
+}
+
+#procedures-award{
+    color: rgb(26, 39, 114);
+}
+
 .award-style {
-    background-color: rgb(0, 46, 36);
+    background-color: rgb(2, 59, 47);
     color: white;
     padding: 10px 110px;
     display: grid;
@@ -123,7 +132,7 @@ p {
 
 .lef-award {
     grid-template-columns: 150px 1fr !important;
-    background-color: rgb(46, 0, 21);
+    background-color: rgb(85, 10, 44);
 }
 
 .lef-award .award-style-pic img {
@@ -210,6 +219,7 @@ p {
     /* Remove default bullets */
     padding-left: 20px;
     /* Optional: Adjust padding */
+    line-height: 40px;
 }
 
 .award-list li {
@@ -253,6 +263,7 @@ p {
     background-position: center;
     background-size: cover;
     animation: fadeIn 1.5s ease-in-out;
+    margin-bottom: 100px;
 }
 
 .history-head-2::before {
