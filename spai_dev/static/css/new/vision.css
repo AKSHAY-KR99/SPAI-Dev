@@ -76,6 +76,17 @@ body{
 .vision-item p{
     margin: 0%;
 }
+
+.vision-item{
+    transition: .5s;
+    cursor: pointer;
+}
+
+.vision-item:hover{
+    transform: scale(1.1);
+    transition: .5s;
+}
+
 .box-line{
     width: 100%;
     height: 8px;

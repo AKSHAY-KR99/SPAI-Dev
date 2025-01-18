@@ -62,6 +62,8 @@ urlpatterns = [
     path('academic', views.academic, name='academic'),
     path('unauthorized/403/', views.unauthorized_page_403, name='unauthorized_403'),
     path('success/', views.success_page, name='success'),
+    path('upload_event_document/<int:event_id>/', views.upload_event_document, name='upload_event_document'),
+    path('delete_event_document/<int:document_id>/<int:event_id>/', views.delete_event_document, name='delete_event_document'),
 
     # rest api
     path('life-members', views.create_or_update_life_member, name='life-members')

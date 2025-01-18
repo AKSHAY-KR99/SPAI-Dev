@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.core.mail import EmailMessage
 from django.db.models import Q
 from django.forms import model_to_dict
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import get_template
 from django.urls import reverse
@@ -1120,3 +1120,27 @@ def view_contact_us(request):
     contacts = models.ContactUs.objects.all()
     return render(request, 'members/view_contact_us.html', {'contacts': contacts})
 
+
+def upload_event_document(request,*args, **kwargs):
+    if request.method == 'POST':
+        event_id = kwargs.get('event_id')
+        event = EventManagement.objects.get(id=event_id)
+        form = forms.EventDocumentForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            event_document = form.save(commit=False)
+            event_document.event = event
+            event_document.title = form.cleaned_data.get("title")
+            event_document.save()
+            return JsonResponse({'success': True, 'redirect_url': f'/news/{event_id}/'})
+        else:
+            return JsonResponse({'success': False, 'errors': form.errors})
+
+    return JsonResponse({'success': False, 'error': 'Invalid request'})
+
+def delete_event_document(request, document_id, event_id):
+    if request.method == 'POST':
+        document = get_object_or_404(models.EventDocumentModel, id=document_id)
+        document.delete()
+        return redirect('news_detail', pk=event_id)
+    return redirect('news_detail', pk=event_id)
