@@ -1,8 +1,12 @@
+body{
+    overflow-x: hidden;
+}
 h1 {
     text-transform: uppercase;
     font-weight: 900;
     font-size: 44px;
     margin: 0%;
+    z-index: 2;
 }
 
 h2 {
@@ -10,13 +14,16 @@ h2 {
     font-weight: 700;
     font-size: 24px;
     margin: 0%;
+    z-index: 2;
+    
 }
 
 h3 {
     color: rgb(1, 1, 49);
-    font-size: 36px;
-    font-weight: 700;
+    font-size: 44px;
+    font-weight: 800;
     margin: 0%;
+    line-height: 55px;
 }
 
 p {
@@ -31,7 +38,9 @@ p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
+    min-height: 130px;
+
 }
 .life{
     border: 1px solid black;
@@ -44,7 +53,7 @@ p {
 .ph-row {
     display: grid;
     grid-template-columns: 500px 1fr;
-    padding: 0px 60px;
+    padding: 0px 110px;
     gap: 30px;
 }
 
@@ -54,11 +63,18 @@ p {
         flex-direction: column;
 
     }
+    h3{
+        margin: 0px 20px;
+    }
 }
 
 @media(max-width:550px) {
     .ph-row {
         padding: 0px 30px;
+    }
+    h3{
+        font-size: 30px;
+        line-height: 30px;
     }
 }
 
@@ -85,9 +101,9 @@ p {
 .award-style {
     background-color: rgb(0, 46, 36);
     color: white;
-    padding: 10px 60px;
+    padding: 10px 110px;
     display: grid;
-    grid-template-columns: 1fr 250px;
+    grid-template-columns: 1fr 150px;
     gap: 40px;
     margin: 10px 0px;
 }
@@ -106,13 +122,13 @@ p {
 }
 
 .lef-award {
-    grid-template-columns: 200px 1fr !important;
+    grid-template-columns: 150px 1fr !important;
     background-color: rgb(46, 0, 21);
 }
 
 .lef-award .award-style-pic img {
     height: 170%;
-    left: 10px;
+    
 
 }
 
@@ -143,7 +159,9 @@ p {
         flex-direction: column;
         gap: 0px;
     }
-
+    .procedure{
+        padding: 10px 40px !important;
+    }
     .lef-award .award-style-pic img {
         position: relative;
         width: 50%;
@@ -165,7 +183,28 @@ p {
 
     }
 }
+@media(max-width:900px){
+    .ph-row {
 
+        padding: 0px 60px;
+    }
+    .award-style{
+        padding: 10px 60px;
+    }
+    .procedure{
+
+        padding: 10px 60px;
+    }
+}
+@media(max-width:1000px){
+    .award-style{
+        padding: 10px 60px;
+        grid-template-columns: 1fr 250px;
+    }
+    .lef-award{
+        grid-template-columns:200px 1fr;
+    }
+}
 .award-list {
     list-style-type: none;
     /* Remove default bullets */
@@ -203,5 +242,38 @@ p {
 .procedure{
     align-items: start;
     text-align: left;
-    padding-top: 0%;
+    padding: 10px 110px;
 }
+.history-head-2 {
+    position: relative;
+    background-color: black;
+    background-image: url('./img/jouranl2.jpg');
+    color: white;
+    padding: 25px 30px;
+    background-position: center;
+    background-size: cover;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.history-head-2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Adjust the 0.4 for the opacity level */
+    z-index: 1; /* Make sure the overlay is on top of the image */
+}
+
+/* .history-head-2 h1 {
+    color: white;
+    font-weight: 800;
+    margin: 0;
+    line-height: 50px;
+    font-size: 40px;
+    animation: fadeIn 1.5s ease-in-out;
+    animation-delay: 0.3s;
+    position: relative;
+    z-index: 2; 
+} */
