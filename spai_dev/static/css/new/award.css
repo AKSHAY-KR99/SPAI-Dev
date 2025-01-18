@@ -242,7 +242,7 @@ p {
     /* Position the shape */
     left: -18px;
     /* Position bullet to the left of the text */
-    top: 11.5px;
+    top: 20.5px;
     /* Center bullet vertically */
     transform: translateY(-50%) rotate(45deg);
     /* Rotate to make it diamond-shaped */

@@ -536,3 +536,361 @@ a{
     margin-top: 0%;
   }
 }
+
+
+{% extends 'main.html' %}
+{% load static %}
+{% block cssfiles %}
+<link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/content.css' %}">
+<link rel="stylesheet" href="{% static 'css/sub/content2.css' %}">
+{% endblock %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="about-container mission run-repeat">
+    <div class="mission-top-row">
+        <h1>VISION AND MISSION OF SPORTS PSYCHOLOGY ASSOCIATION OF INDIA</h1>
+        <p>The Sports Psychology Association of India (SPAI), like most professional organizations, likely has a mission
+            and vision aimed at promoting the field of sports psychology and supporting the mental well-being and
+            performance of athletes.</p>
+    </div>
+    <div class="mission-vission">
+        <div class="m-v-container vission">
+            <div style="display: flex;align-items: center;">
+                <div class="mission-icon">
+                    <img class="pic-on" src="{% static 'image/eye5.svg' %}" alt="">
+                    <img class="pic-off" src="{% static 'image/eye4.svg' %}" alt="">
+                </div>
+                <h3 style="margin-left: 10px;">Vision</h3>
+            </div>
+            <i style="font-size: 16px;">The Vision of Sports psychology Association of India is to:</i>
+            <div class="m-v skill-wrapper">
+                <div class="skill m-v-skill" style="background: #74c4df">
+                    <div class="skill-icon">
+                        <img src="{% static 'image/allinone.png' %}" alt="">
+                    </div>
+                    <div class="skill-content">
+                        <div class="ball-icon">
+                            <img src="{% static 'image/soft_ball.png' %}" alt="">
+                        </div>
+                        <!-- <h4>Leading Authority in Sports Psychology</h4> -->
+                        <h6><b>Be the leading authority</b> in sports psychology in India, advancing the mental and
+                            emotional well-being of athletes and contributing to their holistic development. </h6>
+                    </div>
+
+                </div>
+                <div class="skill m-v-skill" style="background: #fc93a2">
+                    <div class="skill-icon">
+                        <img src="{% static 'image/allinone2.png' %}" alt="">
+                    </div>
+                    <div class="skill-content">
+                        <div class="ball-icon">
+                            <img src="{% static 'image/soft_ball.png' %}" alt="">
+                        </div>
+                        <!-- <h4>Creating a Culture of Integration</h4> -->
+                        <h6><b>Create a culture</b> where sports psychology is recognized as essential to athletic
+                            success and
+                            is seamlessly integrated into all levels of sports training and competition.</h6>
+                    </div>
+
+                </div>
+                <div class="skill m-v-skill" style="background: #a382ff;">
+                    <div class="skill-icon">
+                        <img src="{% static 'image/cricket.png' %}" alt="">
+                    </div>
+                    <div class="skill-content">
+                        <div class="ball-icon">
+                            <img src="{% static 'image/soft_ball.png' %}" alt="">
+                        </div>
+                        <!-- <h4>Empowering Athletes</h4> -->
+                        <h6><b>Empower athletes</b> to achieve their highest potential through scientifically supported
+                            psychological interventions, ensuring balanced performance and well-being.</h6>
+                    </div>
+
+                </div>
+                <div class="skill m-v-skill" style="background: #d672d6">
+                    <div class="skill-icon">
+                        <img src="{% static 'image/hokki.png' %}" alt="">
+                    </div>
+                    <div class="skill-content">
+                        <div class="ball-icon">
+                            <img src="{% static 'image/soft_ball.png' %}" alt="">
+                        </div>
+                        <!-- <h4>Fostering Excellence</h4> -->
+                        <h6><b>Foster excellence</b> in the field of sports psychology by developing highly skilled
+                            professionals who contribute to national and international sporting success.
+                        </h6>
+                    </div>
+
+                </div>
+                <div class="skill m-v-skill">
+                    <div class="skill-icon">
+                        <img src="{% static 'image/jump-bask.png' %}" alt="">
+                    </div>
+
+                    <div class="skill-content">
+                        <div class="ball-icon">
+                            <img src="{% static 'image/soft_ball.png' %}" alt="">
+                        </div>
+                        <!-- <h4>Promoting Mental Health and Resilience</h4> -->
+                        <h6><b>Promote mental health and resilience</b> in sports by increasing the awareness and
+                            application
+                            of sports psychology in abundant sports.</h6>
+                    </div>
+
+                </div>
+                <div class="skill m-v-skill" style="background: #43b0f1">
+                    <div class="skill-icon">
+                        <img src="{% static 'image/mv-ft-2.png' %}" class="mv-ft" alt="">
+                    </div>
+
+                    <div class="skill-content">
+                        <div class="ball-icon">
+                            <img src="{% static 'image/soft_ball.png' %}" alt="">
+                        </div>
+                        <!-- <h4>Building Professional Networks</h4> -->
+                        <h6><b>Building professional networks</b>, creating a strong network of sports psychologist
+                            across
+                            India and fostering collaboration with international bodies to share best practices. </h6>
+                    </div>
+
+                </div>
+            </div>
+            <!-- <div class="mission-grid-wrapp">
+                <div class="m-item">
+                    <img src="{% static 'image/mission/vision5.png' %}" alt="">
+                    <h5>Leading Authority in Sports Psychology</h5>
+                    <p>Be the leading authority in sports psychology in India, advancing the mental and emotional well-being of athletes and contributing to their holistic development.</p>
+
+                </div>
+                <div class="m-item">
+                    <img src="{% static 'image/mission/vision3.png' %}" alt="">
+                    <h5>Creating a Culture of Integration</h5>
+                    <p>Create a culture where sports psychology is recognized as essential to athletic success and is seamlessly integrated into all levels of sports training and competition.</p>
+
+                </div>
+                <div class="m-item">
+                    <img src="{% static 'image/mission/mission5.png' %}" alt="">
+                    <h5>Empowering Athletes</h5>
+                    <p>Empower athletes to achieve their highest potential through scientifically supported psychological interventions, ensuring balanced performance and well-being.</p>
+
+                </div>
+                <div class="m-item">
+                    <img src="{% static 'image/mission/vision4.png' %}" alt="">
+                    <h5>Fostering Excellence</h5>
+                    <p>Foster excellence in the field of sports psychology by developing highly skilled professionals who contribute to national and international sporting success.</p>
+
+                </div>
+                <div class="m-item">
+                    <img src="{% static 'image/mission/mission1.png' %}" alt="">
+                    <h5>Promoting Mental Health and Resilience</h5>
+                    <p>Promote mental health and resilience in sports by increasing the awareness and application of sports psychology in abundant sports.</p>
+
+                </div>
+                <div class="m-item">
+                    <img src="{% static 'image/mission/vision1.png' %}" alt="">
+                    <h5>Building Professional Networks</h5>
+                    <p>Build a strong network of sports psychologists across India and foster collaboration with international bodies to share best practices.</p>
+
+                </div>
+            </div> -->
+        </div>
+        <div class="m-v-container">
+            <div style="display: flex;align-items: center;">
+                <div class="mission-icon">
+                    <img class="pic-on" src="{% static 'image/mission1.svg' %}" alt="">
+                    <img class="pic-off" src="{% static 'image/mission2.svg' %}" alt="">
+                </div>
+                <h3 style="margin-left: 10px;">Mission</h3>
+            </div>
+            <i style="font-size: 16px;">The mission of the Sports Psychology Association of India (SPAI) is to:</i>
+            <div class="skill-wrapper">
+                <div class="skill m-v-skill" style="background: #a382ff;">
+                    <div class="skill-icon">
+                        <img src="{% static 'image/cricket.png' %}" alt="">
+                    </div>
+                    <div class="skill-content">
+                        <div class="ball-icon">
+                            <img src="{% static 'image/soft_ball.png' %}" alt="">
+                        </div>
+                        <!-- <h4>Empowering Athletes</h4> -->
+                        <h6><b>Promote the field of Sports Psychology</b> by fostering research, education and
+                            professional practice in Sports Psychology across India.</h6>
+                    </div>
+
+                </div>
+
+                <div class="skill m-v-skill">
+                    <div class="skill-icon">
+                        <img src="{% static 'image/jump-bask.png' %}" alt="">
+                    </div>
+
+                    <div class="skill-content">
+                        <div class="ball-icon">
+                            <img src="{% static 'image/soft_ball.png' %}" alt="">
+                        </div>
+                        <!-- <h4>Promoting Mental Health and Resilience</h4> -->
+                        <h6><b>Enhance athlete performance and well-being</b> by integrating psychological principles
+                            and
+                            techniques into sports training, coaching, and management. </h6>
+                    </div>
+
+                </div>
+                <div class="skill m-v-skill" style="background: #74c4df">
+                    <div class="skill-icon">
+                        <img src="{% static 'image/allinone.png' %}" alt="">
+                    </div>
+                    <div class="skill-content">
+                        <div class="ball-icon">
+                            <img src="{% static 'image/soft_ball.png' %}" alt="">
+                        </div>
+                        <!-- <h4>Leading Authority in Sports Psychology</h4> -->
+                        <h6><b>Develop professional standards</b> and provide certification, training and continuous
+                            education for sports psychologists, coaches, and other stakeholders in the sports ecosystem.
+                        </h6>
+                    </div>
+
+                </div>
+                <div class="skill m-v-skill" style="background: #d672d6">
+                    <div class="skill-icon">
+                        <img src="{% static 'image/hokki.png' %}" alt="">
+                    </div>
+                    <div class="skill-content">
+                        <div class="ball-icon">
+                            <img src="{% static 'image/soft_ball.png' %}" alt="">
+                        </div>
+                        <!-- <h4>Fostering Excellence</h4> -->
+                        <h6><b>Collaborate with sports organizations</b> to create mental training programs that improve focus, resilience, motivation, and emotional control in athletes. </h6>
+                    </div>
+
+                </div>
+                <div class="skill m-v-skill" style="background: #fc93a2">
+                    <div class="skill-icon">
+                        <img src="{% static 'image/allinone2.png' %}" alt="">
+                    </div>
+                    <div class="skill-content">
+                        <div class="ball-icon">
+                            <img src="{% static 'image/soft_ball.png' %}" alt="">
+                        </div>
+                        <!-- <h4>Creating a Culture of Integration</h4> -->
+                        <h6><b>Promote research</b> in the field of sports psychology in advancing scientific knowledge to benefit athletes and sports organizations. </h6>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- <div class="mission-grid-wrapp">
+                <div class="m-item">
+                    <img src="{% static 'image/mission/mission2.png' %}" alt="">
+                    <h5>Promoting Sports Psychology</h5>
+                    <p>Promote the field of Sports Psychology by fostering research, education, and professional practice in Sports Psychology across India.</p>
+
+                </div>
+                <div class="m-item">
+                    <img src="{% static 'image/mission/mission4.png' %}" alt="">
+                    <h5>Enhancing Athlete Performance</h5>
+                    <p> Enhance athlete performance and well-being by integrating psychological principles and techniques into sports training, coaching, and management.</p>
+
+                </div>
+                <div class="m-item">
+                    <img src="{% static 'image/mission/mission3.png' %}" alt="">
+                    <h5>Professional Standards Development</h5>
+                    <p> Develop professional standards and provide certification, training, and continuous education for sports psychologists, coaches, and other stakeholders in the sports ecosystem.</p>
+
+                </div>
+                <div class="m-item">
+                    <img src="{% static 'image/mission/vision1.png' %}" alt="">
+                    <h5>Collaboration with Sports Organizations</h5>
+                    <p>Collaborate with sports organizations to create mental training programs that improve focus, resilience, motivation, and emotional control in athletes.</p>
+
+                </div>
+                <div class="m-item">
+                    <img src="{% static 'image/mission/vision2.png' %}" alt="">
+                    <h5>Research and Development</h5>
+                    <p>Research and development, promoting research in the field of sports psychology and advancing scientific knowledge to benefit athletes and sports organizations.</p>
+
+                </div>
+            </div> -->
+        </div>
+        <!-- <div class="m-v-container">
+            <div style="display: flex;align-items: center;">
+                <div class="mission-icon">
+                    <img class="pic-on" src="{% static 'image/mission1.svg' %}" alt="">
+                    <img class="pic-off" src="{% static 'image/mission2.svg' %}" alt="">
+                </div>
+                <h3 style="margin-left: 10px;">Mission</h3>
+            </div>
+            <b><i style="font-size: 16px;">The mission of the Sports Psychology Association of India (SPAI) is to:</i></b>
+            <ol class="animated-list1">
+                <li>Promote the field of Sports Psychology by fostering research, education and professional
+                    practice in
+                    Sports Psychology across India.</li>
+                <li>Enhance athlete performance and well-being by integrating psychological principles and
+                    techniques into sports training, coaching, and management.</li>
+                <li>Develop professional standards and provide certification, training and continuous education for
+                    sports psychologists, coaches, and other stakeholders in the sports ecosystem.</li>
+                <li>Collaborate with sports organizations to create mental training programs that improve focus,
+                    resilience, motivation, and emotional control in athletes.</li>
+                <li>Research and development, promoting research in the field of sports psychology and advancing
+                    scientific knowledge to benefit athletes and sports organization.</li>
+            </ol>
+        </div>
+        <div class="m-v-container vission">
+            <div style="display: flex;align-items: center;">
+                <div class="mission-icon">
+                    <img class="pic-on" src="{% static 'image/eye5.svg' %}" alt="">
+                    <img class="pic-off" src="{% static 'image/eye4.svg' %}" alt="">
+                </div>
+                <h3 style="margin-left: 10px;">Vision</h3>
+            </div>
+            <b><i style="font-size: 16px;">The Vision of Sports psychology Association of India is to:</i></b>
+            <ol class="animated-list1">
+                <li>Be the leading authority in sports psychology in India, advancing the mental and emotional
+                    well-being
+                    of athletes and contributing to their holistic development.</li>
+                <li>Create a culture where sports psychology is recognized as essential to athletic success and is
+                    seamlessly integrated into all levels of sports training and competition.</li>
+                <li>Empower athletes to achieve their highest potential through scientifically supported psychological
+                    interventions, ensuring balanced performance and well-being.</li>
+                <li> Foster excellence in the field of sports psychology by developing highly skilled professionals who
+                    contribute to national and international sporting success.</li>
+                <li>Promote mental health and resilience in sports by increasing the awareness and application of sports
+                    psychology in abundant sports.</li>
+                <li>Building professional networks, creating a strong network of sports psychologist across India and
+                    fostering collaboration with international bodies to share best practices.
+                </li>
+            </ol>
+        </div> -->
+    </div>
+
+</div>
+<div class="footer-links" style="margin-top: 0px;background-color: #F2F2ED;">
+    <a href="{% url 'about_page' %}?page=about_spai">About SPAI journal</a>
+    <a href="{% url 'fee_and_payment' %}">Fee & payments</a>
+    <a href="{% url 'about_page' %}?page=mission">Our mission</a>
+    <a href="{% url 'about_page' %}?page=history">History</a>
+    <a href="{% url 'publications' %}?page=journal_archives">Publication Archive</a>
+    <a href="{% url 'call_for_manuscript' %}">Submit Research Paper</a>
+    <a href="{% url 'about_page' %}?page=committee">Committees</a>
+    <a href="{% url 'call_for_manuscript' %}">Publication Guidelines</a>
+    <a href="{% url 'news' %}?tab=upcoming">Upcoming Events</a>
+    <a href="{% url 'news' %}?tab=post">Events Organized</a>
+    <a href="{% url 'publications' %}?page=joinaseditor">Join as Editor</a>
+    <a href="{% url 'publications' %}?page=joinasreviewer">Join as Reviewer</a>
+    <a href="{% url 'publications' %}?page=editorial">Editors & Reviewers</a>
+    <a href="{% url 'membership' %}?page=previlege">About Membership Privilege</a>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}
+{% block jsfile %}
+<script type="text/javascript" src="{% static 'js/sub/news.js' %}"></script>
+{% endblock %}
