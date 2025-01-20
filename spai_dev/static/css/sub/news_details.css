@@ -123,6 +123,7 @@
 }
 
 .pdf{
+  position: relative;
   text-decoration: none;
   background-color: black;
   color: white;
@@ -132,6 +133,7 @@
   border-radius: 10px;
   font-weight: 500;
   transition: all 0.3 ease;
+  z-index: 0;
 }
 .pdf:hover{
   background-color: rgb(18, 18, 192);
@@ -160,4 +162,19 @@
   box-sizing: border-box;
   animation: scaleUp 1.5s ease-in-out;
   
+}
+
+.doc-del{
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: white;
+  background-color: red;
+  padding: 5px;
+  border-radius: 6px;
+}
+
+#delete-files{
+  font-size: 11px !important;
+  z-index: 1;
 }
