@@ -102,15 +102,17 @@
                 <div class="pdf-wrapper">
                     {% if files %}
                     {% for file in files %}
-                    <a  class="pdf" href="{{ file.file.url }}" target="_blank">
+                    <div class="pdf">
+                    <a href="{{ file.file.url }}" target="_blank">
                         {{file.title}}
                     </a>
                     {% if request.user.user_role == 1 or request.user.executive == 1 or request.user.executive == 2 %}
-        <form action="{% url 'delete_event_document' file.id event.id %}" method="post">
+        <form class="doc-del" id="delete-files" action="{% url 'delete_event_document' file.id event.id %}" method="post">
             {% csrf_token %}
             <button style="cursor: pointer;;font-weight: 600;font-size: 11px;background-color: red;color: white; font-family: Popins, sans-serif;border: none; border-radius: 3px;" type="submit" class="delete-button" onclick="return confirm('Are you sure you want to delete this resource?');">Delete</button>
         </form>
         {% endif %}
+                </div>
                     {% endfor %}
                     {% endif %}
 
