@@ -1,0 +1,77 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block cssfiles %}
+    <link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sub/members.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sub/internship.css' %}">
+{% endblock %}
+
+{% block header %}
+    {% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+<h2 class="fade-in" style="text-align:center;">Search result for {{query}}</h2>
+<table class="fade-in">
+    <thead>
+        <tr>
+            <th>Paper No</th>
+            <th>Title</th>
+            <th>Research Area</th>
+            <th>Submit date</th>
+            <th>View</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for application in results %}
+    <tr>
+        <td>{{ application.paper_no }}</td>
+        <td>{{ application.title }}</td>
+        <td>{{ application.research_area }}</td>
+        <td>{{ application.date_created }}</td>
+        <td>
+            <a href="{% url 'research_paper_retrieve' application.pk %}">
+                <div class="view">
+                    <img src="{% static 'image/eye.svg' %}" alt="">
+                    <p>View</p>
+                </div>
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
+
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock %}
+
+{% block jsfile %}
+<script type="text/javascript" src="{% static 'js/sub/news.js' %}"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Create an Intersection Observer to detect when elements come into the viewport
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Add 'visible' class to trigger animation
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Stop observing after it becomes visible
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is visible in the viewport
+        });
+
+        // Target the h2 and table elements
+        const elementsToAnimate = document.querySelectorAll('h2.fade-in, table.fade-in');
+        elementsToAnimate.forEach(element => {
+            observer.observe(element); // Start observing each element
+        });
+    });
+</script>
+{% endblock %}
