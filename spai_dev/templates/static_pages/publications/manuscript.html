@@ -66,11 +66,9 @@
     <!-- Section: Research Paper Submission -->
     <h1 class="fade-in-up" style="text-align: center;">Submit Research Paper</h1>
     <h3 class="fade-in-up" style="text-align: center;">Please fill the details of the research paper</h3>
-    {% if request.user.user_role == 1 %}
     <div class="full-list">
         <a href="{% url 'list_manuscripts' %}">View all Applications</a>
     </div>
-    {% endif %}
     <form id="manuscript-form" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <!-- Research Paper Details Section -->

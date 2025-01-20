@@ -874,15 +874,13 @@ def research_paper_list(request):
 
 def research_paper_retrieve(request, *args, **kwargs):
     pk = kwargs.get("pk", None)
-    if request.user.user_role == settings.ADMIN_ROLE_VALUE:
-        context = {}
-        paper = models.Manuscript.objects.get(pk=pk)
-        authors = models.Author.objects.filter(manuscript=paper)
-        context['paper'] = paper
-        context['authors'] = authors
-        return render(request, 'static_pages/publications/view_research_paper.html', context)
-    else:
-        return redirect('login')
+    context = {}
+    paper = models.Manuscript.objects.get(pk=pk)
+    authors = models.Author.objects.filter(manuscript=paper)
+    context['paper'] = paper
+    context['authors'] = authors
+    return render(request, 'static_pages/publications/view_research_paper.html', context)
+
 
 
 @admin_only
@@ -1144,3 +1142,13 @@ def delete_event_document(request, document_id, event_id):
         document.delete()
         return redirect('news_detail', pk=event_id)
     return redirect('news_detail', pk=event_id)
+
+
+def manuscript_search(request):
+    query = request.GET.get('query', '')
+    results = []
+    if query:
+        results = models.Manuscript.objects.filter(
+            Q(title__icontains=query) | Q(keywords__icontains=query) | Q(research_area__icontains=query)
+        )
+    return render(request, 'static_pages/publications/search_manuscript.html', {'results': results, 'query': query})

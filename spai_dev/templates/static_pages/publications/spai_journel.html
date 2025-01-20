@@ -24,7 +24,7 @@
                 <li class="navbar2-item"><a href="{% url 'publications' %}?page=journal_archives">Journal Archives</a></li>
                 <li class="navbar2-item"><a href="{% url 'publications' %}?page=editorial">Editorial Board Members</a></li>
                 <li class="navbar2-item">
-                    <form action="/search" method="GET" class="navbar2-search-form">
+                    <form action="{% url 'manuscript_search' %}" method="GET" class="navbar2-search-form">
                         <input type="text" name="query" class="navbar2-search" placeholder="Search...">
                         <button type="submit" class="navbar2-search-btn">
                             <img src="{% static 'image/new/search.svg' %}" alt="Search">
