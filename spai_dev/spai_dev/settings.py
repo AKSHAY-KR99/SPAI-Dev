@@ -161,6 +161,8 @@ EX_2_APPROVED = "executive_2_approved"
 EMAIL_SEND = "email_send_to_the_user"
 PASSWORD_RESET = "password_changed"
 
+USER_INGEST_KEY = "hdjmNBHyt67UyhgbNBGFt567GFvbnV"
+
 SECRETARY_EMAIL = "test1@gmail.com"
 PRESIDENT_EMAIL = "test2@gmail.com"
 

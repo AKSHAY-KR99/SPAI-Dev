@@ -1162,8 +1162,11 @@ def manuscript_search(request):
 
 class BulkDataIngestionAPIView(APIView):
     def post(self, request):
-        data = request.data
+        api_key = request.headers.get('Authorization')
+        if api_key != settings.USER_INGEST_KEY:
+            return Response({"error": "Access denied"}, status=status.HTTP_403_FORBIDDEN)
 
+        data = request.data
         with transaction.atomic():
             try:
                 # Check if User already exists
