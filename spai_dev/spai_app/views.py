@@ -1122,6 +1122,10 @@ def view_contact_us(request):
     contacts = models.ContactUs.objects.all()
     return render(request, 'members/view_contact_us.html', {'contacts': contacts})
 
+@admin_only
+def view_journal_queries(request):
+    contacts = models.JournalQuery.objects.all()
+    return render(request, 'static_pages/publications/view_journal_queries.html', {'contacts': contacts})
 
 def upload_event_document(request,*args, **kwargs):
     if request.method == 'POST':
@@ -1263,3 +1267,14 @@ class BulkDataIngestionAPIView(APIView):
 
             except Exception as e:
                 return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+
+def journal_queries(request):
+    if request.method == 'POST':
+        form = forms.JournalQueryForm(request.POST)
+        if form.is_valid():
+            journal = form.save()
+            send_contact_us_mail(journal, True)
+            return redirect(
+                f"{reverse('success')}?message=Our team will connect you soon. Thank you!")
+    return redirect('index')

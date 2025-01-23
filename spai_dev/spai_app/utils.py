@@ -88,7 +88,6 @@ def send_mail_to_executives(user, host):
 
 def send_password_reset_email(user, host):
     link=f'{host}/reset/password/{user.slug_value}'
-    print(link)
     message = (
         f"Dear {user.first_name} {user.last_name},\n"
         f"Your password reset link is given below, click to reset your password.\n"
@@ -127,7 +126,7 @@ def update_subscription_status(request, bulk):
             sub.save()
             sub.user.save()
 
-def send_contact_us_mail(contact):
+def send_contact_us_mail(contact, journal=False):
     message = (
         f"Hi Secretary and President,\n"
         f"You have enquiry from {contact.name}\n"
@@ -136,7 +135,10 @@ def send_contact_us_mail(contact):
         f"Phone: {contact.phone}\n"
         f"Query: {contact.message}\n"
     )
-    subject = f"Enquiry from {contact.name}"
+    if journal:
+        subject = f"Enquiry About Journal {contact.name}"
+    else:
+        subject = f"Enquiry from {contact.name}"
     sender_email = "SPAI Online <spai05138@gmail.com>"
     recipient_list = [settings.SECRETARY_EMAIL, settings.PRESIDENT_EMAIL]
 

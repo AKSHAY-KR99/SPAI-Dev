@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="{% static 'css/sub/content.css' %}">
 <link rel="stylesheet" href="{% static 'css/sub/content2.css' %}">
 <link rel="stylesheet" href="{% static 'css/new/journel.css' %}">
+<link rel="stylesheet" href="{% static 'css/home/contactus.css' %}">
 {% endblock %}
 
 {% block header %}
@@ -62,6 +63,31 @@
         </a>
     </div>
     
+</div>
+<div class="contact-us animated">
+    <div class="contact-us-row">
+        <h2>Do You Have any Queries ?</h2>
+    </div>
+    <form action="{% url 'journal_queries' %}" method="POST">
+        {% csrf_token %}
+        <div class="contact-us-grid-wrapper">
+            <div class="contact-us-grid">
+                <input name="name" type="text" placeholder="Your Name">
+                <input type="text" name="email" placeholder="Your Email">
+                <input type="text" name="phone" placeholder="Your Phone">
+            </div>
+            <div class="contact-us-grid">
+                <textarea placeholder="Your Message" name="message" id=""></textarea>
+            </div>
+        </div>
+
+        <div class="contact-us-row">
+            <input type="submit" value="Send Message">
+            {% if request.user.is_superuser or request.user.executive == 1 or request.user.executive == 2 %}
+            <a style="padding:7px;color:white;font-size:12px;text-align:center;margin-top:10px;font-weight: 600;background-color: rgb(0, 0, 0);border-radius: 5px;" href="{% url 'view_journal_query' %}">View Queries</a>
+            {% endif %}
+        </div>
+    </form>
 </div>
 
 
