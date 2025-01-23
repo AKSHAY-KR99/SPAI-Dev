@@ -7,7 +7,7 @@ def get_image_of_user(request):
         usr = User.objects.filter(email=request.user.email).first()
         if usr is not None:
             detail = UserDetailModel.objects.filter(user=usr).first()
-            if detail is not None and detail.photo is not None:
+            if detail is not None and detail.photo.name != '':
                 context["present"] = True
                 context["loc"] = detail.photo.url
     return context

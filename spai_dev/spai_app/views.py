@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 from django.core.mail import EmailMessage
+from django.db import transaction
 from django.db.models import Q
 from django.forms import model_to_dict
 from django.http import HttpResponse, JsonResponse
@@ -12,9 +13,11 @@ from django.template.loader import get_template
 from django.urls import reverse
 from datetime import datetime, timedelta
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from rest_framework.views import APIView
 
 from . import models, forms
-from .models import GalleryManagement, User, EventManagement, UserDetailModel, GalleryImage, PaymentModel, Testimonials
+from .models import GalleryManagement, User, EventManagement, UserDetailModel, GalleryImage, PaymentModel, Testimonials, \
+    AnnualSubscriptionModel
 from .decorators import admin_only, authenticated_only
 from .utils import render_to_pdf, get_registration_num, get_research_paper_no, send_mail_to_executives, \
     send_password_reset_email, update_subscription_status, send_contact_us_mail
@@ -23,7 +26,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.utils import timezone
 from .models import LifeMembers
-from .serializers import LifeMembersSerializer
+from .serializers import LifeMembersSerializer, UserSerializer, UserDetailSerializer, PaymentSerializer, \
+    AnnualSubscriptionSerializer
 
 
 # Frequently used methods
@@ -1152,3 +1156,110 @@ def manuscript_search(request):
             Q(title__icontains=query) | Q(keywords__icontains=query) | Q(research_area__icontains=query)
         )
     return render(request, 'static_pages/publications/search_manuscript.html', {'results': results, 'query': query})
+
+
+# user ingestion API
+
+class BulkDataIngestionAPIView(APIView):
+    def post(self, request):
+        api_key = request.headers.get('Authorization')
+        if api_key != settings.USER_INGEST_KEY:
+            return Response({"error": "Access denied"}, status=status.HTTP_403_FORBIDDEN)
+
+        data = request.data
+        with transaction.atomic():
+            try:
+                # Check if User already exists
+                user = User.objects.filter(email=data.get('email')).first()
+                if user:
+                    user_message = "User already exists."
+                else:
+                    # Create User instance
+                    user_data = {
+                        'email': data.get('email', f"user{datetime.now().timestamp()}@example.com"),
+                        'username': data.get('username', f"user{datetime.now().timestamp()}"),
+                        'first_name': data.get('first_name', 'John'),
+                        'last_name': data.get('last_name', 'Doe'),
+                        'state': data.get('state', 'None'),
+                        'annual_subscription': data.get('annual_subscription', False)
+                    }
+                    user_serializer = UserSerializer(data=user_data)
+                    user_serializer.is_valid(raise_exception=True)
+                    user = user_serializer.save()
+                    user_message = "User created successfully."
+
+                # Check if UserDetailModel already exists
+                user_detail = UserDetailModel.objects.filter(user=user).first()
+                if user_detail:
+                    user_detail_message = "UserDetail already exists."
+                else:
+                    # Create UserDetailModel instance
+                    address = f"{data.get('house_name', 'Unknown')} {data.get('street_name', 'Unknown')} {data.get('city_name', 'Unknown')} {data.get('pin', '000000')}"
+                    user_detail_data = {
+                        'user': user.pk,
+                        'degree': data.get('degree', 'Unknown'),
+                        'profession': data.get('profession', 'Unknown'),
+                        'institution': data.get('institution', 'Unknown'),
+                        'department': data.get('department', 'Unknown'),
+                        'address': address,
+                        'phone_number': data.get('phone_number', '0000000000'),
+                        'alternate_number': data.get('alternate_phone_number', None),
+                        'alternate_mail': data.get('alternate_email', None),
+                        'specialized_in': data.get('specialized_in', 'None'),
+                        'research_interest': data.get('research_interest', 'None'),
+                    }
+                    user_detail_serializer = UserDetailSerializer(data=user_detail_data)
+                    user_detail_serializer.is_valid(raise_exception=True)
+                    user_detail_serializer.save()
+                    user_detail_message = "UserDetail created successfully."
+
+                # Check if PaymentModel already exists
+                payment = PaymentModel.objects.filter(user_info=user).first()
+                if payment:
+                    payment_message = "Payment record already exists."
+                else:
+                    # Create PaymentModel instance
+                    payment_data = {
+                        'user_info': user.pk,
+                        'transaction_id': f"TXN{datetime.now().timestamp()}",
+                        'reference_id': f"REF{datetime.now().timestamp()}",
+                        'bank_name': 'Demo Bank',
+                        'payment_type': 1,
+                        'document': None
+                    }
+                    payment_serializer = PaymentSerializer(data=payment_data)
+                    payment_serializer.is_valid(raise_exception=True)
+                    payment_serializer.save()
+                    payment_message = "Payment record created successfully."
+
+                # Check if AnnualSubscriptionModel already exists
+                annual_subscription = AnnualSubscriptionModel.objects.filter(user=user).first()
+                if data.get('annual_subscription', False):
+                    if annual_subscription:
+                        annual_subscription_message = "Annual subscription already exists."
+                    else:
+                        end_date_str = data.get('end_date', None)
+                        end_date = datetime.strptime(end_date_str, '%Y-%m-%d').date()
+                        annual_sub_data = {
+                            'user': user.pk,
+                            'date_created': end_date - timedelta(days=365),
+                            'end_date': end_date,
+                            'active': True
+                        }
+                        annual_subscription_serializer = AnnualSubscriptionSerializer(data=annual_sub_data)
+                        annual_subscription_serializer.is_valid(raise_exception=True)
+                        annual_subscription_serializer.save()
+                        annual_subscription_message = "Annual subscription created successfully."
+                else:
+                    annual_subscription_message = "Annual subscription not applicable."
+
+                # Final response
+                return Response({
+                    "user_message": user_message,
+                    "user_detail_message": user_detail_message,
+                    "payment_message": payment_message,
+                    "annual_subscription_message": annual_subscription_message
+                }, status=status.HTTP_201_CREATED)
+
+            except Exception as e:
+                return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)

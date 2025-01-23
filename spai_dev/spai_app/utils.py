@@ -88,6 +88,7 @@ def send_mail_to_executives(user, host):
 
 def send_password_reset_email(user, host):
     link=f'{host}/reset/password/{user.slug_value}'
+    print(link)
     message = (
         f"Dear {user.first_name} {user.last_name},\n"
         f"Your password reset link is given below, click to reset your password.\n"

@@ -67,6 +67,7 @@ urlpatterns = [
     path('delete_event_document/<int:document_id>/<int:event_id>/', views.delete_event_document, name='delete_event_document'),
 
     # rest api
-    path('life-members', views.create_or_update_life_member, name='life-members')
+    path('life-members', views.create_or_update_life_member, name='life-members'),
+    path('user/data/ingestion', views.BulkDataIngestionAPIView.as_view())
 
 ]
