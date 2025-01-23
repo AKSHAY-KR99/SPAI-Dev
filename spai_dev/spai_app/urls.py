@@ -54,6 +54,8 @@ urlpatterns = [
     path('delete/<int:pk>/testimonial', views.delete_testimonial, name='delete_testimonial'),
     path('contact-us/', views.contact_us, name='contact_us'),
     path('view/contact-us/', views.view_contact_us, name='view_contact_us'),
+    path('journals/query', views.journal_queries, name='journal_queries'),
+    path('view/journal/queries', views.view_journal_queries,name='view_journal_query'),
     path('journal/search/', views.manuscript_search, name='manuscript_search'),
 
     path('about', views.about_page, name='about_page'),
