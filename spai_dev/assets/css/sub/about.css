@@ -1,0 +1,94 @@
+.styled-about{
+    background-color: rgb(39, 39, 39);
+    width: 100%;
+    box-sizing: border-box;
+    color: white;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    padding: 60px 60px 90px 60px;
+    gap: 20px;
+    position: relative;
+}
+.style-box {
+    border: 1px solid white;
+    padding: 30px 15px 20px 15px;
+    display: flex;
+    flex-direction: column;
+   
+    box-sizing: border-box;
+    align-items: center;
+    gap: 15px;
+    text-align: center;
+    transition: all 0.2s ease;
+    position: relative;
+    height: fit-content;
+}
+.style-box p{
+    font-size: 14px;
+    margin: 0%;
+}
+.style-box ul{
+    font-size: 14px;
+    margin: 0%;
+    text-align: left;
+}
+.style-box:hover {
+    background-color: red;
+    border-color: yellow;
+    transition: all 0.3s ease;
+}
+
+/* Modify the ::after pseudo-element when the parent .style-box is hovered */
+.style-box:hover::after {
+    border-top: 20px solid yellow; /* Change the color on hover */
+    transition: all 0.3s ease;
+}
+
+.style-box::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent; /* Creates the right-angle triangle */
+    border-top: 20px solid white; /* Default triangle color */
+}
+
+.style-box h3{
+    margin: 10px 0px 0px 0px;
+    font-size: 24px;
+}
+.style-pic{
+    display: flex;
+    justify-content: center;
+}
+.style-pic img{
+    width: 50px;
+    height: 50px;
+}
+.line-box{
+    width: 30x;
+    height: 5px;
+    border: 1px solid white;
+    min-width: 50px;
+    border-left: 0px;
+    border-right: 0px;
+    
+}
+.style-content{
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+@media(max-width:1000px){
+    .styled-about{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+@media(max-width:762px){
+    .styled-about{
+        grid-template-columns: repeat(1,1fr);
+        padding: 30px 40px;
+    }
+}

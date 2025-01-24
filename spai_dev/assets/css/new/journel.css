@@ -1,0 +1,177 @@
+.journel-nav {
+    
+    width: 100%;
+    box-sizing: border-box;
+    background-image: url('img/tennis2.jpg');
+    /* background-image: url('jouranl2.jpg'); */
+    min-height: 300px;
+    background-position: center;
+    color: white;
+    text-align: center;
+    animation: fadeIn 1.5s ease-in-out;
+    
+}
+
+.cotting {
+    width: 100%;
+    min-height: 300px;
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Use rgba for background color */
+    text-align: center;
+    padding: 30px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.journel-nav h1 {
+    text-transform: uppercase;
+    margin: 0%;
+    /* font-family: 'Merriweather', serif; */
+    /* font-family: 'Playfair Display', serif; */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 44px;
+    animation: fadeIn 1.5s ease-in-out;
+    animation-delay: 0.5s;
+}
+
+/* Navbar2 container */
+.navbar2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 20px;
+    color: white;
+    width: 100%;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+}
+
+/* Navbar2 menu */
+.navbar2-menu {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 20px;
+    justify-content: space-around;
+    width: 100%;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    animation: scaleUp 1.5s ease-in-out !important;
+
+}
+.navbar2-menu li:nth-child(1){
+    animation-delay: 0.5;
+}
+.navbar2-menu li:nth-child(2){
+    animation-delay: 0.8;
+}
+.navbar2-menu li:nth-child(3){
+    animation-delay: 1.2;
+}
+.navbar2-menu li:nth-child(4){
+    animation-delay: 1.5;
+}
+.navbar2-menu li:nth-child(5){
+    animation-delay: 1.8;
+}
+.navbar2-menu li:nth-child(6){
+    animation-delay: 2.0;
+}
+/* Navbar2 menu items */
+.navbar2-item {
+    position: relative;
+}
+
+.navbar2-item a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+    font-weight: 700;
+}
+
+/* Hover effect for menu items */
+.navbar2-item a:hover {
+    color: orange;
+}
+
+/* Underline animation */
+.navbar2-item a::after {
+    content: "";
+    display: block;
+    height: 2px;
+    background-color: orange;
+    width: 0;
+    transition: width 0.3s ease;
+}
+
+.navbar2-item a:hover::after {
+    width: 100%;
+}
+
+/* Search input */
+/* Search Form */
+.navbar2-search-form {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Search Input */
+.navbar2-search {
+    padding: 5px 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+    flex-grow: 1;
+}
+
+.navbar2-search:focus {
+    outline: none;
+    border-color: orange;
+}
+
+/* Search Button */
+.navbar2-search-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar2-search-btn img {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.2s ease;
+}
+
+.navbar2-search-btn:hover img {
+    transform: scale(1.1); /* Slight zoom effect */
+}
+.explore{
+    text-align: left;
+    background-color: black;
+    padding: 10px 20px;
+    border-radius: 25px;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+.explore:hover{
+    background-color: transparent;
+    color: black;
+}

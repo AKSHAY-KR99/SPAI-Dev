@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+.form-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.about-container{
+    color: black;
+}
+.mission-top-row p{
+    text-indent: 0%;
+    text-align: center;
+    font-weight: 500;
+    margin: 0%;
+}
+/*****************************************************************/
+.reset-password-form {
+    margin-right: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    padding: 20px;
+}
+
+.email-input {
+    font-family: 'Popins', sans-serif;
+    padding: 12px;
+    font-size: 14px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+.email-input::placeholder {
+    font-family: 'Popins', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+
+.email-input:focus {
+    border-color: #000000;
+    background-color: white;
+    outline: none;
+}
+
+
+/* .submit-btn {
+    font-family: 'Popins', sans-serif;
+    font-weight: 600;
+    padding: 12px;
+    font-size: 1rem;
+    background-color: #155833;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+.submit-btn:hover {
+    background-color: #13492c;
+} */
+
+
+@media (max-width: 768px) {
+    .reset-password-form {
+        width: 90%;
+    }
+
+    .email-input {
+        font-size: 0.95rem;
+    }
+
+    .submit-btn {
+        font-size: 0.95rem;
+    }
+    .reset-password-form-done{
+        width: 300px;
+    }
+}
+
+
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1; 
+    }
+}
+
+.form-container {
+    animation: fadeIn 1.5s ease-out forwards; 
+    opacity: 0;
+}
+
+
+.form-description {
+    animation: fadeIn 1.5s ease-out forwards;
+    animation-delay: 0.5s;
+    opacity: 0;
+}
+
+.reset-password-form {
+    animation: fadeIn .5s ease-out forwards;
+    animation-delay: .5s;
+    opacity: 0;
+}
+
+.email-input, .submit-btn {
+    animation: fadeIn .5s ease-out forwards;
+    animation-delay: .5s;
+    opacity: 0;
+}
+
+/***********************************************************************/
+
+.form-real{
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.form-real input{
+    animation: fadeIn .5s ease-out forwards;
+    animation-delay: .5s;
+    opacity: 0;
+    width: 100%;
+}
+.form-real input[type="email"],
+.form-real input[type="text"],
+input[type="password"] ,.p1{
+    font-family: 'Popins', sans-serif;
+    padding: 12px;
+    font-size: 14px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form-real input[type="email"],
+.form-real input[type="text"],
+input[type="password"],.p1::placeholder {
+    font-family: 'Popins', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.form-real input[type="email"],
+.form-real input[type="text"],
+input[type="password"],.p1:focus {
+    border-color: #000000;
+    background-color: white;
+    outline: none;
+}
+
+.submit-btn {
+    font-family: 'Popins', sans-serif;
+    font-weight: 600;
+    padding: 12px;
+    font-size: 1rem;
+    background-color: #155833;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+.submit-btn:hover {
+    background-color: #13492c;
+}
+
+.eye-icon{
+    margin-bottom: 20px;
+    margin-left: 10px;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}

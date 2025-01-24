@@ -1,22 +1,25 @@
+body{
+  overflow-x: hidden;
+}
 a{
   text-decoration: none; 
   color: inherit;
 }
-.news-title {
-    position: relative;
+.gallery-head {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    width: 100%;
-    height: 48px;
-    margin-bottom: 30px;
-  }
-  .news-title p{
-    font-family: "Poppins",sans-serif;
-    font-size: 32px;
-    font-weight: 700;
-    line-height: 48px;
+    
+    padding: 20px;
+    margin: 10px;
     text-align: center;
+    box-sizing: border-box;
+    
   }
+  .gallery-head h1{
+    margin: 0%;
+  }
+
   @media (max-width: 768px) {
     .news-title{
         margin-top: 20px;

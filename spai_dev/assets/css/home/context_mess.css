@@ -1,0 +1,12 @@
+.information-text-right{
+    background-color: rgb(189, 0, 0);
+    color: white;
+    text-align: center;
+    font-weight: 600;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.information-text-right a{
+    color: yellow;
+}
