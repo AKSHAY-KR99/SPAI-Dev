@@ -181,27 +181,87 @@ document.querySelector('.menu-icon').addEventListener('click', function () {
 /****messages */
 /*MESGAGE*******************************************/
 document.addEventListener("DOMContentLoaded", () => {
-    const messagesContainers = document.querySelectorAll('.messages');
+    const messages = document.querySelectorAll('.message'); // Select all message containers
 
-    if (messagesContainers.length > 0) {
-        console.log("Messages containers found.");
-
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    console.log("Messages container is in view. Adding animation.");
-                    entry.target.classList.add('animate');
-                } else {
-                    console.log("Messages container is out of view. Removing animation.");
-                    entry.target.classList.remove('animate');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        messagesContainers.forEach(container => {
-            observer.observe(container);
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible'); // Add class when visible
+            } else {
+                entry.target.classList.remove('visible'); // Optional: Remove when not visible
+            }
         });
-    } else {
-        console.error("No messages containers found.");
+    }, { threshold: 0.2 }); // Trigger when 20% of the element is visible
+
+    // Observe each message container
+    messages.forEach(message => observer.observe(message));
+});
+/*****************************testinoms */
+document.addEventListener('DOMContentLoaded', function () {
+    // Select all test-content elements
+    const contents = document.querySelectorAll('.test-content');
+    
+    // Select the back and next arrows
+    const backArrow = document.querySelector('.test-arrows img:first-child');
+    const nextArrow = document.querySelector('.test-arrows img:last-child');
+    
+    // Initialize the index to track the current content
+    let currentIndex = 0;
+
+    // Function to update the active content
+    function updateActiveContent(newIndex) {
+        // Remove the active class from the current content
+        contents[currentIndex].classList.remove('active');
+
+        // Update the index (loop around using modulo)
+        currentIndex = (newIndex + contents.length) % contents.length;
+
+        // Add the active class to the new content
+        contents[currentIndex].classList.add('active');
     }
+
+    // Initialize: Show the first content
+    contents[currentIndex].classList.add('active');
+
+    // Event listener for the back arrow
+    backArrow.addEventListener('click', function () {
+        updateActiveContent(currentIndex - 1); // Move to the previous content
+    });
+
+    // Event listener for the next arrow
+    nextArrow.addEventListener('click', function () {
+        updateActiveContent(currentIndex + 1); // Move to the next content
+    });
+});
+document.addEventListener("DOMContentLoaded", () => {
+    const messages = document.querySelectorAll('.testimonals'); // Select all message containers
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible'); // Add class when visible
+            } else {
+                entry.target.classList.remove('visible'); // Optional: Remove when not visible
+            }
+        });
+    }, { threshold: 0.3 }); // Trigger when 20% of the element is visible
+
+    // Observe each message container
+    messages.forEach(message => observer.observe(message));
+});
+document.addEventListener("DOMContentLoaded", () => {
+    const messages = document.querySelectorAll('.contact-us'); // Select all message containers
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible'); // Add class when visible
+            } else {
+                entry.target.classList.remove('visible'); // Optional: Remove when not visible
+            }
+        });
+    }, { threshold: 0.2 }); // Trigger when 20% of the element is visible
+
+    // Observe each message container
+    messages.forEach(message => observer.observe(message));
 });

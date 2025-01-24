@@ -88,4 +88,24 @@
       padding-left: 15% !important;
     }
   }
- 
+ .mentor-wrapper{
+  animation: scaleUp 1.5s ease-in-out;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 30px;
+ }
+ .mission p{
+  animation: scaleUp 1.5s ease-in-out;
+ }
+ @keyframes scaleUp {
+  from {
+      transform: scale(0.9);
+      opacity: 0;
+  }
+
+  to {
+      transform: scale(1);
+      opacity: 1;
+  }
+}

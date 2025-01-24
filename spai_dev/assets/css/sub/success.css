@@ -1,0 +1,77 @@
+/* Existing styles for success-page */
+.success-page {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Full height of the viewport */
+    background-image: url('./img/success.png'); /* Replace with your image path */
+    background-size: contain; /* Ensure the image scales properly */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Ensure image doesn't repeat */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white; /* Text color for contrast */
+    opacity: 0; /* Start hidden for fade-in effect */
+    animation: fadeInBackground 2s forwards; /* Apply fade-in animation */
+}
+
+/* Keyframes for background image fade-in */
+@keyframes fadeInBackground {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Existing styles for success-text */
+.success-text {
+    text-align: center;
+    padding: 20px;
+    color: rgb(11, 40, 66);
+    opacity: 0; /* Start hidden for fade-in effect */
+    animation: fadeInText 2s 0.5s forwards; /* Apply fade-in animation with delay */
+}
+
+/* Keyframes for the success text fade-in with slight vertical movement */
+@keyframes fadeInText {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Start from below */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* End at normal position */
+    }
+}
+
+/* Existing styles for h1 */
+.success-text h1 {
+    font-size: 3em; /* Adjust the size of the success heading */
+    margin-top: 20px;
+}
+
+/* Existing styles for p */
+.success-text p {
+    font-size: 1.5em;
+    margin-top: -35px;
+    font-weight: 600;
+    font-size: 17px;
+    background-color: rgb(10, 156, 76);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Existing styles for anchor tag */
+.success-text a {
+    text-decoration: none;
+    color: rgb(241, 255, 178); /* Set the link color */
+    transition: transform 0.3s ease; /* Smooth transition for scaling */
+}
+
+/* Hover effect for the anchor tag */
+.success-text a:hover {
+    transform: scale(1.2); /* Scale up by 1.2 times */
+}
