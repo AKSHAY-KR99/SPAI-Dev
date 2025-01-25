@@ -169,11 +169,15 @@
             <p>{{user.reference_id}}</p>
             <p>{{user.bank_name}}</p>
 <!--            <p>{{user.payment_type}}</p>-->
+            {% if user.payment_doc %}
             <a href="{{user.payment_doc.url}}" target="_blank">
                 <p style="color:blue;">
                     Click to view
                 </p>
             </a>
+            {% else %}
+            <p>None</p>
+            {% endif %}
         </div>
     </div>
 

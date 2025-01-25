@@ -716,7 +716,10 @@ def get_user_full_details(req, slug):
         user_data["payment_type"] = settings.QR_CODE_NAME
         if p_t == settings.BANK_TRANSFER:
             user_data["payment_type"] = settings.BANK_TRANSFER_NAME
-        user_data["payment_doc"] = payment_dict.get("document", None)
+        if payment_dict.get("document", None).name == '':
+            user_data["payment_doc"] = None
+        else:
+            user_data["payment_doc"] = payment_dict.get("document", None)
         user_data["payment_date"] = payment_data.payment_reported_date
 
         sub_pay = models.SubscriptionPayment.objects.filter(user=user).order_by('-payment_date').first()
