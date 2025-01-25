@@ -169,11 +169,15 @@
             <p>{{user.reference_id}}</p>
             <p>{{user.bank_name}}</p>
 <!--            <p>{{user.payment_type}}</p>-->
+            {% if user.payment_doc %}
             <a href="{{user.payment_doc.url}}" target="_blank">
                 <p style="color:blue;">
                     Click to view
                 </p>
             </a>
+            {% else %}
+            <p>None</p>
+            {% endif %}
         </div>
     </div>
 
@@ -194,11 +198,15 @@
             <p>{{user.annual_payment_date}}</p>
             <p>{{user.sub_transaction_id}}</p>
             <p>{{user.sub_bank_name}}</p>
+            {% if user.payment_file %}
             <a href="{{user.payment_file.url}}" target="_blank">
                 <p style="color:blue;">
                     Click to view
                 </p>
             </a>
+            {% else %}
+            <p>None</p>
+            {% endif %}
             {% if not user.annual_subscription %}
             <a href="{% url 'subscription_approval' user.slug_value %}">
                 <p style="color:red;">

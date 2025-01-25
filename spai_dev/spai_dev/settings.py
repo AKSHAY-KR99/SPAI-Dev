@@ -163,8 +163,8 @@ PASSWORD_RESET = "password_changed"
 
 USER_INGEST_KEY = "hdjmNBHyt67UyhgbNBGFt567GFvbnV"
 
-SECRETARY_EMAIL = "test1@gmail.com"
-PRESIDENT_EMAIL = "test2@gmail.com"
+SECRETARY_EMAIL = "secretaryspai@gmail.com"
+PRESIDENT_EMAIL = "spaipresident24@gmail.com"
 
 QR_CODE = 1
 BANK_TRANSFER = 2

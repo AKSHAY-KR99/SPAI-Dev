@@ -2,7 +2,7 @@ from django.conf import settings
 from rest_framework import serializers
 from datetime import datetime, timedelta
 from .utils import get_registration_num
-from .models import LifeMembers, User, UserDetailModel, PaymentModel, AnnualSubscriptionModel
+from .models import LifeMembers, User, UserDetailModel, PaymentModel, AnnualSubscriptionModel, SubscriptionPayment
 
 
 class LifeMembersSerializer(serializers.ModelSerializer):
@@ -35,7 +35,8 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ['email', 'username', 'first_name', 'last_name', 'state', 'annual_subscription',
                   'status', 'user_role', 'reg_no', 'admin_approved', 'date_approved', 'approval_percentage',
-                'active_key']
+                  'active_key']
+
     def create(self, validated_data):
         validated_data['status'] = settings.ADMIN_APPROVED
         validated_data['user_role'] = settings.MEMBER_ROLE_VALUE
@@ -46,11 +47,19 @@ class UserSerializer(serializers.ModelSerializer):
         validated_data['reg_no'] = get_registration_num()
         return super().create(validated_data)
 
+
 class UserDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserDetailModel
-        fields = ['user', 'degree', 'profession', 'institution', 'department', 'address', 'phone_number', 'alternate_number',
+        fields = ['user', 'degree', 'profession', 'institution', 'department', 'address', 'phone_number',
+                  'alternate_number',
                   'alternate_mail', 'specialized_in', 'research_interest']
+
+
+class SubscriptionPaymentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SubscriptionPayment
+        fields = ['user', 'transaction_id', 'bank_name', 'payment_date', 'document', 'payment_id']
 
 
 class PaymentSerializer(serializers.ModelSerializer):
