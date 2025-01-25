@@ -17,7 +17,7 @@ from rest_framework.views import APIView
 
 from . import models, forms
 from .models import GalleryManagement, User, EventManagement, UserDetailModel, GalleryImage, PaymentModel, Testimonials, \
-    AnnualSubscriptionModel
+    AnnualSubscriptionModel, SubscriptionPayment
 from .decorators import admin_only, authenticated_only
 from .utils import render_to_pdf, get_registration_num, get_research_paper_no, send_mail_to_executives, \
     send_password_reset_email, update_subscription_status, send_contact_us_mail
@@ -27,7 +27,7 @@ from rest_framework import status
 from django.utils import timezone
 from .models import LifeMembers
 from .serializers import LifeMembersSerializer, UserSerializer, UserDetailSerializer, PaymentSerializer, \
-    AnnualSubscriptionSerializer
+    AnnualSubscriptionSerializer, SubscriptionPaymentSerializer
 
 
 # Frequently used methods
@@ -729,8 +729,10 @@ def get_user_full_details(req, slug):
             user_data["sub_transaction_id"] = sub_dict.get("transaction_id", None)
             user_data["sub_bank_name"] = sub_dict.get("bank_name", None)
             user_data["annual_payment_date"] = sub_pay.payment_date
-            user_data["payment_file"] = sub_dict.get("document", None)
-
+            if sub_dict.get("document", None).name == '':
+                user_data["payment_file"] = None
+            else:
+                user_data["payment_file"] = sub_dict.get("document", None)
         annual = models.AnnualSubscriptionModel.objects.filter(user=user).first()
         if annual is not None:
             annual_dict = model_to_dict(annual)
@@ -1239,6 +1241,23 @@ class BulkDataIngestionAPIView(APIView):
                     payment_serializer.save()
                     payment_message = "Payment record created successfully."
 
+                # Check if SubscriptionPayment already exists
+                subscription_payment = SubscriptionPayment.objects.filter(user=user).first()
+                if subscription_payment:
+                    subscription_payment_message = "Subscription payment already exists."
+                else:
+                    # Create SubscriptionPayment instance
+                    subscription_payment_data = {
+                        'user': user.pk,
+                        'transaction_id': f"SUBTXN{datetime.now().timestamp()}",
+                        'bank_name': 'Demo Bank',
+                        'document': None
+                    }
+                    subscription_payment_serializer = SubscriptionPaymentSerializer(data=subscription_payment_data)
+                    subscription_payment_serializer.is_valid(raise_exception=True)
+                    subscription_payment_serializer.save()
+                    subscription_payment_message = "Subscription payment created successfully."
+
                 # Check if AnnualSubscriptionModel already exists
                 annual_subscription = AnnualSubscriptionModel.objects.filter(user=user).first()
                 if data.get('annual_subscription', False):
@@ -1265,6 +1284,7 @@ class BulkDataIngestionAPIView(APIView):
                     "user_message": user_message,
                     "user_detail_message": user_detail_message,
                     "payment_message": payment_message,
+                    "subscription_payment_message": subscription_payment_message,
                     "annual_subscription_message": annual_subscription_message
                 }, status=status.HTTP_201_CREATED)
 
