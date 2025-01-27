@@ -812,13 +812,11 @@ def unauthorized_page_403(request):
 @api_view(['POST'])
 def create_or_update_life_member(request):
     data = {key: (value if value != "" else None) for key, value in request.data.items()}
-
     name = data.get('name')
-    life_member = None
-
-    if name:
-        life_member = LifeMembers.objects.filter(name=name).first()
-
+    if name is None:
+        name = data.get("email")
+    data['name'] = name
+    life_member = LifeMembers.objects.filter(name=name).first()
     if life_member:
         serializer = LifeMembersSerializer(life_member, data=data, partial=True)
         if serializer.is_valid():
