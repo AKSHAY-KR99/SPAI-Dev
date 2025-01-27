@@ -17,6 +17,7 @@
     padding: 40px; /* Add padding for better spacing */
     box-sizing: border-box;
     opacity: 0;
+    gap: 30px;
     transform: translateY(10px);
     transition: opacity 1s ease-out, transform 1s ease-out;
   }
