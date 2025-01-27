@@ -26,9 +26,11 @@
         <a style="text-decoration: none; color: inherit;" href="{% url 'gallery_detail' images.id %}">
         <div class="news-container" style="height: 300px;">
             <div class="news-img">
+                {% if images.upload_date %}
                 <div class="news-new">
                     {{ images.upload_date|date:"d" }} {{ images.upload_date|date:"F" }}
                 </div>
+                {% endif %}
                 <img src="{{ images.image.url }}" alt="">
                 {% if request.user.is_superuser or request.user.executive == 1 or request.user.executive == 2 %}
                 <a href="{% url 'gallery_delete' images.id %}">
@@ -38,9 +40,11 @@
                 </a>
                 {% endif %}
             </div>
+            {% if images.upload_date %}
             <div class="news-dis">
                 {{ images.upload_date }}
             </div>
+            {% endif %}
             <div class="news-head">
                 {{ images.image_name }}
             </div>

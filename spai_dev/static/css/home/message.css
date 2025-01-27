@@ -70,6 +70,7 @@ margin: 0%;
 }
 .msg p{
   color: #484848;
+  text-align: justify;
 
 }
 /* .author{
