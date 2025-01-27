@@ -174,17 +174,17 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 class UserDetailModel(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_details')
-    degree = models.CharField(max_length=50, null=True, blank=True)
-    profession = models.CharField(max_length=50, null=True, blank=True)
-    institution = models.CharField(max_length=50, null=True, blank=True)
-    department = models.CharField(max_length=50, null=True, blank=True)
+    degree = models.CharField(max_length=100, null=True, blank=True)
+    profession = models.CharField(max_length=100, null=True, blank=True)
+    institution = models.CharField(max_length=100, null=True, blank=True)
+    department = models.CharField(max_length=100, null=True, blank=True)
     address = models.TextField(null=True, blank=True)
     phone_number = models.CharField(max_length=15, null=False, blank=False)
     alternate_number = models.CharField(max_length=15, null=True, blank=True)
     alternate_mail = models.EmailField(max_length=50, null=True, blank=True)
     photo = models.ImageField(upload_to=user_detail_image_path, null=True, blank=True)
-    specialized_in = models.CharField(max_length=50, null=True, blank=True)
-    research_interest = models.CharField(max_length=50, null=True, blank=True)
+    specialized_in = models.CharField(max_length=200, null=True, blank=True)
+    research_interest = models.CharField(max_length=200, null=True, blank=True)
 
     def delete(self, *args, **kwargs):
         if self.photo:
