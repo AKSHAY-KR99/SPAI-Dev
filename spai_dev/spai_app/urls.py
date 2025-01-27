@@ -19,6 +19,7 @@ urlpatterns = [
     path('news/<int:pk>/', views.news_detail, name="news_detail"),
     path('events/delete/<int:event_id>/', views.delete_event, name='event_delete'),
     path('eventadd/', views.eventadd, name="eventadd"),
+    path('update_reg_link/<pk>', views.update_reg_link, name="update_reg_link"),
     path('add_image_template/', views.add_image_template, name="add_image_template"),
 
     # latest URLs

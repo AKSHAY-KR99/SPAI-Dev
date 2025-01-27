@@ -78,7 +78,7 @@ class EventManagement(models.Model):
 
 class GalleryManagement(models.Model):
     image = models.ImageField(upload_to='SPAI/images/gallery', null=True)
-    upload_date = models.DateTimeField(default=timezone.now)
+    upload_date = models.DateTimeField( null=True, blank=True)
     image_name = models.CharField(max_length=50, null=True, blank=True)
     description = models.TextField(blank=True, null=True)
     event = models.ForeignKey(EventManagement, on_delete=models.SET_NULL, null=True, blank=True)

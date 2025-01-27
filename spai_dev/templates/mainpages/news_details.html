@@ -85,6 +85,26 @@
                     <h4 style="display: inline;">Location:</h4> <span>{{ event.location }}</span>
                     {% endif %}
                     <br><br>
+                    {% if request.user.user_role == 1 or request.user.executive == 1 or request.user.executive == 2 %}
+                    <a id="openModal-2" style="background: rgb(19, 97, 0);color: white;padding: 5px 10px;font-size: 12px;font-weight: 600;border-radius: 5px;" href="#">Add / Edit Registration Link</a>
+                    <br>
+                    <br>
+                    {% endif %}
+
+                    <div id="uploadModal-2" style="display:none; position:fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border: 1px solid #ccc; z-index: 1000;">
+                        <h2>Upload Document for {{ event.title }}</h2>
+                        <form id="uploadForm-2" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <input type="hidden" name="event_id" value="{{ event.id }}">
+                            <label for="link">Registration Link:</label>
+                            <input type="text" name="link" value="" required><br><br>
+
+                            <button type="submit">SUBMIT</button>
+                            <button type="button" id="closeModal-2">Close</button>
+                        </form>
+                    </div>
+                    <!-- Background overlay -->
+<div id="modalOverlay-2" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index: 999;"></div>
                     {% if event.registration_link and event.registration_link|slice:":7" == "http://" or event.registration_link|slice:":8" == "https://" %}
 
                     <h4 style="display: inline;">Registration Link:</h4>
@@ -179,6 +199,46 @@
 {% block jsfile %}
 <script type="text/javascript" src="{% static 'js/sub/news.js' %}"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Open modal
+        $('#openModal-2').click(function(e) {
+            e.preventDefault();
+            $('#uploadModal-2').show();
+            $('#modalOverlay-2').show();
+        });
+    
+        // Close modal
+        $('#closeModal-2').click(function() {
+            $('#uploadModal-2').hide();
+            $('#modalOverlay-2').hide();
+        });
+    
+        // Handle form submission
+        $('#uploadForm-2').submit(function(e) {
+            e.preventDefault(); // Prevent default form submission
+    
+            var formData = new FormData(this); // Create FormData object
+    
+            $.ajax({
+                type: 'POST',
+                url: '{% url "update_reg_link" event.id %}', // URL to your upload view
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    alert('Link uploaded successfully!');
+                    $('#uploadModal-2').hide();
+                    $('#modalOverlay-2').hide();
+                    // Optionally, refresh the page or update the UI
+                },
+                error: function(xhr, status, error) {
+                    alert('An error occurred: ' + error);
+                }
+            });
+        });
+    });
+    </script>
 <script>
 $(document).ready(function() {
     // Open modal
