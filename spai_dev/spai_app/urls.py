@@ -20,6 +20,7 @@ urlpatterns = [
     path('events/delete/<int:event_id>/', views.delete_event, name='event_delete'),
     path('eventadd/', views.eventadd, name="eventadd"),
     path('add_image_template/', views.add_image_template, name="add_image_template"),
+    path('upload-photo/', views.profile_upload_photo, name='upload_photo'),
 
     # latest URLs
     path('user/login', views.user_login_page, name='login_page'),
@@ -55,7 +56,7 @@ urlpatterns = [
     path('contact-us/', views.contact_us, name='contact_us'),
     path('view/contact-us/', views.view_contact_us, name='view_contact_us'),
     path('journals/query', views.journal_queries, name='journal_queries'),
-    path('view/journal/queries', views.view_journal_queries,name='view_journal_query'),
+    path('view/journal/queries', views.view_journal_queries, name='view_journal_query'),
     path('journal/search/', views.manuscript_search, name='manuscript_search'),
 
     path('about', views.about_page, name='about_page'),
@@ -66,7 +67,8 @@ urlpatterns = [
     path('unauthorized/403/', views.unauthorized_page_403, name='unauthorized_403'),
     path('success/', views.success_page, name='success'),
     path('upload_event_document/<int:event_id>/', views.upload_event_document, name='upload_event_document'),
-    path('delete_event_document/<int:document_id>/<int:event_id>/', views.delete_event_document, name='delete_event_document'),
+    path('delete_event_document/<int:document_id>/<int:event_id>/', views.delete_event_document,
+         name='delete_event_document'),
 
     # rest api
     path('life-members', views.create_or_update_life_member, name='life-members'),
