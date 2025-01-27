@@ -281,7 +281,7 @@ def gallery(request):
 
 
 def gallery_list(request):
-    galleries = GalleryManagement.objects.all()
+    galleries = GalleryManagement.objects.all().order_by("-id")
     page_number = request.GET.get('page', 1)
     paginator = Paginator(galleries, 9)
     page_obj = paginator.get_page(page_number)
@@ -404,6 +404,24 @@ def news_detail(request, pk):
 
 
 from django.core.files.storage import FileSystemStorage
+
+def update_reg_link(request,pk):
+    if request.method == 'POST':
+        # Get the new registration link from the request
+        new_link = request.POST.get('link', None)
+        
+        if new_link:
+            try:
+                # Fetch the event by primary key
+                event = get_object_or_404(EventManagement, pk=pk)
+
+                # Update the registration link
+                event.registration_link = new_link
+                event.save()
+
+                return JsonResponse({'success': True, 'message': 'Registration link updated successfully!'})
+            except Exception as e:
+                return JsonResponse({'success': False, 'message': f'An error occurred: {str(e)}'})
 
 
 def eventadd(request):

@@ -449,6 +449,7 @@ nav {
       display: flex;
       transform: translateY(0);
     opacity: 1;
+    height:900px;
   }
 
   
@@ -500,5 +501,12 @@ nav {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+}
+@media(max-width:770px){
+  .dropdown-menu3{
+    left: 0px;
+    width: 130px;
+  
   }
 }
