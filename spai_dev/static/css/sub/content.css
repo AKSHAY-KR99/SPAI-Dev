@@ -580,6 +580,9 @@
     padding-left: 20px;
     padding-right: 20px;
 }
+.president-content p{
+    text-align: justify;
+}
 
 .president-wrapper .positext {
     font-size: 14px;
