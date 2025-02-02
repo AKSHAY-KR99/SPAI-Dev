@@ -57,10 +57,13 @@
             <span></span>
             <span></span>
             <span></span>
-            <span>🚨 Breaking News: Stock markets hit an all-time high! — 🚀 AI technology revolutionizing industries! — 🌍 Global summit on climate change starts today! — 📢 New policies announced for startups! </span>
-            <span>🚨 Breaking News: Stock markets hit an all-time high! — 🚀 AI technology revolutionizing industries! — 🌍 Global summit on climate change starts today! — 📢 New policies announced for startups! </span>
-            <span>🚨 Breaking News: Stock markets hit an all-time high! — 🚀 AI technology revolutionizing industries! — 🌍 Global summit on climate change starts today! — 📢 New policies announced for startups! </span>
-            <span>🚨 Breaking News: Stock markets hit an all-time high! — 🚀 AI technology revolutionizing industries! — 🌍 Global summit on climate change starts today! — 📢 New policies announced for startups! </span>
+            <span>🚨 {{event_name}}, {{event_location}} — 📢 <a target="_blank" style="color:yellow;" href="{{event_reg_link}}">click here</a> to register </span>
+            <span>🚨 {{event_name}}, {{event_location}} — 📢 <a target="_blank" style="color:yellow;" href="{{event_reg_link}}">click here</a> to register </span>
+            <span>🚨 {{event_name}}, {{event_location}} — 📢 <a target="_blank" style="color:yellow;" href="{{event_reg_link}}">click here</a> to register </span>
+<!--            <span>🚨 Breaking News: Stock markets hit an all-time high! — 🚀 AI technology revolutionizing industries! — 🌍 Global summit on climate change starts today! — 📢 New policies announced for startups! </span>-->
+<!--            <span>🚨 Breaking News: Stock markets hit an all-time high! — 🚀 AI technology revolutionizing industries! — 🌍 Global summit on climate change starts today! — 📢 New policies announced for startups! </span>-->
+
+            <!--            <span>🚨 Breaking News: Stock markets hit an all-time high! — 🚀 AI technology revolutionizing industries! — 🌍 Global summit on climate change starts today! — 📢 New policies announced for startups! </span>-->
         </div>
     </div>
 </div>
@@ -315,7 +318,7 @@
                         {% if event.datetime|date:"Y-m-d" == event.end_date|date:"Y-m-d" %}
                         {{ event.datetime|date:"Y" }} , {{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }} {{event.datetime|time }}
                         {% else %}
-                        {{ event.datetime|date:"Y" }} , {{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }} {{event.datetime|time }} - {{ event.end_date|date:"d" }} {{ event.end_date|date:"F" }}                        
+                        {{ event.datetime|date:"Y" }} , {{ event.datetime|date:"d" }} {{ event.datetime|date:"F" }} {{event.datetime|time }} - {{ event.end_date|date:"d" }} {{ event.end_date|date:"F" }}
                         {% endif %}
                     </div>
                     <div class="news-head" style="text-transform: uppercase;">
@@ -371,7 +374,7 @@
         <img src="{% static 'image/test/03.jpg' %}" alt="">
         <img src="{% static 'image/test/04.jpg' %}" alt="">
     </div>
-    
+
     <!-- <div class="green-container">
         <div class="test-pic">
             <img src="{% static 'image/contact-us.jpeg' %}" alt="">
@@ -432,58 +435,21 @@
 </div>
 
 <div class="test-flex">
+    {% for test in testimonials %}
     <div class="green-container">
         <div class="test-pic">
             <img src="{% static 'image/contact-us.jpeg' %}" alt="">
         </div>
         <img src="{% static 'image/quote1.svg' %}" alt="">
-        <div class="test-content">           
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil aut quis dolorum voluptatum saepe ab molestiae, eum incidunt laborum minus provident esse! Molestias, eligendi facere? Aliquam voluptates quam esse molestiae.</p>
+        <div class="test-content">
+            <p>{{test.message}}</p>
             <div class="test-auther">
-                - Lorem
+                - {{test.name}}
             </div>
         </div>
-        <!-- <div class="test-arrows">
-            <img src="{% static 'image/test-back.svg' %}" alt="">
-            <img src="{% static 'image/test-next.svg' %}" alt="">
-        </div> -->
-
     </div>
-    <div class="green-container">
-        <div class="test-pic">
-            <img src="{% static 'image/contact-us.jpeg' %}" alt="">
-        </div>
-        <img src="{% static 'image/quote1.svg' %}" alt="">
-        <div class="test-content">           
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil aut quis dolorum voluptatum saepe ab molestiae, eum incidunt laborum minus provident esse! Molestias, eligendi facere? Aliquam voluptates quam esse molestiae.</p>
-            <div class="test-auther">
-                - Lorem
-            </div>
-        </div>
-        <!-- <div class="test-arrows">
-            <img src="{% static 'image/test-back.svg' %}" alt="">
-            <img src="{% static 'image/test-next.svg' %}" alt="">
-        </div> -->
+    {% endfor %}
 
-    </div>
-    <div class="green-container">
-        <div class="test-pic">
-            <img src="{% static 'image/contact-us.jpeg' %}" alt="">
-        </div>
-        <img src="{% static 'image/quote1.svg' %}" alt="">
-        <div class="test-content">           
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil aut quis dolorum voluptatum saepe ab molestiae, eum incidunt laborum minus provident esse! Molestias, eligendi facere? Aliquam voluptates quam esse molestiae.</p>
-            <div class="test-auther">
-                - Lorem
-            </div>
-        </div>
-        <!-- <div class="test-arrows">
-            <img src="{% static 'image/test-back.svg' %}" alt="">
-            <img src="{% static 'image/test-next.svg' %}" alt="">
-        </div> -->
-
-    </div>
-    
 </div>
 <div class="contact-us animated">
     <div class="contact-us-row">
@@ -502,7 +468,7 @@
                 <textarea placeholder="Your Message" name="message" id=""></textarea>
             </div>
         </div>
-        
+
         <div class="contact-us-row">
             <input type="submit" value="SEND MESSAGE">
             {% if request.user.is_superuser or request.user.executive == 1 or request.user.executive == 2 %}
@@ -563,7 +529,7 @@
                     </div>
                     <div class="exe-text" style="text-align: left;">
                         DR. ANIL KARWANDE
-                        
+
                     </div>
                     <div class="exe-posi">
                         President

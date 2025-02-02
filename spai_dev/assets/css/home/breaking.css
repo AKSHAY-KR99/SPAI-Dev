@@ -1,0 +1,34 @@
+.breaking-news {
+    width: 100%;
+    background: #ff0000;
+    color: white;
+    overflow: hidden;
+    padding: 10px 0;
+    font-size: 18px;
+    font-weight: bold;
+    position: relative;
+    white-space: nowrap;
+}
+
+.breaking-news-wrapper {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+}
+
+.breaking-news-content {
+    display: flex;
+    gap: 154px; /* Space between repeated text */
+    min-width: max-content; /* Ensures infinite width */
+    animation: scrolling 30s linear infinite;
+}
+
+/* Keyframes for seamless infinite scrolling */
+@keyframes scrolling {
+    from {
+        transform: translateX(0%);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}

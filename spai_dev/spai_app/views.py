@@ -109,6 +109,12 @@ def index(request):
     else:
         latest_testimonials = testimonials
     context["testimonials"] = latest_testimonials
+
+    ribben = get_nearest_event()
+    context['event_name'] = ribben[0]
+    context['event_location'] = ribben[1]
+    context['event_reg_link'] = ribben[2]
+
     return render(request, 'mainpages/new_home.html', context)
 
 
@@ -296,6 +302,7 @@ def gallery_detail(request, pk):
     return render(request, 'mainpages/gallery_detail.html', {'gallery': gallery, 'images': images})
 
 
+@admin_only
 def gallery_create(request):
     fs = FileSystemStorage()
     if request.method == 'POST':
@@ -329,6 +336,7 @@ def gallery_delete(request, pk):
     return redirect('gallery_list')
 
 
+@admin_only
 def delete_gallery_image(request, image_id):
     # Get the image object or return a 404 if not found
     obj = GalleryImage.objects.get(pk=image_id)
@@ -344,6 +352,7 @@ def delete_gallery_image(request, image_id):
     return redirect('gallery_detail', pk=gallery_id)
 
 
+@admin_only
 def add_gallery_image(request, gallery_id):
     gallery = get_object_or_404(GalleryManagement, id=gallery_id)
 
@@ -406,6 +415,7 @@ def news_detail(request, pk):
 
 from django.core.files.storage import FileSystemStorage
 
+@admin_only
 def update_reg_link(request,pk):
     if request.method == 'POST':
         # Get the new registration link from the request
@@ -425,6 +435,7 @@ def update_reg_link(request,pk):
                 return JsonResponse({'success': False, 'message': f'An error occurred: {str(e)}'})
 
 
+@admin_only
 def eventadd(request):
     if request.method == 'POST':
         # Process the main event image
@@ -474,9 +485,9 @@ def delete_event(request, event_id):
     return redirect(reverse('news'))
 
 
-@admin_only
+# @admin_only
 def add_image_template(request):
-    if request.POST and request.user.user_role == settings.ADMIN_ROLE_VALUE:
+    if request.POST and (request.user.user_role == settings.ADMIN_ROLE_VALUE or request.user.executive in [settings.SECRETARY, settings.PRESIDENT]):
         frm = forms.GalleryManagementForm(request.POST, request.FILES)
         if frm.is_valid:
             frm.save()
@@ -1152,6 +1163,7 @@ def view_journal_queries(request):
     contacts = models.JournalQuery.objects.all()
     return render(request, 'static_pages/publications/view_journal_queries.html', {'contacts': contacts})
 
+@admin_only
 def upload_event_document(request,*args, **kwargs):
     if request.method == 'POST':
         event_id = kwargs.get('event_id')
@@ -1169,6 +1181,7 @@ def upload_event_document(request,*args, **kwargs):
 
     return JsonResponse({'success': False, 'error': 'Invalid request'})
 
+@admin_only
 def delete_event_document(request, document_id, event_id):
     if request.method == 'POST':
         document = get_object_or_404(models.EventDocumentModel, id=document_id)
@@ -1340,3 +1353,11 @@ def profile_upload_photo(request):
         except UserDetailModel.DoesNotExist:
             return JsonResponse({'error': 'UserDetails instance not found.'}, status=404)
     return JsonResponse({'error': 'Invalid request'}, status=400)
+
+
+def get_nearest_event():
+    today = timezone.now().date()
+    nearest_event = EventManagement.objects.filter(end_date__gte=today).order_by('end_date').first()
+    if nearest_event is None:
+        return ["Sports Psychology", "Association of India", reverse('user_registration') ]
+    return [nearest_event.title, nearest_event.location, nearest_event.registration_link]
