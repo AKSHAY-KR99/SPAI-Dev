@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="{% static 'css/home/context_mess.css' %}">
 <link rel="stylesheet" href="{% static 'css/home/contactus.css' %}">
 <link rel="stylesheet" href="{% static 'css/home/testimonals.css' %}">
+<link rel="stylesheet" href="{% static 'css/home/breaking.css' %}">
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
@@ -50,6 +51,21 @@
     </p>
 </div>
 {% endif %}
+<div class="breaking-news">
+    <div class="breaking-news-wrapper">
+        <div class="breaking-news-content">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span>🚨 Breaking News: Stock markets hit an all-time high! — 🚀 AI technology revolutionizing industries! — 🌍 Global summit on climate change starts today! — 📢 New policies announced for startups! </span>
+            <span>🚨 Breaking News: Stock markets hit an all-time high! — 🚀 AI technology revolutionizing industries! — 🌍 Global summit on climate change starts today! — 📢 New policies announced for startups! </span>
+            <span>🚨 Breaking News: Stock markets hit an all-time high! — 🚀 AI technology revolutionizing industries! — 🌍 Global summit on climate change starts today! — 📢 New policies announced for startups! </span>
+            <span>🚨 Breaking News: Stock markets hit an all-time high! — 🚀 AI technology revolutionizing industries! — 🌍 Global summit on climate change starts today! — 📢 New policies announced for startups! </span>
+        </div>
+    </div>
+</div>
+
+
 <div class="hero">
     <div class="hero-pic">
         <!-- <img class="full-width-img" src="{% static 'image/swim.png' %}" alt="Image 1"> -->
@@ -349,7 +365,14 @@
         </a>
         {% endif %}
     </div>
-    <div class="green-container">
+    <div class="test-images">
+        <img src="{% static 'image/test/01.jpg' %}" alt="">
+        <img src="{% static 'image/test/02.jpg' %}" alt="">
+        <img src="{% static 'image/test/03.jpg' %}" alt="">
+        <img src="{% static 'image/test/04.jpg' %}" alt="">
+    </div>
+    
+    <!-- <div class="green-container">
         <div class="test-pic">
             <img src="{% static 'image/contact-us.jpeg' %}" alt="">
         </div>
@@ -368,6 +391,99 @@
         </div>
 
     </div>
+    <div style="height: 200px" class="green-container">
+        <div class="test-pic">
+            <img src="{% static 'image/contact-us.jpeg' %}" alt="">
+        </div>
+        <img src="{% static 'image/quote1.svg' %}" alt="">
+        {% for test in testimonials %}
+        <div class="test-content">           
+            <p>{{test.message}}</p>
+            <div class="test-auther">
+                - {{test.name}}
+            </div>
+        </div>
+        {% endfor %}
+        <div class="test-arrows">
+            <img src="{% static 'image/test-back.svg' %}" alt="">
+            <img src="{% static 'image/test-next.svg' %}" alt="">
+        </div>
+
+    </div>
+    <div class="green-container">
+        <div class="test-pic">
+            <img src="{% static 'image/contact-us.jpeg' %}" alt="">
+        </div>
+        <img src="{% static 'image/quote1.svg' %}" alt="">
+        {% for test in testimonials %}
+        <div class="test-content">           
+            <p>{{test.message}}</p>
+            <div class="test-auther">
+                - {{test.name}}
+            </div>
+        </div>
+        {% endfor %}
+        <div class="test-arrows">
+            <img src="{% static 'image/test-back.svg' %}" alt="">
+            <img src="{% static 'image/test-next.svg' %}" alt="">
+        </div>
+
+    </div> -->
+</div>
+
+<div class="test-flex">
+    <div class="green-container">
+        <div class="test-pic">
+            <img src="{% static 'image/contact-us.jpeg' %}" alt="">
+        </div>
+        <img src="{% static 'image/quote1.svg' %}" alt="">
+        <div class="test-content">           
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil aut quis dolorum voluptatum saepe ab molestiae, eum incidunt laborum minus provident esse! Molestias, eligendi facere? Aliquam voluptates quam esse molestiae.</p>
+            <div class="test-auther">
+                - Lorem
+            </div>
+        </div>
+        <!-- <div class="test-arrows">
+            <img src="{% static 'image/test-back.svg' %}" alt="">
+            <img src="{% static 'image/test-next.svg' %}" alt="">
+        </div> -->
+
+    </div>
+    <div class="green-container">
+        <div class="test-pic">
+            <img src="{% static 'image/contact-us.jpeg' %}" alt="">
+        </div>
+        <img src="{% static 'image/quote1.svg' %}" alt="">
+        <div class="test-content">           
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil aut quis dolorum voluptatum saepe ab molestiae, eum incidunt laborum minus provident esse! Molestias, eligendi facere? Aliquam voluptates quam esse molestiae.</p>
+            <div class="test-auther">
+                - Lorem
+            </div>
+        </div>
+        <!-- <div class="test-arrows">
+            <img src="{% static 'image/test-back.svg' %}" alt="">
+            <img src="{% static 'image/test-next.svg' %}" alt="">
+        </div> -->
+
+    </div>
+    <div class="green-container">
+        <div class="test-pic">
+            <img src="{% static 'image/contact-us.jpeg' %}" alt="">
+        </div>
+        <img src="{% static 'image/quote1.svg' %}" alt="">
+        <div class="test-content">           
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil aut quis dolorum voluptatum saepe ab molestiae, eum incidunt laborum minus provident esse! Molestias, eligendi facere? Aliquam voluptates quam esse molestiae.</p>
+            <div class="test-auther">
+                - Lorem
+            </div>
+        </div>
+        <!-- <div class="test-arrows">
+            <img src="{% static 'image/test-back.svg' %}" alt="">
+            <img src="{% static 'image/test-next.svg' %}" alt="">
+        </div> -->
+
+    </div>
+    
 </div>
 <div class="contact-us animated">
     <div class="contact-us-row">
@@ -841,6 +957,26 @@
         speed: 400,
         // loop: true, // Enable loop mode if required
     });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    let images = document.querySelectorAll(".test-images img");
+    let index = 0;
+
+    // Function to switch images
+    function switchImage() {
+        images.forEach((img) => img.classList.remove("active")); // Remove active class from all
+        images[index].classList.add("active"); // Add active class to current image
+        index = (index + 1) % images.length; // Loop back after last image
+    }
+
+    // Initialize first image
+    images[0].classList.add("active");
+
+    // Run the function every 3 seconds
+    setInterval(switchImage, 3000);
+});
+
 </script>
 <script type="text/javascript" src="{% static 'js/new_home.js' %}"></script>
 {% endblock %}
