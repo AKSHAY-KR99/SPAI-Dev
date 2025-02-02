@@ -100,6 +100,7 @@ def index(request):
         upcoming_events.extend(past_events)
     context = {
         'upcoming_events': upcoming_events,
+        'page':0
     }
 
     testimonials = Testimonials.objects.filter(publish=True).order_by('-date_created')

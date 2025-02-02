@@ -1,6 +1,10 @@
 {% load static %}
 <nav>
     <ul class="navbar">
+        <li class="dropdown {% if page == 0 %}high{% endif %}">
+            <a href="{% url 'index' %}" class="main-a">HOME</a>
+        </li>
+
         <li class="dropdown {% if page == 1 %}high{% endif %}">
             <a href="{% url 'about_page' %}?page=about_spai" class="main-a">ABOUT</a>
             <ul class="dropdown-menu">
@@ -68,7 +72,7 @@
         </li>
         <li class="dropdown {% if page == 4 %}high{% endif %}">
             <a class="main-a" href="{% url 'publications' %}?page=about_spai_journal">PUBLICATIONS</a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu c">
                 <li><a class="main-b" href="{% url 'publications' %}?page=about_spai_journal">About SPAI Journal</a>
                 </li>
                 <li><a class="main-b" href="{% url 'call_for_manuscript' %}">Call for manuscripts</a></li>
@@ -90,7 +94,7 @@
         </li>
         <li class="dropdown {% if page == 5 %}high{% endif %}">
             <a class="main-a" href="{% url 'academic' %}?page=certification">ACADEMIC & RESOURCES</a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu b">
                 <li class="side-down">
                     <a class="nav-arrow main-b" href="{% url 'academic' %}?page=certification">
                         <div style="display: flex;justify-content: space-between;">Academic Program<img
