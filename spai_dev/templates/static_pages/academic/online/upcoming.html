@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
 <link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
 <link rel="stylesheet" href="{% static 'css/sub/content.css' %}">
+<link rel="stylesheet" href="{% static 'css/new/webinar.css' %}">
 {% endblock %}
 
 {% block header %}
@@ -11,10 +12,68 @@
 {% endblock %}
 
 {% block content %}
-<div style="height: 200px;" class="about-container mission">
+<div class="about-container mission">
     <div class="mission-top-row">
-        <h1 style="text-transform: uppercase;">upcoming online Webinars</h1>
-        
+        <h1 style="text-transform: uppercase;">upcoming online Webinars</h1>    
+    </div>
+    <div class="web-wrapper">
+        <div class="web-item">
+            <div class="web-img">
+                <img src="{% static 'image/hist7.jpg' %}" alt="">
+            </div>
+            <div class="web-content">
+                <h2>Event name</h2>
+                <h3>Event Location</h3>
+                <div class="web-button-wrapper">
+                    <div class="web-date">
+                        <p>Start date</p>
+                        <p>End Date</p>
+                    </div>
+                    <div class="web-buttons">
+                        <a href="#">Register</a>
+                        <a href="">Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="web-item">
+            <div class="web-img">
+                <img src="{% static 'image/hist5.jpg' %}" alt="">
+            </div>
+            <div class="web-content">
+                <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, quas dolorem porro nobis ipsum a asperi</h2>
+                <h3>Event Location</h3>
+                <div class="web-button-wrapper">
+                    <div class="web-date">
+                        <p>Start date</p>
+                        <p>End Date</p>
+                    </div>
+                    <div class="web-buttons">
+                        <a href="#">Register</a>
+                        <a href="">Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="web-item">
+            <div class="web-img">
+                <img src="{% static 'image/hist6.jpg' %}" alt="">
+            </div>
+            <div class="web-content">
+                <h2>Event name</h2>
+                <h3>Event Location</h3>
+                <div class="web-button-wrapper">
+                    <div class="web-date">
+                        <p>Start date</p>
+                        <p>End Date</p>
+                    </div>
+                    <div class="web-buttons">
+                        <a href="#">Register</a>
+                        <a href="">Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     
 
