@@ -27,11 +27,10 @@
                 <h3>{{e.location}}</h3>
                 <div class="web-button-wrapper">
                     <div class="web-date">
-                        <p>{{e.datetime}}</p>
-                        <p>{{e.end_date}}</p>
+                        <p>{{ e.datetime|date:"F j" }} - {{ e.end_date|date:"F j, Y" }}</p>
                     </div>
                     <div class="web-buttons">
-                        <a href="{{e.registration_link}}">Register</a>
+                        <a target="_blank" href="{{e.registration_link}}">Register</a>
                         <a href="{% url 'news_detail' e.pk %}">More details</a>
                     </div>
                 </div>

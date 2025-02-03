@@ -68,6 +68,7 @@ h3 {
 .web-date p {
     text-indent: 0%;
     margin: 5px 0px;
+    font-size: 14px;
 }
 
 .web-buttons {
@@ -83,12 +84,15 @@ h3 {
     color: white;
     border-radius: 20px;
     transition: all 0.2s ease;
+    font-weight: 600;
+    font-size: 12px;
 }
 .web-buttons a:hover{
     transform: scale(1.005);
     background-color: transparent;
     color: rgb(0, 0, 75);
     transition: all 0.2s ease;
+    background-color: rgb(160, 160, 247)
 }
 
 @media(max-width:850px) {
