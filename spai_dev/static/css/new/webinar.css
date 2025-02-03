@@ -1,0 +1,131 @@
+.web-wrapper {
+    width: 100%;
+    padding: 10px 80px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.web-item {
+    animation: scaleUp 1.5s ease-in-out;
+    animation-delay: 0.3;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px solid #dbdbdb;
+    border-radius: 20px;
+    background-color: #f2f2f2;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+}
+
+.web-item:hover {
+    transform: scale(1.005);
+    box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease;
+}
+
+.web-img {
+    width: 100%;
+    overflow: hidden;
+}
+
+.web-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.web-content {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.web-content h2 {
+    text-transform: uppercase;
+}
+
+.web-content h2,
+h3 {
+    margin: 0%;
+
+}
+
+.web-button-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.web-date p {
+    text-indent: 0%;
+    margin: 5px 0px;
+}
+
+.web-buttons {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.web-buttons a {
+    background-color: rgb(0, 0, 75);
+    text-decoration: none;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 20px;
+    transition: all 0.2s ease;
+}
+.web-buttons a:hover{
+    transform: scale(1.005);
+    background-color: transparent;
+    color: rgb(0, 0, 75);
+    transition: all 0.2s ease;
+}
+
+@media(max-width:850px) {
+    .web-item {
+
+        grid-template-columns: 1fr;
+
+    }
+    .web-img img {
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+    }
+    .web-wrapper {
+        padding: 10px 60px;
+
+    }
+}
+@media(max-width:550px){
+    .web-content {
+        gap: 0px;
+    }
+    .web-buttons {
+
+        gap: 10px;
+
+    }
+    .web-button-wrapper{
+        gap: 10px;
+    }
+    .web-wrapper {
+        padding: 10px 40px;
+
+    }
+}
+@media(max-width:380px){
+    .web-wrapper {
+        padding: 10px 20px;
+
+    }
+}
