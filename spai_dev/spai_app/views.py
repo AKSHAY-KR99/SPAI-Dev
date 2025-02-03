@@ -190,9 +190,6 @@ def academic(request):
     if page == "about_internship":
         return render(request, 'static_pages/academic/internship/about.html', context)
     if page == "upcoming_annual":
-        today = timezone.now().date()
-        events = EventManagement.objects.filter(end_date__gte=today).order_by('end_date')
-        context['events'] = events
         return render(request, 'static_pages/academic/anual_conference/upcoming.html', context)
     if page == "past_annual":
         return render(request, 'static_pages/academic/anual_conference/past.html', context)
@@ -219,6 +216,9 @@ def academic(request):
     if page == "internship_testimonials":
         return render(request, 'static_pages/academic/internship/testimonials.html', context)
     if page == "upcoming_online_webinars":
+        today = timezone.now().date()
+        events = EventManagement.objects.filter(end_date__gte=today).order_by('end_date')
+        context['events'] = events
         return render(request, 'static_pages/academic/online/upcoming.html', context)
     if page == "completed_online_webinars":
         return render(request, 'static_pages/academic/online/past.html', context)
