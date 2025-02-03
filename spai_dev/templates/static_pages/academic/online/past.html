@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
 <link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
 <link rel="stylesheet" href="{% static 'css/sub/content.css' %}">
+<link rel="stylesheet" href="{% static 'css/new/webinar.css' %}">
 {% endblock %}
 
 {% block header %}
@@ -11,12 +12,32 @@
 {% endblock %}
 
 {% block content %}
-<div style="height: 200px;" class="about-container mission">
+<div class="about-container mission">
     <div class="mission-top-row">
         <h1 style="text-transform: uppercase;">Completed online Webinars</h1>
-        
     </div>
-    
+    <div class="web-wrapper">
+        {% for e in events %}
+        <div class="web-item">
+            <div class="web-img">
+                <img src="{{e.image.url}}" alt="">
+            </div>
+            <div class="web-content">
+                <h2>{{e.title}}</h2>
+                <h3>{{e.location}}</h3>
+                <div class="web-button-wrapper">
+                    <div class="web-date">
+                        <p>{{ e.datetime|date:"F j" }} - {{ e.end_date|date:"F j, Y" }}</p>
+                    </div>
+                    <div class="web-buttons">
+                        <a href="{% url 'news_detail' e.pk %}">More details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
 
 </div>
 

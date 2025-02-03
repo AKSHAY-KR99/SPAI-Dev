@@ -221,6 +221,9 @@ def academic(request):
         context['events'] = events
         return render(request, 'static_pages/academic/online/upcoming.html', context)
     if page == "completed_online_webinars":
+        today = timezone.now().date()
+        events = EventManagement.objects.filter(end_date__lt=today).order_by('-end_date')
+        context['events'] = events
         return render(request, 'static_pages/academic/online/past.html', context)
     if page == "upcoming_state_workshop":
         return render(request, 'static_pages/academic/state_workshop/upcomming.html', context)
