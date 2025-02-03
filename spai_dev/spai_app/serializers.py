@@ -8,7 +8,7 @@ from .models import LifeMembers, User, UserDetailModel, PaymentModel, AnnualSubs
 class LifeMembersSerializer(serializers.ModelSerializer):
     membership_date = serializers.DateField(
         format="%d-%m-%Y",  # This is the desired output format
-        input_formats=["%d.%m.%Y", "%d-%m-%Y", "%Y-%m-%d", "%d.%m.%y"],
+        input_formats=["%d.%m.%Y", "%d-%m-%Y", "%Y-%m-%d", "%d.%m.%y","%d/%m/%y", "%d/%m/%Y"],
         required=False,
         allow_null=True
     )
@@ -17,6 +17,8 @@ class LifeMembersSerializer(serializers.ModelSerializer):
 
     def to_internal_value(self, data):
         for key, value in data.items():
+            if isinstance(value, str):
+                value = value.replace("\\", "\\\\")
             if value == "":
                 data[key] = None
         return super().to_internal_value(data)
