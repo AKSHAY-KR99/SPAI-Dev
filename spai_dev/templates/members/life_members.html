@@ -64,7 +64,7 @@
     <tbody>
     {% for user in new_members %}
     <tr>
-        <td class="email">{{ user.reg_no }}</td>
+        <td>{{ user.reg_no }}</td>
         <td class="username">
             {% if user.photo %}
             <img src="{{ user.photo.url }}" alt="">
@@ -174,7 +174,7 @@
 
     {% for user in active%}
     <tr>
-        <td class="email">{{user.reg_no}}</td>
+        <td>{{user.reg_no}}</td>
         <td class="username">
             {% if user.photo %}
             <img src="{{ user.photo.url }}" alt="">
@@ -215,7 +215,7 @@
 
     {% for user in non_active%}
     <tr>
-        <td class="email">{{user.reg_no}}</td>
+        <td>{{user.reg_no}}</td>
         <td class="username">
             {% if user.photo %}
             <img src="{{ user.photo.url }}" alt="">

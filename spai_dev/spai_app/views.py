@@ -114,7 +114,8 @@ def index(request):
     context['event_name'] = ribben[0]
     context['event_location'] = ribben[1]
     context['event_reg_link'] = ribben[2]
-
+    form = forms.ContactUsForm()
+    context['form'] = form
     return render(request, 'mainpages/new_home.html', context)
 
 
@@ -571,7 +572,7 @@ def admin_approval(request, *args, **kwargs):
         slug = kwargs.get("slug", None)
         user = User.objects.filter(slug_value=slug).first()
         if user is None:
-            return redirect("members")
+            return redirect("life_members_get")
         if user.approval_percentage == 0:
             user.approval_percentage = 50
             user.status = settings.EX_1_APPROVED
@@ -580,12 +581,12 @@ def admin_approval(request, *args, **kwargs):
             user.status = settings.EX_2_APPROVED
         user.save()
         user_status_change(slug, user.status)
-        return redirect('members')
+        return redirect('life_members_get')
     elif request.user.user_role == settings.ADMIN_ROLE_VALUE:
         slug = kwargs.get("slug", None)
         user = User.objects.filter(slug_value=slug).first()
         if user is None:
-            return redirect("members")
+            return redirect("life_members_get")
         if user.approval_percentage == 100 and user.status in [settings.ADMIN_APPROVAL_PENDING, settings.EX_2_APPROVED]:
             reg_no = get_registration_num()
             user.admin_approved = True
@@ -595,9 +596,9 @@ def admin_approval(request, *args, **kwargs):
             user.save()
             send_email_with_attachment(request, slug)
             user_status_change(slug, user.status)
-            return redirect('members')
+            return redirect('life_members_get')
         else:
-            return redirect("members")
+            return redirect("life_members_get")
     else:
         return redirect('login_page')
 
@@ -829,6 +830,9 @@ def unauthorized_page_403(request):
 # rest API
 @api_view(['POST'])
 def create_or_update_life_member(request):
+    api_key = request.headers.get('Authorization')
+    if api_key != settings.USER_INGEST_KEY:
+        return Response({"error": "Access denied"}, status=status.HTTP_403_FORBIDDEN)
     data = {key: (value if value != "" else None) for key, value in request.data.items()}
     name = data.get('name')
     if name is None:
@@ -1157,6 +1161,9 @@ def contact_us(request):
             send_contact_us_mail(contact)
             return redirect(
                 f"{reverse('success')}?message=Our team will connect you soon. Thank you!")
+        else:
+            messages.error(request, "Invalid Captcha")
+            return redirect('index')
     return redirect('index')
 
 @admin_only
