@@ -39,6 +39,13 @@
                 <h6>State Bank of India, Mela Road, Gwalior (MP)</h6>
             </div>
         </div>
+
+         <div class="qr">
+            <h3>OR</h3>
+            <h3>scan the qr code for payment</h3>
+            <img src="{% static 'image/qr.png' %}" alt="">
+        </div>
+
         <form action="" method="post" name="annual_sub" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="payment-inputs">

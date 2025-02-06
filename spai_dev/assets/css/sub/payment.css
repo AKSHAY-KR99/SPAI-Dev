@@ -295,3 +295,20 @@ color: #6F6F6F;
       box-shadow: 0 0 5px #ff0;
   }
 }
+.qr{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 25px;
+  flex-direction: column;
+  gap: 10px;
+}
+.qr h3{
+  color: #6F6F6F;
+}
+.qr img{
+  width: 200px;
+  height: auto;
+}

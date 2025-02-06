@@ -650,7 +650,7 @@ def certificate(request, *args, **kwargs):
             user = User.objects.get(slug_value=slug)
         else:
             user = User.objects.get(slug_value=request.user.slug_value)
-        context = {"name": f"{user.first_name} {user.last_name}", "reg_no": user.reg_no}
+        context = {"name": f"{user.first_name} {user.last_name}", "reg_no": user.reg_no, "date": user.date_approved}
         template_path = 'pdf_template.html'
         template = get_template(template_path)
         html = template.render(context)
@@ -787,7 +787,7 @@ def get_user_full_details(req, slug):
                 key = True
             elif req.user.executive in [settings.SECRETARY, settings.PRESIDENT]:
                 if (user.approval_percentage == 0 and user.status == settings.PAYMENT_DONE) or \
-                        (user.approval_percentage == 50 and user.status == settings.EX_1_APPROVED):
+                        (user.approval_percentage == 50 and user.status in [ settings.EX_2_APPROVAL_PENDING,settings.EX_1_APPROVED]):
                     key = True
                 elif user.approval_percentage == 100:
                     key = False
@@ -816,6 +816,8 @@ def payment_model(request, *args, **kwargs):
         else:
             form = forms.PaymentForm(request.user)
         return render(request, 'members/payment_page.html', {'form': form})
+    else:
+        return redirect('individual_user_details', slug=request.user.slug_value)
 
 
 def fee_and_payment(request):
@@ -1008,7 +1010,8 @@ def search_lm(request):
             Q(reg_no__icontains=query) |
             Q(first_name__icontains=query) |
             Q(email__icontains=query) |
-            Q(date_created__icontains=query)
+            Q(date_created__icontains=query) |
+            Q(state__icontains=query)
         )
     return render(request, 'mainpages/lm_search_results.html',
                   {'user_results': user_results, 'lm_results': lm_results, 'query': query})
@@ -1032,7 +1035,7 @@ def email_redirection(request):
             reset_request = models.PasswordResetRequest.objects.create(user=user, status=settings.EMAIL_SEND,
                                                                        date_created=datetime.now())
             send_password_reset_email(user, request.get_host())
-            messages.success(request, "A password reset link sent to your eamil. it expires with in 10 minutes")
+            messages.success(request, "A password reset link sent to your email. it expires with in 10 minutes")
             return redirect('login_page')
     else:
         form = forms.ResetPasswordForm()
