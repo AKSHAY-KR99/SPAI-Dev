@@ -3,30 +3,41 @@
 <html lang="en">
 
 <head>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Sports Psychology Association of India",
+            "url": "https://spaionline.in/"
+        }
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="{% static 'image/SPAI_LOGO-removebg.png' %}">
-    <title>Spai</title>
+    <title>Sports Psychology Association of India</title>
     {% block cssfiles %}
     <link rel="stylesheet" href="{% static 'css/spai.css' %}">
     <link rel="stylesheet" href="{% static 'css/sub/header.css' %}">
     <link rel="stylesheet" href="{% static 'css/sub/footer.css' %}">
 
     {% endblock %}
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@100;200;300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@100;200;300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet">
     <!-- <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet"> -->
-
 
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
+          rel="stylesheet">
     <style>
         /* Fullscreen loading screen */
         #loading-screen {
@@ -70,116 +81,116 @@
 </head>
 
 <body>
-    <div id="loading-screen">
-        <div class="spinner"></div>
-    </div>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const loader = document.getElementById('loading-screen');
-            const images = document.querySelectorAll('img'); // Select all images
-            const minimumDuration = 500; // Minimum loader duration (in ms)
-            const maxLoadingTime = 10000; // Maximum allowed loading time (in ms)
-            const startTime = Date.now();
+<div id="loading-screen">
+    <div class="spinner"></div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const loader = document.getElementById('loading-screen');
+        const images = document.querySelectorAll('img'); // Select all images
+        const minimumDuration = 500; // Minimum loader duration (in ms)
+        const maxLoadingTime = 10000; // Maximum allowed loading time (in ms)
+        const startTime = Date.now();
 
-            let imagesLoaded = 0;
-            const totalImages = images.length;
-            let allImagesChecked = false;
+        let imagesLoaded = 0;
+        const totalImages = images.length;
+        let allImagesChecked = false;
 
-            // Check when each image is loaded
-            images.forEach((img) => {
-                if (img.complete) {
-                    imagesLoaded++; // Increment if image is already loaded
-                } else {
-                    img.addEventListener('load', () => {
-                        imagesLoaded++;
-                        checkAllLoaded();
-                    });
-                    img.addEventListener('error', () => {
-                        imagesLoaded++; // Handle image load error
-                        checkAllLoaded();
-                    });
-                }
-            });
-
-            // Fallback to stop the loader after maxLoadingTime
-            setTimeout(() => {
-                if (!allImagesChecked) {
-                    console.warn("Not all images loaded in time, stopping loader.");
-                    checkAllLoaded(true); // Force stop
-                }
-            }, maxLoadingTime);
-
-            // Check if all images are loaded
-            function checkAllLoaded(forceStop = false) {
-                if (forceStop || imagesLoaded === totalImages) {
-                    allImagesChecked = true; // Prevent further checks
-                    const elapsedTime = Date.now() - startTime;
-                    const remainingTime = Math.max(minimumDuration - elapsedTime, 0);
-
-                    setTimeout(() => {
-                        if (loader) {
-                            loader.style.opacity = '0'; // Fade out
-                            setTimeout(() => {
-                                loader.style.display = 'none'; // Remove from DOM
-                            }, 500); // Match CSS transition duration
-                        }
-                    }, remainingTime);
-                }
+        // Check when each image is loaded
+        images.forEach((img) => {
+            if (img.complete) {
+                imagesLoaded++; // Increment if image is already loaded
+            } else {
+                img.addEventListener('load', () => {
+                    imagesLoaded++;
+                    checkAllLoaded();
+                });
+                img.addEventListener('error', () => {
+                    imagesLoaded++; // Handle image load error
+                    checkAllLoaded();
+                });
             }
-
-            // In case there are no images or all are already loaded
-            checkAllLoaded();
         });
 
-    </script>
-    <!-- <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const loader = document.getElementById('loading-screen');
-    
-            // Minimum duration for the loader (2 seconds)
-            const minimumDuration = 0;
-            const startTime = Date.now();
-    
-            window.addEventListener("load", function () {
+        // Fallback to stop the loader after maxLoadingTime
+        setTimeout(() => {
+            if (!allImagesChecked) {
+                console.warn("Not all images loaded in time, stopping loader.");
+                checkAllLoaded(true); // Force stop
+            }
+        }, maxLoadingTime);
+
+        // Check if all images are loaded
+        function checkAllLoaded(forceStop = false) {
+            if (forceStop || imagesLoaded === totalImages) {
+                allImagesChecked = true; // Prevent further checks
                 const elapsedTime = Date.now() - startTime;
                 const remainingTime = Math.max(minimumDuration - elapsedTime, 0);
-    
-                // Ensure the loader stays for at least 2 seconds
+
                 setTimeout(() => {
                     if (loader) {
                         loader.style.opacity = '0'; // Fade out
                         setTimeout(() => {
                             loader.style.display = 'none'; // Remove from DOM
-                        }, 500); // Match the CSS transition duration
+                        }, 500); // Match CSS transition duration
                     }
                 }, remainingTime);
-            });
+            }
+        }
+
+        // In case there are no images or all are already loaded
+        checkAllLoaded();
+    });
+
+</script>
+<!-- <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const loader = document.getElementById('loading-screen');
+
+        // Minimum duration for the loader (2 seconds)
+        const minimumDuration = 0;
+        const startTime = Date.now();
+
+        window.addEventListener("load", function () {
+            const elapsedTime = Date.now() - startTime;
+            const remainingTime = Math.max(minimumDuration - elapsedTime, 0);
+
+            // Ensure the loader stays for at least 2 seconds
+            setTimeout(() => {
+                if (loader) {
+                    loader.style.opacity = '0'; // Fade out
+                    setTimeout(() => {
+                        loader.style.display = 'none'; // Remove from DOM
+                    }, 500); // Match the CSS transition duration
+                }
+            }, remainingTime);
         });
-    
-    
-    </script> -->
-    {% block header %}
-    {% include 'header.html' %}
-    {% endblock %}
-
-    {% block content %}
+    });
 
 
-    {% endblock %}
+</script> -->
+{% block header %}
+{% include 'header.html' %}
+{% endblock %}
 
-    {% block footer %}
-    {% include 'footer.html' %}
-    {% endblock %}
-    <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function () {
-            document.querySelector('.menu-icon').addEventListener('click', function () {
-                document.querySelector('.navbar').classList.toggle('active');
-            });
+{% block content %}
+
+
+{% endblock %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelector('.menu-icon').addEventListener('click', function () {
+            document.querySelector('.navbar').classList.toggle('active');
         });
-    </script>
-    {% block jsfile %}
-    <script type="text/javascript" src="{% static 'js/spai.js' %}"></script>
-    {% endblock %}
+    });
+</script>
+{% block jsfile %}
+<script type="text/javascript" src="{% static 'js/spai.js' %}"></script>
+{% endblock %}
 </body>
 
 </html>
