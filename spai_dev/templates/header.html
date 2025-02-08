@@ -36,11 +36,11 @@
                 </div>
                 {% endif %}
                 <div class="dropdown-menu3" id="dropdownMenu3">
-                    <a class="down" href="{% url 'individual_user_details' request.user.slug_value %}">
+                    <a style="font-weight:500;font-size:14px;" class="down" href="{% url 'individual_user_details' request.user.slug_value %}">
                         <img src="{% static 'image/profilecheck.svg' %}" alt="">
                         Profile
                     </a>
-                    <a class="down" href="{% url 'logout' %}">
+                    <a style="font-weight:500;font-size:14px;" class="down" href="{% url 'logout' %}">
                         <img src="{% static 'image/logout.svg' %}" alt="">
                         Logout
                     </a>
