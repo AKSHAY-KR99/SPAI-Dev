@@ -160,6 +160,8 @@ def membership(request):
         user_key = True
     if page == "previlege":
         return render(request, 'static_pages/membership/previlege.html', context)
+    if page == "patrons":
+        return render(request, 'static_pages/membership/patrons.html', context)
     if page == "major":
         return render(request, 'static_pages/news/major.html', {"page": 2})
     if page == "exe_meeting":
