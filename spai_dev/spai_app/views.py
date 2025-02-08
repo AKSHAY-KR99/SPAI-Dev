@@ -156,7 +156,7 @@ def membership(request):
     page = request.GET.get('page')
     context = {"page": 3}
     user_key = False
-    if request.user.is_authenticated and (request.user.user_role == 1 or request.user.executive in [1, 2]):
+    if request.user.is_authenticated and (request.user.user_role == 1 or request.user.executive in [1, 2, 3]):
         user_key = True
     if page == "previlege":
         return render(request, 'static_pages/membership/previlege.html', context)
@@ -685,7 +685,7 @@ def send_email_with_attachment(request, slug):
 
     sender_email = "SPAI Online <spai05138@gmail.com>"
     recipient_list = [user.email]
-    context = {"name": user.first_name, "email": user.email, "date": user.date_created}
+    context = {"name": f"{user.first_name} {user.last_name}", "reg_no": user.reg_no, "date": user.date_approved}
     template_path = 'pdf_template.html'
     pdf_content = render_to_pdf(template_path, context)
 
@@ -712,7 +712,7 @@ def get_user_full_details(req, slug):
     user_data = {}
     user = User.objects.filter(slug_value=slug).first()
     if user is None:
-        return redirect("about_members")
+        return redirect("index")
     user_dict = model_to_dict(user)
     user_data['email'] = user_dict.get("email", None)
     user_data['username'] = user_dict.get("username", None)
@@ -728,6 +728,7 @@ def get_user_full_details(req, slug):
     user_data['reg_no'] = user_dict.get("reg_no", None)
     user_data['active_key'] = user_dict.get("active_key", False)
     user_data['annual_subscription'] = user_dict.get("annual_subscription", False)
+    user_data['executive'] = user_dict.get("executive", None)
 
     user_details = UserDetailModel.objects.filter(user=user.id).first()
     if user_details is not None:
@@ -1377,3 +1378,19 @@ def get_nearest_event():
     if nearest_event is None:
         return ["Sports Psychology", "Association of India", reverse('user_registration') ]
     return [nearest_event.title, nearest_event.location, nearest_event.registration_link]
+
+def user_role_switch(request, *args, **kwargs):
+    slug = kwargs.get("slug", "")
+    user = User.objects.filter(slug_value=slug, active_key=True).first()
+    if user is None:
+        return redirect('individual_user_details', slug=slug)
+
+    key = request.GET.get('key')
+    if key == 'promote':
+        user.executive = settings.EXECUTIVE
+    elif key == 'demote':
+        user.executive = None
+    else:
+        pass
+    user.save()
+    return redirect('individual_user_details', slug=user.slug_value)

@@ -43,6 +43,7 @@ urlpatterns = [
     path('annual-subscription/payment/<str:slug>', views.annual_sub_payment, name='annual_sub_payment'),
     path('annual-subscription/<str:slug>/approval', views.annual_sub_approval, name='subscription_approval'),
     path('refresh/members', views.refresh_members, name='refresh_members'),
+    path('user/role/<str:slug>/switch', views.user_role_switch, name="user_role_switch"),
 
     path('user/payment/<str:slug>', views.payment_model, name='payment_model'),
     path('payment/info', views.fee_and_payment, name='fee_and_payment'),

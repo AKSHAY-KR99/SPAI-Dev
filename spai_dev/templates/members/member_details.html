@@ -50,6 +50,9 @@
             </div>
         </div>
         <div class="labels">
+            {% if request.user.is_superuser or request.user.executive == 1 or request.user.executive == 2 %}
+            <p>Member Role Update</p>
+            {% endif %}
             <p>First name</p>
             <p>Last name</p>
             <p>User name</p>
@@ -57,6 +60,15 @@
             <p>Annual Subscription</p>
         </div>
         <div class="details">
+            {% if request.user.is_superuser or request.user.executive == 1 or request.user.executive == 2 %}
+            <p>
+            {% if user.executive is None %}
+                <a style="text-decoration: none;background-color: green;color: white;padding: 3px;border-radius: 5px;" href="{% url 'user_role_switch' user.slug_value %}?key=promote">Promote to Executive</a>
+            {% elif user.executive == 3 %}
+                <a style="text-decoration: none;background-color: red;color: white;padding: 3px;border-radius: 5px;" href="{% url 'user_role_switch' user.slug_value %}?key=demote">Demote to Member</a>
+            {% endif %}
+            </p>
+            {% endif %}
             <p>{{user.first_name}}</p>
             <p>{{user.last_name}}</p>
             <p>{{user.username}}</p>
