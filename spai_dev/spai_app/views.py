@@ -1381,6 +1381,8 @@ def get_nearest_event():
         return ["Sports Psychology", "Association of India", reverse('user_registration') ]
     return [nearest_event.title, nearest_event.location, nearest_event.registration_link]
 
+
+@admin_only
 def user_role_switch(request, *args, **kwargs):
     slug = kwargs.get("slug", "")
     user = User.objects.filter(slug_value=slug, active_key=True).first()
