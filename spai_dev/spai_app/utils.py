@@ -55,19 +55,14 @@ def send_mail_to_executives(user, host):
     executives = User.objects.filter(executive__in=[settings.SECRETARY, settings.PRESIDENT])
     if executives:
         executive_emails = [user.email for user in executives]
-        executive_names = [user.first_name for user in executives]
-        executive_names_string = ', '.join(executive_names)
         subject = "Notification of Registration Completion"
         link = f"{host}/user/detail/{user.slug_value}"
         message = (
-            f"\nDear {executive_names_string},\n"
-            f"I am writing to inform you that the registration process for {user.first_name} {user.last_name}({user.email}) has been "
-            f"successfully completed. All required information and documentation have been submitted and verified as "
-            f"per the guidelines.\n"
-            f"Looking forward to your confirmation\n"
-            f"\nBest regards,\n"
-            f"{user.first_name} {user.last_name}\n"
-            f"{user.email}\n\n"
+            f"\nDear  Secretary / President SPAI,\n"
+            f"The registration process for {user.first_name} {user.last_name} ({user.email}) has been successfully completed. All required information and documentation have been submitted and verified according to the guidelines.\n"
+            f" Kindly verify and approve the same for further processing from the admin side for certificate generation.\n"
+            f" Kind regards\n"
+            f"Admin, SPAI\n"
             f"Click on the link to view profile {link}"
         )
 

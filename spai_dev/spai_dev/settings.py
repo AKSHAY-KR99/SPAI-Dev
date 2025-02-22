@@ -182,8 +182,6 @@ PRESIDENT = 2
 EXECUTIVE = 3
 EXECUTIVE_CHOICES = ((SECRETARY, "SECRETARY"), (PRESIDENT, "PRESIDENT"), (EXECUTIVE, "EXECUTIVE"))
 
-
-
 STATE_CHOICES = [
     ("", "Select state"),
     ("Andhra Pradesh", "Andhra Pradesh"),
@@ -213,13 +211,19 @@ STATE_CHOICES = [
     ("Tripura", "Tripura"),
     ("Uttar Pradesh", "Uttar Pradesh"),
     ("Uttarakhand", "Uttarakhand"),
-    ("West Bengal", "West Bengal")
+    ("West Bengal", "West Bengal"),
+    ("Andaman and Nicobar Islands", "Andaman and Nicobar Islands"),
+    ("Chandigarh", "Chandigarh"),
+    ("Dadra and Nagar Haveli and Daman and Diu", "Dadra and Nagar Haveli and Daman and Diu"),
+    ("Delhi", "Delhi"),
+    ("Jammu and Kashmir", "Jammu and Kashmir"),
+    ("Ladakh", "Ladakh"),
+    ("Lakshadweep", "Lakshadweep"),
+    ("Puducherry", "Puducherry"),
 ]
-
 
 # login session info
 SESSION_COOKIE_AGE = 43200
-
 
 # smtp email service
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

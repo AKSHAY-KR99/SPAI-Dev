@@ -80,6 +80,23 @@
             {% endif %}
         </div>
     </div>
+    {% if user.annual %}
+    <div class="details_container">
+        <div class="number">
+            <div class="num">
+                <p>>></p>
+            </div>
+        </div>
+        <div class="labels">
+            <p>Subscription start date</p>
+            <p>Subscription end date</p>
+        </div>
+        <div class="details">
+            <p>{{user.start_date}}</p>
+            <p>{{user.end_date}}</p>
+        </div>
+    </div>
+    {% endif %}
     <div class="details_container">
         <div class="number">
             <div class="num">
@@ -244,23 +261,22 @@
     </div>
     {% endif %}
 
-        {% if user.annual %}
     <div class="details_container">
         <div class="number">
             <div class="num">
-                <p>08</p>
+                <p>>></p>
             </div>
         </div>
         <div class="labels">
-            <p>Subscription start date</p>
-            <p>Subscription end date</p>
+            <p>Secretary Approval</p>
+            <p>President Approval</p>
         </div>
         <div class="details">
-            <p>{{user.start_date}}</p>
-            <p>{{user.end_date}}</p>
+            <p>{{user.sec_msg}}</p>
+            <p>{{user.pre_msg}}</p>
         </div>
     </div>
-    {% endif %}
+
 
     <div style="display: flex; justify-content: center;width: 100%;">
         {% if user.key %}
