@@ -141,7 +141,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=50, verbose_name="username", unique=True)
     first_name = models.CharField(max_length=50, verbose_name="first_name", null=True, blank=True)
     last_name = models.CharField(max_length=50, verbose_name="last_name", null=True, blank=True)
-    state = models.CharField(max_length=30, choices=settings.STATE_CHOICES, default="None", null=True, blank=True)
+    state = models.CharField(max_length=60, choices=settings.STATE_CHOICES, default="None", null=True, blank=True)
     status = models.CharField(max_length=30, null=True, blank=True)
     user_role = models.PositiveSmallIntegerField(choices=settings.ROLE_CHOICES, blank=True, null=True)
     reg_no = models.CharField(max_length=15, null=True, blank=True)
@@ -157,6 +157,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     executive = models.PositiveSmallIntegerField(choices=settings.EXECUTIVE_CHOICES, blank=True, null=True)
     active_key = models.BooleanField(null=True, blank=True, default=False)
     annual_subscription = models.BooleanField(default=False)
+    secretary_approval = models.BooleanField(default=False)
+    president_approval = models.BooleanField(default=False)
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []

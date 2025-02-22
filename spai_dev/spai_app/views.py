@@ -581,6 +581,10 @@ def admin_approval(request, *args, **kwargs):
         elif user.approval_percentage == 50:
             user.approval_percentage = 100
             user.status = settings.EX_2_APPROVED
+        if request.user.executive == settings.SECRETARY:
+            user.secretary_approval = True
+        elif request.user.executive == settings.PRESIDENT:
+            user.president_approval = True
         user.save()
         user_status_change(slug, user.status)
         return redirect('life_members_get')
@@ -592,10 +596,32 @@ def admin_approval(request, *args, **kwargs):
         if user.approval_percentage == 100 and user.status in [settings.ADMIN_APPROVAL_PENDING, settings.EX_2_APPROVED]:
             reg_no = get_registration_num()
             user.admin_approved = True
-            user.date_approved = datetime.now()
+
+            cutoff_date = datetime(2025, 4, 1, 0, 0, 0)
+            if datetime.now() < cutoff_date:
+                user.date_approved = cutoff_date
+            else:
+                user.date_approved = datetime.now()
             user.reg_no = reg_no
             user.active_key = True
+
+            # Annual Subscription section
+            current = datetime.today().date()
+            cutoff_date_1 = cutoff_date.date()
+            if current < cutoff_date_1:
+                original_date = cutoff_date_1
+            else:
+                original_date = current
+            annual_subscription = AnnualSubscriptionModel(
+                user=user,
+                date_created=original_date,
+                end_date=original_date + timedelta(days=365),
+                active=True
+            )
+            user.annual_subscription = True
+            annual_subscription.save()
             user.save()
+
             send_email_with_attachment(request, slug)
             user_status_change(slug, user.status)
             return redirect('life_members_get')
@@ -731,6 +757,14 @@ def get_user_full_details(req, slug):
     user_data['active_key'] = user_dict.get("active_key", False)
     user_data['annual_subscription'] = user_dict.get("annual_subscription", False)
     user_data['executive'] = user_dict.get("executive", None)
+    sec_msg = "Pending"
+    pre_msg = "Pending"
+    if user_dict.get("secretary_approval", False):
+        sec_msg = "Done"
+    if user_dict.get("president_approval", False):
+        pre_msg = "Done"
+    user_data['sec_msg'] = sec_msg
+    user_data['pre_msg'] = pre_msg
 
     user_details = UserDetailModel.objects.filter(user=user.id).first()
     if user_details is not None:
@@ -789,11 +823,24 @@ def get_user_full_details(req, slug):
                 settings.ADMIN_APPROVAL_PENDING, settings.EX_2_APPROVED]:
                 key = True
             elif req.user.executive in [settings.SECRETARY, settings.PRESIDENT]:
-                if (user.approval_percentage == 0 and user.status == settings.PAYMENT_DONE) or \
-                        (user.approval_percentage == 50 and user.status in [ settings.EX_2_APPROVAL_PENDING,settings.EX_1_APPROVED]):
-                    key = True
-                elif user.approval_percentage == 100:
-                    key = False
+                if req.user.executive == settings.SECRETARY:
+                    if user.secretary_approval:
+                        key = False  # Secretary approval is True, set key to False
+                    else:
+                        key = True  # Secretary approval is False, set key to True
+                elif req.user.executive == settings.PRESIDENT:
+                    if user.president_approval:
+                        key = False  # President approval is True, set key to False
+                    else:
+                        key = True  # President approval is False, set key to True
+                else:
+                    # Existing conditions for executive roles
+                    if (user.approval_percentage == 0 and user.status == settings.PAYMENT_DONE) or \
+                            (user.approval_percentage == 50 and user.status in [settings.EX_2_APPROVAL_PENDING,
+                                                                                settings.EX_1_APPROVED]):
+                        key = True
+                    elif user.approval_percentage == 100:
+                        key = False
         user_data["key"] = key
 
     return user_data
@@ -811,6 +858,11 @@ def payment_model(request, *args, **kwargs):
                 return redirect("login_page")
             form = forms.PaymentForm(request.user, request.POST, request.FILES)
             if form.is_valid():
+                subcription_form = forms.SubscriptionPaymentForm(request.POST, request.FILES)
+                if subcription_form.is_valid():
+                    instance = subcription_form.save(commit=False)
+                    instance.user = request.user
+                    instance.save()
                 form.save()
                 user_status_change(request.user.slug_value, request.user.status)
                 send_mail_to_executives(user, request.get_host())
