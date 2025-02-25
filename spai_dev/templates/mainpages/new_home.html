@@ -530,10 +530,7 @@
             </div>
         </div>
         <div class="contact-us-row">
-        <label for="id_captcha" style="font-size:13px;font-weight:600;margin-bottom:4px;">Enter the text shown:</label>
-                {{ form.captcha }}
-        </div>
-        <div class="contact-us-row" style="margin-top:10px;">
+            <div class="g-recaptcha" style="margin-bottom:10px;" data-sitekey="6Le2dcsqAAAAAKcAqpxmcjP5k3ZQoAN8D-ZDzXwI"></div>
             <input type="submit" value="SEND MESSAGE">
             {% if request.user.is_superuser or request.user.executive == 1 or request.user.executive == 2 %}
             <a style="padding:7px;color:white;font-size:12px;text-align:center;margin-top:10px;font-weight: 600;background-color: rgb(0, 0, 0);border-radius: 5px;" href="{% url 'view_contact_us' %}">View Queries</a>
@@ -899,6 +896,7 @@
 {% include 'footer.html' %}
 {% endblock %}
 {% block jsfile %}
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script>
     var swiper = new Swiper('.news-containers', {
         slidesPerView: 1.2, // You can set this to 'auto' for responsive slides
