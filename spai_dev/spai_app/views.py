@@ -1,5 +1,6 @@
 import datetime
 
+import requests
 from django.contrib import messages
 from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
@@ -88,6 +89,14 @@ def get_next_step(status):
     if status == settings.ADMIN_REJECTED:
         return 'Admin Rejected'
 
+def recaptcha_verification(recaptcha_response):
+    data = {
+        "secret": settings.RECAPTCHA_PRIVATE_KEY,
+        "response": recaptcha_response
+    }
+    response = requests.post(settings.VERIFICATION_URL, data=data)
+    res = response.json()
+    return res.get("success")
 
 # Views
 def index(request):
@@ -277,9 +286,16 @@ def members(request):
 def user_registration(request):
     if request.method == "POST":
         form = forms.UserRegistrationForm(request.POST)
+        recaptcha_response = request.POST.get("g-recaptcha-response")
+        res = recaptcha_verification(recaptcha_response)
+        if not res:
+            messages.error(request, "reCAPTCHA verification failed. Please try again.")
+            return render(request, "members/user_registration.html", {"form": form})
+
         if form.is_valid():
             user = form.save()
             logout(request)
+            messages.success(request, "Registration successfully completed. Please log in.")
             return redirect("login_page")
         else:
             context = {"form": form}
@@ -1214,13 +1230,17 @@ def delete_testimonial(request, *args, **kwargs):
 def contact_us(request):
     if request.method == 'POST':
         form = forms.ContactUsForm(request.POST)
+        recaptcha_response = request.POST.get("g-recaptcha-response")
+        res = recaptcha_verification(recaptcha_response)
+        if not res:
+            messages.error(request, "reCAPTCHA verification failed. Please try again.")
+            return redirect('index')
         if form.is_valid():
             contact = form.save()
             send_contact_us_mail(contact)
             return redirect(
                 f"{reverse('success')}?message=Our team will connect you soon. Thank you!")
         else:
-            messages.error(request, "Invalid Captcha")
             return redirect('index')
     return redirect('index')
 

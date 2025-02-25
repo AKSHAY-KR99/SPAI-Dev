@@ -7,6 +7,5 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('spai/admin/', admin.site.urls),
     path('',include('spai_app.urls')),
-    path('captcha/', include('captcha.urls')),
 ]
 urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

@@ -16,6 +16,12 @@
     <div class="reg-form-section">
         <div class="reg-content-section">
             <p class="member-registration-header">Registration</p>
+            {% if messages %}
+            {% for message in messages %}
+            <div style="text-align: center;color: rgb(176, 0, 0);font-size: 14px;font-weight: 500;"
+                class="">{{ message }}</div>
+            {% endfor %}
+            {% endif %}
             {% if form.errors %}
             <div class="error-box reg">
                 <ul>
@@ -78,6 +84,9 @@
                         <input class="user-confirm-password" placeholder="Confirm Password" type="password"
                                id="confirm_password" name="confirm_password" required>
                     </div>
+
+                    <div class="g-recaptcha" data-sitekey="6Le2dcsqAAAAAKcAqpxmcjP5k3ZQoAN8D-ZDzXwI"></div>
+
                     <div class="reg-button-section">
                         <input type="submit" value="Register">
                     </div>
@@ -117,6 +126,7 @@
 
 {% block footer %}
 {% include 'footer.html' %}
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script>
     // State list populated via JS
     const states = [

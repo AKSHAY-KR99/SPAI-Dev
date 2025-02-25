@@ -1,6 +1,5 @@
 import re
 
-from captcha.fields import CaptchaField
 from django.conf import settings
 from django.contrib.auth.hashers import check_password
 from django.forms import ModelForm, modelformset_factory
@@ -249,10 +248,9 @@ class TestimonialForm(forms.ModelForm):
 
 
 class ContactUsForm(forms.ModelForm):
-    captcha = CaptchaField()
     class Meta:
         model = ContactUs
-        fields = ['name', 'email', 'phone', 'message', 'captcha']
+        fields = ['name', 'email', 'phone', 'message']
 
 class JournalQueryForm(forms.ModelForm):
     class Meta:
