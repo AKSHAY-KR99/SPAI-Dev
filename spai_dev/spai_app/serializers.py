@@ -46,7 +46,14 @@ class UserSerializer(serializers.ModelSerializer):
         validated_data['date_approved'] = datetime.now()
         validated_data['approval_percentage'] = 100
         validated_data['active_key'] = True
+        validated_data['president_approval'] = True
+        validated_data['secretary_approval'] = True
         validated_data['reg_no'] = get_registration_num()
+        cutoff_date = datetime(2025, 4, 1, 0, 0, 0)
+        if datetime.now() < cutoff_date:
+            validated_data['date_approved'] = cutoff_date
+        else:
+            validated_data['date_approved'] = datetime.now()
         return super().create(validated_data)
 
 

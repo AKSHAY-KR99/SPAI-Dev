@@ -1173,9 +1173,16 @@ def annual_sub_approval(request, *args, **kwargs):
     annual_model = models.AnnualSubscriptionModel.objects.filter(user=user).first()
     if annual_model is None:
         return redirect('individual_user_details', slug=slug)
-    current = datetime.today()
-    annual_model.date_created = current
-    annual_model.end_date = current + timedelta(days=365)
+    # current = datetime.today()
+    current = datetime.today().date()
+    cutoff_date = datetime(2025, 4, 1, 0, 0, 0)
+    cutoff_date_1 = cutoff_date.date()
+    if current < cutoff_date_1:
+        original_date = cutoff_date_1
+    else:
+        original_date = current
+    annual_model.date_created = original_date
+    annual_model.end_date = original_date + timedelta(days=365)
     annual_model.active = True
     user.annual_subscription = True
     annual_model.save()
