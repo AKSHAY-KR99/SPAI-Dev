@@ -154,6 +154,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     date_approved = models.DateTimeField(null=True, blank=True)
     approval_percentage = models.IntegerField(null=True, blank=True,
                                               validators=[MinValueValidator(0), MaxValueValidator(100)])
+    original_date_approved = models.DateTimeField(null=True, blank=True)
     executive = models.PositiveSmallIntegerField(choices=settings.EXECUTIVE_CHOICES, blank=True, null=True)
     active_key = models.BooleanField(null=True, blank=True, default=False)
     annual_subscription = models.BooleanField(default=False)

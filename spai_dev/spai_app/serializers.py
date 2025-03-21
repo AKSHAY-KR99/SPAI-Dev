@@ -37,17 +37,17 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ['email', 'username', 'first_name', 'last_name', 'state', 'annual_subscription',
                   'status', 'user_role', 'reg_no', 'admin_approved', 'date_approved', 'approval_percentage',
-                  'active_key']
+                  'active_key', 'original_date_approved']
 
     def create(self, validated_data):
         validated_data['status'] = settings.ADMIN_APPROVED
         validated_data['user_role'] = settings.MEMBER_ROLE_VALUE
         validated_data['admin_approved'] = True
-        validated_data['date_approved'] = datetime.now()
         validated_data['approval_percentage'] = 100
         validated_data['active_key'] = True
         validated_data['president_approval'] = True
         validated_data['secretary_approval'] = True
+        validated_data['original_date_approved'] = datetime.now()
         validated_data['reg_no'] = get_registration_num()
         cutoff_date = datetime(2025, 4, 1, 0, 0, 0)
         if datetime.now() < cutoff_date:

@@ -25,7 +25,7 @@ def get_registration_num():
     reg_no = "SPAILM"
     year = datetime.now().year
     reg_no = reg_no + str(year)
-    user = User.objects.filter(admin_approved=True, user_role=2).order_by('-date_approved').first()
+    user = User.objects.filter(admin_approved=True, user_role=2).order_by('-original_date_approved').first()
     if user and user.reg_no is not None:
         reg = user.reg_no
         reg = reg[10:]

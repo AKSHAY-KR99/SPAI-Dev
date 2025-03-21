@@ -635,6 +635,7 @@ def admin_approval(request, *args, **kwargs):
                 active=True
             )
             user.annual_subscription = True
+            user.original_date_approved = datetime.now()
             annual_subscription.save()
             user.save()
 
@@ -1312,6 +1313,24 @@ class BulkDataIngestionAPIView(APIView):
                 # Check if User already exists
                 user = User.objects.filter(email=data.get('email')).first()
                 if user:
+                    user.status = settings.ADMIN_APPROVED
+                    user.user_role = settings.MEMBER_ROLE_VALUE
+                    user.admin_approved = True
+                    if user.date_approved is None:
+                        cutoff_date = datetime(2025, 4, 1, 0, 0, 0)
+                        if datetime.now() < cutoff_date:
+                            user.date_approved = cutoff_date
+                        else:
+                            user.date_approved = datetime.now()
+                    user.approval_percentage = 100
+                    user.active_key = True
+                    user.president_approval = True
+                    user.secretary_approval = True
+                    if user.original_date_approved is None:
+                        user.original_date_approved = datetime.now()
+                    if user.reg_no is None:
+                        user.reg_no = get_registration_num()
+                    user.save()
                     user_message = "User already exists."
                 else:
                     # Create User instance
