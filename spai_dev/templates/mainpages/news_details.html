@@ -52,11 +52,7 @@
 <div id="modalOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index: 999;"></div>
 
             {% if event.registration_link and event.registration_link|slice:":7" == "http://" or event.registration_link|slice:":8" == "https://" %}
-            {% if request.user.annual_subscription %}
-            <div class="discount" style="margin-top:15px;">
-                    <h4>Since you are a Annual Subscriber, You have 50% Discount on registration fee</h4>
-            </div>
-            {% endif %}
+
                 {% endif %}
             <div class="news-detail-content">
                 <div class="news-dis" style="margin-left: 0%;">

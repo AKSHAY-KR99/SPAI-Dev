@@ -21,7 +21,7 @@ from rest_framework.views import APIView
 
 from . import models, forms
 from .models import GalleryManagement, User, EventManagement, UserDetailModel, GalleryImage, PaymentModel, Testimonials, \
-    AnnualSubscriptionModel, SubscriptionPayment
+    AnnualSubscriptionModel, SubscriptionPayment, BannerEvents
 from .decorators import admin_only, authenticated_only
 from .utils import render_to_pdf, get_registration_num, get_research_paper_no, send_mail_to_executives, \
     send_password_reset_email, update_subscription_status, send_contact_us_mail
@@ -120,9 +120,7 @@ def index(request):
     context["testimonials"] = latest_testimonials
 
     ribben = get_nearest_event()
-    context['event_name'] = ribben[0]
-    context['event_location'] = ribben[1]
-    context['event_reg_link'] = ribben[2]
+    context['events'] = ribben
     form = forms.ContactUsForm()
     context['form'] = form
     return render(request, 'mainpages/new_home.html', context)
@@ -1473,11 +1471,13 @@ def profile_upload_photo(request):
 
 
 def get_nearest_event():
-    today = timezone.now().date()
-    nearest_event = EventManagement.objects.filter(end_date__gte=today).order_by('end_date').first()
-    if nearest_event is None:
-        return ["Sports Psychology", "Association of India", reverse('user_registration') ]
-    return [nearest_event.title, nearest_event.location, nearest_event.registration_link]
+    nearest_events = BannerEvents.objects.all()[:3]
+    if not nearest_events:
+        return [{"title":"Sports Psychology", "location":"Association of India", "link":reverse('user_registration')}]
+    event_data = []
+    for event in nearest_events:
+        event_data.append({"title":event.event.title, "location":event.event.location, "link":reverse('news_detail', kwargs={'pk': event.event.id})})
+    return event_data
 
 
 @admin_only

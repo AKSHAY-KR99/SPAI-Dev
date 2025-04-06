@@ -383,3 +383,10 @@ class JournalQuery(models.Model):
 
     def __str__(self):
         return self.name
+
+class BannerEvents(models.Model):
+    event = models.ForeignKey(EventManagement, on_delete=models.CASCADE, related_name='event_banner_display')
+    description = models.CharField(max_length=500, null=True, blank=True)
+
+    def __str__(self):
+        return str(self.event.title)
