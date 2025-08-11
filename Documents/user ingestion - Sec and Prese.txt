@@ -1,0 +1,19 @@
+194.164.150.200 {
+
+        handle_path /static/* {
+                root * /home/SPAI-Dev/spai_dev/assets
+                file_server
+        }
+
+        handle_path /media/* {
+                root * /home/SPAI-Dev/spai_dev/media
+                file_server
+        }
+
+        @notStatic {
+                not path /static/* /media/*
+        }
+
+        reverse_proxy @notStatic localhost:8000
+
+}

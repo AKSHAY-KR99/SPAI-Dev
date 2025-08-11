@@ -118,9 +118,11 @@
             <span></span>
             <span></span>
             <span></span>
-            <span>🚨 {{event_name}}, {{event_location}} — 📢 <a target="_blank" style="color:yellow;" href="{{event_reg_link}}">click here</a> to register </span>
-            <span>🚨 {{event_name}}, {{event_location}} — 📢 <a target="_blank" style="color:yellow;" href="{{event_reg_link}}">click here</a> to register </span>
-            <span>🚨 {{event_name}}, {{event_location}} — 📢 <a target="_blank" style="color:yellow;" href="{{event_reg_link}}">click here</a> to register </span>
+            {% for event in events %}
+            <span>🚨 {{event.title}}, {{event.location}} — 📢 <a style="color:yellow;" href="{{event.link}}">click here</a> to register </span>
+            {% endfor %}
+<!--            <span>🚨 {{event_name}}, {{event_location}} — 📢 <a target="_blank" style="color:yellow;" href="{{event_reg_link}}">click here</a> to register </span>-->
+<!--            <span>🚨 {{event_name}}, {{event_location}} — 📢 <a target="_blank" style="color:yellow;" href="{{event_reg_link}}">click here</a> to register </span>-->
 <!--            <span>🚨 Breaking News: Stock markets hit an all-time high! — 🚀 AI technology revolutionizing industries! — 🌍 Global summit on climate change starts today! — 📢 New policies announced for startups! </span>-->
 <!--            <span>🚨 Breaking News: Stock markets hit an all-time high! — 🚀 AI technology revolutionizing industries! — 🌍 Global summit on climate change starts today! — 📢 New policies announced for startups! </span>-->
 
