@@ -1,0 +1,39 @@
+SPAI-Dev
+
+gunicorn.conf.py
+
+worker = 3
+bind = "127.0.0.1:8000"
+wsgi_app = "spai_dev.wsgi:application"
+chdir = "/home/spai/SPAI-Dev/spai_dev"
+
+
+
+
+start_server.sh
+
+#!/bin/bash
+# Activate the virtual environment
+source /home/spai/SPAI-Dev/spai_dev/venv/bin/activate
+
+# Change to the directory where your Django project is located
+cd /home/spai/SPAI-Dev
+
+# Start Gunicorn using the configuration file (no need to repeat wsgi_app)
+gunicorn -c gunicorn.conf.py
+
+
+
+settings.py
+
+ALLOWED_HOSTS = ['194.164.150.200']
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',  # MySQL backend
+        'NAME': 'spai',  # Database name
+        'USER': 'spai_user',  # Database user
+        'PASSWORD': 'spai@123',  # Database password
+        'HOST': 'localhost',  # Database host, use 'localhost' or the IP of your MySQL server
+        'PORT': '3306',  # MySQL default port
+    }
+}

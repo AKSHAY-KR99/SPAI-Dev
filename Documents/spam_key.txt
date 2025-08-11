@@ -1,0 +1,12 @@
+Site key = 6Le2dcsqAAAAAKcAqpxmcjP5k3ZQoAN8D-ZDzXwI
+secrete key = 6Le2dcsqAAAAAF6ZuWAoAg1U3_YnTZa0BX6u4fja
+
+
+RECAPTCHA_PUBLIC_KEY = "6Le2dcsqAAAAAKcAqpxmcjP5k3ZQoAN8D-ZDzXwI"
+RECAPTCHA_PRIVATE_KEY = "6Le2dcsqAAAAAF6ZuWAoAg1U3_YnTZa0BX6u4fja"
+RECAPTCHA_USE_SSL = True
+
+
+- not robot
+- Documentation
+- 

@@ -1,0 +1,405 @@
+reg_no,name,address,mobile,email,date,active
+1,Prof. Jitendra Mohan,"Deptt. of Psychology Punjab University, Chandigarh- 160 014 Punjab",,mohanjitendra@hotmail.com,23.02.1985,TRUE
+2,Dr. M.L. Kamlesh,"Lakshmi 435, Urban Estate Phase-I Patiala- 147 002 Punjab",9988038485,kamleshml@yahoo.com,23.02.1985,TRUE
+3,Dr. Avinash Sidhu,"A. B. Ratan Nagar, Jabalpur (M.P.) Pin – 482001",9424754954,sidhua22@hotmail.com,23.02.1985,TRUE
+4,Dr. H.A. Khan,Canada,,,23.02.1985,TRUE
+5,Dr. Agyajit Singh,"136, Civil Lines Patiala -147 004 Punjab.",,,23.01.1985,TRUE
+6,Prof. N.S. Mann,"Prof. & Chairman 1617, Pushpak Complex,Secter – B Chandigarh-160047 Punjab",,manns1944@yahoo.com,23.02.1985,TRUE
+7,Dr. Joginder Mukherjee,"Lect in Psychology Govt. College of Education Sector 20, Chandigarh",,,23.02.1985,TRUE
+8,Dr. Rajinder Singh,"Director & Head, Deptt. of Physical Education, Jiwaji University, Gwalior, (M.P.)",9425116510,,23.02.1985,TRUE
+9,Prof. G.S. Sandhu,"# 6093, Mani Majra Housing Complex Duplex - (NRI) Chandigarh-160 014",,,23.02.1985,TRUE
+10,Prof. S. Srivatsan,,,,23.02.1985,FALSE
+11,Mr. Daljinder Singh,"Dept. of Physical Edu. Gurunanak Dev Univ, Amritsar, Punjab.",,,23.02.1985,TRUE
+12,Mr. V.V.B.N. Rao,"Sports Officer Univ. of Hyderabad Hyderabad, (A.P.)",,,23.02.1985,TRUE
+13,Dr. Bhupinder Singh,"Director, Dept. of Physical Edu. and Sports, Punjabi University, Patiala, Punjab",,,26.04.1985,TRUE
+14,Mr. J.S. Tiger,"Athletic Coach N.S.N.I.S., Patiala, Punjab",,,14.05.1985,TRUE
+15,Dr. Mis. Kulwinder Bains,"House No. 319,Sector : 71, Mohali (P.B.)",9872213787,kulvinder_bains@hotmail.com,10.06.1985,TRUE
+16,Miss Leelamma Joseph,"116-A, Nehru Park,Hall of Sports Chennai  (Tamilnadu) ",,,19.06.1985,TRUE
+17,Mr. G.D. Fortgalland,Retired from N.I.S. South Centre,,,19.07.1985,TRUE
+18,Dr. S.N. Sharma,"3075, 37-D,Chandigarh",9316519433,,26.07.1985,TRUE
+19,Prof. D.S. Toor,"e-1/100, Sector- 14, Punjab Univ. Campus, Chandigarh-160 014",9814027560,,26.07.1985,TRUE
+20,Prof. Anand Kumar,Dept of Psychology M.G.Kashi Vidyapith  Varanasi - 221 002 (U.P.),09415336707 / 09415202167,,06.09.1985,TRUE
+21,Mr. D.V. Sharma,"Director Physical Edu. College of Education, Kurukshetra University Kurukshetra (Harayana) ",,,06.09.1985,TRUE
+22,Prof. K.K. Verma,Chandigarh,9315425366,,15.10.1985,TRUE
+23,"Prof, G.P. Thakur","12 Qutab View Apartment, Shaheed Jeet Singh Marg, New Delhi – 110 016",9415301404,gp1_thakur@rediffmail.com,30.11.1985,TRUE
+24,Dr. Jagta Jsingh Gill,"PEC University & Technology Sector - 12, Chandigarh, Punjab.",,jagtars@yahoo.com,29.12.1985,TRUE
+25,Dr. M.G. Sharma,C-33/204-1-BChandua Chittupur Varanasi (U.P.),,,10.01.1986,TRUE
+26,Dr. P.M. Alegaonkar,"Bid. No. 63, Flat No. 9 Rakshalakha Society Dattawadi, Pune-411 030 Maharashtra",,,10.01.1986,TRUE
+27,Prof. Sultan Akhtar,,,,11.01.1986,FALSE
+28,Dr. Ram S. Gangopadhayay,"404, Shivalik Apptt., Opp. AIR Gandhi Road, Gwalior - 474 002 (M.P.)",,,11.01.1986,TRUE
+29,Dr. R.K. Yadav,(Head) & Prof. Dept of Physical Edu. Rani Durgawati Univ. Jabalpur (M.P.),9826459468,dr.rkyadav@yahoo.com,12.01.1986,TRUE
+30,Dr. Usha Singh,"House No. 2670 Near Robin Cinema Subzi Mandi, Delhi - 110 007",9911920545,singhusha@rediffmail.com,12.01.1986,TRUE
+31,Dr. B. Somalingam,"17 - /27/8/H Sri Raghvendra Nagar, Uppal, Hyderabad - 39",9866002036,belldisomalingam@yahoo.com,23.02.1986,TRUE
+32,Prof. Ajmer Singh,,,,23.02.1986,FALSE
+33,Mrs. Manoranjini Khan,Canada,,,18.04.1986,TRUE
+34,Mr. Louis D'Silva,"State Basketball Coach 2nd Floor Teen Building Alto-Porvorim, Bardey Goa",,,18.04.1986,TRUE
+35,Mr. Om Kumari Patial,"642, Sector – 4 Panchkula (Haryana)",(0175) 579764,,28.04.1986,TRUE
+36,Mr. Hansh Munjal (Exp.),12/2 Chandrapura Roorkee (U.P.),,,02.05.1986,TRUE
+37,Md. Mustafa,"SA1 Football Coach Bangalore University Central College Cricket, Pavilion, Bangalore -560009",,,08.07.1986,TRUE
+38,Mr. R. Subramanian,"NIS Football Coach Nehru Yuva Kendra Malappuram, Kerala",,,13.10.1986,TRUE
+39,Dr. N.P. Sharma,"105, Harsukh Apptt. Sector-7, Plot No. 4 Dwarka, New Delhi -110048",9811924492,,28.10.1986,TRUE
+40,Mr. Madan Singh,(NIS Hockey Coach) C/o Director of Sports & Physical Education Bhopal University Bhopal (M.P.),,,15.12.1986,TRUE
+41,Mr. S.K. Sanyal,"J.G.-61,TypeII Jungli Ghat Portblair",,,19.12.1986,TRUE
+42,Mr. Avinash Waykar,"College of Physical Education, Wanleswadi, Sangli (Maharashtra)",,,19.12.1986,TRUE
+43,Mr. Narendra Sopal,"College of Physical Edu. Wanleshwadi,Sangli (Maharashtra)",,,19.12.1986,TRUE
+44,Mr. Vijay Sher,USA,,,19.12.1986,TRUE
+45,Mr. J.S. Bhullar,N.I.S. Swimming Coach Sub Coaching Centre Sardar Stadium Valsad (Gujarat),,,19.12.1986,TRUE
+46,Mr. R.K. Dhiren Singh,"Khurai Lairick Yengbam Leikai Nakha Laikai, P.O. Lamlomg Bazar, Imphal (Manipur)",,,19.12.1986,TRUE
+47,Mr. Upenra Nath Chaudhary,"Dy. Director, Water Sports Centre, Netaji Stadium Portblair (Andamans)",,,19.12.1986,TRUE
+48,Sh. G.V. Bodkhe,Lecturer B.P.C.A.S. College of Physical Education Wadala (Bombay-31) Maharashtra,,,27.12.1986,TRUE
+49,Dr. Gurdeep Singh,"Dy. Secretory Sports, AIU 16, Kotla Marg, New Delhi-110 002",8010180743,,12.01.1987,TRUE
+50,Miss. Jyoti Joshi,"3-4-828, Arihant. Apartments, Barkatpura, Hyderabad-500 027 (A.P.)",,,03.03.1987,TRUE
+51,Prof. Sukumar Boge,,,,13.03.1987,FALSE
+52,Prof. L.A. Thakker,,,,01.04.1987,FALSE
+53,Prof. V.M. Sharma,"Head Dept of Physical Edu. Amravati University Amravati, Maharashtra",,,01.04.1987,TRUE
+54,Mrs. Bharati Bhandari,"C/o Mr. Bhandari Badminton Coach N.S.N.I.S., Patiala-147 001 Punjab.",,,02.09.1987,TRUE
+55,Mr. M.K. Sharma,"Badminton Coach N.S.N.I.S., Patiala - 147 001 Punjab.",,,02.09.1987,TRUE
+56,Shri P.S. Sidhu,"9, Rani Ka Bagh Amritsar- 143 001 Punjab",,,12.12.1987,TRUE
+57,Shri R.K. Sangwan,"College of Sports Haryana Agricultural University, Hissar- 125 004 Harayana",,,12.12.1987,TRUE
+58,Dr. V.S.S.M. Rao,,,,12.12.1987,FALSE
+59,Dr. Rajiv Ahuja,"DSM Student N.S.N.I.S., Patiala Punjab",,,15.01.1988,TRUE
+60,Shri B.S. Bhatt,"46, Vidya Sadan Sliarda Society Ahmedabad, Gujarat",,,02.02.1988,TRUE
+61,Dr. Suman Nagia,"28 A, Circular Road hradun, Uttaranchal",,,20.04.1988,TRUE
+62,Mr. P.N. Vasudev,24/16 Moti Nagar New Delhi - 110 015,,,26.08.1988,TRUE
+63,Dr. Barid Bhattacharya,"19 Holly Drive Aylesbnry, Buckingham Sheri HP 21 87Z UK","44(0)1296-432632, 7947–062778",baridb@hotmail.com,19.10.1988,TRUE
+64,Dr. S.S. Brar,"Deptt. of Child Development, PAU Ludhiana - 141 004 Punjab",,,15.11.1988,TRUE
+65,Dr. Dhananjoy Shaw,"Head, Deptt. of Natural Sciences, Indira Gandhi Institute of Physical Edu. and Sports Sciences Block -B, Viknspuri, New Delhi.",9868524922,dhananjoy_show@yahoo.com,31.01.1989,TRUE
+66,Dr. A.S. Zilli,Reader Deptt. of Psychology Aligarh Muslim Univ. Aligarh - 202 002 (U.P.),,,31.01.1989,TRUE
+67,Mr. B.S. Vaner,"Deputy Director (Physical Education) Gujarat University Ahmedabad, Gujarat",,,01.02.1989,TRUE
+68,Prof. Jayashree Acharya,"L.N.I.P.E., Shakti Nagar, Gwalior",9425304969,jayashreeacharya@hotmail.com ,01.02.1989,TRUE
+69,Dr. (Mrs.) Kiran Sandhu,Australia,,,01.02.1989,TRUE
+70,Prof. D.M. Pestonjec,"Dept. of Psychology Indian Institute of Management Ahmedabad, Gujarat",,,02.02.1989,TRUE
+71,Dr. A. Pratap Reddy,Director Physical Edu. Agricultural University Bapatla - 522 101 (A.P.),,,27.03.1989,TRUE
+72,Mr. Jagbin Singh Kajal,"Boxing Coach, Distt. Sports Officer,Kurukshetra, Harayana",,,10.04.1989,TRUE
+73,Mr. P. Samraj,"Reader, Deptt of Phy. Edu. & Sports Sciences Annamalai University Annamali Nagar Tamilnadu - 608 002",,,27.04.1989,TRUE
+74,Dr. Kiran Bala Verma,"Head Dept of Psychology Harishchandra P.G. College, Varanasi.",,,09.06.1989,TRUE
+75,Mrs. Gita Mathew,,,,23.02.1990,FALSE
+76,Mr. R. Gopinath,"25,7th Cross Street Besant Nagar Chennai Tamilnadu - 600 090",,,24.02.1990,TRUE
+77,Mr. D.Johnson,"R-57, M.K. Colony Neyveli 2 S.A. Distt, Tamilnad - 607 802",,,24.02.1990,TRUE
+78,Mr. Jacob George,"Physical Edu. Teacher, Wood Stock School, Landore, Mussorri. (Uttaranchal)",,,24.02.1990,TRUE
+79,Prof. Kanwaljeet Singh,"Head Deptt. of Physical Edu. Gurunanak Dev Univ. Amritsar, Punjab",,,24.02.1990,TRUE
+80,Mr. S.J.H. Jyoti Karan,Deptt of Physical Edu. Alagappa University Karaikudi Tamilnadu- 623 004.,,,24.02.1990,TRUE
+81,Dr. Sushma Ghildyal,"Professor Deptt. Of Physical Edu. Faculty of Arts, B.H.U. Varanasi- 221 005 (U.P.)",9415619059,sushmaghildyal@yahoo.com,24.02.1990,TRUE
+82,Dr. Dilip K. Dureha,"Professor Dept. of Phy. Education., B.H.U., Varanasi. - 221 005",9450710279,dkdureha@gmail.com,24.02.1990,TRUE
+83,Mrs. Manju Singh,"Lecturer in Psychology R.S.S. Mahila College, Sitamarhi (Bihar)",,,25.02.1990,TRUE
+84,Mr. R.K Joshi,"B- 27/70, Durgakund Road, Barhal Kothi, Varanasi (U.P.)",,,25.02.1990,TRUE
+85,Dr. Shanta Khatri,Deptt. of Psychology M.G. Kashi Vidyapith Varanasi - 221 002 (U.P.),,,28.02.1990,TRUE
+86,Dr. Anuradha Bhandari,Deptt of Psychology Punjab University' Chandigarh-160 014,,,03.05.1990,TRUE
+87,Dr. G.S. Bawa,,,,07.06.1990,FALSE
+88,Shri Surinder Singh Gill,"Principal Sri Dasmesh Public School, Talwandi Sabo, Bhatinda (Punjab)",,,02.07.1990,TRUE
+89,Prof. S.S. Kaushik,"23, Ahhilya Bai Nagar Colony, Lanka, Varanasi 221 005 (UP)",,,19.07.1990,TRUE
+90,Mr. G. Boy Tharyan,Director Incharge Deptt. of Physical Edu. P.B. No. 6 University of Calicut Calicut - 673 635 (Kerala),,,31.07.1990,TRUE
+91,Dr. Meena Sehgal,Dept of Psychology Punjab University Chandigarh - 160 014 Punjab.,,,11.09.1990,TRUE
+92,Miss Renu Tayal,Deptt. of Psychology Punjab University Chandigarh - 160 014 Punjab.,,,11.09.1990,TRUE
+93,Miss Preeti Bhatia,Dept. of Psychology Punjab University Chandigarh - 160 014 Punjab.,,,11.09.1990,TRUE
+94,Dr. Jolly Roy,Scientific Officer,,,24.10.1990,TRUE
+95,Dr. Sanjeev P. Sahni,"CE Personal, Jindal Group New Hayat Regency, Ring Road, New Delhi-110 002",9910381254,,12.11.1990,TRUE
+96,Dr. P. Suriyarayan,"4/357, Moovender, Tehsildar Nagar, Madurai – 625020",9843113349,,02.01.1991,TRUE
+97,Dr. Kamaluddin Sheikh,"B - 32/6, Kh - 2 Behind Jain Mandir Nariya, Varanasi (U.P.)",,,02.01.1991,TRUE
+98,Dr. Laila Das,"Medical Officer SAI, Netaji Subhas Eastern Centre, Salt Lake, Sector-II Kolkata - 700 091",,,07.02.1991,TRUE
+99,Dr. M. Bhattacharya,"Medical Officer SAI, Netaji Subhas Eastern Centre, Salt Lake, Sector -II Kolkata - 700 091",,,07.02.1991,TRUE
+100,Dr. N.B. Shukla,"33, Teachers Flats B.H.U., Varanasi - 221 005",,,07.02.1991,TRUE
+101,Dr. N.K. Chada,Deptt of Psychology University of Delhi Delhi-110 007,,,19.02.1991,TRUE
+102,Dr. Amulya Khurana,"Dept of Humanities and Social Sciences I.I.T., Hauz Khas, New Delhi -110 016",,,25.02.1991,TRUE
+103,Mr. R.K. Suri,"Scientist E & RST Division Central Road Research Institute, P.O. CRRI Mathura Road, Delhi - 110 020",,,25.02.1991,TRUE
+104,Dr. Jawahar Lai Jain,"Medical Officer I.N.U.S. Health Centre Delhi University, Delhi-110 007",,,25.02.1991,TRUE
+105,Miss Neeraj Kakkar,Deptt of Psychology Punjab University Chandigarh - 160 014 Punjab.,,,25.02.1991,TRUE
+106,Mrs. L.R. Bhanskhale,"Sr. Lecturer Milind College of Arts, Nagasenvana Aurangabad - 431 002 Maharashtra",,,25.02.1991,TRUE
+107,Miss Rajni N. Gadgil,"165/5, Trimurti Parwati Pune - 411 009 Maharashtra.",,,25.02.1991,TRUE
+108,Miss N.N. Diwakar,"Nayana Nimhar, 1025-A, Shivaji Nagar Gokhle Road Pune-411 016 Maharashtra",,,25.02.1991,TRUE
+109,Mrs. Harpreet Shergill,"Lecturer, Deptt of Physical Edu. Gurunanak Dev Univ. Amritsar, Punjab",,,25.02.1991,TRUE
+110,Mr. Roshan Lai Dahiya,Lecturer Govt College Sector - 46 Chandigarh,,,25.02.1991,TRUE
+111,Mr. K.B. Desai,"Asstt. Director, Physical Edu. M.S. Univ.of Baroda Union Pavillion Baroda - 390 002 Gujarat",,,25.02.1991,TRUE
+112,Miss. Harish Sharma,22-B Chander Nagar Delhi-110 051,,,25.02.1991,TRUE
+113,Mr. Lalit Sharma,"Associate Professor I.G. Institute of Physical Edu. and Sports Sciences Block - B, Vikaspuri, New Delhi",9958998684,lalit_phyedu@yahoo.co.in,25.02.1991,TRUE
+114,Dr. Mahesh Bhargava,"4/230, Kacheri Ghat Agra - 282 004 (U.P.)",,,25.02.1991,TRUE
+115,Dr. S. Pyari Sinha,"3/126, Premnagar Dayalbagh, Agra (U.P.)",,,25.02.1991,TRUE
+116,Miss. G. Vasnthi,"Lecturer Dept of Physical Edu. Sports Complex, Thiruvalluvar Stadium, Kalapet, Pondicherry Univ. Pondicherry.",,,26.02.1991,TRUE
+117,Mr. R.R. Bhashakhale,Principal P.E.S. College of Physical Education Nagasenvana Cantt. Aurangabad - 431 002 Maharashtra.,,,26.02.1991,TRUE
+118,Prof. Amir Singh,Dept of Psychology Kurukshetra University Kurukshetra -132 119 Harayana,,,26.02.1991,TRUE
+119,Mr. D. Sakthignanavel,Lecturer Dept of Physical Edu. Pondicherry University Kalapet Pondicherry- 605 014,,,26.02.1991,TRUE
+120,Mr. B. Raju,"Lecturer, Physical Edu. S.N. College, Quilon (Kerala)",,,26.02.1991,TRUE
+121,Dr. Jetty Rama Mohan Rao,"H.NO. 50-4-7/A, Gunadala Vijawada - 520 005 (A.P.)",,,26.02.1991,TRUE
+122,Dr. N. Govindarajalu,"Prof. Plot No. 261 & 262, 3rd Main Road, 2nd Cross, Mahaveer Nagar,Pondicherry Univ. Pondicherry – 605014",,,26.02.1991,TRUE
+123,Prof Vimala Raghawan,"72, Munirka Enclave New Delhi-110 067",,,26.02.1991,TRUE
+124,Dr. Safia Ahmad,"Deptt. of Psychology, Jesus & Marey College Chanakyapuri New Delhi - 110 021",,,26.02.1991,TRUE
+125,Dr. Habib Ahmad,Dept. of Psychology Zakir Hussain College Ajmeri Gate Delhi-110 006,,,26.02.1991,TRUE
+126,Dr. K.C. Tuli,"Dept. of Psychology Zakir Hussain College Ajmeri Gate, New Delhi-110 006",,,22.03.1991,TRUE
+127,Dr. H.S. Upadhyay,Reader Deptt. of Psychology Delhi University Delhi.,,,18.04.1991,TRUE
+128,Mr. D.P. Pathania,C/o Mrs. Naresh Pathania Punjab National Bank Regional Office Hamirpur- 177 001 Himachal Pradesh.,,,18.04.1991,TRUE
+129,Mr. J. Prabhakar Rao,Lecturer Physical Edu. University College of Law Osmania University Hyderabad - 500 007 Andhra Pradesh,,,18.04.1991,TRUE
+130,Mr. Deba Kumar Bora,Astt Director (SPES) SAI Regional Centre Imphal - 795 001,,,04.09.1991,TRUE
+131,Mrs. P.C. Aleyamma,"Panangadon House, Thottappura Akathethara P.O. Palakkad Distt. Pin - 678 008 (Kerala) ",,,14.01.1992,TRUE
+132,Prof. Surendra Singh,"A-39, Brij Enclave Sunderpur, Varanasi- 221 005 (U.P.)",,,30.12.1992,FALSE
+133,Mr. O.P. Bhadana,"Sanskrit Vidyapith, 304-A,Shastri Nagar,Jammu Tawi - 180 004",,,30.12.1992,TRUE
+134,Prof.V.K. Sharma,,,,21.03.1993,FALSE
+135,Dr. Kanwal Ahuja,"C-3/30, Janakpuri,New Delhi-110 058",,,21.03.1993,TRUE
+136,Dr. Jose James,,,,20.04.1993,FALSE
+137,Dr. S.B. Purohit,"C/o Dr. Kalpana Purohit,Kamala Nehru Memorial Hospital,Allahabad - 221 002 (U.P.)",,,07.05.1993,TRUE
+138,Dr. Ashok Sitaram Borse,"SHRIYA' 93, Shrirang,Colony, Deopur Dhule - 424 005,Maharashtra.",,,27.09.1993,TRUE
+139,Dr. (Mrs.) Itshree Roul,"Govt. College,S.A.S Nagar, Mohali (Punjab)",,,01.12.1993,TRUE
+140,Dr. Reena Kaul,"SAI Sport Psychologist,Allied Science Faculty N.S.N.I.S, Salt Lake, Kolkatta.,",9831367359,reenakinshuk@yahoo.co.in,06.04.1994,TRUE
+141,Shri R. D. Raja Leelan,"Physical Director,College of Nursing,C.M.C.H. Vellore -4,Tamilnadu",,,23.04.1994,TRUE
+142,Dr. (Miss) Meena Thuse,"P.G. Teaching,Deptt. of Physical Edu.,Amarwati University,Amravati - 444 602 Maharshtra.",,,06.05.1994,TRUE
+143,Mr. N.S. Rao,"S/o Shri N. Madhava Rao,Gollapuri (P.O.),Vijayawada - 541 225,Andhra Pradesh",,,07.05.1994,TRUE
+144,Mr. Soni John T.,"Lecturer (Phy. Edu.),Christ College Srinjalakuda,Trissur Distt. (Kerala)",,,07.05.1994,TRUE
+145,Dr. (Mrs.) M. Vijay Laxmi,"S.S.C.P.E., Fairlands,Solan-636 016,Himachal Pradesh.",,,07.05.1994,TRUE
+146,Mr. H.B. Hallad,"D. No. 1866/48, First Floor,Thlemalesh Hostel,Vijay nagar Davangere - 577 005,(Karnataka)",,,07.05.1994,TRUE
+147,Prof. R. Santhanam,"Y.M.C.A. College of Physical Edu. Nandanam, Chennai - 600 035 Tamilnadu",,,07.05.1994,TRUE
+148,Maj. K.A. Sivaprasad,"H.No. 2-1-528/A Nallakunta Hyderabad - 500 044,Andhra Pradesh",,,07.05.1994,TRUE
+149,Mr. Arjun Singh Rana,"C/o Mr. Arjun Singh C. Rana,Raj pur Para,No.l Rajkot - 360 001 Gujarat",,,08.05.1994,TRUE
+150,Mr. Palani Gomes Lucas,"Don Bosco Orphanage,Gandhinagar,Vellore - 632 006 Tamilnadu",,,08.05.1994,TRUE
+151,Mr. K.L. Swaroop,"Physical Edu. College,Murukundapado (P.O.),Via Stuartpuram Bapatla,Guntur Distt., (A.P.)",,,08.05.1994,TRUE
+152,Miss. G.J. Grace,"H.No. 3-2-37819,Chappal Bazar Kachiguda,Hyderabad 500 027,Andhra Pradesh.",,,08.05.1994,TRUE
+153,Dr. Pramajit Singh,"Alleid Science Faculty,NSNIS, Moti Bagh,Patiala - 147 001 Punjab.",,,01.11.1995,TRUE
+154,Dr. Preeti Gupta,"A-4I9, Indira Nagar,Behind Nilgiri Colony,Lucknow- 226 016 (U.P.)",,,06.03.1998,TRUE
+155,Dr. V.N. Mishra Nihala,"Dept of Psychology,M.G.Kashi Vidyapith,Varanasi - 221 002 (U.P.),",,,06.03.1998,TRUE
+156,Dr. Jaowad Ali,"Professor,Deptt. of Physical,Aligarh Muslim Univ.,Aligarh-202 002 (U.P.)",,,06.03.1998,TRUE
+157,Pratap Singh Tiwari,"Director (Phy. Edu.),Jnana Ganga Gulbarga,University Gulbarga- 585 106 (Karuataka)",,,06.03.1998,TRUE
+158,Dr. S. Sivarmakrishnan,"Lecturer, Alagappa Univ.,College of Physical Edu.,Karaikudi - 630 004,Tamilnadu.",,,06.03.1998,TRUE
+159,Miss Jatindcr Kaur,"11.No. 404, Phase-2,Mohali Distt. Ropar, Punjab",,,06.03.1998,TRUE
+160,Mrs. Sunita Dutta,"C/o Pradeep Dutta,L.N.C.P.E., Kariynttam,Trivendrum (Kerela)",,,06.03.1998,TRUE
+161,Miss R. Bindu,"Valiya Vettil Kappil East Krishnapuram P.O.,Allapuzalia Distt. Pin 695 003,(Kerala)",,,06.03.1998,TRUE
+162,Mr. Sunil Kumar,"II. No. 1-8-1/85,Surya Nagar Chikkadapally,Hyderabad-500 020,Andhra Pradesh.",,,08.03.1998,TRUE
+163,Ms. Hajera Abbasi,"II.No. 5-9-22/109,Adarsh Nagar,Hyderabad - 500 483,Andhra Pradesh.",,,08.03.1998,TRUE
+164,Dr. Madhusudan Rcddy,"D-2/1 R.E.C.,Staff Quarters Warangal - 506 004,Andhra Pradesh.",,,08.03.1998,TRUE
+165,Shri Soumendra Sana,"NA-20, Arjunpur (North),Kolkata - 700 059",,,08.03.1998,TRUE
+166,Shri Bhima Raw,"H.No. 2-2-647/212,Gr. Floor,,Central Excise Colony,Uagh Anibcrpct Hyderabad - 500 013,Andhra Pradesh.",,,20.03.1998,TRUE
+167,Shri Deepak Kumar,"II.No. 20-1-51,Chnndrakpurain Inside,Old Bridge Hyderabad -500 064,Andhra Pradesh.",,,20.03.1998,TRUE
+168,Dr. S. Subrnmanian,Punjab,,,04.05.1998,FALSE
+169,Dr. Krishna Vcrma,"J-12/130 B-I-Ka,Dhoopchandi Varanasi - 221 002",,,04.05.1998,TRUE
+170,Mr. M. Srccnivas,"II.No. 41 Hire! Main Road Byrasandra, Jay a nagar,1st Block East,Banglore-560 011 Karnataka.",,,28.08.98,TRUE
+171,Dr. Dinesh Prakash Sharma,"Associate Professor, IGI PESS,Block 'B', Vikas Puri,New Delhi – 110018",,,16.10.1998,TRUE
+172,Mr. Wazir Singh,"U186, Housing Board,Colony, Bhiwaui, Haryana",,,30.12.1999,TRUE
+173,Nirniala Horo,"Associate Professor in Physical Edu.,Deans Office,Faculty of Science B.H.U.,Varanasi 221 005 (U P.)",,,30.12.1999,TRUE
+174,Dr. Archana Singh,"Associate Professor in Physical Edu.,Mahila MahavidyaIaya,B.H.U., Varanasi, Pin -221 005 (U.P.)",,,30.12.1999,TRUE
+175,Dr. Archana Chahal,"Dept. of Physical Edu.,Allahabad University,Allahabad (U.P.)-211002",,,30.12.1999,TRUE
+176,Dr. Sundar Raj Urs,"University College of Physical Edu. Jnanabarathi,Banglore University Banglore - 560 056 ,Karnataka.",,,30.12.1999,TRUE
+177,A.M. Manju Nath,"University College of Physical Education,Jnanabarathi, Banglore University Banglore - 560 056 Karnataka.",,,30.12.1999,TRUE
+178,Hardayal Singh Dhillon,"12, Officer's ColonyTaylor Road, Opposite Gandhi Grounds Amritsar- 143 001,Punjab.",,,01.02.2000,TRUE
+179,Sheikh Nusrat Jamil ,"(Principal) Vidyadhiraja College of Physical Edu.& Research Mahatma Schoolof Academics and Sports,Sector - 8, New Pannel (W),Dist Raigad Maharashtra.",,,22.03.2000,TRUE
+180,Dr. Chhaya Srivastava,"C/o Prof. Anand Kumar,C-4/148, Kalimahal,Varanasi - 221 001 (U.P.)",,,08.06.2001,TRUE
+181,Janmejay Pradhan,"4, Airforce Selection Board,Varanasi Cantt,Varanasi - 221 002, U.P.",,,15.06.2001,TRUE
+182,Km.Suman Gupta,"C/o Salik Prasad Gupta,Sarita Road (South Road),Po - Dildar Nagar,Distt. - Ghazipur Pin - 222 326 (U.P.)",,,21.06.2001,TRUE
+183,Sidhanath Gupta,"Village - Mahjawa Bazar,P.O. Majhawa Distt - Mirzapur Pin -221 501 (U.P.)",,,07.07.2001,TRUE
+184,Km. Noopur Sinha,"Q.No. T/66-E N.E. Rly.Colony,Near ShambhuMata Mandir,Lahartara, Varanasi (U.P.)",,,20.07.2001,TRUE
+185,Dr. Mahesh Gupta,"C.JC 56/30, Govind pura,Chowk, Varanasi,Pin - 221 001 (U.P.)",,,20.07.2001,TRUE
+186,Dr. Ravi Jaiswal,"D-65/240 Ch-1,Lahartara - Varanasi (U.P.)",,,20.07.2001,TRUE
+187,Shivpujan Verma,"D-59/235, K-l-A,Nirala Nagar, Lane No. 10,Shivpurwa,Varanasi Pin -221 010 (U.P.)",,,20.07.2001,TRUE
+188,Dr. Shambhu Upadhyay,"B-l/162, Assi –Varanasi",,,17.08.2001,TRUE
+189,Ravi Kant,"PO & Village - Deipur,Distt. - Varanasi (U.P.)",,,25.08.2001,TRUE
+190,Preeti Srivastava,"B-36/43 G-l,Brahmanand Colony Extension -1,Durgakund, Varanasi (U.P.)",,,23.09.2001,TRUE
+191,Umesh ChandraSrivastava,"U11B-28, Sanjay Nagar Colony,Cotton Mill Chowka Ghat,Varanasi (U.P.)",,,25.09.2001,TRUE
+192,Dr. Rainesh Chandra,"525-B, Umarpur,Sundarnagar .launpur (U.P.)",,,28.09.2001,TRUE
+193,Sandccp Kumar Maurya,"SA-18/127; K-8,Bharat Nagar Colony,Nakkhi Ghat,Varanasi Pin-221 007 (U.P.)",,,23.10.2001,TRUE
+194,Krishna Nand Sharma,"Vil-PO-Baruin Khas,Rs Zamania,Distt. Gazipur (U.P.)",,,28.10.2001,TRUE
+195,Dr. R.P. Singh,"Reader,Dept. of Psychology ,M.G. Kashi Vidyapith,Varanasi-221 002 (U.P.",,,28.10.2001,TRUE
+196,Shailja Singh,"B-37/112-Ga,Kniachba, Varanasi (U.P.)",,,29.10.2001,TRUE
+197,Dr. Brij Ratan Agrawal,"D-36/254, August,Kunda, Godowalia Varanasi (U.P.)",,,29.10.2001,TRUE
+198,Dr. Alka Bcotra,"H.No. 278 Sector-37,Faridabad - 121 003,Harayana",,,29.10.2001,TRUE
+199,Dr. AnuradhaS. Solanky,"17 E/7I0, Konark Enclave Vasundhara,Ghaziabad-201 012 (U.P.)",9810827721,anuradhasolanky@yahoo.com,29.10.2001,TRUE
+200,Dr. Vikram Singh,"Sector B-2 / 2348,Vasant Kuiij,New Delhi Pin - 110 070",,,29.10.2001,TRUE
+201,Dr. llari Shankcr Asthana,"Lecturer ,Deptt. of Psychology,Veer Kunwar Singh Univ.,Ai rah (Bihar)",,,29.10.2001,TRUE
+202,Dr. S.K. Srivastava,"Department of Psychology,Gurukul Knngnri University,Haridwar -249404 (Uttaranchall)",,,29.10.2001,TRUE
+203,Ashutosh Kumar Gupta,"Village - Sahaspura,P.O. - Purushottampur Chunar,Distt. - Mirzapur (U.P.)",,,29.10.2001,TRUE
+204,Dr. Poornima Srivastava,"MM-22, V.D.A. Colony,Central Jail Road, Shivpur,Varanasi (U.P.) -221003",,,29.10.2001,TRUE
+205,Dr. Rajendra Singh,"Pakari Godain,Near Happy Model Public School,Mungra, Badshahpur, Jaunpur.",,,30.10.2001,TRUE
+206,Manoj Kumar Pandcy,"B-37/1-F-3, Birdopur,Baiznattha, Varanasi (U.P.) – 10",,,30.10.2001,TRUE
+207,Mr. Satish Kanaujia,"Lecturer in Physical Edu. Administrative Officer,I.T. - Gymkhana,Instt. Of Technology, B.H.U.Varanasi. (U.P.)",,,30.10.2001,TRUE
+208,Dr. Awadhesh Upadhyay,"5-12/55 II, Piyari Pokhari,Near Telia Bagh,Varanasi - 221 002 (U.P.)",,,30.10.2001,TRUE
+209,Mr. Subodh Singh,"No.-40, Lane No.-6,Mahauiaua Puri ,Colony, Karodi (B.H.U),Varanasi (U.P.)-221005",,,30.10.2001,TRUE
+210,Abhimanyu Singh,"Asst. Professor in Phy. Education,Dept. of Physical Education,B.H.U., Varanasi, U.P.",,,30.10.2001,TRUE
+211,Dr. Gopal Krishan,"Dept. of Physical Edu.,Lucknow Christian College,Lucknow (U.P.)",9415785943,,30.10.2001,TRUE
+212,Girish Bhushan Mishra,"Mishra Medicals,Shop No. 59,Shree Krishna Dharma Shala,Englishia Line,Varanasi (U.P.)",,,30.10.2001,TRUE
+213,Lt. Col. M.S. Gill,"Rajputana Rifles,Regimental Centre,Delhi Cantt, New Delhi,09650050606",,gill2ms@yahoo.com,08.12.2001,TRUE
+214,Dr. Sarita Tyagi,"Associate Professor,IGIPESS, Block ‘B’,Vikash Puri,New Delhi",9911323312,sarita.igipess@gmail.com,26.12.2001,TRUE
+215,Dr. Rameshwari Devi,"Professor in Physical Edu.,H.No. 11, Type-IV,University Campus,M.D.University Rohtak, Haryana",1262273400,,26.12.2001,TRUE
+216,Dr. Ramesh K. Tiger,"Directorate of Sports & Dept. of Physical Edu.,M.D. University Rohtak,Haryana- 124001",,,26.12.2001,TRUE
+217,Dharmendra P. Bhatt,"District Sports Office,Kashipur, Udham Singh Nagar,Uttaranchal Pin 244 713",,,27.12.2001,TRUE
+218,Dr. Sandhya Ojha,"D-59/103 H-2, Sigra,(Mahmoorganj Road) Varanasi (U.P.)",,,27.12.2001,TRUE
+219,Dr. Manju Dev,"Lecturer in Psychology rhlad Ghat, Varanasi (U.P.)",,,27.12.2001,TRUE
+220,Susheel Kumar Gautam,"Associate Professor,Deptt. Of Phy. Educ. M.G.K.V. Peeth,Varanasi (U.P.)",9839147742,susheelmgkvp@gmail.com,27.12.2001,TRUE
+221,Dr. Arvind Mishra,"B-37/45 A-2,Birdopur,Varanasi -221 010, (U.P.)",,,27.12.2001,TRUE
+222,Prof. H.R. Khan,"Opp. Irrigation Deptt,Katari Hill Road,Gaya-823 001 (Bihar)",,,20.04.2002,TRUE
+223,Ashwini Kumar Jha,"C.K. 33/4 Neelkanth Gali, Chowk,Varanasi 221 001 (U.P.)",,,25.04.2002,TRUE
+224,Dr. Rita Jain,"V-247, Rajouri Garden,New Delhi -110 027",,,01.05.2002,TRUE
+225,Gajendra Singh,"152/B, Friend's Colony,Etawah-206 001 (U.P.)",,,10.05.2002,TRUE
+226,Virendra Kumar,"P.O. & Village Deipur,Distt. - Varanasi Pin-221 405 (U.P.)",,,10.05.2002,TRUE
+227,Dr. Manas Kumar Mandal,"B-6I,I.I.T. Campus,Indian Institute of Technology,Kharagpur-721302",,,10.05.2002,TRUE
+228,Dr. A.K. Vaidya,"S-21/107, Englishia Lane,Varanasi- Cantt 221001 (U.P.)",,,10.05.2002,TRUE
+229,Prof. S.N. Rai,"Head, Deptt. of Psychology,Ch. Charan Singh University,Meerut (U.P.)",,,10.05.2002,TRUE
+230,Sandeep Kumar Pandey,"C/O/ Sh. Jagdamba Prasad Pandey, Vill. & Post Sumhadeen,Distt Azamgarh",,,10.05.2002,TRUE
+231,Rajesh Kumar Jha,"CK.33/4 Neel Kanth Gali,Chowk, Varanasi-221001.",,,11.05.2002,TRUE
+232,Dr. Ramesh Lai Srivastava,"Reader,Deptt of Psychology,D.C.S.K.P.G. College, Mau-275101.",,,11.05.2002,TRUE
+233,Sanjay Kumar Verma,"B-22/240 D-3A,Khojawa Bazar, Varanasi-221010",,,11.05.2002,TRUE
+234,Ravindra Kumar Pathak,"D-59/314 A-l,Shivpurawa, Mehmoorganj,Varanasi-221010.",,,11.05.02,TRUE
+235,Dr. Awadhesh Tripathi,"Behind Block, Shastri Nagar,Ambedkar Nagar, Akbarpur (U.P.)",,,12.05.02,TRUE
+236,Ravi Shankar Lai Srivastava,"Village-Garhava (North),P.O. - Ramppur Kalan (Chakia),Distt. Chandauli - 232103 (U.P.)",,,16.05.02,TRUE
+237,Prof. Shamim A. Ansari,"Chairman Deptt of Psychology,Alinarh Muslim University,Aligarh-202002 (U.P.)",,,16.05.02,TRUE
+238,Miss Nasheed Imtiaz,"Research Scholar,Deptt. of Psyhology,Aligarh Muslim University,Aligarh-202002 (U.P.)",,,16.05.02,TRUE
+239,Neeraj Kumar Pandey,"C/o Chaudhary Medical Store,Tahasil Road, Mrzapur-231001(U.P.)",,,17.05.02,TRUE
+240,Neelima Mishra,"S-8/44 ID,Khajuri, Pandeypur, Varanasi (U.P.)",,,18.05.02,TRUE
+241,Pramod Kumar Dubey,"B-30/191 Nagwa, Lanka,Varanasi-221005 (U.P.",,,18.05.02,TRUE
+242,Snehlata Gupta,"222, Sadar Bazar,Cantt, Varanasi-221002 (U.P.)",,,18.05.02,TRUE
+243,Dr. Vijai Kumar Rai,"C-27/111, B-l,Jagatganj, Varanasi, (U.P.)",,,12.09.02,TRUE
+244,Dr. Vachaspati Dubey,"C/o Dr. Anand Kumar,C-4/148, Kali Mahal, Varanasi-221001",,,25.09.02,TRUE
+245,Ashish Danayak,"C/o Dr. Vikram Trivedi,E-1/160, Arora Collony,,Bhopal (M.P.)",,,,TRUE
+246,Indu Kaul,"170/11/111,Bhel Ranipur Haridwar (U.P.)",,,10.05.02,TRUE
+247,Dr. Avinash Kumar,"Lect,Deptt of Applied Psychology,Poorvanchal University, Jaunpur.",,,,TRUE
+248,Dr. S. Sivarama Krishnan,"Reader,Alagappa University,College of physical Education,Karai Kuddi- 630004 Tamilnadu",,,,TRUE
+249,Namashish Pratap Singh,"Lecturer, Physical Education,Moti Lai College,South Delhi University Campus,Moti Bagh, New Delhi.",1131028266,namaashish2002@yahoo.com,28.12.03,TRUE
+250,Thakkar Girish Kumar,"Lecturer, Physical Education,6, Nutan Park, J.B. Hospital Road,Mchsana - 284002 (Gujrat),Ph. No. - 02766 – 233648",,,29.12.03,TRUE
+251,Dr. Benu Gupta,"174, Kanungo App., 71 LP.Extension Delhi -110092,Phone: 22548042",9810569660,benugupta@yahoo.com,29.12.03,TRUE
+252,"Dr. Ramjee,","Reader & Head,Deptt of Psychology,Purvanchal University, Jaunpur,Rajeshwari Sadan, Shekhpur,Jaunpur (U.P.) ",941520710,drramjeelal@rediffmail.com,29.12.03,TRUE
+253,T. Vivekanandhan,,,,29.12.2003,TRUE
+254,Dr. Jupinder Gill,"Deptt of Physical Education,Punjab University,Chandigarh.Phone : 0172-254143",981597254,gillanant2003@yahoo.com,29.12.03,TRUE
+255,Prof. Lok Nath Singh,"Deptt. of Psychology,M.G. Kashi Vidyapith, Varanasi.",   0542-2382985,,02.05.04,TRUE
+256,Prof. S.R. Khan,"Head,Deptt. of Psychology, Jammu University Jammu.",,, 02.05.04,TRUE
+257,Dr. Rajendra Prasad Verma,"Asha Deep, Kali Mahal Varanasi. B22/157 -C-l, Saraswati Nagar Colony, Vinayak, Varanasi.",9415222004,,02.05.04,TRUE
+258,Kanchan Shukla ,"C/o Asha Deep,C-4/148, kali Mahal, Varanasi-221001",9415058227,,02.05.04,TRUE
+259,Anshu Srivastava,"Deptt of Psychology, M.G.K.V., Varanasi. B-27/63-B, Durgakund, Varanasi",    0542-231466 ,,02.05.04,TRUE
+260,Dr. Sudarshan Biswas,"Reader/Dy. Director Sports, Vishwabharti, Vishwideyalaya, Shanti Niketan, Bolepuri (W.B.)",,,20.10.04,TRUE
+261,Ram Bhushan Mishra,"S/o Sri Indra Pal Prasad MishraVill. - Anantpuri, Post - Govt. Eng. College, Rewa, M.P.-240313",9433175025,,20.11.04,TRUE
+262,Manoj Yadav,"Manas Psycho Therapy and Clinical Center, Malgodam Road, Ghazipur (U.P.) Phone : 0548-2222649",9415350400,,20.11.04,TRUE
+263,Farha Bano,"Lecturer in Psychology, M.G.K.V., Varanasi.",9415292120,,20.11.04,TRUE
+264,Bhardwaj A.R.,"Sr. Lecturer, C.H.M.E.Societies Bhonsala Military College, Pushkraj 'B' Flat No. - 2, Ground Floor, Thatte Aptr, Co-op-Housing Society, Gangapur Road, Nashik - 422005.",  0253-2316138 ,bhardwajar2003@yahoo.co.in,27.11.04,TRUE
+265,Dr. Kamlesh Kumar- Prahalad Bhai Patel ,"A - 2, Adity Apartment, Alkapur Soc. Opp. Gujarat Vidyapith, Swimming Pool, Ashram Road, Ahmedabad - 280014.",   079-27541481,,27.11.04,TRUE
+266,Sudhir Kr. Yadav Krishna,"Opp. P.W.D. Rest House, N.S. Road, AT - PO - TG - ROH A Raigad Maharashtra - 402109 Phone : 0712-232509",,,27.11.04,TRUE
+267,Prof. P.A. Bhelwa,"Principal Banglow, Hill Side, near K.P. Grand Bhagat Singh Marg, Nagpur Ph.-(R) 0172-2532053",,,27.11.04,TRUE
+268,Prof. A.P. Joshi,"Dr. Ambedkar College Nagpur. Dharmpeth, Nagpur -10  Phone : 0712-2552269",9822402990, apj.dacn@yahoo.com,27.11.04,TRUE
+269,Prof. Mrs. V.A. Joshi,"Lect. in Physical Education, R.S. Mandel (Arts + Commerce) College Nagpur (Uma Niwas) Hanuman Road, Nagpur.",     712-2552269,,27.11.04,TRUE
+270,Dr. Shailaja Mohan,"SAI, LNCPE Kariauttam, P.O. - Trivendrum Keral Phone : 0471-2417662",,shailamenon2004@yahoo.com,28.11.04,TRUE
+271,Varindir Sharma,"(Sports Officer), Acharya Sri Chandar College of Medical Science and Hospital, Jammu.",9419130625, gangainternationalschool@gmail.com,28.11.04,TRUE
+272,Sushil Kr. Gupta,"Managing Director Ganga International School Hiran Khudra.Rohtak Road, New Delhi",25935796,gangainternationalschool@gmail.com,30.11.05,TRUE
+273,Jani Niraj Narendrabhai,"PET (Phy. Edu.),Bilipatra 16 Bhahma Samaj Society,Raiya Road, Rajkot - 360007",3956114,nijudo@yahoo.com,05.03.05,TRUE
+274,Ms. Swati Prakash Rao Kharasnas,"T.C.C.C. (Jr. Clerk),Q. No. 4/4, Ram bag Colony,Medical Chawk, Nagapur - 40003.",9892345081,kharasneswati@yahoo.co.in,06.03.05,TRUE
+275,Mrs. Sema Kishor Gondnale,"Lecturer in Physical Education,Bihind Ram Mandir,Ram Mandir Ward, Bhandar,Maharashtra -41904",254538,,06.03.05,TRUE
+276,Dr. Jaykishan Santoshi,"Lecturer,S.E. Rly., Q. No. 42/3,Wanjari Nagar, Nagpur",9822928856,,06.03.05,TRUE
+277,Priyanka Yadav,"Research Scholar,School of Phy. Edu.,DAW, Indore.WZ/210A, Modipur Village,New Delhi.",1125213351,getpriyankaphd@yahoo.com,06.03.05,TRUE
+278,Pradeep Yadav,"PET.,A-7, Nidhi Vass Colonuy,Near Nand Gaon,Appr. Tilak Nagar, Indore",9826094176,pradeep94176@rediffmail.com,,TRUE
+279,Dr. Satyendra Sharma,"Sports Offier,Gujrati Science College,161, Telephone Nagar,Kanadia Road, Indore (M.P.)-452018",9302101707,drsharma_sat@yahoo.co.in,06.03.05,TRUE
+280,Dr. (Smt.) Khalida Dudhale,"Professor - Psychology,Flat No.-102, Manglam House,141, Anoop Nagar, Indore.",02795-232856,nijndo@yahoo.com,08.03.05,TRUE
+281,Dr. Sunil Dudhale,"Asstt. Director, Physical Education,Devi Ahilya Vniversity,Khandwa Road, Indore.",0731-2574226,,08.03.05,TRUE
+282,Dr. S.K. Yadav,"Reader in Phy. Edu.,School of Physical Education,Devi Ahilya Vishvavidyalaya,Khandwa Road, Indore.",9826535933,yadavshorya@rediffmail.com,08.03.05,TRUE
+283,Mr. Vikash Dutt,"Research Scholar,School of Physical Education,Devi Ahilya Vishvavidyalaya, Indore",0731-2400440,,08.03.05,TRUE
+284,Sr. Gisala George,"Sr. Lecturer, Deptt. of Phy. Edu.,Mercy Covent/CoIIege, Palakkad,Kerala.",4912527537,srgisalacmc@yahoo.com,08.03.05,TRUE
+285,Mrs. Neeru Kapai,"Principal, Modern School,Opp. Sunder Buscit Factory,N.R. Vidyanagar, Korad Road Unit,Nagpur-441 111.",2524716,modskool_ngpe@sancharnet.in,08.03.05,TRUE
+286,Mr. G.S. Manral,"Chief Editor,.Sports Era,751, Chandanwali Apprt,Plot N0.-8, Sect.-10, Dwarka,New Delhi-11075.",98101-11666,chiefeditor@sportzera.org,08.03.05,TRUE
+287,Mr. Donnet Joseph,"DSOUZA.Physical Director,St Aloysius College,P.B. No.-720, Mangalore-57503.",9448352266,,08.03.05,TRUE
+288,Prof. Khandke Narayan Shankar,"Lect (Phy. Edu.),SES College of Physical Education,Near Khojamiya Darga,Ganesh Colony, Jalgaon (M.S.).",0257-2235529,,08.03.05,TRUE
+289,Dr. Rajesh Tripathi (N.P.),"Principal,Vidhya Niketan College of Physical Education, Nelgarh(Barkatulla University) Bhopal.",9425226602,,08.03.05,TRUE
+290,Dr. Aman Singh Sisodiya,"Director,Physical Education Add. –THE NESTIE' E-329-330,Rameshwar Nagar,Basni, Jodhpur-342006",0291-2747775,dramansisodiya@gamil.com,30.03.2005,TRUE
+291,Moin Khan,"HOD,Sports Department Add. - Plot No. 241,Major Shaitan Singh Nagar,Opp. Rajasthan Hospital,Baba Ramdev Marg, Post Office –Main Head Post Office,Jodhpur-342001",9829025510,momkhan7@yahoo.com,30.03.2005,TRUE
+292,Miss Arti Sindhi,"P.E.T. Add. –Evergreen House,Vikas Nagar, Bundi,Rajasthan",2442018,artissindhi@yahoo.com,30.03.2005,TRUE
+293,Bhagwan Prasad Sharma,"P.E.T.,Govt. School, JodhpurAdd. - 26 B East Patel Nagar,Ganeshpura, Ratanada,Jodhpur-342001",0731-2574226,,30.03.2005,TRUE
+294,Mr. Nandpuri Goswami,"Physical Education, Teacher,Add. - Plot No. 17, Rao Colony,Behind Kumaro-Ki-Bagechi,Masuria, Jodhpur-342003,Rajasthan.",2770592,,30.03.2005,TRUE
+295,Lokendra Singh Shaktawat,"M.P.E., N.S.N.I.S. in Cricket,Add. - Ho. No. 231, ZSA, BJS Colony,Jodhpur, Rajasthan",,,30.03.2005,TRUE
+296,Sohan Kishan Joshi,"P.E.T.,Add. - Do-Mudh-Ke-Pol,Gundi-Ka-Mohlla, Jodhpur",9415395236,,30.03.2005,TRUE
+297,Shri Bhagwan Parihar,"Sr. P.E.T.Add. - C/o Parihar Krishi Firm,Bara New Khore,Bali,Destt. - Pali-306701",0291-2622235,,30.03.2005,TRUE
+298,Surendra Soni,"P.E.T.Add. - Surendra SoniS/o Sri Chandra Prakash Soni Sarafa Bazar, Sonaro Ki Ghati,Jodhpur (Rajasthan)",9828286266,surendersuncity@yahoo.com,30.03.2005,TRUE
+299,Dr. Bhupendra Singh Chauhan,"B 33/2, New Fatehpura,Near Sukhadia Circle,Udaipur (Rajasthan)",9314495356,,30.03.2005,TRUE
+300,Amit Kumar Srivastava,"Research Scholar,B 34/146, H.R.A.I.Dashami, Sarainandan,Khojwan, Varanasi",0542-2319899,shriamit2002@yahoomail.com,30.03.2005,TRUE
+301,Sameer E. Bhagirathi,,,,30.03.2005,FALSE
+302,Dr. Shalini Mehlotra,"Designation - Reader,Physical Education,Add. - Moti Lai N. College,(Delhi University),,Moti Bagh (Near Dhaula Kuan),,New Delhi.",9873064892,drshalinimlnc@sify.com,30.03.2005,TRUE
+303,Mrs. Neeta Naresh Kashyap,"Designation - Lecturer,Add. - Plot No. G-7,Abhinav Sangam Appart.,Laxmi Nagar, Nagpur (Maha.)",5603927,,,TRUE
+304,Mrs. Deshmukh Sadhana Surendra,"Designation - Lecture,Add. - 485-A Alankar Appart,Professor Colony, Hanuman Nagar,Nagpur (Maha.)",2744553,,22.07.2006,TRUE
+305,Miss Seema Gurjar,"Lec. R.M.V. College,Phy Edu. Udaipur (Raj.)",9415684028,,27.07.2005,TRUE
+306,Mrs. Chandrakanta Tripathi,"Lec. N.D.V.P.T.T. College,Bhilwara (Raj.)",9415372439,,27.07.2005,TRUE
+307,Mr.Bhimraj Patel,"Warden:- Rajasthan Patel Hostel, C/O Geetabai Near Akanda ,Ashram, Sobhagpura,Udaipur (Raj.)",9415574185,,27.07.2005,TRUE
+308,Miss Seema Kaushik,"Lec. L.B.C. (Univ. of Delhi),Add :- C-G- 16, Shiva Enclave A/4,Pashim Vihar, New Delhi.",9810207998,seemakaushik2005@yahoo.com,28.07.2005,TRUE
+309,Mr. Vivek Somania,"T-2035-A, Pillangi Kotla,Mubarkpur, New Delhi – 110003",011-55713103,sam_lallu@yahoo.com,28.07.2005,TRUE
+310,Mr. Mahaveer Singh Bhati,"Near Ramdev Temple,Behind Circuit House, Jodhpur (Raj.)",9415440773,,30.07.2005,TRUE
+311,Mr. Dhirendra Singh Chundawat,"42-Z, S-A, B.J.S. Colony,Jodhpur (Raj.)",2530068,,30.07.2005,TRUE
+312,Mr. Ram Singh Karnot,"Board of Sports,J.N.V. University, Jodhpur (Raj.)",2513248,,30.07.2005,TRUE
+313,Mrs. Anjana Gehlot,"56/A, Amer Singh ji ka Hatha,Street No. 5, Old Loco Shed,Ratanada,Jodhpur (Raj.)",0291-2626484,,30.07.2005,TRUE
+314,Dr. Bhupender Singh Rathore,"Board of Sports,Rajasthan University, Jaipur (Raj.)",9414042522,,30.07.2005,TRUE
+315,Mr. Mahendra Singh Shekhawat,"Board of Sports,J.N.V.University, Jodhpur (Raj.)",9414720204,,30.07.2005,TRUE
+316,Mr. Mahendra Singh Rathore,"Near Mahamandir Police Station, Guman Villas, Jodhpur",2546454,,30.07.2005,TRUE
+317,Mr. Chhotu Singh Bhati,"L.M. College of Science &Technology, Jodhpur",2531808,,30.07.2005,TRUE
+318,Mr. Sameer Dubey,"20-A, Maan Mahal Colony,Sher Villas, Air Force Road,Jodhpur (Raj.)",9351326227,,30.07.2005,TRUE
+319,Mr. Laxman Singh Panwar,"14, Nehru Colony,Ratanada, Jodhpur (Raj.)",9829703552,,30.07.2005,TRUE
+320,Mr. Vineet Sharma,"Plot No. C/14, Murlipura scheme,Jaipur (Raj.)",9829888861,sportsofficeriitd@yahoo.com,30.07.2005,TRUE
+321,Mr. Sunil Saini,"56-A, Amer Singh Ka Hattha,Street No. 5, Old Loco Shed,Ratanada, Jodhpur (Raj.)",0291-2626484,,30.07.2005,TRUE
+322,Mr. Devendra Singh Chouhan,"Sayala House, Subhash Chowk,Ratanada, Jodhpur (Raj.)",9414143543,,30.07.2005,TRUE
+323,Mr. Lai it Gaur,"20-A, Maan Mahal Colony,Sher Villas, Air Force Road,Jodhpur (Raj.)",9829946366,,30.07.2005,TRUE
+324,Mr. Sajjad Ahmed Bhat,"Thiru Ganderbal,District Srinagar (J & K)",0194-2416800,,02.08.2005,TRUE
+325,Dr. Deepak Negi,"Sport Unit, RCA Complex,Huzekhash, New Delhi – 110016",9810265364,sportsofficeriitd@yahoo.com,02.08.2005,TRUE
+326,Mr. Pravin Kumar Virsangbhai Chaudhari,"Lecturer of Physical Education, (Prof. Anand),Sankalp, 31/B, Magalmurti Society,Nr. Janmbhumi Society,Karunnagar road,High Way AT & P.O. - Kadi,Distt. - Mehsana - 382715,(North Gujarat).",,,21.01.06,TRUE
+327,Mr. AjayVyas,"P.E.T. (Prof. Anand) Ravi Shankar Ward,Near Dr. Drut House, Sagar (M.P.).",,,21.10.05,TRUE
+328,Ms. Vidhi Gupta,"Student (Prof. Anand) 127/202-U-Block,Nirala Nagar, Kanpur-208014.",,,21.10.06,TRUE
+329,Mr. Koine Sitaram Shankar,"C/o, Dr. V.R. Shide, (Prof. Anand) Hunuman Wadi,Chaudhari Mola,Near Raka Nursari, Pancbavati,Nasik",,,21.10.05,TRUE
+330,Prof. Deshmukh Narendra V.,"Lecturer, (Prof. Anand) Flat No. 39, Snehvardhini Society,Tidke Colony, Nashik-2.",,,21.10.05,TRUE
+331,Dr. S.B. Yadav,"Asstt. Professor, (Prof. Anand) 31-A, Sushil Nagar,Pul Road, Jodhpur.",,,21.10.05,TRUE
+332,Dr. L.N. Bunker,"Assistant Professor, (Prof. Anand) Deptt. of Psychology,J.N.U. University, Jodhpur-342001.",,,21.10.05,TRUE
+333,Mr. Ravi Gunthey,"A - 111, Shastri Nagar, (Prof. Anand),Jodhpur-34003.",,,21.10.05,TRUE
+334,Dr. A. Anjum,"Professor, (Prof. Anand),Bagmati Nivas, Azad Road,Chandwara, Muzaffarpur, Pin.-842001.",,,21.10.05,TRUE
+335,Dr. Patil Pramila Vishwasrao,"Principal, (Prof. Anand) Sundar Prabha, Pramod Nagar,Sector No. 2, Nakane RD.,Deopur Dhule - 424002.",,,21.10.05,TRUE
+336,Mr. J.D. Boramanikar,"Senior Lecturer (Selection grade), (Prof. Anand) New Ajanta Avenue,Bldg No. 2, Wing A2,Flat - 23, Kothrund, Pune - 411138.",,,21.10.05,TRUE
+337,Prof. Rajendra Mishra,"Professor & Head of Psychology, (Prof. Anand) Deptt. of Psychology,B.R.A. Bihar University,Muzaffarpur, Bihar.",,,21.10.05,TRUE
+338,Ms. Vasundhara Nangia,"Psychologist, (Prof. Anand) 28/A, Circular Road,Dalalanwala, Dehradun,Uttaranchal",,,21.10.05,TRUE
+339,Prof. Pranod Kumar Rai,"Professor of Psychology, (Prof. Anand) Deptt. of Psychology,Dr. Hari Singh Gaur University,Saugar (U.P.)",,,21.10.05,TRUE
+340,Mr. Rajesh,"Psychologist, (Prof Anand) S/o Shri Sabha Shankar Pandey,AT & P.O. - Kheta Sasrai,Distt.-Janupur (U.P.)",,,21.10.05,TRUE
+341,Mr. Rakesh Pandey,"Reader, (Prof. Anand) B 34/170 A, Sundarpur,Varanasi.",,,21.10.05,TRUE
+342,Ms. Jaya Mohan,"Faculty Member, (Prof. Anand) Deptt. of Psychology,53, Officer's Cology,Diesel Locomotive Works, Varanasi",,,21.10.05,TRUE
+343,V Mr. Ajay Kumar,"(M.G. K. Vidyapith, Varanasi) (Prof. Anand),C/o Shri B. Lai Sharma Vill. & P.O. - Deipur,Distt. - Varanasi, Pin.-221405.",,,21.10.05,TRUE
+344,Dr. Shree Prakash Singh,"Lecturer, (Prof. Anand) Gangapur Inter College,Gangapur, Varanasi.",,,21.10.05,TRUE
+345,Dr. Ajay Kumar Tiwari,"Director & Founder, Naisubah, (Prof. Anand) Psychotherapy & Counseling,Vill. & P.O.-Unurkha,Distt. - Sultanpur, Pin.-228171.",,,21.10.05,TRUE
+346,Mr. Satish Kumar Tripathi,"C/o Kashi Electronics, (Prof. Anand) Diesel Power House,Manduadih, Varanasi (U.P.).",,,21.10.05,TRUE
+347,Km. Uma Singh,"Om Nagar, Ward No. – 6th, (Prof. Anand) Jhinjhak,Kanpur Dehat - 209302 (U.P.)",,,21.10.05,TRUE
+348,Mr. Nagendra Prasad Sharma,"Coach (Basket Ball),7, Kalyani View, Rudrapur,Distt. - Udham Singh Nagar, (Uttranchal).",,,01.12.05,TRUE
+349,Dr. Anil P. Karwande,"Principal,257, Shiraji Nagar, Nagpur - 10.",,kidcpe_anil@rediffmail.com,01.12.06,TRUE
+350,Dr. (Mrs.) D. Rajlakshmi,"Lecturer of Physical Education,No.5B,Valmegi Street,Sri Ram Nagar, Kottayur,Karaikudi. 630003.",9442679541,rajikumaravel@rediffmail.com,18.01.2007,TRUE
+351,Mini Thomas,"Lecturer of Physical Education B. K. College, Amalagiri,P.O.- Kottayam. Kerala, 36",9447355729,minitoms2006@rediffmail.com,18.01.2007,TRUE
+352,Dr. Razia K. I,"Sr. Lecturer of Physical Education,T.C. 49/453.Konchiravila.Manacaud.P.O.-Trivendrum,Kerala, 695009.",9446489795,,18.01.2007,TRUE
+353,Dr. Razeena K. I.,"Sr. Lecturer of Physical Education,T.C. 49/453,Konchiravila,Manacaud,P.O.-Trivendrum,Kerala, 695009.",9447582746,,18.01.2007,TRUE
+354,Dr. Mrutunjaya Mishra,"Sports Officer,2 RBF - 4, O.U.A.T.Colony Unit — 8, Bhubaneshwar,Orissa, 751003.",9337676265,mrutunjaya_mishra@yahoo.com,18.01.2007,TRUE
+355,Dr. S.S. Hasrani,"Principal,SAI. LNCPE, Kriavattam Trivendrum,Kerala. 695581.",4712418722,hasrani_ss@yahoo.com,18.01.2007,TRUE
+356,Ms. Lata Chaudhary,"Student,B-44,Saraswati Nagar,Basni-I Phase. Jodhpur,Rajsthan, 342005.",9928374389,phy_gymnast@yahoo.com,18.01.2007,TRUE
+357,Mrs. Pratiksha Nandan Phadnis,"PET,241,Dhawalgiri Apts.Off. Gen. A.K. Vaidya Marg,Goregaon (E), Mumbai, 63.",9820803149,phadnis.pratiksha@yahoo.com,18.01.2007,TRUE
+358,Dr. M. Sivasankar Reddy,"Dy. Director in Physical Education Department of Physical Education,Sri Venkateswara University,Tirupati, Andhra Pradesh, 517502.",9441296125,,19.01.2007,TRUE
+359,Dr. Rajitha Menon A.,"Psychologist,438A, 7th Main NGEF Layout,Nagarbhavi Circle, Banglore,Karnataka, 560072.",9242288944,drrajithamenon@hotmail.com,19.01.2007,TRUE
+360,Sri Jayesh Churi,"College Director of Physical Education& Sports, S. Vis Caculo College,Khorlim, Mapusa, Goa, 403507.",9822137913,j_churi1963@yahoo.com,19.01.2007,TRUE
+361,Manjit Singh Dhall,"Director Physical education,GNDU (Regional campus),Basti-Nau-Jal) 426, Jaswant Nagar,Garha Road, Jalandhar",9815421354,dhall_1477y@yahoo.com,19.01.2007,TRUE
+362,Dr. N.D. Virupaksha,"Lecturer in Physical Education,Department of Physical Education,Kuvempu University,Jananashayadri, Shankarghatta,Shimoga, Karnataka 577451.",9448884989,ndviru@yahoo.co.in,19.01.2007,TRUE
+363,Dr. Santosh A. M.,"Lecturer in Psychology 438A,7th Main NGEF Layout,Nagarbhavi Circle, Banglore,Karnataka, 560072.",9242388633,drsanthosham@hotmail.com,19.01.2007,TRUE
+364,Madhuli Khodke,"Psychologist,5, Sapat Apts.,Near Kute Hospital,Behind Kalika Mandir,Nasik, 422002.",2532578944,madhuli@rediffmail.com,19.01.2007,TRUE
+365,C. Venkatesh,"Lecturer in Physical Education,Lecturer, Dept. of Studies in Phy. Edu.& Sports Sciences, Sports Pavilion,University of Mysore,Karnataka, 570005.",9844061254,,19.01.2007,TRUE
+366,Dr. Amarjit Singh Sidhu,"Principal,Kartarpura Basti, Sangrur Punjab.",9417114950,,19.01.2007,TRUE
+367,Dr. Y Gopi Krishna,"Professor In Physical Education,H.No. 16-11-501/2, Dilsukh Nagar,Hyderabad, A.P.",4024057300,gopikrishnayarhagadda@yahoo.co.in,19.01.2007,TRUE
+368,Dr. V. Satya Narayana,"Associate Professor in Physical Education,L-18, 0.4, Staff Quarter, 0-4,Campus Osmania University,Hyderabad, 50007",9849112367,drvsn.sport@rediffmail.com,19.01.2007,TRUE
+369,Mrs. Glory Darling Margares,"Lecturer in Physical Education,Staff Quarter, YMCA College of Physical Education, Nandanam,Chennai - 600035.",9444886080,jgdmargarent@yahoo.co.in,19.01.2007,TRUE
+370,Dr.(Mrs.) Sheila Stephen,"Reader in Physical Education Staff Quarter,YMCA College of Physical Education,Nandanam, Chennai – 600035",9884403819,sheil_steve@yahoo.co.in,19.01.2007,TRUE
+371,Stalin Raphel,"Lecturer in Physical Education,Arakkal House. Edathirinji,P.O.-Thrisur,Kerala, 680122.",9846765374,sheil_steve@yahoo.co.in,19.01.2007,TRUE
+372,Dr. Mahesh Sawata Khetmalis,"Lecturer in Physical Education,C.A.C.P.E., Mukund Nagar,Gultekdi, Pune, 37.",9423226411,stalinjy@hotmail.com,19.01.2007,TRUE
+373,Syed Farooq Kamal,"Head, Deptt. of Phy. Edu.,Municipal 6-7-259 House 17/B,Bansilacpef, Secunderabad, AP, 500003.",4027530266,syedkamal2001@hotmail.com,19.01.2007,TRUE
+374,Dr. L. B. Laxmikant Rathore,"Asst. Professor in Physical Education,Deptt. of Physical. Education.,University College of Engineers,Osmania University, Hyderabad.",9848552437,rathod9@rediffmail.com,19.01.2007,TRUE
+375,Dr. Anek Goel,"Lecturer in Physical Education RP-4,Pitampura, Delhi, 34.",9868505049,anek15@gmail.com,19.01.2007,TRUE
+376,K. Deepla,"Asst. Professor in Physical Education Q. No. L-27,Staff Quarter,Osmania University, Hyderabad, A.P.",9440390586,,19.01.2007,TRUE
+377,Dr. Rajesh Kumar,"Asst. Professor in Physical Education ,11-5-522, Read Hills. Hyderabad,A.P. 500004.",9246529013,,19.01.2007,TRUE
+378,Anche Sudhakar Rao,"Physical DirectorP.V.P. Sidharth Institute of Technology Kanuru, Vijayawada, A.P. 07.",8662583459,anuilla_anche@yahoo.com,19.01.2007,TRUE
+379,Medapati Sri Nivasa Reddy,"Physical Director Vignana Bharti Institute of Technology,Aushapur (V), Ghatkesr(M), A.P. 501301.",9440778628,,19.01.2007,TRUE
+380,Joji Reddy Boggula,"Asst. Professor in Physical Education JNT College of Enginreering, Pulivendula,Kadapa, A.P",9885629909,bjojireddy@yahoo.co.in,19.01.2007,TRUE
+381,Dr. K. Sudhakar,"Reader in Physical Education Jaya Residency, H. No. 2-2-1100/1/A,New Nalla Kunta, Hyderabad, A.P.",9848179947,,19.01.2007,TRUE
+382,M. Venkateswarlu,"Plot No. 13, Yelkavestali,Atmakur Road,Kuvnoi-85, Silver Jubilee Govt.College, B-Camp, 568002.",9290099506,,19.01.2007,TRUE
+383,Dr. Dhirendra Tiwari,"Sr. Lecturer H.no. 414, Gautam Buddha,AANAS Banasthali Vidyapith,Distt. Tonk. 304022 (Raj.)",9415355681,dhirendra_tiwari2001@rediffmail.com,24.2.2007,TRUE
+384,Mrs. Usha Tiwari,"Sr. Lecturer H.no. 414, Gautam Buddha,AANAS Banasthali Vidyapith,Distt. Tonk. 304022 (Raj.)",9415355681,,24.2.2007,TRUE
+385,Dr. Anil Ramachandran,"Nair, Associate Professor,P.K.M. College of Education,Madampam, Kannur (Kerala)",,dranil@live.com,20.05.2007,TRUE
+386,Dr. Sunil Datt Lakhra,"Sports Officer,435, State Bank Colony,Baldeo Bag, Jabalpur, M.P.",9926865708,science@sancharmet.in,16.06.2007,TRUE
+387,Dr. R. Elangovan,"Director & Head Deptt. of Physical Education, 1-31, Proffessors quators,Maduraj Kamaraj University,Maduraj -625021 (T.N.)",9443121920,,27.06.2007,TRUE
+388,Mr. Anurag Hardia ,"C/O Dr. S. K. Yadav,School of Physical education,DAVV, Indore,(MP)",9926260953,,01.07.2007,TRUE
+389,Vishal Singh Sengar,"Associate professor 252/9A,Swapnil Apartment,Flat No. S-5, Saket Nagar Bhopal-(M.P.)",9827208241,physical0072002@yahoo.co.in,01.07.2007,TRUE
+390,Kapil Dave,"Assit. Professor,82, Mahadav Totla Nagar,Near Ban gal i Square,Ring Road Indore. ( M. P.) - 452016",9827011550,kapildeve05@yahoo.com,05.07.2007,TRUE
+391,Sanjay Yadav,"Lecturer C-l 12, Pallav PuramPhase-1 Modi Puram Meerut",9897062664,,06.07.2007,TRUE
+392,Dr. K. P. Martin,"Lecterer,Deptt. of Studies in Physical Education and Sports Sciences Sports Pavilion- Mysore Karnataka(India) 570005",9448872511,,23.08.2007,TRUE
+393,Vishal N. Pothiwala ,"Assit. Director Physical Education C-2, Priydarshani Nagar Opp.Novine Batteries, Makarpura,Shusen Cross Road Baroda,(Gujrat).",9228209547,vishalvish1121@yahoo.co.in,04.09.2007,TRUE
+394,Ms. Chauhan Poonam Ramesh Kumar,"Lecturer in Physical Education,C-2, Ganesh Kutir Devjeet Society,Chandlodia – Ahmedabad",9228863812,poonamchauhan2001@yahoo.co.in,04.09.2007,TRUE
+395,Dr. Varsha Dwivedi,"Councellor Psychologist ,11/250, SouterGang,Kanpur(U.P.) 208001",5122530514,varsha_dwivedi@yahoo.co.uk,12.11.2007,TRUE
+396,Dr. Poonam Diwedi,"Lecturer in Physical Education,11/250, Souter Ganj, Kanpur- 208001",9335366333,poonamdivedi27@yahoo.in,12.11.2007,TRUE
+397,S. Arumugam ,"Football Coach,57, Industrial Colony,Prttai, Tirunelvedi (T.N.)627010",4622342710,arupradeep06@yahoo.co.in,20.12.2007,TRUE
+398,Miss Bhawana Yadav ,"Lecturer in Physical Education,Bhopal School of Social Science.",9893194706,hawnasmarti@yahoo.co.in,20.12.2007,TRUE
+399,Dr. Yatendra Kumar Singh,"Lecturer Res: N14/69, B-18, Krishna Dev Nagar Colony,Mahmoorganj, Varanasi, 221010, UP.",,yksingh@amity.edu,21.12.2007,TRUE
+400,Dr. Smriti Mishra ,"D 58/12-53 GandhiNagar,Sigra, Varanasi – 221010",9415815402,smriti.badmintan@gmail.com,21.12.2007,TRUE
+401,Dr. Sagarika Bandyopadhyay,"Reader in Physical Education,Visva- Bharati University(Shantiniketan)",9434132453,sagarikasaga@rediffmail.com,22.12.2007,TRUE
+402,Dr. Manju Pushpa,"Physical Directress Faculty of Engineering Avinashilingam University for Women Vanapalayam,Coimbatore (641108)",9942953030,dr.manjupushpa@gmail.com,22.12.2007,TRUE
+403,Dr. S.T.N. Rajeswarn,"Physical Education Teacher,Panchaath High school Pathiyook.",9846455050,jayanpvk@gmail.com,01.01.2008,TRUE
+404,,"Lecturer in Senior Grade,RMV Maruthi College of Physical Education,No: 7; Maruthi ORS, S.R.K.UPost.,Periyanaicken Palayam,Coimbatore (641020)",9443855355,skn.rajes@yahoo.com  ,07.01.2008,TRUE

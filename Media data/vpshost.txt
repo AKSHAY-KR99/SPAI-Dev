@@ -1,0 +1,108 @@
+apt update
+apt upgrade
+
+## change password
+passwd
+
+## create new user with sudo
+adduser <username>
+usermod -aG sudo <username>
+
+
+## setup ssh manually need public key
+/home/<username>
+mkdir .ssh
+nano .ssh/authorized_keys
+
+## remove ssh password auth
+sudo nano /etc/ssh/sshd_config   # set pass auth to No
+sudo nano /etc/ssh/sshd_config.d/50-cloud-init.conf    # set pass auth to No 
+sudo service ssh restart
+
+## remove root login without password
+sudo nano /etc/ssh/sshd_config   #uncomment PermitRootLogin without-password  => no  root cannot login with password now
+sudo service ssh restart
+
+
+## check firewall
+
+## for auto updates
+sudo apt install unattended-upgrades
+sudo dpkg-reconfigure unattended-upgrades
+sudo systemctl status unattended-upgrades  # to check service is running
+
+## install caddy as webserver
+sudo service caddy status  # to check if caddy is running
+
+## multi host setup caddy
+cd /etc/caddy
+mkdir sites-available
+mkdir sites-enabled
+cp Caddyfile sites-available/Caddyfile
+nano sites-available/Caddyfile  #to edit caddy file
+
+##add 
+import sites-enabled/
+##in caddy file
+
+## to enable a site 
+cd sites-enabled
+ln -s /etc/caddy/sites-available/<filename> /etc/caddy/sites-enabled/<filename>
+
+service caddy restart
+
+
+## to sync file with vps
+rsync -azP $(pwd)/ <username>@<domain>:/path/to/folder
+
+
+
+## to change onwership to current user
+sudo chown <username>:<username> <foldername/filename>
+
+## install pm2 for process management
+npm install -g pm2
+npm start --name tesing src/index.js #example
+
+pm2 list
+pm2 logs <id>
+pm2 stop <id>
+pm2 delete <id>
+
+# for creating services
+nano /etc/systemd/system/<service_name>.service
+sudo systemctl daemon-reload
+sudo systemctl start <service_name>
+sudo systemctl enable <service_name>
+
+
+
+
+## bash script to start django server
+
+#!/bin/bash
+
+# Activate the virtual environment
+source /home/osp/RubyOAPublishing/.venv/bin/activate
+
+# Change to the directory where your Django project is located
+cd /home/osp/RubyOAPublishing
+
+# Start Gunicorn using the configuration file (no need to repeat wsgi_app)
+gunicorn -c gunicorn.conf.py
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
